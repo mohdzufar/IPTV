@@ -1,107 +1,109 @@
-#EXTM3U url-tvg="https://raw.githubusercontent.com/Jerrie-Aries/EPG/main/epg.xml, https://freeview.github.io/iptv/epg/tv.xml, https://github.com/weareblahs/epg/raw/master/rtmklik.xml"
+#EXTM3U url-tvg="https://raw.githubusercontent.com/Jerrie-Aries/EPG/main/epg.xml, 
+https://freeview.github.io/iptv/epg/tv.xml, 
+https://github.com/weareblahs/epg/raw/master/rtmklik.xml"
 
 
 =====Malaysia=====
-#EXTINF:0 tvg-country="Malaysia" tvg-logo="" tvg-id="TV1.my" tvg-name="TV1.my" group-title="RTM",RTM TV1
+#EXTINF:0 tvg-country="Malaysia" tvg-logo="" tvg-id="TV1.my" tvg-name="TV1.my" group-title="Malaysia",RTM TV1
 https://mifntechnology.github.io/siaranMy/channels/Tv1/index.m3u8
 https://d25tgymtnqzu8s.cloudfront.net/smil:tv1/manifest.mpd
 https://d25tgymtnqzu8s.cloudfront.net/smil:tv1/playlist.m3u8?id=1
 
-#EXTINF:0 tvg-country="Malaysia" tvg-logo="" tvg-id="TV2.my" tvg-name="TV2.my" group-title="RTM",RTM TV2
+#EXTINF:0 tvg-country="Malaysia" tvg-logo="" tvg-id="TV2.my" tvg-name="TV2.my" group-title="Malaysia",RTM TV2
 https://d25tgymtnqzu8s.cloudfront.net/smil:tv2/manifest.mpd
 https://mifntechnology.github.io/siaranMy/channels/Tv2/index.m3u8
 
-#EXTINF:0 tvg-country="Malaysia" tvg-logo="" tvg-id="TV6.my" tvg-name="TV6.my" group-title="TV6",TV6
+#EXTINF:0 tvg-country="Malaysia" tvg-logo="" tvg-id="TV6.my" tvg-name="TV6.my" group-title="Malaysia",TV6
 https://d25tgymtnqzu8s.cloudfront.net/smil:tv6/manifest.mpd
 https://mifntechnology.github.io/siaranMy/channels/Tv6/index.m3u8
 https://d25tgymtnqzu8s.cloudfront.net/smil:tv6/playlist.m3u8?id=6
 
-#EXTINF:0 tvg-country="Malaysia" tvg-logo="" tvg-id="BeritaRTM.my" tvg-name="BeritaRTM.my" group-title="RTM;News",Berita RTM
+#EXTINF:0 tvg-country="Malaysia" tvg-logo="" tvg-id="BeritaRTM.my" tvg-name="BeritaRTM.my" group-title="Malaysia;News",Berita RTM
 https://d25tgymtnqzu8s.cloudfront.net/smil:berita/playlist.m3u8?id=5
 
-#EXTINF:0 tvg-country="Malaysia" tvg-logo="" tvg-id="8TV.my" tvg-name="8TV.my" group-title="8TV",8TV
+#EXTINF:0 tvg-country="Malaysia" tvg-logo="" tvg-id="8TV.my" tvg-name="8TV.my" group-title="Malaysia",8TV
 https://raw.githubusercontent.com/MIFNtechnology/siaranMy/main/channels/8tv/index.m3u8
 http://cdn6.163189.xyz/163189/8tv
 
-#EXTINF:0 tvg-country="Malaysia" tvg-logo="" tvg-id="OKEY.my" tvg-name="OKEY.my" group-title="Okey TV",Okey TV
+#EXTINF:0 tvg-country="Malaysia" tvg-logo="" tvg-id="OKEY.my" tvg-name="OKEY.my" group-title="Malaysia",Okey TV
 https://d25tgymtnqzu8s.cloudfront.net/smil:okey/manifest.mpd
-#https://raw.githubusercontent.com/MIFNtechnology/siaranMy/main/channels/TvOkey/index.m3u8
-#https://mifntechnology.github.io/siaranMy/channels/TvOkey/index.m3u8
-#https://d25tgymtnqzu8s.cloudfront.net/smil:okey/playlist.m3u8?id=3
+https://raw.githubusercontent.com/MIFNtechnology/siaranMy/main/channels/TvOkey/index.m3u8
+https://mifntechnology.github.io/siaranMy/channels/TvOkey/index.m3u8
+https://d25tgymtnqzu8s.cloudfront.net/smil:okey/playlist.m3u8?id=3
 
 
-#EXTINF:0 tvg-country="Malaysia" tvg-logo="" tvg-id="SukanRTM.my" tvg-name="SukanRTM.my" group-title="RTM;Sports",RTM Sukan
+#EXTINF:0 tvg-country="Malaysia" tvg-logo="" tvg-id="SukanRTM.my" tvg-name="SukanRTM.my" group-title="Malaysia;Sports",RTM Sukan
 https://d25tgymtnqzu8s.cloudfront.net/smil:sukan/manifest.mpd
-#https://mifntechnology.github.io/siaranMy/channels/SukanRTM/index.m3u8
-#https://d25tgymtnqzu8s.cloudfront.net/smil:sukan/manifest.mpd?id=1
-#https://d25tgymtnqzu8s.cloudfront.net/smil:sukan/playlist.m3u8?id=4
+https://mifntechnology.github.io/siaranMy/channels/SukanRTM/index.m3u8
+https://d25tgymtnqzu8s.cloudfront.net/smil:sukan/manifest.mpd?id=1
+https://d25tgymtnqzu8s.cloudfront.net/smil:sukan/playlist.m3u8?id=4
 
 
-#EXTINF:0 tvg-country="Malaysia" tvg-logo="" tvg-id="" tvg-name="RTM ASEAN" group-title="RTM",RTM ASEAN
+#EXTINF:0 tvg-country="Malaysia" tvg-logo="" tvg-id="" tvg-name="RTM ASEAN" group-title="Malaysia",RTM ASEAN
 https://d25tgymtnqzu8s.cloudfront.net/smil:berita/playlist.m3u8?id=5
-#https://d25tgymtnqzu8s.cloudfront.net/smil:berita/manifest.mpd
-#https://mifntechnology.github.io/siaranMy/channels/BeritaRTM/index.m3u8
-#https://d25tgymtnqzu8s.cloudfront.net/event/smil:event1/chunklist_b2596000_slENG.m3u8
+https://d25tgymtnqzu8s.cloudfront.net/smil:berita/manifest.mpd
+https://mifntechnology.github.io/siaranMy/channels/BeritaRTM/index.m3u8
+https://d25tgymtnqzu8s.cloudfront.net/event/smil:event1/chunklist_b2596000_slENG.m3u8
 
 
-#EXTINF:0 tvg-country="Malaysia" tvg-logo="" tvg-id="" tvg-name="TVIKIM.my" group-title="TV IKIM",TV IKIM
+#EXTINF:0 tvg-country="Malaysia" tvg-logo="" tvg-id="" tvg-name="TVIKIM.my" group-title="Malaysia",TV IKIM
 https://raw.githubusercontent.com/MIFNtechnology/siaranMy/main/channels/TvIkim/index.m3u8
-#https://mifntechnology.github.io/siaranMy/channels/TvIkim/index.m3u8
+https://mifntechnology.github.io/siaranMy/channels/TvIkim/index.m3u8
 
-#EXTINF:0 tvg-country="Malaysia" tvg-logo="" tvg-id="" tvg-name="AstroAwani.my" group-title="Astro;News",Astro Awani
+#EXTINF:0 tvg-country="Malaysia" tvg-logo="" tvg-id="" tvg-name="AstroAwani.my" group-title="Malaysia;News",Astro Awani
 https://d2idp3hzkhjpih.cloudfront.net/out/v1/4b85d9c2bf97413eb0c9fd875599b837/index.m3u8
-#https://raw.githubusercontent.com/MIFNtechnology/siaranMy/main/channels/AstroAwani/index.m3u8
-#https://mifntechnology.github.io/siaranMy/channels/AstroAwani/index.m3u8
+https://raw.githubusercontent.com/MIFNtechnology/siaranMy/main/channels/AstroAwani/index.m3u8
+https://mifntechnology.github.io/siaranMy/channels/AstroAwani/index.m3u8
 
 
 ====RTM Parlimen====
 
-#EXTINF:0 tvg-country="Malaysia" tvg-logo="" tvg-id="" tvg-name="Dewan Rakyat" group-title="RTM",Dewan Rakyat
+#EXTINF:0 tvg-country="Malaysia" tvg-logo="" tvg-id="" tvg-name="Dewan Rakyat" group-title="Malaysia",Dewan Rakyat
 https://raw.githubusercontent.com/MIFNtechnology/siaranMy/main/channels/DewanRakyat/index.m3u8
-#https://mifntechnology.github.io/siaranMy/channels/DewanRakyat/index.m3u8
-#https://d25tgymtnqzu8s.cloudfront.net/smil:rakyat/playlist.m3u8?id=7
+https://mifntechnology.github.io/siaranMy/channels/DewanRakyat/index.m3u8
+https://d25tgymtnqzu8s.cloudfront.net/smil:rakyat/playlist.m3u8?id=7
 
-#EXTINF:0 tvg-country="Malaysia" tvg-logo="" tvg-id="" tvg-name="Dewan Parlimen" group-title="RTM",Dewan Negara:
+#EXTINF:0 tvg-country="Malaysia" tvg-logo="" tvg-id="" tvg-name="Dewan Parlimen" group-title="Malaysia",Dewan Negara:
 https://raw.githubusercontent.com/MIFNtechnology/siaranMy/main/channels/DewanNegara/index.m3u8
-#https://mifntechnology.github.io/siaranMy/channels/DewanNegara/index.m3u8
-#https://d25tgymtnqzu8s.cloudfront.net/smil:rakyat/playlist.m3u8?id=8
+https://mifntechnology.github.io/siaranMy/channels/DewanNegara/index.m3u8
+https://d25tgymtnqzu8s.cloudfront.net/smil:rakyat/playlist.m3u8?id=8
 
 
 
-#EXTINF:0 tvg-country="Malaysia" tvg-logo="" tvg-id="" tvg-name="RTM Snap" group-title="RTM",RTM Snap
-https://d1sq2slp9afh7o.cloudfront.net/smil:snap/playlist.m3u8?id=24099
-#EXTINF:0 tvg-country="Malaysia" tvg-logo="" tvg-id="" tvg-name="RTM Lead" group-title="RTM",RTM Lead
-https://d1sq2slp9afh7o.cloudfront.net/smil:lead/playlist.m3u8?id=24101
-#EXTINF:0 tvg-country="Malaysia" tvg-logo="" tvg-id="" tvg-name="RTM Apetito" group-title="RTM",RTM Apetito
-https://d1sq2slp9afh7o.cloudfront.net/smil:apetito/playlist.m3u8?id=24100
-#EXTINF:0 tvg-country="Malaysia" tvg-logo="" tvg-id="" tvg-name="RTM Fitrah" group-title="RTM",RTM Fitrah
-https://d1sq2slp9afh7o.cloudfront.net/smil:fitrah/playlist.m3u8?id=24103
-#EXTINF:0 tvg-country="Malaysia" tvg-logo="" tvg-id="" tvg-name="RTM Junior" group-title="RTM",RTM Junior
-https://d1sq2slp9afh7o.cloudfront.net/smil:jr/playlist.m3u8?id=24104
-#EXTINF:0 tvg-country="Malaysia" tvg-logo="" tvg-id="" tvg-name="RTM Roll" group-title="RTM",RTM Roll
-https://d1sq2slp9afh7o.cloudfront.net/smil:roll/playlist.m3u8?id=24095
-#EXTINF:0 tvg-country="Malaysia" tvg-logo="" tvg-id="" tvg-name="RTM Aura" group-title="RTM",RTM Aura
-https://d1sq2slp9afh7o.cloudfront.net/smil:aura/playlist.m3u8?id=24102
+#EXTINF:0 tvg-country="Malaysia" tvg-logo="" tvg-id="" tvg-name="RTM Snap" group-title="Malaysia",RTM Snap
+https://d1sq2slp9afh7o.cloudfront.net/smil:snap/playlist.m3u8
+#EXTINF:0 tvg-country="Malaysia" tvg-logo="" tvg-id="" tvg-name="RTM Lead" group-title="Malaysia",RTM Lead
+https://d1sq2slp9afh7o.cloudfront.net/smil:lead/playlist.m3u8
+#EXTINF:0 tvg-country="Malaysia" tvg-logo="" tvg-id="" tvg-name="RTM Apetito" group-title="Malaysia",RTM Apetito
+https://d1sq2slp9afh7o.cloudfront.net/smil:apetito/playlist.m3u8
+#EXTINF:0 tvg-country="Malaysia" tvg-logo="" tvg-id="" tvg-name="RTM Fitrah" group-title="Malaysia",RTM Fitrah
+https://d1sq2slp9afh7o.cloudfront.net/smil:fitrah/playlist.m3u8
+#EXTINF:0 tvg-country="Malaysia" tvg-logo="" tvg-id="" tvg-name="RTM Junior" group-title="Malaysia",RTM Junior
+https://d1sq2slp9afh7o.cloudfront.net/smil:jr/playlist.m3u8
+#EXTINF:0 tvg-country="Malaysia" tvg-logo="" tvg-id="" tvg-name="RTM Roll" group-title="Malaysia",RTM Roll
+https://d1sq2slp9afh7o.cloudfront.net/smil:roll/playlist.m3u8
+#EXTINF:0 tvg-country="Malaysia" tvg-logo="" tvg-id="" tvg-name="RTM Aura" group-title="Malaysia",RTM Aura
+https://d1sq2slp9afh7o.cloudfront.net/smil:aura/playlist.m3u8
 
-#EXTINF:0 tvg-country="Malaysia" tvg-logo="" tvg-id="" tvg-name="Filem Mantap" group-title="Filem Mantap",Filem Mantap
+#EXTINF:0 tvg-country="Malaysia" tvg-logo="" tvg-id="" tvg-name="Filem Mantap" group-title="Malaysia",Filem Mantap
 https://b27a6dd8a86c3e4ba93fbae22aaaac64.pmqrop.channel-assembly.mediatailor.ap-southeast-1.amazonaws.com/v1/channel/FAST_2/dash.mpd
 
-#EXTINF:0 tvg-country="Malaysia" tvg-logo="" tvg-id="" tvg-name="" group-title="Lawak Sentral;Comedy",Lawak Sentral
+#EXTINF:0 tvg-country="Malaysia" tvg-logo="" tvg-id="" tvg-name="" group-title="Malaysia;Comedy",Lawak Sentral
 https://b27a6dd8a86c3e4ba93fbae22aaaac64.pmqrop.channel-assembly.mediatailor.ap-southeast-1.amazonaws.com/v1/channel/FAST_3/dash.mpd
 
-#EXTINF:0 tvg-country="Malaysia" tvg-logo="" tvg-id="" tvg-name="" group-title="Drama Hotspot;Drama",Drama Hotspot
+#EXTINF:0 tvg-country="Malaysia" tvg-logo="" tvg-id="" tvg-name="" group-title="Malaysia;Drama",Drama Hotspot
 https://b27a6dd8a86c3e4ba93fbae22aaaac64.pmqrop.channel-assembly.mediatailor.ap-southeast-1.amazonaws.com/v1/channel/FAST_4/dash.mpd
 
-#EXTINF:0 tvg-country="Malaysia" tvg-logo="" tvg-id="" tvg-name="" group-title="Travel & Taste",Travel & Taste
+#EXTINF:0 tvg-country="Malaysia" tvg-logo="" tvg-id="" tvg-name="" group-title="Malaysia",Travel & Taste
 https://b27a6dd8a86c3e4ba93fbae22aaaac64.pmqrop.channel-assembly.mediatailor.ap-southeast-1.amazonaws.com/v1/channel/FAST_5/dash.mpd
 
-#EXTINF:0 tvg-country="Malaysia" tvg-logo="" tvg-id="" tvg-name="" group-title="Drama Hebat;Drama",Drama Hebat
+#EXTINF:0 tvg-country="Malaysia" tvg-logo="" tvg-id="" tvg-name="" group-title="Malaysia;Drama",Drama Hebat
 https://b27a6dd8a86c3e4ba93fbae22aaaac64.pmqrop.channel-assembly.mediatailor.ap-southeast-1.amazonaws.com/v1/channel/FAST_1/dash.mpd
 
-#EXTINF:0 tvg-country="Malaysia" tvg-logo="" tvg-id="" tvg-name="" group-title="Jom Ngaji",Jom Ngaji
+#EXTINF:0 tvg-country="Malaysia" tvg-logo="" tvg-id="" tvg-name="" group-title="Malaysia",Jom Ngaji
 https://827f31c3f2824c0c95c7a5190e96e284.mediatailor.ap-southeast-1.amazonaws.com/v1/dash/951fbca46ac9b52422f8e3d6d4d6dab33623c3cc/FASTOO_CH6_JOMNGAJI/dash.mpd
 
-#EXTINF:0 tvg-country="Malaysia" tvg-logo="" tvg-id="" tvg-name="" group-title="Oh My Ceria",Oh My Ceria!
+#EXTINF:0 tvg-country="Malaysia" tvg-logo="" tvg-id="" tvg-name="" group-title="Malaysia",Oh My Ceria!
 https://f9169865dbd747b4a24602e856a9c7a2.mediatailor.ap-southeast-1.amazonaws.com/v1/dash/951fbca46ac9b52422f8e3d6d4d6dab33623c3cc/FASTOO_CH7_CERIA/dash.mpd
 
 #EXTINF:0 tvg-country="Saudi Arabia" tvg-logo="" tvg-id="" tvg-name="" group-title="Saudi",Quran (Mecca)
@@ -119,5 +121,6 @@ https://30a-tv.com/feeds/vidaa/golf.m3u8?checkedby:iptvcat.com
 http://dmitwlvvll.cdn.mangomolo.com/dubaisportshd/smil:dubaisportshd.smil/chunklist.m3u8?checkedby:iptvcat.com
 #EXTINF:0 tvg-country="MY" tvg-logo="https://i.imgur.com/hxxjMPJ.jpg" group-title="Sport",DUBAI SPORTS 3 (1920×1080)
 http://dmitwlvvll.cdn.mangomolo.com/dubaisportshd5/smil:dubaisportshd5.smil/chunklist.m3u8?checkedby:iptvcat.com
+
 
 
