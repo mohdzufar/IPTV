@@ -16,7 +16,7 @@ https://d25tgymtnqzu8s.cloudfront.net/smil:tv6/manifest.mpd
 https://mifntechnology.github.io/siaranMy/channels/Tv6/index.m3u8
 https://d25tgymtnqzu8s.cloudfront.net/smil:tv6/playlist.m3u8?id=6
 
-#EXTINF:0 tvg-country="Malaysia" tvg-logo="" tvg-id="BeritaRTM.my" tvg-name="BeritaRTM.my" group-title="Malaysia;News",Berita RTM
+#EXTINF:0 tvg-country="Malaysia" tvg-logo="" tvg-id="BeritaRTM.my" tvg-name="BeritaRTM.my" tvg-url="https://epg.pw/api/epg.xml?channel_id=370132" group-title="Malaysia;News",Berita RTM
 https://d25tgymtnqzu8s.cloudfront.net/smil:berita/playlist.m3u8?id=5
 
 #EXTINF:0 tvg-country="Malaysia" tvg-logo="" tvg-id="8TV.my" tvg-name="8TV.my" group-title="Malaysia",8TV
@@ -278,6 +278,7 @@ https://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/6
 
 #EXTINF:0 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="News",EuroNews
 https://dash4.antik.sk/live/test_euronews/playlist.m3u8
+
 
 
 
