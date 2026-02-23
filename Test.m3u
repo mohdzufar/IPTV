@@ -1,4 +1,4 @@
-#EXTM3U url-tvg="https://raw.githubusercontent.com/Jerrie-Aries/EPG/main/epg.xml, 
+#EXTM3U url-tvg="https://raw.githubusercontent.com/Jerrie-Aries/EPG/refs/heads/master/epg.xml, 
 https://freeview.github.io/iptv/epg/tv.xml, 
 https://github.com/weareblahs/epg/raw/master/rtmklik.xml"
 
@@ -280,6 +280,7 @@ https://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/6
 
 #EXTINF:0 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="News",EuroNews
 https://dash4.antik.sk/live/test_euronews/playlist.m3u8
+
 
 
 
