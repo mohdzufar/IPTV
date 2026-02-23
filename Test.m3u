@@ -2,12 +2,12 @@
 
 
 =====Malaysia=====
-#EXTINF:-1 tvg-country="Malaysia" tvg-logo="tv1.png" tvg-id="TV1.my" tvg-name="TV1.my" group-title="Malaysia",RTM TV1
+#EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://rtm-images.glueapi.io/320x0//live_channel/tv1_Trans.png" tvg-id="TV1.my" tvg-name="TV1.my" group-title="Malaysia",RTM TV1
 https://mifntechnology.github.io/siaranMy/channels/Tv1/index.m3u8
 https://d25tgymtnqzu8s.cloudfront.net/smil:tv1/manifest.mpd
 https://d25tgymtnqzu8s.cloudfront.net/smil:tv1/playlist.m3u8?id=1
 
-#EXTINF:-1 tvg-country="Malaysia" tvg-logo="TV2.my" tvg-id="TV2.my" tvg-name="TV2.my" group-title="Malaysia",RTM TV2
+#EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://rtm-images.glueapi.io/320x0//live_channel/tv2_Trans.png" tvg-id="TV2.my" tvg-name="TV2.my" group-title="Malaysia",RTM TV2
 https://mifntechnology.github.io/siaranMy/channels/Tv2/index.m3u8
 https://d25tgymtnqzu8s.cloudfront.net/smil:tv2/manifest.mpd
 
@@ -16,17 +16,17 @@ https://mifntechnology.github.io/siaranMy/channels/Tv6/index.m3u8
 https://d25tgymtnqzu8s.cloudfront.net/smil:tv6/manifest.mpd
 https://d25tgymtnqzu8s.cloudfront.net/smil:tv6/playlist.m3u8?id=6
 
-#EXTINF:-1 tvg-country="Malaysia" tvg-logo="8tv.png" tvg-id="8TV.my" tvg-name="8TV.my" group-title="Malaysia",8TV
+#EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://headend-api.tonton.com.my/v100/imageHelper.php?id=6420325.:378:CHANNEL:IMAGE:png" tvg-id="8TV.my" tvg-name="8TV.my" group-title="Malaysia",8TV
 https://raw.githubusercontent.com/MIFNtechnology/siaranMy/main/channels/8tv/index.m3u8
 http://cdn6.163189.xyz/163189/8tv
 
-#EXTINF:-1 tvg-country="Malaysia" tvg-logo="OKEY.my" tvg-id="OKEY.my" tvg-name="OKEY.my" group-title="Malaysia",Okey TV
+#EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://rtm-images.glueapi.io/320x0//live_channel/okey_Trans.png" tvg-id="OKEY.my" tvg-name="OKEY.my" group-title="Malaysia",Okey TV
 https://d25tgymtnqzu8s.cloudfront.net/smil:okey/manifest.mpd
 https://raw.githubusercontent.com/MIFNtechnology/siaranMy/main/channels/TvOkey/index.m3u8
 https://mifntechnology.github.io/siaranMy/channels/TvOkey/index.m3u8
 https://d25tgymtnqzu8s.cloudfront.net/smil:okey/playlist.m3u8?id=3
 
-#EXTINF:-1 tvg-country="Malaysia" tvg-logo="" tvg-id="SukanRTM.my" tvg-name="SukanRTM.my" group-title="Malaysia;Sports",RTM Sukan
+#EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://rtm-images.glueapi.io/320x0//live_channel/sukan_Trans.png" tvg-id="SukanRTM.my" tvg-name="SukanRTM.my" group-title="Malaysia;Sports",RTM Sukan
 https://d25tgymtnqzu8s.cloudfront.net/smil:sukan/manifest.mpd
 https://mifntechnology.github.io/siaranMy/channels/SukanRTM/index.m3u8
 https://d25tgymtnqzu8s.cloudfront.net/smil:sukan/manifest.mpd?id=1
@@ -38,26 +38,26 @@ https://d25tgymtnqzu8s.cloudfront.net/smil:berita/manifest.mpd
 https://mifntechnology.github.io/siaranMy/channels/BeritaRTM/index.m3u8
 https://d25tgymtnqzu8s.cloudfront.net/event/smil:event1/chunklist_b2596000_slENG.m3u8
 
-#EXTINF:-1 tvg-country="Malaysia" tvg-logo="" tvg-id="" tvg-name="TVIKIM.my" group-title="Malaysia",TV IKIM
+#EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/channel/logos/jnkfvh.png" tvg-id="" tvg-name="TVIKIM.my" group-title="Malaysia",TV IKIM
 https://raw.githubusercontent.com/MIFNtechnology/siaranMy/main/channels/TvIkim/index.m3u8
 https://mifntechnology.github.io/siaranMy/channels/TvIkim/index.m3u8
 
-#EXTINF:-1 tvg-country="Malaysia" tvg-logo="" tvg-id="370132" tvg-name="BeritaRTM.my" tvg-url="" group-title="Malaysia;News",Berita RTM
+#EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://rtm-images.glueapi.io/320x0//live_channel/berita_bckg.jpg" tvg-id="370132" tvg-name="BeritaRTM.my" tvg-url="" group-title="Malaysia;News",Berita RTM
 https://d25tgymtnqzu8s.cloudfront.net/smil:berita/playlist.m3u8?id=5
 
-#EXTINF:-1 tvg-country="Malaysia" tvg-logo="" tvg-id="" tvg-name="AstroAwani.my" group-title="Malaysia;News",Astro Awani
+#EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/436_144.png" tvg-id="" tvg-name="AstroAwani.my" group-title="Malaysia;News",Astro Awani
 https://d2idp3hzkhjpih.cloudfront.net/out/v1/4b85d9c2bf97413eb0c9fd875599b837/index.m3u8
 https://raw.githubusercontent.com/MIFNtechnology/siaranMy/main/channels/AstroAwani/index.m3u8
 https://mifntechnology.github.io/siaranMy/channels/AstroAwani/index.m3u8
 
 
 ====RTM Parlimen====
-#EXTINF:-1 tvg-country="Malaysia" tvg-logo="" tvg-id="" tvg-name="Dewan Rakyat" group-title="Malaysia",Dewan Rakyat
+#EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://rtm-images.glueapi.io/320x0/live_channel/7.png" tvg-id="" tvg-name="Dewan Rakyat" group-title="Malaysia",Dewan Rakyat
 https://raw.githubusercontent.com/MIFNtechnology/siaranMy/main/channels/DewanRakyat/index.m3u8
 https://mifntechnology.github.io/siaranMy/channels/DewanRakyat/index.m3u8
 https://d25tgymtnqzu8s.cloudfront.net/smil:rakyat/playlist.m3u8?id=7
 
-#EXTINF:-1 tvg-country="Malaysia" tvg-logo="" tvg-id="" tvg-name="Dewan Parlimen" group-title="Malaysia",Dewan Negara:
+#EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://rtm-images.glueapi.io/320x0//live_channel/PDN_Trans.png" tvg-id="" tvg-name="Dewan Parlimen" group-title="Malaysia",Dewan Negara:
 https://raw.githubusercontent.com/MIFNtechnology/siaranMy/main/channels/DewanNegara/index.m3u8
 https://mifntechnology.github.io/siaranMy/channels/DewanNegara/index.m3u8
 https://d25tgymtnqzu8s.cloudfront.net/smil:rakyat/playlist.m3u8?id=8
@@ -357,27 +357,26 @@ http://dmitwlvvll.cdn.mangomolo.com/dubaisportshd/smil:dubaisportshd.smil/chunkl
 http://dmitwlvvll.cdn.mangomolo.com/dubaisportshd5/smil:dubaisportshd5.smil/chunklist.m3u8?checkedby:iptvcat.com
 
 ====No Category====
-#EXTINF:0 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="",Bob Ross Channel
+#EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="",Bob Ross Channel
 https://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/5f36d726234ce10007784f2a/master.m3u8?appName=web&appVersion=9.19.0&deviceDNT=0&deviceId=affbdbfa-5fa3-48af-8369-57c005daef42&deviceMake=firefox&deviceModel=web&deviceType=web&deviceVersion=147.0.0&serverSideAds=false&sid=68a91069-a7cb-42a1-9a47-e7fdffbec715
 https://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/5f36d726234ce10007784f2a/master.m3u8
 
-#EXTINF:0 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="",TVBS Asia
+#EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="",TVBS Asia
 http://38.64.72.148/hls/modn/list/4005/playlist.m3u8
 
-#EXTINF:0 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="Korea",KoreaTV
+#EXTINF:-1 tvg-country="South Korea" tvg-logo="" tvg-id="" tvg-name="" group-title="Korea",KoreaTV
 https://hlive.ktv.go.kr/live/klive_h.stream/playlist.m3u8
 
-#EXTINF:0 tvg-country="" tvg-logo="aljazeera.png" tvg-id="" tvg-name="" group-title="Muslim",Al-Jazeera (English)
+#EXTINF:-1 tvg-country="" tvg-logo="aljazeera.png" tvg-id="" tvg-name="AlJazeera.English.net" group-title="Muslim",Al-Jazeera (English)
 https://live-hls-apps-aje-fa.getaj.net/AJE/index.m3u8
 https://amg00222-amg00222c4-amgplt0019.playout.now3.amagi.tv/playlist.m3u8?dnt=%7B%7BDNT%7D%7D&app_bundle=%7B%7BappPackage%7D%7D&app_name=%7B%7BappName%7D%7D&app_store_url=%7B%7BAppStoreUrl%7D%7D&network_name=tinykernel&did=%7B%7BDID%7D%7D&device_make=%7B%7BDeviceMake%7D%7D&device_model=%7B%7BDeviceModel%7D%7D&gdpr=%7B%7BGdpr%7D%7D&us_privacy=%7B%7BUsPrivacy%7D%7D&GdprConsent=%7B%7BGdprConsent%7D%7D&app_domain=%7B%7BAppDomain%7D%7D&coppa=%7B%7BCoppa%7D%7D&app_version=%7B%7BAppVersion%7D%7D&app_cat=%7B%7BAppCat%7D%7D&ifa_type=%7B%7BIFA_TYPE%7D%7D
 
-#EXTINF:0 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="Pets",Love Pets
+#EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="Pets",Love Pets
 https://rakutenaa-blueskyent-lovepetsemea-rakuten-ikc4q.amagi.tv/playlist/rakutenAA-blueskyent-lovepetsemea-rakuten/playlist.m3u8
 https://amg01576-blueskyeenterta-lovepetsemea-samsungse-ctamh.amagi.tv/playlist/amg01576-blueskyeenterta-lovepetsemea-samsungse/playlist.m3u8
 
-#EXTINF:0 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="",Documentary+
+#EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="",Documentary+
 https://ef79b15c8c7c46c7a9de9d33001dbd07.mediatailor.us-west-2.amazonaws.com/v1/master/ba62fe743df0fe93366eba3a257d792884136c7f/LINEAR-859-DOCUMENTARYPLUS-DOCUMENTARYPLUS/mt/documentaryplus/859/hls/master/playlist.m3u8
-
 
 
 
