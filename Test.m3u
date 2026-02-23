@@ -12,8 +12,16 @@ https://d25tgymtnqzu8s.cloudfront.net/smil:tv1/playlist.m3u8?id=1
 https://mifntechnology.github.io/siaranMy/channels/Tv2/index.m3u8
 https://d25tgymtnqzu8s.cloudfront.net/smil:tv2/manifest.mpd
 
-#EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://headend-api.tonton.com.my/v100/imageHelper.php?id=6420323.:378:CHANNEL:IMAGE:png" tvg-id="TV3.my" tvg-name="" group-title="Malaysia",RTM TV3
-https://linearjitp-playback.astro.com.my/dash-wv/linear/809/default_primary.mpd
+
+#EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://headend-api.tonton.com.my/v100/imageHelper.php?id=6420323.:378:CHANNEL:IMAGE:png" tvg-id="TV3.my" tvg-name="" group-title="Malaysia",TV3
+#EXTVLCOPT:http-referrer=https://www.tonton.com.my/
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
+#EXTVLCOPT:http-cookie=YOUR_SESSION_COOKIE_NAME=YOUR_SESSION_COOKIE_VALUE
+https://live-03.tonton.com.my/1771877319/0xcb48d32fa677d9c2052f615f9f392b47ca599277ca6bb25b517e5eaf3532ead2/live-hls/tonton10_720p/index.m3u8
+
+
+
+
 
 #EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://rtm-images.glueapi.io/320x0//live_channel/tv6_Trans.png" tvg-id="TV6.my" tvg-name="" group-title="Malaysia",TV6
 https://mifntechnology.github.io/siaranMy/channels/Tv6/index.m3u8
@@ -390,6 +398,7 @@ https://amg01576-blueskyeenterta-lovepetsemea-samsungse-ctamh.amagi.tv/playlist/
 
 #EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="",Documentary+
 https://ef79b15c8c7c46c7a9de9d33001dbd07.mediatailor.us-west-2.amazonaws.com/v1/master/ba62fe743df0fe93366eba3a257d792884136c7f/LINEAR-859-DOCUMENTARYPLUS-DOCUMENTARYPLUS/mt/documentaryplus/859/hls/master/playlist.m3u8
+
 
 
 
