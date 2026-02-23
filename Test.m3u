@@ -8,15 +8,15 @@ https://d25tgymtnqzu8s.cloudfront.net/smil:tv1/manifest.mpd
 https://d25tgymtnqzu8s.cloudfront.net/smil:tv1/playlist.m3u8?id=1
 
 #EXTINF:0 tvg-country="Malaysia" tvg-logo="" tvg-id="TV2.my" tvg-name="TV2.my" group-title="Malaysia",RTM TV2
-https://d25tgymtnqzu8s.cloudfront.net/smil:tv2/manifest.mpd
 https://mifntechnology.github.io/siaranMy/channels/Tv2/index.m3u8
+https://d25tgymtnqzu8s.cloudfront.net/smil:tv2/manifest.mpd
 
 #EXTINF:0 tvg-country="Malaysia" tvg-logo="" tvg-id="" tvg-name="" group-title="Malaysia",TV6
-https://d25tgymtnqzu8s.cloudfront.net/smil:tv6/manifest.mpd
 https://mifntechnology.github.io/siaranMy/channels/Tv6/index.m3u8
+https://d25tgymtnqzu8s.cloudfront.net/smil:tv6/manifest.mpd
 https://d25tgymtnqzu8s.cloudfront.net/smil:tv6/playlist.m3u8?id=6
 
-#EXTINF:0 tvg-country="Malaysia" tvg-logo="" tvg-id="370132" tvg-name="BeritaRTM.my" tvg-url="https://epg.pw/api/epg.xml?channel_id=370132" group-title="Malaysia;News",Berita RTM
+#EXTINF:0 tvg-country="Malaysia" tvg-logo="" tvg-id="370132" tvg-name="BeritaRTM.my" tvg-url="" group-title="Malaysia;News",Berita RTM
 https://d25tgymtnqzu8s.cloudfront.net/smil:berita/playlist.m3u8?id=5
 
 #EXTINF:0 tvg-country="Malaysia" tvg-logo="" tvg-id="8TV.my" tvg-name="8TV.my" group-title="Malaysia",8TV
@@ -235,7 +235,7 @@ https://d3f4oii5n0oeqi.cloudfront.net/11701/88814515/hls/master.m3u8?includeAsse
 
 ====Music====
 
-#EXTINF:0 tvg-country="Korea" tvg-logo="" tvg-id="" tvg-name="" group-title="Korea;Music",KPOP Mix
+#EXTINF:0 tvg-country="South Korea" tvg-logo="" tvg-id="" tvg-name="" group-title="Korea;Music",KPOP Mix
 https://cloud.tvomix.com/KPOPMIX/index.m3u8
 
 #EXTINF:0 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="Japan;Music",Music Japan
