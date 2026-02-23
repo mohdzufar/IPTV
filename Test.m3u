@@ -2,16 +2,16 @@
 
 
 =====Malaysia=====
-#EXTINF:0 tvg-country="Malaysia" tvg-logo="tv1.png" tvg-id="TV1.my" tvg-name="TV1.my" group-title="Malaysia",RTM TV1
+#EXTINF:0 tvg-country="Malaysia" tvg-logo="TV1.my" tvg-id="TV1.my" tvg-name="TV1.my" group-title="Malaysia",RTM TV1
 https://mifntechnology.github.io/siaranMy/channels/Tv1/index.m3u8
 https://d25tgymtnqzu8s.cloudfront.net/smil:tv1/manifest.mpd
 https://d25tgymtnqzu8s.cloudfront.net/smil:tv1/playlist.m3u8?id=1
 
-#EXTINF:0 tvg-country="Malaysia" tvg-logo="tv2.png" tvg-id="TV2.my" tvg-name="TV2.my" group-title="Malaysia",RTM TV2
+#EXTINF:0 tvg-country="Malaysia" tvg-logo="TV2.my" tvg-id="TV2.my" tvg-name="TV2.my" group-title="Malaysia",RTM TV2
 https://mifntechnology.github.io/siaranMy/channels/Tv2/index.m3u8
 https://d25tgymtnqzu8s.cloudfront.net/smil:tv2/manifest.mpd
 
-#EXTINF:0 tvg-country="Malaysia" tvg-logo="tv3.png" tvg-id="" tvg-name="" group-title="Malaysia",TV6
+#EXTINF:0 tvg-country="Malaysia" tvg-logo="TV6.my" tvg-id="" tvg-name="TV6.my" group-title="Malaysia",TV6
 https://mifntechnology.github.io/siaranMy/channels/Tv6/index.m3u8
 https://d25tgymtnqzu8s.cloudfront.net/smil:tv6/manifest.mpd
 https://d25tgymtnqzu8s.cloudfront.net/smil:tv6/playlist.m3u8?id=6
@@ -20,7 +20,7 @@ https://d25tgymtnqzu8s.cloudfront.net/smil:tv6/playlist.m3u8?id=6
 https://raw.githubusercontent.com/MIFNtechnology/siaranMy/main/channels/8tv/index.m3u8
 http://cdn6.163189.xyz/163189/8tv
 
-#EXTINF:0 tvg-country="Malaysia" tvg-logo="okey.png" tvg-id="OKEY.my" tvg-name="OKEY.my" group-title="Malaysia",Okey TV
+#EXTINF:0 tvg-country="Malaysia" tvg-logo="OKEY.my" tvg-id="OKEY.my" tvg-name="OKEY.my" group-title="Malaysia",Okey TV
 https://d25tgymtnqzu8s.cloudfront.net/smil:okey/manifest.mpd
 https://raw.githubusercontent.com/MIFNtechnology/siaranMy/main/channels/TvOkey/index.m3u8
 https://mifntechnology.github.io/siaranMy/channels/TvOkey/index.m3u8
