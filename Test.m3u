@@ -1,13 +1,14 @@
-#EXTM3U url-tvg="https://raw.githubusercontent.com/Jerrie-Aries/EPG/refs/heads/master/epg.xml, https://github.com/Ceruss/iptv-indonesia/tree/c11b144dd70ae6acaff3d1312cd870e820fbd32e/logos"
+#EPG Below
+#EXTM3U url-tvg="https://raw.githubusercontent.com/azimabid00/epg/main/astro_epg.xml"
 
 
 =====Malaysia=====
-#EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://rtm-images.glueapi.io/320x0//live_channel/tv1_Trans.png" tvg-id="TV1.my" tvg-name="TV1.my" group-title="Malaysia",RTM TV1
+#EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://rtm-images.glueapi.io/320x0//live_channel/tv1_Trans.png" tvg-id="101.astro" tvg-name="" group-title="Malaysia",RTM TV1
 https://mifntechnology.github.io/siaranMy/channels/Tv1/index.m3u8
 https://d25tgymtnqzu8s.cloudfront.net/smil:tv1/manifest.mpd
 https://d25tgymtnqzu8s.cloudfront.net/smil:tv1/playlist.m3u8?id=1
 
-#EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://rtm-images.glueapi.io/320x0//live_channel/tv2_Trans.png" tvg-id="TV2.my" tvg-name="TV2.my" group-title="Malaysia",RTM TV2
+#EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://rtm-images.glueapi.io/320x0//live_channel/tv2_Trans.png" tvg-id="102.astro" tvg-name="" group-title="Malaysia",RTM TV2
 https://mifntechnology.github.io/siaranMy/channels/Tv2/index.m3u8
 https://d25tgymtnqzu8s.cloudfront.net/smil:tv2/manifest.mpd
 
@@ -16,11 +17,11 @@ https://mifntechnology.github.io/siaranMy/channels/Tv6/index.m3u8
 https://d25tgymtnqzu8s.cloudfront.net/smil:tv6/manifest.mpd
 https://d25tgymtnqzu8s.cloudfront.net/smil:tv6/playlist.m3u8?id=6
 
-#EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://headend-api.tonton.com.my/v100/imageHelper.php?id=6420325.:378:CHANNEL:IMAGE:png" tvg-id="8TV.my" tvg-name="8TV.my" group-title="Malaysia",8TV
+#EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://headend-api.tonton.com.my/v100/imageHelper.php?id=6420325.:378:CHANNEL:IMAGE:png" tvg-id="148.astro" tvg-name="" group-title="Malaysia",8TV
 https://raw.githubusercontent.com/MIFNtechnology/siaranMy/main/channels/8tv/index.m3u8
 http://cdn6.163189.xyz/163189/8tv
 
-#EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://rtm-images.glueapi.io/320x0//live_channel/okey_Trans.png" tvg-id="OKEY.my" tvg-name="OKEY.my" group-title="Malaysia",Okey TV
+#EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://rtm-images.glueapi.io/320x0//live_channel/okey_Trans.png" tvg-id="146.astro" tvg-name="" group-title="Malaysia",Okey TV
 https://d25tgymtnqzu8s.cloudfront.net/smil:okey/manifest.mpd
 https://raw.githubusercontent.com/MIFNtechnology/siaranMy/main/channels/TvOkey/index.m3u8
 https://mifntechnology.github.io/siaranMy/channels/TvOkey/index.m3u8
@@ -316,7 +317,7 @@ https://amg01076-lightning-amg01076c5-lg-gb-10275.playouts.now.amagi.tv/ts-eu-w1
 https://1d7d59fa677247f28aecb46346c0caeb.mediatailor.us-east-1.amazonaws.com/v1/master/0fb304b2320b25f067414d481a779b77db81760d/LG-gb_AdventureEarth/playlist.m3u8
 https://11155fb26c524e8d8d62adcf414cca44.mediatailor.us-east-1.amazonaws.com/v1/master/44f73ba4d03e9607dcd9bebdcb8494d86964f1d8/Vidaa-gb_AdventureEarth/playlist.m3u8?ads.wurl_channel=1299&ads.wurl_name=AdventureEarth&ads.coppa=0&ads.ifa=&ads.dnt=&ads.us_privacy=&ads.gdpr=&ads.gdpr_consent=&ads.app_name=&ads.app_bundle=&ads.app_store_url=&ads.ifa_type=&ads.custom=&ads.device_make=&ads.device_model=&ads.vidaa_ads_param=1190406319&ads.vauth=&ads.device_type=&ads.brand_name=&ads.device_osv=&ads.device_language=&ads.w=&ads.h=&ads.language=&ads.rating=&ads.ic=&ads.channel_name=&ads.content_producer_name=&ads.content_genre=&ads.client_section=&ads.vidaa_ads_contentType=600007&ads.vidaa_ads_contentId=8890
 
-#EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="Nature",BBC Earth
+#EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="554.astro" tvg-name="" group-title="Nature",BBC Earth
 https://amg00793-amg00793c24-vidaa-gb-9957.playouts.now.amagi.tv/ts-eu-w1-n2/playlist/amg00793-bbcstudios-bbcearthspain-vidaagb/playlist.m3u8?ads.dnt=REPLACEME&ads.app_bundle=REPLACEME&ads.brand_name=REPLACEME&ads.ifa=REPLACEME&ads.ifa_type=REPLACEME&ads.vauth=REPLACEME&ads.device_type=REPLACEME&ads.device_country=REPLACEME&ads.device_language=REPLACEME&ads.device_osv=REPLACEME&ads.app_name=REPLACEME&ads.app_store_url=REPLACEME&ads.us_privacy=REPLACEME&ads.gdpr=REPLACEME&ads.gdpr_consent=REPLACEME&ads.w=REPLACEME&ads.h=REPLACEME&ads.vidaa_ads_param=1190602996&ads.vidaa_ads_contentType=600007&ads.vidaa_ads_contentId=10128
 
 #EXTINF:-1 tvg-country="Great Britain" tvg-logo="" tvg-id="" tvg-name="" group-title="Nature",Love The Planet
