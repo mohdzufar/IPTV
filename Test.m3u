@@ -95,6 +95,19 @@ https://f9169865dbd747b4a24602e856a9c7a2.mediatailor.ap-southeast-1.amazonaws.co
 #EXTINF:0 tvg-country="Saudi Arabia" tvg-logo="" tvg-id="" tvg-name="" group-title="Saudi",Quran (Mecca)
 https://live.kwikmotion.com/sbrksaquranradiolive/srpksaquranradio/playlist.m3u8
 
+
+
+#EXTINF:0 tvg-country="Singapore" tvg-logo="" tvg-id="" tvg-name="" group-title="Singapore",MediaCorp (English)
+https://d35j504z0x2vu2.cloudfront.net/v1/master/0bc8e8376bd8417a1b6761138aa41c26c7309312/mediacorp-entertainment-english/manifest.m3u8?ads.vf=R8kyVh4ofC8
+#EXTINF:0 tvg-country="Singapore" tvg-logo="" tvg-id="" tvg-name="" group-title="Singapore",MediaCorp (Tamil)
+https://d35j504z0x2vu2.cloudfront.net/v1/master/0bc8e8376bd8417a1b6761138aa41c26c7309312/mediacorp-entertainment-tamil/manifest.m3u8?ads.vf=elqQKKDvkMK
+#EXTINF:0 tvg-country="Singapore" tvg-logo="" tvg-id="" tvg-name="" group-title="Singapore",CNA
+https://d2e1asnsl7br7b.cloudfront.net/7782e205e72f43aeb4a48ec97f66ebbe/index_5.m3u8
+https://d2e1asnsl7br7b.cloudfront.net/7782e205e72f43aeb4a48ec97f66ebbe/index_4.m3u8
+https://t.freetv.fun/live/cna-4.m3u8
+
+
+
 ====Anime====
 #EXTINF:0 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="Anime",Crunchyroll
 https://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/65652f7fc0fc88000883537a/master.m3u8?appName=web&appVersion=9.19.0&deviceDNT=0&deviceId=affbdbfa-5fa3-48af-8369-57c005daef42&deviceMake=firefox&deviceModel=web&deviceType=web&deviceVersion=147.0.0&serverSideAds=false&sid=b7df248c-540d-4184-97dc-488d0b5beada
@@ -198,6 +211,9 @@ https://92652ca9374d45ff8669fa318712ccda.mediatailor.us-east-1.amazonaws.com/v1/
 #EXTINF:0 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="Sports",Billiard TV
 https://d3f4oii5n0oeqi.cloudfront.net/11701/88814555/hls/billi.m3u8?includeAssetTags=true&ads.xumo_channelId=88814555a&ads.xumo_streamId=88814555&declaredCC1Language=en&ads.caid=BilliardTV&ads.csid=tcl2_us_triplebmediabilliard_ssai&ads.xumo_ifaType=%5BIFA_TYPE%5D&ads.xumo_ifa=%5BIFA%5D&ads.appName=%5BAPP_NAME%5D&ads.appVersion=%5BAPP_VERSION%5D&ads._fw_app_bundle=%5BTCL_APP_BUNDLE%5D&ads._fw_content_category=IAB17&ads._fw_content_genre=sports&ads._fw_content_language=en&ads._fw_content_rating=tv-pg&ads._fw_deviceMake=%5BDEVICE_MAKE%5D&ads._fw_device_model=%5BDEVICE_MODEL%5D&ads._fw_devicetype=3-Connected_TV&ads._fw_coppa=0&ads._fw_is_lat=%5BLMT%5D&ads._fw_us_privacy=%5BUS_PRIVACY%5D&ads._fw_h_x_country=US&ads._fw_player_width=%5BPLAYER_WIDTH%5D&ads._fw_player_height=%5BPLAYER_HEIGHT%5D&ads.xumo_contentId=2728&ads.xumo_contentName=BilliardTV&ads.xumo_providerId=2728&ads.xumo_providerName=TripleBMediaBilliard&ads.xumo_channelName=BilliardTV&ads._fw_app_store_url=%5BTCL_APP_STORE_URL%5D
 
+#EXTINF:0 tvg-country="United Kingdom" tvg-logo="" tvg-id="" tvg-name="" group-title="Sports",BBC Top Gear
+https://amg00793-amg00793c5-xumo-us-2664.playouts.now.amagi.tv/bbcstudios-bbctopgear8min-all/playlist.m3u8
+https://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/638e10220aa6a6000726979f/master.m3u8?appName=web&appVersion=9.19.0&deviceDNT=0&deviceId=32de4823-7501-4845-ba26-8699462954dd&deviceMake=firefox&deviceModel=web&deviceType=web&deviceVersion=147.0.0&serverSideAds=false&sid=1ed07de9-b4b6-4a6c-9446-029136f0f3da
 
 #EXTINF:0 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="Sports",Fuel TV
 https://amg01074-fueltv-fueltvusen-sportstv-fj9t1.amagi.tv/playlist_eng.m3u8
@@ -263,18 +279,69 @@ https://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/6
 https://amg00735-amg00735c18-rlaxx-us-4085.playouts.now.amagi.tv/playlist/amg00735-videosolutionsagfast-wedomoviesen-rlaxxus/playlist.m3u8?tag_id=105292&app_name=Whale+TV%2B&app_store=Browser&ic=IAB1&url=&wtv_channel_id=0230&content_producer_name=Amagi_VideoSolutions_wedotvMoviesEN-UK-IE&content_categories=IAB1-5%2CIAB1%2CIAB1-7&content_custom_1_param=Amagi&content_custom_2_param=F%2CM&content_custom_3_param=18-20%2C21-24%2C25-29%2C30-34%2C35-39%2C40-44%2C45-49&tv_language=&device_make=&tv_vendor=&brand_name=&device_model=&tv_model=&gdpr=1&gdpr_consent=&did=&ua=&ip=&dnt=&lmt=&coppa=0&us_privacy=1YNN&min_dur=5&max_dur=30&cb=&sid=&h=&w=&content_livestream=1&placement=1&ap=1&mute=0&skip=0&ads.gdpr=0
 
 
-#EXTINF:0 tvg-country="Singapore" tvg-logo="" tvg-id="" tvg-name="" group-title="Singapore",MediaCorp (English)
-https://d35j504z0x2vu2.cloudfront.net/v1/master/0bc8e8376bd8417a1b6761138aa41c26c7309312/mediacorp-entertainment-english/manifest.m3u8?ads.vf=R8kyVh4ofC8
-#EXTINF:0 tvg-country="Singapore" tvg-logo="" tvg-id="" tvg-name="" group-title="Singapore",MediaCorp (Tamil)
-https://d35j504z0x2vu2.cloudfront.net/v1/master/0bc8e8376bd8417a1b6761138aa41c26c7309312/mediacorp-entertainment-tamil/manifest.m3u8?ads.vf=elqQKKDvkMK
-#EXTINF:0 tvg-country="Singapore" tvg-logo="" tvg-id="" tvg-name="" group-title="Singapore",CNA
-https://d2e1asnsl7br7b.cloudfront.net/7782e205e72f43aeb4a48ec97f66ebbe/index_5.m3u8
-https://d2e1asnsl7br7b.cloudfront.net/7782e205e72f43aeb4a48ec97f66ebbe/index_4.m3u8
-https://t.freetv.fun/live/cna-4.m3u8
+
+====News====
+#EXTINF:0 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="News",EuroNews
+https://dash4.antik.sk/live/test_euronews/playlist.m3u8
+https://6748799b.wurl.com/master/f36d25e7e52f1ba8d7e56eb859c636563214f541/VmlkYWFfRXVyb25ld3NFbmdsaXNoX0hMUw/playlist.m3u8?ads.wurl_channel=870&ads.wurl_name=EuronewsEnglish&ads.coppa=0&ads.device_id=&ads.dnt=&ads.us_privacy=&ads.gdpr=&ads.consent=&ads.app_name=&ads.app_bundle=&ads.app_store_url=&ads.ifa_type=&ads.custom=&ads.device_make=&ads.device_model=&ads.vidaa_ads_param=1190406319&ads.vauth=&ads.device_type=&ads.brand_name=&ads.device_osv=&ads.device_language=&ads.vidaa_ads_contentType=600007&ads.vidaa_ads_contentId=7789
+
+#EXTINF:0 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="News",NBC News Now
+https://d3f4oii5n0oeqi.cloudfront.net/11701/88814557/hls/master.m3u8?includeAssetTags=true&ads.xumo_channelId=88814557&ads.xumo_streamId=88814557&declaredCC1Language=en&ads.caid=NBCNewsNow&ads.csid=tcl2_us_nbcnewsnow_ssai&ads.xumo_ifaType=%5BIFA_TYPE%5D&ads.xumo_ifa=%5BIFA%5D&ads.appName=%5BAPP_NAME%5D&ads.appVersion=%5BAPP_VERSION%5D&ads._fw_app_bundle=%5BTCL_APP_BUNDLE%5D&ads.genre=News&ads._fw_content_category=IAB12&ads._fw_content_genre=news&ads._fw_content_language=en&ads._fw_content_rating=tv-g&ads._fw_deviceMake=%5BDEVICE_MAKE%5D&ads._fw_device_model=%5BDEVICE_MODEL%5D&ads._fw_devicetype=3-Connected_TV&ads._fw_coppa=0&ads._fw_is_lat=%5BLMT%5D&ads._fw_us_privacy=%5BUS_PRIVACY%5D&ads._fw_h_x_country=US&ads._fw_player_width=%5BPLAYER_WIDTH%5D&ads._fw_player_height=%5BPLAYER_HEIGHT%5D&ads.xumo_contentId=1828&ads.xumo_contentName=NBCNewsNow&ads.xumo_providerId=1828&ads.xumo_providerName=NBCNewsNow&ads.xumo_channelName=NBCNewsNow&ads._fw_app_store_url=%5BTCL_APP_STORE_URL%5D
+
+#EXTINF:0 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="News",CBS News 24/7
+https://dai.google.com/linear/hls/event/Sid4xiTQTkCT1SLu6rjUSQ/master.m3u8?imafw__fw_app_bundle=%5BAPP+ID%5D&imafw__fw_did=%5Bidtype%3AdeviceID%5D&imafw__fw_is_lat=%5BLIMITED+AD+TRACKING%5D&imafw__fw_us_privacy=%5BCCPA+STRING%5D&imafw__fw_vcid2=%5Bunique_identifier%5D&imafw_csid=%5BSITE+SECTION%5D&is_lat=%5BLIMITED+AD+TRACKING%5D
+
+#EXTINF:0 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="News",BBC News
+https://a8c74827.wurl.com/master/f36d25e7e52f1ba8d7e56eb859c636563214f541/VENMVFZQbHVzX0JCQ05ld3NfSExT/playlist.m3u8?ads.wurl_channel=1655&ads.wurl_name=BBCNews&ads.coppa=0&ads.device_id=%7BDEVICE_ID%7D&ads.dnt=%7BDNT%7D&ads.us_privacy=%7BUS_PRIVACY%7D&ads.gdpr=%7BGDPR%7D&ads.consent=%7BCONSENT%7D&ads.app_name=%7BAPP_NAME%7D&ads.app_bundle=%7BAPP_BUNDLE%7D&ads.app_store_url=%7BAPP_STORE_URL%7D&ads.ifa_type=%7BIFA_TYPE%7D&ads.custom=%7BCUSTOM%7D&ads.device_make=%7BDEVICE_MAKE%7D&ads.device_model=%7BDEVICE_MODEL%7D&ads.givn=%7BGIVN%7D&ads.u_paln=%7BU_PALN%7D
+
+#EXTINF:0 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="News",Sky News
+https://d3f4oii5n0oeqi.cloudfront.net/11701/88814560/hls/master.m3u8?includeAssetTags=true&ads.xumo_channelId=88814560&ads.xumo_streamId=88814560&declaredCC1Language=en&ads.caid=SkyNews&ads.csid=tcl2_us_nbcuskynews_ssai&ads.xumo_ifaType=%5BIFA_TYPE%5D&ads.xumo_ifa=%5BIFA%5D&ads.appName=%5BAPP_NAME%5D&ads.appVersion=%5BAPP_VERSION%5D&ads._fw_app_bundle=%5BTCL_APP_BUNDLE%5D&ads.genre=News&ads._fw_content_category=IAB12&ads._fw_content_genre=news&ads._fw_content_language=en&ads._fw_content_rating=tv-g&ads._fw_deviceMake=%5BDEVICE_MAKE%5D&ads._fw_device_model=%5BDEVICE_MODEL%5D&ads._fw_devicetype=3-Connected_TV&ads._fw_coppa=0&ads._fw_is_lat=%5BLMT%5D&ads._fw_us_privacy=%5BUS_PRIVACY%5D&ads._fw_h_x_country=US&ads._fw_player_width=%5BPLAYER_WIDTH%5D&ads._fw_player_height=%5BPLAYER_HEIGHT%5D&ads.xumo_contentId=3455&ads.xumo_contentName=SkyNews&ads.xumo_providerId=3455&ads.xumo_providerName=SkyNews&ads.xumo_channelName=SkyNews&ads._fw_app_store_url=%5BTCL_APP_STORE_URL%5D
+
+#EXTINF:0 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="News",Reuters
+https://amg00453-reuters-amg00453c1-tcl-us-3947.playouts.now.amagi.tv/playlist/amg00453-reuters-reuters-tclus/playlist.m3u8?dnt=%7B%7BDNT%7D%7D&app_bundle=%7B%7BappPackage%7D%7D&app_name=%7B%7BappName%7D%7D&app_store_url=%7B%7BAppStoreUrl%7D%7D&network_name=tinykernel&did=%7B%7BDID%7D%7D&device_make=%7B%7BDeviceMake%7D%7D&device_model=%7B%7BDeviceModel%7D%7D&gdpr=%7B%7BGdpr%7D%7D&us_privacy=%7B%7BUsPrivacy%7D%7D&GdprConsent=%7B%7BGdprConsent%7D%7D
+
+#EXTINF:0 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="News",Yahoo! Finance
+https://d1ewctnvcwvvvu.cloudfront.net/playlist.m3u8
+https://amg00119-amg00119c1-tclideo-na-6764.playouts.now.amagi.tv/playlist/amg00119-yahoofinancefast-yahoofinance-tclideona/playlist.m3u8?device[did]=REPLACE_ME&device[dnt]=REPLACE_ME&gender=REPLACE_ME&app_bundle=REPLACE_ME&app_name=REPLACE_ME&app_store_url=REPLACE_ME&url=REPLACE_ME&genre=REPLACE_ME&ic=REPLACE_ME&us_privacy=REPLACE_ME&gdpr=REPLACE_ME&gdpr_consent=REPLACE_ME&coppa=0&schain=REPLACE_ME&device_make=REPLACE_ME&device_model=REPLACE_ME&ifa_type=REPLACE_ME
+
+#EXTINF:0 tvg-country="Great Britain" tvg-logo="" tvg-id="" tvg-name="" group-title="News",News World
+https://amg01076-lightning-amg01076c5-lg-gb-10275.playouts.now.amagi.tv/ts-eu-w1-n2/playlist/amg01076-lightning-newsworld-lggb/playlist.m3u8?ads.deviceid=[DEVICE_ID]&ads.ifa=[IFA]&ads.ifatype=[IFA_TYPE]&ads.lat=[LMT]&ads.donotsell=[DNS]&ads.ua=[UA]&ads.ip=[IP]&ads.gdpr=[GDPR]&ads.gdprconsent=[GDPR_CONSENT]&ads.country=[COUNTRY]&ads.usprivacy=[US_PRIVACY]&ads.appstoreurl=[APP_STOREURL]&ads.bundleid=[APP_BUNDLE]&ads.appname=[APP_NAME]&ads.appversion=[APP_VERSION]&ads.devicetype=[DEVICE_TYPE]&ads.devicemake=[DEVICE_MAKE]&ads.devicemodel=[DEVICE_MODEL]&ads.targetad=[TARGETAD_ALLOWED]&ads.fck=[FCK]&ads.viewsize=[VIEWSIZE]&ads.givn=[NONCE]
 
 
-#EXTINF:0 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="",Documentary+
-https://ef79b15c8c7c46c7a9de9d33001dbd07.mediatailor.us-west-2.amazonaws.com/v1/master/ba62fe743df0fe93366eba3a257d792884136c7f/LINEAR-859-DOCUMENTARYPLUS-DOCUMENTARYPLUS/mt/documentaryplus/859/hls/master/playlist.m3u8
+
+
+====Earth & Nature====
+
+#EXTINF:0 tvg-country="Great Britain" tvg-logo="" tvg-id="" tvg-name="" group-title="Nature",Adventure Earth
+https://1d7d59fa677247f28aecb46346c0caeb.mediatailor.us-east-1.amazonaws.com/v1/master/0fb304b2320b25f067414d481a779b77db81760d/LG-gb_AdventureEarth/playlist.m3u8
+https://11155fb26c524e8d8d62adcf414cca44.mediatailor.us-east-1.amazonaws.com/v1/master/44f73ba4d03e9607dcd9bebdcb8494d86964f1d8/Vidaa-gb_AdventureEarth/playlist.m3u8?ads.wurl_channel=1299&ads.wurl_name=AdventureEarth&ads.coppa=0&ads.ifa=&ads.dnt=&ads.us_privacy=&ads.gdpr=&ads.gdpr_consent=&ads.app_name=&ads.app_bundle=&ads.app_store_url=&ads.ifa_type=&ads.custom=&ads.device_make=&ads.device_model=&ads.vidaa_ads_param=1190406319&ads.vauth=&ads.device_type=&ads.brand_name=&ads.device_osv=&ads.device_language=&ads.w=&ads.h=&ads.language=&ads.rating=&ads.ic=&ads.channel_name=&ads.content_producer_name=&ads.content_genre=&ads.client_section=&ads.vidaa_ads_contentType=600007&ads.vidaa_ads_contentId=8890
+
+#EXTINF:0 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="Nature",BBC Earth
+https://amg00793-amg00793c24-vidaa-gb-9957.playouts.now.amagi.tv/ts-eu-w1-n2/playlist/amg00793-bbcstudios-bbcearthspain-vidaagb/playlist.m3u8?ads.dnt=REPLACEME&ads.app_bundle=REPLACEME&ads.brand_name=REPLACEME&ads.ifa=REPLACEME&ads.ifa_type=REPLACEME&ads.vauth=REPLACEME&ads.device_type=REPLACEME&ads.device_country=REPLACEME&ads.device_language=REPLACEME&ads.device_osv=REPLACEME&ads.app_name=REPLACEME&ads.app_store_url=REPLACEME&ads.us_privacy=REPLACEME&ads.gdpr=REPLACEME&ads.gdpr_consent=REPLACEME&ads.w=REPLACEME&ads.h=REPLACEME&ads.vidaa_ads_param=1190602996&ads.vidaa_ads_contentType=600007&ads.vidaa_ads_contentId=10128
+
+#EXTINF:0 tvg-country="Great Britain" tvg-logo="" tvg-id="" tvg-name="" group-title="Nature",Love The Planet
+https://ssai.aniview.com/api/v1/hls/stream.m3u8?cb=[CACHEBUSTER]&AV_WIDTH=[ADS.W]&AV_HEIGHT=[ADS.H]&AV_APPNAME=[ADS.APP_NAME]&AV_APPSTOREURL=[ADS.APP_STORE_URL]&AV_APPPKGNAME=[ADS.APP_BUNDLE]&AV_IDFA=[ADS.IFA]&AV_IFA_TYPE=[ADS.IFA_TYPE]&AV_CCPA=[ADS.US_PRIVACY]&AV_GDPR=[ADS.GDPR]&AV_CONSENT=[ADS.GDPR_CONSENT]&AV_CONTENT_URL=&AV_CONTENT_TITLE=&AV_CONTENT_EPISODE=&AV_CONTENT_SERIES=&AV_CONTENT_SEASON=&AV_CONTENT_KEYWORDS=&AV_CONTENT_NETWORK=&AV_CONTENT_ID=[ADS.VIDAA_ADS_CONTENTID]&AV_CONTENT_CHANNEL=&AV_CONTENT_CONTEXT=&AV_CONTENT_LENGTH=&AV_CONTENT_RATING=R&AV_VAUTH=[ADS.VAUTH]&AV_DNT=[ADS.DNT]&Content_Id=[ADS.ADS_CONTENTID]&AV_LANGUAGE=[ADS.DEVICE_LANGUAGE]&AV_RTB_DEVICE_TYPE=[ADS.DEVICE_TYPE]&AV_OSVERS=[ADS.DEVICE_OSV]&AVS_SSAIID=67cedc668d17ebe2b70a9566&AV_CONTENT_LANGUAGE=en&AV_CONTENT_GENERE=Entertainment&AV_CONTENT_CAT=IAB1&AV_CONTENT_RATING=TV-G&AV_CLIENT_SECTION=lovetheplanet_lovetv&content_channel_name=Love%20the%20Planet&content_livestream=1&ads.vidaa_ads_param=1190602996&ads.vidaa_ads_contentType=600007&ads.vidaa_ads_contentId=7977
+
+#EXTINF:0 tvg-country="Great Britain" tvg-logo="" tvg-id="" tvg-name="" group-title="Nature",Terra Mater Wild
+https://amg01775-amg01775c1-amgplt0086.playout.now3.amagi.tv/playlist/amg01775-amg01775c1-amgplt0086/playlist.m3u8?app_name=REPLACEME&app_store_url=REPLACEME&app_version=REPLACEME&coppa=REPLACEME&gdpr_consent=REPLACEME&ic=REPLACEME&w=REPLACEME&client_id=REPLACEME&client_section=REPLACEME&device_country=REPLACEME&device_make=REPLACEME&device_osv=REPLACEME&device_type=REPLACEME&gdpr=REPLACEME&h=REPLACEME&app_bundle=REPLACEME&did=REPLACEME&ifa=REPLACEME&ifa_type=REPLACEME&schain=REPLACEME&us_privacy=REPLACEME&vauth=REPLACEME&brand_name=REPLACEME&device_language=REPLACEME&dnt=REPLACEME&pod_ad_slots=REPLACEME&url=REPLACEME&ads.vidaa_ads_param=1190602996&ads.vidaa_ads_contentType=600007&ads.vidaa_ads_contentId=8993
+
+#EXTINF:0 tvg-country="Great Britain" tvg-logo="" tvg-id="" tvg-name="" group-title="Nature",Real WIld
+https://cdn-uw2-prod.tsv2.amagi.tv/linear/amg00426-littledotstudio-realwild-lggb/playlist.m3u8?ads.deviceid=[DEVICE_ID]&ads.ifa=[IFA]&ads.ifatype=[IFA_TYPE]&ads.lat=[LMT]&ads.donotsell=[DNS]&ads.ua=[UA]&ads.ip=[IP]&ads.gdpr=[GDPR]&ads.gdprconsent=[GDPR_CONSENT]&ads.country=[COUNTRY]&ads.usprivacy=[US_PRIVACY]&ads.appstoreurl=[APP_STOREURL]&ads.bundleid=[APP_BUNDLE]&ads.appname=[APP_NAME]&ads.appversion=[APP_VERSION]&ads.devicetype=[DEVICE_TYPE]&ads.devicemake=[DEVICE_MAKE]&ads.devicemodel=[DEVICE_MODEL]&ads.targetad=[TARGETAD_ALLOWED
+
+#EXTINF:0 tvg-country="Great Britain" tvg-logo="" tvg-id="" tvg-name="" group-title="Nature",Go Wild
+https://d1bl6tskrpq9ze.cloudfront.net/hls/master.m3u8?ads.xumo_channelId=99984001&ads.xumo_streamId=99984001&ads.channelId=99984001&ads.ad_tag_id=16821&ads.csid=lgchannels_uk_indigeniusgowild_ssai&ads.channelName=indigeniusgowild_uk&ads.xumo_contentName=indigeniusgowild&ads.xumo_contentId=1103&ads.xumo_providerName=indigeniusgowild&ads.xumo_providerId=1103&ads.content_category=IAB1-7&ads.content_genre=lifestyle&ads.content_language=en&ads.content_rating=bbfc-12&ads.coppa=0&ads.livestream=0&ads.prodq=1&ads.did=[IFA]&ads.lmt=[LMT]&ads.dnt=[DNS]&ads.us_privacy=[US_PRIVACY]&ads.gdpr=[GDPR]&ads.gdpr_consent=[GDPR_CONSENT]&ads.devicemake=[DEVICE_MAKE]&ads.devicemodel=[DEVICE_MODEL]&ads.country=[COUNTRY]&ads.fck=[FCK]&ads.viewsize=[VIEWSIZE]&ads.givn=[NONCE]&ads.app_name=[APP_NAME]&ads.app_bundle=[APP_BUNDLE]&ads.app_storeurl=[APP_STOREURL]
+
+#EXTINF:0 tvg-country="Great Britain" tvg-logo="" tvg-id="" tvg-name="" group-title="Nature",Wild Earth
+https://wildearth-lg.amagi.tv/hls/amagi_hls_data_wildearth-wildearth-lgAA/CDN/master.m3u8?ads.deviceid=[DEVICE_ID]&ads.ifa=[IFA]&ads.ifatype=[IFA_TYPE]&ads.lat=[LMT]&ads.donotsell=[DNS]&ads.ua=[UA]&ads.ip=[IP]&ads.gdpr=[GDPR]&ads.gdprconsent=[GDPR_CONSENT]&ads.country=[COUNTRY]&ads.usprivacy=[US_PRIVACY]&ads.appstoreurl=[APP_STOREURL]&ads.bundleid=[APP_BUNDLE]&ads.appname=[APP_NAME]&ads.appversion=[APP_VERSION]&ads.devicetype=[DEVICE_TYPE]&ads.devicemake=[DEVICE_MAKE]&ads.devicemodel=[DEVICE_MODEL]&ads.coppa=0&ads.targetad=[TARGETAD_ALLOWED]&ads.fck=[FCK]&ads.viewsize=[VIEWSIZE]&ads.givn=[NONCE]&ads.dmake=[DEVICE_MAKE]
+
+
+
+
+
+
+
+
+
 
 
 
@@ -308,61 +375,9 @@ https://amg00222-amg00222c4-amgplt0019.playout.now3.amagi.tv/playlist.m3u8?dnt=%
 https://rakutenaa-blueskyent-lovepetsemea-rakuten-ikc4q.amagi.tv/playlist/rakutenAA-blueskyent-lovepetsemea-rakuten/playlist.m3u8
 https://amg01576-blueskyeenterta-lovepetsemea-samsungse-ctamh.amagi.tv/playlist/amg01576-blueskyeenterta-lovepetsemea-samsungse/playlist.m3u8
 
-#EXTINF:0 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="Sports",BBC Top Gear
-https://amg00793-amg00793c5-xumo-us-2664.playouts.now.amagi.tv/bbcstudios-bbctopgear8min-all/playlist.m3u8
-https://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/638e10220aa6a6000726979f/master.m3u8?appName=web&appVersion=9.19.0&deviceDNT=0&deviceId=32de4823-7501-4845-ba26-8699462954dd&deviceMake=firefox&deviceModel=web&deviceType=web&deviceVersion=147.0.0&serverSideAds=false&sid=1ed07de9-b4b6-4a6c-9446-029136f0f3da
+#EXTINF:0 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="",Documentary+
+https://ef79b15c8c7c46c7a9de9d33001dbd07.mediatailor.us-west-2.amazonaws.com/v1/master/ba62fe743df0fe93366eba3a257d792884136c7f/LINEAR-859-DOCUMENTARYPLUS-DOCUMENTARYPLUS/mt/documentaryplus/859/hls/master/playlist.m3u8
 
-====News====
-#EXTINF:0 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="News",EuroNews
-https://dash4.antik.sk/live/test_euronews/playlist.m3u8
-https://6748799b.wurl.com/master/f36d25e7e52f1ba8d7e56eb859c636563214f541/VmlkYWFfRXVyb25ld3NFbmdsaXNoX0hMUw/playlist.m3u8?ads.wurl_channel=870&ads.wurl_name=EuronewsEnglish&ads.coppa=0&ads.device_id=&ads.dnt=&ads.us_privacy=&ads.gdpr=&ads.consent=&ads.app_name=&ads.app_bundle=&ads.app_store_url=&ads.ifa_type=&ads.custom=&ads.device_make=&ads.device_model=&ads.vidaa_ads_param=1190406319&ads.vauth=&ads.device_type=&ads.brand_name=&ads.device_osv=&ads.device_language=&ads.vidaa_ads_contentType=600007&ads.vidaa_ads_contentId=7789
-
-#EXTINF:0 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="News",NBC News Now
-https://d3f4oii5n0oeqi.cloudfront.net/11701/88814557/hls/master.m3u8?includeAssetTags=true&ads.xumo_channelId=88814557&ads.xumo_streamId=88814557&declaredCC1Language=en&ads.caid=NBCNewsNow&ads.csid=tcl2_us_nbcnewsnow_ssai&ads.xumo_ifaType=%5BIFA_TYPE%5D&ads.xumo_ifa=%5BIFA%5D&ads.appName=%5BAPP_NAME%5D&ads.appVersion=%5BAPP_VERSION%5D&ads._fw_app_bundle=%5BTCL_APP_BUNDLE%5D&ads.genre=News&ads._fw_content_category=IAB12&ads._fw_content_genre=news&ads._fw_content_language=en&ads._fw_content_rating=tv-g&ads._fw_deviceMake=%5BDEVICE_MAKE%5D&ads._fw_device_model=%5BDEVICE_MODEL%5D&ads._fw_devicetype=3-Connected_TV&ads._fw_coppa=0&ads._fw_is_lat=%5BLMT%5D&ads._fw_us_privacy=%5BUS_PRIVACY%5D&ads._fw_h_x_country=US&ads._fw_player_width=%5BPLAYER_WIDTH%5D&ads._fw_player_height=%5BPLAYER_HEIGHT%5D&ads.xumo_contentId=1828&ads.xumo_contentName=NBCNewsNow&ads.xumo_providerId=1828&ads.xumo_providerName=NBCNewsNow&ads.xumo_channelName=NBCNewsNow&ads._fw_app_store_url=%5BTCL_APP_STORE_URL%5D
-
-#EXTINF:0 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="News",CBS News 24/7
-https://dai.google.com/linear/hls/event/Sid4xiTQTkCT1SLu6rjUSQ/master.m3u8?imafw__fw_app_bundle=%5BAPP+ID%5D&imafw__fw_did=%5Bidtype%3AdeviceID%5D&imafw__fw_is_lat=%5BLIMITED+AD+TRACKING%5D&imafw__fw_us_privacy=%5BCCPA+STRING%5D&imafw__fw_vcid2=%5Bunique_identifier%5D&imafw_csid=%5BSITE+SECTION%5D&is_lat=%5BLIMITED+AD+TRACKING%5D
-
-#EXTINF:0 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="News",BBC News
-https://a8c74827.wurl.com/master/f36d25e7e52f1ba8d7e56eb859c636563214f541/VENMVFZQbHVzX0JCQ05ld3NfSExT/playlist.m3u8?ads.wurl_channel=1655&ads.wurl_name=BBCNews&ads.coppa=0&ads.device_id=%7BDEVICE_ID%7D&ads.dnt=%7BDNT%7D&ads.us_privacy=%7BUS_PRIVACY%7D&ads.gdpr=%7BGDPR%7D&ads.consent=%7BCONSENT%7D&ads.app_name=%7BAPP_NAME%7D&ads.app_bundle=%7BAPP_BUNDLE%7D&ads.app_store_url=%7BAPP_STORE_URL%7D&ads.ifa_type=%7BIFA_TYPE%7D&ads.custom=%7BCUSTOM%7D&ads.device_make=%7BDEVICE_MAKE%7D&ads.device_model=%7BDEVICE_MODEL%7D&ads.givn=%7BGIVN%7D&ads.u_paln=%7BU_PALN%7D
-
-#EXTINF:0 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="News",Sky News
-https://d3f4oii5n0oeqi.cloudfront.net/11701/88814560/hls/master.m3u8?includeAssetTags=true&ads.xumo_channelId=88814560&ads.xumo_streamId=88814560&declaredCC1Language=en&ads.caid=SkyNews&ads.csid=tcl2_us_nbcuskynews_ssai&ads.xumo_ifaType=%5BIFA_TYPE%5D&ads.xumo_ifa=%5BIFA%5D&ads.appName=%5BAPP_NAME%5D&ads.appVersion=%5BAPP_VERSION%5D&ads._fw_app_bundle=%5BTCL_APP_BUNDLE%5D&ads.genre=News&ads._fw_content_category=IAB12&ads._fw_content_genre=news&ads._fw_content_language=en&ads._fw_content_rating=tv-g&ads._fw_deviceMake=%5BDEVICE_MAKE%5D&ads._fw_device_model=%5BDEVICE_MODEL%5D&ads._fw_devicetype=3-Connected_TV&ads._fw_coppa=0&ads._fw_is_lat=%5BLMT%5D&ads._fw_us_privacy=%5BUS_PRIVACY%5D&ads._fw_h_x_country=US&ads._fw_player_width=%5BPLAYER_WIDTH%5D&ads._fw_player_height=%5BPLAYER_HEIGHT%5D&ads.xumo_contentId=3455&ads.xumo_contentName=SkyNews&ads.xumo_providerId=3455&ads.xumo_providerName=SkyNews&ads.xumo_channelName=SkyNews&ads._fw_app_store_url=%5BTCL_APP_STORE_URL%5D
-
-#EXTINF:0 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="News",Reuters
-https://amg00453-reuters-amg00453c1-tcl-us-3947.playouts.now.amagi.tv/playlist/amg00453-reuters-reuters-tclus/playlist.m3u8?dnt=%7B%7BDNT%7D%7D&app_bundle=%7B%7BappPackage%7D%7D&app_name=%7B%7BappName%7D%7D&app_store_url=%7B%7BAppStoreUrl%7D%7D&network_name=tinykernel&did=%7B%7BDID%7D%7D&device_make=%7B%7BDeviceMake%7D%7D&device_model=%7B%7BDeviceModel%7D%7D&gdpr=%7B%7BGdpr%7D%7D&us_privacy=%7B%7BUsPrivacy%7D%7D&GdprConsent=%7B%7BGdprConsent%7D%7D
-
-#EXTINF:0 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="News",Yahoo! Finance
-https://d1ewctnvcwvvvu.cloudfront.net/playlist.m3u8
-https://amg00119-amg00119c1-tclideo-na-6764.playouts.now.amagi.tv/playlist/amg00119-yahoofinancefast-yahoofinance-tclideona/playlist.m3u8?device[did]=REPLACE_ME&device[dnt]=REPLACE_ME&gender=REPLACE_ME&app_bundle=REPLACE_ME&app_name=REPLACE_ME&app_store_url=REPLACE_ME&url=REPLACE_ME&genre=REPLACE_ME&ic=REPLACE_ME&us_privacy=REPLACE_ME&gdpr=REPLACE_ME&gdpr_consent=REPLACE_ME&coppa=0&schain=REPLACE_ME&device_make=REPLACE_ME&device_model=REPLACE_ME&ifa_type=REPLACE_ME
-
-#EXTINF:0 tvg-country="Great Britain" tvg-logo="" tvg-id="" tvg-name="" group-title="News",News World
-https://amg01076-lightning-amg01076c5-lg-gb-10275.playouts.now.amagi.tv/ts-eu-w1-n2/playlist/amg01076-lightning-newsworld-lggb/playlist.m3u8?ads.deviceid=[DEVICE_ID]&ads.ifa=[IFA]&ads.ifatype=[IFA_TYPE]&ads.lat=[LMT]&ads.donotsell=[DNS]&ads.ua=[UA]&ads.ip=[IP]&ads.gdpr=[GDPR]&ads.gdprconsent=[GDPR_CONSENT]&ads.country=[COUNTRY]&ads.usprivacy=[US_PRIVACY]&ads.appstoreurl=[APP_STOREURL]&ads.bundleid=[APP_BUNDLE]&ads.appname=[APP_NAME]&ads.appversion=[APP_VERSION]&ads.devicetype=[DEVICE_TYPE]&ads.devicemake=[DEVICE_MAKE]&ads.devicemodel=[DEVICE_MODEL]&ads.targetad=[TARGETAD_ALLOWED]&ads.fck=[FCK]&ads.viewsize=[VIEWSIZE]&ads.givn=[NONCE]
-
-====Earth & Nature====
-
-#EXTINF:0 tvg-country="Great Britain" tvg-logo="" tvg-id="" tvg-name="" group-title="Nature",Advanture Earth
-https://1d7d59fa677247f28aecb46346c0caeb.mediatailor.us-east-1.amazonaws.com/v1/master/0fb304b2320b25f067414d481a779b77db81760d/LG-gb_AdventureEarth/playlist.m3u8
-https://11155fb26c524e8d8d62adcf414cca44.mediatailor.us-east-1.amazonaws.com/v1/master/44f73ba4d03e9607dcd9bebdcb8494d86964f1d8/Vidaa-gb_AdventureEarth/playlist.m3u8?ads.wurl_channel=1299&ads.wurl_name=AdventureEarth&ads.coppa=0&ads.ifa=&ads.dnt=&ads.us_privacy=&ads.gdpr=&ads.gdpr_consent=&ads.app_name=&ads.app_bundle=&ads.app_store_url=&ads.ifa_type=&ads.custom=&ads.device_make=&ads.device_model=&ads.vidaa_ads_param=1190406319&ads.vauth=&ads.device_type=&ads.brand_name=&ads.device_osv=&ads.device_language=&ads.w=&ads.h=&ads.language=&ads.rating=&ads.ic=&ads.channel_name=&ads.content_producer_name=&ads.content_genre=&ads.client_section=&ads.vidaa_ads_contentType=600007&ads.vidaa_ads_contentId=8890
-
-
-#EXTINF:0 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="Nature",BBC Earth
-https://amg00793-amg00793c24-vidaa-gb-9957.playouts.now.amagi.tv/ts-eu-w1-n2/playlist/amg00793-bbcstudios-bbcearthspain-vidaagb/playlist.m3u8?ads.dnt=REPLACEME&ads.app_bundle=REPLACEME&ads.brand_name=REPLACEME&ads.ifa=REPLACEME&ads.ifa_type=REPLACEME&ads.vauth=REPLACEME&ads.device_type=REPLACEME&ads.device_country=REPLACEME&ads.device_language=REPLACEME&ads.device_osv=REPLACEME&ads.app_name=REPLACEME&ads.app_store_url=REPLACEME&ads.us_privacy=REPLACEME&ads.gdpr=REPLACEME&ads.gdpr_consent=REPLACEME&ads.w=REPLACEME&ads.h=REPLACEME&ads.vidaa_ads_param=1190602996&ads.vidaa_ads_contentType=600007&ads.vidaa_ads_contentId=10128
-
-#EXTINF:0 tvg-country="Great Britain" tvg-logo="" tvg-id="" tvg-name="" group-title="Nature",Love The Planet
-https://ssai.aniview.com/api/v1/hls/stream.m3u8?cb=[CACHEBUSTER]&AV_WIDTH=[ADS.W]&AV_HEIGHT=[ADS.H]&AV_APPNAME=[ADS.APP_NAME]&AV_APPSTOREURL=[ADS.APP_STORE_URL]&AV_APPPKGNAME=[ADS.APP_BUNDLE]&AV_IDFA=[ADS.IFA]&AV_IFA_TYPE=[ADS.IFA_TYPE]&AV_CCPA=[ADS.US_PRIVACY]&AV_GDPR=[ADS.GDPR]&AV_CONSENT=[ADS.GDPR_CONSENT]&AV_CONTENT_URL=&AV_CONTENT_TITLE=&AV_CONTENT_EPISODE=&AV_CONTENT_SERIES=&AV_CONTENT_SEASON=&AV_CONTENT_KEYWORDS=&AV_CONTENT_NETWORK=&AV_CONTENT_ID=[ADS.VIDAA_ADS_CONTENTID]&AV_CONTENT_CHANNEL=&AV_CONTENT_CONTEXT=&AV_CONTENT_LENGTH=&AV_CONTENT_RATING=R&AV_VAUTH=[ADS.VAUTH]&AV_DNT=[ADS.DNT]&Content_Id=[ADS.ADS_CONTENTID]&AV_LANGUAGE=[ADS.DEVICE_LANGUAGE]&AV_RTB_DEVICE_TYPE=[ADS.DEVICE_TYPE]&AV_OSVERS=[ADS.DEVICE_OSV]&AVS_SSAIID=67cedc668d17ebe2b70a9566&AV_CONTENT_LANGUAGE=en&AV_CONTENT_GENERE=Entertainment&AV_CONTENT_CAT=IAB1&AV_CONTENT_RATING=TV-G&AV_CLIENT_SECTION=lovetheplanet_lovetv&content_channel_name=Love%20the%20Planet&content_livestream=1&ads.vidaa_ads_param=1190602996&ads.vidaa_ads_contentType=600007&ads.vidaa_ads_contentId=7977
-
-#EXTINF:0 tvg-country="Great Britain" tvg-logo="" tvg-id="" tvg-name="" group-title="Nature",Terra Mater Wild
-https://amg01775-amg01775c1-amgplt0086.playout.now3.amagi.tv/playlist/amg01775-amg01775c1-amgplt0086/playlist.m3u8?app_name=REPLACEME&app_store_url=REPLACEME&app_version=REPLACEME&coppa=REPLACEME&gdpr_consent=REPLACEME&ic=REPLACEME&w=REPLACEME&client_id=REPLACEME&client_section=REPLACEME&device_country=REPLACEME&device_make=REPLACEME&device_osv=REPLACEME&device_type=REPLACEME&gdpr=REPLACEME&h=REPLACEME&app_bundle=REPLACEME&did=REPLACEME&ifa=REPLACEME&ifa_type=REPLACEME&schain=REPLACEME&us_privacy=REPLACEME&vauth=REPLACEME&brand_name=REPLACEME&device_language=REPLACEME&dnt=REPLACEME&pod_ad_slots=REPLACEME&url=REPLACEME&ads.vidaa_ads_param=1190602996&ads.vidaa_ads_contentType=600007&ads.vidaa_ads_contentId=8993
-
-#EXTINF:0 tvg-country="Great Britain" tvg-logo="" tvg-id="" tvg-name="" group-title="Nature",Real WIld
-https://cdn-uw2-prod.tsv2.amagi.tv/linear/amg00426-littledotstudio-realwild-lggb/playlist.m3u8?ads.deviceid=[DEVICE_ID]&ads.ifa=[IFA]&ads.ifatype=[IFA_TYPE]&ads.lat=[LMT]&ads.donotsell=[DNS]&ads.ua=[UA]&ads.ip=[IP]&ads.gdpr=[GDPR]&ads.gdprconsent=[GDPR_CONSENT]&ads.country=[COUNTRY]&ads.usprivacy=[US_PRIVACY]&ads.appstoreurl=[APP_STOREURL]&ads.bundleid=[APP_BUNDLE]&ads.appname=[APP_NAME]&ads.appversion=[APP_VERSION]&ads.devicetype=[DEVICE_TYPE]&ads.devicemake=[DEVICE_MAKE]&ads.devicemodel=[DEVICE_MODEL]&ads.targetad=[TARGETAD_ALLOWED
-
-#EXTINF:0 tvg-country="Great Britain" tvg-logo="" tvg-id="" tvg-name="" group-title="Nature",Go Wild
-https://d1bl6tskrpq9ze.cloudfront.net/hls/master.m3u8?ads.xumo_channelId=99984001&ads.xumo_streamId=99984001&ads.channelId=99984001&ads.ad_tag_id=16821&ads.csid=lgchannels_uk_indigeniusgowild_ssai&ads.channelName=indigeniusgowild_uk&ads.xumo_contentName=indigeniusgowild&ads.xumo_contentId=1103&ads.xumo_providerName=indigeniusgowild&ads.xumo_providerId=1103&ads.content_category=IAB1-7&ads.content_genre=lifestyle&ads.content_language=en&ads.content_rating=bbfc-12&ads.coppa=0&ads.livestream=0&ads.prodq=1&ads.did=[IFA]&ads.lmt=[LMT]&ads.dnt=[DNS]&ads.us_privacy=[US_PRIVACY]&ads.gdpr=[GDPR]&ads.gdpr_consent=[GDPR_CONSENT]&ads.devicemake=[DEVICE_MAKE]&ads.devicemodel=[DEVICE_MODEL]&ads.country=[COUNTRY]&ads.fck=[FCK]&ads.viewsize=[VIEWSIZE]&ads.givn=[NONCE]&ads.app_name=[APP_NAME]&ads.app_bundle=[APP_BUNDLE]&ads.app_storeurl=[APP_STOREURL]
-
-#EXTINF:0 tvg-country="Great Britain" tvg-logo="" tvg-id="" tvg-name="" group-title="Nature",Wild Earth
-https://wildearth-lg.amagi.tv/hls/amagi_hls_data_wildearth-wildearth-lgAA/CDN/master.m3u8?ads.deviceid=[DEVICE_ID]&ads.ifa=[IFA]&ads.ifatype=[IFA_TYPE]&ads.lat=[LMT]&ads.donotsell=[DNS]&ads.ua=[UA]&ads.ip=[IP]&ads.gdpr=[GDPR]&ads.gdprconsent=[GDPR_CONSENT]&ads.country=[COUNTRY]&ads.usprivacy=[US_PRIVACY]&ads.appstoreurl=[APP_STOREURL]&ads.bundleid=[APP_BUNDLE]&ads.appname=[APP_NAME]&ads.appversion=[APP_VERSION]&ads.devicetype=[DEVICE_TYPE]&ads.devicemake=[DEVICE_MAKE]&ads.devicemodel=[DEVICE_MODEL]&ads.coppa=0&ads.targetad=[TARGETAD_ALLOWED]&ads.fck=[FCK]&ads.viewsize=[VIEWSIZE]&ads.givn=[NONCE]&ads.dmake=[DEVICE_MAKE]
 
 
 
