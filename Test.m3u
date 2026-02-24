@@ -2,31 +2,31 @@
 #EXTM3U url-tvg="https://raw.githubusercontent.com/Jerrie-Aries/EPG/refs/heads/master/epg.xml, https://raw.githubusercontent.com/AqFad2811/epg/refs/heads/main/epg.xml, https://raw.githubusercontent.com/AqFad2811/epg/main/epg.xml"
 
 
-=====Malaysia=====
+#=====Malaysia=====
 #EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://rtm-images.glueapi.io/320x0//live_channel/tv1_Trans.png" tvg-id="TV1.my" tvg-name="" group-title="Malaysia",RTM TV1
-https://mifntechnology.github.io/siaranMy/channels/Tv1/index.m3u8
 https://d25tgymtnqzu8s.cloudfront.net/smil:tv1/manifest.mpd
 https://d25tgymtnqzu8s.cloudfront.net/smil:tv1/playlist.m3u8?id=1
+https://mifntechnology.github.io/siaranMy/channels/Tv1/index.m3u8
 
 #EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://rtm-images.glueapi.io/320x0//live_channel/tv2_Trans.png" tvg-id="TV2.my" tvg-name="" group-title="Malaysia",RTM TV2
-https://mifntechnology.github.io/siaranMy/channels/Tv2/index.m3u8
 https://d25tgymtnqzu8s.cloudfront.net/smil:tv2/manifest.mpd
+https://mifntechnology.github.io/siaranMy/channels/Tv2/index.m3u8
 
-====tonton====
-====TV3====
+#====tonton====
+#====TV3====
 #EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://headend-api.tonton.com.my/v400/imageHelper.php?id=6420323:378:CHANNEL:IMAGE" tvg-id="TV3.my" tvg-name="" group-title="Malaysia",TV3
 #EXTVLCOPT:http-referrer=https://www.tonton.com.my/
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
 https://live-ssar-02.tonton.com.my/1771888926/0x0663f3a39b65e0275c196d54bbea26aa972758bf3a1f1373b020a68047dd49c2/stream-tv3/master_1080.m3u8?bpkio_serviceid=6c0958d82a830a02ca0936d9cfab8311&bpkio_sessionid=10b3d1b238-aa704b8e-90cb-4631-b48f-ffb72c860f4b&category=all&did=75426297-5848-5ecf-2741-f8bc227e3e1e&dnt=0&ifatype=sessionid&lot_auds&mm_sp&plt=web&ttd_uid2=A4AAACqF2U_jpgmVExbBHFAlXDRd-3NNZqo2F3Xf-eI3F_yX7hThsa6Df2q3So7bw4Zm7jCKNKXdM_YiNbaBfMV7GgfRPVRN-P6SJAqsK6OOUySuIiOa2t8pZMP9y5MGxsxdgmHCaLdtwA8xSJnzziFo3zQc6-VEpjROPb8tvMLYTLAHSyL2hxPcyrz9J_R6p9PdO9J2HhCseFSOoKrdFPFyvQ
 
-====Didik TV====
+#====Didik TV====
 #EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://headend-api.tonton.com.my/v400/imageHelper.php?id=6420324:378:CHANNEL:IMAGE" tvg-id="DidikTVKPM.my" tvg-name="" group-title="Malaysia",Didik TV
 #EXTVLCOPT:http-referrer=https://www.tonton.com.my/
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
 #EXTVLCOPT:http-cookie=YOUR_SESSION_COOKIE_NAME=YOUR_SESSION_COOKIE_VALUE
 https://live-ssar-02.tonton.com.my/1771889554/0x510d91537f1a9c6e4d64e7a9d6a460ecec1945b35eddbea149de86f40e59a7d9/stream-ntv7/master_1080.m3u8?bpkio_serviceid=6c0958d82a830a029c72673202bd4846&bpkio_sessionid=10b3f3d153-afbb15c8-386f-478f-bc71-f093634bcdb9&category=all&did=75426297-5848-5ecf-2741-f8bc227e3e1e&dnt=0&ifatype=sessionid&lot_auds&mm_sp&plt=web&ttd_uid2=A4AAACqF2U_jpgmVExbBHFAlXDRd-3NNZqo2F3Xf-eI3F_yX7hThsa6Df2q3So7bw4Zm7jCKNKXdM_YiNbaBfMV7GgfRPVRN-P6SJAqsK6OOUySuIiOa2t8pZMP9y5MGxsxdgmHCaLdtwA8xSJnzziFo3zQc6-VEpjROPb8tvMLYTLAHSyL2hxPcyrz9J_R6p9PdO9J2HhCseFSOoKrdFPFyvQ
 
-=====TV9====
+#=====TV9====
 #EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://headend-api.tonton.com.my/v400/imageHelper.php?id=6420326:378:CHANNEL:IMAGE" tvg-id="TV9.my" tvg-name="" group-title="Malaysia",TV9
 #EXTVLCOPT:http-referrer=https://www.tonton.com.my/
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
@@ -401,6 +401,7 @@ https://amg01576-blueskyeenterta-lovepetsemea-samsungse-ctamh.amagi.tv/playlist/
 
 #EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="",Documentary+
 https://ef79b15c8c7c46c7a9de9d33001dbd07.mediatailor.us-west-2.amazonaws.com/v1/master/ba62fe743df0fe93366eba3a257d792884136c7f/LINEAR-859-DOCUMENTARYPLUS-DOCUMENTARYPLUS/mt/documentaryplus/859/hls/master/playlist.m3u8
+
 
 
 
