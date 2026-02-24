@@ -13,8 +13,31 @@ https://mifntechnology.github.io/siaranMy/channels/Tv2/index.m3u8
 https://d25tgymtnqzu8s.cloudfront.net/smil:tv2/manifest.mpd
 
 ====tonton====
-#EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="",
-https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Tonton.m3u
+====TV3====
+#EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://headend-api.tonton.com.my/v400/imageHelper.php?id=6420323:378:CHANNEL:IMAGE" tvg-id="TV3.my" tvg-name="" group-title="Malaysia",TV3
+#EXTVLCOPT:http-referrer=https://www.tonton.com.my/
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
+https://live-ssar-02.tonton.com.my/1771888926/0x0663f3a39b65e0275c196d54bbea26aa972758bf3a1f1373b020a68047dd49c2/stream-tv3/master_1080.m3u8?bpkio_serviceid=6c0958d82a830a02ca0936d9cfab8311&bpkio_sessionid=10b3d1b238-aa704b8e-90cb-4631-b48f-ffb72c860f4b&category=all&did=75426297-5848-5ecf-2741-f8bc227e3e1e&dnt=0&ifatype=sessionid&lot_auds&mm_sp&plt=web&ttd_uid2=A4AAACqF2U_jpgmVExbBHFAlXDRd-3NNZqo2F3Xf-eI3F_yX7hThsa6Df2q3So7bw4Zm7jCKNKXdM_YiNbaBfMV7GgfRPVRN-P6SJAqsK6OOUySuIiOa2t8pZMP9y5MGxsxdgmHCaLdtwA8xSJnzziFo3zQc6-VEpjROPb8tvMLYTLAHSyL2hxPcyrz9J_R6p9PdO9J2HhCseFSOoKrdFPFyvQ
+
+====Didik TV====
+#EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://headend-api.tonton.com.my/v400/imageHelper.php?id=6420324:378:CHANNEL:IMAGE" tvg-id="DidikTVKPM.my" tvg-name="" group-title="Malaysia",Didik TV
+#EXTVLCOPT:http-referrer=https://www.tonton.com.my/
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
+#EXTVLCOPT:http-cookie=YOUR_SESSION_COOKIE_NAME=YOUR_SESSION_COOKIE_VALUE
+https://live-ssar-02.tonton.com.my/1771889554/0x510d91537f1a9c6e4d64e7a9d6a460ecec1945b35eddbea149de86f40e59a7d9/stream-ntv7/master_1080.m3u8?bpkio_serviceid=6c0958d82a830a029c72673202bd4846&bpkio_sessionid=10b3f3d153-afbb15c8-386f-478f-bc71-f093634bcdb9&category=all&did=75426297-5848-5ecf-2741-f8bc227e3e1e&dnt=0&ifatype=sessionid&lot_auds&mm_sp&plt=web&ttd_uid2=A4AAACqF2U_jpgmVExbBHFAlXDRd-3NNZqo2F3Xf-eI3F_yX7hThsa6Df2q3So7bw4Zm7jCKNKXdM_YiNbaBfMV7GgfRPVRN-P6SJAqsK6OOUySuIiOa2t8pZMP9y5MGxsxdgmHCaLdtwA8xSJnzziFo3zQc6-VEpjROPb8tvMLYTLAHSyL2hxPcyrz9J_R6p9PdO9J2HhCseFSOoKrdFPFyvQ
+
+=====TV9====
+#EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://headend-api.tonton.com.my/v400/imageHelper.php?id=6420326:378:CHANNEL:IMAGE" tvg-id="TV9.my" tvg-name="" group-title="Malaysia",TV9
+#EXTVLCOPT:http-referrer=https://www.tonton.com.my/
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
+https://live-ssar-02.tonton.com.my/1771889364/0xea628e71287eeccd0ff7f75d647a2889604818e26d31b6d1e802eedfe074b2ef/stream-tv9/master_1080.m3u8?bpkio_serviceid=6c0958d82a830a02c91ce241c1aad7d5&bpkio_sessionid=10f3f3d153-e38f1918-e855-4494-9932-9b4aeb502970&category=all&did=75426297-5848-5ecf-2741-f8bc227e3e1e&dnt=0&ifatype=sessionid&lot_auds&mm_sp&plt=web&ttd_uid2=A4AAACqF2U_jpgmVExbBHFAlXDRd-3NNZqo2F3Xf-eI3F_yX7hThsa6Df2q3So7bw4Zm7jCKNKXdM_YiNbaBfMV7GgfRPVRN-P6SJAqsK6OOUySuIiOa2t8pZMP9y5MGxsxdgmHCaLdtwA8xSJnzziFo3zQc6-VEpjROPb8tvMLYTLAHSyL2hxPcyrz9J_R6p9PdO9J2HhCseFSOoKrdFPFyvQ
+
+=====Drama Sangat=====
+#EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://headend-api.tonton.com.my/v400/imageHelper.php?id=6420342:378:CHANNEL:IMAGE" tvg-id="" tvg-name="" group-title="Malaysia;Drama",Drama Sangat
+#EXTVLCOPT:http-referrer=https://www.tonton.com.my/
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
+https://live-03.tonton.com.my/1771877319/0xcb48d32fa677d9c2052f615f9f392b47ca599277ca6bb25b517e5eaf3532ead2/live-hls/tonton10_720p/index.m3u8
+https://live-03.tonton.com.my/1771929513/0xb5225c1f5601618758bcea11c4ee4868d2a1d0b5e8e6b1acfbb13ab744618ee3/live-hls/tonton10_720p/index.m3u8
 
 #EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://rtm-images.glueapi.io/320x0//live_channel/tv6_Trans.png" tvg-id="TV6.my" tvg-name="" group-title="Malaysia",TV6
 https://mifntechnology.github.io/siaranMy/channels/Tv6/index.m3u8
@@ -145,18 +168,17 @@ https://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/6
 https://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/66d885aef0f17500084b6750/master.m3u8?appName=web&appVersion=9.19.0&deviceDNT=0&deviceId=07998d5d-dd4a-4bcc-84be-58dcbcec76b7&deviceMake=firefox&deviceModel=web&deviceType=web&deviceVersion=147.0.0&serverSideAds=false&sid=bc85d6b4-71c6-4805-b334-c3e539e7d658
 https://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/66c870112630fc0008137ae2/master.m3u8?appName=web&appVersion=9.19.0&deviceDNT=0&deviceId=78b29450-7022-4485-b983-23f30e23925f&deviceMake=firefox&deviceModel=web&deviceType=web&deviceVersion=147.0.0&serverSideAds=false&sid=9de6a5d0-5a87-46ac-80d6-735f3bf4ee93
 https://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/66c88a9efed35b000856f845/master.m3u8?appName=web&appVersion=9.19.0&deviceDNT=0&deviceId=7089727d-21c4-4175-9100-a14521359b66&deviceMake=firefox&deviceModel=web&deviceType=web&deviceVersion=147.0.0&serverSideAds=false&sid=a3df9d07-32f8-4dbf-8c61-b527bcd67c72
-https://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/66c86fff9ba9e800080d8ebe/master.m3u8
+
 
 #EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="Sports",Tennis TV
 https://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/6870c9fd3ffa5e0c914e99aa/master.m3u8?appName=web&appVersion=9.19.0&deviceDNT=0&deviceId=7089727d-21c4-4175-9100-a14521359b66&deviceMake=firefox&deviceModel=web&deviceType=web&deviceVersion=147.0.0&serverSideAds=false&sid=42c6d67b-44f6-47c3-afc5-cf75d7daef44
 https://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/6870c97b759366af055fe371/master.m3u8?appName=web&appVersion=9.19.0&deviceDNT=0&deviceId=ed502ec4-ffd0-49d1-b7de-1c00fad2906c&deviceMake=firefox&deviceModel=web&deviceType=web&deviceVersion=147.0.0&serverSideAds=false&sid=f0d37b66-494f-4a08-aeb8-e4a955aafda3
 https://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/6870c9ca759366af055fe891/master.m3u8?appName=web&appVersion=9.19.0&deviceDNT=0&deviceId=ef438a77-24b9-40a1-9b9b-e24ca3052bea&deviceMake=firefox&deviceModel=web&deviceType=web&deviceVersion=147.0.0&serverSideAds=false&sid=79a304a9-a61b-4fc9-9b9c-7e481a480e40
 https://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/6870c9333ffa5e0c914e9205/master.m3u8?appName=web&appVersion=9.19.0&deviceDNT=0&deviceId=62b227dc-b436-4646-95c2-26345773df69&deviceMake=firefox&deviceModel=web&deviceType=web&deviceVersion=147.0.0&serverSideAds=false&sid=d0d7f7a1-1f05-450e-bcb6-136b116d4ad7
-https://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/6870c9fd3ffa5e0c914e99aa/master.m3u8
+
 
 #EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="Sports",Tennis TV 2
 https://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/681109b688b9d85d0938c6ba/master.m3u8?appName=web&appVersion=9.19.0&deviceDNT=0&deviceId=affbdbfa-5fa3-48af-8369-57c005daef42&deviceMake=firefox&deviceModel=web&deviceType=web&deviceVersion=147.0.0&serverSideAds=false&sid=7d2214c9-9aea-438e-8722-a430fbb943b4
-https://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/681109b688b9d85d0938c6ba/master.m3u8
 
 #EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="Sports",Tennis+
 https://amg01935-amg01935c1-amgplt0165.playout.now3.amagi.tv/playlist.m3u8
@@ -379,6 +401,7 @@ https://amg01576-blueskyeenterta-lovepetsemea-samsungse-ctamh.amagi.tv/playlist/
 
 #EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="",Documentary+
 https://ef79b15c8c7c46c7a9de9d33001dbd07.mediatailor.us-west-2.amazonaws.com/v1/master/ba62fe743df0fe93366eba3a257d792884136c7f/LINEAR-859-DOCUMENTARYPLUS-DOCUMENTARYPLUS/mt/documentaryplus/859/hls/master/playlist.m3u8
+
 
 
 
