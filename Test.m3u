@@ -15,25 +15,17 @@ https://d25tgymtnqzu8s.cloudfront.net/smil:tv2/manifest.mpd
 #====tonton====
 #====TV3====
 #EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://headend-api.tonton.com.my/v400/imageHelper.php?id=6420323:378:CHANNEL:IMAGE" tvg-id="TV3.my" tvg-name="" group-title="Malaysia",TV3
-#EXTVLCOPT:http-referrer=https://www.tonton.com.my/
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
-https://live-ssar-02.tonton.com.my/1771952536/0x6b352c9142dcc78de12165c69976979461cae5c28b7f2b94404d664fdbfe03ca/stream-tv3/master_1080.m3u8?bpkio_serviceid=6c0958d82a830a02ca0936d9cfab8311&bpkio_sessionid=10e3b40d81-da00d42f-3205-4aff-b2a0-d208211457e3&category=all&did=c7babd09-425b-1f78-17ff-b86ad529aadc&dnt=0&ifatype=sessionid&lot_auds&mm_sp&plt=web&ttd_uid2=A4AAACqF2U_jpgmVExbBHFAlXDRd-3NNZqo2F3Xf-eI3F_yX7hThsa6Df2q3So7bw4Zm7jCKNKXdM_YiNbaBfMV7GgfRPVRN-P6SJAqsK6OOUySuIiOa2t8pZMP9y5MGxsxdgmHCaLdtwA8xSJnzziFo3zQc6-VEpjROPb8tvMLYTLAHSyL2hxPcyrz9J_R6p9PdO9J2HhCseFSOoKrdFPFyvQ
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channel/Tonton/TV3/TV3.m3u
 #====Didik TV====
 #EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://headend-api.tonton.com.my/v400/imageHelper.php?id=6420324:378:CHANNEL:IMAGE" tvg-id="DidikTVKPM.my" tvg-name="" group-title="Malaysia",Didik TV
-#EXTVLCOPT:http-referrer=https://www.tonton.com.my/
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
-#EXTVLCOPT:http-cookie=YOUR_SESSION_COOKIE_NAME=YOUR_SESSION_COOKIE_VALUE
-https://live-ssar-02.tonton.com.my/1771952536/0x6b352c9142dcc78de12165c69976979461cae5c28b7f2b94404d664fdbfe03ca/stream-tv3/master_1080.m3u8?bpkio_serviceid=6c0958d82a830a02ca0936d9cfab8311&bpkio_sessionid=10e3b40d81-da00d42f-3205-4aff-b2a0-d208211457e3&category=all&did=c7babd09-425b-1f78-17ff-b86ad529aadc&dnt=0&ifatype=sessionid&lot_auds&mm_sp&plt=web&ttd_uid2=A4AAACqF2U_jpgmVExbBHFAlXDRd-3NNZqo2F3Xf-eI3F_yX7hThsa6Df2q3So7bw4Zm7jCKNKXdM_YiNbaBfMV7GgfRPVRN-P6SJAqsK6OOUySuIiOa2t8pZMP9y5MGxsxdgmHCaLdtwA8xSJnzziFo3zQc6-VEpjROPb8tvMLYTLAHSyL2hxPcyrz9J_R6p9PdO9J2HhCseFSOoKrdFPFyvQ
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channel/Tonton/Didik%20TV/DidikTV.m3u
 #=====TV9====
 #EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://headend-api.tonton.com.my/v400/imageHelper.php?id=6420326:378:CHANNEL:IMAGE" tvg-id="TV9.my" tvg-name="" group-title="Malaysia",TV9
-#EXTVLCOPT:http-referrer=https://www.tonton.com.my/
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
-https://live-ssar-02.tonton.com.my/1771952642/0x56d7bce36b0428a9a411715cb5ad102cc1cb768f4ca0a06e1c855dd5a122648f/stream-tv9/master_1080.m3u8?bpkio_serviceid=6c0958d82a830a02c91ce241c1aad7d5&bpkio_sessionid=10f3d2d114-7b5da96c-985f-42b3-b4cd-abe0f025b078&category=all&did=c7babd09-425b-1f78-17ff-b86ad529aadc&dnt=0&ifatype=sessionid&lot_auds&mm_sp&plt=web&ttd_uid2=A4AAACqF2U_jpgmVExbBHFAlXDRd-3NNZqo2F3Xf-eI3F_yX7hThsa6Df2q3So7bw4Zm7jCKNKXdM_YiNbaBfMV7GgfRPVRN-P6SJAqsK6OOUySuIiOa2t8pZMP9y5MGxsxdgmHCaLdtwA8xSJnzziFo3zQc6-VEpjROPb8tvMLYTLAHSyL2hxPcyrz9J_R6p9PdO9J2HhCseFSOoKrdFPFyvQ
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channel/Tonton/TV9/TV9.m3u
 #=====Drama Sangat=====
 #EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://headend-api.tonton.com.my/v400/imageHelper.php?id=6420342:378:CHANNEL:IMAGE" tvg-id="" tvg-name="" group-title="Malaysia;Drama",Drama Sangat
-#EXTVLCOPT:http-referrer=https://www.tonton.com.my/
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
-https://live-03.tonton.com.my/1771941865/0x465290e0732cbbf7ccd27831a88d276904d2c1c1039cd8daaf66239660e266f6/live-hls/tonton10_720p/index.m3u8
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channel/Tonton/Drama%20Sangat/Drama%20Sangat.txt
+#===================================================================================================================================
 
 #EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://rtm-images.glueapi.io/320x0//live_channel/tv6_Trans.png" tvg-id="TV6.my" tvg-name="" group-title="Malaysia",TV6
 #https://mifntechnology.github.io/siaranMy/channels/Tv6/index.m3u8
@@ -76,6 +68,16 @@ https://d2idp3hzkhjpih.cloudfront.net/out/v1/4b85d9c2bf97413eb0c9fd875599b837/in
 https://raw.githubusercontent.com/MIFNtechnology/siaranMy/main/channels/AstroAwani/index.m3u8
 #https://mifntechnology.github.io/siaranMy/channels/AstroAwani/index.m3u8
 
+#====Mana-Mana====
+#====Al-Hijrah====
+#EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/esdfqp.png" tvg-id="Al-Hijrah" tvg-name="" group-title="Malaysia",Al-Hijrah
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channel/Mana-Mana/Al-Hijrah/Al-Hijrah.m3u
+#====Bernama====
+#EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/ivnvsj.png" tvg-id="Bernama" tvg-name="" group-title="Malaysia",Bernama
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channel/Mana-Mana/Bernama/Bernama.m3u
+#====Enjoy TV====
+#EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/gevtpw.png" tvg-id="Enjoy TV" tvg-name="" group-title="Malaysia",Enjoy TV
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channel/Mana-Mana/Enjoy%20TV/Enjoy%20TV.m3u
 
 #====RTM Parlimen====
 #EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://rtm-images.glueapi.io/320x0/live_channel/7.png" tvg-id="DewanNegara.my" tvg-name="" group-title="Malaysia",Dewan Rakyat
@@ -397,6 +399,7 @@ https://amg01576-blueskyeenterta-lovepetsemea-samsungse-ctamh.amagi.tv/playlist/
 
 #EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="",Documentary+
 https://ef79b15c8c7c46c7a9de9d33001dbd07.mediatailor.us-west-2.amazonaws.com/v1/master/ba62fe743df0fe93366eba3a257d792884136c7f/LINEAR-859-DOCUMENTARYPLUS-DOCUMENTARYPLUS/mt/documentaryplus/859/hls/master/playlist.m3u8
+
 
 
 
