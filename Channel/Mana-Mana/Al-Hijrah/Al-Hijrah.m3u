@@ -1,3 +1,6 @@
 #====Al-Hijrah====
 #EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/esdfqp.png" tvg-id="Al-Hijrah" tvg-name="" group-title="Malaysia",Al-Hijrah
-https://live.mana2.my/TvAlhijrah/tracks-v1a1/mono.m3u8?token=1772325879-43bf457e38e24219b9f1f11a43f87381-0-622b03ec5ed0d820bf98af7c2b2fde12&auth_key=1772325879-43bf457e38e24219b9f1f11a43f87381-0-e8081e4f1bd3c31addf9860f47189d68
+#EXTVLCOPT:http-referrer=https://www.mana2.my/
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
+https://live.mana2.my/TvAlhijrah/tracks-v3a1/mono.m3u8?token=1772370060-22d0149a6e034859aae52ce1906d2444-0-84e8b6380ede8a4cbf40d3d395f53054&auth_key=1772370060-22d0149a6e034859aae52ce1906d2444-0-87e6a826e99b3b19be9ad5e9a8b2f1e1
+
