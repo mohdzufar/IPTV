@@ -26,7 +26,7 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channel/Tonton/
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channel/Tonton/TV9/TV9.m3u
 #=====Drama Sangat=====
 #EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://headend-api.tonton.com.my/v400/imageHelper.php?id=6420342:378:CHANNEL:IMAGE" tvg-id="" tvg-name="" group-title="Malaysia;Drama",Drama Sangat
-https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channel/Tonton/Drama%20Sangat/Drama%20Sangat.txt
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channel/Tonton/Drama%20Sangat/Drama%20Sangat.m3u
 #===================================================================================================================================
 
 #EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://rtm-images.glueapi.io/320x0//live_channel/tv6_Trans.png" tvg-id="TV6.my" tvg-name="" group-title="Malaysia",TV6
@@ -405,6 +405,7 @@ https://amg01576-blueskyeenterta-lovepetsemea-samsungse-ctamh.amagi.tv/playlist/
 
 #EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="",Documentary+
 https://ef79b15c8c7c46c7a9de9d33001dbd07.mediatailor.us-west-2.amazonaws.com/v1/master/ba62fe743df0fe93366eba3a257d792884136c7f/LINEAR-859-DOCUMENTARYPLUS-DOCUMENTARYPLUS/mt/documentaryplus/859/hls/master/playlist.m3u8
+
 
 
 
