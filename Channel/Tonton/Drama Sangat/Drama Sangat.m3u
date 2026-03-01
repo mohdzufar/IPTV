@@ -1,0 +1,5 @@
+#=====Drama Sangat=====
+#EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://headend-api.tonton.com.my/v400/imageHelper.php?id=6420342:378:CHANNEL:IMAGE" tvg-id="" tvg-name="" group-title="Malaysia;Drama",Drama Sangat
+#EXTVLCOPT:http-referrer=https://www.tonton.com.my/
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
+https://live-03.tonton.com.my/1771941865/0x465290e0732cbbf7ccd27831a88d276904d2c1c1039cd8daaf66239660e266f6/live-hls/tonton10_720p/index.m3u8
