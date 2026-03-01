@@ -2,6 +2,7 @@
 #EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://www.bernama.com/tv/assets/img/bernama.pn" tvg-id="BernamaTV.my" tvg-name="" group-title="Malaysia;News",Bernama
 #EXTVLCOPT:http-referrer=https://www.mana2.my/
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
-https://live.mana2.my/Bernama/tracks-v3a1/mono.m3u8?token=1772370160-52bf1e6547e14e88b1ee40088fc55aaa-0-2a9e54202789525a801c0cf27bbef55f&auth_key=1772370160-52bf1e6547e14e88b1ee40088fc55aaa-0-e39965a28b9243ad6212d9ee7dce02f3
+https://live.mana2.my/Bernama/tracks-v3a1/2026/03/01/08/07/02-05000.ts?token=1772370160-52bf1e6547e14e88b1ee40088fc55aaa-0-2a9e54202789525a801c0cf27bbef55f&auth_key=1772370160-52bf1e6547e14e88b1ee40088fc55aaa-0-42cce8f4aafcf51ff7a1b945570848cf
+
 
 
