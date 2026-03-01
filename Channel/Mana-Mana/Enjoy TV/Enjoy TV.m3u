@@ -1,3 +1,6 @@
 #====Enjoy TV====
 #EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/gevtpw.png" tvg-id="Enjoy TV" tvg-name="" group-title="Malaysia",Enjoy TV
-https://live.mana2.my/Tv5/tracks-v1a1/mono.m3u8?token=1772328607-4cb6223ff3724554b5eedbe0d11f98fc-0-8a6a8dafcacf8b3cf42b0ee43dea75e7&auth_key=1772328607-4cb6223ff3724554b5eedbe0d11f98fc-0-d451d1dce7259430f36d6fe087d76a90
+#EXTVLCOPT:http-referrer=https://www.mana2.my/
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
+https://live.mana2.my/Tv5/tracks-v2a1/mono.m3u8?token=1772368768-58916e0d17e94905994925ec5aa220d8-0-13d650ba4dff01530d2c1c004bddb70c&auth_key=1772368768-58916e0d17e94905994925ec5aa220d8-0-11982b7942744716df419bba2025703a
+
