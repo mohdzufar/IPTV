@@ -1,3 +1,6 @@
 #====Bernama====
 #EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://www.bernama.com/tv/assets/img/bernama.pn" tvg-id="BernamaTV.my" tvg-name="" group-title="Malaysia;News",Bernama
-https://ythls-v2.onrender.com/channel/@bernamatv502.m3u8
+#EXTVLCOPT:http-referrer=https://www.mana2.my/
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
+https://live.mana2.my/Bernama/tracks-v3a1/2026/03/01/08/02/42-05000.ts?token=1772370160-52bf1e6547e14e88b1ee40088fc55aaa-0-2a9e54202789525a801c0cf27bbef55f&auth_key=1772370160-52bf1e6547e14e88b1ee40088fc55aaa-0-f1c8b48f873554f260f925c7b3f69573
+
