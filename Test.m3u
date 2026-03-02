@@ -178,6 +178,18 @@ https://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/6
 https://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/66c88a9efed35b000856f845/master.m3u8?appName=web&appVersion=9.19.0&deviceDNT=0&deviceId=7089727d-21c4-4175-9100-a14521359b66&deviceMake=firefox&deviceModel=web&deviceType=web&deviceVersion=147.0.0&serverSideAds=false&sid=a3df9d07-32f8-4dbf-8c61-b527bcd67c72
 
 
+#EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="Sports",Bein Sports 1
+https://hls.iill.top/api/beIN-Sports-1/index.m3u8
+#EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="Sports",Bein Sports 2
+https://hls.iill.top/api/beIN-Sports-2/index.m3u8
+#EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="Sports",Bein Sports 3
+https://hls.iill.top/api/beIN-Sports-3/index.m3u8
+#EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="Sports",Bein Sports 4
+https://hls.iill.top/api/beIN-Sports-4/index.m3u8
+#EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="Sports",Bein Sports 5
+https://hls.iill.top/api/beIN-Sports-5/index.m3u8
+
+
 #EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="Sports",Tennis TV
 https://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/6870c9fd3ffa5e0c914e99aa/master.m3u8?appName=web&appVersion=9.19.0&deviceDNT=0&deviceId=7089727d-21c4-4175-9100-a14521359b66&deviceMake=firefox&deviceModel=web&deviceType=web&deviceVersion=147.0.0&serverSideAds=false&sid=42c6d67b-44f6-47c3-afc5-cf75d7daef44
 https://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/6870c97b759366af055fe371/master.m3u8?appName=web&appVersion=9.19.0&deviceDNT=0&deviceId=ed502ec4-ffd0-49d1-b7de-1c00fad2906c&deviceMake=firefox&deviceModel=web&deviceType=web&deviceVersion=147.0.0&serverSideAds=false&sid=f0d37b66-494f-4a08-aeb8-e4a955aafda3
@@ -409,6 +421,7 @@ https://amg01576-blueskyeenterta-lovepetsemea-samsungse-ctamh.amagi.tv/playlist/
 
 #EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="",Documentary+
 https://ef79b15c8c7c46c7a9de9d33001dbd07.mediatailor.us-west-2.amazonaws.com/v1/master/ba62fe743df0fe93366eba3a257d792884136c7f/LINEAR-859-DOCUMENTARYPLUS-DOCUMENTARYPLUS/mt/documentaryplus/859/hls/master/playlist.m3u8
+
 
 
 
