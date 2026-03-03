@@ -76,7 +76,7 @@ https://raw.githubusercontent.com/MIFNtechnology/siaranMy/main/channels/AstroAwa
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channel/Mana-Mana/Al-Hijrah/Al-Hijrah.m3u
 #====Bernama====
 #EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/ivnvsj.png" tvg-id="Bernama" tvg-name="" group-title="Malaysia",Bernama
-https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channel/Mana-Mana/Bernama/Bernama.m3u
+https://www.youtube.com/live/3j2S3yB6WOw?si=wvstUDDbexjLME32
 #====Enjoy TV====
 #EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/gevtpw.png" tvg-id="Enjoy TV" tvg-name="" group-title="Malaysia",Enjoy TV
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channel/Mana-Mana/Enjoy%20TV/Enjoy%20TV.m3u
@@ -453,6 +453,7 @@ https://ef79b15c8c7c46c7a9de9d33001dbd07.mediatailor.us-west-2.amazonaws.com/v1/
 https://goodiptv.club/douyu/5668371
 #EXTINF:-1 tvg-country="China" tvg-logo="" tvg-id="" tvg-name="" group-title="China",万事通熊猫
 https://goodiptv.club/douyu/7812810
+
 
 
 
