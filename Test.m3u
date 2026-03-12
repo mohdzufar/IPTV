@@ -17,8 +17,7 @@ https://d25tgymtnqzu8s.cloudfront.net/smil:tv2/manifest.mpd
 #EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://headend-api.tonton.com.my/v400/imageHelper.php?id=6420323:378:CHANNEL:IMAGE" tvg-id="TV3.my" tvg-name="" group-title="Malaysia",TV3
 #EXTVLCOPT:http-referrer=https://www.tonton.com.my/
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
-https://live-ssar-02.tonton.com.my/1773235312/6e53912138bacfc2ac0a782064204e9ff06869f27d6d0afc1167b0a33cc267ff/tv3/04.m3u8?bpkio_serviceid=6c0958d82a830a0201685a5b17521fbd&bpkio_sessionid=10c3b15b99-39181918-1f91-478b-b7f9-1453c9ff3ca0&category=all&did=3175c106-b38e-a4fc-e5b8-47164f021a99&dnt=0&ifatype=sessionid&lot_auds&mm_sp&plt=web&ttd_uid2=A4AAACx1vsjWxZX-GFQPbPY39xyV4hDvt4X-903yoiAZs4r3cltQkZGGQ7h57SnARlLj5N3KD3kF6vc1ysey-0RICxnzdNYhMaN85_Bmup7cr7hqoWgpPdED4O_og20doTRat7PvqfvFvafRbstGRSsQUJSgpFFF36_FQW2TxQ_OWeAb7y6gzntehLt8WpRrGACBz53WqjypEDbXW6PCueoEQg
-#====Didik TV====
+https://live-ssar-02.tonton.com.my/1773323369/3126dc36ea962b2707be71519c0aae1cf2b9664f7b96036f8eb10c8ed7b4f556/tv3/04.m3u8?bpkio_serviceid=6c0958d82a830a0201685a5b17521fbd&bpkio_sessionid=10b3b5b228-5f16e409-09d2-4c52-9ee0-32b74d628498&category=all&did=0d89bf1f-7f64-4fb1-6e24-468ab44ec12d&dnt=0&ifatype=sessionid&lot_auds&mm_sp&plt=web&ttd_uid2=A4AAACx1vsjWxZX-GFQPbPY39xyV4hDvt4X-903yoiAZs4r3cltQkZGGQ7h57SnARlLj5N3KD3kF6vc1ysey-0RICxnzdNYhMaN85_Bmup7cr7hqoWgpPdED4O_og20doTRat7PvqfvFvafRbstGRSsQUJSgpFFF36_FQW2TxQ_OWeAb7y6gzntehLt8WpRrGACBz53WqjypEDbXW6PCueoEQg#====Didik TV====
 #EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://headend-api.tonton.com.my/v400/imageHelper.php?id=6420324:378:CHANNEL:IMAGE" tvg-id="DidikTVKPM.my" tvg-name="" group-title="Malaysia",Didik TV
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channel/Tonton/Didik%20TV/DidikTV.m3u
 #=====TV9====
@@ -453,6 +452,7 @@ https://ef79b15c8c7c46c7a9de9d33001dbd07.mediatailor.us-west-2.amazonaws.com/v1/
 https://goodiptv.club/douyu/5668371
 #EXTINF:-1 tvg-country="China" tvg-logo="" tvg-id="" tvg-name="" group-title="China",万事通熊猫
 https://goodiptv.club/douyu/7812810
+
 
 
 
