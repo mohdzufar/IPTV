@@ -18,7 +18,7 @@ https://d25tgymtnqzu8s.cloudfront.net/smil:tv2/manifest.mpd
 ##EXTVLCOPT:http-referrer=https://www.tonton.com.my/
 ##EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
 ##https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channel/Tonton/TV3/TV3.m3u
-https://2bfd741e.b-cdn.net/streamer/3iWcUSXZLTztaTtw8k7q3D.m3u8?expires=1773891368&token=RsxPP0gDfIh9Xv9GV-uZ-9_ZBMbl-CDohSA7hKiF9-c
+https://2bfd741e.b-cdn.net/streamer/3iWcUSXZLTztaTtw8k7q3D.m3u8?expires=1773921351&token=ZrsGBB3oHAWhK3Xv5MQu61uNQxU_v3UzSQaWY0w-VYE
 
 #EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://headend-api.tonton.com.my/v400/imageHelper.php?id=6420324:378:CHANNEL:IMAGE" tvg-id="DidikTVKPM.my" tvg-name="" group-title="Malaysia",Didik TV
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channel/Tonton/Didik%20TV/DidikTV.m3u
