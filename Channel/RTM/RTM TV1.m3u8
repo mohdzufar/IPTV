@@ -7,4 +7,4 @@ https://d25tgymtnqzu8s.cloudfront.net/smil:tv1/chunklist_b2596000_slENG.m3u8?id=
 #EXT-X-STREAM-INF:BANDWIDTH=7171631,CODECS="mp4a.40.2,avc1.64002a",RESOLUTION=1920x1080,FRAME-RATE=60,VIDEO-RANGE=SDR,CLOSED-CAPTIONS=NONE
 https://d25tgymtnqzu8s.cloudfront.net/smil:tv1/playlist.m3u8?id=1
 #EXT-X-STREAM-INF:BANDWIDTH=7171631,CODECS="mp4a.40.2,avc1.64002a",RESOLUTION=1920x1080,FRAME-RATE=60,VIDEO-RANGE=SDR,CLOSED-CAPTIONS=NONE
-#https://mifntechnology.github.io/siaranMy/channels/Tv1/index.m3u8
+https://mifntechnology.github.io/siaranMy/channels/Tv1/index.m3u8
