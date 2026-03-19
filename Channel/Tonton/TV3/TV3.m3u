@@ -1,6 +1,7 @@
 #EXTM3U
 #EXT-X-STREAM-INF:BANDWIDTH=500000,RESOLUTION=1920x1080
-##EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://headend-api.tonton.com.my/v400/imageHelper.php?id=6420323:378:CHANNEL:IMAGE" tvg-id="TV3.my" tvg-name="" group-title="Malaysia",TV3
-##EXTVLCOPT:http-referrer=https://www.tonton.com.my/
-##EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
-https://2bfd741e.b-cdn.net/streamer/3iWcUSXZLTztaTtw8k7q3D.m3u8?expires=1773891368&token=RsxPP0gDfIh9Xv9GV-uZ-9_ZBMbl-CDohSA7hKiF9-c
+#EXTVLCOPT:http-referrer=https://watch.tonton.com.my
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
+##https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channel/Tonton/TV3/TV3.m3u
+https://live-ssar-02.tonton.com.my/1773929424/3270bad4de71fc42a4c6aff96dae93c992938513d6707cd96f8216341df80330/tv3/04.m3u8?bpkio_serviceid=6c0958d82a830a0201685a5b17521fbd&bpkio_sessionid=10c3a42d59-f8236b9e-6c80-496e-9e05-025721284e17&category=all&did=dbb04166-d138-c2d0-3e4e-5734988f9450&dnt=0&ifatype=sessionid&lot_auds&mm_sp&plt=web&ttd_uid2=A4AAAC4zGN8-QIkT-bKwOTzZSun4e7z0eLv1-cN_ZJMD26FtEWCv0kz41_hWdw5CMdHc4DBs22l0lOU2cLivfUDBGqvHZeqSmt42jWKCTK_Ptr326Jyo4ok-I8IJCRHTBtrmf0qhVP-B2Hoq2IaTqrj6mkOR-vbTKisKmaxqM6qbioBWZfKJvYrBJyJhwQQ37-WH0D9F3RSZFx8VUsDl-dRoSQ
+
