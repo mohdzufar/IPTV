@@ -2,6 +2,6 @@
 #EXT-X-INDEPENDENT-SEGMENTS
 #EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://rtm-images.glueapi.io/320x0//live_channel/tv1_Trans.png" tvg-id="TV1.my" tvg-name="" group-title="Malaysia",RTM TV1
 https://d25tgymtnqzu8s.cloudfront.net/smil:tv1/chunklist_b2596000_slENG.m3u8?id=1
-https://d25tgymtnqzu8s.cloudfront.net/smil:tv1/manifest.mpd
+##https://d25tgymtnqzu8s.cloudfront.net/smil:tv1/manifest.mpd
 ##https://d25tgymtnqzu8s.cloudfront.net/smil:tv1/playlist.m3u8?id=1
 ##https://mifntechnology.github.io/siaranMy/channels/Tv1/index.m3u8
