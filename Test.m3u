@@ -15,7 +15,7 @@ https://d25tgymtnqzu8s.cloudfront.net/smil:tv2/manifest.mpd
 #====tonton====
 #====TV3====
 #EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://headend-api.tonton.com.my/v400/imageHelper.php?id=6420323:378:CHANNEL:IMAGE" tvg-id="TV3.my" tvg-name="" group-title="Malaysia",TV3
-#EXTVLCOPT:http-referrer=https://www.tonton.com.my/
+#EXTVLCOPT:http-referrer=https://https://malaysia-tv.net
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
 ##https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channel/Tonton/TV3/TV3.m3u
 https://2bfd741e.b-cdn.net/streamer/3iWcUSXZLTztaTtw8k7q3D.m3u8?expires=1773921351&token=ZrsGBB3oHAWhK3Xv5MQu61uNQxU_v3UzSQaWY0w-VYE
@@ -356,9 +356,11 @@ https://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/6
 #EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="Movies",Movie Sphere by Lionsgate 2
 https://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/645e7828e1979c00087b75b4/master.m3u8?appName=web&appVersion=9.19.0&deviceDNT=0&deviceId=affbdbfa-5fa3-48af-8369-57c005daef42&deviceMake=firefox&deviceModel=web&deviceType=web&deviceVersion=147.0.0&serverSideAds=false&sid=1f8d5c9e-2f9a-45f7-9a7b-d109f52ea9f5
 
-#EXTINF:-1 tvg-country="Inuted Kingdom" tvg-logo="" tvg-id="" tvg-name="" group-title="Movies",Wedotv Movies
+#EXTINF:-1 tvg-country="United Kingdom" tvg-logo="" tvg-id="" tvg-name="" group-title="Movies",Wedotv Movies
 https://amg00735-amg00735c18-rlaxx-us-4085.playouts.now.amagi.tv/playlist/amg00735-videosolutionsagfast-wedomoviesen-rlaxxus/playlist.m3u8?tag_id=105292&app_name=Whale+TV%2B&app_store=Browser&ic=IAB1&url=&wtv_channel_id=0230&content_producer_name=Amagi_VideoSolutions_wedotvMoviesEN-UK-IE&content_categories=IAB1-5%2CIAB1%2CIAB1-7&content_custom_1_param=Amagi&content_custom_2_param=F%2CM&content_custom_3_param=18-20%2C21-24%2C25-29%2C30-34%2C35-39%2C40-44%2C45-49&tv_language=&device_make=&tv_vendor=&brand_name=&device_model=&tv_model=&gdpr=1&gdpr_consent=&did=&ua=&ip=&dnt=&lmt=&coppa=0&us_privacy=1YNN&min_dur=5&max_dur=30&cb=&sid=&h=&w=&content_livestream=1&placement=1&ap=1&mute=0&skip=0&ads.gdpr=0
 
+#EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="Movies",Miramax
+https://linear-798.frequency.stream/mt/plex/798/hls/master/playlist_1920x1080.m3u8
 
 
 #====News====
