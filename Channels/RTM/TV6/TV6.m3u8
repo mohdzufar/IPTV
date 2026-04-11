@@ -1,0 +1,5 @@
+#EXTM3U
+#EXTINF:-1 tvg-name="",TV6
+https://d25tgymtnqzu8s.cloudfront.net/smil:tv6/playlist.m3u8?id=6
+#https://mifntechnology.github.io/siaranMy/channels/Tv6/index.m3u8
+##https://d25tgymtnqzu8s.cloudfront.net/smil:tv6/manifest.mpd
