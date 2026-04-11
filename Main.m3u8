@@ -82,7 +82,7 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channel/RTM/RTM
 #EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://rtm-images.glueapi.io/320x0/fast_channel/LEAD_CHANNEL.jpg" tvg-id="" tvg-name="RTM Lead" group-title="Malaysia",RTM Lead
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channel/RTM/RTM%20Lead.m3u
 #EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://rtm-images.glueapi.io/320x0/fast_channel/APETITO_CHANNEL.jpg" tvg-id="" tvg-name="RTM Apetito" group-title="Malaysia",RTM Apetito
-https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channel/RTM/RTM%20Apetito.m3u
+https://raw.githubusercontent.com/mohdzufar/Main-IPTV/refs/heads/main/Channels/RTM/Apetito/RTM%20Apetito.m3u
 #EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://rtm-images.glueapi.io/320x0/fast_channel/FITRAH_CHANNEL.jpg" tvg-id="" tvg-name="RTM Fitrah" group-title="Malaysia",RTM Fitrah
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channel/RTM/RTM%20Fitrah.m3u
 #EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://rtm-images.glueapi.io/320x0/fast_channel/JR_CHANNEL.jpg" tvg-id="" tvg-name="RTM Junior" group-title="Malaysia",RTM Junior
