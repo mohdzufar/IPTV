@@ -1,5 +1,5 @@
 #EXTM3U
-#EXTINF:-1 tvg-country="Malaysia",Dewan Rakyat
+#EXTINF:-1 tvg-Name="Dewan Rakyat",Dewan Rakyat
 https://d25tgymtnqzu8s.cloudfront.net/smil:rakyat/playlist.m3u8?id=7
 ##https://raw.githubusercontent.com/MIFNtechnology/siaranMy/main/channels/DewanRakyat/index.m3u8
 ##https://mifntechnology.github.io/siaranMy/channels/DewanRakyat/index.m3u8
