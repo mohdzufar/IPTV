@@ -1,6 +1,5 @@
 #EXTM3U
-#EXTINF:-1 tvg-country="Malaysia" tvg-logo="g" tvg-id="" tvg-name="" group-title="",Youtube
-#EXTVLCOPT:http-referrer=https://www.youtube.com./
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
-https://manifest.googlevideo.com/api/manifest/hls_variant/expire/1772579328/ei/oBWnaf7kMJaGpN8PzqS4uAE/ip/115.164.36.215/id/3j2S3yB6WOw.1/source/yt_live_broadcast/requiressl/yes/xpc/EgVo2aDSNQ%3D%3D/tx/51773368/txs/51773368%2C51773369%2C51773370%2C51773371%2C51773372%2C51773373/hfr/1/maudio/1/bui/AVNa5-ypCyEuG1L6RM3a7tjDML7xbmB7bp87o-qq4l1bVol70xeDwQX5UsgSo2xooBDMvTscYVeRL2-7/spc/6dlaFJK-x0rkWC-YH3TGbZNJJFavPnNz1aaF2OaHXQRMRwedrmxfwPg/vprv/1/go/1/ns/ClfEqAZ-OhI3qIsb6MKpcfIT/rqh/5/reg/0/pacing/0/nvgoi/1/ncsapi/1/keepalive/yes/fexp/51552689%2C51565115%2C51565682%2C51580968%2C51791334/dover/11/n/bltuXVLYGw1cKtrRTyRZ/itag/0/playlist_type/LIVE/sparams/expire%2Cei%2Cip%2Cid%2Csource%2Crequiressl%2Cxpc%2Ctx%2Ctxs%2Chfr%2Cmaudio%2Cbui%2Cspc%2Cvprv%2Cgo%2Cns%2Crqh%2Creg%2Citag%2Cplaylist_type/sig/AHEqNM4wRQIhAIfx53OTk0WVOWbjHTtnISdPjzXt7nchiiE88KWC_cgtAiAQL08oMYbHs_PLoqAkuBuO2u9MwNDB-mTFsIZZOpL0WQ%3D%3D/file/index.m3u8
-
+#EXT-X-STREAM-INF:BANDWIDTH=500000,RESOLUTION=1920x1080
+https://d25tgymtnqzu8s.cloudfront.net/smil:rakyat/playlist.m3u8?id=7
+##https://raw.githubusercontent.com/MIFNtechnology/siaranMy/main/channels/DewanRakyat/index.m3u8
+##https://mifntechnology.github.io/siaranMy/channels/DewanRakyat/index.m3u8
