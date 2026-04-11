@@ -1,9 +1,3 @@
 #EXTM3U
 #EXT-X-STREAM-INF:BANDWIDTH=2596000,RESOLUTION=1920x1080
 https://d1sq2slp9afh7o.cloudfront.net/smil:apetito/chunklist_b2596000_slENG.m3u8
-
-##EXTM3U
-##EXT-X-STREAM-INF:BANDWIDTH=500000,RESOLUTION=1920x1080
-##https://d1sq2slp9afh7o.cloudfront.net/smil:apetito/playlist.m3u8
-##https://d1sq2slp9afh7o.cloudfront.net/smil:apetito/chunklist_b2596000_slENG.m3u8
-
