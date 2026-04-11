@@ -1,4 +1,4 @@
 #EXTM3U
-#EXTINF:-1 tvg-name="RTM Lead"RTM Lead
+#EXTINF:-1 tvg-name="RTM Lead",RTM Lead
 https://d1sq2slp9afh7o.cloudfront.net/smil:lead/playlist.m3u8
 ##https://d1sq2slp9afh7o.cloudfront.net/smil:lead/chunklist_b2596000_slENG.m3u8
