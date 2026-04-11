@@ -1,1 +1,6 @@
-
+#EXTM3U
+#EXTINF:-1 tvg-id="TV2" tvg-name="TV2" tvg-logo="",TV2
+https://d1sq2slp9afh7o.cloudfront.net/smil:jr/playlist.m3u8
+https://d1sq2slp9afh7o.cloudfront.net/smil:jr/chunklist_b2596000_slENG.m3u8#EXTM3U
+#EXTINF:-1 tvg-id="TV2" tvg-name="TV2" tvg-logo="",TV2
+https://d25tgymtnqzu8s.cloudfront.net/smil:tv2/manifest.mpd
