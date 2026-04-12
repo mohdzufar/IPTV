@@ -1,5 +1,5 @@
 #EXTM3U
-#EXTINF:-1 tvg-country="Malaysia" tvg-name="",RTM Sukan
+#EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://rtm-images.glueapi.io/320x0//live_channel/sukan_Trans.png" tvg-id="SukanRTM.my" tvg-name="" group-title="Malaysia;Sports",RTM Sukan
 https://d25tgymtnqzu8s.cloudfront.net/smil:sukan/playlist.m3u8?id=4
 ##https://d25tgymtnqzu8s.cloudfront.net/smil:sukan/manifest.mpd?id=1
 ##https://d25tgymtnqzu8s.cloudfront.net/smil:sukan/manifest.mpd
