@@ -28,8 +28,7 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channel/Tonton/
 https://raw.githubusercontent.com/mohdzufar/Main-IPTV/refs/heads/main/Channels/RTM/TV6/TV6.m3u8
 
 #EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://headend-api.tonton.com.my/v100/imageHelper.php?id=6420325.:378:CHANNEL:IMAGE:png" tvg-id="8TV.my" tvg-name="" group-title="Malaysia",8TV
-https://raw.githubusercontent.com/MIFNtechnology/siaranMy/main/channels/8tv/index.m3u8
-http://cdn6.163189.xyz/163189/8tv
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/TV8/TV8.m3u8
 
 
 #EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://rtm-images.glueapi.io/320x0//live_channel/okey_Trans.png" tvg-id="OKEY.my" tvg-name="" group-title="Malaysia",Okey TV
@@ -42,24 +41,21 @@ https://raw.githubusercontent.com/mohdzufar/Main-IPTV/refs/heads/main/Channels/R
 ##https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channel/RTM/RTM%20ASEAN.m3u8
 
 #EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/channel/logos/jnkfvh.png" tvg-id="TVIKIM.my" tvg-name="" group-title="Malaysia",TV IKIM
-https://raw.githubusercontent.com/MIFNtechnology/siaranMy/main/channels/TvIkim/index.m3u8
-#https://mifntechnology.github.io/siaranMy/channels/TvIkim/index.m3u8
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/IKIM/IKIM%20TV.m3u8
 
 #EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://rtm-images.glueapi.io/320x0//live_channel/berita_bckg.jpg" tvg-id="BeritaRTM.my" tvg-name="" tvg-url="" group-title="Malaysia;News",Berita RTM
 https://raw.githubusercontent.com/mohdzufar/Main-IPTV/refs/heads/main/Channels/RTM/Berita/RTM%20Berita.m3u8
 
 #EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/436_144.png" tvg-id="AstroAwani.my" tvg-name="" group-title="Malaysia;News",Astro Awani
-https://d2idp3hzkhjpih.cloudfront.net/out/v1/4b85d9c2bf97413eb0c9fd875599b837/index.m3u8
-https://raw.githubusercontent.com/MIFNtechnology/siaranMy/main/channels/AstroAwani/index.m3u8
-#https://mifntechnology.github.io/siaranMy/channels/AstroAwani/index.m3u8
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/ASTRO/Awani/Astro%20Awani.m3u8
 
 #====Mana-Mana====
 #====Al-Hijrah====
 #EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/esdfqp.png" tvg-id="TV ALHIJRAH" tvg-name="" group-title="Malaysia",Al-Hijrah
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channel/Mana-Mana/Al-Hijrah/Al-Hijrah.m3u
 #====Bernama====
-#EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/ivnvsj.png" tvg-id="Bernama" tvg-name="" group-title="Malaysia",Bernama
-https://www.youtube.com/live/3j2S3yB6WOw?si=wvstUDDbexjLME32
+##EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/ivnvsj.png" tvg-id="Bernama" tvg-name="" group-title="Malaysia",Bernama
+##https://www.youtube.com/live/3j2S3yB6WOw?si=wvstUDDbexjLME32
 #====Enjoy TV====
 #EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/gevtpw.png" tvg-id="Enjoy TV" tvg-name="" group-title="Malaysia",Enjoy TV
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channel/Mana-Mana/Enjoy%20TV/Enjoy%20TV.m3u
@@ -67,7 +63,6 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channel/Mana-Ma
 #====RTM Parlimen====
 #EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://rtm-images.glueapi.io/320x0/live_channel/7.png" tvg-id="DewanRakyat.my" tvg-name="" group-title="Malaysia",Dewan Rakyat
 https://raw.githubusercontent.com/mohdzufar/Main-IPTV/refs/heads/main/Channels/RTM/Dewan%20Rakyat/Dewan%20Rakyat.m3u8
-
 #EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://rtm-images.glueapi.io/320x0//live_channel/PDN_Trans.png" tvg-id="DewanNegara.my" tvg-name="" group-title="Malaysia",Dewan Negara:
 https://raw.githubusercontent.com/mohdzufar/Main-IPTV/refs/heads/main/Channels/RTM/Dewan%20Negara/Dewan%20Negara.m3u8
 
