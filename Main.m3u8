@@ -66,19 +66,19 @@ https://raw.githubusercontent.com/mohdzufar/Main-IPTV/refs/heads/main/Channels/R
 #EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://rtm-images.glueapi.io/320x0//live_channel/PDN_Trans.png" tvg-id="DewanNegara.my" tvg-name="" group-title="Malaysia",Dewan Negara:
 https://raw.githubusercontent.com/mohdzufar/Main-IPTV/refs/heads/main/Channels/RTM/Dewan%20Negara/Dewan%20Negara.m3u8
 
-#EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://rtm-images.glueapi.io/320x0/fast_channel/SNAP_CHANNEL.jpg" tvg-id="Snap" tvg-name="RTM Snap" group-title="Malaysia",RTM Snap
+#EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://rtm-images.glueapi.io/320x0/fast_channel/SNAP_CHANNEL.jpg" tvg-id="" tvg-name="RTM Snap" group-title="Malaysia",RTM Snap
 https://raw.githubusercontent.com/mohdzufar/Main-IPTV/refs/heads/main/Channels/RTM/Snap/RTM%20Snap.m3u8
 #EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://rtm-images.glueapi.io/320x0/fast_channel/LEAD_CHANNEL.jpg" tvg-id="Lead" tvg-name="RTM Lead" group-title="Malaysia",RTM Lead
 https://raw.githubusercontent.com/mohdzufar/Main-IPTV/refs/heads/main/Channels/RTM/Lead/RTM%20Lead.m3u8
-#EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://rtm-images.glueapi.io/320x0/fast_channel/APETITO_CHANNEL.jpg" tvg-id="Apetito" tvg-name="RTM Apetito" group-title="Malaysia",RTM Apetito
+#EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://rtm-images.glueapi.io/320x0/fast_channel/APETITO_CHANNEL.jpg" tvg-id="479619" tvg-name="RTM Apetito" group-title="Malaysia",RTM Apetito
 https://raw.githubusercontent.com/mohdzufar/Main-IPTV/refs/heads/main/Channels/RTM/Apetito/RTM%20Apetito.m3u8
-#EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://rtm-images.glueapi.io/320x0/fast_channel/FITRAH_CHANNEL.jpg" tvg-id="Fitrah" tvg-name="RTM Fitrah" group-title="Malaysia",RTM Fitrah
+#EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://rtm-images.glueapi.io/320x0/fast_channel/FITRAH_CHANNEL.jpg" tvg-id="479449" tvg-name="RTM Fitrah" group-title="Malaysia",RTM Fitrah
 https://raw.githubusercontent.com/mohdzufar/Main-IPTV/refs/heads/main/Channels/RTM/Fitrah/RTM%20Fitrah.m3u8
-#EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://rtm-images.glueapi.io/320x0/fast_channel/JR_CHANNEL.jpg" tvg-id="Junior" tvg-name="RTM Junior" group-title="Malaysia",RTM Junior
+#EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://rtm-images.glueapi.io/320x0/fast_channel/JR_CHANNEL.jpg" tvg-id="502308" tvg-name="RTM Junior" group-title="Malaysia",RTM Junior
 https://raw.githubusercontent.com/mohdzufar/Main-IPTV/refs/heads/main/Channels/RTM/Junior/RTM%20Junior.m3u8
-#EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://rtm-images.glueapi.io/320x0/fast_channel/ROLL_CHANNEL.jpg" tvg-id="Roll" tvg-name="RTM Roll" group-title="Malaysia",RTM Roll
+#EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://rtm-images.glueapi.io/320x0/fast_channel/ROLL_CHANNEL.jpg" tvg-id="521957" tvg-name="RTM Roll" group-title="Malaysia",RTM Roll
 https://raw.githubusercontent.com/mohdzufar/Main-IPTV/refs/heads/main/Channels/RTM/Roll/RTM%20Roll.m3u8
-#EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://rtm-images.glueapi.io/320x0/fast_channel/AURA_CHANNEL.jpg" tvg-id="Aura" tvg-name="RTM Aura" group-title="Malaysia",RTM Aura
+#EXTINF:-1 tvg-country="Malaysia" tvg-logo="https://rtm-images.glueapi.io/320x0/fast_channel/AURA_CHANNEL.jpg" tvg-id="479618" tvg-name="RTM Aura" group-title="Malaysia",RTM Aura
 https://raw.githubusercontent.com/mohdzufar/Main-IPTV/refs/heads/main/Channels/RTM/Aura/RTM%20Aura.m3u8
 
 #EXTINF:-1 tvg-country="Malaysia" tvg-logo="" tvg-id="" tvg-name="Filem Mantap" group-title="Malaysia",Filem Mantap
@@ -126,7 +126,7 @@ https://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/6
 https://30a-tv.com/feeds/vidaa/golf.m3u8
 https://30a-tv.com/feeds/vidaa/golf.m3u8?checkedby:iptvcat.com
 
-#EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="Sports;Golf",Golf Channel (1080p) [Not 24/7]
+#EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="2300" tvg-name="" group-title="Sports;Golf",Golf Channel (1080p) [Not 24/7]
 https://tvpass.org/live/GolfChannel/hd
 #EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="Sports;Golf",Golf Channel (Latin America)
 http://181.114.57.246:4000/play/BHGDIhvdyuw/index.m3u8
