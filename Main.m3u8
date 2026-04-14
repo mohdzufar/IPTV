@@ -1,5 +1,5 @@
 #EPG Below
-#EXTM3U url-tvg="https://raw.githubusercontent.com/Jerrie-Aries/EPG/refs/heads/master/epg.xml, https://raw.githubusercontent.com/AqFad2811/epg/refs/heads/main/epg.xml, https://epg.pw/xmltv/epg.xml"
+#EXTM3U url-tvg="https://raw.githubusercontent.com/Jerrie-Aries/EPG/refs/heads/master/epg.xml, https://raw.githubusercontent.com/AqFad2811/epg/refs/heads/main/epg.xml, https://epg.pw/xmltv/epg.xml, https://github.com/matthuisman/i.mjh.nz/raw/master/PlutoTV/gb.xml.gz, https://github.com/matthuisman/i.mjh.nz/raw/master/SamsungTVPlus/all.xml.gz"
 
 
 ##=====Malaysia=====
@@ -153,6 +153,8 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Tennis
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Tennis%20TV/Tennis%20TV2.m3u8
 #EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="Sports",Tennis+
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Tennis%20TV/Tennis%2B.m3u8
+#EXTINF:-1 tvg-country="" tvg-logo="https://images.pluto.tv/channels/6627621d56fc840008e47c90/colorLogoPNG_1756973184696.png" tvg-id="6627621d56fc840008e47c90" tvg-name="" group-title="Sports",Tennis Channel
+https://jmp2.uk/plu-6627621d56fc840008e47c90.m3u8
 
 #EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="Sports",MLB
 https://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/5e66968a70f34c0007d050be/master.m3u8?appName=web&appVersion=9.19.0&deviceDNT=0&deviceId=affbdbfa-5fa3-48af-8369-57c005daef42&deviceMake=firefox&deviceModel=web&deviceType=web&deviceVersion=147.0.0&serverSideAds=false&sid=b24a9dca-0f04-498b-a54e-e848441bd909
@@ -259,6 +261,9 @@ https://live.iill.top/douyu/3811559
 #EXTINF:-1 tvg-country="South Korea" tvg-logo="" tvg-id="" tvg-name="" group-title="Korea;Music",KPOP Mix
 https://cloud.tvomix.com/KPOPMIX/index.m3u8
 
+#EXTINF:-1 tvg-country="South Korea" tvg-logo="https://tvpnlogopus.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/CA3900002PM_20251202T010043SQUARE.png" tvg-id="CA3900002PM" tvg-name="" group-title="Korea;Music",K-POP
+https://jmp2.uk/stvp-CA3900002PM
+
 #EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="Japan;Music",Music Japan
 http://cdns.jp-primehome.com:8000/zhongying/live/playlist.m3u8?cid=cs06
 
@@ -301,6 +306,9 @@ https://amg00735-amg00735c18-rlaxx-us-4085.playouts.now.amagi.tv/playlist/amg007
 
 #EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="Movies",Miramax
 https://linear-798.frequency.stream/mt/plex/798/hls/master/playlist_1920x1080.m3u8
+
+#EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="Movies",Universal Movie
+https://d4whmvwm0rdvi.cloudfront.net/10007/99991621/hls/master.m3u8?ads.xumo_channelId=99991621&ads.asnw=169843&ads.afid=158702674&ads.sfid=16926435&ads.csid=xumo_web_rottentomatoesrttv_ssai_cro&ads._fw_is_lat=0&ads._fw_us_privacy=&ads._fw_coppa=0&ads._fw_did=c9825a71-4385-4205-834c-7bf77bcc68a4&ads._fw_vcid2=512116:c9825a71-4385-4205-834c-7bf77bcc68a4&ads._fw_app_bundle=web.xumo.com&ads._fw_app_store_url=&ads._fw_content_category=&ads._fw_content_genre=&ads._fw_content_language=en&ads._fw_content_rating=&ads._fw_deviceMake=GitHubAction&ads._fw_device_model=PythonScript&ads._fw_deviceType=3-Connected_TV&ads.appVersion=1.0.0&ads.appName=XumoPlay&ads.xumo_contentId=2659&ads.xumo_contentName=RottenTomatoesRTTV&ads.xumo_providerId=2659&ads.xumo_providerName=RottenTomatoesRTTV&ads.channelId=99991621&ads._fw_ifa_type=
 
 
 #====News====
@@ -357,6 +365,8 @@ https://d1bl6tskrpq9ze.cloudfront.net/hls/master.m3u8?ads.xumo_channelId=9998400
 #EXTINF:-1 tvg-country="Great Britain" tvg-logo="" tvg-id="" tvg-name="" group-title="Nature",Wild Earth
 https://wildearth-lg.amagi.tv/hls/amagi_hls_data_wildearth-wildearth-lgAA/CDN/master.m3u8?ads.deviceid=[DEVICE_ID]&ads.ifa=[IFA]&ads.ifatype=[IFA_TYPE]&ads.lat=[LMT]&ads.donotsell=[DNS]&ads.ua=[UA]&ads.ip=[IP]&ads.gdpr=[GDPR]&ads.gdprconsent=[GDPR_CONSENT]&ads.country=[COUNTRY]&ads.usprivacy=[US_PRIVACY]&ads.appstoreurl=[APP_STOREURL]&ads.bundleid=[APP_BUNDLE]&ads.appname=[APP_NAME]&ads.appversion=[APP_VERSION]&ads.devicetype=[DEVICE_TYPE]&ads.devicemake=[DEVICE_MAKE]&ads.devicemodel=[DEVICE_MODEL]&ads.coppa=0&ads.targetad=[TARGETAD_ALLOWED]&ads.fck=[FCK]&ads.viewsize=[VIEWSIZE]&ads.givn=[NONCE]&ads.dmake=[DEVICE_MAKE]
 
+#EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="Nature",Xumo Nature & Wildlife TV
+https://live-content.xumo.com/3883/content/XM0RW1PIY5R776/25283138/master.m3u8
 
 
 
@@ -370,6 +380,7 @@ https://wildearth-lg.amagi.tv/hls/amagi_hls_data_wildearth-wildearth-lgAA/CDN/ma
 
 #====No Category====
 #EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="",Bob Ross Channel
+https://jmp2.uk/rok-1d3f60995d80521882a379fc06e47679.m3u8
 https://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/5f36d726234ce10007784f2a/master.m3u8?appName=web&appVersion=9.19.0&deviceDNT=0&deviceId=affbdbfa-5fa3-48af-8369-57c005daef42&deviceMake=firefox&deviceModel=web&deviceType=web&deviceVersion=147.0.0&serverSideAds=false&sid=68a91069-a7cb-42a1-9a47-e7fdffbec715
 https://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/5f36d726234ce10007784f2a/master.m3u8
 
@@ -389,10 +400,17 @@ https://rakutenaa-blueskyent-lovepetsemea-rakuten-ikc4q.amagi.tv/playlist/rakute
 https://amg01576-blueskyeenterta-lovepetsemea-samsungse-ctamh.amagi.tv/playlist/amg01576-blueskyeenterta-lovepetsemea-samsungse/playlist.m3u8
 
 #EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="",Documentary+
-https://ef79b15c8c7c46c7a9de9d33001dbd07.mediatailor.us-west-2.amazonaws.com/v1/master/ba62fe743df0fe93366eba3a257d792884136c7f/LINEAR-859-DOCUMENTARYPLUS-DOCUMENTARYPLUS/mt/documentaryplus/859/hls/master/playlist.m3u8
+https://live-content.xumo.com/2715/content/XM04405O6X0WP0/28846020/master.m3u8
+##https://ef79b15c8c7c46c7a9de9d33001dbd07.mediatailor.us-west-2.amazonaws.com/v1/master/ba62fe743df0fe93366eba3a257d792884136c7f/LINEAR-859-DOCUMENTARYPLUS-DOCUMENTARYPLUS/mt/documentaryplus/859/hls/master/playlist.m3u8
 
 #====China=====
 #EXTINF:-1 tvg-country="China" tvg-logo="" tvg-id="" tvg-name="" group-title="China",mn静静nm
 https://goodiptv.club/douyu/5668371
 #EXTINF:-1 tvg-country="China" tvg-logo="" tvg-id="" tvg-name="" group-title="China",万事通熊猫
 https://goodiptv.club/douyu/7812810
+
+##====Korea======
+#EXTINF:-1 tvg-country="South Korea" tvg-logo="https://tvpnlogopeu.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/GB17000066A_20250826T004916SQUARE.png" tvg-id="GB17000066A" tvg-name="" group-title="Korea",K-Content
+https://jmp2.uk/stvp-GB17000066A
+#EXTINF:-1 tvg-country="South Korea" tvg-logo="https://tvpnlogopus.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/CA17000023Q_20250826T234700SQUARE.png" tvg-id="CA17000023Q" tvg-name="" group-title="Korea;Drama",K-Drama+
+https://jmp2.uk/stvp-GBBD4100011RE
