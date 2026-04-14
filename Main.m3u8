@@ -258,10 +258,10 @@ https://live.iill.top/douyu/3811559
 
 #====Music====
 
-#EXTINF:-1 tvg-country="South Korea" tvg-logo="" tvg-id="" tvg-name="" group-title="Korea;Music",KPOP Mix
+#EXTINF:-1 tvg-country="South Korea" tvg-logo="" tvg-id="" tvg-name="" group-title="South Korea;Music",KPOP Mix
 https://cloud.tvomix.com/KPOPMIX/index.m3u8
 
-#EXTINF:-1 tvg-country="South Korea" tvg-logo="https://tvpnlogopus.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/CA3900002PM_20251202T010043SQUARE.png" tvg-id="CA3900002PM" tvg-name="" group-title="Korea;Music",K-POP
+#EXTINF:-1 tvg-country="South Korea" tvg-logo="https://tvpnlogopus.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/CA3900002PM_20251202T010043SQUARE.png" tvg-id="CA3900002PM" tvg-name="" group-title="South Korea;Music",K-POP
 https://jmp2.uk/stvp-CA3900002PM
 
 #EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="Japan;Music",Music Japan
@@ -272,6 +272,9 @@ https://cdn-2.pishow.tv/live/226/master.m3u8
 
 #EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="Music",Song TV
 https://cdnjkt913.transvision.co.id:1000/live/master/100/4028c685840ff0490184560acf62436a/manifest.mpd
+
+#EXTINF:-1 tvg-country="South Korea" tvg-logo="" tvg-id="" tvg-name="" group-title="South Korea;Music",New KPOP
+https://newidco-newkid-1-eu.xiaomi.wurl.tv/playlist.m3u8
 
 
 
