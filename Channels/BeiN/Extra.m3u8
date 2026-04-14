@@ -1,3 +1,4 @@
 #EXTM3U
-#EXT-X-STREAM-INF:BANDWIDTH=500000,RESOLUTION=1920x1080
+##EXT-X-STREAM-INF:BANDWIDTH=500000,RESOLUTION=1920x1080
+#EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="Sports",Bein Xtra
 https://amg01334-beinsportsllc-beinxtra-localnow-kcy6r.amagi.tv/playlist.m3u8
