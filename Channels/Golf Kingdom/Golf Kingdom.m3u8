@@ -1,5 +1,5 @@
 #EXTM3U
-#EXT-X-STREAM-INF:BANDWIDTH=500000,RESOLUTION=1920x1080
+#EXTINF:0,Golf Kingdom
 https://30a-tv.com/feeds/vidaa/golf.m3u8
-#EXT-X-STREAM-INF:BANDWIDTH=500000,RESOLUTION=1920x1080
-https://30a-tv.com/feeds/vidaa/golf.m3u8?checkedby:iptvcat.com
+##EXT-X-STREAM-INF:BANDWIDTH=500000,RESOLUTION=1920x1080
+##https://30a-tv.com/feeds/vidaa/golf.m3u8?checkedby:iptvcat.com
