@@ -2,3 +2,4 @@
 #EXT-X-STREAM-INF:BANDWIDTH=500000
 ##EXTINF:-1,Golf Channel (latin america)
 http://181.114.57.246:4000/play/BHGDIhvdyuw/77291927.m3u8
+##http://181.114.57.246:4000/play/BHGDIhvdyuw/index.m3u8
