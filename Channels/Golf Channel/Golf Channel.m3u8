@@ -1,4 +1,4 @@
 #EXTM3U
-#EXT-X-STREAM-INF:BANDWIDTH=500000,RESOLUTION=1920x1080
+#EXT-X-STREAM-INF:BANDWIDTH=500000
 http://nor1live.win/livehttpplay?channel_id=23005
 ##https://tvpass.org/live/GolfChannel/hd
