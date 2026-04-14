@@ -1,4 +1,5 @@
 #EXTM3U
 #EXT-X-STREAM-INF:BANDWIDTH=500000
 ##EXTINF:-1,Golf Channel (latin america)
-http://181.114.57.246:4000/play/BHGDIhvdyuw/index.m3u8
+##http://181.114.57.246:4000/play/BHGDIhvdyuw/index.m3u8
+http://nor1live.win/livehttpplay?channel_id=23130
