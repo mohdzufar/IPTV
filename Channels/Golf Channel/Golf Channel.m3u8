@@ -1,4 +1,7 @@
 #EXTM3U
 ##EXT-X-STREAM-INF:BANDWIDTH=500000
+
+#EXTINF:-1 tvg-id="2300" tvg-name="Golf Channel" tvg-logo="" group-title="Sports;Golf",Golf Channel
 http://nor1live.win/livehttpplay?channel_id=23005
+
 ##https://tvpass.org/live/GolfChannel/hd
