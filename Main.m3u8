@@ -110,8 +110,8 @@ https://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/6
 
 ##=====Sports=====
 #EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="Sports;Golf",Golf Kingdom
-##https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Golf%20Kingdom/Golf%20Kingdom.m3u8
-https://30a-tv.com/feeds/vidaa/golf.m3u8
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Golf%20Kingdom/Golf%20Kingdom.m3u
+##https://30a-tv.com/feeds/vidaa/golf.m3u8
 
 #EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="2300" tvg-name="" group-title="Sports;Golf",Golf Channel (1080p) [Not 24/7]
 http://nor1live.win/livehttpplay?channel_id=23005
