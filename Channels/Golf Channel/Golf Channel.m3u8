@@ -1,7 +1,10 @@
 #EXTM3U
-#EXT-X-STREAM-INF:BANDWIDTH=500000
+##EXT-X-STREAM-INF:BANDWIDTH=500000
+
+
+##EXTINF:-1,Golf Channel
 http://iptvtree.net:8080/live/7e4b0dbd/1dd755dc3f/5845.ts
 
-##EXTINF:-1 tvg-id="2300" tvg-name="Golf Channel" tvg-logo="" group-title="Sports;Golf",Golf Channel
+
 ##http://nor1live.win/livehttpplay?channel_id=23005
 ##https://tvpass.org/live/GolfChannel/hd
