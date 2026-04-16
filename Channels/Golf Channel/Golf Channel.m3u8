@@ -1,3 +1,3 @@
 #EXTM3U
-#EXTINF:0 tvg-id="GolfChannel.us" tvg-name="Golf Channel (1080p)" tvg-logo="" group-title="Sports",Golf Channel
+#EXTINF:-1 tvg-id="GolfChannel.us" tvg-name="Golf Channel (1080p)" tvg-logo="" group-title="Sports",Golf Channel
 http://iptvtree.net:8080/live/7e4b0dbd/1dd755dc3f/5845.ts
