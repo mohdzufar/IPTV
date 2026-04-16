@@ -110,19 +110,20 @@ http://23.237.104.106:8080/USA_CARTOON_NETWORK/index.m3u8
 
 ##=====Sports=====
 #EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="Golf",Golf Kingdom
-##https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Golf%20Kingdom/Golf%20Kingdom.m3u8
 https://30a-tv.com/feeds/vidaa/golf.m3u8
+##https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Golf%20Kingdom/Golf%20Kingdom.m3u8
 
-#EXTINF:-1 tvg-id="GolfChannel.us" tvg-name="Golf Channel (1080p)" tvg-logo="" group-title="Sports",Golf Channel
-https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Golf%20Channel/Golf%20Channel.m3u8
-##http://iptvtree.net:8080/live/7e4b0dbd/1dd755dc3f/5845.ts
-##http://nor1live.win/livehttpplay?channel_id=23005
+#EXTINF:-1 tvg-country="US" tvg-logo="" tvg-id="Golf.Channel.HD.us2" tvg-name="" group-title="Golf",Golf Channel (1080p) [Not 24/7]
+http://nor1live.win/livehttpplay?channel_id=23005
+http://iptvtree.net:8080/live/7e4b0dbd/1dd755dc3f/5845.ts
+https://tvpass.org/live/GolfChannel/hd
+##https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Golf%20Channel/Golf%20Channel.m3u8
 
 #EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="Golf",Golf Channel (Latin America)
-##https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Golf%20Channel/Golf%20Channel%20(latin%20america).m3u8
 http://181.114.57.246:4000/play/BHGDIhvdyuw/index.m3u8
+##https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Golf%20Channel/Golf%20Channel%20(latin%20america).m3u8
 
-#EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="Golf",GolfPass
+#EXTINF:-1 tvg-country="US" tvg-logo="" tvg-id="" tvg-name="" group-title="Golf",GolfPass
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Golf%20Pass/Golf%20Pass.m3u8
 #EXTINF:-1 tvg-country="JP" tvg-logo="" tvg-id="" tvg-name="" group-title="Golf",GolfNetwork Japan
 http://cdns.jp-primehome.com:8000/zhongying/live/playlist.m3u8?cid=cs03
@@ -377,15 +378,15 @@ https://live-content.xumo.com/3883/content/XM0RW1PIY5R776/25283138/master.m3u8
 #EXTINF:-1 tvg-country="" tvg-logo="http://schedulesdirect-api20141201-logos.s3.dualstack.us-east-1.amazonaws.com/stationLogos/s16331_dark_360w_270h.png" tvg-id="Animal.Planet.HD.us2" tvg-name="" group-title="Nature",Xumo Nature & Wildlife TV
 http://23.237.104.106:8080/USA_ANIMAL_PLANET/index.m3u8
 
-#EXTINF:-1 tvg-chno="39" tvg-id="Discovery.Channel.HD.us2" tvg-name="Discovery Channel" tvg-logo="http://schedulesdirect-api20141201-logos.s3.dualstack.us-east-1.amazonaws.com/stationLogos/s11150_dark_360w_270h.png" group-title="TV",Discovery Channel
+#EXTINF:-1 tvg-chno="" tvg-id="Discovery.Channel.HD.us2" tvg-name="Discovery Channel" tvg-logo="http://schedulesdirect-api20141201-logos.s3.dualstack.us-east-1.amazonaws.com/stationLogos/s11150_dark_360w_270h.png" group-title="",Discovery Channel
 http://23.237.104.106:8080/USA_DISCOVERY/index.m3u8
-#EXTINF:-1 tvg-chno="41" tvg-id="Discovery.Life.Channel.us2" tvg-name="Discovery Life" tvg-logo="http://schedulesdirect-api20141201-logos.s3.dualstack.us-east-1.amazonaws.com/stationLogos/s16125_dark_360w_270h.png" group-title="TV",Discovery Life
+#EXTINF:-1 tvg-chno="" tvg-id="Discovery.Life.Channel.us2" tvg-name="Discovery Life" tvg-logo="http://schedulesdirect-api20141201-logos.s3.dualstack.us-east-1.amazonaws.com/stationLogos/s16125_dark_360w_270h.png" group-title="",Discovery Life
 http://iptvtree.net:8080/live/7e4b0dbd/1dd755dc3f/201208.ts
-#EXTINF:-1 tvg-chno="42" tvg-id="Science.Channel.HD.us2" tvg-name="Discovery Science" tvg-logo="http://schedulesdirect-api20141201-logos.s3.dualstack.us-east-1.amazonaws.com/stationLogos/s24282_dark_360w_270h.png" group-title="TV",Discovery Science
+#EXTINF:-1 tvg-chno="" tvg-id="Science.Channel.HD.us2" tvg-name="Discovery Science" tvg-logo="http://schedulesdirect-api20141201-logos.s3.dualstack.us-east-1.amazonaws.com/stationLogos/s24282_dark_360w_270h.png" group-title="",Discovery Science
 http://iptvtree.net:8080/live/7e4b0dbd/1dd755dc3f/2301.ts
-#EXTINF:-1 tvg-chno="43" tvg-id="Disney.Channel.HD.us2" tvg-name="Disney" tvg-logo="http://schedulesdirect-api20141201-logos.s3.dualstack.us-east-1.amazonaws.com/stationLogos/s10171_dark_360w_270h.png" group-title="TV",Disney Channel
+#EXTINF:-1 tvg-chno="" tvg-id="Disney.Channel.HD.us2" tvg-name="Disney" tvg-logo="http://schedulesdirect-api20141201-logos.s3.dualstack.us-east-1.amazonaws.com/stationLogos/s10171_dark_360w_270h.png" group-title="",Disney Channel
 http://89.105.221.127/Disney/index.m3u8?token=test
-#EXTINF:-1 tvg-chno="44" tvg-id="Disney.XD.HD.us2" tvg-name="Disney XD" tvg-logo="http://schedulesdirect-api20141201-logos.s3.dualstack.us-east-1.amazonaws.com/stationLogos/s18279_dark_360w_270h.png" group-title="TV",Disney XD
+#EXTINF:-1 tvg-chno="" tvg-id="Disney.XD.HD.us2" tvg-name="Disney XD" tvg-logo="http://schedulesdirect-api20141201-logos.s3.dualstack.us-east-1.amazonaws.com/stationLogos/s18279_dark_360w_270h.png" group-title="",Disney XD
 http://23.237.104.106:8080/USA_DISNEY_XD/index.m3u8
 
 
