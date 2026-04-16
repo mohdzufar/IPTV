@@ -1,10 +1,3 @@
 #EXTM3U
-##EXT-X-STREAM-INF:BANDWIDTH=500000
-
-
-#EXTINF:-1 tvg-country="US" tvg-logo="" tvg-id="Golf.Channel.HD.us2" tvg-name="" group-title="Golf",Golf Channel (1080p) [Not 24/7]
+#EXTINF:-1, Golf Channel (1080p) [Not 24/7]
 http://iptvtree.net:8080/live/7e4b0dbd/1dd755dc3f/5845.ts
-
-
-##http://nor1live.win/livehttpplay?channel_id=23005
-##https://tvpass.org/live/GolfChannel/hd
