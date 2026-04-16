@@ -154,7 +154,7 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Tennis
 #EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="Sports",Tennis+
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Tennis%20TV/Tennis%2B.m3u8
 #EXTINF:-1 tvg-country="" tvg-logo="https://images.pluto.tv/channels/6627621d56fc840008e47c90/colorLogoPNG_1756973184696.png" tvg-id="6627621d56fc840008e47c90" tvg-name="" group-title="Sports",Tennis Channel
-https://jmp2.uk/plu-6627621d56fc840008e47c90.m3u8
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Tennis%20Channel/Tennis%20Channel.m3u8
 
 #EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="Sports",MLB
 https://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/5e66968a70f34c0007d050be/master.m3u8?appName=web&appVersion=9.19.0&deviceDNT=0&deviceId=affbdbfa-5fa3-48af-8369-57c005daef42&deviceMake=firefox&deviceModel=web&deviceType=web&deviceVersion=147.0.0&serverSideAds=false&sid=b24a9dca-0f04-498b-a54e-e848441bd909
