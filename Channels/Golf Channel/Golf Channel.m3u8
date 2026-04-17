@@ -1,5 +1,5 @@
 #EXTM3U
-#EXT-X-STREAM-INF:BANDWIDTH=500000
+#EXT-X-STREAM-INF:BANDWIDTH=2000000,RESOLUTION=1920x1080,CODECS="avc1.4d401f,mp4a.40.2"
 http://nor1live.win/livehttpplay?channel_id=23005
 
 ##http://iptvtree.net:8080/live/7e4b0dbd/1dd755dc3f/5845.ts
