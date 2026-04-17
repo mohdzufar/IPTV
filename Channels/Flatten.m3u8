@@ -121,9 +121,9 @@ https://30a-tv.com/feeds/vidaa/golf.m3u8
 ##https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Golf%20Kingdom/Golf%20Kingdom.m3u8
 #EXTINF:-1 tvg-country="US" tvg-id="Golf.Channel.HD.us2" tvg-name="Golf Channel" tvg-logo="http://schedulesdirect-api20141201-logos.s3.dualstack.us-east-1.amazonaws.com/stationLogos/s14899_dark_360w_270h.png" group-title="Golf",Golf Channel
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Golf%20Channel/Golf%20Channel.m3u8
-##http://iptvtree.net:8080/live/7e4b0dbd/1dd755dc3f/5845.ts
-##http://nor1live.win/livehttpplay?channel_id=23005
-##https://tvpass.org/live/GolfChannel/hd
+http://iptvtree.net:8080/live/7e4b0dbd/1dd755dc3f/5845.ts
+http://nor1live.win/livehttpplay?channel_id=23005
+https://tvpass.org/live/GolfChannel/hd
 #EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="" tvg-name="Golf Channel (Latin America)" group-title="Golf",Golf Channel (Latin America)
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Golf%20Channel/Golf%20Channel%20(latin%20america).m3u8
 http://181.114.57.246:4000/play/BHGDIhvdyuw/index.m3u8
