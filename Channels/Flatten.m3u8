@@ -25,8 +25,6 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/TV8/TV
 https://raw.githubusercontent.com/mohdzufar/Main-IPTV/refs/heads/main/Channels/RTM/Okey/RTM%20Okey.m3u8
 #EXTINF:-1 tvg-country="MY" tvg-logo="https://rtm-images.glueapi.io/320x0//live_channel/sukan_Trans.png" tvg-id="SukanRTM.my" tvg-name="RTM Sukan" group-title="Sports",RTM Sukan
 https://raw.githubusercontent.com/mohdzufar/Main-IPTV/refs/heads/main/Channels/RTM/Sukan/RTM%20Sukan.m3u8
-##EXTINF:-1 tvg-country="MY" tvg-logo="https://rtm-images.glueapi.io/320x0/live_channel/RTMAsean.png" tvg-id="BERITARTM" tvg-name="RTM ASEAN" group-title="Malaysia",RTM ASEAN
-##https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channel/RTM/RTM%20ASEAN.m3u8
 #EXTINF:-1 tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/channel/logos/jnkfvh.png" tvg-id="TVIKIM.my" tvg-name="TV IKIM" group-title="Malaysia",TV IKIM
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/IKIM/IKIM%20TV.m3u8
 #EXTINF:-1 tvg-country="MY" tvg-logo="https://rtm-images.glueapi.io/320x0//live_channel/berita_bckg.jpg" tvg-id="BeritaRTM.my" tvg-name="Berita RTM" tvg-url="" group-title="News",Berita RTM
