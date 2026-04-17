@@ -2,5 +2,6 @@
 #EXTINF: 0,Golf Channel
 http://nor1live.win/livehttpplay?channel_id=23005
 
+##EXT-X-STREAM-INF:BANDWIDTH=500000,RESOLUTION=1920x1080
 ##http://iptvtree.net:8080/live/7e4b0dbd/1dd755dc3f/5845.ts
 ##https://tvpass.org/live/GolfChannel/hd
