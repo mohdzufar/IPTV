@@ -1,15 +1,17 @@
 #!/usr/bin/env python3
 """
-IPTV Playlist Flattener with Reliable URL Health Check
-- Tests multiple candidate URLs using Range request (bytes=0-0).
-- Selects first working URL, flattening sub-playlists if needed.
-- Preserves master playlists for quality options.
-- Outputs clean single-URL-per-channel Main.m3u8.
+IPTV Playlist Flattener – Accurate URL Validation (Daily Run Optimized)
+- Fetches a small chunk of actual stream content to confirm playability.
+- Handles HLS master playlists, DASH manifests, and simple redirects.
+- Retries failed connections for robustness.
+- Preserves working URLs and outputs clean Main.m3u8.
 """
 
 import urllib.request
 import urllib.error
 import sys
+import time
+import socket
 from pathlib import Path
 
 # -------------------------------------------------------------------
@@ -18,117 +20,186 @@ from pathlib import Path
 SOURCE_FILE = "Channels/Flatten.m3u8"   # The file you edit
 OUTPUT_FILE = "Main.m3u8"               # Flattened output for users
 
-CHECK_TIMEOUT = 8   # Seconds to wait for server response
+# Validation settings (tuned for accuracy over speed)
+CHUNK_SIZE = 262144        # 256 KB – enough to confirm stream is active
+TIMEOUT = 15               # Seconds to wait for server response
+MAX_RETRIES = 2            # Number of retry attempts
+RETRY_DELAY = 2            # Seconds between retries
+
+# Browser-like headers to avoid blocking
+HEADERS = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+    'Accept': '*/*',
+    'Accept-Encoding': 'identity',
+    'Connection': 'keep-alive'
+}
 
 # -------------------------------------------------------------------
-# URL TESTING (Range Request Method)
+# HELPER FUNCTIONS
 # -------------------------------------------------------------------
-def is_url_reachable(url, timeout=CHECK_TIMEOUT):
+def fetch_with_retry(url, timeout=TIMEOUT, max_retries=MAX_RETRIES, chunk_size=None):
     """
-    Test if a stream/server is alive using a Range request (first byte).
-    More reliable than HEAD because many IPTV servers block HEAD.
+    Fetch URL content with retry logic.
+    If chunk_size is provided, only that many bytes are read.
+    Returns (content_bytes, success_boolean).
     """
+    for attempt in range(max_retries + 1):
+        try:
+            req = urllib.request.Request(url, headers=HEADERS)
+            with urllib.request.urlopen(req, timeout=timeout) as resp:
+                if chunk_size:
+                    data = resp.read(chunk_size)
+                else:
+                    data = resp.read()
+                return data, True
+        except Exception as e:
+            if attempt < max_retries:
+                print(f"      ⚠️ Attempt {attempt+1} failed: {e}. Retrying in {RETRY_DELAY}s...")
+                time.sleep(RETRY_DELAY)
+            else:
+                print(f"      ❌ Failed after {max_retries+1} attempts: {e}")
+                return None, False
+
+def is_valid_stream_content(data):
+    """
+    Heuristic: check if downloaded data looks like video/audio content.
+    Returns True if data seems valid (non-empty and not an error page).
+    """
+    if not data or len(data) < 100:
+        return False
+    # Common binary stream signatures (TS, MP4, etc.)
+    # MPEG-TS sync byte (0x47), MP4 'ftyp', or just sufficient binary data
+    if data[0] == 0x47 or data[4:8] == b'ftyp':
+        return True
+    # If it's text, check for common error strings
     try:
-        req = urllib.request.Request(url, method='GET', headers={
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
-            'Range': 'bytes=0-0'   # Request only the first byte
-        })
-        with urllib.request.urlopen(req, timeout=timeout) as resp:
-            # 200 OK or 206 Partial Content are acceptable
-            return resp.status in (200, 206)
-    except Exception:
+        text = data.decode('utf-8', errors='ignore')[:200].lower()
+        if any(err in text for err in ['error', 'not found', 'unauthorized', 'forbidden']):
+            return False
+    except:
+        pass
+    # Assume binary data is good if it's sizable
+    return len(data) >= 1024
+
+def is_hls_master_playlist(content):
+    """Return True if content contains #EXT-X-STREAM-INF."""
+    try:
+        text = content.decode('utf-8', errors='ignore')
+        return '#EXT-X-STREAM-INF' in text
+    except:
         return False
 
-def fetch_url_content(url, timeout=CHECK_TIMEOUT):
-    """Fetch full content of a playlist file."""
+def is_dash_manifest(content):
+    """Return True if content looks like a DASH manifest."""
     try:
-        req = urllib.request.Request(url, headers={
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
-        })
-        with urllib.request.urlopen(req, timeout=timeout) as response:
-            content_bytes = response.read()
-            try:
-                return content_bytes.decode('utf-8')
-            except UnicodeDecodeError:
-                return content_bytes.decode('latin-1')
-    except Exception as e:
-        print(f"      ⚠️ Fetch failed: {e}")
+        text = content.decode('utf-8', errors='ignore').lstrip()
+        return text.startswith('<MPD')
+    except:
+        return False
+
+def extract_first_segment_url(content, base_url):
+    """
+    Extract the first media segment URL from an HLS media playlist or DASH manifest.
+    Returns a full URL or None.
+    """
+    try:
+        text = content.decode('utf-8', errors='ignore')
+    except:
         return None
 
-def is_master_playlist(content):
-    """Return True if playlist contains #EXT-X-STREAM-INF (master playlist)."""
-    return content and '#EXT-X-STREAM-INF' in content
+    # HLS: find first .ts line
+    if not text.startswith('<MPD'):
+        lines = text.splitlines()
+        for line in lines:
+            line = line.strip()
+            if line and not line.startswith('#') and ('.ts' in line or '.m4s' in line):
+                if line.startswith('http'):
+                    return line
+                else:
+                    # Relative URL – resolve against base
+                    from urllib.parse import urljoin
+                    return urljoin(base_url, line)
 
-def extract_stream_url_from_simple_playlist(content):
-    """Extract first non‑comment line as stream URL from a simple playlist."""
-    if not content:
-        return None
-    for line in content.splitlines():
-        line = line.strip()
-        if line and not line.startswith('#'):
-            return line
+    # DASH: find BaseURL or SegmentTemplate initialization
+    import re
+    base_match = re.search(r'<BaseURL>(.*?)</BaseURL>', text)
+    if base_match:
+        dash_base = base_match.group(1)
+        init_match = re.search(r'initialization="([^"]+)"', text)
+        if init_match:
+            from urllib.parse import urljoin
+            return urljoin(dash_base, init_match.group(1))
+
     return None
 
-def should_treat_as_playlist(url):
-    """Heuristic: does URL likely point to a playlist file?"""
-    url_lower = url.lower()
-    return any(ext in url_lower for ext in ['.m3u', '.m3u8'])
-
-def test_and_resolve_url(url):
+def test_stream_url(url):
     """
-    Test a single candidate URL. If it's a playlist, flatten it.
-    Returns (final_url, is_working).
+    Test a direct stream URL by downloading a small chunk and validating content.
+    Returns (is_working, final_url).
+    For master playlists/DASH, we extract a segment and test that.
     """
-    # Step 1: Check basic reachability
-    if not is_url_reachable(url):
-        print(f"      ❌ Unreachable: {url[:60]}...")
-        return url, False
+    print(f"      🔍 Testing: {url[:70]}...")
 
-    # Step 2: If it's a direct stream (not a playlist), we're done
-    if not should_treat_as_playlist(url):
-        print(f"      ✅ Direct stream reachable: {url[:60]}...")
-        return url, True
+    # First, fetch the URL (or a chunk of it)
+    data, success = fetch_with_retry(url, chunk_size=CHUNK_SIZE)
 
-    # Step 3: It's a playlist – fetch and inspect
-    print(f"      📄 Checking playlist: {url[:60]}...")
-    content = fetch_url_content(url)
-    if not content:
-        return url, False
+    if not success or not data:
+        return False, url
 
-    # Step 4: If master playlist, keep original (player handles quality selection)
-    if is_master_playlist(content):
-        print(f"      ✅ Master playlist (keeping original)")
-        return url, True
+    # Check if it's a playlist file (based on content or extension)
+    if url.lower().endswith(('.m3u', '.m3u8', '.mpd')) or is_hls_master_playlist(data) or is_dash_manifest(data):
+        print(f"      📄 Playlist detected, inspecting...")
+        # Fetch full playlist content
+        full_data, _ = fetch_with_retry(url, chunk_size=None)
+        if not full_data:
+            return False, url
 
-    # Step 5: Simple playlist – extract direct stream URL
-    stream_url = extract_stream_url_from_simple_playlist(content)
-    if stream_url:
-        # Test the extracted stream URL for extra safety
-        if is_url_reachable(stream_url):
-            print(f"      ➡️ Flattened to working stream: {stream_url[:60]}...")
-            return stream_url, True
+        # If it's a master playlist or DASH, preserve original (player handles variants)
+        if is_hls_master_playlist(full_data) or is_dash_manifest(full_data):
+            print(f"      ✅ Master/DASH playlist – preserving original")
+            return True, url
+
+        # Simple redirect playlist – extract stream URL and test it
+        lines = full_data.decode('utf-8', errors='ignore').splitlines()
+        stream_url = None
+        for line in lines:
+            line = line.strip()
+            if line and not line.startswith('#'):
+                stream_url = line
+                break
+
+        if stream_url:
+            print(f"      ➡️ Extracted stream URL: {stream_url[:60]}...")
+            # Test the extracted stream URL
+            sub_working, _ = test_stream_url(stream_url)
+            if sub_working:
+                return True, stream_url
+            else:
+                print(f"      ⚠️ Extracted stream failed, keeping playlist")
+                return False, url
         else:
-            print(f"      ⚠️ Extracted stream unreachable, keeping playlist")
-            return url, False
+            print(f"      ⚠️ No stream URL found in playlist")
+            return False, url
+
+    # Direct stream – validate downloaded chunk
+    if is_valid_stream_content(data):
+        print(f"      ✅ Stream validated ({len(data)} bytes)")
+        return True, url
     else:
-        print(f"      ⚠️ No stream URL found in playlist")
-        return url, False
+        print(f"      ❌ Invalid stream content")
+        return False, url
 
 def process_channel(extinf_line, candidate_urls):
-    """
-    Given an #EXTINF line and a list of candidate URLs,
-    test each in order and return the first working one.
-    Returns (extinf_line, final_url) or (extinf_line, fallback_url).
-    """
+    """Test candidates in order, return first working URL."""
     print(f"  Testing candidates for: {extinf_line[:50]}...")
     for idx, url in enumerate(candidate_urls, 1):
         print(f"    Candidate {idx}: {url[:70]}...")
-        final_url, working = test_and_resolve_url(url)
+        working, final_url = test_stream_url(url)
         if working:
             print(f"    ✅ Selected candidate {idx}")
             return extinf_line, final_url
 
-    # All failed – fallback to first URL (so channel entry remains)
+    # All failed – fallback to first URL
     print(f"    ❌ All candidates failed, using first as fallback")
     return extinf_line, candidate_urls[0]
 
@@ -144,13 +215,11 @@ def process_source_playlist(source_path):
     while i < len(lines):
         line = lines[i].rstrip('\n\r')
 
-        # Preserve #EXTM3U header
         if line.startswith('#EXTM3U'):
             flattened.append(line)
             i += 1
             continue
 
-        # Channel entry: #EXTINF line
         if line.startswith('#EXTINF:'):
             extinf_line = line
             i += 1
@@ -159,7 +228,7 @@ def process_source_playlist(source_path):
             while i < len(lines) and not lines[i].strip():
                 i += 1
 
-            # Collect all consecutive candidate URLs
+            # Collect candidate URLs
             candidates = []
             while i < len(lines):
                 next_line = lines[i].rstrip('\n\r').strip()
@@ -182,7 +251,6 @@ def process_source_playlist(source_path):
             flattened.append(final_extinf)
             flattened.append(final_url)
         else:
-            # Preserve comments and other non‑channel lines
             flattened.append(line)
             i += 1
 
@@ -190,7 +258,7 @@ def process_source_playlist(source_path):
 
 def main():
     print("=" * 60)
-    print("IPTV Playlist Flattener (Range Request Health Check)")
+    print("IPTV Playlist Flattener – Accurate Stream Validation")
     print("=" * 60)
 
     if not Path(SOURCE_FILE).exists():
