@@ -7,17 +7,19 @@ on:
       - 'Channels/Flatten.m3u8'
       - 'Channels/**/*.m3u8'
       - 'Channels/**/*.m3u'
-  workflow_dispatch:  # Allow manual trigger from GitHub Actions tab
+  workflow_dispatch:
 
 jobs:
   flatten:
     runs-on: ubuntu-latest
     permissions:
-      contents: write   # Needed to commit the flattened file back to the repo
+      contents: write
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # Fetch all history so rebase works properly
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -31,7 +33,12 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Pull latest changes from remote to avoid push rejection
+          git pull --rebase origin main
+          
           git add Main.m3u8
+          
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
