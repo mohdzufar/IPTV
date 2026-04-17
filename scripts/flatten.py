@@ -15,8 +15,8 @@ from pathlib import Path
 # -------------------------------------------------------------------
 # CONFIGURATION
 # -------------------------------------------------------------------
-MAIN_FILE = "Main.m3u8"
-OUTPUT_FILE = "Main_Flattened.m3u8"
+MAIN_FILE = "Flattened.m3u8"
+OUTPUT_FILE = "Main.m3u8"
 
 # -------------------------------------------------------------------
 # HELPER FUNCTIONS
