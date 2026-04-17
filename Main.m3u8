@@ -70,7 +70,7 @@ https://raw.githubusercontent.com/mohdzufar/Main-IPTV/refs/heads/main/Channels/R
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Njoi/Filem%20Mantap.m3u8
 #EXTINF:-1 tvg-country="MY" tvg-id="LawakSentral" tvg-name="Lawak Sentral" tvg-logo="https://datastore.vr.ctrp.sooka.my/content/images/34dfc1DramaHebat_IVP_LAND_1280x720.jpg" group-title="Malaysia",Lawak Sentral
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Njoi/Lawak%20Sentral.m3u8
-#EXTINF:-1 tvg-country="MY" tvg-id="Drama Hotpot" tvg-name="Drama Hotspot" tvg-logo="https://datastore.vr.ctrp.sooka.my/content/images/dccc78DramaHotpot_IVP_LAND_1280x720.jpg" group-title="Malaysia",Drama Hotspot
+#EXTINF:-1 tvg-country="MY" tvg-id="DramaHotpot" tvg-name="Drama Hotpot" tvg-logo="https://datastore.vr.ctrp.sooka.my/content/images/dccc78DramaHotpot_IVP_LAND_1280x720.jpg" group-title="Malaysia",Drama Hotpot
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Njoi/Drama%20Hotspot.m3u8
 #EXTINF:-1 tvg-country="MY" tvg-id="TravelandTaste" tvg-name="Travel & Taste" tvg-logo="https://datastore.vr.ctrp.sooka.my/content/images/ba8e3eTravelTaste_IVP_LAND_1280x720.jpg" group-title="Malaysia",Travel & Taste
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Njoi/Travel%20%26%20Taste.m3u8
