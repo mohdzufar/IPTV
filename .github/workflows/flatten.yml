@@ -4,7 +4,7 @@ on:
   push:
     branches: [ main, master ]
     paths:
-      - 'Main.m3u8'
+      - 'Flattened.m3u8'
       - 'Channels/**/*.m3u8'
       - 'Channels/**/*.m3u'
   workflow_dispatch:  # Allow manual trigger from GitHub Actions tab
