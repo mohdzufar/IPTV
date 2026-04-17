@@ -1,5 +1,5 @@
 #EXTM3U
-#EXT-X-STREAM-INF:BANDWIDTH=500000
+#EXTINF: 0,TV3
 http://nor1live.win/livehttpplay?channel_id=23005
 
 ##http://iptvtree.net:8080/live/7e4b0dbd/1dd755dc3f/5845.ts
