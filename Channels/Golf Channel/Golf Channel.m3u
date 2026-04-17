@@ -1,5 +1,5 @@
 #EXTM3U
-#EXTINF: 0,Golf Channel
+#EXTINF: -1,Golf Channel
 http://nor1live.win/livehttpplay?channel_id=23005
 
 ##EXT-X-STREAM-INF:BANDWIDTH=500000,RESOLUTION=1920x1080
