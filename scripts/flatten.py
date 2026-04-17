@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
-IPTV Playlist Flattener (Multi-URL Support)
-Reads Channels/Flatten.m3u8, resolves sub-playlists intelligently, and writes Main.m3u8.
-- Preserves master playlists (HLS multi-bitrate).
-- Flattens simple redirect playlists to direct stream URLs.
-- Supports multiple URLs per channel (for automatic failover).
+IPTV Playlist Flattener with Reliable URL Health Check
+- Tests multiple candidate URLs using Range request (bytes=0-0).
+- Selects first working URL, flattening sub-playlists if needed.
+- Preserves master playlists for quality options.
+- Outputs clean single-URL-per-channel Main.m3u8.
 """
 
 import urllib.request
@@ -16,13 +16,31 @@ from pathlib import Path
 # CONFIGURATION
 # -------------------------------------------------------------------
 SOURCE_FILE = "Channels/Flatten.m3u8"   # The file you edit
-OUTPUT_FILE = "Main.m3u8"               # The flattened file for users
+OUTPUT_FILE = "Main.m3u8"               # Flattened output for users
+
+CHECK_TIMEOUT = 8   # Seconds to wait for server response
 
 # -------------------------------------------------------------------
-# HELPER FUNCTIONS
+# URL TESTING (Range Request Method)
 # -------------------------------------------------------------------
-def fetch_url_content(url, timeout=15):
-    """Fetch text content from a URL with a browser-like User-Agent."""
+def is_url_reachable(url, timeout=CHECK_TIMEOUT):
+    """
+    Test if a stream/server is alive using a Range request (first byte).
+    More reliable than HEAD because many IPTV servers block HEAD.
+    """
+    try:
+        req = urllib.request.Request(url, method='GET', headers={
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+            'Range': 'bytes=0-0'   # Request only the first byte
+        })
+        with urllib.request.urlopen(req, timeout=timeout) as resp:
+            # 200 OK or 206 Partial Content are acceptable
+            return resp.status in (200, 206)
+    except Exception:
+        return False
+
+def fetch_url_content(url, timeout=CHECK_TIMEOUT):
+    """Fetch full content of a playlist file."""
     try:
         req = urllib.request.Request(url, headers={
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
@@ -34,44 +52,94 @@ def fetch_url_content(url, timeout=15):
             except UnicodeDecodeError:
                 return content_bytes.decode('latin-1')
     except Exception as e:
-        print(f"  ⚠️ Failed to fetch {url}: {e}")
+        print(f"      ⚠️ Fetch failed: {e}")
         return None
 
 def is_master_playlist(content):
-    """Return True if the playlist content contains #EXT-X-STREAM-INF."""
-    if not content:
-        return False
-    return '#EXT-X-STREAM-INF' in content
+    """Return True if playlist contains #EXT-X-STREAM-INF (master playlist)."""
+    return content and '#EXT-X-STREAM-INF' in content
 
 def extract_stream_url_from_simple_playlist(content):
-    """Extract the first usable stream URL from a SIMPLE playlist."""
+    """Extract first non‑comment line as stream URL from a simple playlist."""
     if not content:
         return None
-    lines = content.splitlines()
-    for line in lines:
+    for line in content.splitlines():
         line = line.strip()
-        if not line or line.startswith('#'):
-            continue
-        return line
+        if line and not line.startswith('#'):
+            return line
     return None
 
 def should_treat_as_playlist(url):
-    """Heuristic to decide if a URL likely points to a playlist file."""
+    """Heuristic: does URL likely point to a playlist file?"""
     url_lower = url.lower()
-    playlist_extensions = ('.m3u', '.m3u8', '.m3u?', '.m3u8?')
-    return any(url_lower.endswith(ext) or ext in url_lower for ext in playlist_extensions)
+    return any(ext in url_lower for ext in ['.m3u', '.m3u8'])
+
+def test_and_resolve_url(url):
+    """
+    Test a single candidate URL. If it's a playlist, flatten it.
+    Returns (final_url, is_working).
+    """
+    # Step 1: Check basic reachability
+    if not is_url_reachable(url):
+        print(f"      ❌ Unreachable: {url[:60]}...")
+        return url, False
+
+    # Step 2: If it's a direct stream (not a playlist), we're done
+    if not should_treat_as_playlist(url):
+        print(f"      ✅ Direct stream reachable: {url[:60]}...")
+        return url, True
+
+    # Step 3: It's a playlist – fetch and inspect
+    print(f"      📄 Checking playlist: {url[:60]}...")
+    content = fetch_url_content(url)
+    if not content:
+        return url, False
+
+    # Step 4: If master playlist, keep original (player handles quality selection)
+    if is_master_playlist(content):
+        print(f"      ✅ Master playlist (keeping original)")
+        return url, True
+
+    # Step 5: Simple playlist – extract direct stream URL
+    stream_url = extract_stream_url_from_simple_playlist(content)
+    if stream_url:
+        # Test the extracted stream URL for extra safety
+        if is_url_reachable(stream_url):
+            print(f"      ➡️ Flattened to working stream: {stream_url[:60]}...")
+            return stream_url, True
+        else:
+            print(f"      ⚠️ Extracted stream unreachable, keeping playlist")
+            return url, False
+    else:
+        print(f"      ⚠️ No stream URL found in playlist")
+        return url, False
+
+def process_channel(extinf_line, candidate_urls):
+    """
+    Given an #EXTINF line and a list of candidate URLs,
+    test each in order and return the first working one.
+    Returns (extinf_line, final_url) or (extinf_line, fallback_url).
+    """
+    print(f"  Testing candidates for: {extinf_line[:50]}...")
+    for idx, url in enumerate(candidate_urls, 1):
+        print(f"    Candidate {idx}: {url[:70]}...")
+        final_url, working = test_and_resolve_url(url)
+        if working:
+            print(f"    ✅ Selected candidate {idx}")
+            return extinf_line, final_url
+
+    # All failed – fallback to first URL (so channel entry remains)
+    print(f"    ❌ All candidates failed, using first as fallback")
+    return extinf_line, candidate_urls[0]
 
 def process_source_playlist(source_path):
-    """Read source, resolve sub-playlists, and return flattened lines with multi-URL support."""
+    """Read source file, test URLs, and output single working URL per channel."""
     with open(source_path, 'r', encoding='utf-8') as f:
         lines = f.readlines()
 
     flattened = []
     i = 0
-    processed_count = 0
-    master_count = 0
-    flattened_count = 0
-    skipped_count = 0
+    channel_count = 0
 
     while i < len(lines):
         line = lines[i].rstrip('\n\r')
@@ -91,8 +159,8 @@ def process_source_playlist(source_path):
             while i < len(lines) and not lines[i].strip():
                 i += 1
 
-            # Collect all consecutive URLs until next #EXTINF or EOF
-            urls = []
+            # Collect all consecutive candidate URLs
+            candidates = []
             while i < len(lines):
                 next_line = lines[i].rstrip('\n\r').strip()
                 if not next_line:
@@ -100,68 +168,30 @@ def process_source_playlist(source_path):
                     continue
                 if next_line.startswith('#EXTINF:') or next_line.startswith('#EXTM3U'):
                     break
-                # It's a URL
-                urls.append(next_line)
+                candidates.append(next_line)
                 i += 1
 
-            if not urls:
-                # No URL found, just keep the #EXTINF
+            if not candidates:
                 flattened.append(extinf_line)
                 continue
 
-            # Process each URL
-            resolved_urls = []
-            for url in urls:
-                if should_treat_as_playlist(url):
-                    processed_count += 1
-                    print(f"  Checking: {url[:70]}...")
-                    content = fetch_url_content(url)
-                    if content:
-                        if is_master_playlist(content):
-                            master_count += 1
-                            print(f"    ✅ Master playlist detected, keeping original")
-                            resolved_urls.append(url)
-                        else:
-                            stream_url = extract_stream_url_from_simple_playlist(content)
-                            if stream_url:
-                                flattened_count += 1
-                                print(f"    ➡️ Flattened to: {stream_url[:60]}...")
-                                resolved_urls.append(stream_url)
-                            else:
-                                skipped_count += 1
-                                print(f"    ⚠️ Could not extract, keeping original")
-                                resolved_urls.append(url)
-                    else:
-                        skipped_count += 1
-                        print(f"    ❌ Failed to fetch, keeping original")
-                        resolved_urls.append(url)
-                else:
-                    # Direct stream, keep as-is
-                    resolved_urls.append(url)
+            channel_count += 1
+            print(f"\n📺 Channel {channel_count}:")
+            final_extinf, final_url = process_channel(extinf_line, candidates)
 
-            # Write the channel entry
-            flattened.append(extinf_line)
-            flattened.extend(resolved_urls)
-
+            flattened.append(final_extinf)
+            flattened.append(final_url)
         else:
-            # Other lines (comments, blanks)
+            # Preserve comments and other non‑channel lines
             flattened.append(line)
             i += 1
-
-    print("\n" + "=" * 50)
-    print("SUMMARY:")
-    print(f"  Total sub-playlists processed: {processed_count}")
-    print(f"  Master playlists (preserved):  {master_count}")
-    print(f"  Simple playlists (flattened):   {flattened_count}")
-    print(f"  Skipped/Failed:                 {skipped_count}")
-    print("=" * 50)
 
     return flattened
 
 def main():
-    print("=" * 50)
-    print("IPTV Playlist Flattener (Multi-URL)")
-    print("=" * 50)
+    print("=" * 60)
+    print("IPTV Playlist Flattener (Range Request Health Check)")
+    print("=" * 60)
 
     if not Path(SOURCE_FILE).exists():
         print(f"❌ Error: {SOURCE_FILE} not found.")
@@ -174,9 +204,10 @@ def main():
     with open(output_path, 'w', encoding='utf-8', newline='\n') as f:
         f.write('\n'.join(flattened_lines))
 
-    print(f"\n✅ Flattened playlist written to {OUTPUT_FILE}")
+    print("\n" + "=" * 60)
+    print(f"✅ Flattened playlist written to {OUTPUT_FILE}")
     print(f"   Total lines: {len(flattened_lines)}")
-    print("=" * 50)
+    print("=" * 60)
 
 if __name__ == "__main__":
     main()
