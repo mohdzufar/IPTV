@@ -165,13 +165,13 @@ https://d3f4oii5n0oeqi.cloudfront.net/11701/88814515/hls/master.m3u8?includeAsse
 http://208.87.242.55/livehttpplay?channel_id=13304
 #EXTINF:-1 tvg-country="MY" tvg-logo="" tvg-id="" tvg-name="" group-title="Sports",Astro Football
 http://208.87.242.55/livehttpplay?channel_id=13300
-#EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="ESports",CS2
+#EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="E-Sports",CS2
 https://live.iill.top/bilibili/21622811
-#EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="ESports",CS2
+#EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="E-Sports",CS2
 https://live.iill.top/huya/483917
-#EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="ESports",DotA2
+#EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="E-Sports",DotA2
 https://live.iill.top/huya/660118
-#EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="ESports",DotA2
+#EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="" tvg-name="" group-title="E-Sports",DotA2
 https://live.iill.top/douyu/3811559
 #EXTINF:-1 tvg-country="KR" tvg-logo="" tvg-id="" tvg-name="" group-title="Music",KPOP Mix
 https://cloud.tvomix.com/KPOPMIX/index.m3u8
