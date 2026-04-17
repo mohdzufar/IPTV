@@ -1,1 +1,40 @@
+name: Flatten IPTV Playlist
 
+on:
+  push:
+    branches: [ main, master ]
+    paths:
+      - 'Main.m3u8'
+      - 'Channels/**/*.m3u8'
+      - 'Channels/**/*.m3u'
+  workflow_dispatch:  # Allow manual trigger from GitHub Actions tab
+
+jobs:
+  flatten:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write   # Needed to commit the flattened file back to the repo
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run flatten script
+        run: python scripts/flatten.py
+
+      - name: Commit and push flattened file
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add Main_Flattened.m3u8
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Auto-update flattened playlist [skip ci]"
+            git push
+          fi
