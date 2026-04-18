@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-IPTV Playlist Flattener – Universal Playability Validation
+IPTV Playlist Flattener - Universal Playability Validation
 - Tests candidates in exact order.
 - Skips unreachable or invalid streams.
 - Extracts and validates variant streams from master/DASH playlists.
@@ -154,17 +154,17 @@ def test_candidate(url):
     Test a single candidate URL.
     Returns (working: bool, final_url: str)
     """
-    print(f"      🔍 Testing: {url[:70]}...")
+    print(f"      Testing: {url[:70]}...")
 
     data, success = fetch_with_retry(url, chunk_size=CHUNK_SIZE)
     if not success or not data:
-        print(f"      ❌ Unreachable or no data")
+        print(f"      Unreachable or no data")
         return False, url
 
     is_playlist = is_playlist_by_content(url, data)
 
     if is_playlist:
-        print(f"      📄 Playlist detected, fetching full content...")
+        print(f"      Playlist detected, fetching full content...")
         full_data, _ = fetch_with_retry(url, chunk_size=None)
         if not full_data:
             return False, url
@@ -174,17 +174,17 @@ def test_candidate(url):
         dash = is_dash_manifest(full_data)
 
         if master or dash:
-            print(f"      🎚️ Master/DASH playlist – testing variant...")
+            print(f"      Master/DASH playlist - testing variant...")
             variant_url = extract_first_variant_url(full_data, url)
             if variant_url:
                 variant_working, _ = test_candidate(variant_url)
                 if variant_working:
-                    print(f"      ✅ Variant playable, keeping original")
+                    print(f"      Variant playable, keeping original")
                     return True, url
                 else:
-                    print(f"      ❌ Variant not playable")
+                    print(f"      Variant not playable")
             else:
-                print(f"      ❌ Could not extract variant URL")
+                print(f"      Could not extract variant URL")
             return False, url
 
         # Simple redirect playlist
@@ -197,19 +197,19 @@ def test_candidate(url):
                 break
 
         if stream_url:
-            print(f"      ➡️ Extracted stream URL: {stream_url[:60]}...")
+            print(f"      Extracted stream URL: {stream_url[:60]}...")
             sub_working, final_url = test_candidate(stream_url)
             return sub_working, final_url
         else:
-            print(f"      ❌ No stream URL found in playlist")
+            print(f"      No stream URL found in playlist")
             return False, url
 
     # Direct stream
     if is_valid_media_data(data):
-        print(f"      ✅ Valid media stream ({len(data)} bytes)")
+        print(f"      Valid media stream ({len(data)} bytes)")
         return True, url
     else:
-        print(f"      ❌ Invalid media content")
+        print(f"      Invalid media content")
         return False, url
 
 def process_channel(extinf_line, candidate_urls):
@@ -223,10 +223,10 @@ def process_channel(extinf_line, candidate_urls):
         print(f"    Candidate {idx}: {url[:70]}...")
         working, final_url = test_candidate(url)
         if working:
-            print(f"    ✅ Selected candidate {idx}")
+            print(f"    Selected candidate {idx}")
             return extinf_line, final_url
 
-    print(f"    ❌ All candidates failed; using first URL as fallback")
+    print(f"    All candidates failed; using first URL as fallback")
     return extinf_line, candidate_urls[0]
 
 def process_source_playlist(source_path):
@@ -271,7 +271,7 @@ def process_source_playlist(source_path):
                 continue
 
             channel_count += 1
-            print(f"\n📺 Channel {channel_count}:")
+            print(f"\nChannel {channel_count}:")
             final_extinf, final_url = process_channel(extinf_line, candidates)
 
             flattened.append(final_extinf)
@@ -284,14 +284,14 @@ def process_source_playlist(source_path):
 
 def main():
     print("=" * 60)
-    print("IPTV Playlist Flattener – Universal Playability")
+    print("IPTV Playlist Flattener - Universal Playability")
     print("=" * 60)
 
     if not Path(SOURCE_FILE).exists():
-        print(f"❌ Error: {SOURCE_FILE} not found.")
+        print(f"Error: {SOURCE_FILE} not found.")
         sys.exit(1)
 
-    print(f"📂 Reading {SOURCE_FILE}...")
+    print(f"Reading {SOURCE_FILE}...")
     flattened_lines = process_source_playlist(SOURCE_FILE)
 
     output_path = Path(OUTPUT_FILE)
@@ -299,7 +299,7 @@ def main():
         f.write('\n'.join(flattened_lines))
 
     print("\n" + "=" * 60)
-    print(f"✅ Flattened playlist written to {OUTPUT_FILE}")
+    print(f"Flattened playlist written to {OUTPUT_FILE}")
     print(f"   Total lines: {len(flattened_lines)}")
     print("=" * 60)
 
