@@ -1,27 +1,28 @@
 #!/usr/bin/env python3
 """
-IPTV Playlist Flattener – Final Version
-- Tests candidates in the exact order they appear.
-- Skips unreachable URLs.
-- Preserves master playlists (#EXT-X-STREAM-INF) and DASH manifests (<MPD).
-- Flattens simple redirect playlists to the embedded stream URL.
-- Validates direct streams by checking for video signatures.
-- Falls back to the first candidate if all fail.
+IPTV Playlist Flattener – Playability-Based Candidate Selection
+- Tests candidates in exact order.
+- For master/DASH playlists: extracts a variant and tests it for actual video.
+- For simple redirect playlists: extracts the embedded URL and tests recursively.
+- For direct streams: validates video content signatures.
+- Stops at first truly playable candidate; falls back to first URL if none work.
 """
 
 import urllib.request
 import urllib.error
 import sys
 import time
+import re
 from pathlib import Path
+from urllib.parse import urljoin
 
 # -------------------------------------------------------------------
 # CONFIGURATION
 # -------------------------------------------------------------------
-SOURCE_FILE = "Channels/Flatten.m3u8"   # Your editable source file
+SOURCE_FILE = "Channels/Flatten.m3u8"   # Editable source file
 OUTPUT_FILE = "Main.m3u8"               # Flattened output for users
 
-CHUNK_SIZE = 262144        # 256 KB for stream validation
+CHUNK_SIZE = 262144        # 256 KB for direct stream validation
 TIMEOUT = 15               # Seconds to wait for server response
 MAX_RETRIES = 2            # Number of retry attempts
 RETRY_DELAY = 2            # Seconds between retries
@@ -90,10 +91,7 @@ def is_dash_manifest(content):
         return False
 
 def is_playlist_by_content(url, data):
-    """
-    Determine if the URL points to a playlist file.
-    Checks extension first, then content preview.
-    """
+    """Determine if the URL points to a playlist file."""
     url_lower = url.lower()
     if any(url_lower.endswith(ext) for ext in ('.m3u', '.m3u8', '.mpd')):
         return True
@@ -103,17 +101,72 @@ def is_playlist_by_content(url, data):
     except:
         return False
 
+def extract_first_variant_url(content, base_url):
+    """
+    Extract the first variant URI from a master playlist or DASH manifest.
+    Returns an absolute URL or None.
+    """
+    try:
+        text = content.decode('utf-8', errors='ignore')
+    except:
+        return None
+
+    # HLS master playlist: find first non-comment line after #EXT-X-STREAM-INF
+    if '#EXT-X-STREAM-INF' in text:
+        lines = text.splitlines()
+        capture_next = False
+        for line in lines:
+            line = line.strip()
+            if not line or line.startswith('#'):
+                if line.startswith('#EXT-X-STREAM-INF'):
+                    capture_next = True
+                continue
+            if capture_next:
+                return urljoin(base_url, line)
+        return None
+
+    # DASH manifest: look for BaseURL + SegmentTemplate or direct URL
+    if text.lstrip().startswith('<MPD'):
+        # Try to find BaseURL
+        base_match = re.search(r'<BaseURL>(.*?)</BaseURL>', text)
+        dash_base = base_match.group(1) if base_match else base_url
+
+        # Try to find an initialization segment from the first Representation
+        init_match = re.search(r'initialization="([^"]+)"', text)
+        if init_match:
+            return urljoin(dash_base, init_match.group(1))
+
+        # Alternative: look for a media segment template
+        media_match = re.search(r'media="([^"]+)"', text)
+        if media_match:
+            # Replace $Number$ with a small number (e.g., 1) to create a testable URL
+            template = media_match.group(1)
+            test_url = template.replace('$Number%09d$', '000000001').replace('$Number$', '1')
+            return urljoin(dash_base, test_url)
+
+        return None
+
+    return None
+
+def test_variant_playability(variant_url):
+    """
+    Test a variant URL by downloading a chunk and validating video content.
+    Returns True if playable.
+    """
+    print(f"        🧪 Testing variant: {variant_url[:60]}...")
+    data, success = fetch_with_retry(variant_url, chunk_size=CHUNK_SIZE)
+    if not success or not data:
+        return False
+    return is_valid_stream_content(data)
+
 def test_candidate(url):
     """
-    Test a single candidate URL.
+    Test a single candidate URL for true playability.
     Returns (working: bool, final_url: str)
-    - Recursively flattens simple playlists.
-    - Preserves master/DASH playlists.
-    - Validates direct streams.
     """
     print(f"      🔍 Testing: {url[:70]}...")
 
-    # Step 1: Basic reachability check (fetch a small chunk)
+    # Step 1: Basic reachability (fetch a small chunk)
     data, success = fetch_with_retry(url, chunk_size=CHUNK_SIZE)
     if not success or not data:
         print(f"      ❌ Unreachable or no data")
@@ -128,15 +181,21 @@ def test_candidate(url):
         if not full_data:
             return False, url
 
-        # Step 3: Check if it's a master playlist or DASH manifest
+        # Step 3: Check for master/DASH
         master = is_hls_master_playlist(full_data)
         dash = is_dash_manifest(full_data)
 
         if master or dash:
-            print(f"      ✅ Master/DASH playlist – keeping original")
-            return True, url
+            print(f"      🎚️ Master/DASH playlist – testing variant playability...")
+            variant_url = extract_first_variant_url(full_data, url)
+            if variant_url and test_variant_playability(variant_url):
+                print(f"      ✅ Master/DASH playlist – variant playable, keeping original")
+                return True, url
+            else:
+                print(f"      ❌ Master/DASH playlist – variant not playable, skipping")
+                return False, url
 
-        # Step 4: Simple redirect playlist – extract embedded stream URL
+        # Step 4: Simple redirect playlist – extract embedded URL
         lines = full_data.decode('utf-8', errors='ignore').splitlines()
         stream_url = None
         for line in lines:
@@ -164,8 +223,8 @@ def test_candidate(url):
 
 def process_channel(extinf_line, candidate_urls):
     """
-    Test candidates sequentially. Use the first one that works.
-    If none work, fallback to the first candidate.
+    Test candidates sequentially. Use the first one that is truly playable.
+    If none work, fallback to the first candidate's original URL.
     """
     print(f"  Testing candidates for: {extinf_line[:50]}...")
 
@@ -192,13 +251,11 @@ def process_source_playlist(source_path):
     while i < len(lines):
         line = lines[i].rstrip('\n\r')
 
-        # Preserve #EXTM3U header
         if line.startswith('#EXTM3U'):
             flattened.append(line)
             i += 1
             continue
 
-        # Process channel entry
         if line.startswith('#EXTINF:'):
             extinf_line = line
             i += 1
@@ -207,7 +264,7 @@ def process_source_playlist(source_path):
             while i < len(lines) and not lines[i].strip():
                 i += 1
 
-            # Collect candidate URLs (until next #EXTINF or #EXTM3U)
+            # Collect candidate URLs
             candidates = []
             while i < len(lines):
                 next_line = lines[i].rstrip('\n\r').strip()
@@ -230,7 +287,6 @@ def process_source_playlist(source_path):
             flattened.append(final_extinf)
             flattened.append(final_url)
         else:
-            # Preserve comments and other lines
             flattened.append(line)
             i += 1
 
@@ -238,7 +294,7 @@ def process_source_playlist(source_path):
 
 def main():
     print("=" * 60)
-    print("IPTV Playlist Flattener – Final Version")
+    print("IPTV Playlist Flattener – Playability‑Based Testing")
     print("=" * 60)
 
     if not Path(SOURCE_FILE).exists():
