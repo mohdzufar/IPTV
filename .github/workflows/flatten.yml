@@ -16,18 +16,16 @@ jobs:
   flatten:
     runs-on: self-hosted
     permissions:
-      contents: write   # Needed to push changes back to the repository
+      contents: write
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0   # Fetch full history for clean rebase
+          fetch-depth: 0
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
+      # The setup-python step has been removed.
+      # The system's global Python installation will be used.
 
       - name: Run flatten script
         run: python scripts/flatten.py
@@ -36,21 +34,11 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          
-          # Stage the changes made by flatten.py
           git add Main.m3u8
-          
-          # If no changes, exit cleanly
           if git diff --cached --quiet; then
             echo "No changes to commit"
             exit 0
           fi
-          
-          # Commit the flattened file
           git commit -m "Auto-update flattened playlist [skip ci]"
-          
-          # Pull latest remote changes (with autostash for safety)
           git pull --rebase --autostash origin main
-          
-          # Push the commit
           git push
