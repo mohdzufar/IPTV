@@ -1,10 +1,7 @@
 #!/usr/bin/env python3
 """
 IPTV Playlist Flattener - Universal Playability with MIME Type Validation
-- Rejects master/DASH playlists served with incorrect MIME types (e.g., text/plain).
-- Preserves only properly served master/DASH manifests.
-- Flattens simple redirect playlists.
-- Validates direct streams for media signatures.
+- Handles Unicode output safely on Windows.
 """
 
 import urllib.request
@@ -12,8 +9,12 @@ import urllib.error
 import sys
 import time
 import re
+import io
 from pathlib import Path
 from urllib.parse import urljoin
+
+# Force UTF-8 output to avoid UnicodeEncodeError on Windows
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
 
 # -------------------------------------------------------------------
 # CONFIGURATION
@@ -33,7 +34,6 @@ HEADERS = {
     'Connection': 'keep-alive'
 }
 
-# MIME types that IPTV apps expect for playlists
 VALID_HLS_MIME = {'application/vnd.apple.mpegurl', 'audio/mpegurl', 'application/x-mpegURL'}
 VALID_DASH_MIME = {'application/dash+xml'}
 
@@ -41,10 +41,6 @@ VALID_DASH_MIME = {'application/dash+xml'}
 # HELPER FUNCTIONS
 # -------------------------------------------------------------------
 def fetch_with_retry(url, timeout=TIMEOUT, max_retries=MAX_RETRIES, chunk_size=None):
-    """
-    Fetch URL content with retries.
-    Returns (data, success, content_type)
-    """
     for attempt in range(max_retries + 1):
         try:
             req = urllib.request.Request(url, headers=HEADERS)
@@ -136,10 +132,6 @@ def extract_first_variant_url(content, base_url):
     return None
 
 def test_candidate(url):
-    """
-    Test a single candidate URL.
-    Returns (working: bool, final_url: str)
-    """
     print(f"      Testing: {url[:70]}...")
 
     data, success, content_type = fetch_with_retry(url, chunk_size=CHUNK_SIZE)
@@ -159,15 +151,12 @@ def test_candidate(url):
         dash = is_dash_manifest(full_data)
 
         if master or dash:
-            # --- NEW: Validate MIME type of the playlist itself ---
-            if master:
-                if full_content_type not in VALID_HLS_MIME:
-                    print(f"      Rejected: HLS master served as '{full_content_type}' (expected HLS MIME)")
-                    return False, url
-            if dash:
-                if full_content_type not in VALID_DASH_MIME:
-                    print(f"      Rejected: DASH manifest served as '{full_content_type}' (expected DASH MIME)")
-                    return False, url
+            if master and full_content_type not in VALID_HLS_MIME:
+                print(f"      Rejected: HLS master served as '{full_content_type}'")
+                return False, url
+            if dash and full_content_type not in VALID_DASH_MIME:
+                print(f"      Rejected: DASH manifest served as '{full_content_type}'")
+                return False, url
 
             print(f"      Master/DASH playlist with correct MIME - testing variant...")
             variant_url = extract_first_variant_url(full_data, url)
@@ -182,7 +171,6 @@ def test_candidate(url):
                 print(f"      Could not extract variant URL")
             return False, url
 
-        # Simple redirect playlist
         lines = full_data.decode('utf-8', errors='ignore').splitlines()
         stream_url = None
         for line in lines:
@@ -199,7 +187,6 @@ def test_candidate(url):
             print(f"      No stream URL found in playlist")
             return False, url
 
-    # Direct stream
     if is_valid_media_data(data):
         print(f"      Valid media stream ({len(data)} bytes)")
         return True, url
@@ -208,7 +195,9 @@ def test_candidate(url):
         return False, url
 
 def process_channel(extinf_line, candidate_urls):
-    print(f"  Testing candidates for: {extinf_line[:50]}...")
+    # Safely truncate extinf_line for display
+    safe_line = extinf_line[:50] + "..." if len(extinf_line) > 50 else extinf_line
+    print(f"  Testing candidates for: {safe_line}")
 
     for idx, url in enumerate(candidate_urls, 1):
         print(f"    Candidate {idx}: {url[:70]}...")
