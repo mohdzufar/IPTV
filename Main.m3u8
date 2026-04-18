@@ -1,4 +1,4 @@
-#EXTM3U url-tvg="https://raw.githubusercontent.com/Jerrie-Aries/EPG/refs/heads/master/epg.xml, https://epg.pw/xmltv/epg.xml, https://github.com/matthuisman/i.mjh.nz/raw/master/PlutoTV/gb.xml.gz, https://github.com/matthuisman/i.mjh.nz/raw/master/SamsungTVPlus/all.xml.gz, https://raw.githubusercontent.com/doms9/iptv/refs/heads/default/M3U8/TV.xml"
+#EXTM3U url-tvg="https://raw.githubusercontent.com/Jerrie-Aries/EPG/refs/heads/master/epg.xml, https://raw.githubusercontent.com/AqFad2811/epg/refs/heads/main/sooka.xml, https://epg.pw/xmltv/epg.xml, https://github.com/matthuisman/i.mjh.nz/raw/master/PlutoTV/gb.xml.gz, https://github.com/matthuisman/i.mjh.nz/raw/master/SamsungTVPlus/all.xml.gz, https://raw.githubusercontent.com/doms9/iptv/refs/heads/default/M3U8/TV.xml"
 
 
 #EXTINF:-1 tvg-chno="1" tvg-country="MY" tvg-logo="https://rtm-images.glueapi.io/320x0//live_channel/tv1_Trans.png" tvg-id="TV1.my" tvg-name="TV 1" group-title="Malaysia" ,RTM TV1
@@ -49,19 +49,19 @@ https://raw.githubusercontent.com/mohdzufar/Main-IPTV/refs/heads/main/Channels/R
 https://raw.githubusercontent.com/mohdzufar/Main-IPTV/refs/heads/main/Channels/RTM/Roll/RTM%20Roll.m3u8
 #EXTINF:-1 tvg-country="MY" tvg-logo="https://rtm-images.glueapi.io/320x0/fast_channel/AURA_CHANNEL.jpg" tvg-id="479618" tvg-name="RTM Aura" group-title="Malaysia",RTM Aura
 https://raw.githubusercontent.com/mohdzufar/Main-IPTV/refs/heads/main/Channels/RTM/Aura/RTM%20Aura.m3u8
-#EXTINF:-1 tvg-country="MY" tvg-id="FilemMantap" tvg-name="Filem Mantap" tvg-logo="https://datastore.vr.ctrp.sooka.my/content/images/ed5839FilemMantap_IVP_LAND_1280x720.jpg" group-title="Malaysia",Filem Mantap
+#EXTINF:-1 tvg-country="MY" tvg-id="FilemMantap" tvg-name="Filem Mantap" tvg-logo="https://datastore.vr.ctrp.sooka.my/content/images/ed5839FilemMantap_IVP_LAND_917x516" group-title="Malaysia",Filem Mantap
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Njoi/Filem%20Mantap.m3u8
-#EXTINF:-1 tvg-country="MY" tvg-id="LawakSentral" tvg-name="Lawak Sentral" tvg-logo="https://datastore.vr.ctrp.sooka.my/content/images/34dfc1DramaHebat_IVP_LAND_1280x720.jpg" group-title="Malaysia",Lawak Sentral
+#EXTINF:-1 tvg-country="MY" tvg-id="LawakSentral" tvg-name="Lawak Sentral" tvg-logo="https://datastore.vr.ctrp.sooka.my/content/images/09c2f2Lawaksentral_IVP_LAND_917x516.jpg" group-title="Malaysia",Lawak Sentral
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Njoi/Lawak%20Sentral.m3u8
-#EXTINF:-1 tvg-country="MY" tvg-id="DramaHotpot" tvg-name="Drama Hotpot" tvg-logo="https://datastore.vr.ctrp.sooka.my/content/images/dccc78DramaHotpot_IVP_LAND_1280x720.jpg" group-title="Malaysia",Drama Hotpot
+#EXTINF:-1 tvg-country="MY" tvg-id="DramaHotpot" tvg-name="Drama Hotpot" tvg-logo="https://datastore.vr.ctrp.sooka.my/content/images/34dfc1DramaHebat_IVP_LAND_917x516.jpg" group-title="Malaysia",Drama Hotpot
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Njoi/Drama%20Hotpot.m3u8
-#EXTINF:-1 tvg-country="MY" tvg-id="TravelandTaste" tvg-name="Travel & Taste" tvg-logo="https://datastore.vr.ctrp.sooka.my/content/images/ba8e3eTravelTaste_IVP_LAND_1280x720.jpg" group-title="Malaysia",Travel & Taste
+#EXTINF:-1 tvg-country="MY" tvg-id="TravelandTaste" tvg-name="Travel & Taste" tvg-logo="https://datastore.vr.ctrp.sooka.my/content/images/ba8e3eTravelTaste_IVP_LAND_917x516.jpg" group-title="Malaysia",Travel & Taste
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Njoi/Travel%20%26%20Taste.m3u8
-#EXTINF:-1 tvg-country="MY" tvg-id="DramaHebat" tvg-name="Drama Hebat" tvg-logo="https://datastore.vr.ctrp.sooka.my/content/images/34dfc1DramaHebat_IVP_LAND_1280x720.jpg" group-title="Malaysia",Drama Hebat
+#EXTINF:-1 tvg-country="MY" tvg-id="DramaHebat" tvg-name="Drama Hebat" tvg-logo="https://datastore.vr.ctrp.sooka.my/content/images/34dfc1DramaHebat_IVP_LAND_917x516.jpg" group-title="Malaysia",Drama Hebat
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Njoi/Drama%20Hebat.m3u8
-#EXTINF:-1 tvg-country="MY" tvg-id="JomNgaji" tvg-name="Jom Ngaji" tvg-logo="https://datastore.vr.ctrp.sooka.my/content/images/c65ddaJomNgaji_IVP_LAND_1280x720.jpg" group-title="Malaysia",Jom Ngaji
+#EXTINF:-1 tvg-country="MY" tvg-id="JomNgaji" tvg-name="Jom Ngaji" tvg-logo="https://datastore.vr.ctrp.sooka.my/content/images/c65ddaJomNgaji_IVP_LAND_917x516.jpg" group-title="Malaysia",Jom Ngaji
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Njoi/Jom%20Ngaji.m3u8
-#EXTINF:-1 tvg-country="MY" tvg-id="OhMyCeria" tvg-name="Oh My Ceria!" tvg-logo="https://datastore.vr.ctrp.sooka.my/content/images/c0eaafOhMyCeria_IVP_LAND_1280x720.jpg" group-title="Malaysia",Oh My Ceria!
+#EXTINF:-1 tvg-country="MY" tvg-id="OhMyCeria" tvg-name="Oh My Ceria!" tvg-logo="https://datastore.vr.ctrp.sooka.my/content/images/c0eaafOhMyCeria_IVP_LAND_917x516.jpg",Oh My Ceria!
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Njoi/Oh!%20My%20Ceria.m3u8
 #EXTINF:-1 tvg-country="SA" tvg-id="AlQuranKareem.id" tvg-name="Quran (Mecca)" tvg-logo="https://mncvision.id/userfiles/image/channel/channel_93.png" group-title="",Quran (Mecca)
 https://live.kwikmotion.com/sbrksaquranradiolive/srpksaquranradio/playlist.m3u8
@@ -276,7 +276,7 @@ https://live-content.xumo.com/2715/content/XM04405O6X0WP0/28846020/master.m3u8
 #EXTINF:-1 tvg-country="CN" tvg-logo="" tvg-id="" tvg-name="" group-title="China",mn静静nm
 https://goodiptv.club/douyu/5668371
 #EXTINF:-1 tvg-country="CN" tvg-logo="" tvg-id="" tvg-name="" group-title="China",万事通熊猫
-https://cdn.jsdelivr.net/gh/feiyang666999/testvideo/sdr1080pvideo/playad0.ts
+https://goodiptv.club/douyu/7812810
 #EXTINF:-1 tvg-country="KR" tvg-name="K-Content" tvg-id="GB17000066A" tvg-name="K-Content" tvg-logo="https://tvpnlogopeu.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/GB17000066A_20250826T004916SQUARE.png" group-title="Korea",K-Content
 https://jmp2.uk/stvp-GB17000066A
 #EXTINF:-1 tvg-country="KR" tvg-name="K-Drama+" tvg-id="CA17000023Q" tvg-logo="https://tvpnlogopus.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/CA17000023Q_20250826T234700SQUARE.png" group-title="Korea",K-Drama+
