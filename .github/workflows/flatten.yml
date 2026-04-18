@@ -7,7 +7,7 @@ on:
       - 'Channels/Flatten.m3u8'
       - 'Channels/**/*.m3u8'
       - 'Channels/**/*.m3u'
-  workflow_dispatch:   # Allow manual trigger from Actions tab
+  workflow_dispatch:
   schedule:
     # Runs every day at 5:00 AM Malaysia Time (UTC+8) = 21:00 UTC
     - cron: '0 21 * * *'
@@ -16,7 +16,7 @@ jobs:
   flatten:
     runs-on: ubuntu-latest
     permissions:
-      contents: write   # Needed to commit changes back to the repo
+      contents: write   # Needed to push changes back to the repository
 
     steps:
       - name: Checkout repository
@@ -37,14 +37,20 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           
-          # Pull latest remote changes to avoid push conflicts
-          git pull --rebase origin main
-          
+          # Stage the changes made by flatten.py
           git add Main.m3u8
           
+          # If no changes, exit cleanly
           if git diff --cached --quiet; then
             echo "No changes to commit"
-          else
-            git commit -m "Auto-update flattened playlist [skip ci]"
-            git push
+            exit 0
           fi
+          
+          # Commit the flattened file
+          git commit -m "Auto-update flattened playlist [skip ci]"
+          
+          # Pull latest remote changes (with autostash for safety)
+          git pull --rebase --autostash origin main
+          
+          # Push the commit
+          git push
