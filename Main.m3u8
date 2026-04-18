@@ -96,11 +96,11 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/SkySpo
 #EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="" tvg-name="Bein Sports 1" group-title="Sports",Bein Sports 1
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/BeiN/Sports%201.m3u8
 #EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="" tvg-name="Bein Sports 2" group-title="Sports",Bein Sports 2
-https://hls.iill.top/api/beIN-Sports-2/api_beIN-Sports-2_c8754ae61e261d645827bf3cbb371b91.ts
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/BeiN/Sports%202.m3u8
 #EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="" tvg-name="Bein Sports 3" group-title="Sports",Bein Sports 3
-https://hls.iill.top/api/beIN-Sports-3/api_beIN-Sports-3_8d2bb55a293c42c24037470b9053f456.ts
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/BeiN/Sports%203.m3u8
 #EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="" tvg-name="Bein Sports 4" group-title="Sports",Bein Sports 4
-https://hls.iill.top/api/beIN-Sports-4/api_beIN-Sports-4_d03670597e60b5ee11bf33b342fd0aec.ts
+https://hls.iill.top/api/beIN-Sports-4/api_beIN-Sports-4_c86274c70288998ed0a2abf487f114a6.ts
 #EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="" tvg-name="Bein Sports 5" group-title="Sports",Bein Sports 5
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/BeiN/Sports%205.m3u8
 #EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="" tvg-name="Bein Xtra" group-title="Sports",Bein Xtra
