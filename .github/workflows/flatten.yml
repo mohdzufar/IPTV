@@ -25,7 +25,7 @@ jobs:
           fetch-depth: 0
 
       - name: Run flatten script
-        run: python scripts/flatten.py
+        run: C:\Users\zufar\AppData\Local\Python\bin\python.exe
 
       - name: Commit and push flattened file
         run: |
