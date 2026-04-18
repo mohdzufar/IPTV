@@ -24,13 +24,11 @@ jobs:
         with:
           fetch-depth: 0
 
-      # The setup-python step has been removed.
-      # The system's global Python installation will be used.
-
       - name: Run flatten script
         run: python scripts/flatten.py
 
       - name: Commit and push flattened file
+        shell: bash   # <-- This line is the fix
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
