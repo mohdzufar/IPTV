@@ -14,7 +14,7 @@ on:
 
 jobs:
   flatten:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     permissions:
       contents: write   # Needed to push changes back to the repository
 
