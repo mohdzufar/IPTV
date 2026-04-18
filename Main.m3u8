@@ -84,7 +84,7 @@ https://30a-tv.com/feeds/vidaa/golf.m3u8
 #EXTINF:-1 tvg-country="US" tvg-id="Golf.Channel.HD.us2" tvg-name="Golf Channel" tvg-logo="http://schedulesdirect-api20141201-logos.s3.dualstack.us-east-1.amazonaws.com/stationLogos/s14899_dark_360w_270h.png" group-title="Golf",Golf Channel
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Golf%20Channel/Golf%20Channel.m3u8
 #EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="" tvg-name="Golf Channel (Latin America)" group-title="Golf",Golf Channel (Latin America)
-http://181.114.57.246:4000/play/BHGDIhvdyuw/index.m3u8
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Golf%20Channel/Golf%20Channel%20(latin%20america).m3u8
 #EXTINF:-1 tvg-country="US" tvg-logo="" tvg-id="" tvg-name="GolfPass" group-title="Golf",GolfPass
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Golf%20Pass/Golf%20Pass.m3u8
 #EXTINF:-1 tvg-country="JP" tvg-logo="" tvg-id="" tvg-name="GolfNetwork Japan" group-title="Golf",GolfNetwork Japan
@@ -96,9 +96,9 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/SkySpo
 #EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="" tvg-name="Bein Sports 1" group-title="Sports",Bein Sports 1
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/BeiN/Sports%201.m3u8
 #EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="" tvg-name="Bein Sports 2" group-title="Sports",Bein Sports 2
-https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/BeiN/Sports%202.m3u8
+https://hls.iill.top/api/beIN-Sports-2/api_beIN-Sports-2_c8754ae61e261d645827bf3cbb371b91.ts
 #EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="" tvg-name="Bein Sports 3" group-title="Sports",Bein Sports 3
-https://hls.iill.top/api/beIN-Sports-3/api_beIN-Sports-3_aa575c2a81e2b03d48ecc5cfddf75991.ts
+https://hls.iill.top/api/beIN-Sports-3/api_beIN-Sports-3_8d2bb55a293c42c24037470b9053f456.ts
 #EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="" tvg-name="Bein Sports 4" group-title="Sports",Bein Sports 4
 https://hls.iill.top/api/beIN-Sports-4/api_beIN-Sports-4_d03670597e60b5ee11bf33b342fd0aec.ts
 #EXTINF:-1 tvg-country="" tvg-logo="" tvg-id="" tvg-name="Bein Sports 5" group-title="Sports",Bein Sports 5
