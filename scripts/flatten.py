@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
 """
-IPTV Playlist Flattener - Universal Playability Validation
-- Tests candidates in exact order.
-- Skips unreachable or invalid streams.
-- Extracts and validates variant streams from master/DASH playlists.
+IPTV Playlist Flattener - Universal Playability with MIME Type Validation
+- Rejects master/DASH playlists served with incorrect MIME types (e.g., text/plain).
+- Preserves only properly served master/DASH manifests.
 - Flattens simple redirect playlists.
-- Falls back to first candidate if all fail.
+- Validates direct streams for media signatures.
 """
 
 import urllib.request
@@ -34,69 +33,62 @@ HEADERS = {
     'Connection': 'keep-alive'
 }
 
+# MIME types that IPTV apps expect for playlists
+VALID_HLS_MIME = {'application/vnd.apple.mpegurl', 'audio/mpegurl', 'application/x-mpegURL'}
+VALID_DASH_MIME = {'application/dash+xml'}
+
 # -------------------------------------------------------------------
 # HELPER FUNCTIONS
 # -------------------------------------------------------------------
 def fetch_with_retry(url, timeout=TIMEOUT, max_retries=MAX_RETRIES, chunk_size=None):
-    """Fetch URL content with retries."""
+    """
+    Fetch URL content with retries.
+    Returns (data, success, content_type)
+    """
     for attempt in range(max_retries + 1):
         try:
             req = urllib.request.Request(url, headers=HEADERS)
             with urllib.request.urlopen(req, timeout=timeout) as resp:
+                content_type = resp.headers.get('Content-Type', '').lower()
                 if chunk_size:
                     data = resp.read(chunk_size)
                 else:
                     data = resp.read()
-                return data, True
+                return data, True, content_type
         except Exception:
             if attempt < max_retries:
                 time.sleep(RETRY_DELAY)
             else:
-                return None, False
+                return None, False, ''
 
 def is_valid_media_data(data):
-    """
-    Return True if the data looks like actual video/audio content.
-    Detects MPEG-TS, MP4, and filters out HTML error pages.
-    """
     if not data or len(data) < 100:
         return False
-
-    # MPEG-TS sync byte
     if data[0] == 0x47:
         return True
-
-    # MP4 'ftyp' box (usually at offset 4)
     if len(data) > 8 and data[4:8] == b'ftyp':
         return True
-
-    # Reject obvious HTML/error responses
     try:
         text = data[:200].decode('utf-8', errors='ignore').lower()
         if any(err in text for err in ['<!doctype', '<html', '404 not found', 'error', 'unauthorized']):
             return False
     except:
         pass
-
-    # If it's at least 1 KB of binary data, accept it
     return len(data) >= 1024
 
 def is_hls_master_playlist(content):
-    """Return True if content contains #EXT-X-STREAM-INF."""
     try:
         return '#EXT-X-STREAM-INF' in content.decode('utf-8', errors='ignore')
     except:
         return False
 
 def is_dash_manifest(content):
-    """Return True if content starts with <MPD."""
     try:
         return content.decode('utf-8', errors='ignore').lstrip().startswith('<MPD')
     except:
         return False
 
 def is_playlist_by_content(url, data):
-    """Determine if the URL points to a playlist file."""
     url_lower = url.lower()
     if any(url_lower.endswith(ext) for ext in ('.m3u', '.m3u8', '.mpd')):
         return True
@@ -107,16 +99,11 @@ def is_playlist_by_content(url, data):
         return False
 
 def extract_first_variant_url(content, base_url):
-    """
-    Extract the first variant/segment URL from a master playlist or DASH manifest.
-    Returns an absolute URL or None.
-    """
     try:
         text = content.decode('utf-8', errors='ignore')
     except:
         return None
 
-    # HLS master playlist
     if '#EXT-X-STREAM-INF' in text:
         lines = text.splitlines()
         capture_next = False
@@ -130,7 +117,6 @@ def extract_first_variant_url(content, base_url):
                 return urljoin(base_url, line)
         return None
 
-    # DASH manifest
     if text.lstrip().startswith('<MPD'):
         base_match = re.search(r'<BaseURL>(.*?)</BaseURL>', text)
         dash_base = base_match.group(1) if base_match else base_url
@@ -156,7 +142,7 @@ def test_candidate(url):
     """
     print(f"      Testing: {url[:70]}...")
 
-    data, success = fetch_with_retry(url, chunk_size=CHUNK_SIZE)
+    data, success, content_type = fetch_with_retry(url, chunk_size=CHUNK_SIZE)
     if not success or not data:
         print(f"      Unreachable or no data")
         return False, url
@@ -165,16 +151,25 @@ def test_candidate(url):
 
     if is_playlist:
         print(f"      Playlist detected, fetching full content...")
-        full_data, _ = fetch_with_retry(url, chunk_size=None)
+        full_data, _, full_content_type = fetch_with_retry(url, chunk_size=None)
         if not full_data:
             return False, url
 
-        # Master HLS or DASH?
         master = is_hls_master_playlist(full_data)
         dash = is_dash_manifest(full_data)
 
         if master or dash:
-            print(f"      Master/DASH playlist - testing variant...")
+            # --- NEW: Validate MIME type of the playlist itself ---
+            if master:
+                if full_content_type not in VALID_HLS_MIME:
+                    print(f"      Rejected: HLS master served as '{full_content_type}' (expected HLS MIME)")
+                    return False, url
+            if dash:
+                if full_content_type not in VALID_DASH_MIME:
+                    print(f"      Rejected: DASH manifest served as '{full_content_type}' (expected DASH MIME)")
+                    return False, url
+
+            print(f"      Master/DASH playlist with correct MIME - testing variant...")
             variant_url = extract_first_variant_url(full_data, url)
             if variant_url:
                 variant_working, _ = test_candidate(variant_url)
@@ -213,10 +208,6 @@ def test_candidate(url):
         return False, url
 
 def process_channel(extinf_line, candidate_urls):
-    """
-    Test candidates sequentially. Use the first one that is truly playable.
-    If none work, fallback to the first candidate.
-    """
     print(f"  Testing candidates for: {extinf_line[:50]}...")
 
     for idx, url in enumerate(candidate_urls, 1):
@@ -230,7 +221,6 @@ def process_channel(extinf_line, candidate_urls):
     return extinf_line, candidate_urls[0]
 
 def process_source_playlist(source_path):
-    """Read source file, test candidates, and build flattened output."""
     with open(source_path, 'r', encoding='utf-8') as f:
         lines = f.readlines()
 
@@ -250,11 +240,9 @@ def process_source_playlist(source_path):
             extinf_line = line
             i += 1
 
-            # Skip blank lines
             while i < len(lines) and not lines[i].strip():
                 i += 1
 
-            # Collect candidate URLs
             candidates = []
             while i < len(lines):
                 next_line = lines[i].rstrip('\n\r').strip()
@@ -284,7 +272,7 @@ def process_source_playlist(source_path):
 
 def main():
     print("=" * 60)
-    print("IPTV Playlist Flattener - Universal Playability")
+    print("IPTV Playlist Flattener - MIME Type Validation")
     print("=" * 60)
 
     if not Path(SOURCE_FILE).exists():
