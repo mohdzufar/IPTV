@@ -1,4 +1,4 @@
-#EXTM3U url-tvg="https://raw.githubusercontent.com/Jerrie-Aries/EPG/refs/heads/master/epg.xml, https://raw.githubusercontent.com/AqFad2811/epg/refs/heads/main/sooka.xml, https://epg.pw/xmltv/epg.xml, https://github.com/matthuisman/i.mjh.nz/raw/master/PlutoTV/gb.xml.gz, https://github.com/matthuisman/i.mjh.nz/raw/master/SamsungTVPlus/all.xml.gz, https://raw.githubusercontent.com/doms9/iptv/refs/heads/default/M3U8/TV.xml"
+#EXTM3U url-tvg="https://raw.githubusercontent.com/Jerrie-Aries/EPG/refs/heads/master/epg.xml, https://raw.githubusercontent.com/AqFad2811/epg/refs/heads/main/sooka.xml, https://github.com/matthuisman/i.mjh.nz/raw/master/PlutoTV/gb.xml.gz, https://github.com/matthuisman/i.mjh.nz/raw/master/SamsungTVPlus/all.xml.gz, https://raw.githubusercontent.com/doms9/iptv/refs/heads/default/M3U8/TV.xml"
 
 
 #EXTINF:-1 tvg-chno="1" tvg-name="RTM TV1" tvg-id="TV1.my" tvg-country="MY" tvg-logo="https://rtm-images.glueapi.io/320x0//live_channel/tv1_Trans.png" group-title="Malaysia",RTM TV1
@@ -35,9 +35,9 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channel/Mana-Ma
 https://raw.githubusercontent.com/mohdzufar/Main-IPTV/refs/heads/main/Channels/RTM/Dewan%20Rakyat/Dewan%20Rakyat.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Dewan Negara" tvg-id="DewanNegara.my" tvg-country="MY" tvg-logo="https://rtm-images.glueapi.io/320x0//live_channel/PDN_Trans.png" group-title="Malaysia",Dewan Negara
 https://raw.githubusercontent.com/mohdzufar/Main-IPTV/refs/heads/main/Channels/RTM/Dewan%20Negara/Dewan%20Negara.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="RTM Snap" tvg-id="" tvg-country="MY" tvg-logo="https://rtm-images.glueapi.io/320x0/fast_channel/SNAP_CHANNEL.jpg" group-title="Malaysia",RTM Snap
+#EXTINF:-1 tvg-chno="" tvg-name="RTM Snap" tvg-id="538142" tvg-country="MY" tvg-logo="https://rtm-images.glueapi.io/320x0/fast_channel/SNAP_CHANNEL.jpg" group-title="Malaysia",RTM Snap
 https://raw.githubusercontent.com/mohdzufar/Main-IPTV/refs/heads/main/Channels/RTM/Snap/RTM%20Snap.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="RTM Lead" tvg-id="Lead" tvg-country="MY" tvg-logo="https://rtm-images.glueapi.io/320x0/fast_channel/LEAD_CHANNEL.jpg" group-title="Malaysia",RTM Lead
+#EXTINF:-1 tvg-chno="" tvg-name="RTM Lead" tvg-id="538300" tvg-country="MY" tvg-logo="https://rtm-images.glueapi.io/320x0/fast_channel/LEAD_CHANNEL.jpg" group-title="Malaysia",RTM Lead
 https://raw.githubusercontent.com/mohdzufar/Main-IPTV/refs/heads/main/Channels/RTM/Lead/RTM%20Lead.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="RTM Apetito" tvg-id="479619" tvg-country="MY" tvg-logo="https://rtm-images.glueapi.io/320x0/fast_channel/APETITO_CHANNEL.jpg" group-title="Malaysia",RTM Apetito
 https://raw.githubusercontent.com/mohdzufar/Main-IPTV/refs/heads/main/Channels/RTM/Apetito/RTM%20Apetito.m3u8
@@ -75,11 +75,11 @@ https://d2e1asnsl7br7b.cloudfront.net/7782e205e72f43aeb4a48ec97f66ebbe/index_5.m
 https://d1211whpimeups.cloudfront.net/smil:rtb2/playlist.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="RTB Sukmaindera" tvg-id="" tvg-country="BN" tvg-logo="" group-title="Brunei",RTB Sukmaindera
 https://d1211whpimeups.cloudfront.net/smil:rtb1/playlist.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="Crunchyroll" tvg-id="" tvg-country="" tvg-logo="" group-title="Anime",Crunchyroll
+#EXTINF:-1 tvg-chno="" tvg-name="Crunchyroll" tvg-id="65652f7fc0fc88000883537a" tvg-country="US" tvg-logo="" group-title="Anime",Crunchyroll
 https://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/65652f7fc0fc88000883537a/master.m3u8?appName=web&appVersion=9.19.0&deviceDNT=0&deviceId=affbdbfa-5fa3-48af-8369-57c005daef42&deviceMake=firefox&deviceModel=web&deviceType=web&deviceVersion=147.0.0&serverSideAds=false&sid=b7df248c-540d-4184-97dc-488d0b5beada
 #EXTINF:-1 tvg-chno="" tvg-name="Cartoon Network" tvg-id="Cartoon.Network.HD.us2" tvg-country="US" tvg-logo="http://schedulesdirect-api20141201-logos.s3.dualstack.us-east-1.amazonaws.com/stationLogos/s12131_dark_360w_270h.png" group-title="Kids",Cartoon Network
 http://23.237.104.106:8080/USA_CARTOON_NETWORK/index.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="Golf Kingdom" tvg-id="" tvg-country="" tvg-logo="" group-title="Golf",Golf Kingdom
+#EXTINF:-1 tvg-chno="" tvg-name="Golf Kingdom" tvg-id="" tvg-country="US" tvg-logo="" group-title="Golf",Golf Kingdom
 https://30a-tv.com/feeds/vidaa/golf.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Golf Channel" tvg-id="Golf.Channel.HD.us2" tvg-country="US" tvg-logo="http://schedulesdirect-api20141201-logos.s3.dualstack.us-east-1.amazonaws.com/stationLogos/s14899_dark_360w_270h.png" group-title="Golf",Golf Channel
 http://iptvtree.net:8080/live/7e4b0dbd/1dd755dc3f/5845.ts
@@ -88,16 +88,16 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Golf%2
 #EXTINF:-1 tvg-chno="" tvg-name="GolfPass" tvg-id="" tvg-country="US" tvg-logo="" group-title="Golf",GolfPass
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Golf%20Pass/Golf%20Pass.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="GolfNetwork Japan" tvg-id="" tvg-country="JP" tvg-logo="" group-title="Golf",GolfNetwork Japan
-http://cdns.jp-primehome.com:8000/zhongying/live/playlist.m3u8?cid=cs03
-#EXTINF:-1 tvg-chno="" tvg-name="PGA Tour" tvg-id="65b14aae0cb1a100087a216e" tvg-country="" tvg-logo="https://images.pluto.tv/channels/65b14aae0cb1a100087a216e/colorLogoPNG.png" group-title="Golf",PGA Tour
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Golf%20Network/Golf%20Network%20Japan.m3u8
+#EXTINF:-1 tvg-chno="" tvg-name="PGA Tour" tvg-id="" tvg-country="US" tvg-logo="https://images.pluto.tv/channels/65b14aae0cb1a100087a216e/colorLogoPNG.png" group-title="Golf",PGA Tour
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/PGA%20Tour/PGA%20Tour.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Sky Sport Golf" tvg-id="" tvg-country="" tvg-logo="" group-title="Golf",Sky Sport Golf
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/SkySport/Golf/Golf.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="Bein Sports 1" tvg-id="" tvg-country="" tvg-logo="" group-title="Sports",Bein Sports 1
-https://hls.iill.top/api/beIN-Sports-1/api_beIN-Sports-1_b13ca4e293489ee72ea5ec10d345af38.ts
-#EXTINF:-1 tvg-chno="" tvg-name="Bein Sports 2" tvg-id="" tvg-country="" tvg-logo="" group-title="Sports",Bein Sports 2
-https://hls.iill.top/api/beIN-Sports-2/api_beIN-Sports-2_3fe3c08909e88f2ee01647510bd87867.ts
-#EXTINF:-1 tvg-chno="" tvg-name="Bein Sports 3" tvg-id="" tvg-country="" tvg-logo="" group-title="Sports",Bein Sports 3
+#EXTINF:-1 tvg-chno="" tvg-name="Bein Sports 1" tvg-id="399482" tvg-country="" tvg-logo="" group-title="Sports",Bein Sports 1
+https://hls.iill.top/api/beIN-Sports-1/api_beIN-Sports-1_8ec083f2d0f2bb2d0d54d7a6e95b8ef7.ts
+#EXTINF:-1 tvg-chno="" tvg-name="Bein Sports 2" tvg-id="4146" tvg-country="" tvg-logo="" group-title="Sports",Bein Sports 2
+https://hls.iill.top/api/beIN-Sports-2/api_beIN-Sports-2_c11e2a17ecf81b60cc54f2e4a8a7a118.ts
+#EXTINF:-1 tvg-chno="" tvg-name="Bein Sports 3" tvg-id="3118" tvg-country="" tvg-logo="" group-title="Sports",Bein Sports 3
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/BeiN/Sports%203.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Bein Sports 4" tvg-id="" tvg-country="" tvg-logo="" group-title="Sports",Bein Sports 4
 https://hls.iill.top/api/beIN-Sports-4/api_beIN-Sports-4_d03670597e60b5ee11bf33b342fd0aec.ts
@@ -163,7 +163,7 @@ https://2535b897.wurl.com/master/f36d25e7e52f1ba8d7e56eb859c636563214f541/U3Bvcn
 https://98f49f2d.wurl.com/master/f36d25e7e52f1ba8d7e56eb859c636563214f541/VENMVFZQbHVzLWNhX0ZJRkFQbHVzRW5nbGlzaF9ITFM/playlist.m3u8?ads.wurl_channel=1854&ads.wurl_name=FIFAPlusEnglish&ads.coppa=0&ads.device_id=%7BDEVICE_ID%7D&ads.dnt=%7BDNT%7D&ads.us_privacy=%7BUS_PRIVACY%7D&ads.gdpr=%7BGDPR%7D&ads.consent=%7BCONSENT%7D&ads.app_name=%7BAPP_NAME%7D&ads.app_bundle=%7BAPP_BUNDLE%7D&ads.app_store_url=%7BAPP_STORE_URL%7D&ads.ifa_type=%7BIFA_TYPE%7D&ads.custom=%7BCUSTOM%7D&ads.device_make=%7BDEVICE_MAKE%7D&ads.device_model=%7BDEVICE_MODEL%7D&ads.givn=%7BGIVN%7D&ads.u_paln=%7BU_PALN%7D
 #EXTINF:-1 tvg-chno="" tvg-name="TNA Wresling" tvg-id="" tvg-country="" tvg-logo="" group-title="Sports",TNA Wresling
 https://d3f4oii5n0oeqi.cloudfront.net/11701/88814515/hls/master.m3u8?includeAssetTags=true&ads.xumo_channelId=88814515&ads.xumo_streamId=88814515&declaredCC1Language=en&ads.caid=ImpactWrestling&ads.csid=tcl2_us_anthemsportsimpactwrestling_ssai&ads.xumo_ifaType=%5BIFA_TYPE%5D&ads.xumo_ifa=%5BIFA%5D&ads.appName=%5BAPP_NAME%5D&ads.appVersion=%5BAPP_VERSION%5D&ads._fw_app_bundle=%5BTCL_APP_BUNDLE%5D&ads.genre=Sport&ads._fw_content_category=IAB17&ads._fw_content_genre=sports&ads._fw_content_language=en&ads._fw_content_rating=tv-14&ads._fw_deviceMake=%5BDEVICE_MAKE%5D&ads._fw_device_model=%5BDEVICE_MODEL%5D&ads._fw_devicetype=3-Connected_TV&ads._fw_coppa=0&ads._fw_is_lat=%5BLMT%5D&ads._fw_us_privacy=%5BUS_PRIVACY%5D&ads._fw_h_x_country=US&ads._fw_player_width=%5BPLAYER_WIDTH%5D&ads._fw_player_height=%5BPLAYER_HEIGHT%5D&ads.xumo_contentId=2073&ads.xumo_contentName=ImpactWrestling&ads.xumo_providerId=2073&ads.xumo_providerName=AnthemSportsIMPACTWrestling&ads.xumo_channelName=ImpactWrestling&ads._fw_app_store_url=%5BTCL_APP_STORE_URL%5D
-#EXTINF:-1 tvg-chno="" tvg-name="Astro Badminton" tvg-id="" tvg-country="MY" tvg-logo="" group-title="Sports",Astro Badminton
+#EXTINF:-1 tvg-chno="" tvg-name="Astro Badminton" tvg-id="397400" tvg-country="MY" tvg-logo="" group-title="Sports",Astro Badminton
 http://208.87.242.55/livehttpplay?channel_id=13304
 #EXTINF:-1 tvg-chno="" tvg-name="Astro Football" tvg-id="" tvg-country="MY" tvg-logo="" group-title="Sports",Astro Football
 http://208.87.242.55/livehttpplay?channel_id=13300
@@ -265,7 +265,7 @@ http://23.237.104.106:8080/USA_DISCOVERY/index.m3u8
 http://iptvtree.net:8080/live/7e4b0dbd/1dd755dc3f/201208.ts
 #EXTINF:-1 tvg-chno="" tvg-name="Discovery Science" tvg-id="Science.Channel.HD.us2" tvg-country="US" tvg-logo="http://schedulesdirect-api20141201-logos.s3.dualstack.us-east-1.amazonaws.com/stationLogos/s24282_dark_360w_270h.png" group-title="",Discovery Science
 http://iptvtree.net:8080/live/7e4b0dbd/1dd755dc3f/2301.ts
-#EXTINF:-1 tvg-chno="" tvg-name="Disney Channel" tvg-id="Disney.Channel.HD.us2" tvg-country="US" tvg-logo="http://schedulesdirect-api20141201-logos.s3.dualstack.us-east-1.amazonaws.com/stationLogos/s10171_dark_360w_270h.png" group-title="",Disney Channel
+#EXTINF:-1 tvg-chno="" tvg-name="Disney Channel" tvg-id="Disney.Channel.HD.us2" tvg-country="US" tvg-logo="http://schedulesdirect-api20141201-logos.s3.dualstack.us-east-1.amazonaws.com/stationLogos/s10171_dark_360w_270h.png" group-title="Kids",Disney Channel
 http://89.105.221.127/Disney/index.m3u8?token=test
 #EXTINF:-1 tvg-chno="" tvg-name="Disney XD" tvg-id="Disney.XD.HD.us2" tvg-country="US" tvg-logo="http://schedulesdirect-api20141201-logos.s3.dualstack.us-east-1.amazonaws.com/stationLogos/s18279_dark_360w_270h.png" group-title="",Disney XD
 http://23.237.104.106:8080/USA_DISNEY_XD/index.m3u8
@@ -275,16 +275,16 @@ https://bobross-xumous.cinedigm.com/midroll/amagi_hls_data_xumo-host-bobross-xum
 http://38.64.72.148/hls/modn/list/4005/playlist.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="KoreaTV" tvg-id="" tvg-country="KR" tvg-logo="" group-title="Korea",KoreaTV
 https://hlive.ktv.go.kr/live/klive_h.stream/playlist.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="Al-Jazeera (English)" tvg-id="" tvg-country="" tvg-logo="aljazeera.png" group-title="Muslim",Al-Jazeera (English)
+#EXTINF:-1 tvg-chno="" tvg-name="Al-Jazeera (English)" tvg-id="3416" tvg-country="" tvg-logo="aljazeera.png" group-title="Muslim",Al-Jazeera (English)
 https://live-hls-apps-aje-v3-fa.getaj.net/AJE/index.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Love Pets" tvg-id="" tvg-country="" tvg-logo="" group-title="Pets",Love Pets
 https://rakutenaa-blueskyent-lovepetsemea-rakuten-ikc4q.amagi.tv/playlist/rakutenAA-blueskyent-lovepetsemea-rakuten/playlist.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="Documentary+" tvg-id="" tvg-country="" tvg-logo="" group-title="",Documentary+
+#EXTINF:-1 tvg-chno="" tvg-name="Documentary+" tvg-id="US" tvg-country="" tvg-logo="" group-title="",Documentary+
 https://live-content.xumo.com/2715/content/XM04405O6X0WP0/28846020/master.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="mn静静nm" tvg-id="" tvg-country="CN" tvg-logo="" group-title="China",mn静静nm
 https://cdn.jsdelivr.net/gh/feiyang666999/testvideo/sdr1080pvideo/playad0.ts
 #EXTINF:-1 tvg-chno="" tvg-name="万事通熊猫" tvg-id="" tvg-country="CN" tvg-logo="" group-title="China",万事通熊猫
-https://goodiptv.club/douyu/7812810
+https://cdn.jsdelivr.net/gh/feiyang666999/testvideo/sdr1080pvideo/playad0.ts
 #EXTINF:-1 tvg-chno="" tvg-name="K-Content" tvg-id="GB17000066A" tvg-country="KR" tvg-logo="https://tvpnlogopeu.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/GB17000066A_20250826T004916SQUARE.png" group-title="Korea",K-Content
 https://jmp2.uk/stvp-GB17000066A
 #EXTINF:-1 tvg-chno="" tvg-name="K-Drama+" tvg-id="CA17000023Q" tvg-country="KR" tvg-logo="https://tvpnlogopus.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/CA17000023Q_20250826T234700SQUARE.png" group-title="Korea",K-Drama+
