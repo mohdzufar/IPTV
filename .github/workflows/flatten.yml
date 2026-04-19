@@ -12,6 +12,10 @@ on:
     # Runs every day at 5:00 AM Malaysia Time (UTC+8) = 21:00 UTC
     - cron: '0 21 * * *'
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   flatten:
     runs-on: self-hosted
