@@ -1,12 +1,6 @@
 name: Flatten IPTV Playlist
 
 on:
-  push:
-    branches: [ main, master ]
-    paths:
-      - 'Channels/Flatten.m3u8'
-      - 'Channels/**/*.m3u8'
-      - 'Channels/**/*.m3u'
   workflow_dispatch:
   schedule:
     # Runs every day at 5:00 AM Malaysia Time (UTC+8) = 21:00 UTC
