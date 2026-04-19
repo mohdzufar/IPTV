@@ -54,7 +54,7 @@ https://b27a6dd8a86c3e4ba93fbae22aaaac64.pmqrop.channel-assembly.mediatailor.ap-
 #EXTINF:-1 tvg-chno="" tvg-name="Lawak Sentral" tvg-id="LawakSentral" tvg-country="MY" tvg-logo="https://datastore.vr.ctrp.sooka.my/content/images/09c2f2Lawaksentral_IVP_LAND_917x516.jpg" group-title="Malaysia",Lawak Sentral
 https://b27a6dd8a86c3e4ba93fbae22aaaac64.pmqrop.channel-assembly.mediatailor.ap-southeast-1.amazonaws.com/v1/channel/FAST_3/dash.mpd
 #EXTINF:-1 tvg-chno="" tvg-name="Drama Hotpot" tvg-id="DramaHotpot" tvg-country="MY" tvg-logo="https://datastore.vr.ctrp.sooka.my/content/images/34dfc1DramaHebat_IVP_LAND_917x516.jpg" group-title="Malaysia",Drama Hotpot
-https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Njoi/Drama%20Hotpot.m3u8
+https://b27a6dd8a86c3e4ba93fbae22aaaac64.pmqrop.channel-assembly.mediatailor.ap-southeast-1.amazonaws.com/v1/channel/FAST_4/dash.mpd
 #EXTINF:-1 tvg-chno="" tvg-name="Travel & Taste" tvg-id="TravelandTaste" tvg-country="MY" tvg-logo="https://datastore.vr.ctrp.sooka.my/content/images/ba8e3eTravelTaste_IVP_LAND_917x516.jpg" group-title="Malaysia",Travel & Taste
 https://b27a6dd8a86c3e4ba93fbae22aaaac64.pmqrop.channel-assembly.mediatailor.ap-southeast-1.amazonaws.com/v1/channel/FAST_5/dash.mpd
 #EXTINF:-1 tvg-chno="" tvg-name="Drama Hebat" tvg-id="DramaHebat" tvg-country="MY" tvg-logo="https://datastore.vr.ctrp.sooka.my/content/images/34dfc1DramaHebat_IVP_LAND_917x516.jpg" group-title="Malaysia",Drama Hebat
@@ -82,7 +82,7 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Cartoo
 #EXTINF:-1 tvg-chno="" tvg-name="Golf Kingdom" tvg-id="" tvg-country="US" tvg-logo="" group-title="Golf",Golf Kingdom
 https://30a-tv.com/feeds/vidaa/golf.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Golf Channel" tvg-id="Golf.Channel.HD.us2" tvg-country="US" tvg-logo="http://schedulesdirect-api20141201-logos.s3.dualstack.us-east-1.amazonaws.com/stationLogos/s14899_dark_360w_270h.png" group-title="Golf",Golf Channel
-http://iptvtree.net:8080/live/7e4b0dbd/1dd755dc3f/5845.ts
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Golf%20Channel/Golf%20Channel.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Golf Channel (Latin America)" tvg-id="" tvg-country="" tvg-logo="" group-title="Golf",Golf Channel (Latin America)
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Golf%20Channel/Golf%20Channel%20(Latin%20America).m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="GolfNetwork Japan" tvg-id="" tvg-country="JP" tvg-logo="" group-title="Golf",GolfNetwork Japan
@@ -94,13 +94,13 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/PGA%20
 #EXTINF:-1 tvg-chno="" tvg-name="Sky Sport Golf" tvg-id="" tvg-country="" tvg-logo="" group-title="Golf",Sky Sport Golf
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/SkySport/Golf/Golf.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Bein Sports 1" tvg-id="399482" tvg-country="" tvg-logo="" group-title="Sports",Bein Sports 1
-https://hls.iill.top/api/beIN-Sports-1/api_beIN-Sports-1_364789d69e4dd7c981f91c65c4e99d60.ts
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/BeiN/Sports%201.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Bein Sports 2" tvg-id="4146" tvg-country="" tvg-logo="" group-title="Sports",Bein Sports 2
-https://hls.iill.top/api/beIN-Sports-2/api_beIN-Sports-2_784cdcb356a9dbb279dd69533ea1c92.ts
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/BeiN/Sports%202.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Bein Sports 3" tvg-id="3118" tvg-country="" tvg-logo="" group-title="Sports",Bein Sports 3
-https://hls.iill.top/api/beIN-Sports-3/api_beIN-Sports-3_4514c9703ead1f484aaf547b746a07f2.ts
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/BeiN/Sports%203.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Bein Sports 4" tvg-id="" tvg-country="" tvg-logo="" group-title="Sports",Bein Sports 4
-https://hls.iill.top/api/beIN-Sports-4/api_beIN-Sports-4_d03670597e60b5ee11bf33b342fd0aec.ts
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/BeiN/Sports%204.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Bein Sports 5" tvg-id="" tvg-country="" tvg-logo="" group-title="Sports",Bein Sports 5
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/BeiN/Sports%205.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Bein Xtra" tvg-id="" tvg-country="" tvg-logo="" group-title="Sports",Bein Xtra
