@@ -1,3 +1,3 @@
 #EXTM3U
-#EXT-X-STREAM-INF:BANDWIDTH=50000
+#EXTINF:1,
 https://92652ca9374d45ff8669fa318712ccda.mediatailor.us-east-1.amazonaws.com/v1/master/f4e8c53a8367a5b58e20ce054ea3ce25a3e904d3/SportsTV_WorldBilliardsTV/playlist.m3u8
