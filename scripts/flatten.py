@@ -6,6 +6,7 @@ IPTV Playlist Flattener – Health Validator Mode
 - Keeps the original candidate URL (sub‑playlist) if any internal stream is playable.
 - Outputs the first working candidate URL; if none, comments out the first candidate.
 - Handles Master HLS, DASH (with XML declaration), and direct streams.
+- Ignores comment lines (starting with #) when collecting candidates.
 """
 
 import urllib.request
@@ -277,9 +278,16 @@ def process_source_playlist(source_path):
                 if not next_line:
                     i += 1
                     continue
+                # Stop at next #EXTINF or #EXTM3U
                 if next_line.startswith('#EXTINF:') or next_line.startswith('#EXTM3U'):
                     break
-                candidates.append(next_line)
+                # Skip any comment line (starts with #)
+                if next_line.startswith('#'):
+                    i += 1
+                    continue
+                # Only accept http/https URLs
+                if next_line.startswith('http://') or next_line.startswith('https://'):
+                    candidates.append(next_line)
                 i += 1
 
             if not candidates:
