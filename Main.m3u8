@@ -82,7 +82,7 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Cartoo
 #EXTINF:-1 tvg-chno="" tvg-name="Golf Kingdom" tvg-id="" tvg-country="US" tvg-logo="" group-title="Golf",Golf Kingdom
 https://30a-tv.com/feeds/vidaa/golf.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Golf Channel" tvg-id="Golf.Channel.HD.us2" tvg-country="US" tvg-logo="http://schedulesdirect-api20141201-logos.s3.dualstack.us-east-1.amazonaws.com/stationLogos/s14899_dark_360w_270h.png" group-title="Golf",Golf Channel
-http://iptvtree.net:8080/live/7e4b0dbd/1dd755dc3f/5845.ts
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Golf%20Channel/Golf%20Channel.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Golf Channel (Latin America)" tvg-id="" tvg-country="" tvg-logo="" group-title="Golf",Golf Channel (Latin America)
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Golf%20Channel/Golf%20Channel%20(Latin%20America).m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="GolfNetwork Japan" tvg-id="" tvg-country="JP" tvg-logo="" group-title="Golf",GolfNetwork Japan
@@ -94,11 +94,11 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/PGA%20
 #EXTINF:-1 tvg-chno="" tvg-name="Sky Sport Golf" tvg-id="" tvg-country="" tvg-logo="" group-title="Golf",Sky Sport Golf
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/SkySport/Golf/Golf.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Bein Sports 1" tvg-id="399482" tvg-country="" tvg-logo="" group-title="Sports",Bein Sports 1
-https://hls.iill.top/api/beIN-Sports-1/api_beIN-Sports-1_692c2c5260e0eb8f09f3f9b628ef5904.ts
+https://hls.iill.top/api/beIN-Sports-1/api_beIN-Sports-1_676067fb1aa3189e27701e7acf2850be.ts
 #EXTINF:-1 tvg-chno="" tvg-name="Bein Sports 2" tvg-id="4146" tvg-country="" tvg-logo="" group-title="Sports",Bein Sports 2
-https://hls.iill.top/api/beIN-Sports-2/api_beIN-Sports-2_12d4bb48b7f87a45648d9e15cc557a6.ts
+https://hls.iill.top/api/beIN-Sports-2/api_beIN-Sports-2_3c1f563cb8e4a585492bf7876e0fd81.ts
 #EXTINF:-1 tvg-chno="" tvg-name="Bein Sports 3" tvg-id="3118" tvg-country="" tvg-logo="" group-title="Sports",Bein Sports 3
-https://hls.iill.top/api/beIN-Sports-3/api_beIN-Sports-3_a5f0d4d78d88b6486cc630292960ef5b.ts
+https://hls.iill.top/api/beIN-Sports-3/api_beIN-Sports-3_70e88153b12e5a6a324e6b736ba544d8.ts
 #EXTINF:-1 tvg-chno="" tvg-name="Bein Sports 4" tvg-id="" tvg-country="" tvg-logo="" group-title="Sports",Bein Sports 4
 https://hls.iill.top/api/beIN-Sports-4/api_beIN-Sports-4_d03670597e60b5ee11bf33b342fd0aec.ts
 #EXTINF:-1 tvg-chno="" tvg-name="Bein Sports 5" tvg-id="" tvg-country="" tvg-logo="" group-title="Sports",Bein Sports 5
@@ -168,7 +168,7 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Astro/
 #EXTINF:-1 tvg-chno="" tvg-name="Astro Football" tvg-id="" tvg-country="MY" tvg-logo="" group-title="Sports",Astro Football
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Astro/Astro%20Badminton.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="CS2" tvg-id="" tvg-country="" tvg-logo="" group-title="E-Sports",CS2
-https://live.iill.top/bilibili/21622811
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/E-Sport/Counter%20Strike/Counter%20Strike%201.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="CS2" tvg-id="" tvg-country="" tvg-logo="" group-title="E-Sports",CS2
 #EXTINF:-1 tvg-chno="" tvg-name="DotA2" tvg-id="" tvg-country="" tvg-logo="" group-title="E-Sports",DotA2
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/E-Sport/Dota%202/Dota%202_1.m3u8
