@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """
-IPTV Playlist Flattener – Robust Timeout Edition
+IPTV Playlist Flattener – Robust Timeout Edition (with Relative URL Fix)
 - Tests all candidates in Flatten.m3u8 with enforced per-candidate timeout.
 - Uses subprocess isolation to prevent hanging requests from stalling the entire run.
 - Handles Master HLS, DASH, and direct streams.
+- Correctly resolves relative segment URLs in media playlists.
 - Outputs the first working candidate URL; if none, comments out the first candidate.
 """
 
@@ -213,7 +214,7 @@ def test_stream_playability(url, depth=0):
             else:
                 return False
 
-        # Simple redirect playlist – test internal URLs sequentially
+        # --- FIXED: Media playlist handling with relative URL resolution ---
         lines = full_data.decode('utf-8', errors='ignore').splitlines()
         internal_urls = []
         for line in lines:
@@ -222,14 +223,16 @@ def test_stream_playability(url, depth=0):
                 continue
             if line.startswith('<?xml') or line.startswith('<MPD') or line.startswith('<Period'):
                 continue
-            if not (line.startswith('http://') or line.startswith('https://')):
-                continue
-            try:
-                line.encode('ascii')
-            except UnicodeEncodeError:
-                continue
-            internal_urls.append(line)
+            # Resolve relative URLs against the playlist's base URL
+            resolved_url = safe_urljoin(url, line)
+            if resolved_url.startswith('http://') or resolved_url.startswith('https://'):
+                try:
+                    resolved_url.encode('ascii')
+                except UnicodeEncodeError:
+                    continue
+                internal_urls.append(resolved_url)
 
+        # Test each segment URL (or internal playlist) in order
         for internal_url in internal_urls:
             if test_stream_playability(internal_url, depth + 1):
                 return True
@@ -371,7 +374,7 @@ def process_source_playlist(source_path):
 
 def main():
     print("=" * 60)
-    print("IPTV Playlist Flattener – Robust Timeout Edition")
+    print("IPTV Playlist Flattener – Robust Timeout Edition (Relative URL Fix)")
     print("=" * 60)
 
     if not Path(SOURCE_FILE).exists():
