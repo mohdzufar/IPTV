@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-IPTV Playlist Flattener – IPTV App Style Validator
+IPTV Playlist Flattener – IPTV App Style Validator (Fixed Timeout)
 - Tests URLs exactly as an IPTV player would: fetch, check for error page,
   follow master playlists to first variant, verify media segment reachability.
-- No binary signature checks, no strict MIME type enforcement.
+- Includes proper timeout handling to prevent hanging.
 - Handles relative URLs correctly.
 - Outputs first working candidate; comments out if all fail.
 """
@@ -68,7 +68,8 @@ def fetch_url(url, timeout=TIMEOUT, max_retries=MAX_RETRIES, method='GET', head_
                 final_url = resp.geturl()
                 if head_only:
                     return None, True, final_url
-                data = resp.read()
+                # Limit read to 256KB to prevent memory issues
+                data = resp.read(262144)
                 return data, True, final_url
         except Exception:
             if attempt < max_retries:
