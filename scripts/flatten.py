@@ -7,6 +7,7 @@ IPTV Playlist Flattener – Health Validator Mode
 - Outputs the first working candidate URL; if none, comments out the first candidate.
 - Handles Master HLS, DASH (with XML declaration), and direct streams.
 - Ignores comment lines and filters out invalid/garbage URLs.
+- MIME type mismatch on master playlists now only issues a warning and continues testing.
 """
 
 import urllib.request
@@ -180,11 +181,11 @@ def test_stream_playability(url):
         dash = is_dash_manifest(full_data)
 
         if master or dash:
-            # Validate MIME type
+            # Validate MIME type, but only issue a warning if it doesn't match.
             if master and full_content_type not in VALID_HLS_MIME:
-                return False
+                print(f"      Warning: HLS master served as '{full_content_type}', testing variant anyway...")
             if dash and full_content_type not in VALID_DASH_MIME:
-                return False
+                print(f"      Warning: DASH manifest served as '{full_content_type}', testing variant anyway...")
 
             variant_url = extract_first_variant_url(full_data, url)
             if variant_url:
@@ -229,9 +230,9 @@ def test_candidate(url):
     print(f"      Testing candidate: {url[:70]}...")
     working = test_stream_playability(url)
     if working:
-        print(f"      ✅ Candidate is playable")
+        print(f"      Candidate is playable")
     else:
-        print(f"      ❌ Candidate failed")
+        print(f"      Candidate failed")
     return working, url
 
 def process_channel(extinf_line, candidate_urls):
@@ -246,11 +247,11 @@ def process_channel(extinf_line, candidate_urls):
         print(f"    Candidate {idx}: {url[:70]}...")
         working, final_url = test_candidate(url)
         if working:
-            print(f"    ✅ Selected candidate {idx}")
+            print(f"    Selected candidate {idx}")
             return extinf_line, final_url
 
     # All candidates failed – comment out the first candidate URL
-    print(f"    ❌ All candidates failed; commenting out first candidate")
+    print(f"    All candidates failed; commenting out first candidate")
     commented_url = f"##{candidate_urls[0]}"
     return extinf_line, commented_url
 
