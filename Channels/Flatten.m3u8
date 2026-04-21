@@ -320,7 +320,7 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/KoreaT
 #EXTINF:-1 tvg-chno="" tvg-name="Al-Jazeera (English)" tvg-id="3416" tvg-country="" tvg-logo="aljazeera.png" group-title="Muslim",Al-Jazeera (English)
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Al-Jazeera/Al-Jazeera%20(English).m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Love Pets" tvg-id="" tvg-country="" tvg-logo="" group-title="Pets",Love Pets
-https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Love%20Pets/Love%20Petsm3u8
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Love%20Pets/Love%20Pets.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Documentary+" tvg-id="US" tvg-country="" tvg-logo="" group-title="",Documentary+
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Documentary_Plus/Documentary_Plus.m3u8
 
