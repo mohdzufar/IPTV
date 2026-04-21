@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """
-IPTV Playlist Flattener – Robust Timeout Edition (with Relative URL Fix)
-- Tests all candidates in Flatten.m3u8 with enforced per-candidate timeout.
-- Uses subprocess isolation to prevent hanging requests from stalling the entire run.
-- Handles Master HLS, DASH, and direct streams.
-- Correctly resolves relative segment URLs in media playlists.
-- Outputs the first working candidate URL; if none, comments out the first candidate.
+IPTV Playlist Flattener – IPTV App Style Validator
+- Tests URLs exactly as an IPTV player would: fetch, check for error page,
+  follow master playlists to first variant, verify media segment reachability.
+- No binary signature checks, no strict MIME type enforcement.
+- Handles relative URLs correctly.
+- Outputs first working candidate; comments out if all fail.
 """
 
 import urllib.request
@@ -13,16 +13,13 @@ import urllib.error
 import urllib.parse
 import sys
 import time
-import re
 import io
-import socket
 import xml.etree.ElementTree as ET
 from pathlib import Path
 from urllib.parse import urljoin, urlparse
-from concurrent.futures import ThreadPoolExecutor, as_completed, TimeoutError as FuturesTimeoutError
-import multiprocessing as mp
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
-# Force UTF-8 output to avoid UnicodeEncodeError on Windows
+# Force UTF-8 output
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
 
 # -------------------------------------------------------------------
@@ -31,16 +28,11 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='repla
 SOURCE_FILE = "Channels/Flatten.m3u8"
 OUTPUT_FILE = "Main.m3u8"
 
-CHUNK_SIZE = 262144        # 256 KB
-TIMEOUT = 20               # Per-request timeout (seconds)
-MAX_RETRIES = 1            # Only one retry to avoid wasting time
-RETRY_DELAY = 1
-MAX_RECURSION_DEPTH = 5    # Prevent infinite loops in nested playlists
-PARALLEL_WORKERS = 2       # Reduced to prevent network congestion
-CANDIDATE_TIMEOUT = 45     # Maximum seconds allowed per candidate (including recursion)
-
-# Global socket timeout as a last-resort safety net
-socket.setdefaulttimeout(TIMEOUT + 5)
+TIMEOUT = 15               # Seconds per request
+MAX_RETRIES = 1
+RETRY_DELAY = 2
+MAX_RECURSION_DEPTH = 5    # Prevent infinite loops
+PARALLEL_WORKERS = 4       # Concurrent candidate tests per channel
 
 HEADERS = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
@@ -49,283 +41,207 @@ HEADERS = {
     'Connection': 'keep-alive'
 }
 
-VALID_HLS_MIME = {'application/vnd.apple.mpegurl', 'audio/mpegurl', 'application/x-mpegURL'}
-VALID_DASH_MIME = {'application/dash+xml'}
-
-# Media file signatures
-MEDIA_SIGNATURES = [
-    (0, b'\x47'),                # MPEG-TS
-    (4, b'ftyp'),                # MP4/MOV
-    (0, b'\x1a\x45\xdf\xa3'),    # WebM / Matroska
-    (0, b'FLV'),                 # FLV
-]
-
 # -------------------------------------------------------------------
 # HELPER FUNCTIONS
 # -------------------------------------------------------------------
 def log_progress(channel_num, total_channels, message):
-    """Print a timestamped progress message."""
     timestamp = time.strftime("%H:%M:%S")
     print(f"[{timestamp}] Ch {channel_num}/{total_channels}: {message}")
 
 def safe_urljoin(base, url):
-    """Join a base URL with a relative URL, handling protocol‑relative URLs."""
+    """Join base URL with a relative or protocol-relative URL."""
     if url.startswith('//'):
-        parsed_base = urlparse(base)
-        return f"{parsed_base.scheme}:{url}"
+        parsed = urlparse(base)
+        return f"{parsed.scheme}:{url}"
     return urljoin(base, url)
 
-def fetch_with_retry(url, timeout=TIMEOUT, max_retries=MAX_RETRIES, chunk_size=None, method='GET'):
-    """Fetch URL content with retries. Returns (data, success, content_type)."""
+def fetch_url(url, timeout=TIMEOUT, max_retries=MAX_RETRIES, method='GET', head_only=False):
+    """
+    Fetch URL and return (data, success, final_url).
+    If head_only is True, use HEAD request and return (None, success, final_url).
+    """
+    headers = HEADERS.copy()
     for attempt in range(max_retries + 1):
         try:
-            req = urllib.request.Request(url, headers=HEADERS, method=method)
+            req = urllib.request.Request(url, headers=headers, method=method)
             with urllib.request.urlopen(req, timeout=timeout) as resp:
-                content_type = resp.headers.get('Content-Type', '').lower()
-                if chunk_size:
-                    data = resp.read(chunk_size)
-                else:
-                    data = resp.read()
-                return data, True, content_type
-        except Exception as e:
+                final_url = resp.geturl()
+                if head_only:
+                    return None, True, final_url
+                data = resp.read()
+                return data, True, final_url
+        except Exception:
             if attempt < max_retries:
                 time.sleep(RETRY_DELAY)
             else:
-                return None, False, ''
+                return None, False, url
 
-def is_valid_media_data(data):
-    """Check if downloaded data looks like actual video/audio."""
-    if not data or len(data) < 100:
+def is_error_page(data):
+    """Heuristic to detect HTML error pages."""
+    if not data:
         return False
-    for offset, signature in MEDIA_SIGNATURES:
-        if len(data) > offset + len(signature) and data[offset:offset+len(signature)] == signature:
-            return True
-    # Reject obvious HTML error pages
     try:
-        text = data[:200].decode('utf-8', errors='ignore').lower()
-        if any(err in text for err in ['<!doctype', '<html', '404 not found', 'error', 'unauthorized']):
-            return False
-    except:
-        pass
-    return len(data) >= 1024
-
-def is_hls_master_playlist(content):
-    """Return True if content contains #EXT-X-STREAM-INF."""
-    try:
-        return '#EXT-X-STREAM-INF' in content.decode('utf-8', errors='ignore')
+        text = data[:1000].decode('utf-8', errors='ignore').lower()
+        indicators = ['<html', '<!doctype', '404 not found', '403 forbidden',
+                      'access denied', 'error', 'unauthorized']
+        return any(ind in text for ind in indicators)
     except:
         return False
 
-def is_dash_manifest(content):
-    """Return True if content is a DASH manifest."""
+def is_playlist_content(data):
+    """Check if data looks like an HLS or DASH playlist."""
     try:
-        text = content.decode('utf-8', errors='ignore').lstrip()
-        if text.startswith('<?xml'):
-            end_idx = text.find('?>')
-            if end_idx != -1:
-                text = text[end_idx + 2:].lstrip()
-        return text.startswith('<MPD')
+        preview = data[:500].decode('utf-8', errors='ignore')
+        return '#EXTM3U' in preview or '<MPD' in preview
     except:
         return False
 
-def is_playlist_by_content(url, data):
-    """Determine if the URL points to a playlist file."""
-    url_lower = url.lower()
-    if any(url_lower.endswith(ext) for ext in ('.m3u', '.m3u8', '.mpd')):
-        return True
+def is_master_playlist(content):
+    """True if content contains #EXT-X-STREAM-INF."""
     try:
-        preview = data[:200].decode('utf-8', errors='ignore')
-        return '#EXT' in preview or '<MPD' in preview
+        return b'#EXT-X-STREAM-INF' in content
     except:
         return False
 
 def extract_first_variant_url(content, base_url):
-    """Extract the first variant URI from a master HLS or DASH manifest."""
+    """Extract first variant from master HLS or DASH manifest."""
     try:
         text = content.decode('utf-8', errors='ignore')
     except:
         return None
 
+    # HLS Master
     if '#EXT-X-STREAM-INF' in text:
         lines = text.splitlines()
-        capture_next = False
+        capture = False
         for line in lines:
             line = line.strip()
             if not line or line.startswith('#'):
                 if line.startswith('#EXT-X-STREAM-INF'):
-                    capture_next = True
+                    capture = True
                 continue
-            if capture_next:
+            if capture:
                 return safe_urljoin(base_url, line)
         return None
 
+    # DASH
     if '<MPD' in text:
         try:
-            clean_text = text.lstrip()
-            if clean_text.startswith('<?xml'):
-                end_idx = clean_text.find('?>')
-                if end_idx != -1:
-                    clean_text = clean_text[end_idx + 2:].lstrip()
-            root = ET.fromstring(clean_text)
-        except ET.ParseError:
+            clean = text.lstrip()
+            if clean.startswith('<?xml'):
+                end = clean.find('?>')
+                if end != -1:
+                    clean = clean[end+2:].lstrip()
+            root = ET.fromstring(clean)
+        except:
             return None
-
         ns = {'mpd': 'urn:mpeg:dash:schema:mpd:2011'}
-        base_url_elem = root.find('.//mpd:BaseURL', ns)
-        dash_base = base_url_elem.text if base_url_elem is not None else base_url
-
-        segment_template = root.find('.//mpd:SegmentTemplate', ns)
-        if segment_template is not None:
-            init = segment_template.get('initialization')
+        base_elem = root.find('.//mpd:BaseURL', ns)
+        dash_base = base_elem.text if base_elem is not None else base_url
+        seg = root.find('.//mpd:SegmentTemplate', ns)
+        if seg is not None:
+            init = seg.get('initialization')
             if init:
                 return safe_urljoin(dash_base, init)
-            media = segment_template.get('media')
+            media = seg.get('media')
             if media:
-                test_url = media.replace('$Number%09d$', '000000001').replace('$Number$', '1')
-                return safe_urljoin(dash_base, test_url)
-        return None
+                test = media.replace('$Number%09d$', '000000001').replace('$Number$', '1')
+                return safe_urljoin(dash_base, test)
     return None
 
-def test_stream_playability(url, depth=0):
-    """
-    Core test for any stream URL. Returns (working: bool).
-    """
-    if depth > MAX_RECURSION_DEPTH:
-        return False
-
-    data, success, content_type = fetch_with_retry(url, chunk_size=CHUNK_SIZE)
-    if not success or not data:
-        return False
-
-    is_playlist = is_playlist_by_content(url, data)
-
-    if is_playlist:
-        full_data, _, _ = fetch_with_retry(url, chunk_size=None)
-        if not full_data:
-            return False
-
-        master = is_hls_master_playlist(full_data)
-        dash = is_dash_manifest(full_data)
-
-        if master or dash:
-            variant_url = extract_first_variant_url(full_data, url)
-            if variant_url:
-                return test_stream_playability(variant_url, depth + 1)
-            else:
-                return False
-
-        # --- FIXED: Media playlist handling with relative URL resolution ---
-        lines = full_data.decode('utf-8', errors='ignore').splitlines()
-        internal_urls = []
+def extract_first_segment_url(content, base_url):
+    """Extract first non-comment line from a media playlist."""
+    try:
+        lines = content.decode('utf-8', errors='ignore').splitlines()
         for line in lines:
             line = line.strip()
             if not line or line.startswith('#'):
                 continue
-            if line.startswith('<?xml') or line.startswith('<MPD') or line.startswith('<Period'):
-                continue
-            # Resolve relative URLs against the playlist's base URL
-            resolved_url = safe_urljoin(url, line)
-            if resolved_url.startswith('http://') or resolved_url.startswith('https://'):
-                try:
-                    resolved_url.encode('ascii')
-                except UnicodeEncodeError:
-                    continue
-                internal_urls.append(resolved_url)
+            return safe_urljoin(base_url, line)
+    except:
+        pass
+    return None
 
-        # Test each segment URL (or internal playlist) in order
-        for internal_url in internal_urls:
-            if test_stream_playability(internal_url, depth + 1):
-                return True
+def is_url_reachable(url, head_only=True):
+    """Check if URL is reachable (HEAD request) and not an error page."""
+    data, success, final_url = fetch_url(url, method='HEAD' if head_only else 'GET',
+                                         head_only=head_only)
+    if not success:
+        return False
+    # For HEAD requests we can't check error page; assume success
+    if head_only:
+        return True
+    return not is_error_page(data)
+
+def test_stream_playable(url, depth=0):
+    """
+    Recursively test if a stream URL is playable.
+    Returns True if reachable and not an error.
+    """
+    if depth > MAX_RECURSION_DEPTH:
         return False
 
-    # Direct stream
-    return is_valid_media_data(data)
+    data, success, final_url = fetch_url(url)
+    if not success or not data:
+        return False
 
-def test_candidate_with_timeout(url):
-    """
-    Wrapper that runs test_candidate in a separate process with a timeout.
-    Returns (working: bool, final_url: str).
-    """
-    def target(queue, url):
-        try:
-            result = test_stream_playability(url)
-            queue.put((result, url))
-        except Exception:
-            queue.put((False, url))
+    if is_error_page(data):
+        return False
 
-    queue = mp.Queue()
-    proc = mp.Process(target=target, args=(queue, url))
-    proc.start()
-    proc.join(CANDIDATE_TIMEOUT)
+    if is_playlist_content(data):
+        if is_master_playlist(data):
+            variant_url = extract_first_variant_url(data, final_url)
+            if variant_url:
+                return test_stream_playable(variant_url, depth + 1)
+            return False
+        else:
+            # Media playlist: test first segment
+            segment_url = extract_first_segment_url(data, final_url)
+            if segment_url:
+                return is_url_reachable(segment_url, head_only=False)  # GET to check error page
+            return False
 
-    if proc.is_alive():
-        proc.terminate()
-        proc.join()
-        return False, url
-    else:
-        try:
-            working, final_url = queue.get_nowait()
-            return working, final_url
-        except:
-            return False, url
+    # Direct stream – already passed error page check
+    return True
 
 def test_candidate(url):
-    """Alias for the process‑based timeout version."""
-    return test_candidate_with_timeout(url)
+    """Wrapper for parallel execution."""
+    return test_stream_playable(url), url
 
-def process_channel(extinf_line, candidate_urls, channel_num, total_channels):
-    """
-    Test candidates for a channel with timeout protection.
-    Returns the #EXTINF line and the URL to output (or commented URL).
-    """
-    safe_line = extinf_line[:50] + "..." if len(extinf_line) > 50 else extinf_line
-    log_progress(channel_num, total_channels, f"Testing: {safe_line}")
+def process_channel(extinf_line, candidates, channel_num, total_channels):
+    safe = extinf_line[:50] + "..." if len(extinf_line) > 50 else extinf_line
+    log_progress(channel_num, total_channels, f"Testing: {safe}")
 
     if PARALLEL_WORKERS > 1:
         with ThreadPoolExecutor(max_workers=PARALLEL_WORKERS) as executor:
-            future_to_url = {executor.submit(test_candidate, url): url for url in candidate_urls}
-            for future in as_completed(future_to_url):
-                try:
-                    working, final_url = future.result(timeout=CANDIDATE_TIMEOUT + 5)
-                except FuturesTimeoutError:
-                    working, final_url = False, future_to_url[future]
+            futures = {executor.submit(test_candidate, url): url for url in candidates}
+            for future in as_completed(futures):
+                working, final_url = future.result()
                 if working:
-                    for f in future_to_url:
+                    for f in futures:
                         f.cancel()
                     log_progress(channel_num, total_channels, f"✓ Working: {final_url[:60]}...")
                     return extinf_line, final_url
     else:
-        for idx, url in enumerate(candidate_urls, 1):
-            working, final_url = test_candidate(url)
+        for idx, url in enumerate(candidates, 1):
+            working, _ = test_candidate(url)
             if working:
                 log_progress(channel_num, total_channels, f"✓ Candidate {idx} works")
-                return extinf_line, final_url
+                return extinf_line, url
 
-    # All failed
-    log_progress(channel_num, total_channels, "✗ All candidates failed; commenting out")
-    commented_url = f"##{candidate_urls[0]}"
-    return extinf_line, commented_url
+    log_progress(channel_num, total_channels, "✗ All failed; commenting out")
+    return extinf_line, f"##{candidates[0]}"
 
 def process_source_playlist(source_path):
-    """Read the source file, test candidates, and build flattened output."""
     with open(source_path, 'r', encoding='utf-8') as f:
         lines = f.readlines()
 
-    # Pre-scan to count channels for progress
-    channel_count = 0
-    i = 0
-    while i < len(lines):
-        if lines[i].startswith('#EXTINF:'):
-            channel_count += 1
-            i += 1
-            while i < len(lines) and not lines[i].startswith('#EXTINF:') and not lines[i].startswith('#EXTM3U'):
-                i += 1
-        else:
-            i += 1
+    # Count channels for progress
+    channel_count = sum(1 for line in lines if line.startswith('#EXTINF:'))
 
     flattened = []
     i = 0
-    current_channel = 0
+    current = 0
 
     while i < len(lines):
         line = lines[i].rstrip('\n\r')
@@ -336,36 +252,33 @@ def process_source_playlist(source_path):
             continue
 
         if line.startswith('#EXTINF:'):
-            extinf_line = line
+            extinf = line
             i += 1
-
             while i < len(lines) and not lines[i].strip():
                 i += 1
 
             candidates = []
             while i < len(lines):
-                next_line = lines[i].rstrip('\n\r').strip()
-                if not next_line:
+                nxt = lines[i].rstrip('\n\r').strip()
+                if not nxt:
                     i += 1
                     continue
-                if next_line.startswith('#EXTINF:') or next_line.startswith('#EXTM3U'):
+                if nxt.startswith('#EXTINF:') or nxt.startswith('#EXTM3U'):
                     break
-                if next_line.startswith('#'):
+                if nxt.startswith('#'):
                     i += 1
                     continue
-                if next_line.startswith('http://') or next_line.startswith('https://'):
-                    candidates.append(next_line)
+                if nxt.startswith(('http://', 'https://')):
+                    candidates.append(nxt)
                 i += 1
 
-            if not candidates:
-                flattened.append(extinf_line)
-                continue
-
-            current_channel += 1
-            final_extinf, final_url = process_channel(extinf_line, candidates, current_channel, channel_count)
-
-            flattened.append(final_extinf)
-            flattened.append(final_url)
+            if candidates:
+                current += 1
+                final_extinf, final_url = process_channel(extinf, candidates, current, channel_count)
+                flattened.append(final_extinf)
+                flattened.append(final_url)
+            else:
+                flattened.append(extinf)
         else:
             flattened.append(line)
             i += 1
@@ -374,7 +287,7 @@ def process_source_playlist(source_path):
 
 def main():
     print("=" * 60)
-    print("IPTV Playlist Flattener – Robust Timeout Edition (Relative URL Fix)")
+    print("IPTV Playlist Flattener – IPTV App Style Validator")
     print("=" * 60)
 
     if not Path(SOURCE_FILE).exists():
@@ -382,20 +295,18 @@ def main():
         sys.exit(1)
 
     print(f"Reading {SOURCE_FILE}...")
-    start_time = time.time()
-    flattened_lines = process_source_playlist(SOURCE_FILE)
-    elapsed = time.time() - start_time
+    start = time.time()
+    result = process_source_playlist(SOURCE_FILE)
+    elapsed = time.time() - start
 
-    output_path = Path(OUTPUT_FILE)
-    with open(output_path, 'w', encoding='utf-8', newline='\n') as f:
-        f.write('\n'.join(flattened_lines))
+    with open(OUTPUT_FILE, 'w', encoding='utf-8', newline='\n') as f:
+        f.write('\n'.join(result))
 
     print("\n" + "=" * 60)
     print(f"Flattened playlist written to {OUTPUT_FILE}")
-    print(f"   Total lines: {len(flattened_lines)}")
+    print(f"   Total lines: {len(result)}")
     print(f"   Time taken: {elapsed:.1f} seconds")
     print("=" * 60)
 
 if __name__ == "__main__":
-    mp.freeze_support()   # Required for multiprocessing on Windows
     main()
