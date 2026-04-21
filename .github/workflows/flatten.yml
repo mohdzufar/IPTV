@@ -13,6 +13,7 @@ concurrency:
 jobs:
   flatten:
     runs-on: self-hosted
+    timeout-minutes: 30            # Prevent hung jobs
     permissions:
       contents: write
 
@@ -23,10 +24,13 @@ jobs:
           fetch-depth: 0
 
       - name: Run flatten script
-        run: C:\Users\zufar\AppData\Local\Python\bin\python.exe -u scripts/flatten.py
+        # Uses 'python' from PATH (ensure Python 3 is installed and in PATH on the runner)
+        run: python scripts/flatten.py
         shell: cmd
 
       - name: Commit and push flattened file
+        # Explicit PowerShell shell for cross-platform compatibility on Windows runner
+        shell: powershell
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
