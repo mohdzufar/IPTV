@@ -2,6 +2,7 @@
 """
 Mana-Mana Token Refresher - Advanced Stealth Edition
 Writes minimal M3U with #EXTINF:1,ChannelName and fresh URL.
+Outputs to Channels/Mana-mana/ (exact GitHub folder name).
 """
 
 import asyncio
@@ -20,7 +21,7 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='repla
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 REPO_ROOT = SCRIPT_DIR.parent
-OUTPUT_BASE_DIR = REPO_ROOT / "Channels" / "Mana-Mana"
+OUTPUT_BASE_DIR = REPO_ROOT / "Channels" / "Mana-mana"   # Exact folder name in GitHub
 
 # Channel key -> (page_url, display_name)
 CHANNELS = {
@@ -119,7 +120,6 @@ def update_playlist_file(channel_key, display_name, m3u8_url):
     file_path = OUTPUT_BASE_DIR / safe_name / f"{safe_name}.m3u8"
     file_path.parent.mkdir(parents=True, exist_ok=True)
 
-    # Format: #EXTM3U\n#EXTINF:1,DisplayName\nURL
     content = f"#EXTM3U\n#EXTINF:1,{display_name}\n{m3u8_url}\n"
     file_path.write_text(content, encoding='utf-8')
     print(f"  Updated {file_path}")
