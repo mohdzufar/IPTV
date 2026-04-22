@@ -12,22 +12,22 @@ concurrency:
 
 jobs:
   flatten:
-    runs-on: ubuntu-latest      # Use GitHub-hosted runner (always available)
-    timeout-minutes: 60         # Increased to handle large playlists safely
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
     permissions:
       contents: write
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5   # Updated to Node.js 24 compatible version
         with:
           fetch-depth: 0
 
       - name: Setup Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6   # Updated to Node.js 24 compatible version
         with:
-          python-version: '3.11'      # Yearly manual update only
-          check-latest: false         # No network checks for patches = faster
+          python-version: '3.11'
+          check-latest: false
 
       - name: Run flatten script
         run: python scripts/flatten.py
