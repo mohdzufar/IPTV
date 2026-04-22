@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
-IPTV Playlist Flattener – Deep Validation & Full Entry Commenting (Verbose Logging)
-- Tests candidates with media signature verification to prevent sync byte errors.
+IPTV Playlist Flattener – Basic Reachability Mode (No Deep Validation)
+- Tests candidates by checking HTTP 200 and absence of HTML error pages.
 - Comments out both #EXTINF and URL if all candidates fail.
-- Detailed logging shows each step of validation.
-- Comprehensive media signature detection for all common video/audio containers.
+- Handles HLS master/variant, DASH, and direct streams.
+- No media signature checks – relies on basic connectivity.
 """
 
 import urllib.request
@@ -32,8 +32,7 @@ MAX_RETRIES = 1
 RETRY_DELAY = 2
 MAX_RECURSION_DEPTH = 5    # Prevent infinite loops
 PARALLEL_WORKERS = 4       # Concurrent candidate tests per channel
-DEEP_VALIDATION = True     # Enable media signature checks
-CHUNK_SIZE = 262144        # 256 KB for validation
+DEEP_VALIDATION = False    # Disabled – only basic reachability
 VERBOSE = True             # Show detailed validation steps
 
 HEADERS = {
@@ -42,85 +41,6 @@ HEADERS = {
     'Accept-Encoding': 'identity',
     'Connection': 'keep-alive'
 }
-
-# -------------------------------------------------------------------
-# COMPREHENSIVE MEDIA SIGNATURES
-# Each entry: (offset, bytes_to_match, description)
-# -------------------------------------------------------------------
-MEDIA_SIGNATURES = [
-    # --- MPEG Transport Stream (HLS) ---
-    (0, b'\x47', 'MPEG-TS (sync byte)'),
-    
-    # --- MP4 / MOV / 3GP / fMP4 ---
-    (4, b'ftyp', 'MP4/MOV/3GP (ftyp box)'),
-    (4, b'moov', 'MP4 (moov box)'),
-    (4, b'mdat', 'MP4 (mdat box)'),
-    (4, b'free', 'MP4 (free box)'),
-    (4, b'skip', 'MP4 (skip box)'),
-    
-    # --- WebM / Matroska ---
-    (0, b'\x1a\x45\xdf\xa3', 'WebM/Matroska'),
-    
-    # --- FLV (Flash Video) ---
-    (0, b'FLV', 'FLV'),
-    
-    # --- Ogg / OGM ---
-    (0, b'OggS', 'Ogg'),
-    
-    # --- AVI / WAV (RIFF container) ---
-    (0, b'RIFF', 'RIFF (AVI/WAV)'),
-    
-    # --- ASF / WMV / WMA ---
-    (0, b'\x30\x26\xb2\x75\x8e\x66\xcf\x11', 'ASF/WMV'),
-    
-    # --- MPEG Program Stream ---
-    (0, b'\x00\x00\x01\xba', 'MPEG-PS'),
-    (0, b'\x00\x00\x01\xb3', 'MPEG Video'),
-    
-    # --- MP3 Audio ---
-    (0, b'\xff\xfb', 'MP3 (MPEG-1 Layer 3)'),
-    (0, b'\xff\xf3', 'MP3 (MPEG-2 Layer 3)'),
-    (0, b'\xff\xf2', 'MP3 (MPEG-2 Layer 3)'),
-    (0, b'ID3', 'MP3 with ID3v2 tag'),
-    
-    # --- AAC Audio (ADTS) ---
-    (0, b'\xff\xf1', 'AAC (ADTS)'),
-    (0, b'\xff\xf9', 'AAC (ADTS)'),
-    
-    # --- AC-3 / Dolby Digital ---
-    (0, b'\x0b\x77', 'AC-3 / Dolby Digital'),
-    
-    # --- DTS Audio ---
-    (0, b'\x7f\xfe\x80\x01', 'DTS'),
-    
-    # --- FLAC Audio ---
-    (0, b'fLaC', 'FLAC'),
-    
-    # --- WAV (explicit) ---
-    (8, b'WAVE', 'WAV'),
-    
-    # --- AIFF Audio ---
-    (0, b'FORM', 'AIFF'),
-    
-    # --- RealMedia ---
-    (0, b'.RMF', 'RealMedia'),
-    
-    # --- QuickTime (alternative) ---
-    (4, b'wide', 'QuickTime'),
-    (4, b'pnot', 'QuickTime'),
-    
-    # --- 3GPP ---
-    (4, b'3gp', '3GPP'),
-    
-    # --- MKV (alternative) ---
-    (0, b'\x1a\x45\xdf\xa3', 'Matroska'),
-    
-    # --- IVF (VP8/VP9) ---
-    (0, b'DKIF', 'IVF (VP8/VP9)'),
-    
-    # --- Dirac / VC-2 ---
-    (0, b'BBCD', 'Dirac'),
-]
 
 # -------------------------------------------------------------------
 # HELPER FUNCTIONS
@@ -171,29 +91,6 @@ def is_error_page(data):
         return any(ind in text for ind in indicators)
     except:
         return False
-
-def is_valid_media_data(data):
-    """Check if data contains any known media signature."""
-    if not data or len(data) < 12:
-        return False
-    
-    for offset, sig, desc in MEDIA_SIGNATURES:
-        if len(data) > offset + len(sig) and data[offset:offset+len(sig)] == sig:
-            log_detail(f"Found media signature: {desc}")
-            return True
-    
-    # Additional heuristic: if data is mostly non-printable (binary), likely media
-    try:
-        sample = data[:200]
-        printable = sum(32 <= b < 127 or b in (9,10,13) for b in sample)
-        if printable / len(sample) < 0.3:  # less than 30% printable ASCII
-            log_detail("Data appears to be binary (likely media)")
-            return True
-    except:
-        pass
-    
-    log_detail("No known media signature found")
-    return False
 
 def is_playlist_content(data):
     try:
@@ -272,7 +169,7 @@ def extract_first_segment_url(content, base_url):
     return None
 
 def test_stream_playable(url, depth=0):
-    """Recursive test with optional deep media validation."""
+    """Recursive test with basic reachability (no deep media checks)."""
     if depth > MAX_RECURSION_DEPTH:
         log_detail(f"Max recursion depth reached")
         return False
@@ -302,37 +199,36 @@ def test_stream_playable(url, depth=0):
                 return False
         else:
             log_detail(f"Media playlist detected")
-            segment_url = extract_first_segment_url(data, final_url)
-            if segment_url:
-                if DEEP_VALIDATION:
+            if DEEP_VALIDATION:
+                # This block will be skipped because DEEP_VALIDATION=False
+                segment_url = extract_first_segment_url(data, final_url)
+                if segment_url:
                     log_detail(f"Fetching segment for deep validation...")
-                    seg_data, seg_ok, _ = fetch_url(segment_url, chunk_size=CHUNK_SIZE)
+                    seg_data, seg_ok, _ = fetch_url(segment_url, chunk_size=262144)
                     if seg_ok and not is_error_page(seg_data):
-                        if is_valid_media_data(seg_data):
-                            log_detail(f"Segment contains valid media data")
-                            return True
-                        else:
-                            log_detail(f"Segment does NOT contain valid media signature")
-                    else:
-                        log_detail(f"Failed to fetch segment or segment is error page")
+                        # We would check media signatures here, but DEEP_VALIDATION is False
+                        return True
                     return False
-                else:
+                return False
+            else:
+                # Basic check: try a HEAD request on first segment or just accept playlist reachability
+                segment_url = extract_first_segment_url(data, final_url)
+                if segment_url:
                     log_detail(f"Checking segment reachability (HEAD)...")
                     _, seg_ok, _ = fetch_url(segment_url, method='HEAD')
-                    return seg_ok
-            else:
-                log_detail(f"No segment URL found in media playlist")
-                return False
+                    if seg_ok:
+                        log_detail(f"Segment is reachable")
+                        return True
+                    else:
+                        log_detail(f"Segment unreachable")
+                        return False
+                else:
+                    # No segment found, but playlist itself was reachable → accept
+                    log_detail(f"No segment URL found; accepting playlist as playable")
+                    return True
 
     # Direct stream
-    log_detail(f"Direct stream detected")
-    if DEEP_VALIDATION:
-        if is_valid_media_data(data):
-            log_detail(f"Direct stream contains valid media signature")
-            return True
-        else:
-            log_detail(f"Direct stream lacks media signature")
-            return False
+    log_detail(f"Direct stream detected – accepting as playable")
     return True
 
 def test_candidate(url):
@@ -423,7 +319,7 @@ def process_source_playlist(source_path):
 
 def main():
     print("=" * 60)
-    print("IPTV Playlist Flattener – Deep Validation Mode (Verbose)")
+    print("IPTV Playlist Flattener – Basic Reachability Mode (No Deep Validation)")
     print("=" * 60)
 
     if not Path(SOURCE_FILE).exists():
