@@ -2,10 +2,9 @@
 """
 IPTV Playlist Flattener – Player‑Like Validation (No HEAD/Deep Checks)
 - Tests candidates by fetching playlists and checking for error pages.
-- Media playlists are accepted immediately after successful fetch (no segment testing).
+- Media playlists are accepted immediately after successful fetch.
 - Master playlists are followed to the first variant, which is then tested.
 - Comments out both #EXTINF and URL if all candidates fail.
-- Handles HLS master/variant, DASH, and direct streams.
 """
 
 import urllib.request
@@ -28,12 +27,12 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='repla
 SOURCE_FILE = "Channels/Flatten.m3u8"
 OUTPUT_FILE = "Main.m3u8"
 
-TIMEOUT = 15               # Seconds per request
+TIMEOUT = 15
 MAX_RETRIES = 1
 RETRY_DELAY = 2
-MAX_RECURSION_DEPTH = 5    # Prevent infinite loops
-PARALLEL_WORKERS = 4       # Concurrent candidate tests per channel
-VERBOSE = True             # Show detailed validation steps
+MAX_RECURSION_DEPTH = 5
+PARALLEL_WORKERS = 4
+VERBOSE = True
 
 HEADERS = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
@@ -155,13 +154,6 @@ def extract_first_variant_url(content, base_url):
     return None
 
 def test_stream_playable(url, depth=0):
-    """
-    Recursive test that mimics a real player:
-    - Fetches URL, checks for error page.
-    - For master playlists, follows first variant.
-    - For media playlists, accepts immediately (no segment testing).
-    - For direct streams, accepts if not an error page.
-    """
     if depth > MAX_RECURSION_DEPTH:
         log_detail(f"Max recursion depth reached")
         return False
@@ -190,11 +182,9 @@ def test_stream_playable(url, depth=0):
                 log_detail(f"No variant URL found in master playlist")
                 return False
         else:
-            # Media playlist – accept immediately (like VLC does)
             log_detail(f"Media playlist detected – accepting as playable (no segment check)")
             return True
 
-    # Direct stream – accept if not an error page
     log_detail(f"Direct stream detected – accepting as playable")
     return True
 
@@ -286,7 +276,7 @@ def process_source_playlist(source_path):
 
 def main():
     print("=" * 60)
-    print("IPTV Playlist Flattener – Player‑Like Validation (No HEAD Checks)")
+    print("IPTV Playlist Flattener – Player‑Like Validation")
     print("=" * 60)
 
     if not Path(SOURCE_FILE).exists():
