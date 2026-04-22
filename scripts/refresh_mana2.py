@@ -30,7 +30,7 @@ CHANNELS = {
 
 OUTPUT_BASE_DIR = Path("Channels/Mana-Mana")
 HEADLESS = True
-WAIT_TIMEOUT_MS = 15000  # Increased timeout to 15 seconds
+WAIT_TIMEOUT_MS = 15000  # 15 seconds timeout
 
 # -------------------------------------------------------------------
 # CORE LOGIC
@@ -42,33 +42,31 @@ async def extract_m3u8_url(page_url):
         browser = await p.chromium.launch(
             headless=HEADLESS,
             args=[
-                '--disable-blink-features=AutomationControlled', # Hide automation
+                '--disable-blink-features=AutomationControlled',
                 '--disable-features=IsolateOrigins,site-per-process',
                 '--no-sandbox',
                 '--disable-setuid-sandbox',
             ]
         )
         
-        # Create a context with a realistic viewport and disabled Service Workers
+        # Create context with disabled Service Workers
         context = await browser.new_context(
             user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36',
             viewport={'width': 1920, 'height': 1080},
-            service_workers='block' # Prevents interference from Service Workers
+            service_workers='block'
         )
         page = await context.new_page()
 
-        # Initialize with a null promise for the request we're waiting for
+        # Create a future to wait for the m3u8 request
         m3u8_promise = asyncio.get_running_loop().create_future()
 
         def handle_request(request):
             """Callback function to check each request."""
             if not m3u8_promise.done():
                 url = request.url
-                # Look for any m3u8 file, not just 'monu3u8'
                 if ".m3u8" in url:
                     m3u8_promise.set_result(url)
 
-        # Listen for all requests
         page.on('request', handle_request)
 
         print(f"  Navigating to {page_url}...")
@@ -76,7 +74,6 @@ async def extract_m3u8_url(page_url):
         
         print(f"  Waiting for player to load and request m3u8...")
         try:
-            # Wait for the promise to be resolved
             captured_url = await asyncio.wait_for(m3u8_promise, timeout=WAIT_TIMEOUT_MS/1000)
             print(f"  Captured: {captured_url[:80]}...")
         except asyncio.TimeoutError:
