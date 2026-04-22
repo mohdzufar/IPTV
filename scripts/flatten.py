@@ -4,6 +4,7 @@ IPTV Playlist Flattener – Deep Validation & Full Entry Commenting (Verbose Log
 - Tests candidates with media signature verification to prevent sync byte errors.
 - Comments out both #EXTINF and URL if all candidates fail.
 - Detailed logging shows each step of validation.
+- Comprehensive media signature detection for all common video/audio containers.
 """
 
 import urllib.request
@@ -42,12 +43,83 @@ HEADERS = {
     'Connection': 'keep-alive'
 }
 
-# Media file signatures
+# -------------------------------------------------------------------
+# COMPREHENSIVE MEDIA SIGNATURES
+# Each entry: (offset, bytes_to_match, description)
+# -------------------------------------------------------------------
 MEDIA_SIGNATURES = [
-    (0, b'\x47'),                # MPEG-TS sync byte
-    (4, b'ftyp'),                # MP4/MOV
-    (0, b'\x1a\x45\xdf\xa3'),    # WebM / Matroska
-    (0, b'FLV'),                 # FLV
+    # --- MPEG Transport Stream (HLS) ---
+    (0, b'\x47', 'MPEG-TS (sync byte)'),
+    
+    # --- MP4 / MOV / 3GP / fMP4 ---
+    (4, b'ftyp', 'MP4/MOV/3GP (ftyp box)'),
+    (4, b'moov', 'MP4 (moov box)'),
+    (4, b'mdat', 'MP4 (mdat box)'),
+    (4, b'free', 'MP4 (free box)'),
+    (4, b'skip', 'MP4 (skip box)'),
+    
+    # --- WebM / Matroska ---
+    (0, b'\x1a\x45\xdf\xa3', 'WebM/Matroska'),
+    
+    # --- FLV (Flash Video) ---
+    (0, b'FLV', 'FLV'),
+    
+    # --- Ogg / OGM ---
+    (0, b'OggS', 'Ogg'),
+    
+    # --- AVI / WAV (RIFF container) ---
+    (0, b'RIFF', 'RIFF (AVI/WAV)'),
+    
+    # --- ASF / WMV / WMA ---
+    (0, b'\x30\x26\xb2\x75\x8e\x66\xcf\x11', 'ASF/WMV'),
+    
+    # --- MPEG Program Stream ---
+    (0, b'\x00\x00\x01\xba', 'MPEG-PS'),
+    (0, b'\x00\x00\x01\xb3', 'MPEG Video'),
+    
+    # --- MP3 Audio ---
+    (0, b'\xff\xfb', 'MP3 (MPEG-1 Layer 3)'),
+    (0, b'\xff\xf3', 'MP3 (MPEG-2 Layer 3)'),
+    (0, b'\xff\xf2', 'MP3 (MPEG-2 Layer 3)'),
+    (0, b'ID3', 'MP3 with ID3v2 tag'),
+    
+    # --- AAC Audio (ADTS) ---
+    (0, b'\xff\xf1', 'AAC (ADTS)'),
+    (0, b'\xff\xf9', 'AAC (ADTS)'),
+    
+    # --- AC-3 / Dolby Digital ---
+    (0, b'\x0b\x77', 'AC-3 / Dolby Digital'),
+    
+    # --- DTS Audio ---
+    (0, b'\x7f\xfe\x80\x01', 'DTS'),
+    
+    # --- FLAC Audio ---
+    (0, b'fLaC', 'FLAC'),
+    
+    # --- WAV (explicit) ---
+    (8, b'WAVE', 'WAV'),
+    
+    # --- AIFF Audio ---
+    (0, b'FORM', 'AIFF'),
+    
+    # --- RealMedia ---
+    (0, b'.RMF', 'RealMedia'),
+    
+    # --- QuickTime (alternative) ---
+    (4, b'wide', 'QuickTime'),
+    (4, b'pnot', 'QuickTime'),
+    
+    # --- 3GPP ---
+    (4, b'3gp', '3GPP'),
+    
+    # --- MKV (alternative) ---
+    (0, b'\x1a\x45\xdf\xa3', 'Matroska'),
+    
+    # --- IVF (VP8/VP9) ---
+    (0, b'DKIF', 'IVF (VP8/VP9)'),
+    
+    # --- Dirac / VC-2 ---
+    (0, b'BBCD', 'Dirac'),
 ]
 
 # -------------------------------------------------------------------
@@ -101,14 +173,25 @@ def is_error_page(data):
         return False
 
 def is_valid_media_data(data):
-    """Check if data contains a known media signature."""
-    if not data or len(data) < 100:
+    """Check if data contains any known media signature."""
+    if not data or len(data) < 12:
         return False
-    for offset, sig in MEDIA_SIGNATURES:
+    
+    for offset, sig, desc in MEDIA_SIGNATURES:
         if len(data) > offset + len(sig) and data[offset:offset+len(sig)] == sig:
-            sig_name = {0: 'MPEG-TS', 4: 'MP4/MOV'}.get(offset, 'Unknown')
-            log_detail(f"Found media signature: {sig_name}")
+            log_detail(f"Found media signature: {desc}")
             return True
+    
+    # Additional heuristic: if data is mostly non-printable (binary), likely media
+    try:
+        sample = data[:200]
+        printable = sum(32 <= b < 127 or b in (9,10,13) for b in sample)
+        if printable / len(sample) < 0.3:  # less than 30% printable ASCII
+            log_detail("Data appears to be binary (likely media)")
+            return True
+    except:
+        pass
+    
     log_detail("No known media signature found")
     return False
 
