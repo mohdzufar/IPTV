@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Mana-Mana Token Refresher (for mana2.my) - Enhanced Version
-Uses Playwright with anti-detection measures to extract fresh .m3u8 URLs.
+Mana-Mana Token Refresher - Advanced Stealth Edition
+Uses playwright-stealth and advanced arguments to bypass bot detection.
 """
 
 import asyncio
@@ -9,8 +9,9 @@ import sys
 import io
 from pathlib import Path
 from playwright.async_api import async_playwright
+from playwright_stealth import Stealth
 
-# Force UTF-8 output on Windows to avoid encoding errors
+# Force UTF-8 output on Windows
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
 
 # -------------------------------------------------------------------
@@ -30,15 +31,15 @@ CHANNELS = {
 
 OUTPUT_BASE_DIR = Path("Channels/Mana-Mana")
 HEADLESS = True
-WAIT_TIMEOUT_MS = 15000  # 15 seconds timeout
+WAIT_TIMEOUT_MS = 15000  # 15 seconds
 
 # -------------------------------------------------------------------
 # CORE LOGIC
 # -------------------------------------------------------------------
 
 async def extract_m3u8_url(page_url):
-    async with async_playwright() as p:
-        # Launch browser with anti-detection arguments
+    async with Stealth().use_async(async_playwright()) as p:
+        # Launch browser with a powerful set of anti-detection arguments
         browser = await p.chromium.launch(
             headless=HEADLESS,
             args=[
@@ -46,32 +47,59 @@ async def extract_m3u8_url(page_url):
                 '--disable-features=IsolateOrigins,site-per-process',
                 '--no-sandbox',
                 '--disable-setuid-sandbox',
+                '--disable-web-security',
+                '--disable-features=VizDisplayCompositor',
+                '--disable-ipc-flooding-protection',
+                '--disable-renderer-backgrounding',
+                '--disable-backgrounding-occluded-windows',
+                '--disable-field-trial-config',
+                '--disable-back-forward-cache',
+                '--disable-component-extensions-with-background-pages',
+                '--disable-client-side-phishing-detection',
+                '--disable-default-apps',
+                '--disable-extensions',
+                '--disable-hang-monitor',
+                '--disable-popup-blocking',
+                '--disable-prompt-on-repost',
+                '--disable-sync',
+                '--force-color-profile=srgb',
+                '--metrics-recording-only',
+                '--no-first-run',
+                '--safebrowsing-disable-auto-update',
+                '--enable-automation',
             ]
         )
         
-        # Create context with disabled Service Workers
+        # Create a context that mimics a real user
         context = await browser.new_context(
             user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36',
             viewport={'width': 1920, 'height': 1080},
+            locale='en-MY',
+            timezone_id='Asia/Kuala_Lumpur',
+            permissions=['geolocation'],
             service_workers='block'
         )
         page = await context.new_page()
 
-        # Create a future to wait for the m3u8 request
         m3u8_promise = asyncio.get_running_loop().create_future()
 
         def handle_request(request):
-            """Callback function to check each request."""
-            if not m3u8_promise.done():
-                url = request.url
-                if ".m3u8" in url:
-                    m3u8_promise.set_result(url)
+            if not m3u8_promise.done() and ".m3u8" in request.url:
+                m3u8_promise.set_result(request.url)
 
         page.on('request', handle_request)
 
         print(f"  Navigating to {page_url}...")
         await page.goto(page_url, wait_until="networkidle")
         
+        # Try to click any potential "Play" button if one exists
+        try:
+            play_button = page.locator('button:has-text("Play"), [aria-label="Play"], .play-button').first
+            await play_button.click(timeout=3000)
+            print("  Clicked Play button...")
+        except:
+            pass
+
         print(f"  Waiting for player to load and request m3u8...")
         try:
             captured_url = await asyncio.wait_for(m3u8_promise, timeout=WAIT_TIMEOUT_MS/1000)
@@ -98,7 +126,7 @@ def update_playlist_file(channel_name, m3u8_url):
 
 async def main():
     print("=" * 50)
-    print("Mana-Mana Token Refresher (Enhanced)")
+    print("Mana-Mana Token Refresher (Advanced Stealth)")
     print("=" * 50)
 
     for name, url in CHANNELS.items():
