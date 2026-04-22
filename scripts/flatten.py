@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
-IPTV Playlist Flattener – IPTV App Style Validator (Fixed Timeout)
+IPTV Playlist Flattener – IPTV App Style Validator (Verbose Logging)
 - Tests URLs exactly as an IPTV player would: fetch, check for error page,
   follow master playlists to first variant, verify media segment reachability.
-- Includes proper timeout handling to prevent hanging.
-- Handles relative URLs correctly.
+- Detailed logs show each step: candidate URL, variant extraction, segment testing.
+- Proper timeout handling prevents hanging.
 - Outputs first working candidate; comments out if all fail.
 """
 
@@ -41,12 +41,21 @@ HEADERS = {
     'Connection': 'keep-alive'
 }
 
+# Global variable to control verbosity within threads (True = detailed logs)
+VERBOSE = True
+
 # -------------------------------------------------------------------
 # HELPER FUNCTIONS
 # -------------------------------------------------------------------
 def log_progress(channel_num, total_channels, message):
     timestamp = time.strftime("%H:%M:%S")
     print(f"[{timestamp}] Ch {channel_num}/{total_channels}: {message}")
+
+def log_detail(message):
+    """Print detailed step information with indentation."""
+    if VERBOSE:
+        timestamp = time.strftime("%H:%M:%S")
+        print(f"      [{timestamp}] {message}")
 
 def safe_urljoin(base, url):
     """Join base URL with a relative or protocol-relative URL."""
@@ -71,7 +80,8 @@ def fetch_url(url, timeout=TIMEOUT, max_retries=MAX_RETRIES, method='GET', head_
                 # Limit read to 256KB to prevent memory issues
                 data = resp.read(262144)
                 return data, True, final_url
-        except Exception:
+        except Exception as e:
+            log_detail(f"Fetch attempt {attempt+1} failed for {url[:60]}: {str(e)[:50]}")
             if attempt < max_retries:
                 time.sleep(RETRY_DELAY)
             else:
@@ -122,7 +132,9 @@ def extract_first_variant_url(content, base_url):
                     capture = True
                 continue
             if capture:
-                return safe_urljoin(base_url, line)
+                variant = safe_urljoin(base_url, line)
+                log_detail(f"Extracted HLS variant: {variant[:70]}...")
+                return variant
         return None
 
     # DASH
@@ -143,11 +155,15 @@ def extract_first_variant_url(content, base_url):
         if seg is not None:
             init = seg.get('initialization')
             if init:
-                return safe_urljoin(dash_base, init)
+                variant = safe_urljoin(dash_base, init)
+                log_detail(f"Extracted DASH init: {variant[:70]}...")
+                return variant
             media = seg.get('media')
             if media:
                 test = media.replace('$Number%09d$', '000000001').replace('$Number$', '1')
-                return safe_urljoin(dash_base, test)
+                variant = safe_urljoin(dash_base, test)
+                log_detail(f"Extracted DASH segment template: {variant[:70]}...")
+                return variant
     return None
 
 def extract_first_segment_url(content, base_url):
@@ -158,7 +174,9 @@ def extract_first_segment_url(content, base_url):
             line = line.strip()
             if not line or line.startswith('#'):
                 continue
-            return safe_urljoin(base_url, line)
+            segment = safe_urljoin(base_url, line)
+            log_detail(f"Extracted first segment: {segment[:70]}...")
+            return segment
     except:
         pass
     return None
@@ -169,7 +187,6 @@ def is_url_reachable(url, head_only=True):
                                          head_only=head_only)
     if not success:
         return False
-    # For HEAD requests we can't check error page; assume success
     if head_only:
         return True
     return not is_error_page(data)
@@ -180,38 +197,57 @@ def test_stream_playable(url, depth=0):
     Returns True if reachable and not an error.
     """
     if depth > MAX_RECURSION_DEPTH:
+        log_detail(f"Max recursion depth reached at {url[:60]}...")
         return False
 
+    log_detail(f"Fetching: {url[:80]}...")
     data, success, final_url = fetch_url(url)
     if not success or not data:
+        log_detail(f"Failed to fetch URL")
         return False
 
     if is_error_page(data):
+        log_detail(f"Response appears to be an error page")
         return False
 
     if is_playlist_content(data):
+        log_detail(f"Detected playlist content")
         if is_master_playlist(data):
+            log_detail(f"Master playlist detected")
             variant_url = extract_first_variant_url(data, final_url)
             if variant_url:
+                log_detail(f"Testing variant...")
                 return test_stream_playable(variant_url, depth + 1)
-            return False
+            else:
+                log_detail(f"No variant URL found in master playlist")
+                return False
         else:
-            # Media playlist: test first segment
+            log_detail(f"Media playlist detected")
             segment_url = extract_first_segment_url(data, final_url)
             if segment_url:
-                return is_url_reachable(segment_url, head_only=False)  # GET to check error page
-            return False
+                log_detail(f"Testing first segment for reachability...")
+                return is_url_reachable(segment_url, head_only=False)
+            else:
+                log_detail(f"No segment URL found in media playlist")
+                return False
 
-    # Direct stream – already passed error page check
+    log_detail(f"Direct stream accepted (passed error page check)")
     return True
 
 def test_candidate(url):
-    """Wrapper for parallel execution."""
-    return test_stream_playable(url), url
+    """Wrapper for parallel execution with detailed logging."""
+    log_detail(f"--- Testing candidate: {url[:80]}...")
+    result = test_stream_playable(url)
+    if result:
+        log_detail(f"Candidate SUCCESS")
+    else:
+        log_detail(f"Candidate FAILED")
+    return result, url
 
 def process_channel(extinf_line, candidates, channel_num, total_channels):
     safe = extinf_line[:50] + "..." if len(extinf_line) > 50 else extinf_line
     log_progress(channel_num, total_channels, f"Testing: {safe}")
+    log_detail(f"Channel has {len(candidates)} candidate(s)")
 
     if PARALLEL_WORKERS > 1:
         with ThreadPoolExecutor(max_workers=PARALLEL_WORKERS) as executor:
@@ -225,6 +261,7 @@ def process_channel(extinf_line, candidates, channel_num, total_channels):
                     return extinf_line, final_url
     else:
         for idx, url in enumerate(candidates, 1):
+            log_detail(f"Testing candidate {idx}/{len(candidates)}")
             working, _ = test_candidate(url)
             if working:
                 log_progress(channel_num, total_channels, f"✓ Candidate {idx} works")
@@ -288,7 +325,7 @@ def process_source_playlist(source_path):
 
 def main():
     print("=" * 60)
-    print("IPTV Playlist Flattener – IPTV App Style Validator")
+    print("IPTV Playlist Flattener – IPTV App Style Validator (Verbose)")
     print("=" * 60)
 
     if not Path(SOURCE_FILE).exists():
