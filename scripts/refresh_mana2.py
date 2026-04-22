@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Mana-Mana Token Refresher - Advanced Stealth Edition (Tracker Filtered)
-Uses playwright-stealth and filters out JW Player tracking beacons.
+Mana-Mana Token Refresher - Advanced Stealth Edition
+Writes minimal M3U with #EXTINF:1,ChannelName and fresh URL.
 """
 
 import asyncio
@@ -18,20 +18,24 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='repla
 # CONFIGURATION
 # -------------------------------------------------------------------
 
+SCRIPT_DIR = Path(__file__).resolve().parent
+REPO_ROOT = SCRIPT_DIR.parent
+OUTPUT_BASE_DIR = REPO_ROOT / "Channels" / "Mana-Mana"
+
+# Channel key -> (page_url, display_name)
 CHANNELS = {
-    "Al-Hijrah": "https://www.mana2.my/channel/live/tv-alhijrah",
-    "Enjoy TV": "https://www.mana2.my/channel/live/tv5",
-    "Borneo TV": "https://www.mana2.my/channel/live/borneo-tv",
-    "Selangor TV": "https://www.mana2.my/channel/live/selangor-tv",
-    "Suke TV": "https://www.mana2.my/channel/live/suke-tv",
-    "TVS": "https://www.mana2.my/epg/play/1720414",
-    "Sukan+": "https://www.mana2.my/channel/live/sukan-rtm",
-    "Bernama": "https://www.mana2.my/channel/live/bernama",
+    "Al-Hijrah": ("https://www.mana2.my/channel/live/tv-alhijrah", "Al-Hijrah"),
+    "Enjoy TV": ("https://www.mana2.my/channel/live/tv5", "Enjoy TV"),
+    "Borneo TV": ("https://www.mana2.my/channel/live/borneo-tv", "Borneo TV"),
+    "Selangor TV": ("https://www.mana2.my/channel/live/selangor-tv", "Selangor TV"),
+    "Suke TV": ("https://www.mana2.my/channel/live/suke-tv", "Suke TV"),
+    "TVS": ("https://www.mana2.my/epg/play/1720414", "TVS"),
+    "Sukan+": ("https://www.mana2.my/channel/live/sukan-rtm", "Sukan+"),
+    "Bernama": ("https://www.mana2.my/channel/live/bernama", "Bernama"),
 }
 
-OUTPUT_BASE_DIR = Path("Channels/Mana-Mana")
 HEADLESS = True
-WAIT_TIMEOUT_MS = 15000  # 15 seconds
+WAIT_TIMEOUT_MS = 15000
 
 # -------------------------------------------------------------------
 # CORE LOGIC
@@ -39,7 +43,6 @@ WAIT_TIMEOUT_MS = 15000  # 15 seconds
 
 async def extract_m3u8_url(page_url):
     async with Stealth().use_async(async_playwright()) as p:
-        # Launch browser with a powerful set of anti-detection arguments
         browser = await p.chromium.launch(
             headless=HEADLESS,
             args=[
@@ -69,8 +72,6 @@ async def extract_m3u8_url(page_url):
                 '--enable-automation',
             ]
         )
-        
-        # Create a context that mimics a real user
         context = await browser.new_context(
             user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36',
             viewport={'width': 1920, 'height': 1080},
@@ -86,7 +87,6 @@ async def extract_m3u8_url(page_url):
         def handle_request(request):
             if not m3u8_promise.done():
                 url = request.url
-                # Ignore JW Player's tracking beacons and look for the real stream
                 if ".m3u8" in url and "ping.gif" not in url:
                     m3u8_promise.set_result(url)
 
@@ -94,8 +94,6 @@ async def extract_m3u8_url(page_url):
 
         print(f"  Navigating to {page_url}...")
         await page.goto(page_url, wait_until="networkidle")
-        
-        # Try to click any potential "Play" button if one exists
         try:
             play_button = page.locator('button:has-text("Play"), [aria-label="Play"], .play-button').first
             await play_button.click(timeout=3000)
@@ -112,34 +110,36 @@ async def extract_m3u8_url(page_url):
             print(f"  Timeout: No m3u8 request captured after {WAIT_TIMEOUT_MS/1000} seconds.")
         finally:
             await browser.close()
-            
         return captured_url
 
 
-def update_playlist_file(channel_name, m3u8_url):
-    """Writes the fresh .m3u8 URL to the channel's playlist file."""
-    safe_name = channel_name.replace(" ", "_").replace("+", "Plus")
+def update_playlist_file(channel_key, display_name, m3u8_url):
+    """Writes minimal M3U with #EXTINF and URL."""
+    safe_name = channel_key.replace(" ", "_").replace("+", "Plus")
     file_path = OUTPUT_BASE_DIR / safe_name / f"{safe_name}.m3u8"
     file_path.parent.mkdir(parents=True, exist_ok=True)
 
-    content = f"#EXTM3U\n{m3u8_url}\n"
+    # Format: #EXTM3U\n#EXTINF:1,DisplayName\nURL
+    content = f"#EXTM3U\n#EXTINF:1,{display_name}\n{m3u8_url}\n"
     file_path.write_text(content, encoding='utf-8')
     print(f"  Updated {file_path}")
+    print(f"    #EXTINF:1,{display_name}")
+    print(f"    URL: {m3u8_url[:80]}...")
 
 
 async def main():
     print("=" * 50)
-    print("Mana-Mana Token Refresher (Tracker Filtered)")
+    print("Mana-Mana Token Refresher (Minimal EXTINF)")
     print("=" * 50)
 
-    for name, url in CHANNELS.items():
-        print(f"\n[Refreshing] {name}...")
+    for channel_key, (url, display_name) in CHANNELS.items():
+        print(f"\n[Refreshing] {channel_key}...")
         try:
             fresh_url = await extract_m3u8_url(url)
             if fresh_url:
-                update_playlist_file(name, fresh_url)
+                update_playlist_file(channel_key, display_name, fresh_url)
             else:
-                print(f"  ERROR: No .m3u8 URL captured for {name}")
+                print(f"  ERROR: No .m3u8 URL captured for {channel_key}")
         except Exception as e:
             print(f"  ERROR: {e}")
 
