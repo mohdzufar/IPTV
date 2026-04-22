@@ -29,9 +29,9 @@ jobs:
           python-version: '3.11'
           check-latest: false
 
-      - name: Install Playwright dependencies
+      - name: Install Playwright and Stealth dependencies
         run: |
-          pip install playwright
+          pip install playwright playwright-stealth
           playwright install chromium
         shell: cmd
 
