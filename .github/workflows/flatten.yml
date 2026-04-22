@@ -43,6 +43,15 @@ jobs:
         run: python scripts/flatten.py
         shell: cmd
 
+      - name: Abort any stuck rebase
+        run: |
+          if exist ".git\rebase-merge" (
+            echo "Aborting stuck rebase..."
+            git rebase --abort
+          )
+        shell: cmd
+        continue-on-error: true
+
       - name: Debug - Show Git Status
         run: git status
         shell: cmd
@@ -53,7 +62,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add Main.m3u8
-          git add Channels/Mana-Mana/
+          git add Channels/Mana-mana/
           git diff --cached --quiet
           if %errorlevel% equ 0 (
             echo No changes to commit
