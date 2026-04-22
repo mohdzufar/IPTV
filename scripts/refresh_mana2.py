@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Mana-Mana Token Refresher - Advanced Stealth Edition
+Mana-mana Token Refresher - Advanced Stealth Edition
 Writes minimal M3U with #EXTINF:1,ChannelName and fresh URL.
 Outputs to Channels/Mana-mana/ (exact GitHub folder name).
 """
@@ -129,7 +129,7 @@ def update_playlist_file(channel_key, display_name, m3u8_url):
 
 async def main():
     print("=" * 50)
-    print("Mana-Mana Token Refresher (Minimal EXTINF)")
+    print("Mana-mana Token Refresher (Minimal EXTINF)")
     print("=" * 50)
 
     for channel_key, (url, display_name) in CHANNELS.items():
