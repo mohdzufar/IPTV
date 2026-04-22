@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """
-IPTV Playlist Flattener – Basic Reachability Mode (No Deep Validation)
-- Tests candidates by checking HTTP 200 and absence of HTML error pages.
+IPTV Playlist Flattener – Player‑Like Validation (No HEAD/Deep Checks)
+- Tests candidates by fetching playlists and checking for error pages.
+- Media playlists are accepted immediately after successful fetch (no segment testing).
+- Master playlists are followed to the first variant, which is then tested.
 - Comments out both #EXTINF and URL if all candidates fail.
 - Handles HLS master/variant, DASH, and direct streams.
-- No media signature checks – relies on basic connectivity.
 """
 
 import urllib.request
@@ -32,7 +33,6 @@ MAX_RETRIES = 1
 RETRY_DELAY = 2
 MAX_RECURSION_DEPTH = 5    # Prevent infinite loops
 PARALLEL_WORKERS = 4       # Concurrent candidate tests per channel
-DEEP_VALIDATION = False    # Disabled – only basic reachability
 VERBOSE = True             # Show detailed validation steps
 
 HEADERS = {
@@ -154,22 +154,14 @@ def extract_first_variant_url(content, base_url):
                 return variant
     return None
 
-def extract_first_segment_url(content, base_url):
-    try:
-        lines = content.decode('utf-8', errors='ignore').splitlines()
-        for line in lines:
-            line = line.strip()
-            if not line or line.startswith('#'):
-                continue
-            segment = safe_urljoin(base_url, line)
-            log_detail(f"Extracted media segment: {segment[:80]}...")
-            return segment
-    except:
-        pass
-    return None
-
 def test_stream_playable(url, depth=0):
-    """Recursive test with basic reachability (no deep media checks)."""
+    """
+    Recursive test that mimics a real player:
+    - Fetches URL, checks for error page.
+    - For master playlists, follows first variant.
+    - For media playlists, accepts immediately (no segment testing).
+    - For direct streams, accepts if not an error page.
+    """
     if depth > MAX_RECURSION_DEPTH:
         log_detail(f"Max recursion depth reached")
         return False
@@ -198,36 +190,11 @@ def test_stream_playable(url, depth=0):
                 log_detail(f"No variant URL found in master playlist")
                 return False
         else:
-            log_detail(f"Media playlist detected")
-            if DEEP_VALIDATION:
-                # This block will be skipped because DEEP_VALIDATION=False
-                segment_url = extract_first_segment_url(data, final_url)
-                if segment_url:
-                    log_detail(f"Fetching segment for deep validation...")
-                    seg_data, seg_ok, _ = fetch_url(segment_url, chunk_size=262144)
-                    if seg_ok and not is_error_page(seg_data):
-                        # We would check media signatures here, but DEEP_VALIDATION is False
-                        return True
-                    return False
-                return False
-            else:
-                # Basic check: try a HEAD request on first segment or just accept playlist reachability
-                segment_url = extract_first_segment_url(data, final_url)
-                if segment_url:
-                    log_detail(f"Checking segment reachability (HEAD)...")
-                    _, seg_ok, _ = fetch_url(segment_url, method='HEAD')
-                    if seg_ok:
-                        log_detail(f"Segment is reachable")
-                        return True
-                    else:
-                        log_detail(f"Segment unreachable")
-                        return False
-                else:
-                    # No segment found, but playlist itself was reachable → accept
-                    log_detail(f"No segment URL found; accepting playlist as playable")
-                    return True
+            # Media playlist – accept immediately (like VLC does)
+            log_detail(f"Media playlist detected – accepting as playable (no segment check)")
+            return True
 
-    # Direct stream
+    # Direct stream – accept if not an error page
     log_detail(f"Direct stream detected – accepting as playable")
     return True
 
@@ -319,7 +286,7 @@ def process_source_playlist(source_path):
 
 def main():
     print("=" * 60)
-    print("IPTV Playlist Flattener – Basic Reachability Mode (No Deep Validation)")
+    print("IPTV Playlist Flattener – Player‑Like Validation (No HEAD Checks)")
     print("=" * 60)
 
     if not Path(SOURCE_FILE).exists():
