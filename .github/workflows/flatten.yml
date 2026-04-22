@@ -12,7 +12,7 @@ concurrency:
 
 jobs:
   flatten:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     timeout-minutes: 60
     permissions:
       contents: write
@@ -33,13 +33,15 @@ jobs:
         run: |
           pip install playwright
           playwright install chromium
-          playwright install-deps chromium
+        shell: cmd
 
       - name: Refresh Mana-Mana streams
         run: python scripts/refresh_mana2.py
+        shell: cmd
 
       - name: Run flatten script
         run: python scripts/flatten.py
+        shell: cmd
 
       - name: Commit and push changes
         run: |
@@ -47,10 +49,12 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add Main.m3u8
           git add Channels/Mana-Mana/
-          if git diff --cached --quiet; then
-            echo "No changes to commit"
-            exit 0
-          fi
+          git diff --cached --quiet
+          if %errorlevel% equ 0 (
+            echo No changes to commit
+            exit /b 0
+          )
           git commit -m "Auto-refresh tokens & flatten playlist [skip ci]"
           git pull --rebase --autostash origin main
           git push
+        shell: cmd
