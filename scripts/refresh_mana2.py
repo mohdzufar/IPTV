@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Mana-Mana Token Refresher (for mana2.my)
-Uses Playwright to visit channel pages and extract fresh .m3u8 URLs.
+Mana-Mana Token Refresher (for mana2.my) - Enhanced Version
+Uses Playwright with anti-detection measures to extract fresh .m3u8 URLs.
 """
 
 import asyncio
@@ -14,7 +14,7 @@ from playwright.async_api import async_playwright
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
 
 # -------------------------------------------------------------------
-# CONFIGURATION – VERIFIED URLs
+# CONFIGURATION
 # -------------------------------------------------------------------
 
 CHANNELS = {
@@ -28,46 +28,63 @@ CHANNELS = {
     "Bernama": "https://www.mana2.my/channel/live/bernama",
 }
 
-# Where to save the updated playlist files
 OUTPUT_BASE_DIR = Path("Channels/Mana-Mana")
-
-# Set to False to see the browser window (useful for debugging)
 HEADLESS = True
+WAIT_TIMEOUT_MS = 15000  # Increased timeout to 15 seconds
 
 # -------------------------------------------------------------------
 # CORE LOGIC
 # -------------------------------------------------------------------
 
 async def extract_m3u8_url(page_url):
-    """
-    Launches a headless browser, navigates to page_url,
-    intercepts any .m3u8 request, and returns the first matching URL.
-    """
     async with async_playwright() as p:
-        browser = await p.chromium.launch(headless=HEADLESS)
+        # Launch browser with anti-detection arguments
+        browser = await p.chromium.launch(
+            headless=HEADLESS,
+            args=[
+                '--disable-blink-features=AutomationControlled', # Hide automation
+                '--disable-features=IsolateOrigins,site-per-process',
+                '--no-sandbox',
+                '--disable-setuid-sandbox',
+            ]
+        )
+        
+        # Create a context with a realistic viewport and disabled Service Workers
         context = await browser.new_context(
-            user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36'
+            user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36',
+            viewport={'width': 1920, 'height': 1080},
+            service_workers='block' # Prevents interference from Service Workers
         )
         page = await context.new_page()
 
-        captured_url = None
+        # Initialize with a null promise for the request we're waiting for
+        m3u8_promise = asyncio.get_running_loop().create_future()
 
-        async def handle_route(route, request):
-            nonlocal captured_url
-            if "monu3u8" in request.url and captured_url is None:
-                captured_url = request.url
-                print(f"  Captured: {captured_url[:80]}...")
-                await route.abort()
-            else:
-                await route.continue_()
+        def handle_request(request):
+            """Callback function to check each request."""
+            if not m3u8_promise.done():
+                url = request.url
+                # Look for any m3u8 file, not just 'monu3u8'
+                if ".m3u8" in url:
+                    m3u8_promise.set_result(url)
 
-        await page.route("**/*", handle_route)
+        # Listen for all requests
+        page.on('request', handle_request)
 
         print(f"  Navigating to {page_url}...")
         await page.goto(page_url, wait_until="networkidle")
-        await page.wait_for_timeout(5000)
-
-        await browser.close()
+        
+        print(f"  Waiting for player to load and request m3u8...")
+        try:
+            # Wait for the promise to be resolved
+            captured_url = await asyncio.wait_for(m3u8_promise, timeout=WAIT_TIMEOUT_MS/1000)
+            print(f"  Captured: {captured_url[:80]}...")
+        except asyncio.TimeoutError:
+            captured_url = None
+            print(f"  Timeout: No m3u8 request captured after {WAIT_TIMEOUT_MS/1000} seconds.")
+        finally:
+            await browser.close()
+            
         return captured_url
 
 
@@ -84,7 +101,7 @@ def update_playlist_file(channel_name, m3u8_url):
 
 async def main():
     print("=" * 50)
-    print("Mana-Mana Token Refresher")
+    print("Mana-Mana Token Refresher (Enhanced)")
     print("=" * 50)
 
     for name, url in CHANNELS.items():
