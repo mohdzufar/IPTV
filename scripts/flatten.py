@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
 """
-IPTV Playlist Flattener – Deep Validation & Full Entry Commenting
+IPTV Playlist Flattener – Deep Validation & Full Entry Commenting (Verbose Logging)
 - Tests candidates with media signature verification to prevent sync byte errors.
 - Comments out both #EXTINF and URL if all candidates fail.
-- Handles HLS master/variant, DASH, and direct streams.
-- Proper timeout handling and parallel testing.
+- Detailed logging shows each step of validation.
 """
 
 import urllib.request
@@ -34,6 +33,7 @@ MAX_RECURSION_DEPTH = 5    # Prevent infinite loops
 PARALLEL_WORKERS = 4       # Concurrent candidate tests per channel
 DEEP_VALIDATION = True     # Enable media signature checks
 CHUNK_SIZE = 262144        # 256 KB for validation
+VERBOSE = True             # Show detailed validation steps
 
 HEADERS = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
@@ -58,8 +58,9 @@ def log_progress(channel_num, total_channels, message):
     print(f"[{timestamp}] Ch {channel_num}/{total_channels}: {message}")
 
 def log_detail(message):
-    timestamp = time.strftime("%H:%M:%S")
-    print(f"      [{timestamp}] {message}")
+    if VERBOSE:
+        timestamp = time.strftime("%H:%M:%S")
+        print(f"      [{timestamp}] {message}")
 
 def safe_urljoin(base, url):
     if url.startswith('//'):
@@ -81,7 +82,8 @@ def fetch_url(url, timeout=TIMEOUT, max_retries=MAX_RETRIES, method='GET', head_
                 else:
                     data = resp.read()
                 return data, True, final_url
-        except Exception:
+        except Exception as e:
+            log_detail(f"Fetch attempt {attempt+1} failed: {str(e)[:50]}")
             if attempt < max_retries:
                 time.sleep(RETRY_DELAY)
             else:
@@ -104,7 +106,10 @@ def is_valid_media_data(data):
         return False
     for offset, sig in MEDIA_SIGNATURES:
         if len(data) > offset + len(sig) and data[offset:offset+len(sig)] == sig:
+            sig_name = {0: 'MPEG-TS', 4: 'MP4/MOV'}.get(offset, 'Unknown')
+            log_detail(f"Found media signature: {sig_name}")
             return True
+    log_detail("No known media signature found")
     return False
 
 def is_playlist_content(data):
@@ -136,7 +141,9 @@ def extract_first_variant_url(content, base_url):
                     capture = True
                 continue
             if capture:
-                return safe_urljoin(base_url, line)
+                variant = safe_urljoin(base_url, line)
+                log_detail(f"Extracted HLS variant: {variant[:80]}...")
+                return variant
         return None
 
     if '<MPD' in text:
@@ -156,11 +163,15 @@ def extract_first_variant_url(content, base_url):
         if seg is not None:
             init = seg.get('initialization')
             if init:
-                return safe_urljoin(dash_base, init)
+                variant = safe_urljoin(dash_base, init)
+                log_detail(f"Extracted DASH init: {variant[:80]}...")
+                return variant
             media = seg.get('media')
             if media:
                 test = media.replace('$Number%09d$', '000000001').replace('$Number$', '1')
-                return safe_urljoin(dash_base, test)
+                variant = safe_urljoin(dash_base, test)
+                log_detail(f"Extracted DASH segment: {variant[:80]}...")
+                return variant
     return None
 
 def extract_first_segment_url(content, base_url):
@@ -170,7 +181,9 @@ def extract_first_segment_url(content, base_url):
             line = line.strip()
             if not line or line.startswith('#'):
                 continue
-            return safe_urljoin(base_url, line)
+            segment = safe_urljoin(base_url, line)
+            log_detail(f"Extracted media segment: {segment[:80]}...")
+            return segment
     except:
         pass
     return None
@@ -178,47 +191,77 @@ def extract_first_segment_url(content, base_url):
 def test_stream_playable(url, depth=0):
     """Recursive test with optional deep media validation."""
     if depth > MAX_RECURSION_DEPTH:
+        log_detail(f"Max recursion depth reached")
         return False
 
+    log_detail(f"Testing URL: {url[:100]}...")
     data, success, final_url = fetch_url(url)
     if not success or not data:
+        log_detail(f"Failed to fetch URL")
         return False
 
     if is_error_page(data):
+        log_detail(f"Response appears to be an error page (HTML)")
         return False
 
     if is_playlist_content(data):
+        log_detail(f"Detected playlist content")
         if is_master_playlist(data):
+            log_detail(f"Master playlist detected")
             variant_url = extract_first_variant_url(data, final_url)
             if variant_url:
-                return test_stream_playable(variant_url, depth + 1)
-            return False
+                log_detail(f"Testing variant stream...")
+                result = test_stream_playable(variant_url, depth + 1)
+                log_detail(f"Variant test result: {'PASS' if result else 'FAIL'}")
+                return result
+            else:
+                log_detail(f"No variant URL found in master playlist")
+                return False
         else:
-            # Media playlist: test first segment
+            log_detail(f"Media playlist detected")
             segment_url = extract_first_segment_url(data, final_url)
             if segment_url:
                 if DEEP_VALIDATION:
+                    log_detail(f"Fetching segment for deep validation...")
                     seg_data, seg_ok, _ = fetch_url(segment_url, chunk_size=CHUNK_SIZE)
-                    if seg_ok and not is_error_page(seg_data) and is_valid_media_data(seg_data):
-                        return True
+                    if seg_ok and not is_error_page(seg_data):
+                        if is_valid_media_data(seg_data):
+                            log_detail(f"Segment contains valid media data")
+                            return True
+                        else:
+                            log_detail(f"Segment does NOT contain valid media signature")
+                    else:
+                        log_detail(f"Failed to fetch segment or segment is error page")
                     return False
                 else:
-                    # Simple reachability check
+                    log_detail(f"Checking segment reachability (HEAD)...")
                     _, seg_ok, _ = fetch_url(segment_url, method='HEAD')
                     return seg_ok
-            return False
+            else:
+                log_detail(f"No segment URL found in media playlist")
+                return False
 
-    # Direct stream: validate media signature if deep mode
+    # Direct stream
+    log_detail(f"Direct stream detected")
     if DEEP_VALIDATION:
-        return is_valid_media_data(data)
+        if is_valid_media_data(data):
+            log_detail(f"Direct stream contains valid media signature")
+            return True
+        else:
+            log_detail(f"Direct stream lacks media signature")
+            return False
     return True
 
 def test_candidate(url):
-    return test_stream_playable(url), url
+    log_detail(f"--- Testing candidate: {url[:80]}...")
+    result = test_stream_playable(url)
+    log_detail(f"Candidate result: {'PASS' if result else 'FAIL'}")
+    return result, url
 
 def process_channel(extinf_line, candidates, channel_num, total_channels):
     safe = extinf_line[:50] + "..." if len(extinf_line) > 50 else extinf_line
     log_progress(channel_num, total_channels, f"Testing: {safe}")
+    log_detail(f"Channel has {len(candidates)} candidate(s)")
 
     if PARALLEL_WORKERS > 1:
         with ThreadPoolExecutor(max_workers=PARALLEL_WORKERS) as executor:
@@ -232,12 +275,12 @@ def process_channel(extinf_line, candidates, channel_num, total_channels):
                     return extinf_line, final_url
     else:
         for idx, url in enumerate(candidates, 1):
+            log_detail(f"Testing candidate {idx}/{len(candidates)}")
             working, _ = test_candidate(url)
             if working:
                 log_progress(channel_num, total_channels, f"✓ Candidate {idx} works")
                 return extinf_line, url
 
-    # All candidates failed – comment out both #EXTINF and URL
     log_progress(channel_num, total_channels, "✗ All failed; commenting out entire entry")
     commented_extinf = f"##{extinf_line}"
     commented_url = f"##{candidates[0]}"
@@ -247,7 +290,6 @@ def process_source_playlist(source_path):
     with open(source_path, 'r', encoding='utf-8') as f:
         lines = f.readlines()
 
-    # Count channels for progress
     channel_count = sum(1 for line in lines if line.startswith('#EXTINF:'))
 
     flattened = []
@@ -298,7 +340,7 @@ def process_source_playlist(source_path):
 
 def main():
     print("=" * 60)
-    print("IPTV Playlist Flattener – Deep Validation Mode")
+    print("IPTV Playlist Flattener – Deep Validation Mode (Verbose)")
     print("=" * 60)
 
     if not Path(SOURCE_FILE).exists():
