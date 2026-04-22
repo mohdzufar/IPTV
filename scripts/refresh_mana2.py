@@ -5,8 +5,13 @@ Uses Playwright to visit channel pages and extract fresh .m3u8 URLs.
 """
 
 import asyncio
+import sys
+import io
 from pathlib import Path
 from playwright.async_api import async_playwright
+
+# Force UTF-8 output on Windows to avoid encoding errors
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
 
 # -------------------------------------------------------------------
 # CONFIGURATION – VERIFIED URLs
@@ -51,7 +56,7 @@ async def extract_m3u8_url(page_url):
             nonlocal captured_url
             if "monu3u8" in request.url and captured_url is None:
                 captured_url = request.url
-                print(f"  ✅ Captured: {captured_url[:80]}...")
+                print(f"  Captured: {captured_url[:80]}...")
                 await route.abort()
             else:
                 await route.continue_()
@@ -74,7 +79,7 @@ def update_playlist_file(channel_name, m3u8_url):
 
     content = f"#EXTM3U\n{m3u8_url}\n"
     file_path.write_text(content, encoding='utf-8')
-    print(f"  📁 Updated {file_path}")
+    print(f"  Updated {file_path}")
 
 
 async def main():
@@ -83,17 +88,17 @@ async def main():
     print("=" * 50)
 
     for name, url in CHANNELS.items():
-        print(f"\n🔄 Refreshing {name}...")
+        print(f"\n[Refreshing] {name}...")
         try:
             fresh_url = await extract_m3u8_url(url)
             if fresh_url:
                 update_playlist_file(name, fresh_url)
             else:
-                print(f"  ❌ No .m3u8 URL captured for {name}")
+                print(f"  ERROR: No .m3u8 URL captured for {name}")
         except Exception as e:
-            print(f"  ❌ Failed: {e}")
+            print(f"  ERROR: {e}")
 
-    print("\n✅ Refresh complete.")
+    print("\nRefresh complete.")
 
 
 if __name__ == "__main__":
