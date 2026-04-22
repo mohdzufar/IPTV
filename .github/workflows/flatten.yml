@@ -43,6 +43,11 @@ jobs:
         run: python scripts/flatten.py
         shell: cmd
 
+      - name: Debug - Show Git Status
+        run: git status
+        shell: cmd
+        continue-on-error: true
+
       - name: Commit and push changes
         run: |
           git config user.name "github-actions[bot]"
