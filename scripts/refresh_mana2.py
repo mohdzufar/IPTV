@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Mana-Mana Token Refresher - Advanced Stealth Edition
-Uses playwright-stealth and advanced arguments to bypass bot detection.
+Mana-Mana Token Refresher - Advanced Stealth Edition (Tracker Filtered)
+Uses playwright-stealth and filters out JW Player tracking beacons.
 """
 
 import asyncio
@@ -84,8 +84,11 @@ async def extract_m3u8_url(page_url):
         m3u8_promise = asyncio.get_running_loop().create_future()
 
         def handle_request(request):
-            if not m3u8_promise.done() and ".m3u8" in request.url:
-                m3u8_promise.set_result(request.url)
+            if not m3u8_promise.done():
+                url = request.url
+                # Ignore JW Player's tracking beacons and look for the real stream
+                if ".m3u8" in url and "ping.gif" not in url:
+                    m3u8_promise.set_result(url)
 
         page.on('request', handle_request)
 
@@ -126,7 +129,7 @@ def update_playlist_file(channel_name, m3u8_url):
 
 async def main():
     print("=" * 50)
-    print("Mana-Mana Token Refresher (Advanced Stealth)")
+    print("Mana-Mana Token Refresher (Tracker Filtered)")
     print("=" * 50)
 
     for name, url in CHANNELS.items():
