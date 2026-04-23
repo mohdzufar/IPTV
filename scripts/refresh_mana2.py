@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """
-Mana-Mana Token Refresher - TV Compatible with Proxy
-Writes minimal M3U with #EXTINF:-1,ChannelName and proxied URL.
+Mana-Mana Token Refresher - OTT TV Compatible (EXTINF:1)
+Writes minimal M3U with #EXTINF:1,ChannelName and fresh URL.
+Optional proxy wrapper for header injection.
 """
 
 import asyncio
@@ -126,17 +127,18 @@ def update_playlist_file(channel_key, display_name, m3u8_url):
     file_path.parent.mkdir(parents=True, exist_ok=True)
 
     final_url = wrap_with_proxy(m3u8_url)
-    content = f"#EXTM3U\n#EXTINF:-1,{display_name}\n{final_url}\n"
+    # Use #EXTINF:1 for OTT TV compatibility (some apps reject -1 or 0)
+    content = f"#EXTM3U\n#EXTINF:1,{display_name}\n{final_url}\n"
     file_path.write_text(content, encoding='utf-8')
     print(f"  Updated {file_path}")
-    print(f"    #EXTINF:-1,{display_name}")
+    print(f"    #EXTINF:1,{display_name}")
     print(f"    Original: {m3u8_url[:80]}...")
     if USE_PROXY:
         print(f"    Proxied:  {final_url[:80]}...")
 
 async def main():
     print("=" * 50)
-    print("Mana-Mana Token Refresher (Proxy Mode)")
+    print("Mana-Mana Token Refresher (OTT TV Compatible)")
     print("=" * 50)
 
     for channel_key, (url, display_name) in CHANNELS.items():
