@@ -1,29 +1,29 @@
 #!/usr/bin/env python3
 """
-Mana-mana Token Refresher - Advanced Stealth Edition
-Writes minimal M3U with #EXTINF:1,ChannelName and fresh URL.
-Outputs to Channels/Mana-mana/ (exact GitHub folder name).
+Mana-Mana Token Refresher - TV Compatible with Proxy
+Writes minimal M3U with #EXTINF:-1,ChannelName and proxied URL.
 """
 
 import asyncio
 import sys
 import io
+import urllib.parse
 from pathlib import Path
 from playwright.async_api import async_playwright
 from playwright_stealth import Stealth
 
-# Force UTF-8 output on Windows
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
 
 # -------------------------------------------------------------------
 # CONFIGURATION
 # -------------------------------------------------------------------
-
 SCRIPT_DIR = Path(__file__).resolve().parent
 REPO_ROOT = SCRIPT_DIR.parent
-OUTPUT_BASE_DIR = REPO_ROOT / "Channels" / "Mana-mana"   # Exact folder name in GitHub
+OUTPUT_BASE_DIR = REPO_ROOT / "Channels" / "Mana-mana"
 
-# Channel key -> (page_url, display_name)
+USE_PROXY = True               # Set to False to disable proxy
+PROXY_BASE = "https://corsproxy.io/?"
+
 CHANNELS = {
     "Al-Hijrah": ("https://www.mana2.my/channel/live/tv-alhijrah", "Al-Hijrah"),
     "Enjoy TV": ("https://www.mana2.my/channel/live/tv5", "Enjoy TV"),
@@ -41,6 +41,13 @@ WAIT_TIMEOUT_MS = 15000
 # -------------------------------------------------------------------
 # CORE LOGIC
 # -------------------------------------------------------------------
+
+def wrap_with_proxy(url):
+    """Wrap URL with CORS proxy to inject proper headers."""
+    if not USE_PROXY:
+        return url
+    encoded = urllib.parse.quote(url, safe='')
+    return f"{PROXY_BASE}{encoded}"
 
 async def extract_m3u8_url(page_url):
     async with Stealth().use_async(async_playwright()) as p:
@@ -113,23 +120,23 @@ async def extract_m3u8_url(page_url):
             await browser.close()
         return captured_url
 
-
 def update_playlist_file(channel_key, display_name, m3u8_url):
-    """Writes minimal M3U with #EXTINF and URL."""
     safe_name = channel_key.replace(" ", "_").replace("+", "Plus")
     file_path = OUTPUT_BASE_DIR / safe_name / f"{safe_name}.m3u8"
     file_path.parent.mkdir(parents=True, exist_ok=True)
 
-    content = f"#EXTM3U\n#EXTINF:1,{display_name}\n{m3u8_url}\n"
+    final_url = wrap_with_proxy(m3u8_url)
+    content = f"#EXTM3U\n#EXTINF:-1,{display_name}\n{final_url}\n"
     file_path.write_text(content, encoding='utf-8')
     print(f"  Updated {file_path}")
-    print(f"    #EXTINF:1,{display_name}")
-    print(f"    URL: {m3u8_url[:80]}...")
-
+    print(f"    #EXTINF:-1,{display_name}")
+    print(f"    Original: {m3u8_url[:80]}...")
+    if USE_PROXY:
+        print(f"    Proxied:  {final_url[:80]}...")
 
 async def main():
     print("=" * 50)
-    print("Mana-mana Token Refresher (Minimal EXTINF)")
+    print("Mana-Mana Token Refresher (Proxy Mode)")
     print("=" * 50)
 
     for channel_key, (url, display_name) in CHANNELS.items():
@@ -144,7 +151,6 @@ async def main():
             print(f"  ERROR: {e}")
 
     print("\nRefresh complete.")
-
 
 if __name__ == "__main__":
     asyncio.run(main())
