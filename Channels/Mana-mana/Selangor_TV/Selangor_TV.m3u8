@@ -1,3 +1,3 @@
 #EXTM3U
-#EXTINF:1,Selangor TV
-https://live.mana2.my/SelangorTv/index.m3u8?auth_key=1776932612-f08c9675f40642ae8777320ce92b59cc-0-d06c2e33ac437a3a43b5ae739ed9c19e&token=1776932612-f08c9675f40642ae8777320ce92b59cc-0-d06c2e33ac437a3a43b5ae739ed9c19e
+#EXTINF:-1,Selangor TV
+https://corsproxy.io/?https%3A%2F%2Flive.mana2.my%2FSelangorTv%2Findex.m3u8%3Fauth_key%3D1776933620-3527afbd2709447ebdcd5efb5127045a-0-bb927df9c00bdf695b59555c2fe88c33%26token%3D1776933620-3527afbd2709447ebdcd5efb5127045a-0-bb927df9c00bdf695b59555c2fe88c33

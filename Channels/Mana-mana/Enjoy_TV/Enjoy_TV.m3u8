@@ -1,3 +1,3 @@
 #EXTM3U
-#EXTINF:1,Enjoy TV
-https://live.mana2.my/Tv5/index.m3u8?auth_key=1776932606-cada15f9cb134c708aaf48adda5394b5-0-7aafc3f803322c29fe07598ffc3083d0&token=1776932606-cada15f9cb134c708aaf48adda5394b5-0-7aafc3f803322c29fe07598ffc3083d0
+#EXTINF:-1,Enjoy TV
+https://corsproxy.io/?https%3A%2F%2Flive.mana2.my%2FTv5%2Findex.m3u8%3Fauth_key%3D1776933612-d594b504806f4d4ebcc83acb3542bbae-0-019452537cdf169f219533367089885d%26token%3D1776933612-d594b504806f4d4ebcc83acb3542bbae-0-019452537cdf169f219533367089885d

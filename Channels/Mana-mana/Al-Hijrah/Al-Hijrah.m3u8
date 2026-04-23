@@ -1,3 +1,3 @@
 #EXTM3U
-#EXTINF:1,Al-Hijrah
-https://live.mana2.my/TvAlhijrah/index.m3u8?auth_key=1776932603-77e2abf2878b444a803e86ecb08cbf7f-0-64259c29acf4f8efd1d414935b606e79&token=1776932603-77e2abf2878b444a803e86ecb08cbf7f-0-64259c29acf4f8efd1d414935b606e79
+#EXTINF:-1,Al-Hijrah
+https://corsproxy.io/?https%3A%2F%2Flive.mana2.my%2FTvAlhijrah%2Findex.m3u8%3Fauth_key%3D1776933609-526e43d2ccb047bd9d0c9df3a35c7d57-0-8cd8de9c82424962474cad641aaac4df%26token%3D1776933609-526e43d2ccb047bd9d0c9df3a35c7d57-0-8cd8de9c82424962474cad641aaac4df
