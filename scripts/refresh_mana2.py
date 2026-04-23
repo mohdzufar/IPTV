@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Mana-Mana Token Refresher - Direct URLs (No Proxy)
-Writes minimal M3U with #EXTINF:1,ChannelName and fresh direct URL.
+Mana-Mana Token Refresher - with EXTVLCOPT Headers
+Writes M3U with #EXTVLCOPT for User-Agent and Referer.
 """
 
 import asyncio
@@ -19,6 +19,12 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='repla
 SCRIPT_DIR = Path(__file__).resolve().parent
 REPO_ROOT = SCRIPT_DIR.parent
 OUTPUT_BASE_DIR = REPO_ROOT / "Channels" / "Mana-mana"
+
+# Set to False to disable EXTVLCOPT lines
+USE_EXTVLCOPT = True
+
+USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+REFERER = "https://mana2.my/"
 
 CHANNELS = {
     "Al-Hijrah": ("https://www.mana2.my/channel/live/tv-alhijrah", "Al-Hijrah"),
@@ -70,7 +76,7 @@ async def extract_m3u8_url(page_url):
             ]
         )
         context = await browser.new_context(
-            user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36',
+            user_agent=USER_AGENT,
             viewport={'width': 1920, 'height': 1080},
             locale='en-MY',
             timezone_id='Asia/Kuala_Lumpur',
@@ -114,16 +120,21 @@ def update_playlist_file(channel_key, display_name, m3u8_url):
     file_path = OUTPUT_BASE_DIR / safe_name / f"{safe_name}.m3u8"
     file_path.parent.mkdir(parents=True, exist_ok=True)
 
-    # Direct URL - no proxy
-    content = f"#EXTM3U\n#EXTINF:1,{display_name}\n{m3u8_url}\n"
+    lines = ["#EXTM3U", f"#EXTINF:1,{display_name}"]
+    if USE_EXTVLCOPT:
+        lines.append(f"#EXTVLCOPT:http-user-agent={USER_AGENT}")
+        lines.append(f"#EXTVLCOPT:http-referrer={REFERER}")
+    lines.append(m3u8_url)
+
+    content = "\n".join(lines) + "\n"
     file_path.write_text(content, encoding='utf-8')
     print(f"  Updated {file_path}")
-    print(f"    #EXTINF:1,{display_name}")
+    print(f"    Format: {'with EXTVLCOPT' if USE_EXTVLCOPT else 'basic'}")
     print(f"    URL: {m3u8_url[:80]}...")
 
 async def main():
     print("=" * 50)
-    print("Mana-Mana Token Refresher (Direct URLs)")
+    print("Mana-Mana Token Refresher (EXTVLCOPT Mode)")
     print("=" * 50)
 
     for channel_key, (url, display_name) in CHANNELS.items():
