@@ -4,6 +4,8 @@ IPTV Playlist Flattener - Player-Like Validation
 - Tests candidates by fetching playlists and checking for error pages.
 - HLS master playlists are followed to the first variant, which is then tested.
 - Simple nested M3U wrapper files are unwrapped so Main.m3u8 gets the inner URL.
+- Each candidate has a hard total timeout (default 15 seconds).
+- If a candidate times out or fails, the script moves to the next candidate.
 - Comments out both #EXTINF and URL if all candidates fail.
 """
 
@@ -13,7 +15,6 @@ import urllib.parse
 import sys
 import time
 import io
-import xml.etree.ElementTree as ET
 from pathlib import Path
 from urllib.parse import urljoin, urlparse
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -27,12 +28,21 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="repla
 SOURCE_FILE = "Channels/Flatten.m3u8"
 OUTPUT_FILE = "Main.m3u8"
 
+# Per socket/request timeout
 TIMEOUT = 15
+
+# Hard wall-clock timeout for one candidate, including nested tests
+CANDIDATE_TIMEOUT = 15
+
 MAX_RETRIES = 1
 RETRY_DELAY = 2
 MAX_RECURSION_DEPTH = 5
 PARALLEL_WORKERS = 4
 VERBOSE = True
+
+# Read only enough bytes to identify playlist content safely.
+MAX_READ_BYTES = 262144  # 256 KB
+READ_CHUNK_SIZE = 8192
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
@@ -72,26 +82,8 @@ def safe_urljoin(base, url):
     return urljoin(base, url)
 
 
-def fetch_url(url, timeout=TIMEOUT, max_retries=MAX_RETRIES, method="GET", head_only=False, chunk_size=None):
-    headers = HEADERS.copy()
-    for attempt in range(max_retries + 1):
-        try:
-            req = urllib.request.Request(url, headers=headers, method=method)
-            with urllib.request.urlopen(req, timeout=timeout) as resp:
-                final_url = resp.geturl()
-                if head_only:
-                    return None, True, final_url
-                if chunk_size:
-                    data = resp.read(chunk_size)
-                else:
-                    data = resp.read()
-                return data, True, final_url
-        except Exception as e:
-            log_detail(f"Fetch attempt {attempt + 1} failed: {str(e)[:80]}")
-            if attempt < max_retries:
-                time.sleep(RETRY_DELAY)
-            else:
-                return None, False, url
+def time_left(deadline):
+    return deadline - time.monotonic()
 
 
 def decode_text(data, limit=None):
@@ -142,6 +134,61 @@ def is_media_playlist(content):
         return False
 
 
+def fetch_url(url, deadline, max_retries=MAX_RETRIES, method="GET", head_only=False):
+    headers = HEADERS.copy()
+
+    for attempt in range(max_retries + 1):
+        remaining = time_left(deadline)
+        if remaining <= 0:
+            log_detail("Candidate timeout reached before fetch started")
+            return None, False, url
+
+        try:
+            req = urllib.request.Request(url, headers=headers, method=method)
+            with urllib.request.urlopen(req, timeout=min(TIMEOUT, max(1, remaining))) as resp:
+                final_url = resp.geturl()
+
+                if head_only:
+                    return None, True, final_url
+
+                chunks = []
+                total = 0
+
+                while True:
+                    remaining = time_left(deadline)
+                    if remaining <= 0:
+                        log_detail("Candidate timeout reached while reading response")
+                        return None, False, final_url
+
+                    to_read = min(READ_CHUNK_SIZE, MAX_READ_BYTES - total)
+                    if to_read <= 0:
+                        break
+
+                    chunk = resp.read(to_read)
+                    if not chunk:
+                        break
+
+                    chunks.append(chunk)
+                    total += len(chunk)
+
+                    if total >= MAX_READ_BYTES:
+                        break
+
+                data = b"".join(chunks)
+                return data, True, final_url
+
+        except Exception as e:
+            log_detail(f"Fetch attempt {attempt + 1} failed: {str(e)[:80]}")
+            if attempt < max_retries:
+                remaining = time_left(deadline)
+                if remaining > RETRY_DELAY:
+                    time.sleep(RETRY_DELAY)
+            else:
+                return None, False, url
+
+    return None, False, url
+
+
 def extract_first_variant_url(content, base_url):
     try:
         text = decode_text(content)
@@ -164,7 +211,6 @@ def extract_first_variant_url(content, base_url):
                 variant = safe_urljoin(base_url, line)
                 log_detail(f"Extracted HLS variant: {variant[:100]}...")
                 return variant
-        return None
 
     return None
 
@@ -194,13 +240,17 @@ def extract_wrapper_urls(content, base_url):
     return urls
 
 
-def test_stream_playable(url, depth=0):
+def test_stream_playable(url, deadline, depth=0):
     if depth > MAX_RECURSION_DEPTH:
         log_detail("Max recursion depth reached")
         return False, url
 
+    if time_left(deadline) <= 0:
+        log_detail("Candidate timeout reached before stream test")
+        return False, url
+
     log_detail(f"Testing URL: {url[:120]}...")
-    data, success, final_url = fetch_url(url)
+    data, success, final_url = fetch_url(url, deadline=deadline)
     if not success or not data:
         log_detail("Failed to fetch URL")
         return False, url
@@ -217,7 +267,7 @@ def test_stream_playable(url, depth=0):
             variant_url = extract_first_variant_url(data, final_url)
             if variant_url:
                 log_detail("Testing variant stream...")
-                working, resolved_url = test_stream_playable(variant_url, depth + 1)
+                working, resolved_url = test_stream_playable(variant_url, deadline, depth + 1)
                 log_detail(f"Variant test result: {'PASS' if working else 'FAIL'}")
                 return working, resolved_url
             log_detail("No variant URL found in master playlist")
@@ -227,8 +277,11 @@ def test_stream_playable(url, depth=0):
         if wrapper_urls:
             log_detail(f"Wrapper playlist detected with {len(wrapper_urls)} nested URL(s)")
             for idx, nested_url in enumerate(wrapper_urls, 1):
+                if time_left(deadline) <= 0:
+                    log_detail("Candidate timeout reached before next nested URL")
+                    return False, url
                 log_detail(f"Testing nested URL {idx}/{len(wrapper_urls)}")
-                working, resolved_url = test_stream_playable(nested_url, depth + 1)
+                working, resolved_url = test_stream_playable(nested_url, deadline, depth + 1)
                 if working:
                     return True, resolved_url
             log_detail("All nested URLs failed")
@@ -242,8 +295,11 @@ def test_stream_playable(url, depth=0):
 
 
 def test_candidate(url):
+    deadline = time.monotonic() + CANDIDATE_TIMEOUT
     log_detail(f"--- Testing candidate: {url[:100]}...")
-    working, resolved_url = test_stream_playable(url)
+    working, resolved_url = test_stream_playable(url, deadline)
+    if not working and time_left(deadline) <= 0:
+        log_detail(f"Candidate timed out after {CANDIDATE_TIMEOUT} seconds")
     log_detail(f"Candidate result: {'PASS' if working else 'FAIL'}")
     return working, resolved_url if working else url
 
