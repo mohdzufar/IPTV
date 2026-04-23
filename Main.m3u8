@@ -27,20 +27,20 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/IKIM/I
 https://raw.githubusercontent.com/mohdzufar/Main-IPTV/refs/heads/main/Channels/RTM/Berita/RTM%20Berita.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Astro Awani" tvg-id="AstroAwani.my" tvg-country="MY" tvg-logo="https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/436_144.png" group-title="News",Astro Awani
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/ASTRO/Awani/Astro%20Awani.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="Al-Hijrah" tvg-id="TV ALHIJRAH" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/esdfqp.png" group-title="Malaysia",Al-Hijrah
-https://live.mana2.my/TvAlhijrah/tracks-v3a1/mono.m3u8?token=1776945300-ce1e8bf211b54936b64e908baf70b88c-0-dfee3fc1dc5903881f2ec442447cf696&auth_key=1776945300-ce1e8bf211b54936b64e908baf70b88c-0-e22f5e431abd1433325bf527e634f342
-#EXTINF:-1 tvg-chno="" tvg-name="Enjoy TV" tvg-id="Enjoy TV" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/channel/logos/hglfwv.png" group-title="Malaysia",Enjoy TV
-https://live.mana2.my/Tv5/tracks-v2a1/mono.m3u8?token=1776945303-fc77bbb276124e84aae764e91c177dbf-0-c153ccf53088ebb536979233918d695c&auth_key=1776945303-fc77bbb276124e84aae764e91c177dbf-0-b01a044ec3bb5047a239521606cfc66d
-#EXTINF:-1 tvg-chno="" tvg-name="Borneo TV" tvg-id="" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/npdqkp.png" group-title="Malaysia",Borneo TV
-https://live.mana2.my/BorneoTv/tracks-v3a1/mono.m3u8?token=1776945307-efe93f90dc564af79210b485dde9c250-0-59b21b138a087cb9974af336eba8a723&auth_key=1776945307-efe93f90dc564af79210b485dde9c250-0-2e27861bdd1e95784878c3be32d81cdd
-#EXTINF:-1 tvg-chno="" tvg-name="Selangor TV" tvg-id="" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/emwijp.png" group-title="Malaysia",Selangor TV
-https://live.mana2.my/SelangorTv/tracks-v2a1/mono.m3u8?token=1776945310-3436be2c1f294e01a985b13ae0debc1c-0-db609c15cbf88129def2e65850621b52&auth_key=1776945310-3436be2c1f294e01a985b13ae0debc1c-0-00445b31b6f6d4ba3eec5f74c9668032
-#EXTINF:-1 tvg-chno="" tvg-name="Suke TV" tvg-id="" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/utgwdm.png" group-title="Malaysia",Suke TV
-https://live.mana2.my/SukeTv/tracks-v3a1/mono.m3u8?token=1776945313-60f36caf03a04711bb2142ef68429647-0-c3c0194065180fcbe6c001cb30f3b841&auth_key=1776945313-60f36caf03a04711bb2142ef68429647-0-88d635fd085bbce3dfe069dfb48f69d5
-#EXTINF:-1 tvg-chno="" tvg-name="TVS" tvg-id="" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/filzbh.jpeg" group-title="Malaysia",TVS
-https://vod.mana2.my/TvS/tracks-v3a1/index-1776880800-1800.m3u8?token=1776945316-79785472d3384c7bb595e9a912d0b8a5-0-09e7c37c709e1f35bce6c53f2f986177&auth_key=1776945316-79785472d3384c7bb595e9a912d0b8a5-0-a722347233b0885553c02c4aa3b00b09
-#EXTINF:-1 tvg-chno="" tvg-name="Sukan+" tvg-id="" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/soxsng.jpeg" group-title="Malaysia",Sukan+
-https://live.mana2.my/SukanRtm/tracks-v3a1/mono.m3u8?token=1776945320-95e9683444ff4e3eb502814610492c13-0-ff874c148164e1ce02815699539b02b0&auth_key=1776945320-95e9683444ff4e3eb502814610492c13-0-93fc6fb2dd800bc8912765515d2d5396
+###EXTINF:-1 tvg-chno="" tvg-name="Al-Hijrah" tvg-id="TV ALHIJRAH" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/esdfqp.png" group-title="Malaysia",Al-Hijrah
+##https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Mana-mana/Al-Hijrah/Al-Hijrah.m3u8
+###EXTINF:-1 tvg-chno="" tvg-name="Enjoy TV" tvg-id="Enjoy TV" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/channel/logos/hglfwv.png" group-title="Malaysia",Enjoy TV
+##https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Mana-mana/Enjoy_TV/Enjoy_TV.m3u8
+###EXTINF:-1 tvg-chno="" tvg-name="Borneo TV" tvg-id="" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/npdqkp.png" group-title="Malaysia",Borneo TV
+##https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Mana-mana/Borneo_TV/Borneo_TV.m3u8
+###EXTINF:-1 tvg-chno="" tvg-name="Selangor TV" tvg-id="" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/emwijp.png" group-title="Malaysia",Selangor TV
+##https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Mana-mana/Selangor_TV/Selangor_TV.m3u8
+###EXTINF:-1 tvg-chno="" tvg-name="Suke TV" tvg-id="" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/utgwdm.png" group-title="Malaysia",Suke TV
+##https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Mana-mana/Suke_TV/Suke_TV.m3u8
+###EXTINF:-1 tvg-chno="" tvg-name="TVS" tvg-id="" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/filzbh.jpeg" group-title="Malaysia",TVS
+##https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Mana-mana/TVS/TVS.m3u8
+###EXTINF:-1 tvg-chno="" tvg-name="Sukan+" tvg-id="" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/soxsng.jpeg" group-title="Malaysia",Sukan+
+##https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Mana-mana/SukanPlus/SukanPlus.m3u8
 ###EXTINF:-1 tvg-chno="" tvg-name="Bernama" tvg-id="Bernama" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/ivnvsj.png" group-title="Malaysia",Bernama
 ##https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Mana-mana/Bernama/Bernama.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Dewan Rakyat" tvg-id="DewanRakyat.my" tvg-country="MY" tvg-logo="https://rtm-images.glueapi.io/320x0/live_channel/7.png" group-title="Malaysia",Dewan Rakyat
