@@ -137,8 +137,8 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/FOX/FO
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/NHL/NHL.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="UEFA Champion League" tvg-id="" tvg-country="" tvg-logo="" group-title="Sports",UEFA Champion League
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/UEFA/UEFA%20Champion%20League.m3u8
-###EXTINF:-1 tvg-chno="" tvg-name="UFC 1" tvg-id="" tvg-country="" tvg-logo="" group-title="Sports",UFC 1
-##https://github.com/mohdzufar/IPTV/blob/main/Channels/UFC/UFC%201.m3u8
+#EXTINF:-1 tvg-chno="" tvg-name="UFC 1" tvg-id="" tvg-country="" tvg-logo="" group-title="Sports",UFC 1
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/UFC/UFC%201.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Xumo NBC Sport" tvg-id="" tvg-country="" tvg-logo="" group-title="Sports",Xumo NBC Sport
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/NBC/NBC%20Sport.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="NBC Sport Now" tvg-id="" tvg-country="" tvg-logo="" group-title="Sports",NBC Sport Now
@@ -175,10 +175,10 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Speed%
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Fifa/Fifa%20Plus.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="TNA Wresling" tvg-id="" tvg-country="" tvg-logo="" group-title="Sports",TNA Wresling
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/TNA/TNA%20Wresling.m3u8
-###EXTINF:-1 tvg-chno="" tvg-name="Astro Badminton" tvg-id="397400" tvg-country="MY" tvg-logo="" group-title="Sports",Astro Badminton
-##https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Astro/Astro%20Badminton.m3u8
-###EXTINF:-1 tvg-chno="" tvg-name="Astro Football" tvg-id="" tvg-country="MY" tvg-logo="" group-title="Sports",Astro Football
-##https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Astro/Astro%20Badminton.m3u8
+#EXTINF:-1 tvg-chno="" tvg-name="Astro Badminton" tvg-id="397400" tvg-country="MY" tvg-logo="" group-title="Sports",Astro Badminton
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/ASTRO/Astro%20Badminton.m3u8
+#EXTINF:-1 tvg-chno="" tvg-name="Astro Football" tvg-id="" tvg-country="MY" tvg-logo="" group-title="Sports",Astro Football
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/ASTRO/Astro%20Football.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="CS2" tvg-id="" tvg-country="" tvg-logo="" group-title="E-Sports",CS2
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/E-Sport/Counter%20Strike/Counter%20Strike%201.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="CS2" tvg-id="" tvg-country="" tvg-logo="" group-title="E-Sports",CS2
@@ -230,6 +230,10 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/HBO/HB
 #EXTINF:-1 tvg-chno="" tvg-name="HBO Comedy" tvg-id="HBO.Comedy.HD.us2" tvg-country="US" tvg-logo="http://schedulesdirect-api20141201-logos.s3.dualstack.us-east-1.amazonaws.com/stationLogos/s59839_dark_360w_270h.png" group-title="Movies",HBO Comedy
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/HBO/HBO%20Comedy.m3u
 #EXTINF:-1 tvg-chno="" tvg-name="HBO Family" tvg-id="HBO.Drama.us2" tvg-country="US" tvg-logo="http://schedulesdirect-api20141201-logos.s3.dualstack.us-east-1.amazonaws.com/stationLogos/s34879_dark_360w_270h.png" group-title="Movies",HBO Family
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/ASTRO/HBO/HBO%20Family.m3u8
+#EXTINF:-1 tvg-chno="" tvg-name="HBO Signature" tvg-id="" tvg-country="Malaysia" tvg-logo="" group-title="Movies",HBO Signature
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/ASTRO/HBO/HBO%20Signature.m3u8
+#EXTINF:-1 tvg-chno="" tvg-name="HBO Zone" tvg-id="" tvg-country="Malaysia" tvg-logo="" group-title="Movies",HBO Zone
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/HBO/HBO%20Zone.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Rakuten Top Movies UK" tvg-id="" tvg-country="UK" tvg-logo="" group-title="Movies",Rakuten Top Movies UK
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Rakuten/Rakuten%20Top%20Movies%20UK.m3u8
@@ -261,7 +265,7 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/BBC/BB
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Earth%20%26%20Nature/Love%20The%20Planet.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Terra Mater Wild" tvg-id="" tvg-country="UK" tvg-logo="" group-title="Nature",Terra Mater Wild
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Earth%20%26%20Nature/Terra%20Mater%20Wild.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="Real WIld" tvg-id="" tvg-country="UK" tvg-logo="" group-title="Nature",Real Wild
+#EXTINF:-1 tvg-chno="" tvg-name="Real Wild" tvg-id="" tvg-country="UK" tvg-logo="" group-title="Nature",Real Wild
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Earth%20%26%20Nature/Real%20Wild.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Go Wild" tvg-id="" tvg-country="UK" tvg-logo="" group-title="Nature",Go Wild
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Earth%20%26%20Nature/Go%20Wild.m3u8
@@ -281,13 +285,13 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Discov
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Disney/Disney%20Channel.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Disney XD" tvg-id="Disney.XD.HD.us2" tvg-country="US" tvg-logo="http://schedulesdirect-api20141201-logos.s3.dualstack.us-east-1.amazonaws.com/stationLogos/s18279_dark_360w_270h.png" group-title="",Disney XD
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Disney/Disney%20XD.m3u8
-###EXTINF:-1 tvg-chno="" tvg-name="Bob Ross Channel" tvg-id="" tvg-country="US" tvg-logo="" group-title="",Bob Ross Channel
-##https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Disney/Bob%20Ross%20Channel/Bob%20Ross%20Channel.m3u8
+#EXTINF:-1 tvg-chno="" tvg-name="Bob Ross Channel" tvg-id="" tvg-country="US" tvg-logo="" group-title="",Bob Ross Channel
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Bob%20Ross%20Channel/Bob%20Ross%20Channel.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="TVBS Asia" tvg-id="" tvg-country="" tvg-logo="" group-title="",TVBS Asia
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/TVBS/TVBS%20Asia.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="KoreaTV" tvg-id="" tvg-country="KR" tvg-logo="" group-title="Korea",KoreaTV
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/KoreaTV/KoreaTV.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="Al-Jazeera (English)" tvg-id="3416" tvg-country="" tvg-logo="aljazeera.png" group-title="Muslim",Al-Jazeera (English)
+#EXTINF:-1 tvg-chno="" tvg-name="Al-Jazeera (English)" tvg-id="3416" tvg-country="" tvg-logo="" group-title="Muslim",Al-Jazeera (English)
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Al-Jazeera/Al-Jazeera%20(English).m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Love Pets" tvg-id="" tvg-country="" tvg-logo="" group-title="Pets",Love Pets
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Love%20Pets/Love%20Pets.m3u8
