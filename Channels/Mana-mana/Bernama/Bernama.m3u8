@@ -1,3 +1,3 @@
 #EXTM3U
-#EXTINF:-1,Bernama
-https://corsproxy.io/?https%3A%2F%2Flive.mana2.my%2FBernama%2Findex.m3u8%3Fauth_key%3D1776933632-04bf949900f242ccb9fa451f12f294d9-0-1b05b5144b0d00fb9cacfc75ef4e525e%26token%3D1776933632-04bf949900f242ccb9fa451f12f294d9-0-1b05b5144b0d00fb9cacfc75ef4e525e
+#EXTINF:1,Bernama
+https://corsproxy.io/?https%3A%2F%2Flive.mana2.my%2FBernama%2Findex.m3u8%3Fauth_key%3D1776934133-e36a44e2889245b382513d9d1e285259-0-1f42e60acebfc1d82e701f6199a69d4a%26token%3D1776934133-e36a44e2889245b382513d9d1e285259-0-1f42e60acebfc1d82e701f6199a69d4a
