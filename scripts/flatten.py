@@ -3,7 +3,8 @@
 IPTV Playlist Flattener - Player-Like Validation
 - Tests candidates by fetching playlists and checking for error pages.
 - HLS master playlists are followed to the first variant, which is then tested.
-- Simple nested M3U wrapper files are unwrapped so Main.m3u8 gets the inner URL.
+- Only Mana-mana wrapper playlists are unwrapped so Main.m3u8 gets the inner URL.
+- All other channels keep the previous behavior and stay as their original candidate URL.
 - Each candidate has a hard total timeout (default 15 seconds).
 - If a candidate times out or fails, the script moves to the next candidate.
 - Comments out both #EXTINF and URL if all candidates fail.
@@ -134,13 +135,18 @@ def is_media_playlist(content):
         return False
 
 
+def is_mana_mana_candidate(url):
+    normalized = url.lower()
+    return "channels/mana-mana/" in normalized
+
+
 def fetch_url(url, deadline, max_retries=MAX_RETRIES, method="GET", head_only=False):
     headers = HEADERS.copy()
 
     for attempt in range(max_retries + 1):
         remaining = time_left(deadline)
         if remaining <= 0:
-            log_detail("Candidate timeout reached before fetch started")
+            log_detail(f"TIMEOUT after {CANDIDATE_TIMEOUT}s before fetch started")
             return None, False, url
 
         try:
@@ -157,7 +163,7 @@ def fetch_url(url, deadline, max_retries=MAX_RETRIES, method="GET", head_only=Fa
                 while True:
                     remaining = time_left(deadline)
                     if remaining <= 0:
-                        log_detail("Candidate timeout reached while reading response")
+                        log_detail(f"TIMEOUT after {CANDIDATE_TIMEOUT}s while reading response")
                         return None, False, final_url
 
                     to_read = min(READ_CHUNK_SIZE, MAX_READ_BYTES - total)
@@ -240,13 +246,13 @@ def extract_wrapper_urls(content, base_url):
     return urls
 
 
-def test_stream_playable(url, deadline, depth=0):
+def test_stream_playable(url, deadline, depth=0, unwrap_wrappers=False):
     if depth > MAX_RECURSION_DEPTH:
         log_detail("Max recursion depth reached")
         return False, url
 
     if time_left(deadline) <= 0:
-        log_detail("Candidate timeout reached before stream test")
+        log_detail(f"TIMEOUT after {CANDIDATE_TIMEOUT}s before stream test")
         return False, url
 
     log_detail(f"Testing URL: {url[:120]}...")
@@ -267,7 +273,12 @@ def test_stream_playable(url, deadline, depth=0):
             variant_url = extract_first_variant_url(data, final_url)
             if variant_url:
                 log_detail("Testing variant stream...")
-                working, resolved_url = test_stream_playable(variant_url, deadline, depth + 1)
+                working, resolved_url = test_stream_playable(
+                    variant_url,
+                    deadline,
+                    depth + 1,
+                    unwrap_wrappers=unwrap_wrappers,
+                )
                 log_detail(f"Variant test result: {'PASS' if working else 'FAIL'}")
                 return working, resolved_url
             log_detail("No variant URL found in master playlist")
@@ -275,17 +286,26 @@ def test_stream_playable(url, deadline, depth=0):
 
         wrapper_urls = extract_wrapper_urls(data, final_url)
         if wrapper_urls:
-            log_detail(f"Wrapper playlist detected with {len(wrapper_urls)} nested URL(s)")
-            for idx, nested_url in enumerate(wrapper_urls, 1):
-                if time_left(deadline) <= 0:
-                    log_detail("Candidate timeout reached before next nested URL")
-                    return False, url
-                log_detail(f"Testing nested URL {idx}/{len(wrapper_urls)}")
-                working, resolved_url = test_stream_playable(nested_url, deadline, depth + 1)
-                if working:
-                    return True, resolved_url
-            log_detail("All nested URLs failed")
-            return False, url
+            if unwrap_wrappers:
+                log_detail(f"Wrapper playlist detected with {len(wrapper_urls)} nested URL(s)")
+                for idx, nested_url in enumerate(wrapper_urls, 1):
+                    if time_left(deadline) <= 0:
+                        log_detail(f"TIMEOUT after {CANDIDATE_TIMEOUT}s before next nested URL")
+                        return False, url
+                    log_detail(f"Testing nested URL {idx}/{len(wrapper_urls)}")
+                    working, resolved_url = test_stream_playable(
+                        nested_url,
+                        deadline,
+                        depth + 1,
+                        unwrap_wrappers=unwrap_wrappers,
+                    )
+                    if working:
+                        return True, resolved_url
+                log_detail("All nested URLs failed")
+                return False, url
+
+            log_detail("Wrapper playlist detected - keeping wrapper URL in output")
+            return True, final_url
 
         log_detail("Media playlist detected - accepting as playable")
         return True, final_url
@@ -296,12 +316,28 @@ def test_stream_playable(url, deadline, depth=0):
 
 def test_candidate(url):
     deadline = time.monotonic() + CANDIDATE_TIMEOUT
+    unwrap_wrappers = is_mana_mana_candidate(url)
+
     log_detail(f"--- Testing candidate: {url[:100]}...")
-    working, resolved_url = test_stream_playable(url, deadline)
+    if unwrap_wrappers:
+        log_detail("Mana-mana candidate detected - wrapper will be unwrapped for output")
+
+    working, resolved_url = test_stream_playable(
+        url,
+        deadline,
+        unwrap_wrappers=unwrap_wrappers,
+    )
+
     if not working and time_left(deadline) <= 0:
-        log_detail(f"Candidate timed out after {CANDIDATE_TIMEOUT} seconds")
+        log_detail(f"TIMEOUT after {CANDIDATE_TIMEOUT}s -> next candidate")
+
+    output_url = resolved_url if (working and unwrap_wrappers) else url
+
+    if working and unwrap_wrappers and resolved_url != url:
+        log_detail(f"Resolved Mana-mana output URL: {resolved_url[:100]}...")
+
     log_detail(f"Candidate result: {'PASS' if working else 'FAIL'}")
-    return working, resolved_url if working else url
+    return working, output_url if working else url
 
 
 def process_channel(extinf_line, candidates, channel_num, total_channels):
