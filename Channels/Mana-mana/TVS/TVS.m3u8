@@ -1,3 +1,5 @@
 #EXTM3U
 #EXTINF:1,TVS
-https://vod.mana2.my/TvS/index-1776880800-1800.m3u8?auth_key=1776935897-161f6aad39624678b3e55e32289aaa33-0-dc920a9705bda79a709a8a7e69445d99&token=1776935897-161f6aad39624678b3e55e32289aaa33-0-dc920a9705bda79a709a8a7e69445d99
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36
+#EXTVLCOPT:http-referrer=https://mana2.my/
+https://vod.mana2.my/TvS/index-1776880800-1800.m3u8?auth_key=1776936533-2ebdb1ead6a84849a5adfb9053f38b9d-0-3a5573d0e251f065492e930d0cefab1d&token=1776936533-2ebdb1ead6a84849a5adfb9053f38b9d-0-3a5573d0e251f065492e930d0cefab1d

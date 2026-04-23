@@ -1,3 +1,5 @@
 #EXTM3U
 #EXTINF:1,Al-Hijrah
-https://live.mana2.my/TvAlhijrah/index.m3u8?auth_key=1776935882-202aab07348b48efab17f0c3c52f0a3d-0-b34270b5f20425348f80fc1748ed212c&token=1776935882-202aab07348b48efab17f0c3c52f0a3d-0-b34270b5f20425348f80fc1748ed212c
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36
+#EXTVLCOPT:http-referrer=https://mana2.my/
+https://live.mana2.my/TvAlhijrah/index.m3u8?auth_key=1776936517-e55a1cfc74744c58a1666bbb254af499-0-4daa12aba13b0bdea17615c2aba06dfc&token=1776936517-e55a1cfc74744c58a1666bbb254af499-0-4daa12aba13b0bdea17615c2aba06dfc

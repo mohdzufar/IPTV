@@ -1,3 +1,5 @@
 #EXTM3U
 #EXTINF:1,Bernama
-https://live.mana2.my/Bernama/index.m3u8?auth_key=1776935903-8f90252acccb45e290265d3bd1c42949-0-40b32969dc5ded5d00bd416be57f7481&token=1776935903-8f90252acccb45e290265d3bd1c42949-0-40b32969dc5ded5d00bd416be57f7481
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36
+#EXTVLCOPT:http-referrer=https://mana2.my/
+https://live.mana2.my/Bernama/index.m3u8?auth_key=1776936539-ef22c359e37d48ecb662bc9cf1f4bb5a-0-04b517a7c23bb08ce270a0f398804a86&token=1776936539-ef22c359e37d48ecb662bc9cf1f4bb5a-0-04b517a7c23bb08ce270a0f398804a86

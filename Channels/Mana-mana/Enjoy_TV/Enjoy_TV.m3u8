@@ -1,3 +1,5 @@
 #EXTM3U
 #EXTINF:1,Enjoy TV
-https://live.mana2.my/Tv5/index.m3u8?auth_key=1776935885-64085664b58d41aca9a5da99b75a4797-0-e3b84904d4b220c6e68bb7091ad0d51e&token=1776935885-64085664b58d41aca9a5da99b75a4797-0-e3b84904d4b220c6e68bb7091ad0d51e
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36
+#EXTVLCOPT:http-referrer=https://mana2.my/
+https://live.mana2.my/Tv5/index.m3u8?auth_key=1776936520-edb991f3b09a49eb9f557eb26903b81e-0-d13e286e1dbf5aad014459ee2c2c2949&token=1776936520-edb991f3b09a49eb9f557eb26903b81e-0-d13e286e1dbf5aad014459ee2c2c2949
