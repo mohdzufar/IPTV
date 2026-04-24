@@ -3,7 +3,6 @@ name: Flatten & Validate IPTV Playlist
 on:
   workflow_dispatch:
   schedule:
-    # Runs every day at 5:00 AM Malaysia Time (UTC+8) = 21:00 UTC
     - cron: '0 21 * * *'
 
 concurrency:
@@ -35,10 +34,28 @@ jobs:
           playwright install chromium
         shell: cmd
 
-      - name: Refresh Mana-Mana streams
+      - name: Refresh Mana-Mana streams (updates local files)
         run: python scripts/refresh_mana2.py
         shell: cmd
 
+      # ---- NEW STEP: Commit & push the refreshed inner files immediately ----
+      - name: Push refreshed Mana-Mana files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add Channels/Mana-mana/
+          git diff --cached --quiet && exit 0
+          git commit -m "Refresh Mana-Mana tokens [skip ci]"
+          git pull --rebase --autostash origin main
+          if %errorlevel% neq 0 (
+            echo "Rebase failed, aborting and falling back to merge..."
+            git rebase --abort
+            git pull --no-rebase origin main
+          )
+          git push
+        shell: cmd
+
+      # ---- Now the raw URLs are updated, proceed with flatten & validate ----
       - name: Simple flatten (no validation)
         run: python scripts/flatten.py
         shell: cmd
@@ -47,7 +64,7 @@ jobs:
         run: python scripts/validate.py
         shell: cmd
 
-      - name: Abort any stuck rebase
+      - name: Abort any stuck rebase (safety)
         run: |
           if exist ".git\rebase-merge" (
             echo "Aborting stuck rebase..."
@@ -61,20 +78,16 @@ jobs:
         shell: cmd
         continue-on-error: true
 
-      - name: Commit and push changes
+      - name: Commit and push final playlist & report
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add Main.m3u8 validation-report.txt Channels/Mana-mana/
-          git diff --cached --quiet
-          if %errorlevel% equ 0 (
-            echo No changes to commit
-            exit /b 0
-          )
-          git commit -m "Auto-refresh tokens, flatten & validate playlist [skip ci]"
+          git add Main.m3u8 validation-report.txt
+          git diff --cached --quiet && exit 0
+          git commit -m "Flatten & validate playlist [skip ci]"
           git pull --rebase --autostash origin main
           if %errorlevel% neq 0 (
-            echo "Rebase failed, trying merge fallback..."
+            echo "Rebase failed, aborting and falling back to merge..."
             git rebase --abort
             git pull --no-rebase origin main
           )
