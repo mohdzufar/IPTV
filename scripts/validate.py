@@ -1,26 +1,34 @@
 #!/usr/bin/env python3
 """
-IPTV Playlist Validator and Mana-mana Unwrapper.
-- Reads Main.m3u8 (pre-flattened, one URL per channel).
-- Tests each channel's candidate URL.
-- For Mana-mana channels: fetches the inner .m3u8, extracts the stream URL
-  and #EXTVLCOPT headers, tests the stream with those headers, and
-  replaces the channel entry with the unwrapped URL + headers.
-- For non-Mana-mana: shallow test (fetch, check it's a valid playlist).
-- Comments out any channel that fails all candidates (only one candidate
-  by default, but can handle multiple).
-- Produces validated Main.m3u8 and a validation-report.txt.
+IPTV Playlist Validator and TV-safe post-processor.
+
+Flow:
+- Reads Main.m3u8 produced by scripts/flatten.py
+- Mana-mana:
+  - fetch wrapper file
+  - parse inner stream URL + EXTVLCOPT headers
+  - validate the inner stream using mapped HTTP headers
+  - write EXTVLCOPT + direct session URL back into Main.m3u8
+- Njoi:
+  - fetch wrapper file
+  - inspect inner stream URL
+  - if inner stream is DASH (.mpd), mark FAIL/comment out because many TV apps do not support it
+  - if inner stream is HLS/direct, keep the original wrapper URL in Main.m3u8
+- Other channels:
+  - shallow validation only
+  - keep original URL in Main.m3u8 when valid
+- Writes validation-report.txt
 """
 
-import urllib.request
-import urllib.error
 import sys
 import time
 import io
+import gzip
+import zlib
+import urllib.request
+import urllib.error
 from pathlib import Path
 from urllib.parse import urljoin, urlparse
-from concurrent.futures import ThreadPoolExecutor, as_completed
-import threading
 
 # Force UTF-8 output
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
@@ -32,20 +40,16 @@ SOURCE_FILE = "Main.m3u8"
 OUTPUT_FILE = "Main.m3u8"
 REPORT_FILE = "validation-report.txt"
 
-# Timeouts
-TIMEOUT = 25                 # per request socket timeout
-CANDIDATE_TIMEOUT = 30       # hard wall-clock timeout for testing one candidate
-
+TIMEOUT = 15
+CANDIDATE_TIMEOUT = 15
 MAX_RETRIES = 1
 RETRY_DELAY = 2
-MAX_READ_BYTES = 2 * 1024 * 1024   # 2 MB
-
-PARALLEL_WORKERS = 2         # max concurrent candidate tests inside one channel
+MAX_READ_BYTES = 2 * 1024 * 1024  # 2 MB
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
     "Accept": "*/*",
-    "Accept-Encoding": "gzip, deflate",
+    "Accept-Encoding": "identity",
     "Connection": "keep-alive",
 }
 
@@ -59,15 +63,13 @@ MEDIA_PLAYLIST_TAGS = (
     "#EXT-X-DISCONTINUITY",
 )
 
-# Mapping from EXTVLCOPT header keys to real HTTP header names
 EXTVLCOPT_HEADER_MAP = {
     "http-user-agent": "User-Agent",
-    "http-referrer":   "Referer",
-    # add more if needed in the future
+    "http-referrer": "Referer",
 }
 
 # -------------------------------------------------------------------
-# UTILITY FUNCTIONS
+# LOGGING
 # -------------------------------------------------------------------
 def log_progress(channel_num, total_channels, message):
     timestamp = time.strftime("%H:%M:%S")
@@ -79,6 +81,9 @@ def log_detail(message):
     print(f"      [{timestamp}] {message}")
 
 
+# -------------------------------------------------------------------
+# HELPERS
+# -------------------------------------------------------------------
 def safe_urljoin(base, url):
     if url.startswith("//"):
         parsed = urlparse(base)
@@ -115,252 +120,317 @@ def is_error_page(data):
         return False
 
 
-def is_playlist_content(data):
-    try:
-        preview = decode_text(data, 500)
-        return "#EXTM3U" in preview or "<MPD" in preview
-    except Exception:
-        return False
-
-
-def is_master_playlist(content):
-    try:
-        return b"#EXT-X-STREAM-INF" in content
-    except Exception:
-        return False
-
-
-def is_media_playlist(content):
-    try:
-        text = decode_text(content, 2000)
-        return any(tag in text for tag in MEDIA_PLAYLIST_TAGS)
-    except Exception:
-        return False
-
-
 def is_mana_mana_candidate(url):
-    normalized = url.lower()
-    return "channels/mana-mana/" in normalized
+    return "channels/mana-mana/" in url.lower()
+
+
+def is_njoi_candidate(url):
+    return "channels/njoi/" in url.lower()
+
+
+def decompress_response(data, content_encoding):
+    if not data:
+        return data
+
+    encoding = (content_encoding or "").lower().strip()
+    if not encoding:
+        return data
+
+    try:
+        if "gzip" in encoding:
+            return gzip.decompress(data)
+        if "deflate" in encoding:
+            try:
+                return zlib.decompress(data)
+            except zlib.error:
+                return zlib.decompress(data, -zlib.MAX_WBITS)
+    except Exception as e:
+        log_detail(f"Decompression failed: {str(e)[:80]}")
+
+    return data
+
+
+def map_headers_for_request(raw_headers):
+    http_headers = {}
+    for key, value in raw_headers:
+        real_name = EXTVLCOPT_HEADER_MAP.get(key, key)
+        http_headers[real_name] = value
+    return http_headers
 
 
 # -------------------------------------------------------------------
-# HTTP FETCH
+# FETCH
 # -------------------------------------------------------------------
 def fetch_url(url, deadline, headers=None, max_retries=MAX_RETRIES):
-    if headers is None:
-        headers = HEADERS
+    request_headers = HEADERS.copy()
+    if headers:
+        request_headers.update(headers)
 
     for attempt in range(max_retries + 1):
         remaining = time_left(deadline)
         if remaining <= 0:
-            log_detail(f"TIMEOUT before fetch started")
+            log_detail("TIMEOUT before fetch started")
             return None, False, url
 
         try:
-            req = urllib.request.Request(url, headers=headers)
+            req = urllib.request.Request(url, headers=request_headers)
             with urllib.request.urlopen(req, timeout=min(TIMEOUT, max(1, remaining))) as resp:
                 final_url = resp.geturl()
+                content_encoding = resp.headers.get("Content-Encoding", "")
+
                 chunks = []
                 total = 0
+
                 while True:
                     remaining = time_left(deadline)
                     if remaining <= 0:
-                        log_detail(f"TIMEOUT while reading response")
+                        log_detail("TIMEOUT while reading response")
                         return None, False, final_url
+
                     if total >= MAX_READ_BYTES:
                         break
-                    chunk = resp.read(8192)
+
+                    chunk = resp.read(min(8192, MAX_READ_BYTES - total))
                     if not chunk:
                         break
+
                     chunks.append(chunk)
                     total += len(chunk)
-                data = b"".join(chunks)
+
+                raw_data = b"".join(chunks)
+                data = decompress_response(raw_data, content_encoding)
                 return data, True, final_url
+
         except Exception as e:
             log_detail(f"Fetch attempt {attempt + 1} failed: {str(e)[:80]}")
-            if attempt < max_retries:
-                time.sleep(RETRY_DELAY * (attempt + 1))
+            if attempt < max_retries and time_left(deadline) > RETRY_DELAY:
+                time.sleep(RETRY_DELAY)
             else:
                 return None, False, url
+
     return None, False, url
 
 
 # -------------------------------------------------------------------
 # PARSING
 # -------------------------------------------------------------------
-def parse_inner_m3u8(content, base_url):
-    """
-    Parse an inner .m3u8 file (like Mana-mana wrappers).
-    Returns (stream_url, headers_list).
-    headers_list is a list of (header_name, value) from #EXTVLCOPT lines.
-    The header names are kept as EXTVLCOPT style (http-user-agent, etc.) for output,
-    but we also build a real HTTP headers dict for testing (mapped).
-    """
-    raw_headers = []   # list of (opt_key, value) as they appear
+def extract_first_variant_url(content, base_url):
     try:
         text = decode_text(content)
     except Exception:
-        return None, []
+        return None
 
     lines = text.splitlines()
-    for line in lines:
-        line_stripped = line.strip()
-        if line_stripped.startswith("#EXTVLCOPT:"):
-            opt = line_stripped[len("#EXTVLCOPT:"):].strip()
-            if "=" in opt:
-                key, value = opt.split("=", 1)
-                raw_headers.append((key, value))
+    capture = False
 
-    # Find stream URL
-    stream_url = None
     for line in lines:
         stripped = line.strip()
-        if not stripped or stripped.startswith("#"):
+        if not stripped:
             continue
+        if stripped.startswith("#EXT-X-STREAM-INF"):
+            capture = True
+            continue
+        if stripped.startswith("#"):
+            continue
+        if capture:
+            return safe_urljoin(base_url, stripped)
+
+    return None
+
+
+def parse_wrapper_m3u(content, base_url):
+    raw_headers = []
+    urls = []
+
+    try:
+        text = decode_text(content)
+    except Exception:
+        return urls, raw_headers
+
+    for line in text.splitlines():
+        stripped = line.strip()
+        if not stripped:
+            continue
+
+        if stripped.startswith("#EXTVLCOPT:"):
+            opt = stripped[len("#EXTVLCOPT:"):].strip()
+            if "=" in opt:
+                key, value = opt.split("=", 1)
+                raw_headers.append((key.strip(), value.strip()))
+            continue
+
+        if stripped.startswith("#"):
+            continue
+
         if stripped.startswith(("http://", "https://", "//")):
-            stream_url = safe_urljoin(base_url, stripped)
-            break
+            urls.append(safe_urljoin(base_url, stripped))
 
-    return stream_url, raw_headers
+    return urls, raw_headers
 
 
-def map_headers_for_request(raw_headers):
-    """Convert (opt_key, value) to a dict of real HTTP headers."""
-    http_headers = {}
-    for key, value in raw_headers:
-        real_name = EXTVLCOPT_HEADER_MAP.get(key, key)   # fallback to key itself
-        http_headers[real_name] = value
-    return http_headers
+def classify_content(data, url_hint=""):
+    lower_url = url_hint.lower()
+    text = decode_text(data, 3000)
+
+    if "<MPD" in text or lower_url.endswith(".mpd"):
+        return "dash"
+
+    if "#EXTM3U" in text:
+        if "#EXT-X-STREAM-INF" in text:
+            return "hls-master"
+        if any(tag in text for tag in MEDIA_PLAYLIST_TAGS):
+            return "hls-media"
+
+        urls, _ = parse_wrapper_m3u(data, url_hint)
+        if urls:
+            return "wrapper"
+
+        return "m3u"
+
+    return "other"
 
 
 # -------------------------------------------------------------------
-# TESTING LOGIC
+# VALIDATION
 # -------------------------------------------------------------------
-def test_stream_playable(url, deadline, extra_headers=None, depth=0):
-    """Test if a given URL is playable. Returns (working_bool, final_url, reason_str)."""
+def validate_hls_or_direct(url, deadline, extra_headers=None, depth=0):
     if depth > 5:
-        return False, url, "max recursion depth"
+        return False, "max recursion depth"
 
-    remaining = time_left(deadline)
-    if remaining <= 0:
-        return False, url, "timeout"
+    if time_left(deadline) <= 0:
+        return False, "timeout"
 
-    merged_headers = HEADERS.copy()
-    if extra_headers:
-        merged_headers.update(extra_headers)
-
-    data, success, final_url = fetch_url(url, deadline, headers=merged_headers)
+    data, success, final_url = fetch_url(url, deadline, headers=extra_headers)
     if not success or not data:
-        return False, url, "fetch failed or timeout"
+        return False, "fetch failed or timeout"
 
     if is_error_page(data):
-        return False, url, "error page (HTML)"
+        return False, "error page (HTML)"
 
-    if is_playlist_content(data):
-        if is_master_playlist(data):
-            # follow first variant
-            variant = None
-            text = decode_text(data)
-            lines = text.splitlines()
-            capture = False
-            for line in lines:
-                stripped = line.strip()
-                if not stripped:
-                    continue
-                if stripped.startswith("#EXT-X-STREAM-INF"):
-                    capture = True
-                    continue
-                if stripped.startswith("#"):
-                    continue
-                if capture:
-                    variant = safe_urljoin(final_url, stripped)
-                    break
-            if variant:
-                return test_stream_playable(
-                    variant, deadline, extra_headers=extra_headers, depth=depth + 1
-                )
-            else:
-                return False, url, "master playlist without variants"
-        else:
-            # media playlist or simple M3U
-            return True, final_url, "playable (media playlist)"
-    else:
-        # Maybe direct stream
-        return True, final_url, "assumed direct stream"
+    kind = classify_content(data, final_url)
+
+    if kind == "dash":
+        return False, "DASH (.mpd) not TV-safe"
+
+    if kind == "hls-master":
+        variant_url = extract_first_variant_url(data, final_url)
+        if not variant_url:
+            return False, "HLS master without variants"
+        ok, reason = validate_hls_or_direct(
+            variant_url,
+            deadline,
+            extra_headers=extra_headers,
+            depth=depth + 1,
+        )
+        if ok:
+            return True, f"HLS master -> {reason}"
+        return False, reason
+
+    if kind == "hls-media":
+        return True, "HLS media playlist"
+
+    if kind == "wrapper":
+        return True, "simple wrapper playlist"
+
+    if kind == "m3u":
+        return True, "M3U playlist"
+
+    return True, "assumed direct stream"
+
+
+def validate_mana_candidate(wrapper_url, deadline):
+    log_detail("Mana-mana candidate - fetching wrapper")
+
+    data, success, final_url = fetch_url(wrapper_url, deadline)
+    if not success or not data:
+        return False, wrapper_url, None, "failed to fetch Mana-mana wrapper"
+
+    inner_urls, raw_headers = parse_wrapper_m3u(data, final_url)
+    if not inner_urls:
+        return False, wrapper_url, None, "no stream URL found in wrapper"
+
+    inner_url = inner_urls[0]
+    http_headers = map_headers_for_request(raw_headers)
+
+    log_detail(f"Mana inner URL: {inner_url[:120]}...")
+
+    ok, reason = validate_hls_or_direct(inner_url, deadline, extra_headers=http_headers)
+    if not ok:
+        return False, wrapper_url, None, f"Mana-mana inner stream: {reason}"
+
+    # Important: output the original fresh inner session URL, not the deepest variant URL.
+    return True, inner_url, raw_headers, f"Mana-mana unwrapped: {reason}"
+
+
+def validate_njoi_candidate(wrapper_url, deadline):
+    log_detail("Njoi candidate - fetching wrapper")
+
+    data, success, final_url = fetch_url(wrapper_url, deadline)
+    if not success or not data:
+        return False, wrapper_url, None, "failed to fetch Njoi wrapper"
+
+    inner_urls, _ = parse_wrapper_m3u(data, final_url)
+    if not inner_urls:
+        return False, wrapper_url, None, "no stream URL found in wrapper"
+
+    inner_url = inner_urls[0]
+    log_detail(f"Njoi inner URL: {inner_url[:120]}...")
+
+    if inner_url.lower().endswith(".mpd"):
+        return False, wrapper_url, None, "Njoi inner stream is DASH (.mpd), not TV-safe"
+
+    ok, reason = validate_hls_or_direct(inner_url, deadline)
+    if not ok:
+        return False, wrapper_url, None, f"Njoi inner stream: {reason}"
+
+    # Keep wrapper URL in output for Njoi if it is TV-safe.
+    return True, wrapper_url, None, f"Njoi wrapper valid: {reason}"
+
+
+def validate_generic_candidate(url, deadline):
+    ok, reason = validate_hls_or_direct(url, deadline)
+    if not ok:
+        return False, url, None, f"generic: {reason}"
+
+    # Keep original URL in output for non-Mana channels.
+    return True, url, None, f"generic: {reason}"
 
 
 def test_candidate(url):
-    """Test a single candidate URL.
-    Returns (working_bool, output_url_or_original, headers_list_for_output, reason).
-    For Mana-mana: output_url is the unwrapped inner URL, headers_list_for_output
-    contains the raw EXTVLCOPT headers to embed in the final playlist.
-    """
     deadline = time.monotonic() + CANDIDATE_TIMEOUT
     log_detail(f"--- Testing candidate: {url[:120]}...")
 
     if is_mana_mana_candidate(url):
-        log_detail("Mana-mana candidate - fetching inner wrapper")
-        data, success, final_url = fetch_url(url, deadline)
-        if not success or not data:
-            return False, url, None, "failed to fetch Mana-mana wrapper"
-        stream_url, raw_headers = parse_inner_m3u8(data, final_url)
-        if not stream_url:
-            return False, url, None, "no stream URL found in wrapper"
-        log_detail(f"Unwrapped stream URL: {stream_url[:120]}...")
-        # Map EXTVLCOPT headers to real HTTP headers for testing
-        http_headers = map_headers_for_request(raw_headers)
-        working, resolved_stream_url, reason = test_stream_playable(
-            stream_url, deadline, extra_headers=http_headers
-        )
-        if working:
-            # Return the resolved URL and the raw headers (so they can be written back)
-            return True, resolved_stream_url, raw_headers, f"Mana-mana unwrapped: {reason}"
-        else:
-            return False, url, None, f"Mana-mana inner stream: {reason}"
-    else:
-        # Normal candidate (inner .m3u8 file)
-        working, resolved, reason = test_stream_playable(url, deadline)
-        if working:
-            return True, url, None, f"shallow valid: {reason}"
-        else:
-            return False, url, None, f"shallow invalid: {reason}"
+        return validate_mana_candidate(url, deadline)
+
+    if is_njoi_candidate(url):
+        return validate_njoi_candidate(url, deadline)
+
+    return validate_generic_candidate(url, deadline)
 
 
 def process_channel(extinf_line, candidates, channel_num, total_channels):
-    safe = extinf_line[:50] + "..." if len(extinf_line) > 50 else extinf_line
+    safe = extinf_line[:60] + "..." if len(extinf_line) > 60 else extinf_line
     log_progress(channel_num, total_channels, f"Testing: {safe}")
     log_detail(f"Channel has {len(candidates)} candidate(s)")
 
-    if len(candidates) == 1:
-        url = candidates[0]
-        working, output_url, raw_headers, reason = test_candidate(url)
-        if working:
-            log_progress(channel_num, total_channels, f"✓ Working")
+    last_reason = "all candidates failed"
+
+    for idx, url in enumerate(candidates, 1):
+        log_detail(f"Testing candidate {idx}/{len(candidates)}")
+        success, output_url, raw_headers, reason = test_candidate(url)
+        last_reason = reason
+
+        if success:
+            log_progress(channel_num, total_channels, "PASS")
             return extinf_line, output_url, raw_headers, True, reason
-        else:
-            log_progress(channel_num, total_channels, f"✗ Failed ({reason})")
-            return extinf_line, url, None, False, reason
-    else:
-        # Multiple candidates: test in parallel with shutdown after first success
-        with ThreadPoolExecutor(max_workers=PARALLEL_WORKERS) as executor:
-            futures = {executor.submit(test_candidate, url): url for url in candidates}
-            try:
-                for future in as_completed(futures):
-                    working, output_url, raw_headers, reason = future.result()
-                    if working:
-                        # cancel remaining futures
-                        executor.shutdown(wait=False, cancel_futures=True)
-                        log_progress(channel_num, total_channels, f"✓ Working")
-                        return extinf_line, output_url, raw_headers, True, reason
-            finally:
-                executor.shutdown(wait=False, cancel_futures=True)
-        # All failed
-        log_progress(channel_num, total_channels, f"✗ All candidates failed")
-        return extinf_line, candidates[0], None, False, reason
+
+    log_progress(channel_num, total_channels, f"FAIL ({last_reason})")
+    return extinf_line, candidates[0], None, False, last_reason
 
 
 # -------------------------------------------------------------------
-# MAIN VALIDATION
+# MAIN
 # -------------------------------------------------------------------
 def validate():
     if not Path(SOURCE_FILE).exists():
@@ -368,23 +438,24 @@ def validate():
         sys.exit(1)
 
     print("=" * 60)
-    print("IPTV Playlist Validator & Mana-mana Unwrapper")
+    print("IPTV Playlist Validator & TV-safe Post-Processor")
     print("=" * 60)
 
     with open(SOURCE_FILE, "r", encoding="utf-8") as f:
         lines = f.readlines()
 
-    # Count channels
     total_channels = sum(1 for line in lines if line.startswith("#EXTINF:"))
     print(f"Total channels to validate: {total_channels}")
 
     output = []
     report_lines = ["Channel Name,Status,Reason"]
+
     i = 0
     current = 0
 
     while i < len(lines):
         line = lines[i].rstrip("\n\r")
+
         if line.startswith("#EXTM3U"):
             output.append(line)
             i += 1
@@ -393,6 +464,7 @@ def validate():
         if line.startswith("#EXTINF:"):
             extinf = line
             i += 1
+
             while i < len(lines) and not lines[i].strip():
                 i += 1
 
@@ -417,20 +489,22 @@ def validate():
 
             channel_name = extinf.rsplit(",", 1)[-1].strip()
             current += 1
+
             final_extinf, final_url, raw_headers, success, reason = process_channel(
-                extinf, candidates, current, total_channels
+                extinf,
+                candidates,
+                current,
+                total_channels,
             )
 
             if success:
-                # Write EXTVLCOPT lines before URL (only if raw_headers provided)
                 output.append(final_extinf)
                 if raw_headers:
-                    for k, v in raw_headers:
-                        output.append(f"#EXTVLCOPT:{k}={v}")
+                    for key, value in raw_headers:
+                        output.append(f"#EXTVLCOPT:{key}={value}")
                 output.append(final_url)
                 status = "PASS"
             else:
-                # Comment out the whole entry
                 output.append(f"##{final_extinf}")
                 output.append(f"##{final_url}")
                 status = "FAIL"
@@ -449,7 +523,7 @@ def validate():
     print("\n" + "=" * 60)
     print(f"Validated playlist written to {OUTPUT_FILE}")
     print(f"Report written to {REPORT_FILE}")
-    print(f"   Total lines: {len(output)}")
+    print(f"Total output lines: {len(output)}")
     print("=" * 60)
 
 
