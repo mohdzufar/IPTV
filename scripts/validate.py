@@ -59,6 +59,13 @@ MEDIA_PLAYLIST_TAGS = (
     "#EXT-X-DISCONTINUITY",
 )
 
+# Mapping from EXTVLCOPT header keys to real HTTP header names
+EXTVLCOPT_HEADER_MAP = {
+    "http-user-agent": "User-Agent",
+    "http-referrer":   "Referer",
+    # add more if needed in the future
+}
+
 # -------------------------------------------------------------------
 # UTILITY FUNCTIONS
 # -------------------------------------------------------------------
@@ -68,7 +75,6 @@ def log_progress(channel_num, total_channels, message):
 
 
 def log_detail(message):
-    # Always print details now
     timestamp = time.strftime("%H:%M:%S")
     print(f"      [{timestamp}] {message}")
 
@@ -187,8 +193,10 @@ def parse_inner_m3u8(content, base_url):
     Parse an inner .m3u8 file (like Mana-mana wrappers).
     Returns (stream_url, headers_list).
     headers_list is a list of (header_name, value) from #EXTVLCOPT lines.
+    The header names are kept as EXTVLCOPT style (http-user-agent, etc.) for output,
+    but we also build a real HTTP headers dict for testing (mapped).
     """
-    headers_list = []
+    raw_headers = []   # list of (opt_key, value) as they appear
     try:
         text = decode_text(content)
     except Exception:
@@ -198,21 +206,31 @@ def parse_inner_m3u8(content, base_url):
     for line in lines:
         line_stripped = line.strip()
         if line_stripped.startswith("#EXTVLCOPT:"):
-            # Format: #EXTVLCOPT:http-<header>=value or #EXTVLCOPT:key=value
             opt = line_stripped[len("#EXTVLCOPT:"):].strip()
             if "=" in opt:
                 key, value = opt.split("=", 1)
-                headers_list.append((key, value))
-            # else ignore
+                raw_headers.append((key, value))
 
-    # Find stream URL (first non-comment, non-blank line not starting with #)
+    # Find stream URL
+    stream_url = None
     for line in lines:
         stripped = line.strip()
         if not stripped or stripped.startswith("#"):
             continue
         if stripped.startswith(("http://", "https://", "//")):
-            return safe_urljoin(base_url, stripped), headers_list
-    return None, headers_list
+            stream_url = safe_urljoin(base_url, stripped)
+            break
+
+    return stream_url, raw_headers
+
+
+def map_headers_for_request(raw_headers):
+    """Convert (opt_key, value) to a dict of real HTTP headers."""
+    http_headers = {}
+    for key, value in raw_headers:
+        real_name = EXTVLCOPT_HEADER_MAP.get(key, key)   # fallback to key itself
+        http_headers[real_name] = value
+    return http_headers
 
 
 # -------------------------------------------------------------------
@@ -229,8 +247,7 @@ def test_stream_playable(url, deadline, extra_headers=None, depth=0):
 
     merged_headers = HEADERS.copy()
     if extra_headers:
-        for k, v in extra_headers:
-            merged_headers[k] = v
+        merged_headers.update(extra_headers)
 
     data, success, final_url = fetch_url(url, deadline, headers=merged_headers)
     if not success or not data:
@@ -274,8 +291,9 @@ def test_stream_playable(url, deadline, extra_headers=None, depth=0):
 
 def test_candidate(url):
     """Test a single candidate URL.
-    Returns (working_bool, output_url_or_original, headers_list_or_None, reason).
-    For Mana-mana: output_url is the unwrapped inner URL.
+    Returns (working_bool, output_url_or_original, headers_list_for_output, reason).
+    For Mana-mana: output_url is the unwrapped inner URL, headers_list_for_output
+    contains the raw EXTVLCOPT headers to embed in the final playlist.
     """
     deadline = time.monotonic() + CANDIDATE_TIMEOUT
     log_detail(f"--- Testing candidate: {url[:120]}...")
@@ -285,16 +303,18 @@ def test_candidate(url):
         data, success, final_url = fetch_url(url, deadline)
         if not success or not data:
             return False, url, None, "failed to fetch Mana-mana wrapper"
-        stream_url, exthdrs = parse_inner_m3u8(data, final_url)
+        stream_url, raw_headers = parse_inner_m3u8(data, final_url)
         if not stream_url:
             return False, url, None, "no stream URL found in wrapper"
         log_detail(f"Unwrapped stream URL: {stream_url[:120]}...")
+        # Map EXTVLCOPT headers to real HTTP headers for testing
+        http_headers = map_headers_for_request(raw_headers)
         working, resolved_stream_url, reason = test_stream_playable(
-            stream_url, deadline, extra_headers=exthdrs
+            stream_url, deadline, extra_headers=http_headers
         )
         if working:
-            # Return the resolved URL and the headers that must be sent by the player
-            return True, resolved_stream_url, exthdrs, f"Mana-mana unwrapped: {reason}"
+            # Return the resolved URL and the raw headers (so they can be written back)
+            return True, resolved_stream_url, raw_headers, f"Mana-mana unwrapped: {reason}"
         else:
             return False, url, None, f"Mana-mana inner stream: {reason}"
     else:
@@ -313,10 +333,10 @@ def process_channel(extinf_line, candidates, channel_num, total_channels):
 
     if len(candidates) == 1:
         url = candidates[0]
-        working, output_url, exthdrs, reason = test_candidate(url)
+        working, output_url, raw_headers, reason = test_candidate(url)
         if working:
             log_progress(channel_num, total_channels, f"✓ Working")
-            return extinf_line, output_url, exthdrs, True, reason
+            return extinf_line, output_url, raw_headers, True, reason
         else:
             log_progress(channel_num, total_channels, f"✗ Failed ({reason})")
             return extinf_line, url, None, False, reason
@@ -326,16 +346,13 @@ def process_channel(extinf_line, candidates, channel_num, total_channels):
             futures = {executor.submit(test_candidate, url): url for url in candidates}
             try:
                 for future in as_completed(futures):
-                    working, output_url, exthdrs, reason = future.result()
+                    working, output_url, raw_headers, reason = future.result()
                     if working:
                         # cancel remaining futures
-                        for f in futures:
-                            f.cancel()
                         executor.shutdown(wait=False, cancel_futures=True)
                         log_progress(channel_num, total_channels, f"✓ Working")
-                        return extinf_line, output_url, exthdrs, True, reason
+                        return extinf_line, output_url, raw_headers, True, reason
             finally:
-                # Ensure executor is cleaned
                 executor.shutdown(wait=False, cancel_futures=True)
         # All failed
         log_progress(channel_num, total_channels, f"✗ All candidates failed")
@@ -395,35 +412,27 @@ def validate():
                 i += 1
 
             if not candidates:
-                output.append(extinf)   # or comment out
+                output.append(extinf)
                 continue
 
-            # Extract channel name for report
-            # text after last comma in EXTINF line, e.g., #EXTINF:-1 ...,Channel Name
             channel_name = extinf.rsplit(",", 1)[-1].strip()
-
             current += 1
-            final_extinf, final_url, exthdrs, success, reason = process_channel(
+            final_extinf, final_url, raw_headers, success, reason = process_channel(
                 extinf, candidates, current, total_channels
             )
 
             if success:
-                # For Mana-mana: insert EXTVLCOPT lines before URL
-                if exthdrs:
-                    output.append(final_extinf)
-                    for k, v in exthdrs:
+                # Write EXTVLCOPT lines before URL (only if raw_headers provided)
+                output.append(final_extinf)
+                if raw_headers:
+                    for k, v in raw_headers:
                         output.append(f"#EXTVLCOPT:{k}={v}")
-                    output.append(final_url)
-                else:
-                    output.append(final_extinf)
-                    output.append(final_url)
+                output.append(final_url)
                 status = "PASS"
             else:
-                # Comment out
-                commented_extinf = f"##{final_extinf}"
-                commented_url = f"##{final_url}"
-                output.append(commented_extinf)
-                output.append(commented_url)
+                # Comment out the whole entry
+                output.append(f"##{final_extinf}")
+                output.append(f"##{final_url}")
                 status = "FAIL"
 
             report_lines.append(f"{channel_name},{status},{reason}")
@@ -431,11 +440,9 @@ def validate():
             output.append(line)
             i += 1
 
-    # Write validated playlist
     with open(OUTPUT_FILE, "w", encoding="utf-8", newline="\n") as f:
         f.write("\n".join(output) + "\n")
 
-    # Write report
     with open(REPORT_FILE, "w", encoding="utf-8") as f:
         f.write("\n".join(report_lines) + "\n")
 
