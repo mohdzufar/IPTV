@@ -64,7 +64,7 @@ Tennis Channel,PASS,generic: simple wrapper playlist
 Tennis Channel 2,PASS,generic: simple wrapper playlist
 MLB,PASS,generic: simple wrapper playlist
 MMA-TV International,PASS,generic: simple wrapper playlist
-FOX NFL,PASS,generic: simple wrapper playlist
+FOX NFL,FAIL,generic: fetch failed or timeout
 NHL,PASS,generic: simple wrapper playlist
 UEFA Champion League,PASS,generic: simple wrapper playlist
 UFC 1,PASS,generic: simple wrapper playlist
