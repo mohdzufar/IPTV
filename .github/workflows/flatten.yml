@@ -1,4 +1,4 @@
-name: Flatten IPTV Playlist
+name: Flatten & Validate IPTV Playlist
 
 on:
   workflow_dispatch:
@@ -39,8 +39,12 @@ jobs:
         run: python scripts/refresh_mana2.py
         shell: cmd
 
-      - name: Run flatten script
+      - name: Simple flatten (no validation)
         run: python scripts/flatten.py
+        shell: cmd
+
+      - name: Validate & unwrap Mana-mana (produce final Main.m3u8)
+        run: python scripts/validate.py
         shell: cmd
 
       - name: Abort any stuck rebase
@@ -61,14 +65,18 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add Main.m3u8
-          git add Channels/Mana-mana/
+          git add Main.m3u8 validation-report.txt Channels/Mana-mana/
           git diff --cached --quiet
           if %errorlevel% equ 0 (
             echo No changes to commit
             exit /b 0
           )
-          git commit -m "Auto-refresh tokens & flatten playlist [skip ci]"
+          git commit -m "Auto-refresh tokens, flatten & validate playlist [skip ci]"
           git pull --rebase --autostash origin main
+          if %errorlevel% neq 0 (
+            echo "Rebase failed, trying merge fallback..."
+            git rebase --abort
+            git pull --no-rebase origin main
+          )
           git push
         shell: cmd
