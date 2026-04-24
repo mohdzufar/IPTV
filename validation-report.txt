@@ -1,0 +1,153 @@
+Channel Name,Status,Reason
+RTM TV1,PASS,shallow valid: assumed direct stream
+RTM TV2,PASS,shallow valid: assumed direct stream
+TV3,PASS,shallow valid: assumed direct stream
+Didik TV,PASS,shallow valid: assumed direct stream
+TV9,PASS,shallow valid: assumed direct stream
+Drama Sangat,PASS,shallow valid: assumed direct stream
+TV6,PASS,shallow valid: assumed direct stream
+8TV,PASS,shallow valid: assumed direct stream
+Okey TV,PASS,shallow valid: assumed direct stream
+RTM Sukan,PASS,shallow valid: assumed direct stream
+TV IKIM,PASS,shallow valid: assumed direct stream
+Berita RTM,PASS,shallow valid: assumed direct stream
+Astro Awani,PASS,shallow valid: assumed direct stream
+Al-Hijrah,FAIL,no stream URL found in wrapper
+Enjoy TV,FAIL,no stream URL found in wrapper
+Borneo TV,FAIL,no stream URL found in wrapper
+Selangor TV,FAIL,no stream URL found in wrapper
+Suke TV,FAIL,no stream URL found in wrapper
+TVS,FAIL,no stream URL found in wrapper
+Sukan+,FAIL,no stream URL found in wrapper
+Bernama,FAIL,no stream URL found in wrapper
+Dewan Rakyat,PASS,shallow valid: assumed direct stream
+Dewan Negara,PASS,shallow valid: assumed direct stream
+RTM Snap,PASS,shallow valid: assumed direct stream
+RTM Lead,PASS,shallow valid: assumed direct stream
+RTM Apetito,PASS,shallow valid: assumed direct stream
+RTM Fitrah,PASS,shallow valid: assumed direct stream
+RTM Junior,PASS,shallow valid: assumed direct stream
+RTM Roll,PASS,shallow valid: assumed direct stream
+RTM Aura,PASS,shallow valid: assumed direct stream
+Filem Mantap,PASS,shallow valid: assumed direct stream
+Lawak Sentral,PASS,shallow valid: assumed direct stream
+Drama Hotpot,PASS,shallow valid: assumed direct stream
+Travel & Taste,PASS,shallow valid: assumed direct stream
+Drama Hebat,PASS,shallow valid: assumed direct stream
+Jom Ngaji,PASS,shallow valid: assumed direct stream
+Oh My Ceria!,PASS,shallow valid: assumed direct stream
+Quran (Mecca),PASS,shallow valid: assumed direct stream
+MediaCorp (English),PASS,shallow valid: assumed direct stream
+MediaCorp (Tamil),PASS,shallow valid: assumed direct stream
+CNA,PASS,shallow valid: assumed direct stream
+RTB Aneka,PASS,shallow valid: assumed direct stream
+RTB Sukmaindera,PASS,shallow valid: assumed direct stream
+Crunchyroll,PASS,shallow valid: assumed direct stream
+Cartoon Network,PASS,shallow valid: assumed direct stream
+Golf Kingdom,PASS,shallow valid: assumed direct stream
+Golf Channel,PASS,shallow valid: assumed direct stream
+Golf Channel (Latin America),PASS,shallow valid: assumed direct stream
+GolfNetwork Japan,PASS,shallow valid: assumed direct stream
+GolfPass,PASS,shallow valid: assumed direct stream
+PGA Tour,PASS,shallow valid: assumed direct stream
+Sky Sport Golf,PASS,shallow valid: assumed direct stream
+Bein Sports 1,PASS,shallow valid: assumed direct stream
+Bein Sports 2,PASS,shallow valid: assumed direct stream
+Bein Sports 3,PASS,shallow valid: assumed direct stream
+Bein Sports 4,PASS,shallow valid: assumed direct stream
+Bein Sports 5,PASS,shallow valid: assumed direct stream
+Bein Xtra,PASS,shallow valid: assumed direct stream
+Tennis TV,PASS,shallow valid: assumed direct stream
+Tennis TV 2,PASS,shallow valid: assumed direct stream
+Tennis+,PASS,shallow valid: assumed direct stream
+Tennis Channel,PASS,shallow valid: assumed direct stream
+Tennis Channel 2,PASS,shallow valid: assumed direct stream
+MLB,PASS,shallow valid: assumed direct stream
+MMA-TV International,PASS,shallow valid: assumed direct stream
+FOX NFL,PASS,shallow valid: assumed direct stream
+NHL,PASS,shallow valid: assumed direct stream
+UEFA Champion League,PASS,shallow valid: assumed direct stream
+UFC 1,PASS,shallow valid: assumed direct stream
+Xumo NBC Sport,PASS,shallow valid: assumed direct stream
+NBC Sport Now,PASS,shallow valid: assumed direct stream
+Goal TV,PASS,shallow valid: assumed direct stream
+Real Madrid TV,PASS,shallow valid: assumed direct stream
+RedBull TV,PASS,shallow valid: assumed direct stream
+Sport Fishing TV,PASS,shallow valid: assumed direct stream
+Wired2Fish,PASS,shallow valid: assumed direct stream
+Sports Connect,PASS,shallow valid: assumed direct stream
+MBC America,PASS,shallow valid: assumed direct stream
+Swerve Sport,PASS,shallow valid: assumed direct stream
+World Billiards TV,PASS,shallow valid: assumed direct stream
+Billiard TV,PASS,shallow valid: assumed direct stream
+BBC Top Gear,PASS,shallow valid: assumed direct stream
+Fuel TV,PASS,shallow valid: assumed direct stream
+Pro Fight League,PASS,shallow valid: assumed direct stream
+Speed Vision,PASS,shallow valid: assumed direct stream
+Fifa+,PASS,shallow valid: assumed direct stream
+TNA Wresling,PASS,shallow valid: assumed direct stream
+Astro Badminton,PASS,shallow valid: assumed direct stream
+Astro Football,PASS,shallow valid: assumed direct stream
+CS2,PASS,shallow valid: assumed direct stream
+CS2,PASS,shallow valid: assumed direct stream
+DotA2,PASS,shallow valid: assumed direct stream
+DotA2,PASS,shallow valid: assumed direct stream
+KPOP Mix,PASS,shallow valid: assumed direct stream
+New KPOP,PASS,shallow valid: assumed direct stream
+K-POP,PASS,shallow valid: assumed direct stream
+Music Japan,PASS,shallow valid: assumed direct stream
+Music India,PASS,shallow valid: assumed direct stream
+Song TV,PASS,shallow valid: assumed direct stream
+Paramount Movie Channel,PASS,shallow valid: assumed direct stream
+MyTime Movie Network,PASS,shallow valid: assumed direct stream
+Movie Sphere,PASS,shallow valid: assumed direct stream
+Movie Sphere 2,PASS,shallow valid: assumed direct stream
+Movie Sphere 3,PASS,shallow valid: assumed direct stream
+Movie Sphere by Lionsgate,PASS,shallow valid: assumed direct stream
+Movie Sphere by Lionsgate 2,PASS,shallow valid: assumed direct stream
+Wedotv Movies,PASS,shallow valid: assumed direct stream
+Miramax,PASS,shallow valid: assumed direct stream
+Universal Movie,PASS,shallow valid: assumed direct stream
+Cinemax,PASS,shallow valid: assumed direct stream
+Hallmark Channel,PASS,shallow valid: assumed direct stream
+HBO,PASS,shallow valid: assumed direct stream
+HBO 2,PASS,shallow valid: assumed direct stream
+HBO Comedy,PASS,shallow valid: assumed direct stream
+HBO Family,PASS,shallow valid: assumed direct stream
+HBO Signature,PASS,shallow valid: assumed direct stream
+HBO Zone,PASS,shallow valid: assumed direct stream
+Rakuten Top Movies UK,PASS,shallow valid: assumed direct stream
+Bollywood,PASS,shallow valid: assumed direct stream
+Bollywood Classic,PASS,shallow valid: assumed direct stream
+EuroNews,PASS,shallow valid: assumed direct stream
+NBC News Now,PASS,shallow valid: assumed direct stream
+CBS News 24/7,PASS,shallow valid: assumed direct stream
+BBC News,PASS,shallow valid: assumed direct stream
+Sky News,PASS,shallow valid: assumed direct stream
+Reuters,PASS,shallow valid: assumed direct stream
+Yahoo! Finance,PASS,shallow valid: assumed direct stream
+News World,PASS,shallow valid: assumed direct stream
+Adventure Earth,PASS,shallow valid: assumed direct stream
+BBC Earth,PASS,shallow valid: assumed direct stream
+Love The Planet,PASS,shallow valid: assumed direct stream
+Terra Mater Wild,PASS,shallow valid: assumed direct stream
+Real Wild,PASS,shallow valid: assumed direct stream
+Go Wild,PASS,shallow valid: assumed direct stream
+Wild Earth,PASS,shallow valid: assumed direct stream
+Xumo Nature & Wildlife TV,PASS,shallow valid: assumed direct stream
+Animal Planet,PASS,shallow valid: assumed direct stream
+Discovery Channel,PASS,shallow valid: assumed direct stream
+Discovery Life,PASS,shallow valid: assumed direct stream
+Discovery Science,PASS,shallow valid: assumed direct stream
+Disney Channel,PASS,shallow valid: assumed direct stream
+Disney XD,PASS,shallow valid: assumed direct stream
+Bob Ross Channel,PASS,shallow valid: assumed direct stream
+TVBS Asia,PASS,shallow valid: assumed direct stream
+KoreaTV,PASS,shallow valid: assumed direct stream
+Al-Jazeera (English),PASS,shallow valid: assumed direct stream
+Love Pets,PASS,shallow valid: assumed direct stream
+Documentary+,PASS,shallow valid: assumed direct stream
+mn静静nm,FAIL,shallow invalid: fetch failed or timeout
+万事通熊猫,FAIL,shallow invalid: fetch failed or timeout
+K-Content,PASS,shallow valid: assumed direct stream
+K-Drama+,PASS,shallow valid: assumed direct stream
