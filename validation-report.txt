@@ -50,6 +50,7 @@ Golf Channel (Latin America),PASS,generic: simple wrapper playlist
 GolfNetwork Japan,PASS,generic: simple wrapper playlist
 GolfPass,PASS,generic: HLS master -> HLS media playlist
 PGA Tour,PASS,generic: simple wrapper playlist
+DP World Tour,PASS,generic: HLS master -> HLS media playlist
 Sky Sport Golf,PASS,generic: simple wrapper playlist
 Bein Sports 1,PASS,generic: simple wrapper playlist
 Bein Sports 2,PASS,generic: simple wrapper playlist
@@ -64,7 +65,7 @@ Tennis Channel,PASS,generic: simple wrapper playlist
 Tennis Channel 2,PASS,generic: simple wrapper playlist
 MLB,PASS,generic: simple wrapper playlist
 MMA-TV International,PASS,generic: simple wrapper playlist
-FOX NFL,FAIL,generic: fetch failed or timeout
+FOX NFL,PASS,generic: simple wrapper playlist
 NHL,PASS,generic: simple wrapper playlist
 UEFA Champion League,PASS,generic: simple wrapper playlist
 UFC 1,PASS,generic: simple wrapper playlist
@@ -117,6 +118,7 @@ HBO Family,FAIL,generic: DASH (.mpd) not TV-safe
 HBO Signature,FAIL,generic: DASH (.mpd) not TV-safe
 HBO Zone,PASS,generic: simple wrapper playlist
 Rakuten Top Movies UK,PASS,generic: simple wrapper playlist
+Sony Movie Channel,PASS,generic: simple wrapper playlist
 Bollywood,PASS,generic: simple wrapper playlist
 Bollywood Classic,PASS,generic: simple wrapper playlist
 EuroNews,PASS,generic: simple wrapper playlist
