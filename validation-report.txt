@@ -1,155 +1,75 @@
 Channel Name,Status,Reason
-RTM TV1,PASS,generic: HLS master -> HLS media playlist
-RTM TV2,PASS,generic: HLS master -> HLS media playlist
-TV3,PASS,generic: HLS master -> HLS master -> HLS media playlist
-Didik TV,PASS,generic: HLS master -> HLS master -> HLS media playlist
-TV9,FAIL,generic: fetch failed or timeout
-Drama Sangat,PASS,generic: HLS master -> HLS master -> HLS media playlist
-TV6,PASS,generic: HLS master -> HLS media playlist
-8TV,PASS,generic: HLS master -> HLS media playlist
-Okey TV,PASS,generic: HLS master -> HLS media playlist
-RTM Sukan,PASS,generic: HLS master -> HLS media playlist
-TV IKIM,PASS,generic: HLS master -> HLS media playlist
-Berita RTM,PASS,generic: HLS master -> HLS media playlist
-Astro Awani,PASS,generic: HLS master -> HLS media playlist
-Al-Hijrah,PASS,Mana-mana unwrapped: HLS master -> HLS media playlist
-Enjoy TV,PASS,Mana-mana unwrapped: HLS master -> HLS media playlist
-Borneo TV,PASS,Mana-mana unwrapped: HLS master -> HLS media playlist
-Selangor TV,PASS,Mana-mana unwrapped: HLS master -> HLS media playlist
-Suke TV,PASS,Mana-mana unwrapped: HLS master -> HLS media playlist
-TVS,PASS,Mana-mana unwrapped: HLS master -> HLS media playlist
-Sukan+,PASS,Mana-mana unwrapped: HLS master -> HLS media playlist
-Bernama,PASS,Mana-mana unwrapped: HLS master -> HLS media playlist
-Dewan Rakyat,PASS,generic: HLS master -> HLS media playlist
-Dewan Negara,PASS,generic: HLS master -> HLS media playlist
-RTM Snap,PASS,generic: HLS master -> HLS media playlist
-RTM Lead,PASS,generic: HLS master -> HLS media playlist
-RTM Apetito,PASS,generic: HLS master -> HLS media playlist
-RTM Fitrah,PASS,generic: HLS master -> HLS media playlist
-RTM Junior,PASS,generic: HLS master -> HLS media playlist
-RTM Roll,PASS,generic: HLS master -> HLS media playlist
-RTM Aura,PASS,generic: HLS master -> HLS media playlist
-Filem Mantap,FAIL,Njoi inner stream is DASH (.mpd), not TV-safe
-Lawak Sentral,FAIL,Njoi inner stream is DASH (.mpd), not TV-safe
-Drama Hotpot,FAIL,Njoi inner stream is DASH (.mpd), not TV-safe
-Travel & Taste,FAIL,Njoi inner stream is DASH (.mpd), not TV-safe
-Drama Hebat,FAIL,Njoi inner stream is DASH (.mpd), not TV-safe
-Jom Ngaji,FAIL,Njoi inner stream is DASH (.mpd), not TV-safe
-Oh My Ceria!,FAIL,Njoi inner stream is DASH (.mpd), not TV-safe
-Quran (Mecca),PASS,generic: simple wrapper playlist
-MediaCorp (English),PASS,generic: simple wrapper playlist
-MediaCorp (Tamil),PASS,generic: simple wrapper playlist
-CNA,PASS,generic: simple wrapper playlist
-RTB Aneka,PASS,generic: simple wrapper playlist
-RTB Sukmaindera,PASS,generic: simple wrapper playlist
-Crunchyroll,PASS,generic: simple wrapper playlist
-Cartoon Network,PASS,generic: simple wrapper playlist
-Golf Kingdom,PASS,generic: simple wrapper playlist
-Golf Channel,PASS,generic: simple wrapper playlist
-Golf Channel (Latin America),PASS,generic: simple wrapper playlist
-GolfNetwork Japan,PASS,generic: simple wrapper playlist
-GolfPass,PASS,generic: HLS master -> HLS media playlist
-PGA Tour,PASS,generic: simple wrapper playlist
-DP World Tour,PASS,generic: HLS master -> HLS media playlist
-Sky Sport Golf,PASS,generic: simple wrapper playlist
-Bein Sports 1,PASS,generic: simple wrapper playlist
-Bein Sports 2,PASS,generic: simple wrapper playlist
-Bein Sports 3,PASS,generic: simple wrapper playlist
-Bein Sports 4,PASS,generic: simple wrapper playlist
-Bein Sports 5,PASS,generic: simple wrapper playlist
-Bein Xtra,PASS,generic: simple wrapper playlist
-Tennis TV,PASS,generic: simple wrapper playlist
-Tennis TV 2,PASS,generic: simple wrapper playlist
-Tennis+,PASS,generic: simple wrapper playlist
-Tennis Channel,PASS,generic: simple wrapper playlist
-Tennis Channel 2,PASS,generic: simple wrapper playlist
-MLB,PASS,generic: simple wrapper playlist
-MMA-TV International,PASS,generic: simple wrapper playlist
-FOX NFL,PASS,generic: simple wrapper playlist
-NHL,PASS,generic: simple wrapper playlist
-UEFA Champion League,PASS,generic: simple wrapper playlist
-UFC 1,PASS,generic: simple wrapper playlist
-Xumo NBC Sport,PASS,generic: simple wrapper playlist
-NBC Sport Now,PASS,generic: simple wrapper playlist
-Goal TV,PASS,generic: simple wrapper playlist
-Real Madrid TV,PASS,generic: simple wrapper playlist
-RedBull TV,PASS,generic: simple wrapper playlist
-Sport Fishing TV,PASS,generic: simple wrapper playlist
-Wired2Fish,PASS,generic: simple wrapper playlist
-Sports Connect,PASS,generic: simple wrapper playlist
-MBC America,PASS,generic: simple wrapper playlist
-Swerve Sport,PASS,generic: simple wrapper playlist
-World Billiards TV,PASS,generic: simple wrapper playlist
-Billiard TV,PASS,generic: HLS master -> HLS master -> HLS media playlist
-BBC Top Gear,PASS,generic: simple wrapper playlist
-Fuel TV,PASS,generic: simple wrapper playlist
-Pro Fight League,PASS,generic: simple wrapper playlist
-Speed Vision,PASS,generic: simple wrapper playlist
-Fifa+,PASS,generic: simple wrapper playlist
-TNA Wresling,PASS,generic: simple wrapper playlist
-Astro Badminton,PASS,generic: simple wrapper playlist
-Astro Football,PASS,generic: simple wrapper playlist
-CS2,PASS,generic: simple wrapper playlist
-CS2,PASS,generic: simple wrapper playlist
-DotA2,PASS,generic: simple wrapper playlist
-DotA2,PASS,generic: simple wrapper playlist
-KPOP Mix,PASS,generic: simple wrapper playlist
-New KPOP,PASS,generic: simple wrapper playlist
-K-POP,PASS,generic: simple wrapper playlist
-Music Japan,PASS,generic: simple wrapper playlist
-Music India,PASS,generic: simple wrapper playlist
-Song TV,PASS,generic: simple wrapper playlist
-Paramount Movie Channel,PASS,generic: simple wrapper playlist
-MyTime Movie Network,PASS,generic: simple wrapper playlist
-Movie Sphere,PASS,generic: simple wrapper playlist
-Movie Sphere 2,PASS,generic: simple wrapper playlist
-Movie Sphere 3,PASS,generic: simple wrapper playlist
-Movie Sphere by Lionsgate,PASS,generic: simple wrapper playlist
-Movie Sphere by Lionsgate 2,PASS,generic: simple wrapper playlist
-Wedotv Movies,PASS,generic: simple wrapper playlist
-Miramax,PASS,generic: simple wrapper playlist
-Universal Movie,PASS,generic: simple wrapper playlist
-Cinemax,PASS,generic: simple wrapper playlist
-Hallmark Channel,PASS,generic: simple wrapper playlist
-HBO,PASS,generic: simple wrapper playlist
-HBO 2,PASS,generic: simple wrapper playlist
-HBO Comedy,PASS,generic: simple wrapper playlist
-HBO Family,FAIL,generic: DASH (.mpd) not TV-safe
-HBO Signature,FAIL,generic: DASH (.mpd) not TV-safe
-HBO Zone,PASS,generic: simple wrapper playlist
-Rakuten Top Movies UK,PASS,generic: simple wrapper playlist
-Sony Movie Channel,PASS,generic: simple wrapper playlist
-Bollywood,PASS,generic: simple wrapper playlist
-Bollywood Classic,PASS,generic: simple wrapper playlist
-EuroNews,PASS,generic: simple wrapper playlist
-NBC News Now,PASS,generic: simple wrapper playlist
-CBS News 24/7,PASS,generic: simple wrapper playlist
-BBC News,PASS,generic: simple wrapper playlist
-Sky News,PASS,generic: simple wrapper playlist
-Reuters,PASS,generic: simple wrapper playlist
-Yahoo! Finance,PASS,generic: simple wrapper playlist
-News World,PASS,generic: simple wrapper playlist
-Adventure Earth,PASS,generic: simple wrapper playlist
-BBC Earth,PASS,generic: simple wrapper playlist
-Love The Planet,PASS,generic: simple wrapper playlist
-Terra Mater Wild,PASS,generic: simple wrapper playlist
-Real Wild,PASS,generic: simple wrapper playlist
-Go Wild,PASS,generic: simple wrapper playlist
-Wild Earth,PASS,generic: simple wrapper playlist
-Xumo Nature & Wildlife TV,PASS,generic: simple wrapper playlist
-Animal Planet,PASS,generic: simple wrapper playlist
-Discovery Channel,PASS,generic: simple wrapper playlist
-Discovery Life,PASS,generic: simple wrapper playlist
-Discovery Science,PASS,generic: simple wrapper playlist
-Disney Channel,PASS,generic: simple wrapper playlist
-Disney XD,PASS,generic: simple wrapper playlist
-Bob Ross Channel,PASS,generic: simple wrapper playlist
-TVBS Asia,PASS,generic: simple wrapper playlist
-KoreaTV,PASS,generic: simple wrapper playlist
-Al-Jazeera (English),PASS,generic: simple wrapper playlist
-Love Pets,PASS,generic: simple wrapper playlist
-Documentary+,PASS,generic: simple wrapper playlist
-mn静静nm,FAIL,generic: fetch failed or timeout
-万事通熊猫,FAIL,generic: fetch failed or timeout
-K-Content,PASS,generic: simple wrapper playlist
-K-Drama+,PASS,generic: simple wrapper playlist
+"-1 tvg-chno=""1"" tvg-name=""RTM TV1"" tvg-id=""TV1.my"" tvg-country=""MY"" tvg-logo=""https://rtm-images.glueapi.io/320x0//live_channel/tv1_Trans.png"" group-title=""Malaysia"",RTM TV1",PASS,HLS master -> variant OK: HLS media playlist OK | Candidate 1: OK (HLS master -> variant OK: HLS media playlist OK)
+"-1 tvg-chno=""3"" tvg-name=""TV3"" tvg-id=""TV3.my"" tvg-country=""MY"" tvg-logo=""https://headend-api.tonton.com.my/v400/imageHelper.php?id=6420323:378:CHANNEL:IMAGE"" group-title=""Malaysia"",TV3",PASS,HLS master -> variant OK: HLS master -> variant OK: HLS media playlist OK | Candidate 1: OK (HLS master -> variant OK: HLS master -> variant OK: HLS media playlist OK)
+"-1 tvg-chno=""6"" tvg-name=""TV6"" tvg-id=""TV6.my"" tvg-country=""MY"" tvg-logo=""https://rtm-images.glueapi.io/320x0//live_channel/tv6_Trans.png"" group-title=""Malaysia"",TV6",PASS,HLS master -> variant OK: HLS media playlist OK | Candidate 1: HLS master variant failed: HTTP 403 ; Candidate 2: OK (HLS master -> variant OK: HLS media playlist OK)
+"-1 tvg-chno="""" tvg-name=""Al-Hijrah"" tvg-id=""TV ALHIJRAH"" tvg-country=""MY"" tvg-logo=""https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/esdfqp.png"" group-title=""Malaysia"",Al-Hijrah",PASS,Stream OK (wrapper) | Candidate 1: OK (Stream OK (wrapper))
+"-1 tvg-chno="""" tvg-name=""Dewan Rakyat"" tvg-id=""DewanRakyat.my"" tvg-country=""MY"" tvg-logo=""https://rtm-images.glueapi.io/320x0/live_channel/7.png"" group-title=""Malaysia"",Dewan Rakyat",FAIL,All candidates failed | Candidate 1: HLS master variant failed: HTTP 403 ; Candidate 2: HLS master variant failed: HTTP 403
+"-1 tvg-chno="""" tvg-name=""RTM Snap"" tvg-id=""538142"" tvg-country=""MY"" tvg-logo=""https://rtm-images.glueapi.io/320x0/fast_channel/SNAP_CHANNEL.jpg"" group-title=""Malaysia"",RTM Snap",PASS,HLS master -> variant OK: HLS media playlist OK | Candidate 1: OK (HLS master -> variant OK: HLS media playlist OK)
+"-1 tvg-chno="""" tvg-name=""Filem Mantap"" tvg-id=""FilemMantap"" tvg-country=""MY"" tvg-logo=""https://datastore.vr.ctrp.sooka.my/content/images/ed5839FilemMantap_IVP_LAND_917x516.jpg"" group-title=""Malaysia"",Filem Mantap",PASS,Njoi inner OK: DASH manifest OK | Candidate 1: OK (Njoi inner OK: DASH manifest OK)
+"-1 tvg-chno="""" tvg-name=""MediaCorp (English)"" tvg-id="""" tvg-country=""SG"" tvg-logo="""" group-title=""Singapore"",MediaCorp (English)",PASS,Stream OK (wrapper) | Candidate 1: OK (Stream OK (wrapper))
+"-1 tvg-chno="""" tvg-name=""RTB Aneka"" tvg-id="""" tvg-country=""BN"" tvg-logo="""" group-title=""Brunei"",RTB Aneka",PASS,Stream OK (wrapper) | Candidate 1: OK (Stream OK (wrapper))
+"-1 tvg-chno="""" tvg-name=""Crunchyroll"" tvg-id=""65652f7fc0fc88000883537a"" tvg-country=""US"" tvg-logo="""" group-title=""Anime"",Crunchyroll",PASS,Stream OK (wrapper) | Candidate 1: OK (Stream OK (wrapper))
+"-1 tvg-chno="""" tvg-name=""Golf Kingdom"" tvg-id="""" tvg-country=""US"" tvg-logo="""" group-title=""Golf"",Golf Kingdom",PASS,Stream OK (wrapper) | Candidate 1: OK (Stream OK (wrapper))
+"-1 tvg-chno="""" tvg-name=""CS2"" tvg-id="""" tvg-country="""" tvg-logo="""" group-title=""E-Sports"",CS2",PASS,Stream OK (wrapper) | Candidate 1: OK (Stream OK (wrapper))
+"-1 tvg-chno="""" tvg-name=""KPOP Mix"" tvg-id="""" tvg-country=""KR"" tvg-logo="""" group-title=""Music"",KPOP Mix",PASS,Stream OK (wrapper) | Candidate 1: OK (Stream OK (wrapper))
+"-1 tvg-chno="""" tvg-name=""Paramount Movie Channel"" tvg-id="""" tvg-country=""US"" tvg-logo="""" group-title=""Movies"",Paramount Movie Channel",PASS,Stream OK (wrapper) | Candidate 1: OK (Stream OK (wrapper))
+"-1 tvg-chno="""" tvg-name=""EuroNews"" tvg-id="""" tvg-country="""" tvg-logo="""" group-title=""News"",EuroNews",PASS,Stream OK (wrapper) | Candidate 1: OK (Stream OK (wrapper))
+"-1 tvg-chno="""" tvg-name=""Adventure Earth"" tvg-id="""" tvg-country=""UK"" tvg-logo="""" group-title=""Nature"",Adventure Earth",PASS,Stream OK (wrapper) | Candidate 1: OK (Stream OK (wrapper))
+"-1 tvg-chno="""" tvg-name=""Bob Ross Channel"" tvg-id="""" tvg-country=""US"" tvg-logo="""" group-title="""",Bob Ross Channel",PASS,Stream OK (wrapper) | Candidate 1: OK (Stream OK (wrapper))
+"-1 tvg-chno="""" tvg-name=""mn静静nm"" tvg-id="""" tvg-country=""CN"" tvg-logo="""" group-title=""China"",mn静静nm",FAIL,All candidates failed | Candidate 1: Fetch error: 'ascii' codec can't encode characters in position 53-54: ordinal not in range(128) ; Candidate 2: Fetch error: 'ascii' codec can't encode characters in position 51-55: ordinal not in range(128)
+"-1 tvg-chno="""" tvg-name=""K-Content"" tvg-id=""GB17000066A"" tvg-country=""KR"" tvg-logo=""https://tvpnlogopeu.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/GB17000066A_20250826T004916SQUARE.png"" group-title=""Korea"",K-Content",PASS,Stream OK (wrapper) | Candidate 1: OK (Stream OK (wrapper))
+"1,Arena Bola",PASS,HLS media playlist OK | Candidate 1: OK (HLS media playlist OK)
+"1,Astro Badminton",PASS,HLS media playlist OK | Candidate 1: Fetch error: <urlopen error timed out> ; Candidate 2: Fetch error: <urlopen error timed out> ; Candidate 3: OK (HLS media playlist OK)
+"1,Citra",PASS,HLS media playlist OK | Candidate 1: OK (HLS media playlist OK)
+"1,Prima",PASS,HLS media playlist OK | Candidate 1: OK (HLS media playlist OK)
+"1,BBC Earth",PASS,HLS master -> variant OK: HLS media playlist OK | Candidate 1: OK (HLS master -> variant OK: HLS media playlist OK)
+"1,Bein Xtra",PASS,HLS master -> variant OK: HLS media playlist OK | Candidate 1: OK (HLS master -> variant OK: HLS media playlist OK)
+"1,Sports 1",FAIL,All candidates failed | Candidate 1: HTTP 404
+"1,Sports 2",FAIL,All candidates failed | Candidate 1: HTTP 404
+"1,Sports 3",FAIL,All candidates failed | Candidate 1: HTTP 404
+"1,Sports 4",FAIL,All candidates failed | Candidate 1: HTTP 404
+"1,Sports 5",FAIL,All candidates failed | Candidate 1: HTTP 404
+"1,",PASS,HLS master -> variant OK: HLS media playlist OK | Candidate 1: OK (HLS master -> variant OK: HLS media playlist OK)
+"1,RTB Sukmaindera",PASS,HLS master -> variant OK: HLS media playlist OK | Candidate 1: OK (HLS master -> variant OK: HLS media playlist OK)
+"1,Cartoon Network",PASS,HLS master -> variant OK: HLS media playlist OK | Candidate 1: OK (HLS master -> variant OK: HLS media playlist OK)
+"1,CBS News 24/7",PASS,HLS master -> variant OK: HLS media playlist OK | Candidate 1: OK (HLS master -> variant OK: HLS media playlist OK)
+"1,Discovery Channel",PASS,HLS master -> variant OK: HLS media playlist OK | Candidate 1: OK (HLS master -> variant OK: HLS media playlist OK)
+"1,FOX NFL",PASS,HLS master -> variant OK: HLS media playlist OK | Candidate 1: OK (HLS master -> variant OK: HLS media playlist OK)
+"1,Fuel TV",PASS,HLS master -> variant OK: HLS media playlist OK | Candidate 1: OK (HLS master -> variant OK: HLS media playlist OK)
+"1,Goal TV",PASS,HLS master -> variant OK: HLS media playlist OK | Candidate 1: OK (HLS master -> variant OK: HLS media playlist OK)
+"1,Golf Channel (Latin America)",PASS,HLS master -> variant OK: HLS media playlist OK | Candidate 1: OK (HLS master -> variant OK: HLS media playlist OK)
+"1,Golf Channel",PASS,Stream OK (direct) | Candidate 1: HTTP 403 ; Candidate 2: OK (Stream OK (direct))
+"1,Golf Network",PASS,Stream OK (direct) | Candidate 1: OK (Stream OK (direct))
+"1,K-Content",PASS,HLS master -> variant OK: HLS media playlist OK | Candidate 1: OK (HLS master -> variant OK: HLS media playlist OK)
+"1,Miramax",PASS,HLS media playlist OK | Candidate 1: OK (HLS media playlist OK)
+"1,MMA-TV International",PASS,HLS master -> variant OK: HLS media playlist OK | Candidate 1: OK (HLS master -> variant OK: HLS media playlist OK)
+"1,Movie Sphere 2",PASS,HLS master -> variant OK: HLS media playlist OK | Candidate 1: OK (HLS master -> variant OK: HLS media playlist OK)
+"1,NBC Sport",PASS,HLS master -> variant OK: HLS media playlist OK | Candidate 1: OK (HLS master -> variant OK: HLS media playlist OK)
+"1,News World",PASS,HLS master -> variant OK: HLS media playlist OK | Candidate 1: OK (HLS master -> variant OK: HLS media playlist OK)
+"1,Drama Hebat",PASS,DASH manifest OK | Candidate 1: OK (DASH manifest OK)
+"1,Lawak Sentral",PASS,DASH manifest OK | Candidate 1: OK (DASH manifest OK)
+"1,Oh! My Ceria",PASS,Stream OK (direct) | Candidate 1: OK (Stream OK (direct))
+"1,Travel & Taste",PASS,DASH manifest OK | Candidate 1: OK (DASH manifest OK)
+"1,Paramount Movie Channel",PASS,HLS master -> variant OK: HLS media playlist OK | Candidate 1: OK (HLS master -> variant OK: HLS media playlist OK)
+"1,Pro Fight League",PASS,HLS master -> variant OK: HLS media playlist OK | Candidate 1: OK (HLS master -> variant OK: HLS media playlist OK)
+"1,Rakuten Top Movies UK",PASS,HLS master -> variant OK: HLS media playlist OK | Candidate 1: OK (HLS master -> variant OK: HLS media playlist OK)
+"1,RedBull TV",PASS,HLS master -> variant OK: HLS media playlist OK | Candidate 1: OK (HLS master -> variant OK: HLS media playlist OK)
+"1,Reuters",PASS,HLS master -> variant OK: HLS media playlist OK | Candidate 1: OK (HLS master -> variant OK: HLS media playlist OK)
+"-1 tvg-name="""",RTM World:",FAIL,All candidates failed | Candidate 1: HTTP 403
+"1,CNA",PASS,HLS media playlist OK | Candidate 1: OK (HLS media playlist OK)
+"1,MediaCorp (English)",PASS,HLS master -> variant OK: HLS media playlist OK | Candidate 1: OK (HLS master -> variant OK: HLS media playlist OK)
+"1,MediaCorp (Tamil)",PASS,HLS master -> variant OK: HLS media playlist OK | Candidate 1: OK (HLS master -> variant OK: HLS media playlist OK)
+"1,Sky News",PASS,HLS master -> variant OK: HLS media playlist OK | Candidate 1: OK (HLS master -> variant OK: HLS media playlist OK)
+"1,Sport Fishing TV",PASS,HLS master -> variant OK: HLS media playlist OK | Candidate 1: OK (HLS master -> variant OK: HLS media playlist OK)
+"1,Sports Connect",PASS,HLS master -> variant OK: HLS media playlist OK | Candidate 1: OK (HLS master -> variant OK: HLS media playlist OK)
+"1,Swerve Sport",PASS,HLS master -> variant OK: HLS media playlist OK | Candidate 1: OK (HLS master -> variant OK: HLS media playlist OK)
+"1,Tennis Channel 2",PASS,HLS master -> variant OK: HLS media playlist OK | Candidate 1: OK (HLS master -> variant OK: HLS media playlist OK)
+"1,Tennis Channel",PASS,HLS master -> variant OK: HLS media playlist OK | Candidate 1: OK (HLS master -> variant OK: HLS media playlist OK)
+"1,Tennis+",PASS,HLS master -> variant OK: HLS media playlist OK | Candidate 1: OK (HLS master -> variant OK: HLS media playlist OK)
+"1,Tennis TV",PASS,HLS master -> variant OK: HLS media playlist OK | Candidate 1: OK (HLS master -> variant OK: HLS media playlist OK)
+"1,Tennis TV2",PASS,HLS master -> variant OK: HLS media playlist OK | Candidate 1: OK (HLS master -> variant OK: HLS media playlist OK)
+"1,TNA Wresling",PASS,HLS master -> variant OK: HLS media playlist OK | Candidate 1: OK (HLS master -> variant OK: HLS media playlist OK)
+"1,TVBS Asia",PASS,HLS master -> variant OK: HLS media playlist OK | Candidate 1: OK (HLS master -> variant OK: HLS media playlist OK)
+"1,UFC 1",PASS,HLS master -> variant OK: HLS media playlist OK | Candidate 1: OK (HLS master -> variant OK: HLS media playlist OK)
+"1,Universal Movie",PASS,HLS master -> variant OK: HLS media playlist OK | Candidate 1: OK (HLS master -> variant OK: HLS media playlist OK)
+"1,Yahoo! Finance",PASS,HLS master -> variant OK: HLS media playlist OK | Candidate 1: OK (HLS master -> variant OK: HLS media playlist OK)
