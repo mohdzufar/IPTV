@@ -1,5 +1,4 @@
 #EXTM3U
-##HEADERS: Referer=https://rtmklik.rtm.gov.my/, Origin=https://rtmklik.rtm.gov.my
 #EXT-X-INDEPENDENT-SEGMENTS
 #EXT-X-STREAM-INF:BANDWIDTH=546239,CODECS="mp4a.40.5,avc1.4d4015",RESOLUTION=426x240,FRAME-RATE=30,VIDEO-RANGE=SDR,CLOSED-CAPTIONS=NONE
 https://d25tgymtnqzu8s.cloudfront.net/smil:tv2/chunklist_b346000_slENG.m3u8?id=2
