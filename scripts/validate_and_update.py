@@ -110,7 +110,6 @@ def validate_stream(url):
     Validate a stream URL (might be a wrapper or direct).
     Returns (success, resolved_url, stream_type, message).
     """
-    # Check if it's an error page (HTML)
     raw, final_url = fetch_url(url)
     if raw is None:
         return False, url, None, "Fetch failed"
@@ -119,7 +118,6 @@ def validate_stream(url):
         return False, url, None, "Error page (HTML)"
     kind = classify_content(raw, final_url)
     if kind in ('dash', 'mp4'):
-        # For DASH/MP4, additional content checks
         if kind == 'dash':
             if '<mpd' not in text.lower():
                 return False, final_url, kind, "DASH manifest missing <MPD>"
@@ -128,7 +126,6 @@ def validate_stream(url):
                 return False, final_url, kind, "MP4 missing ftyp box"
         return True, final_url, kind, f"{kind.upper()} OK"
     elif kind in ('hls_master', 'hls_media', 'wrapper', 'direct'):
-        # HLS streams or wrappers: we treat as HLS type for output rule
         return True, final_url, 'hls', f"Stream OK ({kind})"
     else:
         return True, final_url, 'hls', "Stream OK (assumed)"
@@ -154,12 +151,14 @@ def main():
     while i < len(flatten_lines):
         line = flatten_lines[i].strip()
         if line.startswith('#EXTINF:'):
-            # Collect candidate URLs (wrapper URLs) and EXTVLCOPT tags
             candidates = []
             exvl_opts = []
             j = i + 1
             while j < len(flatten_lines):
                 nl = flatten_lines[j].strip()
+                # Stop at the next #EXTINF line (new channel) or blank line
+                if nl.startswith('#EXTINF:') or nl == '':
+                    break
                 if nl.startswith('#EXTVLCOPT:'):
                     exvl_opts.append(nl)
                     j += 1
@@ -167,15 +166,17 @@ def main():
                     candidates.append(nl)
                     j += 1
                 elif nl.startswith('#'):
+                    # other tags (comments, group separators) keep but don't treat as new channel
                     exvl_opts.append(nl)
                     j += 1
                 else:
+                    # Unexpected line, break to avoid consuming next channel
                     break
             if candidates:
                 channels.append({
                     'extinf': line,
                     'exvl_opts': exvl_opts,
-                    'original_url': candidates[0],   # we take first candidate
+                    'original_url': candidates[0],
                     'candidates': candidates,
                     'skip': False
                 })
@@ -184,10 +185,9 @@ def main():
             i += 1
 
     report = []
-    updated_main = main_lines[:]   # we will modify this list
+    updated_main = main_lines[:]
 
     for ch in channels:
-        # Determine if we should skip this channel (Mana-mana or tonton)
         if any(p.search(ch['original_url']) for p in SKIP_PATTERNS):
             ch['skip'] = True
             report.append((ch['extinf'], 'SKIPPED', 'Mana-mana or tonton'))
@@ -195,67 +195,52 @@ def main():
 
         print(f"Validating: {ch['extinf']}")
         wrapper_url = ch['original_url']
-        # Step A: resolve inner stream from wrapper
         inner_url, raw, final_wrapper = extract_inner_url_from_wrapper(wrapper_url)
         if inner_url is None:
-            # wrapper fetch failed
             success = False
             resolved = wrapper_url
             stype = None
             msg = "Failed to fetch wrapper"
         else:
-            # Validate the inner stream
             success, resolved, stype, msg = validate_stream(inner_url)
 
         if success:
-            # Apply the output rule
             if stype in ('dash', 'mp4'):
-                # Put direct DASH/MP4 URL into Main.m3u8
                 new_url = resolved
                 action = 'direct'
             else:
-                # HLS – keep original wrapper URL
                 new_url = wrapper_url
                 action = 'keep wrapper'
-            # Update Main.m3u8: find the line with the original wrapper URL and replace it
+            # Replace in updated_main
             for idx, mline in enumerate(updated_main):
                 if mline.strip() == wrapper_url:
                     updated_main[idx] = new_url + '\n'
                     break
             report.append((ch['extinf'], 'PASS', f"{msg} -> {action}"))
         else:
-            # Comment out channel
-            # Locate block in updated_main (the channel entry)
-            # We'll search for extinf line and then the URL
+            # Comment out channel in Main.m3u8
             extinf_search = ch['extinf']
             for idx, mline in enumerate(updated_main):
                 if mline.strip() == extinf_search:
-                    # Comment the extinf line
                     if not mline.lstrip().startswith('##'):
                         updated_main[idx] = '## ' + mline.lstrip()
-                    # Comment following EXTVLCOPT lines and the URL
                     j = idx + 1
                     while j < len(updated_main) and (updated_main[j].strip().startswith('#') or updated_main[j].strip().startswith('http')):
                         if not updated_main[j].lstrip().startswith('##'):
                             updated_main[j] = '## ' + updated_main[j].lstrip()
-                        # Stop after we pass the URL
                         if updated_main[j].strip().startswith('## http'):
-                            # We commented the URL, break
                             break
                         j += 1
                     break
             report.append((ch['extinf'], 'FAIL', msg))
 
-    # Write report
     import csv
     with open(REPORT_FILE, 'w', newline='', encoding='utf-8') as f:
         writer = csv.writer(f)
         writer.writerow(['Channel Name', 'Status', 'Reason'])
         for name, status, reason in report:
-            # Extract a short channel name from EXTINF
             writer.writerow([name, status, reason])
 
-    # Write updated Main.m3u8
     with open(MAIN_FILE, 'w', encoding='utf-8', newline='\n') as f:
         f.writelines(updated_main)
 
