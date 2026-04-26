@@ -12,6 +12,9 @@ on:
     - cron: '0 0 * * *'   # daily at 00:00 UTC
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   copy-main-m3u8:
     runs-on: ubuntu-latest
