@@ -1,6 +1,7 @@
 """
 validate_and_update.py - Validate non-Mana/tonton channels and update Main.m3u8.
 Reads Flatten.m3u8 for validation, then modifies Main.m3u8 accordingly.
+With enhanced console logging.
 """
 import urllib.request
 import urllib.error
@@ -156,7 +157,7 @@ def main():
             j = i + 1
             while j < len(flatten_lines):
                 nl = flatten_lines[j].strip()
-                # Stop at the next #EXTINF line (new channel) or blank line
+                # Stop at next #EXTINF or blank line
                 if nl.startswith('#EXTINF:') or nl == '':
                     break
                 if nl.startswith('#EXTVLCOPT:'):
@@ -166,11 +167,10 @@ def main():
                     candidates.append(nl)
                     j += 1
                 elif nl.startswith('#'):
-                    # other tags (comments, group separators) keep but don't treat as new channel
+                    # other tags (comments, group separators) keep but don't start new channel
                     exvl_opts.append(nl)
                     j += 1
                 else:
-                    # Unexpected line, break to avoid consuming next channel
                     break
             if candidates:
                 channels.append({
@@ -184,19 +184,29 @@ def main():
         else:
             i += 1
 
+    total = len(channels)
     report = []
     updated_main = main_lines[:]
 
-    for ch in channels:
+    print(f"Validation started: {total} channels to process.\n")
+    for idx, ch in enumerate(channels, 1):
+        # Extract a short channel name from EXTINF (text after the first comma)
+        name_match = re.search(r',\s*(.*)', ch['extinf'])
+        short_name = name_match.group(1) if name_match else ch['extinf'][:60]
+
+        # Skip patterns
         if any(p.search(ch['original_url']) for p in SKIP_PATTERNS):
-            ch['skip'] = True
+            print(f"[{idx:03d}/{total}] SKIP   | {short_name:<30} (Mana-mana or tonton)")
             report.append((ch['extinf'], 'SKIPPED', 'Mana-mana or tonton'))
             continue
 
-        print(f"Validating: {ch['extinf']}")
         wrapper_url = ch['original_url']
         inner_url, raw, final_wrapper = extract_inner_url_from_wrapper(wrapper_url)
+
         if inner_url is None:
+            # Wrapper fetch failed
+            print(f"[{idx:03d}/{total}] FAIL   | {short_name:<30} (Failed to fetch wrapper)")
+            print(f"           Wrapper: {wrapper_url}")
             success = False
             resolved = wrapper_url
             stype = None
@@ -204,36 +214,46 @@ def main():
         else:
             success, resolved, stype, msg = validate_stream(inner_url)
 
-        if success:
-            if stype in ('dash', 'mp4'):
-                new_url = resolved
-                action = 'direct'
+            if success:
+                if stype in ('dash', 'mp4'):
+                    new_url = resolved
+                    action = 'direct'
+                    print(f"[{idx:03d}/{total}] PASS   | {short_name:<30} (DASH/MP4 -> direct URL)")
+                    print(f"           Wrapper: {wrapper_url}")
+                    print(f"           Inner  : {inner_url} -> resolved to direct link")
+                    print(f"           New URL: {new_url}")
+                else:
+                    new_url = wrapper_url
+                    action = 'keep wrapper'
+                    print(f"[{idx:03d}/{total}] PASS   | {short_name:<30} (HLS -> keep wrapper)")
+                    print(f"           Wrapper: {wrapper_url}")
+                    print(f"           Inner  : {inner_url}")
+                # Replace in updated_main
+                for midx, mline in enumerate(updated_main):
+                    if mline.strip() == wrapper_url:
+                        updated_main[midx] = new_url + '\n'
+                        break
+                report.append((ch['extinf'], 'PASS', f"{msg} -> {action}"))
             else:
-                new_url = wrapper_url
-                action = 'keep wrapper'
-            # Replace in updated_main
-            for idx, mline in enumerate(updated_main):
-                if mline.strip() == wrapper_url:
-                    updated_main[idx] = new_url + '\n'
-                    break
-            report.append((ch['extinf'], 'PASS', f"{msg} -> {action}"))
-        else:
-            # Comment out channel in Main.m3u8
-            extinf_search = ch['extinf']
-            for idx, mline in enumerate(updated_main):
-                if mline.strip() == extinf_search:
-                    if not mline.lstrip().startswith('##'):
-                        updated_main[idx] = '## ' + mline.lstrip()
-                    j = idx + 1
-                    while j < len(updated_main) and (updated_main[j].strip().startswith('#') or updated_main[j].strip().startswith('http')):
-                        if not updated_main[j].lstrip().startswith('##'):
-                            updated_main[j] = '## ' + updated_main[j].lstrip()
-                        if updated_main[j].strip().startswith('## http'):
-                            break
-                        j += 1
-                    break
-            report.append((ch['extinf'], 'FAIL', msg))
+                print(f"[{idx:03d}/{total}] FAIL   | {short_name:<30} ({msg})")
+                print(f"           Wrapper: {wrapper_url}")
+                # Comment out channel in Main.m3u8
+                extinf_search = ch['extinf']
+                for midx, mline in enumerate(updated_main):
+                    if mline.strip() == extinf_search:
+                        if not mline.lstrip().startswith('##'):
+                            updated_main[midx] = '## ' + mline.lstrip()
+                        j = midx + 1
+                        while j < len(updated_main) and (updated_main[j].strip().startswith('#') or updated_main[j].strip().startswith('http')):
+                            if not updated_main[j].lstrip().startswith('##'):
+                                updated_main[j] = '## ' + updated_main[j].lstrip()
+                            if updated_main[j].strip().startswith('## http'):
+                                break
+                            j += 1
+                        break
+                report.append((ch['extinf'], 'FAIL', msg))
 
+    # Write CSV report
     import csv
     with open(REPORT_FILE, 'w', newline='', encoding='utf-8') as f:
         writer = csv.writer(f)
@@ -241,10 +261,16 @@ def main():
         for name, status, reason in report:
             writer.writerow([name, status, reason])
 
+    # Write updated Main.m3u8
     with open(MAIN_FILE, 'w', encoding='utf-8', newline='\n') as f:
         f.writelines(updated_main)
 
-    print(f"Validation complete. Report: {REPORT_FILE}, Main.m3u8 updated.")
+    # Summary
+    pass_count = sum(1 for _, status, _ in report if status == 'PASS')
+    fail_count = sum(1 for _, status, _ in report if status == 'FAIL')
+    skip_count = sum(1 for _, status, _ in report if status == 'SKIPPED')
+    print(f"\nValidation complete: {pass_count} passed, {fail_count} failed, {skip_count} skipped.")
+    print(f"Report -> {REPORT_FILE}, Main.m3u8 updated.")
 
 if __name__ == "__main__":
     main()
