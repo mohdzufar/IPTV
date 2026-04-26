@@ -1,76 +1,54 @@
-#!/usr/bin/env python3
-"""
-Simple IPTV Playlist Flattener (no validation).
-Reads Channels/Flatten.m3u8 and for each channel takes the first candidate URL.
-Outputs Main.m3u8 without any network tests.
-"""
+import os
+import glob
 
-import sys
-from pathlib import Path
-
-SOURCE_FILE = "Channels/Flatten.m3u8"
-OUTPUT_FILE = "Main.m3u8"
-
-
-def flatten():
-    if not Path(SOURCE_FILE).exists():
-        print(f"Error: {SOURCE_FILE} not found.")
-        sys.exit(1)
-
-    with open(SOURCE_FILE, "r", encoding="utf-8") as f:
-        lines = f.readlines()
-
-    output = []
-    i = 0
-    while i < len(lines):
-        line = lines[i].rstrip("\n\r")
-
-        if line.startswith("#EXTM3U"):
-            output.append(line)
-            i += 1
-            continue
-
-        if line.startswith("#EXTINF:"):
-            extinf = line
-            i += 1
-            # skip blank lines
-            while i < len(lines) and not lines[i].strip():
-                i += 1
-
-            # pick the first URL candidate
-            url = None
-            while i < len(lines):
-                nxt = lines[i].rstrip("\n\r").strip()
-                if not nxt:
-                    i += 1
-                    continue
-                if nxt.startswith("#EXTINF:") or nxt.startswith("#EXTM3U"):
-                    break
-                if nxt.startswith("#"):
-                    i += 1
-                    continue
-                if nxt.startswith(("http://", "https://")):
-                    url = nxt
-                    i += 1
-                    break
-                i += 1
-
-            if url:
-                output.append(extinf)
-                output.append(url)
-            else:
-                # comment out if no URL found
-                output.append(f"##{extinf}")
-                output.append("##NO_URL")
-        else:
-            output.append(line)
-            i += 1
-
-    with open(OUTPUT_FILE, "w", encoding="utf-8", newline="\n") as f:
-        f.write("\n".join(output) + "\n")
-
-    print(f"Flattened playlist written to {OUTPUT_FILE} ({len(output)} lines).")
-
+def flatten_m3u8(channels_dir="Channels", output_file="Main.m3u8"):
+    header = '#EXTM3U\n'
+    
+    # Get all .m3u8 files in Channels/ and subdirectories
+    m3u8_files = glob.glob(os.path.join(channels_dir, '**', '*.m3u8'), recursive=True)
+    
+    with open(output_file, 'w', encoding='utf-8') as outfile:
+        outfile.write(header)
+        
+        for filepath in m3u8_files:
+            # Skip the output file itself if it's inside channels_dir (safety)
+            if os.path.abspath(filepath) == os.path.abspath(output_file):
+                continue
+            
+            try:
+                with open(filepath, 'r', encoding='utf-8') as infile:
+                    content = infile.read()
+            except Exception as e:
+                print(f"Error reading {filepath}: {e}")
+                continue
+            
+            lines = content.splitlines()
+            
+            # Remove leading #EXTM3U if present
+            if lines and lines[0].startswith('#EXTM3U'):
+                lines = lines[1:]
+            
+            # Determine group tag from immediate parent folder (if inside a subfolder)
+            group = None
+            rel_path = os.path.relpath(filepath, channels_dir)
+            parts = rel_path.split(os.sep)
+            if len(parts) > 1:   # file is inside a subfolder
+                group = parts[0]  # the subfolder name
+            
+            # Insert group tag before the first #EXTINF line
+            if group and lines:
+                # Find index of first #EXTINF
+                insert_idx = next((i for i, line in enumerate(lines) if line.startswith('#EXTINF')), None)
+                if insert_idx is not None:
+                    lines.insert(insert_idx, f'#EXTGRP:{group}')
+                else:
+                    # No #EXTINF lines – still add group at the start (if the file is non-empty)
+                    lines.insert(0, f'#EXTGRP:{group}')
+            
+            # Write the (possibly modified) content
+            outfile.write('\n'.join(lines) + '\n')
+    
+    print(f"Flattened {len(m3u8_files)} files into {output_file}")
 
 if __name__ == "__main__":
-    flatten()
+    flatten_m3u8()
