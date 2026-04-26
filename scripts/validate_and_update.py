@@ -183,7 +183,7 @@ def main():
     report = []
     updated_main = main_lines[:]
 
-    print(f"Validation started: {total} channels to process.\n")
+    print(f"Validation started: {total} channels to process.\n", flush=True)
 
     for idx, ch in enumerate(channels, 1):
         name_match = re.search(r',\s*(.*)', ch['extinf'])
