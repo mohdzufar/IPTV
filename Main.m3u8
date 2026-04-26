@@ -26,7 +26,7 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/IKIM/I
 #EXTINF:-1 tvg-chno="" tvg-name="Astro Awani" tvg-id="AstroAwani.my" tvg-country="MY" tvg-logo="https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/436_144.png" group-title="News",Astro Awani
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/ASTRO/Awani/Astro%20Awani.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Al-Hijrah" tvg-id="TV ALHIJRAH" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/esdfqp.png" group-title="Malaysia",Al-Hijrah
-https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Mana-mana/Al-Hijrah/Al-Hijrah.m3u8
+https://live.mana2.my/TvAlhijrah/index.m3u8?auth_key=1777222504-0587f597260e4912869b3bd56542cf78-0-978d8a591ef420fb8190745c92c636f7&token=1777222504-0587f597260e4912869b3bd56542cf78-0-978d8a591ef420fb8190745c92c636f7
 #EXTINF:-1 tvg-chno="" tvg-name="Enjoy TV" tvg-id="Enjoy TV" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/channel/logos/hglfwv.png" group-title="Malaysia",Enjoy TV
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Mana-mana/Enjoy_TV/Enjoy_TV.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Borneo TV" tvg-id="" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/npdqkp.png" group-title="Malaysia",Borneo TV
@@ -36,11 +36,11 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Mana-m
 #EXTINF:-1 tvg-chno="" tvg-name="Suke TV" tvg-id="" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/utgwdm.png" group-title="Malaysia",Suke TV
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Mana-mana/Suke_TV/Suke_TV.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="TVS" tvg-id="" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/filzbh.jpeg" group-title="Malaysia",TVS
-https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Mana-mana/TVS/TVS.m3u8
+https://vod.mana2.my/TvS/index-1776880800-1800.m3u8?auth_key=1777222507-64146c083a2444eaa5f97f34479b4a5a-0-21d0c06acfa16f07880a8b847fdeb4b5&token=1777222507-64146c083a2444eaa5f97f34479b4a5a-0-21d0c06acfa16f07880a8b847fdeb4b5
 #EXTINF:-1 tvg-chno="" tvg-name="Sukan+" tvg-id="" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/soxsng.jpeg" group-title="Malaysia",Sukan+
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Mana-mana/SukanPlus/SukanPlus.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Bernama" tvg-id="Bernama" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/ivnvsj.png" group-title="Malaysia",Bernama
-https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Mana-mana/Bernama/Bernama.m3u8
+https://live.mana2.my/Bernama/index.m3u8?auth_key=1777222510-720fb9dfa3f545019f25d53e25fa9bd9-0-dc3fff5e160097518bf10612c9b581de&token=1777222510-720fb9dfa3f545019f25d53e25fa9bd9-0-dc3fff5e160097518bf10612c9b581de
 ## #EXTINF:-1 tvg-chno="" tvg-name="Dewan Rakyat" tvg-id="DewanRakyat.my" tvg-country="MY" tvg-logo="https://rtm-images.glueapi.io/320x0/live_channel/7.png" group-title="Malaysia",Dewan Rakyat
 ## https://raw.githubusercontent.com/mohdzufar/Main-IPTV/refs/heads/main/Channels/RTM/Dewan%20Rakyat/Dewan%20Rakyat.m3u8
 ## #EXTINF:-1 tvg-chno="" tvg-name="Dewan Negara" tvg-id="DewanNegara.my" tvg-country="MY" tvg-logo="https://rtm-images.glueapi.io/320x0//live_channel/PDN_Trans.png" group-title="Malaysia",Dewan Negara
@@ -240,8 +240,8 @@ https://cdn10jtedge.indihometv.com/atm/DASH/hbosignature/manifest.mpd
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/HBO/HBO%20Zone.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Rakuten Top Movies UK" tvg-id="" tvg-country="UK" tvg-logo="" group-title="Movies",Rakuten Top Movies UK
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Rakuten/Rakuten%20Top%20Movies%20UK.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="Sony Movie Channel" tvg-id="Sony.Movie.Channel.HD.us2" tvg-country="US" tvg-logo="http://schedulesdirect-api20141201-logos.s3.dualstack.us-east-1.amazonaws.com/stationLogos/s69130_dark_360w_270h.png" group-title="Movies",Sony Movie Channel
-https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Sony/Sony%20Movie%20Channel.m3u8
+## #EXTINF:-1 tvg-chno="" tvg-name="Sony Movie Channel" tvg-id="Sony.Movie.Channel.HD.us2" tvg-country="US" tvg-logo="http://schedulesdirect-api20141201-logos.s3.dualstack.us-east-1.amazonaws.com/stationLogos/s69130_dark_360w_270h.png" group-title="Movies",Sony Movie Channel
+## https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Sony/Sony%20Movie%20Channel.m3u8
 ## #EXTINF:-1 tvg-chno="" tvg-name="Bollywood" tvg-id="" tvg-country="India" tvg-logo="" group-title="Movies",Bollywood
 ## https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Bollywood/Bollywood.m3u8
 ## #EXTINF:-1 tvg-chno="" tvg-name="Bollywood Classic" tvg-id="" tvg-country="India" tvg-logo="" group-title="Movies",Bollywood Classic
@@ -284,10 +284,10 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Earth%
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Earth%20%26%20Nature/Animal%20Planet.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Discovery Channel" tvg-id="Discovery.Channel.HD.us2" tvg-country="US" tvg-logo="http://schedulesdirect-api20141201-logos.s3.dualstack.us-east-1.amazonaws.com/stationLogos/s11150_dark_360w_270h.png" group-title="",Discovery Channel
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Discovery/Discovery%20Channel.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="Discovery Life" tvg-id="Discovery.Life.Channel.us2" tvg-country="US" tvg-logo="http://schedulesdirect-api20141201-logos.s3.dualstack.us-east-1.amazonaws.com/stationLogos/s16125_dark_360w_270h.png" group-title="",Discovery Life
-https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Discovery/Discovery%20Life.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="Discovery Science" tvg-id="Science.Channel.HD.us2" tvg-country="US" tvg-logo="http://schedulesdirect-api20141201-logos.s3.dualstack.us-east-1.amazonaws.com/stationLogos/s24282_dark_360w_270h.png" group-title="",Discovery Science
-https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Discovery/Discovery%20Science.m3u8
+## #EXTINF:-1 tvg-chno="" tvg-name="Discovery Life" tvg-id="Discovery.Life.Channel.us2" tvg-country="US" tvg-logo="http://schedulesdirect-api20141201-logos.s3.dualstack.us-east-1.amazonaws.com/stationLogos/s16125_dark_360w_270h.png" group-title="",Discovery Life
+## https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Discovery/Discovery%20Life.m3u8
+## #EXTINF:-1 tvg-chno="" tvg-name="Discovery Science" tvg-id="Science.Channel.HD.us2" tvg-country="US" tvg-logo="http://schedulesdirect-api20141201-logos.s3.dualstack.us-east-1.amazonaws.com/stationLogos/s24282_dark_360w_270h.png" group-title="",Discovery Science
+## https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Discovery/Discovery%20Science.m3u8
 ## #EXTINF:-1 tvg-chno="" tvg-name="Disney Channel" tvg-id="Disney.Channel.HD.us2" tvg-country="US" tvg-logo="http://schedulesdirect-api20141201-logos.s3.dualstack.us-east-1.amazonaws.com/stationLogos/s10171_dark_360w_270h.png" group-title="Kids",Disney Channel
 ## https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Disney/Disney%20Channel.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Disney XD" tvg-id="Disney.XD.HD.us2" tvg-country="US" tvg-logo="http://schedulesdirect-api20141201-logos.s3.dualstack.us-east-1.amazonaws.com/stationLogos/s18279_dark_360w_270h.png" group-title="",Disney XD
