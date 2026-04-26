@@ -2,11 +2,29 @@
 refresh_mana2.py - Refresh Mana-mana tokens directly in Main.m3u8 and subfolders.
 Uses sync Playwright + stealth. Designed for self-hosted runner.
 """
-
 import os
 import re
+import sys
 from playwright.sync_api import sync_playwright
-from playwright_stealth import stealth        # <-- correct import for your version
+
+# Try to import the correct stealth function.
+# The package may export 'stealth' (a module) or 'stealth_sync' directly.
+try:
+    from playwright_stealth.stealth import stealth_sync as stealth_func
+except ImportError:
+    try:
+        from playwright_stealth.stealth import stealth as stealth_func
+    except ImportError:
+        try:
+            from playwright_stealth import stealth_sync as stealth_func
+        except ImportError:
+            try:
+                from playwright_stealth import stealth as stealth_func
+            except ImportError:
+                raise ImportError(
+                    "Cannot import stealth function from playwright_stealth. "
+                    "Please check the installed version. Common names: stealth_sync, stealth."
+                )
 
 # Configuration
 PLAYLIST_FILE = "Main.m3u8"
@@ -41,7 +59,8 @@ def refresh_mana_token(inner_url):
             browser = p.chromium.launch(headless=True)
             context = browser.new_context()
             page = context.new_page()
-            stealth(page)                  # <-- apply stealth (sync)
+            # Apply stealth (imported function)
+            stealth_func(page)
             page.goto(inner_url, wait_until='domcontentloaded', timeout=20000)
             page.wait_for_timeout(3000)    # allow token to be set
             final_url = page.url
@@ -56,6 +75,10 @@ def refresh_mana_token(inner_url):
             return final_url if final_url != inner_url else None
     except Exception as e:
         print(f"  [!] Playwright error: {e}")
+        # If the above fails, it's often a stealth import problem or network issue.
+        # Print full traceback for debugging.
+        import traceback
+        traceback.print_exc()
         return None
 
 def local_path_from_url(wrapper_url):
