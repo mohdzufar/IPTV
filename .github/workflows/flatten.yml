@@ -1,31 +1,62 @@
-name: Flatten Playlist
+name: Update and Validate Playlist
 
 on:
-  push:
-    branches: [ main ]
-    paths:
-      - 'Channels/Flatten.m3u8'
-      - 'Channels/**/*.m3u8'
-  pull_request:
-    branches: [ main ]
   schedule:
-    - cron: '0 0 * * *'   # daily at 00:00 UTC
-  workflow_dispatch:
+    - cron: '0 21 * * *'   # 5am Malaysia time (UTC+8)
+  workflow_dispatch:        # manual trigger
 
 permissions:
   contents: write
 
 jobs:
-  copy-main-m3u8:
+  refresh-tokens:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run token refresh
+        run: python scripts/refresh_mana2.py
+
+      - name: Commit token updates if any
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if [[ -n $(git status --porcelain) ]]; then
+            git add Channels/
+            git commit -m "Refresh mana2 tokens"
+            git push
+          else
+            echo "No token changes to commit."
+          fi
+
+  copy-main:
+    needs: refresh-tokens
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0   # ensure we get the latest commit after token push
+
+      - name: Ensure we are on latest main
+        run: |
+          git fetch origin main
+          git reset --hard origin/main
+
       - name: Copy Flatten.m3u8 to Main.m3u8
         run: cp Channels/Flatten.m3u8 Main.m3u8
 
-      - name: Commit and push if changed
+      - name: Commit Main.m3u8
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -34,5 +65,43 @@ jobs:
             git commit -m "Update Main.m3u8 from Flatten.m3u8"
             git push
           else
-            echo "No changes to commit."
+            echo "No changes to Main.m3u8."
+          fi
+
+  validate:
+    needs: copy-main
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Ensure we are on latest main
+        run: |
+          git fetch origin main
+          git reset --hard origin/main
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run validation
+        run: python scripts/validate.py
+
+      - name: Commit validated Main.m3u8 and report
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if [[ -n $(git status --porcelain) ]]; then
+            git add Main.m3u8 validation-report.txt
+            git commit -m "Validate and update Main.m3u8"
+            git push
+          else
+            echo "No changes after validation."
           fi
