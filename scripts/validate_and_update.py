@@ -1,7 +1,7 @@
 """
 validate_and_update.py - Validate non-Mana/tonton channels and update Main.m3u8.
 Reads Flatten.m3u8 for validation, then modifies Main.m3u8 accordingly.
-Enhanced logging for each step.
+Enhanced logging + EXTVLCOPT header forwarding.
 """
 import urllib.request
 import urllib.error
@@ -24,21 +24,56 @@ TIMEOUT = 15
 MAX_RETRIES = 1
 RETRY_DELAY = 2
 MAX_DOWNLOAD_BYTES = 2 * 1024 * 1024   # 2 MB
-HEADERS = {
+
+# Default request headers (used when no EXTVLCOPT overrides)
+DEFAULT_HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
     "Accept": "*/*",
     "Accept-Encoding": "gzip, deflate",
     "Connection": "keep-alive",
 }
 
-def fetch_url(url, max_bytes=MAX_DOWNLOAD_BYTES):
-    """Fetch a URL with retries. Returns (data, final_url, elapsed) or (None, None, elapsed)."""
+def parse_extvl_headers(lines):
+    """
+    Extract #EXTVLCOPT:http-* headers from wrapper lines.
+    Returns a dict of headers that should be applied to the inner stream request.
+    """
+    headers = {}
+    for line in lines:
+        line = line.strip()
+        if line.startswith('#EXTVLCOPT:'):
+            opt = line[len('#EXTVLCOPT:'):].strip()
+            if '=' in opt:
+                key, val = opt.split('=', 1)
+                low_key = key.lower().replace('_', '-')
+                if low_key in ('user-agent', 'http-user-agent'):
+                    headers['User-Agent'] = val
+                elif low_key == 'referer' or low_key == 'http-referrer':
+                    headers['Referer'] = val
+                elif low_key == 'origin':
+                    headers['Origin'] = val
+                else:
+                    headers[key] = val
+    return headers
+
+def fetch_url(url, extra_headers=None, max_bytes=MAX_DOWNLOAD_BYTES):
+    """
+    Fetch a URL with retries.
+    extra_headers: dict of additional headers (from EXTVLCOPT) that override defaults.
+    Returns (data, final_url, elapsed, status, content_type).
+    """
     ctx = ssl.create_default_context()
     ctx.check_hostname = False
     ctx.verify_mode = ssl.CERT_NONE
+
+    # Merge default headers with extra headers (extra takes precedence)
+    req_headers = DEFAULT_HEADERS.copy()
+    if extra_headers:
+        req_headers.update(extra_headers)
+
     for attempt in range(MAX_RETRIES + 1):
         start = time.time()
-        req = urllib.request.Request(url, headers=HEADERS)
+        req = urllib.request.Request(url, headers=req_headers)
         try:
             with urllib.request.urlopen(req, timeout=TIMEOUT, context=ctx) as resp:
                 final_url = resp.geturl()
@@ -96,25 +131,34 @@ def classify_content(data, url):
     return 'direct'
 
 def extract_inner_url_from_wrapper(wrapper_url):
-    """Fetch wrapper and return first http line, or None. Also returns raw data for classification."""
+    """
+    Fetch wrapper and return inner URL, raw data, final URL, elapsed, status, and EXTVLCOPT headers.
+    """
     raw, final_url, elapsed, status, content_type = fetch_url(wrapper_url)
     if raw is None:
-        return None, None, None, elapsed, status
+        return None, None, None, elapsed, status, {}
     text = raw.decode('utf-8', errors='ignore')
     lines = text.splitlines()
+    inner_url = None
     for line in lines:
         line = line.strip()
         if line.startswith('http'):
-            return line, raw, final_url, elapsed, status
-    return wrapper_url, raw, final_url, elapsed, status
+            inner_url = line
+            break
+    if not inner_url:
+        inner_url = wrapper_url
+    headers = parse_extvl_headers(lines)
+    return inner_url, raw, final_url, elapsed, status, headers
 
-def validate_stream(url):
+def validate_stream(url, extra_headers=None):
     """
-    Validate a stream URL. Returns (success, resolved_url, stream_type, message, elapsed, status, content_type).
+    Validate a stream URL.
+    Returns (success, resolved_url, stream_type, message, elapsed, status, content_type).
     """
-    raw, final_url, elapsed, status, content_type = fetch_url(url)
+    raw, final_url, elapsed, status, content_type = fetch_url(url, extra_headers=extra_headers)
     if raw is None:
-        return False, url, None, f"Fetch failed (HTTP {status})" if status else "Fetch failed", elapsed, status, content_type
+        msg = f"Fetch failed (HTTP {status})" if status else "Fetch failed"
+        return False, url, None, msg, elapsed, status, content_type
     text = raw.decode('utf-8', errors='ignore')
     if re.search(r'<html|<body|<!doctype', text, re.IGNORECASE):
         return False, url, None, "Error page (HTML)", elapsed, status, content_type
@@ -189,7 +233,7 @@ def main():
         name_match = re.search(r',\s*(.*)', ch['extinf'])
         short_name = name_match.group(1) if name_match else ch['extinf'][:60]
 
-        # Skip patterns
+        # Skip pattern
         if any(p.search(ch['original_url']) for p in SKIP_PATTERNS):
             print(f"[{idx:03d}/{total}] SKIP   | {short_name:<30} (Mana-mana or tonton)")
             report.append((ch['extinf'], 'SKIPPED', 'Mana-mana or tonton'))
@@ -199,16 +243,16 @@ def main():
         print(f"[{idx:03d}/{total}] TEST   | {short_name:<30}")
         print(f"           Wrapper : {wrapper_url}")
 
-        # Fetch wrapper
+        # Step 1: fetch wrapper and extract inner URL + headers
         print(f"           ↳ Fetching wrapper...")
-        inner_url, raw, final_wrapper, wrapper_elapsed, wrapper_status = extract_inner_url_from_wrapper(wrapper_url)
+        inner_url, raw, final_wrapper, wrapper_elapsed, wrapper_status, wrapper_headers = extract_inner_url_from_wrapper(wrapper_url)
 
         if inner_url is None:
             print(f"           ↳ Failed to fetch wrapper: HTTP {wrapper_status}")
             print(f"           ✘ Validation failed: Failed to fetch wrapper")
             print(f"           Action: comment out channel")
             report.append((ch['extinf'], 'FAIL', f"Failed to fetch wrapper (HTTP {wrapper_status})"))
-            # Comment out in Main.m3u8
+            # Comment out
             extinf_search = ch['extinf']
             for midx, mline in enumerate(updated_main):
                 if mline.strip() == extinf_search:
@@ -226,18 +270,20 @@ def main():
 
         print(f"           ↳ Wrapper fetched (200, {wrapper_elapsed}s)")
         print(f"           ↳ Inner URL found: {inner_url}")
+        if wrapper_headers:
+            print(f"           ↳ EXTVLCOPT headers: {wrapper_headers}")
 
-        # Validate inner stream
+        # Step 2: validate inner stream with those headers
         print(f"           ↳ Validating inner stream...")
         print(f"             ↳ Fetching inner stream...")
-        success, resolved, stype, msg, elapsed, status, content_type = validate_stream(inner_url)
+        success, resolved, stype, msg, elapsed, status, content_type = validate_stream(inner_url, extra_headers=wrapper_headers)
 
         if not success:
             print(f"             ↳ Response: {status}, {content_type} ({elapsed}s)")
             print(f"           ✘ Validation failed: {msg}")
             print(f"           Action: comment out channel")
             report.append((ch['extinf'], 'FAIL', msg))
-            # Comment out in Main.m3u8
+            # Comment out
             extinf_search = ch['extinf']
             for midx, mline in enumerate(updated_main):
                 if mline.strip() == extinf_search:
