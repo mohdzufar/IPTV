@@ -1,0 +1,65 @@
+name: Update and Validate Playlist
+
+on:
+  schedule:
+    - cron: '0 21 * * *'   # 5am Malaysia time (UTC+8)
+  workflow_dispatch:        # manual trigger
+
+permissions:
+  contents: write
+
+jobs:
+  main:
+    runs-on: self-hosted    # your local Windows machine
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install Python dependencies (requests)
+        run: pip install requests
+
+      # -------------------- Step 1: Copy & Clean --------------------
+      - name: Step 1 - Copy Flatten.m3u8 to Main.m3u8 (remove comments)
+        shell: python
+        run: |
+          import os
+          src = "Channels/Flatten.m3u8"
+          dst = "Main.m3u8"
+          if not os.path.exists(src):
+              print(f"Source file {src} not found.")
+              exit(1)
+          with open(src, 'r', encoding='utf-8') as f:
+              lines = f.readlines()
+          # Remove comment lines (starting with '##') and completely blank lines
+          cleaned = [line for line in lines if not line.strip().startswith('##') and line.strip() != '']
+          with open(dst, 'w', encoding='utf-8', newline='\n') as f:
+              f.writelines(cleaned)
+          print(f"Copied {len(cleaned)} lines to {dst} (comments removed).")
+
+      # -------------------- Step 2: Refresh Mana Tokens ------------
+      - name: Step 2 - Refresh Mana-mana tokens
+        run: python scripts/refresh_mana2.py
+
+      # -------------------- Step 3 & 4: Validate & Apply -----------
+      - name: Step 3+4 - Validate and update Main.m3u8
+        run: python scripts/validate_and_update.py
+
+      # -------------------- Commit & Push ---------------------------
+      - name: Commit and push all changes
+        shell: powershell
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          $status = git status --porcelain
+          if ($status) {
+            git add Main.m3u8 Channels/Mana-mana validation-report.txt
+            git commit -m "Daily update: refresh and validate playlist"
+            git push
+          } else {
+            echo "No changes to commit."
+          }
