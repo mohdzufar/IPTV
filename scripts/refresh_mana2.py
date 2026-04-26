@@ -1,13 +1,12 @@
 """
 refresh_mana2.py - Refresh Mana-mana tokens directly in Main.m3u8 and subfolders.
-Uses async Playwright + stealth_async. Designed for self-hosted runner.
+Uses sync Playwright + stealth. Designed for self-hosted runner.
 """
 
 import os
 import re
-import asyncio
-from playwright.async_api import async_playwright
-from playwright_stealth import stealth_async
+from playwright.sync_api import sync_playwright
+from playwright_stealth import stealth        # <-- correct import for your version
 
 # Configuration
 PLAYLIST_FILE = "Main.m3u8"
@@ -32,37 +31,32 @@ def extract_inner_url(lines):
             return line
     return None
 
-async def _refresh_token_async(inner_url):
+def refresh_mana_token(inner_url):
     """
-    Use async Playwright + stealth_async to refresh the token.
+    Use sync Playwright + stealth to refresh the token.
     Returns a fresh direct Mana URL or None.
     """
     try:
-        async with async_playwright() as p:
-            browser = await p.chromium.launch(headless=True)
-            context = await browser.new_context()
-            page = await context.new_page()
-            await stealth_async(page)
-            await page.goto(inner_url, wait_until='domcontentloaded', timeout=20000)
-            # Wait a moment for any token generation
-            await page.wait_for_timeout(3000)
+        with sync_playwright() as p:
+            browser = p.chromium.launch(headless=True)
+            context = browser.new_context()
+            page = context.new_page()
+            stealth(page)                  # <-- apply stealth (sync)
+            page.goto(inner_url, wait_until='domcontentloaded', timeout=20000)
+            page.wait_for_timeout(3000)    # allow token to be set
             final_url = page.url
             # If the URL didn't change, try to extract from page content
             if final_url == inner_url:
-                content = await page.content()
+                content = page.content()
                 import re
                 matches = re.findall(r'(https?://[^"\'\s]+\.(m3u8|mpd|ts)[^"\'\s]*)', content)
                 if matches:
                     final_url = matches[0][0]
-            await browser.close()
+            browser.close()
             return final_url if final_url != inner_url else None
     except Exception as e:
         print(f"  [!] Playwright error: {e}")
         return None
-
-def refresh_mana_token(inner_url):
-    """Synchronous wrapper around the async token refresh."""
-    return asyncio.run(_refresh_token_async(inner_url))
 
 def local_path_from_url(wrapper_url):
     """
@@ -74,7 +68,7 @@ def local_path_from_url(wrapper_url):
     if 'main' in parts:
         idx = parts.index('main')
         return '/'.join(parts[idx+1:])
-    # Fallback: just use last path segments
+    # Fallback: just use path segments after 'Channels'
     return '/'.join(parts[parts.index('Channels'):])
 
 def update_subfolder_file(wrapper_url, fresh_url):
