@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   refresh-tokens:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted    # Use your Windows self-hosted runner with Playwright installed
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -18,9 +18,9 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: '3.x'
 
-      - name: Install dependencies
+      - name: Install requests (if needed)
         run: pip install requests
 
       - name: Run token refresh
@@ -30,23 +30,23 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          if [[ -n $(git status --porcelain) ]]; then
+          if (git status --porcelain) {
             git add Channels/
             git commit -m "Refresh mana2 tokens"
             git push
-          else
+          } else {
             echo "No token changes to commit."
-          fi
+          }
 
   copy-main:
     needs: refresh-tokens
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest   # GitHub-hosted is fine for copy
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           ref: main
-          fetch-depth: 0   # ensure we get the latest commit after token push
+          fetch-depth: 0
 
       - name: Ensure we are on latest main
         run: |
@@ -70,7 +70,7 @@ jobs:
 
   validate:
     needs: copy-main
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest   # Validation runs fine on GitHub-hosted
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
