@@ -379,6 +379,9 @@ def process_channel(channel_name, candidates, deadline):
 # ----------------------------------------------------------------------
 
 def main():
+    import sys
+    sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+
     if not os.path.exists(PLAYLIST_FILE):
         print(f"Playlist {PLAYLIST_FILE} not found.")
         return
