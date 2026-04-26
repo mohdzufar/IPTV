@@ -98,7 +98,7 @@ Channel Name,Status,Reason
 "#EXTINF:-1 tvg-chno="""" tvg-name=""K-POP"" tvg-id=""CA3900002PM"" tvg-country=""KR"" tvg-logo=""https://tvpnlogopus.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/CA3900002PM_20251202T010043SQUARE.png"" group-title=""Music"",K-POP",PASS,Stream OK (hls_master) -> keep wrapper
 "#EXTINF:-1 tvg-chno="""" tvg-name=""Music Japan"" tvg-id="""" tvg-country=""JP"" tvg-logo="""" group-title=""Music"",Music Japan",PASS,Stream OK (hls_master) -> keep wrapper
 "#EXTINF:-1 tvg-chno="""" tvg-name=""Music India"" tvg-id="""" tvg-country=""IN"" tvg-logo="""" group-title=""Music"",Music India",PASS,Stream OK (hls_master) -> keep wrapper
-"#EXTINF:-1 tvg-chno="""" tvg-name=""Song TV"" tvg-id="""" tvg-country=""ID"" tvg-logo="""" group-title=""Music"",Song TV",FAIL,Fetch failed (HTTP 404)
+"#EXTINF:-1 tvg-chno="""" tvg-name=""Song TV"" tvg-id="""" tvg-country=""ID"" tvg-logo="""" group-title=""Music"",Song TV",PASS,DASH OK -> direct URL
 "#EXTINF:-1 tvg-chno="""" tvg-name=""Paramount Movie Channel"" tvg-id="""" tvg-country=""US"" tvg-logo="""" group-title=""Movies"",Paramount Movie Channel",PASS,Stream OK (hls_master) -> keep wrapper
 "#EXTINF:-1 tvg-chno="""" tvg-name=""MyTime Movie Network"" tvg-id="""" tvg-country=""US"" tvg-logo="""" group-title=""Movies"",MyTime Movie Network",PASS,Stream OK (hls_master) -> keep wrapper
 "#EXTINF:-1 tvg-chno="""" tvg-name=""Movie Sphere"" tvg-id="""" tvg-country=""US"" tvg-logo="""" group-title=""Movies"",Movie Sphere",PASS,Stream OK (hls_master) -> keep wrapper
@@ -118,7 +118,7 @@ Channel Name,Status,Reason
 "#EXTINF:-1 tvg-chno="""" tvg-name=""HBO Signature"" tvg-id="""" tvg-country=""Malaysia"" tvg-logo="""" group-title=""Movies"",HBO Signature",PASS,DASH OK -> direct URL
 "#EXTINF:-1 tvg-chno="""" tvg-name=""HBO Zone"" tvg-id="""" tvg-country=""Malaysia"" tvg-logo="""" group-title=""Movies"",HBO Zone",PASS,Stream OK (hls_master) -> keep wrapper
 "#EXTINF:-1 tvg-chno="""" tvg-name=""Rakuten Top Movies UK"" tvg-id="""" tvg-country=""UK"" tvg-logo="""" group-title=""Movies"",Rakuten Top Movies UK",PASS,Stream OK (hls_master) -> keep wrapper
-"#EXTINF:-1 tvg-chno="""" tvg-name=""Sony Movie Channel"" tvg-id=""Sony.Movie.Channel.HD.us2"" tvg-country=""US"" tvg-logo=""http://schedulesdirect-api20141201-logos.s3.dualstack.us-east-1.amazonaws.com/stationLogos/s69130_dark_360w_270h.png"" group-title=""Movies"",Sony Movie Channel",FAIL,Fetch failed (HTTP 404)
+"#EXTINF:-1 tvg-chno="""" tvg-name=""Sony Movie Channel"" tvg-id=""Sony.Movie.Channel.HD.us2"" tvg-country=""US"" tvg-logo=""http://schedulesdirect-api20141201-logos.s3.dualstack.us-east-1.amazonaws.com/stationLogos/s69130_dark_360w_270h.png"" group-title=""Movies"",Sony Movie Channel",PASS,Stream OK (direct) -> keep wrapper
 "#EXTINF:-1 tvg-chno="""" tvg-name=""Bollywood"" tvg-id="""" tvg-country=""India"" tvg-logo="""" group-title=""Movies"",Bollywood",FAIL,Fetch failed
 "#EXTINF:-1 tvg-chno="""" tvg-name=""Bollywood Classic"" tvg-id="""" tvg-country=""India"" tvg-logo="""" group-title=""Movies"",Bollywood Classic",FAIL,Fetch failed
 "#EXTINF:-1 tvg-chno="""" tvg-name=""EuroNews"" tvg-id="""" tvg-country="""" tvg-logo="""" group-title=""News"",EuroNews",PASS,Stream OK (hls_media) -> keep wrapper
