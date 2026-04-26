@@ -1,95 +1,35 @@
-name: Flatten & Validate IPTV Playlist
+name: Flatten Playlist
 
 on:
-  workflow_dispatch:
+  push:
+    branches: [ main ]
+    paths:
+      - 'Channels/Flatten.m3u8'
+      - 'Channels/**/*.m3u8'
+  pull_request:
+    branches: [ main ]
   schedule:
-    - cron: '0 21 * * *'
-
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+    - cron: '0 0 * * *'   # daily at 00:00 UTC
+  workflow_dispatch:
 
 jobs:
-  flatten:
-    runs-on: self-hosted
-    timeout-minutes: 60
-    permissions:
-      contents: write
-
+  copy-main-m3u8:
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v5
-        with:
-          fetch-depth: 0
+        uses: actions/checkout@v4
 
-      - name: Setup Python
-        uses: actions/setup-python@v6
-        with:
-          python-version: '3.11'
-          check-latest: false
+      - name: Copy Flatten.m3u8 to Main.m3u8
+        run: cp Channels/Flatten.m3u8 Main.m3u8
 
-      - name: Install Playwright and Stealth dependencies
-        run: |
-          pip install playwright playwright-stealth
-          playwright install chromium
-        shell: cmd
-
-      - name: Refresh Mana-Mana streams (updates local files)
-        run: python scripts/refresh_mana2.py
-        shell: cmd
-
-      # ---- NEW STEP: Commit & push the refreshed inner files immediately ----
-      - name: Push refreshed Mana-Mana files
+      - name: Commit and push if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add Channels/Mana-mana/
-          git diff --cached --quiet && exit 0
-          git commit -m "Refresh Mana-Mana tokens [skip ci]"
-          git pull --rebase --autostash origin main
-          if %errorlevel% neq 0 (
-            echo "Rebase failed, aborting and falling back to merge..."
-            git rebase --abort
-            git pull --no-rebase origin main
-          )
-          git push
-        shell: cmd
-
-      # ---- Now the raw URLs are updated, proceed with flatten & validate ----
-      - name: Simple flatten (no validation)
-        run: python scripts/flatten.py
-        shell: cmd
-
-      - name: Validate & unwrap Mana-mana (produce final Main.m3u8)
-        run: python scripts/validate.py
-        shell: cmd
-
-      - name: Abort any stuck rebase (safety)
-        run: |
-          if exist ".git\rebase-merge" (
-            echo "Aborting stuck rebase..."
-            git rebase --abort
-          )
-        shell: cmd
-        continue-on-error: true
-
-      - name: Debug - Show Git Status
-        run: git status
-        shell: cmd
-        continue-on-error: true
-
-      - name: Commit and push final playlist & report
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add Main.m3u8 validation-report.txt
-          git diff --cached --quiet && exit 0
-          git commit -m "Flatten & validate playlist [skip ci]"
-          git pull --rebase --autostash origin main
-          if %errorlevel% neq 0 (
-            echo "Rebase failed, aborting and falling back to merge..."
-            git rebase --abort
-            git pull --no-rebase origin main
-          )
-          git push
-        shell: cmd
+          if [[ -n $(git status --porcelain) ]]; then
+            git add Main.m3u8
+            git commit -m "Update Main.m3u8 from Flatten.m3u8"
+            git push
+          else
+            echo "No changes to commit."
+          fi
