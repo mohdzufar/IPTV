@@ -26,7 +26,7 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/IKIM/I
 #EXTINF:-1 tvg-chno="" tvg-name="Astro Awani" tvg-id="AstroAwani.my" tvg-country="MY" tvg-logo="https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/436_144.png" group-title="News",Astro Awani
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/ASTRO/Awani/Astro%20Awani.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Al-Hijrah" tvg-id="TV ALHIJRAH" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/esdfqp.png" group-title="Malaysia",Al-Hijrah
-https://live.mana2.my/TvAlhijrah/index.m3u8?auth_key=1777233995-cf374b815ce54db7b15610486def100c-0-644c3ff02914c7ddc6f0f66e1f22f016&token=1777233995-cf374b815ce54db7b15610486def100c-0-644c3ff02914c7ddc6f0f66e1f22f016
+https://live.mana2.my/TvAlhijrah/index.m3u8?auth_key=1777235663-9926bd05b88d42b18e763d23802a1a2f-0-0a2e88f70ab7d17c9dc6a234d567ea1e&token=1777235663-9926bd05b88d42b18e763d23802a1a2f-0-0a2e88f70ab7d17c9dc6a234d567ea1e
 #EXTINF:-1 tvg-chno="" tvg-name="Enjoy TV" tvg-id="Enjoy TV" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/channel/logos/hglfwv.png" group-title="Malaysia",Enjoy TV
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Mana-mana/Enjoy_TV/Enjoy_TV.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Borneo TV" tvg-id="" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/npdqkp.png" group-title="Malaysia",Borneo TV
@@ -36,11 +36,11 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Mana-m
 #EXTINF:-1 tvg-chno="" tvg-name="Suke TV" tvg-id="" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/utgwdm.png" group-title="Malaysia",Suke TV
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Mana-mana/Suke_TV/Suke_TV.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="TVS" tvg-id="" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/filzbh.jpeg" group-title="Malaysia",TVS
-https://vod.mana2.my/TvS/index-1776880800-1800.m3u8?auth_key=1777233999-81149285384145e596ddba7fafa1d921-0-7f7ae2b420a4e171ddf6564045dd5945&token=1777233999-81149285384145e596ddba7fafa1d921-0-7f7ae2b420a4e171ddf6564045dd5945
+https://vod.mana2.my/TvS/index-1776880800-1800.m3u8?auth_key=1777235667-c6689e96aee543519cfa1a696d3d0898-0-9e107179afacd0483cb399e2b8aaf583&token=1777235667-c6689e96aee543519cfa1a696d3d0898-0-9e107179afacd0483cb399e2b8aaf583
 #EXTINF:-1 tvg-chno="" tvg-name="Sukan+" tvg-id="" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/soxsng.jpeg" group-title="Malaysia",Sukan+
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Mana-mana/SukanPlus/SukanPlus.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Bernama" tvg-id="Bernama" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/ivnvsj.png" group-title="Malaysia",Bernama
-https://live.mana2.my/Bernama/index.m3u8?auth_key=1777234002-9c04e4a8bb834b0d94ab4b8c9f29a391-0-1902b1e33f0a0f4dcaa0b3cb37b7a633&token=1777234002-9c04e4a8bb834b0d94ab4b8c9f29a391-0-1902b1e33f0a0f4dcaa0b3cb37b7a633
+https://live.mana2.my/Bernama/index.m3u8?auth_key=1777235670-f3ce8ef1a101452aacf4f88577a0e840-0-b6a74964cf2c8bbc44c4df8cb1d2c8a8&token=1777235670-f3ce8ef1a101452aacf4f88577a0e840-0-b6a74964cf2c8bbc44c4df8cb1d2c8a8
 ## #EXTINF:-1 tvg-chno="" tvg-name="Dewan Rakyat" tvg-id="DewanRakyat.my" tvg-country="MY" tvg-logo="https://rtm-images.glueapi.io/320x0/live_channel/7.png" group-title="Malaysia",Dewan Rakyat
 ## https://raw.githubusercontent.com/mohdzufar/Main-IPTV/refs/heads/main/Channels/RTM/Dewan%20Rakyat/Dewan%20Rakyat.m3u8
 ## #EXTINF:-1 tvg-chno="" tvg-name="Dewan Negara" tvg-id="DewanNegara.my" tvg-country="MY" tvg-logo="https://rtm-images.glueapi.io/320x0//live_channel/PDN_Trans.png" group-title="Malaysia",Dewan Negara
@@ -101,8 +101,8 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Golf%2
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Golf%20Pass/Golf%20Pass.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="PGA Tour" tvg-id="" tvg-country="US" tvg-logo="https://images.pluto.tv/channels/65b14aae0cb1a100087a216e/colorLogoPNG.png" group-title="Golf",PGA Tour
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/PGA%20Tour/PGA%20Tour.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="DP World Tour" tvg-id="6882521ac258734a42a60ed0" tvg-country="UK" tvg-logo="https://images.pluto.tv/channels/6882521ac258734a42a60ed0/colorLogoPNG_1753371278188.png" group-title="Golf",DP World Tour
-https://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/v2/stitch/hls/channel/6882521ac258734a42a60ed0/master.m3u8?advertisingId=&appName=web&appVersion=8.1.0&app_name=web&clientDeviceType=0&clientID=7b24ae02-4077-11f1-898a-70a8a53e0965&clientModelNumber=1.0.0&country=GB&deviceDNT=false&deviceId=7b24ae02-4077-11f1-898a-70a8a53e0965&deviceLat=51.5100&deviceLon=-0.0800&deviceMake=chrome&deviceModel=web&deviceType=web&deviceVersion=133.0.0&marketingRegion=GB&serverSideAds=false&sessionID=7b299c32-4077-11f1-acf3-42aa0d6246dc&sid=7b299c32-4077-11f1-acf3-42aa0d6246dc&userId=&jwt=eyJhbGciOiJIUzI1NiIsImtpZCI6ImZlYzgyYTYzLTViYjctNDI2ZS04Y2FhLTM4ZjE3MmIwMDYwYyIsInR5cCI6IkpXVCJ9.eyJzZXNzaW9uSUQiOiI3YjI5OWMzMi00MDc3LTExZjEtYWNmMy00MmFhMGQ2MjQ2ZGMiLCJjbGllbnRJUCI6Ijg0LjE3LjUwLjE3MyIsImNpdHkiOiJMb25kb24iLCJwb3N0YWxDb2RlIjoiZWMybiAzYXIiLCJjb3VudHJ5IjoiR0IiLCJkbWEiOjgyNjA0NCwiYWN0aXZlUmVnaW9uIjoiR0IiLCJkZXZpY2VMYXQiOjUxLjUwOTk5ODMyMTUzMzIsImRldmljZUxvbiI6LTAuMDc5OTk5OTk4MjExODYwNjYsInByZWZlcnJlZExhbmd1YWdlIjoiZW4iLCJkZXZpY2VUeXBlIjoid2ViIiwiZGV2aWNlVmVyc2lvbiI6IjEzMy4wLjAiLCJkZXZpY2VNYWtlIjoiY2hyb21lIiwiZGV2aWNlTW9kZWwiOiJ3ZWIiLCJhcHBOYW1lIjoid2ViIiwiYXBwVmVyc2lvbiI6IjguMS4wIiwiY2xpZW50SUQiOiI3YjI0YWUwMi00MDc3LTExZjEtODk4YS03MGE4YTUzZTA5NjUiLCJjbUF1ZGllbmNlSUQiOiIiLCJpc0NsaWVudEROVCI6ZmFsc2UsInVzZXJJRCI6IiIsImxvZ0xldmVsIjoiREVGQVVMVCIsInRpbWVab25lIjoiRXVyb3BlL0xvbmRvbiIsInNlcnZlclNpZGVBZHMiOmZhbHNlLCJlMmVCZWFjb25zIjpmYWxzZSwiZmVhdHVyZXMiOnsibXVsdGlQb2RBZHMiOnsiY29ob3J0IjoiIiwiZW5hYmxlZCI6dHJ1ZX0sInN0aXRjaGVyRGFzaE5nIjp7ImZsYXR0ZW5CYXNlVXJsIjp0cnVlfSwic3RpdGNoZXJIbHNOZyI6eyJkZW11eGVkQXVkaW8iOiJqaXQifX0sImZtc1BhcmFtcyI6eyJmd1ZjSUQyIjoiN2IyNGFlMDItNDA3Ny0xMWYxLTg5OGEtNzBhOGE1M2UwOTY1IiwiZndWY0lEMkNvcHBhIjoiN2IyNGFlMDItNDA3Ny0xMWYxLTg5OGEtNzBhOGE1M2UwOTY1IiwiY3VzdG9tUGFyYW1zIjp7ImZtc19saXZlcmFtcF9pZGwiOiIiLCJmbXNfZW1haWxoYXNoIjoiIiwiZm1zX3N1YnNjcmliZXJpZCI6IiIsImZtc19pZmEiOiIiLCJmbXNfaWRmdiI6IiIsImZtc191c2VyaWQiOiI3YjI0YWUwMi00MDc3LTExZjEtODk4YS03MGE4YTUzZTA5NjUiLCJmbXNfdmNpZDJ0eXBlIjoidXNlcmlkIiwiZm1zX3JhbXBfaWQiOiIiLCJmbXNfaGhfcmFtcF9pZCI6IiIsImZtc19iaWRpZHR5cGUiOiIiLCJfZndfM1BfVUlEIjoiIiwiZm1zX3J1bGVpZCI6IjEwMDIxLDEwMDAwLDEwMDIwLDEwMDIzLDEwMDA5LDEwMDEzLDEwMDE0LDEwMDE2LDEwMDE1In19LCJkcm0iOnsibmFtZSI6IndpZGV2aW5lIiwibGV2ZWwiOiJMMyJ9LCJzZXNzaW9uU3RhcnRUaW1lIjoxNzc3MTAxNzMzNjgwLCJpc3MiOiJib290LnBsdXRvLnR2Iiwic3ViIjoicHJpOnYxOnBsdXRvOmRldmljZXM6R0I6TjJJeU5HRmxNREl0TkRBM055MHhNV1l4TFRnNU9HRXROekJoT0dFMU0yVXdPVFkxIiwiYXVkIjoiKi5wbHV0by50diIsImV4cCI6MTc3NzE4ODEzMywiaWF0IjoxNzc3MTAxNzMzLCJqdGkiOiJmOWZkYmViNy02Nzk1LTQ3MGQtYjZlNC0zNzgzYjZmM2IwNzIifQ.z8nTzHrNblrWCx6P1buDoGQPCAfUoXhrZ39BRk2YSeg&quality=720p&deviceMake=chrome&deviceType=web&deviceModel=web&deviceVersion=133.0.0&architecture=x86_64&buildVersion=1.0.0&includeExtendedEvents=true&masterJWTPassthrough=true
+## #EXTINF:-1 tvg-chno="" tvg-name="DP World Tour" tvg-id="6882521ac258734a42a60ed0" tvg-country="UK" tvg-logo="https://images.pluto.tv/channels/6882521ac258734a42a60ed0/colorLogoPNG_1753371278188.png" group-title="Golf",DP World Tour
+## https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/DP%20World%20Tour/DP%20World%20Tour.m3u8
 ## #EXTINF:-1 tvg-chno="" tvg-name="Sky Sport Golf" tvg-id="" tvg-country="" tvg-logo="" group-title="Golf",Sky Sport Golf
 ## https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/SkySport/Golf/Golf.m3u8
 ## #EXTINF:-1 tvg-chno="" tvg-name="Bein Sports 1" tvg-id="399482" tvg-country="" tvg-logo="" group-title="Sports",Bein Sports 1
@@ -175,10 +175,10 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Speed%
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Fifa/Fifa%20Plus.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="TNA Wresling" tvg-id="" tvg-country="" tvg-logo="" group-title="Sports",TNA Wresling
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/TNA/TNA%20Wresling.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="Astro Badminton" tvg-id="397400" tvg-country="MY" tvg-logo="" group-title="Sports",Astro Badminton
-https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/ASTRO/Astro%20Badminton.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="Astro Football" tvg-id="" tvg-country="MY" tvg-logo="" group-title="Sports",Astro Football
-https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/ASTRO/Astro%20Football.m3u8
+## #EXTINF:-1 tvg-chno="" tvg-name="Astro Badminton" tvg-id="397400" tvg-country="MY" tvg-logo="" group-title="Sports",Astro Badminton
+## https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/ASTRO/Astro%20Badminton.m3u8
+## #EXTINF:-1 tvg-chno="" tvg-name="Astro Football" tvg-id="" tvg-country="MY" tvg-logo="" group-title="Sports",Astro Football
+## https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/ASTRO/Astro%20Football.m3u8
 #=====E-Sports=====
 ## #EXTINF:-1 tvg-chno="" tvg-name="CS2" tvg-id="" tvg-country="" tvg-logo="" group-title="E-Sports",CS2
 ## https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/E-Sport/Counter%20Strike/Counter%20Strike%201.m3u8
@@ -199,8 +199,8 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Music/
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Music/Music%20Japan.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Music India" tvg-id="" tvg-country="IN" tvg-logo="" group-title="Music",Music India
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Music/Music%20India.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="Song TV" tvg-id="" tvg-country="ID" tvg-logo="" group-title="Music",Song TV
-https://cdnjkt913.transvision.co.id:1000/live/master/100/4028c685840ff0490184560acf62436a/manifest.mpd
+## #EXTINF:-1 tvg-chno="" tvg-name="Song TV" tvg-id="" tvg-country="ID" tvg-logo="" group-title="Music",Song TV
+## https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Music/Song%20TV.m3u8
 #====Movies====
 #EXTINF:-1 tvg-chno="" tvg-name="Paramount Movie Channel" tvg-id="" tvg-country="US" tvg-logo="" group-title="Movies",Paramount Movie Channel
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Paramount/Movie%20Channel.m3u8
@@ -240,8 +240,8 @@ https://cdn10jtedge.indihometv.com/atm/DASH/hbosignature/manifest.mpd
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/HBO/HBO%20Zone.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Rakuten Top Movies UK" tvg-id="" tvg-country="UK" tvg-logo="" group-title="Movies",Rakuten Top Movies UK
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Rakuten/Rakuten%20Top%20Movies%20UK.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="Sony Movie Channel" tvg-id="Sony.Movie.Channel.HD.us2" tvg-country="US" tvg-logo="http://schedulesdirect-api20141201-logos.s3.dualstack.us-east-1.amazonaws.com/stationLogos/s69130_dark_360w_270h.png" group-title="Movies",Sony Movie Channel
-https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Sony/Sony%20Movie%20Channel.m3u8
+## #EXTINF:-1 tvg-chno="" tvg-name="Sony Movie Channel" tvg-id="Sony.Movie.Channel.HD.us2" tvg-country="US" tvg-logo="http://schedulesdirect-api20141201-logos.s3.dualstack.us-east-1.amazonaws.com/stationLogos/s69130_dark_360w_270h.png" group-title="Movies",Sony Movie Channel
+## https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Sony/Sony%20Movie%20Channel.m3u8
 ## #EXTINF:-1 tvg-chno="" tvg-name="Bollywood" tvg-id="" tvg-country="India" tvg-logo="" group-title="Movies",Bollywood
 ## https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Bollywood/Bollywood.m3u8
 ## #EXTINF:-1 tvg-chno="" tvg-name="Bollywood Classic" tvg-id="" tvg-country="India" tvg-logo="" group-title="Movies",Bollywood Classic
@@ -306,10 +306,10 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Love%2
 #EXTINF:-1 tvg-chno="" tvg-name="Documentary+" tvg-id="US" tvg-country="" tvg-logo="" group-title="",Documentary+
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Documentary_Plus/Documentary_Plus.m3u8
 #====China=====
-#EXTINF:-1 tvg-chno="" tvg-name="mn静静nm" tvg-id="" tvg-country="CN" tvg-logo="" group-title="China",mn静静nm
-https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/China/mn静静nm.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="万事通熊猫" tvg-id="" tvg-country="CN" tvg-logo="" group-title="China",万事通熊猫
-https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/China/万事通熊猫.m3u8
+## #EXTINF:-1 tvg-chno="" tvg-name="mn静静nm" tvg-id="" tvg-country="CN" tvg-logo="" group-title="China",mn静静nm
+## https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/China/mn静静nm.m3u8
+## #EXTINF:-1 tvg-chno="" tvg-name="万事通熊猫" tvg-id="" tvg-country="CN" tvg-logo="" group-title="China",万事通熊猫
+## https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/China/万事通熊猫.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="K-Content" tvg-id="GB17000066A" tvg-country="KR" tvg-logo="https://tvpnlogopeu.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/GB17000066A_20250826T004916SQUARE.png" group-title="Korea",K-Content
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Korea/K-Content.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="K-Drama+" tvg-id="CA17000023Q" tvg-country="KR" tvg-logo="https://tvpnlogopus.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/CA17000023Q_20250826T234700SQUARE.png" group-title="Korea",K-Drama+
