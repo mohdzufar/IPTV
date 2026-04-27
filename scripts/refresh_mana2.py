@@ -2,7 +2,11 @@ import re
 import sys
 import time
 import os
+import io
 from playwright.sync_api import sync_playwright
+
+# Fix Unicode output on Windows
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 # ---------- CONFIGURATION ----------
 CHANNELS = {
@@ -68,7 +72,8 @@ def scrape_mana2_urls():
                 page.goto(ch_url, wait_until='networkidle', timeout=30000)
                 print("    Page loaded (network idle).")
 
-                # -------- Try multiple selectors to click a play button --------
+                # -------- Try to start video playback --------
+                # Attempt 1: click common play buttons
                 play_selectors = [
                     'button[aria-label="Play"]',
                     '.vjs-big-play-button',
@@ -88,17 +93,23 @@ def scrape_mana2_urls():
                     except Exception:
                         continue
 
+                # Attempt 2: use JavaScript to force play on video element
                 if not clicked:
-                    # As last resort, try clicking the video element directly
                     try:
-                        page.locator('video').click(timeout=5000)
-                        print("    Clicked on <video> element.")
+                        page.evaluate("""
+                            const v = document.querySelector('video');
+                            if (v) { v.muted = true; v.play(); }
+                        """)
+                        print("    Forced video play via JavaScript.")
                         clicked = True
-                    except Exception:
-                        print("    No clickable play element found; trying without clicking.")
+                    except Exception as e:
+                        print(f"    JS play failed: {e}")
 
-                # Wait for the m3u8 request to appear (max 15 seconds)
-                wait_time = 15
+                if not clicked:
+                    print("    Could not trigger playback, waiting anyway...")
+
+                # Wait up to 20 seconds for the m3u8 request to appear
+                wait_time = 20
                 for _ in range(wait_time):
                     if m3u8_url:
                         break
@@ -106,12 +117,12 @@ def scrape_mana2_urls():
 
                 if m3u8_url:
                     urls[channel] = m3u8_url
-                    print(f"    ✅ Success: {m3u8_url}")
+                    print(f"    Success: {m3u8_url}")
                 else:
-                    print(f"    ❌ No .m3u8 request captured after {wait_time}s.")
+                    print(f"    No .m3u8 request captured after {wait_time}s.")
 
-            except Exception as exc:
-                print(f"    ERROR: {exc}")
+            except Exception as e:
+                print(f"    ERROR: {e}")
 
             # Remove the listener before moving to the next channel
             page.remove_listener('request', handle_request)
