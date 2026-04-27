@@ -55,7 +55,8 @@ def validate_stream(url, headers=None):
         resp = requests.get(url, headers=headers, timeout=15, stream=True)
         chunk = resp.raw.read(2048, decode_content=True)
         content_type = resp.headers.get('Content-Type', '')
-        kind = classify_content(chunk.decode('utf-8', errors='ignore'), resp.status_code, content_type)
+        kind = classify_content(chunk.decode('utf-8', errors='ignore'),
+        resp.status_code, content_type)
         good = kind not in ('invalid', 'html', 'empty_ok')
         return kind, resp.status_code, good
     except Exception:
@@ -107,49 +108,70 @@ def main():
 
     print(f"Parsing {flatten_path}")
     blocks = parse_flatten(flatten_path)
-    print(f"Found {len(blocks)} channels")
+    total = len(blocks)
+    print(f"Found {total} channels\n")
 
     results = [{} for _ in blocks]
-    with open(os.path.join(base_dir, 'validation-report.txt'), 'w', encoding='utf-8') as report:
+    with open(os.path.join(base_dir, 'validation-report.txt'), 'w',
+    encoding='utf-8') as report:
         report.write("Channel,Status,Type,DirectURL\n")
         for i, (full, extinf, url, name, group) in enumerate(blocks):
+            print("=" * 60)
+            print(f"[{i+1}/{total}] {name} (group: {group})")
+
             if is_skipped(name):
                 results[i] = {'valid': True, 'direct': None}
                 report.write(f"{name},Skipped,,\n")
-                print(f"{i+1}/{len(blocks)} {name}: skipped")
+                print("Action  : ⏭️  Skipped (Mana-mana / tonton)")
                 continue
 
-            print(f"{i+1}/{len(blocks)} {name}: validating...", end=' ')
+            print(f"Wrapper : {url.strip()}")
             try:
                 wr = requests.get(url.strip(), timeout=10, headers={
                     'User-Agent': 'VLC/3.0.20'
                 })
+                print(f"Wrapper Status: {wr.status_code}")
                 if wr.status_code != 200:
                     results[i] = {'valid': False, 'direct': None}
                     report.write(f"{name},WrapperHTTP{wr.status_code},,\n")
-                    print(f"wrapper status {wr.status_code}")
+                    print("Action  : ❌ Commented out (wrapper HTTP error)")
                     continue
+
                 wrapper_content = wr.text
-                inner_url = extract_inner_url_from_wrapper(wrapper_content, url.strip())
+                inner_url = extract_inner_url_from_wrapper(wrapper_content,
+                url.strip())
                 if not inner_url:
                     results[i] = {'valid': False, 'direct': None}
                     report.write(f"{name},NoInnerURL,,\n")
-                    print("no inner URL")
+                    print("Inner URL: NOT FOUND")
+                    print("Action  : ❌ Commented out (no inner URL)")
                     continue
 
+                print(f"Inner URL: {inner_url}")
+
                 stream_kind, status, good = validate_stream(inner_url)
-                results[i]['valid'] = good and (stream_kind not in ('empty_ok',))
+                results[i]['valid'] = good and (stream_kind not in
+                ('empty_ok',))
                 if results[i]['valid'] and stream_kind in ('mp4', 'dash'):
                     results[i]['direct'] = inner_url
+                    print(f"Stream   : {stream_kind} (HTTP {status})")
+                    print("Action  : 🔄 Replaced with direct URL")
+                elif results[i]['valid']:
+                    results[i]['direct'] = None
+                    print(f"Stream   : {stream_kind} (HTTP {status})")
+                    print("Action  : ✅ Kept (wrapper)")
                 else:
                     results[i]['direct'] = None
+                    print(f"Stream   : {stream_kind} (HTTP {status})")
+                    print("Action  : ❌ Commented out (invalid stream)")
                 report.write(f"{name},{stream_kind},{status},{inner_url}\n")
-                print(f"{stream_kind} (valid={results[i]['valid']})")
             except Exception as e:
                 results[i] = {'valid': False, 'direct': None}
                 report.write(f"{name},Exception,{str(e)},\n")
-                print(f"exception: {e}")
+                print(f"Exception: {str(e)}")
+                print("Action  : ❌ Commented out (exception)")
 
+    print("\n" + "=" * 60)
     print("Writing Main.m3u8")
     update_main_m3u8(main_path, flatten_path, blocks, results)
     print("Done.")
