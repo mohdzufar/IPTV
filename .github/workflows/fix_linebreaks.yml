@@ -3,6 +3,9 @@ name: Fix Flatten.m3u8 line breaks
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write   # <-- this gives write access to push commits
+
 jobs:
   fix:
     runs-on: ubuntu-latest
