@@ -28,21 +28,53 @@ HEADERS = {
 MANA2_CONTAINER_PATH = "Channels/Mana-mana"
 
 
-def replace_channel_url_in_file(filepath, channel_name, new_url):
-    """Update the .m3u8 file for a specific channel with new URL and headers."""
-    with open(filepath, 'r', encoding='utf-8') as f:
+def get_subfolder_from_flatten(base_dir, channel_name):
+    """
+    Read Flatten.m3u8 and extract the local subfolder path of the channel's wrapper .m3u8.
+    Returns something like 'Channels/Mana-mana/Enjoy-TV/Enjoy-TV.m3u8'.
+    """
+    flatten_path = os.path.join(base_dir, 'Channels', 'Flatten.m3u8')
+    if not os.path.exists(flatten_path):
+        return None
+
+    with open(flatten_path, 'r', encoding='utf-8') as f:
         content = f.read()
 
-    # Replace the URL line (first http line after #EXTINF)
-    pattern = re.compile(rf'(#EXTINF:.*{re.escape(channel_name)}.*\n)(https?://[^\n]+)', re.IGNORECASE)
-    replacement = r'\1' + new_url
-    content = pattern.sub(replacement, content)
+    # Find the wrapper URL for this channel
+    pattern = re.compile(
+        rf'#EXTINF:[^\n]*\b{re.escape(channel_name)}\b[^\n]*\n(https?://[^\n]+)',
+        re.IGNORECASE
+    )
+    match = pattern.search(content)
+    if match:
+        wrapper_url = match.group(1).strip()
+        # Convert raw GitHub URL to local repo path
+        # E.g., https://raw.githubusercontent.com/.../main/Channels/Mana-mana/Enjoy-TV/Enjoy-TV.m3u8
+        local_path = re.sub(r'.*/(?:main|refs/heads/main)/(.+)', r'\1', wrapper_url)
+        if local_path:
+            return local_path
+    return None
 
-    # Ensure EXTVLCOPT headers exist
+
+def replace_channel_url_in_subfolder(base_dir, rel_path, new_url):
+    """Replace the first HTTP URL in the subfolder .m3u8 file with new_url."""
+    full_path = os.path.join(base_dir, rel_path)
+    if not os.path.exists(full_path):
+        print(f"    Warning: Subfolder file not found: {full_path}")
+        return
+
+    with open(full_path, 'r', encoding='utf-8') as f:
+        content = f.read()
+
+    # Replace the first HTTP URL after #EXTINF
+    pattern = re.compile(r'(#EXTINF:[^\n]*\n)(https?://[^\n]+)')
+    content = pattern.sub(r'\1' + new_url, content)
+
+    # Ensure EXTVLCOPT headers
     if '#EXTVLCOPT:http-user-agent' not in content:
         content = content.replace('#EXTINF:', '#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)\n#EXTVLCOPT:http-referrer=https://www.mana2.my/\n#EXTINF:', 1)
 
-    with open(filepath, 'w', encoding='utf-8') as f:
+    with open(full_path, 'w', encoding='utf-8') as f:
         f.write(content)
 
 
@@ -58,7 +90,6 @@ def scrape_mana2_urls():
             print(f"  Processing {channel} ({ch_url})")
             m3u8_url = None
 
-            # Set up network listener BEFORE navigating
             def handle_request(request):
                 nonlocal m3u8_url
                 if '.m3u8' in request.url and 'live.mana2.my' in request.url:
@@ -68,11 +99,8 @@ def scrape_mana2_urls():
             page.on('request', handle_request)
 
             try:
-                # Navigate and wait for network to settle (video autoplays)
                 page.goto(ch_url, wait_until='networkidle', timeout=30000)
                 print("    Page loaded.")
-
-                # Wait a bit more to be sure the request fires
                 for _ in range(15):
                     if m3u8_url:
                         break
@@ -83,7 +111,6 @@ def scrape_mana2_urls():
                     print(f"    Success: {m3u8_url}")
                 else:
                     print("    No .m3u8 request captured.")
-
             except Exception as e:
                 print(f"    ERROR: {e}")
 
@@ -109,7 +136,7 @@ def main():
         print("No URLs scraped, exiting without changes.")
         sys.exit(0)
 
-    # Update Main.m3u8
+    # Read current Main.m3u8 for replacement
     with open(main_m3u8_path, 'r', encoding='utf-8') as f:
         main_content = f.read()
 
@@ -118,13 +145,12 @@ def main():
         pattern = re.compile(rf'(#EXTINF:.*{re.escape(channel)}.*\n)(https?://[^\n]+)', re.IGNORECASE)
         main_content = pattern.sub(r'\1' + new_url, main_content)
 
-        # Replace in subfolder file
-        channel_safe = channel.replace(" ", "-")
-        subfolder_file = os.path.join(base_dir, MANA2_CONTAINER_PATH, channel_safe, f"{channel}.m3u8")
-        if os.path.exists(subfolder_file):
-            replace_channel_url_in_file(subfolder_file, channel, new_url)
+        # Replace in subfolder file – extract path from Flatten.m3u8
+        subfolder_rel = get_subfolder_from_flatten(base_dir, channel)
+        if subfolder_rel:
+            replace_channel_url_in_subfolder(base_dir, subfolder_rel, new_url)
         else:
-            print(f"Warning: subfolder file not found for {channel}: {subfolder_file}")
+            print(f"Warning: Could not find subfolder path for {channel}")
 
     with open(main_m3u8_path, 'w', encoding='utf-8') as f:
         f.write(main_content)
