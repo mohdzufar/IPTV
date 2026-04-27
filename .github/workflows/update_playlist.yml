@@ -32,20 +32,21 @@ jobs:
           $content = Get-Content -Path Channels\Flatten.m3u8 | Where-Object { $_ -notmatch '^##' -and $_ -notmatch '^\s*$' }
           [System.IO.File]::WriteAllLines("$PWD\Main.m3u8", $content)
 
-      - name: Step 2 - Refresh Mana2 tokens
-        run: python scripts/refresh_mana2.py
-
-      - name: Step 3 & 4 - Validate and update playlist
+      - name: Step 2 & 3 - Validate non‑Mana channels
         run: python scripts/validate_and_update.py
+
+      - name: Step 3 & 4 - Refresh Mana2 tokens
+        run: python scripts/refresh_mana2.py
 
       - name: Commit and push changes
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add Main.m3u8 Channels/ validation-report.txt
-          $diff = git diff --cached --quiet
-          if ($LASTEXITCODE -ne 0) {
+          $changes = git diff --cached --name-only
+          if ($changes) {
               git commit -m "Automated daily update"
+              git remote set-url origin https://x-access-token:$env:GITHUB_TOKEN@github.com/mohdzufar/IPTV.git
               git push
           } else {
               Write-Host "No changes to commit"
