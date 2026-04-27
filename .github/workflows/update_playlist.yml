@@ -5,6 +5,9 @@ on:
     - cron: '0 21 * * *'  # 5 AM Malaysia (UTC+8)
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   update:
     runs-on: self-hosted
@@ -26,7 +29,8 @@ jobs:
 
       - name: Step 1 - Copy Flatten and clean comments
         run: |
-          grep -v '^##' Channels/Flatten.m3u8 | grep -v '^\s*$' > Main.m3u8
+          $content = Get-Content -Path Channels\Flatten.m3u8 | Where-Object { $_ -notmatch '^##' -and $_ -notmatch '^\s*$' }
+          [System.IO.File]::WriteAllLines("$PWD\Main.m3u8", $content)
 
       - name: Step 2 - Refresh Mana2 tokens
         run: python scripts/refresh_mana2.py
