@@ -114,7 +114,7 @@ Cinemax,hls_master,200,http://23.237.104.106:8080/USA_CINEMAX/index.m3u8
 Hallmark Channel,hls_master,200,http://23.237.104.106:8080/USA_HALLMARK/index.m3u8
 HBO,hls_master,200,http://23.237.104.106:8080/USA_HBO/index.m3u8
 HBO 2,hls_master,200,http://23.237.104.106:8080/USA_HBO2/index.m3u8
-HBO Comedy,hls_master,200,http://23.237.104.106:8080/USA_HBO_COMEDY/index.m3u8
+HBO Comedy,invalid,404,http://23.237.104.106:8080/USA_HBO_COMEDY/index.m3u8
 HBO Family,dash,200,https://cdn10jtedge.indihometv.com/atm/DASH/hbofamily/manifest.mpd
 HBO Signature,dash,200,https://cdn10jtedge.indihometv.com/atm/DASH/hbosignature/manifest.mpd
 HBO Zone,hls_master,200,http://23.237.104.106:8080/USA_HBO_ZONE/index.m3u8
