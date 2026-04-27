@@ -2,6 +2,7 @@ import sys
 import time
 import os
 import io
+import re
 from playwright.sync_api import sync_playwright
 
 # Fix Unicode output on Windows
@@ -25,6 +26,47 @@ HEADERS = {
 # --------------------------------------------------------------------
 
 
+def fetch_token(channel_name, page_url):
+    """
+    Open a fresh browser context + page, navigate to the Mana2 channel,
+    capture the first .m3u8 request that comes from live.mana2.my,
+    then immediately close the context.  Returns the token URL or None.
+    """
+    token = None
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=True)
+        context = browser.new_context(user_agent=HEADERS["User-Agent"])
+        page = context.new_page()
+
+        def handle_request(request):
+            nonlocal token
+            if token is None and '.m3u8' in request.url and 'live.mana2.my' in request.url:
+                token = request.url
+                print(f"    Captured: {token}")
+
+        page.on('request', handle_request)
+
+        try:
+            print(f"  Navigating to {page_url} ...")
+            page.goto(page_url, wait_until='networkidle', timeout=30000)
+            print("    Page loaded, waiting for .m3u8 request ...")
+            for _ in range(20):   # up to 20 seconds
+                if token:
+                    break
+                time.sleep(1)
+
+            if token:
+                print(f"    Success: {token}")
+            else:
+                print("    No .m3u8 request captured within 20s.")
+        except Exception as e:
+            print(f"    ERROR during navigation/playback: {e}")
+
+        context.close()
+        browser.close()
+    return token
+
+
 def replace_in_main_m3u8(main_path, channel_name, new_url):
     """
     Line‑by‑line replacement in Main.m3u8:
@@ -37,8 +79,6 @@ def replace_in_main_m3u8(main_path, channel_name, new_url):
     found = False
     for i, line in enumerate(lines):
         if line.startswith('#EXTINF'):
-            # Extract the exact tvg-name value
-            import re
             m = re.search(r'tvg-name="([^"]*)"', line)
             if m and m.group(1) == channel_name:
                 if i + 1 < len(lines) and lines[i + 1].strip().startswith('http'):
@@ -56,10 +96,10 @@ def replace_in_main_m3u8(main_path, channel_name, new_url):
 
 def create_or_replace_subfolder(base_dir, channel_name, new_url):
     """
-    Create (or overwrite) a wrapper .m3u8 file inside
-    Channels/Mana-mana/{channel_name}/{channel_name}.m3u8 with a clean template.
+    Create (or overwrite) a wrapper .m3u8 file at
+    Channels/Mana-mana/{channel_name}/{channel_name}.m3u8
+    with a clean template and the fresh token URL.
     """
-    # Folder path: Channels/Mana-mana/<channel_name>
     folder = os.path.join(base_dir, 'Channels', 'Mana-mana', channel_name)
     os.makedirs(folder, exist_ok=True)
 
@@ -73,67 +113,25 @@ def create_or_replace_subfolder(base_dir, channel_name, new_url):
     )
     with open(file_path, 'w', encoding='utf-8') as f:
         f.write(content)
-    print(f"    Created / replaced subfolder file: {file_path}")
-
-
-def scrape_mana2_urls():
-    """Scrape fresh m3u8 URLs from mana2.my using Playwright."""
-    with sync_playwright() as p:
-        browser = p.chromium.launch(headless=True)
-        context = browser.new_context(user_agent=HEADERS["User-Agent"])
-        page = context.new_page()
-        urls = {}
-
-        for channel, ch_url in CHANNELS.items():
-            print(f"  Processing {channel} ({ch_url})")
-            m3u8_url = None
-
-            def handle_request(request):
-                nonlocal m3u8_url
-                if '.m3u8' in request.url and 'live.mana2.my' in request.url:
-                    m3u8_url = request.url
-                    print(f"    Captured: {m3u8_url}")
-
-            page.on('request', handle_request)
-
-            try:
-                page.goto(ch_url, wait_until='networkidle', timeout=30000)
-                print("    Page loaded.")
-                for _ in range(15):
-                    if m3u8_url:
-                        break
-                    time.sleep(1)
-
-                if m3u8_url:
-                    urls[channel] = m3u8_url
-                    print(f"    Success: {m3u8_url}")
-                else:
-                    print("    No .m3u8 request captured.")
-            except Exception as e:
-                print(f"    ERROR: {e}")
-
-            page.remove_listener('request', handle_request)
-
-        browser.close()
-    return urls
+    print(f"    Created / replaced subfolder: {file_path}")
 
 
 def main():
     base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     main_path = os.path.join(base_dir, 'Main.m3u8')
 
-    print("Scraping fresh Mana2 URLs...")
-    fresh_urls = scrape_mana2_urls()
-    if not fresh_urls:
-        print("No new URLs scraped – exiting.")
-        sys.exit(0)
+    print("Starting sequential Mana2 token refresh...")
+    for channel, page_url in CHANNELS.items():
+        print(f"\n--- Processing {channel} ---")
+        token = fetch_token(channel, page_url)
 
-    print("\nApplying new tokens to Main.m3u8 and subfolder files ...")
-    for channel, new_url in fresh_urls.items():
-        replace_in_main_m3u8(main_path, channel, new_url)
-        create_or_replace_subfolder(base_dir, channel, new_url)
+        if token:
+            replace_in_main_m3u8(main_path, channel, token)
+            create_or_replace_subfolder(base_dir, channel, token)
+        else:
+            print(f"  Skipping {channel} – no token received.")
 
-    print("\nUpdate complete.")
+    print("\nAll Mana-mana channels processed.")
 
 
 if __name__ == '__main__':
