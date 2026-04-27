@@ -11,6 +11,7 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 # Patterns of channels to skip validation (Mana-mana and tonton)
 SKIP_PATTERNS = ['Mana-mana', 'tonton']
 
+
 def extract_inner_url_from_wrapper(wrapper_content, base_url):
     """Extract the first HTTP URL from a wrapper .m3u8 file."""
     lines = wrapper_content.splitlines()
@@ -21,6 +22,7 @@ def extract_inner_url_from_wrapper(wrapper_content, base_url):
         elif line.startswith('/'):
             return urljoin(base_url, line)
     return None
+
 
 def classify_content(text, status, content_type):
     """Classify stream based on content snippet."""
@@ -49,6 +51,7 @@ def classify_content(text, status, content_type):
         return 'mp4'
     return 'invalid'
 
+
 def validate_stream(url, headers=None):
     """Fetch a stream URL and classify it. Returns (kind, status, good)."""
     try:
@@ -56,17 +59,23 @@ def validate_stream(url, headers=None):
         chunk = resp.raw.read(2048, decode_content=True)
         content_type = resp.headers.get('Content-Type', '')
         kind = classify_content(chunk.decode('utf-8', errors='ignore'),
-        resp.status_code, content_type)
+                                resp.status_code, content_type)
         good = kind not in ('invalid', 'html', 'empty_ok')
         return kind, resp.status_code, good
     except Exception:
         return 'exception', 0, False
 
-def is_skipped(channel_name):
+
+def is_skipped(channel_name, wrapper_url=''):
+    """Return True if this channel should be skipped.
+    Checks both the channel name and the wrapper URL path for skip patterns."""
     for pat in SKIP_PATTERNS:
         if pat.lower() in channel_name.lower():
             return True
+        if pat.lower() in wrapper_url.lower():
+            return True
     return False
+
 
 def parse_flatten(flatten_path):
     with open(flatten_path, 'r', encoding='utf-8') as f:
@@ -84,11 +93,12 @@ def parse_flatten(flatten_path):
         blocks.append((m.group(0), extinf, url_lines, channel_name, group))
     return blocks
 
+
 def update_main_m3u8(main_path, flattened, blocks, results):
     with open(main_path, 'w', encoding='utf-8') as f:
         f.write('#EXTM3U\n')
         for idx, (full, extinf, url, name, group) in enumerate(blocks):
-            if is_skipped(name):
+            if is_skipped(name, url):
                 f.write(full)
                 continue
             result = results[idx]
@@ -99,7 +109,10 @@ def update_main_m3u8(main_path, flattened, blocks, results):
                 else:
                     f.write(full)
             else:
-                f.write('## ' + full)
+                # FIXED: prefix every line with '## ' so both #EXTINF and URL are commented
+                for line in full.splitlines(keepends=True):
+                    f.write('## ' + line)
+
 
 def main():
     base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -113,13 +126,13 @@ def main():
 
     results = [{} for _ in blocks]
     with open(os.path.join(base_dir, 'validation-report.txt'), 'w',
-    encoding='utf-8') as report:
+              encoding='utf-8') as report:
         report.write("Channel,Status,Type,DirectURL\n")
         for i, (full, extinf, url, name, group) in enumerate(blocks):
             print("=" * 60)
             print(f"[{i+1}/{total}] {name} (group: {group})")
 
-            if is_skipped(name):
+            if is_skipped(name, url):
                 results[i] = {'valid': True, 'direct': None}
                 report.write(f"{name},Skipped,,\n")
                 print("Action  : ⏭️  Skipped (Mana-mana / tonton)")
@@ -139,7 +152,7 @@ def main():
 
                 wrapper_content = wr.text
                 inner_url = extract_inner_url_from_wrapper(wrapper_content,
-                url.strip())
+                                                           url.strip())
                 if not inner_url:
                     results[i] = {'valid': False, 'direct': None}
                     report.write(f"{name},NoInnerURL,,\n")
@@ -150,8 +163,7 @@ def main():
                 print(f"Inner URL: {inner_url}")
 
                 stream_kind, status, good = validate_stream(inner_url)
-                results[i]['valid'] = good and (stream_kind not in
-                ('empty_ok',))
+                results[i]['valid'] = good and (stream_kind not in ('empty_ok',))
                 if results[i]['valid'] and stream_kind in ('mp4', 'dash'):
                     results[i]['direct'] = inner_url
                     print(f"Stream   : {stream_kind} (HTTP {status})")
@@ -175,6 +187,7 @@ def main():
     print("Writing Main.m3u8")
     update_main_m3u8(main_path, flatten_path, blocks, results)
     print("Done.")
+
 
 if __name__ == '__main__':
     main()
