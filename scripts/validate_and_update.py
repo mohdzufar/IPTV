@@ -78,8 +78,18 @@ def is_skipped(channel_name, wrapper_url=''):
 
 
 def parse_flatten(flatten_path):
+    """Parse Flatten.m3u8 and return (header_line, list_of_blocks).
+    header_line is the first line of the file (the #EXTM3U EPG line)."""
     with open(flatten_path, 'r', encoding='utf-8') as f:
-        content = f.read()
+        lines = f.readlines()
+
+    header = ''
+    if lines and lines[0].startswith('#EXTM3U'):
+        header = lines[0].strip()
+        # Remove the first line from further parsing
+        content = ''.join(lines[1:])
+    else:
+        content = ''.join(lines)
 
     blocks = []
     pattern = re.compile(r'(#EXTINF:[^\n]*\n)((?:[^#\n][^\n]*\n?)+)')
@@ -91,12 +101,16 @@ def parse_flatten(flatten_path):
         group_match = re.search(r'group-title="([^"]*)"', extinf)
         group = group_match.group(1) if group_match else ''
         blocks.append((m.group(0), extinf, url_lines, channel_name, group))
-    return blocks
+    return header, blocks
 
 
-def update_main_m3u8(main_path, flattened, blocks, results):
+def update_main_m3u8(main_path, header, blocks, results):
+    """Write Main.m3u8 using the original EPG header line."""
     with open(main_path, 'w', encoding='utf-8') as f:
-        f.write('#EXTM3U\n')
+        if header:
+            f.write(header + '\n')
+        else:
+            f.write('#EXTM3U\n')
         for idx, (full, extinf, url, name, group) in enumerate(blocks):
             if is_skipped(name, url):
                 f.write(full)
@@ -109,7 +123,6 @@ def update_main_m3u8(main_path, flattened, blocks, results):
                 else:
                     f.write(full)
             else:
-                # FIXED: prefix every line with '## ' so both #EXTINF and URL are commented
                 for line in full.splitlines(keepends=True):
                     f.write('## ' + line)
 
@@ -120,8 +133,9 @@ def main():
     main_path = os.path.join(base_dir, 'Main.m3u8')
 
     print(f"Parsing {flatten_path}")
-    blocks = parse_flatten(flatten_path)
+    header, blocks = parse_flatten(flatten_path)
     total = len(blocks)
+    print(f"Header: {header if header else 'No EPG header found'}")
     print(f"Found {total} channels\n")
 
     results = [{} for _ in blocks]
@@ -185,7 +199,7 @@ def main():
 
     print("\n" + "=" * 60)
     print("Writing Main.m3u8")
-    update_main_m3u8(main_path, flatten_path, blocks, results)
+    update_main_m3u8(main_path, header, blocks, results)
     print("Done.")
 
 
