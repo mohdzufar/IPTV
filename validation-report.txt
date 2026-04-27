@@ -140,8 +140,8 @@ Wild Earth,hls_master,200,https://wildearth-lg.amagi.tv/hls/amagi_hls_data_wilde
 Xumo Nature & Wildlife TV,hls_master,200,https://live-content.xumo.com/3883/content/XM0RW1PIY5R776/25283138/master.m3u8
 Animal Planet,hls_master,200,http://23.237.104.106:8080/USA_ANIMAL_PLANET/index.m3u8
 Discovery Channel,hls_master,200,http://23.237.104.106:8080/USA_DISCOVERY/index.m3u8
-Discovery Life,invalid,200,http://iptvtree.net:8080/live/7e4b0dbd/1dd755dc3f/201208.ts
-Discovery Science,invalid,200,http://iptvtree.net:8080/live/7e4b0dbd/1dd755dc3f/2301.ts
+Discovery Life,html,404,http://iptvtree.net:8080/live/7e4b0dbd/1dd755dc3f/201208.ts
+Discovery Science,html,404,http://iptvtree.net:8080/live/7e4b0dbd/1dd755dc3f/2301.ts
 Disney Channel,exception,0,http://89.105.221.127/Disney/index.m3u8?token=test
 Disney XD,hls_master,200,http://23.237.104.106:8080/USA_DISNEY_XD/index.m3u8
 Bob Ross Channel,exception,0,https://bobross-xumous.cinedigm.com/midroll/amagi_hls_data_xumo-host-bobross-xumo/CDN/master.m3u8
