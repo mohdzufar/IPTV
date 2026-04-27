@@ -29,8 +29,8 @@ HEADERS = {
 def fetch_token(channel_name, page_url):
     """
     Open a fresh browser context + page, navigate to the Mana2 channel,
-    capture the first .m3u8 request that comes from live.mana2.my,
-    then immediately close the context.  Returns the token URL or None.
+    click a play element if found, then capture the first .m3u8 request
+    from live.mana2.my.  Returns the token URL or None.
     """
     token = None
     with sync_playwright() as p:
@@ -49,7 +49,45 @@ def fetch_token(channel_name, page_url):
         try:
             print(f"  Navigating to {page_url} ...")
             page.goto(page_url, wait_until='networkidle', timeout=30000)
-            print("    Page loaded, waiting for .m3u8 request ...")
+            print("    Page loaded.")
+
+            # -------- Try to click a play button or video element --------
+            click_selectors = [
+                'button[aria-label="Play"]',
+                '.vjs-big-play-button',
+                '.play-button',
+                '[class*="play"]',
+                'video',
+            ]
+            clicked = False
+            for sel in click_selectors:
+                try:
+                    loc = page.locator(sel)
+                    if loc.count() > 0:
+                        loc.first.click(timeout=5000)
+                        print(f"    Clicked on '{sel}' to start playback.")
+                        clicked = True
+                        break
+                except Exception:
+                    continue
+
+            if not clicked:
+                # Last resort: use JavaScript to play any video on the page
+                try:
+                    page.evaluate("""
+                        const v = document.querySelector('video');
+                        if (v) { v.muted = true; v.play(); }
+                    """)
+                    print("    Forced video play via JavaScript.")
+                    clicked = True
+                except Exception as e:
+                    print(f"    JS play failed: {e}")
+
+            if not clicked:
+                print("    No clickable play element found, hoping for autoplay...")
+            # ----------------------------------------------------------------
+
+            print("    Waiting for .m3u8 request ...")
             for _ in range(20):   # up to 20 seconds
                 if token:
                     break
