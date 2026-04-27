@@ -30,8 +30,9 @@ MANA2_CONTAINER_PATH = "Channels/Mana-mana"
 
 def get_subfolder_from_flatten(base_dir, channel_name):
     """
-    Read Flatten.m3u8 and extract the local subfolder path of the channel's wrapper .m3u8.
-    Returns something like 'Channels/Mana-mana/Enjoy-TV/Enjoy-TV.m3u8'.
+    Read Flatten.m3u8 and extract the local subfolder path of the channel's
+    wrapper .m3u8.
+    Returns something like 'Channels/Mana-mana/SukanPlus/SukanPlus.m3u8'.
     """
     flatten_path = os.path.join(base_dir, 'Channels', 'Flatten.m3u8')
     if not os.path.exists(flatten_path):
@@ -40,17 +41,27 @@ def get_subfolder_from_flatten(base_dir, channel_name):
     with open(flatten_path, 'r', encoding='utf-8') as f:
         content = f.read()
 
-    # Find the wrapper URL for this channel
+    # Escape the channel name for regex, but NOT for word boundaries.
+    # We'll search for the channel name appearing inside tvg-name="..." or
+    # at the end of the #EXTINF line (after the comma).
+    escaped_name = re.escape(channel_name)
+
+    # Pattern: find #EXTINF line containing this channel name, then capture
+    # the very next URL (non‑greedy, stops at first whitespace or end of line).
     pattern = re.compile(
-        rf'#EXTINF:[^\n]*\b{re.escape(channel_name)}\b[^\n]*\n(https?://[^\n]+)',
+        rf'#EXTINF:[^\n]*\b{escaped_name}\b[^\n]*\n'
+        rf'(https?://[^\s\n]+)',
         re.IGNORECASE
     )
     match = pattern.search(content)
     if match:
         wrapper_url = match.group(1).strip()
         # Convert raw GitHub URL to local repo path
-        # E.g., https://raw.githubusercontent.com/.../main/Channels/Mana-mana/Enjoy-TV/Enjoy-TV.m3u8
-        local_path = re.sub(r'.*/(?:main|refs/heads/main)/(.+)', r'\1', wrapper_url)
+        local_path = re.sub(
+            r'.*/(?:main|refs/heads/main)/(.+)',
+            r'\1',
+            wrapper_url
+        )
         if local_path:
             return local_path
     return None
@@ -72,7 +83,12 @@ def replace_channel_url_in_subfolder(base_dir, rel_path, new_url):
 
     # Ensure EXTVLCOPT headers
     if '#EXTVLCOPT:http-user-agent' not in content:
-        content = content.replace('#EXTINF:', '#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)\n#EXTVLCOPT:http-referrer=https://www.mana2.my/\n#EXTINF:', 1)
+        content = content.replace(
+            '#EXTINF:',
+            '#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)\n'
+            '#EXTVLCOPT:http-referrer=https://www.mana2.my/\n#EXTINF:',
+            1
+        )
 
     with open(full_path, 'w', encoding='utf-8') as f:
         f.write(content)
@@ -142,7 +158,10 @@ def main():
 
     for channel, new_url in fresh_urls.items():
         # Replace in Main.m3u8
-        pattern = re.compile(rf'(#EXTINF:.*{re.escape(channel)}.*\n)(https?://[^\n]+)', re.IGNORECASE)
+        pattern = re.compile(
+            rf'(#EXTINF:.*{re.escape(channel)}.*\n)(https?://[^\n]+)',
+            re.IGNORECASE
+        )
         main_content = pattern.sub(r'\1' + new_url, main_content)
 
         # Replace in subfolder file – extract path from Flatten.m3u8
