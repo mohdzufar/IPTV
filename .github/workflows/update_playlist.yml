@@ -39,6 +39,7 @@ jobs:
         run: python scripts/validate_and_update.py
 
       - name: Commit and push changes
+        shell: bash    # <--- THIS IS THE KEY FIX
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
