@@ -47,7 +47,7 @@ Crunchyroll,hls_master,200,https://cfd-v4-service-channel-stitcher-use1-1.prd.pl
 Cartoon Network,hls_master,200,http://23.237.104.106:8080/USA_CARTOON_NETWORK/index.m3u8
 Golf Kingdom,hls_master,200,https://30a-tv.com/feeds/vidaa/golf.m3u8
 Golf Channel,html,403,https://tvpass.org/live/GolfChannel/hd
-Golf Channel (Latin America),hls_master,200,http://181.114.57.246:4000/play/BHGDIhvdyuw/index.m3u8
+Golf Channel (Latin America),html,404,http://181.114.57.246:4000/play/BHGDIhvdyuw/index.m3u8
 GolfNetwork Japan,hls_master,200,http://cdns.jp-primehome.com:8000/zhongying/live/playlist.m3u8?cid=cs03
 GolfPass,hls_media,200,https://d3f4oii5n0oeqi.cloudfront.net/manifest/3fec3e5cac39a52b2132f9c66c83dae043dc17d4/prod_default_tcl-ams-aws/c7022334-b939-468b-a3a4-2e350b280c4f/4.m3u8
 PGA Tour,hls_media,200,https://aegis-cloudfront-1.tubi.video/9c59800e-fa9a-4539-b8e5-5769918e7c5a/playlist_1280x720.m3u8
