@@ -35,21 +35,21 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/RTM/RT
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/ASTRO/Awani/Astro%20Awani.m3u8
 
 ##====Mana-mana====
-#EXTINF:-1 tvg-chno="" tvg-name="Al-Hijrah" tvg-id="TV ALHIJRAH" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/esdfqp.png" group-title="Malaysia",Al-Hijrah
+#EXTINF:-1 tvg-chno="" tvg-name="Al-Hijrah" tvg-id="" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/esdfqp.png" group-title="Malaysia",Al-Hijrah
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Mana-mana/Al-Hijrah/Al-Hijrah.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="Enjoy TV" tvg-id="Enjoy TV" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/channel/logos/hglfwv.png" group-title="Malaysia",Enjoy TV
-https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Mana-mana/Enjoy_TV/Enjoy_TV.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="Borneo TV" tvg-id="" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/npdqkp.png" group-title="Malaysia",Borneo TV
-https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Mana-mana/Borneo_TV/Borneo_TV.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="Selangor TV" tvg-id="" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/emwijp.png" group-title="Malaysia",Selangor TV
-https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Mana-mana/Selangor_TV/Selangor_TV.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="Suke TV" tvg-id="" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/utgwdm.png" group-title="Malaysia",Suke TV
-https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Mana-mana/Suke_TV/Suke_TV.m3u8
+#EXTINF:-1 tvg-chno="" tvg-name="EnjoyTV" tvg-id="" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/channel/logos/hglfwv.png" group-title="Malaysia",EnjoyTV
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Mana-mana/EnjoyTV/EnjoyTV.m3u8
+#EXTINF:-1 tvg-chno="" tvg-name="BorneoTV" tvg-id="" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/npdqkp.png" group-title="Malaysia",BorneoTV
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Mana-mana/BorneoTV/BorneoTV.m3u8
+#EXTINF:-1 tvg-chno="" tvg-name="SelangorTV" tvg-id="" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/emwijp.png" group-title="Malaysia",SelangorTV
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Mana-mana/SelangorTV/SelangorTV.m3u8
+#EXTINF:-1 tvg-chno="" tvg-name="SukeTV" tvg-id="" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/utgwdm.png" group-title="Malaysia",SukeTV
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Mana-mana/SukeTV/SukeTV.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="TVS" tvg-id="" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/filzbh.jpeg" group-title="Malaysia",TVS
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Mana-mana/TVS/TVS.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Sukan+" tvg-id="" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/soxsng.jpeg" group-title="Malaysia",Sukan+
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Mana-mana/SukanPlus/SukanPlus.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="Bernama" tvg-id="Bernama" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/ivnvsj.png" group-title="Malaysia",Bernama
+#EXTINF:-1 tvg-chno="" tvg-name="Bernama" tvg-id="" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/ivnvsj.png" group-title="Malaysia",Bernama
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Mana-mana/Bernama/Bernama.m3u8
 
 
