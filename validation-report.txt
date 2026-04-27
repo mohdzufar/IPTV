@@ -11,7 +11,7 @@ Okey TV,hls_media,200,https://d25tgymtnqzu8s.cloudfront.net/smil:okey/chunklist_
 RTM Sukan,hls_media,200,https://d25tgymtnqzu8s.cloudfront.net/smil:sukan/chunklist_b346000_slENG.m3u8?id=4
 TV IKIM,hls_media,200,https://edge-sg1.vediostream.com/live/tvikim/chunks.m3u8?wmsAuthSign=c2VydmVyX3RpbWU9NS8yOS8yMDI1IDEwOjIyOjUzIFBNJmhhc2hfdmFsdWU9dFFzS0lwMXdycEZ0K1dPdHdYSm91dz09JnZhbGlkbWludXRlcz0yMCZzdHJtX2xlbj0xMA==
 Berita RTM,hls_media,200,https://d25tgymtnqzu8s.cloudfront.net/smil:berita/chunklist_b346000_slENG.m3u8?id=5
-RTM World,empty_ok,404,https://d25tgymtnqzu8s.cloudfront.net/event/smil:event1/chunklist_b346000_slENG.m3u8
+RTM World,hls_media,200,https://d25tgymtnqzu8s.cloudfront.net/event/smil:event1/chunklist_b346000_slENG.m3u8
 Astro Awani,hls_media,200,https://d2idp3hzkhjpih.cloudfront.net/out/v1/4b85d9c2bf97413eb0c9fd875599b837/index_1.m3u8
 Al-Hijrah,Skipped,,
 EnjoyTV,Skipped,,
@@ -119,7 +119,7 @@ HBO Family,dash,200,https://cdn10jtedge.indihometv.com/atm/DASH/hbofamily/manife
 HBO Signature,dash,200,https://cdn10jtedge.indihometv.com/atm/DASH/hbosignature/manifest.mpd
 HBO Zone,hls_master,200,http://23.237.104.106:8080/USA_HBO_ZONE/index.m3u8
 Rakuten Top Movies UK,hls_master,200,https://0145451975a64b35866170fd2e8fa486.mediatailor.eu-west-1.amazonaws.com/v1/master/0547f18649bd788bec7b67b746e47670f558b6b2/production-LiveChannel-5987/master.m3u8
-Sony Movie Channel,html,404,http://iptvtree.net:8080/live/7e4b0dbd/1dd755dc3f/5831.ts
+Sony Movie Channel,invalid,200,http://iptvtree.net:8080/live/7e4b0dbd/1dd755dc3f/5831.ts
 Bollywood,exception,0,http://103.213.31.109:90/BollywoodHD/playlist.m3u8
 Bollywood Classic,exception,0,http://103.213.31.109:90/BollywoodClassic/playlist.m3u8
 EuroNews,hls_media,200,https://dash4.antik.sk/live/test_euronews/playlist.m3u8
@@ -140,8 +140,8 @@ Wild Earth,hls_master,200,https://wildearth-lg.amagi.tv/hls/amagi_hls_data_wilde
 Xumo Nature & Wildlife TV,hls_master,200,https://live-content.xumo.com/3883/content/XM0RW1PIY5R776/25283138/master.m3u8
 Animal Planet,hls_master,200,http://23.237.104.106:8080/USA_ANIMAL_PLANET/index.m3u8
 Discovery Channel,hls_master,200,http://23.237.104.106:8080/USA_DISCOVERY/index.m3u8
-Discovery Life,html,404,http://iptvtree.net:8080/live/7e4b0dbd/1dd755dc3f/201208.ts
-Discovery Science,html,404,http://iptvtree.net:8080/live/7e4b0dbd/1dd755dc3f/2301.ts
+Discovery Life,invalid,200,http://iptvtree.net:8080/live/7e4b0dbd/1dd755dc3f/201208.ts
+Discovery Science,invalid,200,http://iptvtree.net:8080/live/7e4b0dbd/1dd755dc3f/2301.ts
 Disney Channel,exception,0,http://89.105.221.127/Disney/index.m3u8?token=test
 Disney XD,hls_master,200,http://23.237.104.106:8080/USA_DISNEY_XD/index.m3u8
 Bob Ross Channel,exception,0,https://bobross-xumous.cinedigm.com/midroll/amagi_hls_data_xumo-host-bobross-xumo/CDN/master.m3u8
