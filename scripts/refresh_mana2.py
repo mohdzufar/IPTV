@@ -12,11 +12,11 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 CHANNELS = {
     "Al-Hijrah": "https://www.mana2.my/channel/live/tv-alhijrah",
     "Bernama": "https://www.mana2.my/channel/live/bernama",
-    "Borneo TV": "https://www.mana2.my/channel/live/borneo-tv",
-    "Enjoy TV": "https://www.mana2.my/channel/live/tv5",
-    "Selangor TV": "https://www.mana2.my/channel/live/selangor-tv",
+    "BorneoTV": "https://www.mana2.my/channel/live/borneo-tv",
+    "EnjoyTV": "https://www.mana2.my/channel/live/tv5",
+    "SelangorTV": "https://www.mana2.my/channel/live/selangor-tv",
     "Sukan+": "https://www.mana2.my/channel/live/sukan-rtm",
-    "Suke TV": "https://www.mana2.my/channel/live/suke-tv",
+    "SukeTV": "https://www.mana2.my/channel/live/suke-tv",
     "TVS": "https://www.mana2.my/channel/live/tvs",
 }
 HEADERS = {
