@@ -1,5 +1,5 @@
 #EXTM3U
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTVLCOPT:http-referrer=https://www.mana2.my/
 #EXTINF:1,Bernama
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36
-#EXTVLCOPT:http-referrer=https://mana2.my/
-https://live.mana2.my/Bernama/index.m3u8?auth_key=1777257452-6ad52820f2da463fa3f9ecefc4d76841-0-692a33db843572a835e94204437bcb3f&token=1777257452-6ad52820f2da463fa3f9ecefc4d76841-0-692a33db843572a835e94204437bcb3f
+https://live.mana2.my/TvAlhijrah/index.m3u8?auth_key=1777326578-12f8d9f3f11640d198a572b3a57d81e2-0-7c2fd5429dfef6730b9228c1af61b5b3&token=1777326578-12f8d9f3f11640d198a572b3a57d81e2-0-7c2fd5429dfef6730b9228c1af61b5b3

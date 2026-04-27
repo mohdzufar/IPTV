@@ -1,5 +1,5 @@
 #EXTM3U
-#EXTINF:1,Sukan+
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36
-#EXTVLCOPT:http-referrer=https://mana2.my/
-https://live.mana2.my/SukanRtm/index.m3u8?auth_key=1777205773-bd45fe0865b2479a86691e4465291f51-0-af38e1b7ac593588c25d10faa3121c86&token=1777205773-bd45fe0865b2479a86691e4465291f51-0-af38e1b7ac593588c25d10faa3121c86
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTVLCOPT:http-referrer=https://www.mana2.my/
+#EXTINF:1,SukanPlus
+https://live.mana2.my/SelangorTv/index.m3u8?auth_key=1777326600-89eeaf16a04843d78912a6bb26bf68c8-0-8a516dc6451d2646dcea06eb6f508ee6&token=1777326600-89eeaf16a04843d78912a6bb26bf68c8-0-8a516dc6451d2646dcea06eb6f508ee6
