@@ -1,221 +1,117 @@
-"""
-refresh_mana2.py – Refresh Mana‑mana tokens directly in Main.m3u8 and subfolders.
-Uses the original async Playwright + Stealth approach (proven working).
-"""
-
-import asyncio
-import os
 import re
 import sys
-from pathlib import Path
-from playwright.async_api import async_playwright
-from playwright_stealth import Stealth
+import time
+import subprocess
+from playwright.sync_api import sync_playwright
 
-# Fix Windows console encoding (if needed)
-sys.stdout.reconfigure(encoding='utf-8', errors='replace')
-
-# -------------------------------------------------------------------
-# CONFIGURATION
-# -------------------------------------------------------------------
-SCRIPT_DIR = Path(__file__).resolve().parent
-REPO_ROOT = SCRIPT_DIR.parent
-OUTPUT_BASE_DIR = REPO_ROOT / "Channels" / "Mana-mana"
-
-# Playlist file that will be updated
-MAIN_PLAYLIST = REPO_ROOT / "Main.m3u8"
-
-# Channel mapping: key -> (page_url, display_name)
+# ---------- CONFIGURATION ----------
 CHANNELS = {
-    "Al-Hijrah": ("https://www.mana2.my/channel/live/tv-alhijrah", "Al-Hijrah"),
-    "Enjoy TV":  ("https://www.mana2.my/channel/live/tv5", "Enjoy TV"),
-    "Borneo TV": ("https://www.mana2.my/channel/live/borneo-tv", "Borneo TV"),
-    "Selangor TV": ("https://www.mana2.my/channel/live/selangor-tv", "Selangor TV"),
-    "Suke TV":   ("https://www.mana2.my/channel/live/suke-tv", "Suke TV"),
-    "TVS":       ("https://www.mana2.my/epg/play/1720414", "TVS"),
-    "Sukan+":    ("https://www.mana2.my/channel/live/sukan-rtm", "Sukan+"),
-    "Bernama":   ("https://www.mana2.my/channel/live/bernama", "Bernama"),
+    "Al-Hijrah": "https://mana2.my/live-tv/al-hijrah/",
+    "Enjoy TV": "https://mana2.my/live-tv/enjoy-tv/",
+    "Borneo TV": "https://mana2.my/live-tv/borneo-tv/",
+    "TV AlHijrah": "https://mana2.my/live-tv/tv-alhijrah/",
+    "Inspirasi": "https://mana2.my/live-tv/inspirasi/",
+    "Berita RTM": "https://mana2.my/live-tv/berita-rtm/",
+    "Sukan RTM": "https://mana2.my/live-tv/sukan-rtm/",
+    "TV Okey": "https://mana2.my/live-tv/tv-okey/",
 }
+HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+    "Referer": "https://mana2.my/",
+}
+# ------------------------------------
 
-HEADLESS = True
-WAIT_TIMEOUT_MS = 15000
-USE_EXTVLCOPT = True
-USER_AGENT = (
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-    "AppleWebKit/537.36 (KHTML, like Gecko) "
-    "Chrome/147.0.0.0 Safari/537.36"
-)
-REFERER = "https://mana2.my/"
+MANA2_CONTAINER_PATH = "Channels/Mana-mana"
 
-# -------------------------------------------------------------------
-# TOKEN REFRESH (original async logic)
-# -------------------------------------------------------------------
-async def extract_m3u8_url(page_url):
-    """Navigate to the Mana‑mana channel page and capture the fresh .m3u8 URL."""
-    async with Stealth().use_async(async_playwright()) as p:
-        browser = await p.chromium.launch(
-            headless=HEADLESS,
-            args=[
-                '--disable-blink-features=AutomationControlled',
-                '--disable-features=IsolateOrigins,site-per-process',
-                '--no-sandbox',
-                '--disable-setuid-sandbox',
-                '--disable-web-security',
-                '--disable-features=VizDisplayCompositor',
-                '--disable-ipc-flooding-protection',
-                '--disable-renderer-backgrounding',
-                '--disable-backgrounding-occluded-windows',
-                '--disable-field-trial-config',
-                '--disable-back-forward-cache',
-                '--disable-component-extensions-with-background-pages',
-                '--disable-client-side-phishing-detection',
-                '--disable-default-apps',
-                '--disable-extensions',
-                '--disable-hang-monitor',
-                '--disable-popup-blocking',
-                '--disable-prompt-on-repost',
-                '--disable-sync',
-                '--force-color-profile=srgb',
-                '--metrics-recording-only',
-                '--no-first-run',
-                '--safebrowsing-disable-auto-update',
-                '--enable-automation',
-            ]
-        )
-        context = await browser.new_context(
-            user_agent=USER_AGENT,
-            viewport={'width': 1920, 'height': 1080},
-            locale='en-MY',
-            timezone_id='Asia/Kuala_Lumpur',
-            permissions=['geolocation'],
-            service_workers='block'
-        )
-        page = await context.new_page()
+def replace_channel_url_in_file(filepath, channel_name, new_url):
+    """Update the .m3u8 file for a specific channel with new URL and headers."""
+    with open(filepath, 'r', encoding='utf-8') as f:
+        content = f.read()
 
-        m3u8_promise = asyncio.get_running_loop().create_future()
+    # Replace the URL line (first http line after #EXTINF)
+    pattern = re.compile(rf'(#EXTINF:.*{re.escape(channel_name)}.*\n)(https?://[^\n]+)', re.IGNORECASE)
+    replacement = r'\1' + new_url
+    content = pattern.sub(replacement, content)
 
-        def handle_request(request):
-            if not m3u8_promise.done():
-                url = request.url
-                if ".m3u8" in url and "ping.gif" not in url:
-                    m3u8_promise.set_result(url)
+    # Ensure EXTVLCOPT headers exist
+    if '#EXTVLCOPT:http-user-agent' not in content:
+        content = content.replace('#EXTINF:', '#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)\n#EXTVLCOPT:http-referrer=https://mana2.my/\n#EXTINF:', 1)
 
-        page.on('request', handle_request)
+    with open(filepath, 'w', encoding='utf-8') as f:
+        f.write(content)
 
-        print(f"  Navigating to {page_url}...")
-        await page.goto(page_url, wait_until="networkidle")
-        try:
-            play_button = page.locator(
-                'button:has-text("Play"), [aria-label="Play"], .play-button'
-            ).first
-            await play_button.click(timeout=3000)
-            print("  Clicked Play button...")
-        except:
-            pass
+def scrape_mana2_urls():
+    """Scrape fresh m3u8 URLs from mana2.my using Playwright."""
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=True)
+        context = browser.new_context(user_agent=HEADERS["User-Agent"])
+        page = context.new_page()
 
-        print(f"  Waiting for player to load and request m3u8...")
-        try:
-            captured_url = await asyncio.wait_for(
-                m3u8_promise, timeout=WAIT_TIMEOUT_MS / 1000
-            )
-            print(f"  Captured: {captured_url[:80]}...")
-        except asyncio.TimeoutError:
-            captured_url = None
-            print(f"  Timeout: No m3u8 request captured after {WAIT_TIMEOUT_MS / 1000} seconds.")
-        finally:
-            await browser.close()
-        return captured_url
+        urls = {}
+        for channel, ch_url in CHANNELS.items():
+            print(f"Navigating to {ch_url} for {channel}...")
+            page.goto(ch_url, wait_until="domcontentloaded")
+            # Click the play button (the page usually has a video player)
+            page.wait_for_selector('video', timeout=10000)
+            play_button = page.locator('button[aria-label="Play"], .vjs-big-play-button, video')
+            if play_button.count() > 0:
+                play_button.first.click()
+            time.sleep(3)
+            # Capture network request that ends with .m3u8
+            m3u8_url = None
+            def handle_request(request):
+                nonlocal m3u8_url
+                if '.m3u8' in request.url:
+                    m3u8_url = request.url
+            page.on('request', handle_request)
+            # Wait a bit for the request to fire
+            page.wait_for_timeout(5000)
+            if m3u8_url:
+                urls[channel] = m3u8_url
+                print(f"  -> Got: {m3u8_url}")
+            else:
+                print(f"  -> No .m3u8 request captured for {channel}")
+        browser.close()
+    return urls
 
+def main():
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    main_m3u8_path = os.path.join(base_dir, 'Main.m3u8')
 
-def update_subfolder_file(channel_key, display_name, m3u8_url):
-    """Write/overwrite the individual .m3u8 file for a Mana‑mana channel."""
-    safe_name = channel_key.replace(" ", "_").replace("+", "Plus")
-    folder_path = OUTPUT_BASE_DIR / safe_name
-    folder_path.mkdir(parents=True, exist_ok=True)
-    file_path = folder_path / f"{safe_name}.m3u8"
+    print("Scraping fresh Mana2 URLs...")
+    try:
+        fresh_urls = scrape_mana2_urls()
+    except Exception as e:
+        print(f"ERROR during scraping: {e}")
+        print("Using existing URLs (no changes made).")
+        sys.exit(0)
 
-    lines = ["#EXTM3U", f"#EXTINF:1,{display_name}"]
-    if USE_EXTVLCOPT:
-        lines.append(f"#EXTVLCOPT:http-user-agent={USER_AGENT}")
-        lines.append(f"#EXTVLCOPT:http-referrer={REFERER}")
-    lines.append(m3u8_url)
+    if not fresh_urls:
+        print("No URLs scraped, exiting without changes.")
+        sys.exit(0)
 
-    content = "\n".join(lines) + "\n"
-    file_path.write_text(content, encoding='utf-8')
-    print(f"  Updated {file_path}")
+    # Update Main.m3u8
+    with open(main_m3u8_path, 'r', encoding='utf-8') as f:
+        main_content = f.read()
 
+    for channel, new_url in fresh_urls.items():
+        # Replace in Main.m3u8
+        pattern = re.compile(rf'(#EXTINF:.*{re.escape(channel)}.*\n)(https?://[^\n]+)', re.IGNORECASE)
+        main_content = pattern.sub(r'\1' + new_url, main_content)
 
-def extract_channel_key_from_wrapper_url(wrapper_url):
-    """
-    Given a wrapper URL like
-    .../Channels/Mana-mana/Al-Hijrah/Al-Hijrah.m3u8
-    return 'Al-Hijrah'.
-    """
-    # Split by '/Channels/Mana-mana/' to get the part after
-    marker = "/Channels/Mana-mana/"
-    idx = wrapper_url.find(marker)
-    if idx != -1:
-        after = wrapper_url[idx + len(marker):]
-        parts = after.split('/')
-        if parts:
-            return parts[0]  # first folder name, e.g. 'Al-Hijrah'
-    # Fallback: use last folder before filename
-    parts = wrapper_url.rstrip('/').split('/')
-    if len(parts) >= 2:
-        return parts[-2]  # folder name
-    return None
-
-
-# -------------------------------------------------------------------
-# MAIN
-# -------------------------------------------------------------------
-async def main_async():
-    if not MAIN_PLAYLIST.exists():
-        print(f"Main.m3u8 not found at {MAIN_PLAYLIST}")
-        return
-
-    # Read Main.m3u8
-    with open(MAIN_PLAYLIST, 'r', encoding='utf-8') as f:
-        lines = f.readlines()
-
-    updated = False
-    new_lines = []
-    for line in lines:
-        stripped = line.strip()
-        # Check if it's a Mana‑mana wrapper URL
-        if stripped.startswith('http') and '/Channels/Mana-mana/' in stripped:
-            print(f"Refreshing Mana URL: {stripped}")
-            channel_key = extract_channel_key_from_wrapper_url(stripped)
-            if channel_key is None or channel_key not in CHANNELS:
-                print(f"  [!] Could not determine channel key, keeping original")
-                new_lines.append(line)
-                continue
-
-            page_url, display_name = CHANNELS[channel_key]
-            print(f"  Channel: {channel_key} -> {page_url}")
-            try:
-                fresh_url = await extract_m3u8_url(page_url)
-                if fresh_url:
-                    print(f"  [OK] New URL: {fresh_url[:80]}...")
-                    # Replace wrapper URL in Main.m3u8
-                    new_lines.append(fresh_url + '\n')
-                    # Update the individual subfolder file
-                    update_subfolder_file(channel_key, display_name, fresh_url)
-                    updated = True
-                else:
-                    print(f"  [!] Failed to capture fresh URL, keeping original wrapper")
-                    new_lines.append(line)
-            except Exception as e:
-                print(f"  [!] Error refreshing {channel_key}: {e}")
-                new_lines.append(line)
+        # Replace in subfolder file
+        channel_safe = channel.replace(" ", "-")  # match folder name convention
+        subfolder_file = os.path.join(base_dir, MANA2_CONTAINER_PATH, channel_safe, f"{channel}.m3u8")
+        if os.path.exists(subfolder_file):
+            replace_channel_url_in_file(subfolder_file, channel, new_url)
         else:
-            new_lines.append(line)
+            print(f"Warning: subfolder file not found for {channel}: {subfolder_file}")
 
-    if updated:
-        with open(MAIN_PLAYLIST, 'w', encoding='utf-8', newline='\n') as f:
-            f.writelines(new_lines)
-        print(f"Main.m3u8 updated with fresh Mana tokens.")
-    else:
-        print("No Mana tokens refreshed (or no updates).")
+    with open(main_m3u8_path, 'w', encoding='utf-8') as f:
+        f.write(main_content)
 
-if __name__ == "__main__":
-    asyncio.run(main_async())
+    print("Updated Main.m3u8 and subfolder files with fresh Mana2 URLs.")
+
+if __name__ == '__main__':
+    import os
+    main()
