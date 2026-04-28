@@ -28,21 +28,21 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/RTM/RT
 #EXTINF:-1 tvg-chno="" tvg-name="Astro Awani" tvg-id="AstroAwani.my" tvg-country="MY" tvg-logo="https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/436_144.png" group-title="News",Astro Awani
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/ASTRO/Awani/Astro%20Awani.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Al-Hijrah" tvg-id="" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/esdfqp.png" group-title="Malaysia",Al-Hijrah
-https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Mana-mana/Al-Hijrah/Al-Hijrah.m3u8
+https://live.mana2.my/TvAlhijrah/index.m3u8?auth_key=1777379225-a4b4faf814e34562a3e6e485fee2e823-0-19073750542685765942b75a092c32ca&token=1777379225-a4b4faf814e34562a3e6e485fee2e823-0-19073750542685765942b75a092c32ca
 #EXTINF:-1 tvg-chno="" tvg-name="EnjoyTV" tvg-id="" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/channel/logos/hglfwv.png" group-title="Malaysia",EnjoyTV
-https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Mana-mana/EnjoyTV/EnjoyTV.m3u8
+https://live.mana2.my/Tv5/index.m3u8?auth_key=1777379250-2e4285e3b117440f967f3534daab7d11-0-79cf8aab497fb98d8cffad8351e3141e&token=1777379250-2e4285e3b117440f967f3534daab7d11-0-79cf8aab497fb98d8cffad8351e3141e
 #EXTINF:-1 tvg-chno="" tvg-name="BorneoTV" tvg-id="" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/npdqkp.png" group-title="Malaysia",BorneoTV
-https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Mana-mana/BorneoTV/BorneoTV.m3u8
+https://live.mana2.my/BorneoTv/index.m3u8?auth_key=1777379241-a97b947f28204392ac82d16063cedc90-0-a5d96ad451a199c4f32baac0d22698cf&token=1777379241-a97b947f28204392ac82d16063cedc90-0-a5d96ad451a199c4f32baac0d22698cf
 #EXTINF:-1 tvg-chno="" tvg-name="SelangorTV" tvg-id="" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/emwijp.png" group-title="Malaysia",SelangorTV
-https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Mana-mana/SelangorTV/SelangorTV.m3u8
+https://live.mana2.my/SelangorTv/index.m3u8?auth_key=1777379258-3c1ac962acd1465eb25a256f996875e9-0-a02a7d734ff8ee3d2d296e61713dd4e9&token=1777379258-3c1ac962acd1465eb25a256f996875e9-0-a02a7d734ff8ee3d2d296e61713dd4e9
 #EXTINF:-1 tvg-chno="" tvg-name="SukeTV" tvg-id="" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/utgwdm.png" group-title="Malaysia",SukeTV
-https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Mana-mana/SukeTV/SukeTV.m3u8
+https://live.mana2.my/SukeTv/index.m3u8?auth_key=1777379274-53f289a8c3a04773a25e9a3c0fcc42b0-0-319133653f13dd229db45468a62d4a80&token=1777379274-53f289a8c3a04773a25e9a3c0fcc42b0-0-319133653f13dd229db45468a62d4a80
 #EXTINF:-1 tvg-chno="" tvg-name="TVS" tvg-id="" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/filzbh.jpeg" group-title="Malaysia",TVS
-https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Mana-mana/TVS/TVS.m3u8
+https://live.mana2.my/TvS/index.m3u8?auth_key=1777379283-ffef8dbdc12a4d83a5afe7dab828f8e3-0-0ae39ec86e3291c8c9b15fe35d3870ec&token=1777379283-ffef8dbdc12a4d83a5afe7dab828f8e3-0-0ae39ec86e3291c8c9b15fe35d3870ec
 #EXTINF:-1 tvg-chno="" tvg-name="SukanPlus" tvg-id="" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/soxsng.jpeg" group-title="Malaysia",Sukan+
-https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Mana-mana/SukanPlus/SukanPlus.m3u8
+https://live.mana2.my/SukanRtm/index.m3u8?auth_key=1777379266-cf2937882d4e45bdaa528dc01d9c5f57-0-7d06df99ae3ae3e3169664277d49f5b5&token=1777379266-cf2937882d4e45bdaa528dc01d9c5f57-0-7d06df99ae3ae3e3169664277d49f5b5
 #EXTINF:-1 tvg-chno="" tvg-name="Bernama" tvg-id="" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/ivnvsj.png" group-title="Malaysia",Bernama
-https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Mana-mana/Bernama/Bernama.m3u8
+https://live.mana2.my/Bernama/index.m3u8?auth_key=1777379234-d07c9178531642e0b2f0888a2e3cdcd6-0-873b6d243bc0b5856d5be1c58b1a60e6&token=1777379234-d07c9178531642e0b2f0888a2e3cdcd6-0-873b6d243bc0b5856d5be1c58b1a60e6
 #EXTINF:-1 tvg-chno="" tvg-name="Dewan Rakyat" tvg-id="DewanRakyat.my" tvg-country="MY" tvg-logo="https://rtm-images.glueapi.io/320x0/live_channel/7.png" group-title="Malaysia",Dewan Rakyat
 https://raw.githubusercontent.com/mohdzufar/Main-IPTV/refs/heads/main/Channels/RTM/Dewan%20Rakyat/Dewan%20Rakyat.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Dewan Negara" tvg-id="DewanNegara.my" tvg-country="MY" tvg-logo="https://rtm-images.glueapi.io/320x0//live_channel/PDN_Trans.png" group-title="Malaysia",Dewan Negara
@@ -157,8 +157,8 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Sport%
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Wired2Fish/Wired2Fish.m3u8
 ## #EXTINF:-1 tvg-chno="" tvg-name="Sports Connect" tvg-id="" tvg-country="" tvg-logo="" group-title="Sports",Sports Connect
 ## https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Sports%20Connect/Sports%20Connect.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="MBC America" tvg-id="" tvg-country="" tvg-logo="" group-title="Sports",MBC America
-https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/MBC/MBC%20America.m3u8
+## #EXTINF:-1 tvg-chno="" tvg-name="MBC America" tvg-id="" tvg-country="" tvg-logo="" group-title="Sports",MBC America
+## https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/MBC/MBC%20America.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Swerve Sport" tvg-id="" tvg-country="" tvg-logo="" group-title="Sports",Swerve Sport
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Swerve%20Sport/Swerve%20Sport.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="World Billiards TV" tvg-id="" tvg-country="" tvg-logo="" group-title="Sports",World Billiards TV
