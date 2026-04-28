@@ -28,7 +28,7 @@ HEADERS = {
 
 def fetch_token(channel_name, page_url):
     """
-    Navigate to the channel, click the play button (with iframe handling),
+    Navigate to the Mana2 channel, click the JW Player play overlay,
     and capture the first real .m3u8 stream request from live.mana2.my.
     Returns the token URL or None.
     """
@@ -53,7 +53,7 @@ def fetch_token(channel_name, page_url):
             page.goto(page_url, wait_until='networkidle', timeout=30000)
             print("    Page loaded.")
 
-            # Give the page a moment to fully render and JW Player to initialise
+            # Let the JW Player initialise
             time.sleep(3)
 
             # ---------- Dismiss any obvious overlays ----------
@@ -74,25 +74,14 @@ def fetch_token(channel_name, page_url):
                 except Exception:
                     pass
 
-            # ---------- Locate and click the play element ----------
-            # JW Player often lives inside an iframe – look for one
-            iframe = page.locator('iframe').first
-            if iframe.count() > 0:
-                try:
-                    frame = iframe.content_frame
-                    if frame:
-                        print("    Found iframe containing player.")
-                        # Try clicking inside the iframe
-                        frame.locator('.jw-icon-playback, video').first.click(timeout=5000)
-                        print("    Clicked inside iframe.")
-                        token = _wait_for_token(page, token)
-                        if token:
-                            return token
-                except Exception as e:
-                    print(f"    Iframe click failed: {e}")
-
-            # If no iframe, try clicking directly on the main page
-            play_selectors = ['.jw-icon-playback', 'button[aria-label="Play"]', 'video']
+            # ---------- Click the JW Player play overlay ----------
+            # The log showed exactly this element intercepting clicks:
+            # <div role="button" aria-label="Play" class="jw-icon jw-icon-display ...">
+            play_selectors = [
+                'div[aria-label="Play"]',    # exact match from logs
+                '.jw-icon-display',          # JW Player's big play button
+                'button[aria-label="Play"]', # fallback
+            ]
             clicked = False
             for sel in play_selectors:
                 try:
@@ -102,40 +91,29 @@ def fetch_token(channel_name, page_url):
                         print(f"    Clicked on '{sel}'.")
                         clicked = True
                         break
-                except Exception:
-                    continue
+                except Exception as e:
+                    print(f"    Selector '{sel}' failed: {e}")
 
             if not clicked:
-                # Absolute fallback: click the video element (works even without controls)
-                try:
-                    page.locator('video').first.click(timeout=5000)
-                    print("    Clicked on <video> element.")
-                    clicked = True
-                except Exception as e:
-                    print(f"    Fallback click failed: {e}")
+                print("    No play button found – playback may not start.")
+            # ----------------------------------------------------------------
 
             # ---------- Wait for stream request ----------
-            token = _wait_for_token(page, token)
+            print("    Waiting for .m3u8 stream request ...")
+            for _ in range(20):
+                if token:
+                    break
+                time.sleep(1)
 
+            if token:
+                print(f"    Success: {token}")
+            else:
+                print("    No .m3u8 stream request captured within 20s.")
         except Exception as e:
             print(f"    ERROR during navigation/playback: {e}")
 
         context.close()
         browser.close()
-    return token
-
-
-def _wait_for_token(page, token):
-    """Wait up to 20 seconds for the stream .m3u8 request."""
-    print("    Waiting for .m3u8 stream request ...")
-    for _ in range(20):
-        if token:
-            break
-        time.sleep(1)
-    if token:
-        print(f"    Success: {token}")
-    else:
-        print("    No .m3u8 stream request captured within 20s.")
     return token
 
 
