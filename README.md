@@ -10,7 +10,8 @@ IPTV ini dibuat untuk kegunaan sendiri.
 Project ini inspired by project-project IPTV creator yang ada di github (banyak yg tak boleh pakai sebab expired).
 Project ini juga di inpirasikan dari MYIPTV4U (free version) tetapi sebab dah tak boleh guna (even untuk channel free malaysia) project ini dilakukan.
 Main purpose of this project to compile free live TV malaysia into 1 apps or IPTV player.
-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 📺 Personal Malaysian IPTV Playlist (Private)
 ⚠️ IMPORTANT: This repository is PRIVATE.
 The playlist URL inside is not intended for public distribution. Sharing it publicly may lead to channel blocks or legal issues. Use it only for personal, non‑commercial viewing.
