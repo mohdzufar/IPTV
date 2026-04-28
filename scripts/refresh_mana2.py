@@ -28,9 +28,10 @@ HEADERS = {
 
 def fetch_token(channel_name, page_url):
     """
-    Open a fresh browser context + page, navigate to the Mana2 channel,
-    click a play element if found, then capture the first .m3u8 request
-    from live.mana2.my.  Returns the token URL or None.
+    Open a fresh browser context, navigate to the Mana2 channel,
+    dismiss overlays, click the JW Player play button, and capture
+    the first real .m3u8 stream request from live.mana2.my.
+    Returns the token URL or None.
     """
     token = None
     with sync_playwright() as p:
@@ -40,8 +41,10 @@ def fetch_token(channel_name, page_url):
 
         def handle_request(request):
             nonlocal token
-            if token is None and '.m3u8' in request.url and 'live.mana2.my' in request.url:
-                token = request.url
+            url = request.url
+            # Capture only real stream .m3u8, not JW Player analytics pings
+            if token is None and '.m3u8' in url and 'live.mana2.my' in url and 'jwpltx.com' not in url and 'ping.gif' not in url:
+                token = url
                 print(f"    Captured: {token}")
 
         page.on('request', handle_request)
@@ -51,16 +54,43 @@ def fetch_token(channel_name, page_url):
             page.goto(page_url, wait_until='networkidle', timeout=30000)
             print("    Page loaded.")
 
-            # -------- Try to click a play button or video element --------
-            click_selectors = [
+            # --- Dismiss common overlays (cookies, age verification) ---
+            overlay_selectors = [
+                'button[aria-label="Close"]',
+                '.cookie-consent button',
+                '.modal button.close',
+                '[data-dismiss="modal"]',
+                '.mfp-close',
+            ]
+            for sel in overlay_selectors:
+                try:
+                    el = page.locator(sel)
+                    if el.count() > 0:
+                        el.first.click(timeout=2000)
+                        print(f"    Dismissed overlay: {sel}")
+                        time.sleep(0.5)
+                except Exception:
+                    pass
+            # -----------------------------------------------------------
+
+            # --- Wait for JW Player or a video element to appear ---
+            try:
+                page.wait_for_selector('.jwplayer, video', timeout=10000)
+                print("    JW Player / video element found.")
+            except Exception:
+                print("    No JW Player element found – trying any video.")
+            # ---------------------------------------------------------
+
+            # --- Click play using JW Player specific selectors ---
+            play_selectors = [
+                '.jw-icon-playback',       # JW Player play button
+                '.jw-button-play',         # alternative
                 'button[aria-label="Play"]',
                 '.vjs-big-play-button',
-                '.play-button',
-                '[class*="play"]',
-                'video',
+                'video',                   # fallback: click on the video itself
             ]
             clicked = False
-            for sel in click_selectors:
+            for sel in play_selectors:
                 try:
                     loc = page.locator(sel)
                     if loc.count() > 0:
@@ -72,7 +102,7 @@ def fetch_token(channel_name, page_url):
                     continue
 
             if not clicked:
-                # Last resort: use JavaScript to play any video on the page
+                # Last resort: JavaScript play
                 try:
                     page.evaluate("""
                         const v = document.querySelector('video');
@@ -84,11 +114,11 @@ def fetch_token(channel_name, page_url):
                     print(f"    JS play failed: {e}")
 
             if not clicked:
-                print("    No clickable play element found, hoping for autoplay...")
+                print("    No clickable play element found – hoping for autoplay...")
             # ----------------------------------------------------------------
 
-            print("    Waiting for .m3u8 request ...")
-            for _ in range(20):   # up to 20 seconds
+            print("    Waiting for .m3u8 stream request ...")
+            for _ in range(20):
                 if token:
                     break
                 time.sleep(1)
@@ -96,7 +126,7 @@ def fetch_token(channel_name, page_url):
             if token:
                 print(f"    Success: {token}")
             else:
-                print("    No .m3u8 request captured within 20s.")
+                print("    No .m3u8 stream request captured within 20s.")
         except Exception as e:
             print(f"    ERROR during navigation/playback: {e}")
 
