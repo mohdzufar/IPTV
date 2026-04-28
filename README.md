@@ -10,6 +10,7 @@ IPTV ini dibuat untuk kegunaan sendiri.
 Project ini inspired by project-project IPTV creator yang ada di github (banyak yg tak boleh pakai sebab expired).
 Project ini juga di inpirasikan dari MYIPTV4U (free version) tetapi sebab dah tak boleh guna (even untuk channel free malaysia) project ini dilakukan.
 Main purpose of this project to compile free live TV malaysia into 1 apps or IPTV player.
+===================================================================================================================================================================================================
 
 # 📺 Personal Malaysian IPTV Playlist (Private)
 
@@ -23,15 +24,6 @@ This is my personal, auto‑maintained M3U playlist of **free, publicly availabl
 - One playlist, one IPTV player.
 - No more switching between TONTON, RTM Klik, and other apps.
 - **Private** — because public playlists get blocked or go stale quickly.
-
-## 🔧 How I Use It
-
-1. The playlist file is stored in this private repo:  
-   `playlist.m3u`
-
-2. I copy the **raw URL** of that file into my IPTV player (VLC, TiviMate, OTT Navigator, etc.).
-
-3. GitHub Actions (private workflows) automatically validate and clean the playlist weekly.
 
 ## 🔄 Maintenance Automation (Private)
 
