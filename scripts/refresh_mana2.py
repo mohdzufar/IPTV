@@ -28,9 +28,8 @@ HEADERS = {
 
 def fetch_token(channel_name, page_url):
     """
-    Open a fresh browser context, navigate to the Mana2 channel,
-    dismiss overlays, click the JW Player play button, and capture
-    the first real .m3u8 stream request from live.mana2.my.
+    Navigate to the channel, click the play button (with iframe handling),
+    and capture the first real .m3u8 stream request from live.mana2.my.
     Returns the token URL or None.
     """
     token = None
@@ -42,7 +41,7 @@ def fetch_token(channel_name, page_url):
         def handle_request(request):
             nonlocal token
             url = request.url
-            # Capture only real stream .m3u8, not JW Player analytics pings
+            # Capture only real stream .m3u8 – ignore JW analytics pings
             if token is None and '.m3u8' in url and 'live.mana2.my' in url and 'jwpltx.com' not in url and 'ping.gif' not in url:
                 token = url
                 print(f"    Captured: {token}")
@@ -54,7 +53,10 @@ def fetch_token(channel_name, page_url):
             page.goto(page_url, wait_until='networkidle', timeout=30000)
             print("    Page loaded.")
 
-            # --- Dismiss common overlays (cookies, age verification) ---
+            # Give the page a moment to fully render and JW Player to initialise
+            time.sleep(3)
+
+            # ---------- Dismiss any obvious overlays ----------
             overlay_selectors = [
                 'button[aria-label="Close"]',
                 '.cookie-consent button',
@@ -71,67 +73,69 @@ def fetch_token(channel_name, page_url):
                         time.sleep(0.5)
                 except Exception:
                     pass
-            # -----------------------------------------------------------
 
-            # --- Wait for JW Player or a video element to appear ---
-            try:
-                page.wait_for_selector('.jwplayer, video', timeout=10000)
-                print("    JW Player / video element found.")
-            except Exception:
-                print("    No JW Player element found – trying any video.")
-            # ---------------------------------------------------------
+            # ---------- Locate and click the play element ----------
+            # JW Player often lives inside an iframe – look for one
+            iframe = page.locator('iframe').first
+            if iframe.count() > 0:
+                try:
+                    frame = iframe.content_frame
+                    if frame:
+                        print("    Found iframe containing player.")
+                        # Try clicking inside the iframe
+                        frame.locator('.jw-icon-playback, video').first.click(timeout=5000)
+                        print("    Clicked inside iframe.")
+                        token = _wait_for_token(page, token)
+                        if token:
+                            return token
+                except Exception as e:
+                    print(f"    Iframe click failed: {e}")
 
-            # --- Click play using JW Player specific selectors ---
-            play_selectors = [
-                '.jw-icon-playback',       # JW Player play button
-                '.jw-button-play',         # alternative
-                'button[aria-label="Play"]',
-                '.vjs-big-play-button',
-                'video',                   # fallback: click on the video itself
-            ]
+            # If no iframe, try clicking directly on the main page
+            play_selectors = ['.jw-icon-playback', 'button[aria-label="Play"]', 'video']
             clicked = False
             for sel in play_selectors:
                 try:
                     loc = page.locator(sel)
                     if loc.count() > 0:
                         loc.first.click(timeout=5000)
-                        print(f"    Clicked on '{sel}' to start playback.")
+                        print(f"    Clicked on '{sel}'.")
                         clicked = True
                         break
                 except Exception:
                     continue
 
             if not clicked:
-                # Last resort: JavaScript play
+                # Absolute fallback: click the video element (works even without controls)
                 try:
-                    page.evaluate("""
-                        const v = document.querySelector('video');
-                        if (v) { v.muted = true; v.play(); }
-                    """)
-                    print("    Forced video play via JavaScript.")
+                    page.locator('video').first.click(timeout=5000)
+                    print("    Clicked on <video> element.")
                     clicked = True
                 except Exception as e:
-                    print(f"    JS play failed: {e}")
+                    print(f"    Fallback click failed: {e}")
 
-            if not clicked:
-                print("    No clickable play element found – hoping for autoplay...")
-            # ----------------------------------------------------------------
+            # ---------- Wait for stream request ----------
+            token = _wait_for_token(page, token)
 
-            print("    Waiting for .m3u8 stream request ...")
-            for _ in range(20):
-                if token:
-                    break
-                time.sleep(1)
-
-            if token:
-                print(f"    Success: {token}")
-            else:
-                print("    No .m3u8 stream request captured within 20s.")
         except Exception as e:
             print(f"    ERROR during navigation/playback: {e}")
 
         context.close()
         browser.close()
+    return token
+
+
+def _wait_for_token(page, token):
+    """Wait up to 20 seconds for the stream .m3u8 request."""
+    print("    Waiting for .m3u8 stream request ...")
+    for _ in range(20):
+        if token:
+            break
+        time.sleep(1)
+    if token:
+        print(f"    Success: {token}")
+    else:
+        print("    No .m3u8 stream request captured within 20s.")
     return token
 
 
