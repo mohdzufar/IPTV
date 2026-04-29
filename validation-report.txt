@@ -37,7 +37,7 @@ Travel & Taste,dash,200,https://b27a6dd8a86c3e4ba93fbae22aaaac64.pmqrop.channel-
 Drama Hebat,dash,200,https://b27a6dd8a86c3e4ba93fbae22aaaac64.pmqrop.channel-assembly.mediatailor.ap-southeast-1.amazonaws.com/v1/channel/FAST_1/dash.mpd
 Jom Ngaji,dash,200,https://827f31c3f2824c0c95c7a5190e96e284.mediatailor.ap-southeast-1.amazonaws.com/v1/dash/951fbca46ac9b52422f8e3d6d4d6dab33623c3cc/FASTOO_CH6_JOMNGAJI/dash.mpd
 Oh My Ceria!,dash,200,https://f9169865dbd747b4a24602e856a9c7a2.mediatailor.ap-southeast-1.amazonaws.com/v1/dash/951fbca46ac9b52422f8e3d6d4d6dab33623c3cc/FASTOO_CH7_CERIA/dash.mpd
-Quran (Mecca),hls_master,200,https://live.kwikmotion.com/sbrksaquranradiolive/srpksaquranradio/playlist.m3u8
+Quran (Mecca),exception,0,https://live.kwikmotion.com/sbrksaquranradiolive/srpksaquranradio/playlist.m3u8
 MediaCorp (English),empty_ok,404,https://d35j504z0x2vu2.cloudfront.net/v1/master/0bc8e8376bd8417a1b6761138aa41c26c7309312/mediacorp-entertainment-english/manifest.m3u8?ads.vf=R8kyVh4ofC8
 MediaCorp (Tamil),empty_ok,404,https://d35j504z0x2vu2.cloudfront.net/v1/master/0bc8e8376bd8417a1b6761138aa41c26c7309312/mediacorp-entertainment-tamil/manifest.m3u8?ads.vf=elqQKKDvkMK
 CNA,hls_media,200,https://d2e1asnsl7br7b.cloudfront.net/7782e205e72f43aeb4a48ec97f66ebbe/index_5.m3u8
@@ -78,7 +78,7 @@ RedBull TV,hls_master,200,https://3ea22335.wurl.com/master/f36d25e7e52f1ba8d7e56
 Sport Fishing TV,hls_master,200,https://streams2.sofast.tv/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/eea68b79-bfe2-451e-a227-d637a5b9548a/manifest.m3u8
 Wired2Fish,hls_master,200,https://linear-80.frequency.stream/dist/localnow/80/hls/master/playlist.m3u8
 Sports Connect,empty_ok,404,https://d35j504z0x2vu2.cloudfront.net/v1/master/0bc8e8376bd8417a1b6761138aa41c26c7309312/sports-connect/video.m3u8?ads.vf=K-yU3EWs_wu
-MBC America,invalid,404,https://cdn-us-east-prod-ingest-infra-dacast-com.akamaized.net/624ff8f9-db18-da92-4d42-896fa2ff3eb3/source/index.m3u8
+MBC America,hls_media,200,https://cdn-us-east-prod-ingest-infra-dacast-com.akamaized.net/624ff8f9-db18-da92-4d42-896fa2ff3eb3/source/index.m3u8
 Swerve Sport,hls_master,200,https://linear-253.frequency.stream/dist/localnow/253/hls/master/playlist.m3u8
 World Billiards TV,hls_master,200,https://92652ca9374d45ff8669fa318712ccda.mediatailor.us-east-1.amazonaws.com/v1/master/f4e8c53a8367a5b58e20ce054ea3ce25a3e904d3/SportsTV_WorldBilliardsTV/playlist.m3u8
 Billiard TV,hls_master,200,https://d3f4oii5n0oeqi.cloudfront.net/11701/88814555/hls/billi.m3u8?includeAssetTags=true&ads.xumo_channelId=88814555a&ads.xumo_streamId=88814555&declaredCC1Language=en&ads.caid=BilliardTV&ads.csid=tcl2_us_triplebmediabilliard_ssai&ads.xumo_ifaType=%5BIFA_TYPE%5D&ads.xumo_ifa=%5BIFA%5D&ads.appName=%5BAPP_NAME%5D&ads.appVersion=%5BAPP_VERSION%5D&ads._fw_app_bundle=%5BTCL_APP_BUNDLE%5D&ads._fw_content_category=IAB17&ads._fw_content_genre=sports&ads._fw_content_language=en&ads._fw_content_rating=tv-pg&ads._fw_deviceMake=%5BDEVICE_MAKE%5D&ads._fw_device_model=%5BDEVICE_MODEL%5D&ads._fw_devicetype=3-Connected_TV&ads._fw_coppa=0&ads._fw_is_lat=%5BLMT%5D&ads._fw_us_privacy=%5BUS_PRIVACY%5D&ads._fw_h_x_country=US&ads._fw_player_width=%5BPLAYER_WIDTH%5D&ads._fw_player_height=%5BPLAYER_HEIGHT%5D&ads.xumo_contentId=2728&ads.xumo_contentName=BilliardTV&ads.xumo_providerId=2728&ads.xumo_providerName=TripleBMediaBilliard&ads.xumo_channelName=BilliardTV&ads._fw_app_store_url=%5BTCL_APP_STORE_URL%5D
@@ -115,11 +115,11 @@ Hallmark Channel,hls_master,200,http://23.237.104.106:8080/USA_HALLMARK/index.m3
 HBO,hls_master,200,http://23.237.104.106:8080/USA_HBO/index.m3u8
 HBO 2,hls_master,200,http://23.237.104.106:8080/USA_HBO2/index.m3u8
 HBO Comedy,hls_master,200,http://23.237.104.106:8080/USA_HBO_COMEDY/index.m3u8
-HBO Family,dash,200,https://cdn10jtedge.indihometv.com/atm/DASH/hbofamily/manifest.mpd
+HBO Family,invalid,200,https://cdn10jtedge.indihometv.com/atm/DASH/hbofamily/manifest.mpd
 HBO Signature,dash,200,https://cdn10jtedge.indihometv.com/atm/DASH/hbosignature/manifest.mpd
 HBO Zone,hls_master,200,http://23.237.104.106:8080/USA_HBO_ZONE/index.m3u8
 Rakuten Top Movies UK,hls_master,200,https://0145451975a64b35866170fd2e8fa486.mediatailor.eu-west-1.amazonaws.com/v1/master/0547f18649bd788bec7b67b746e47670f558b6b2/production-LiveChannel-5987/master.m3u8
-Sony Movie Channel,invalid,200,http://iptvtree.net:8080/live/7e4b0dbd/1dd755dc3f/5831.ts
+Sony Movie Channel,html,404,http://iptvtree.net:8080/live/7e4b0dbd/1dd755dc3f/5831.ts
 Bollywood,exception,0,http://103.213.31.109:90/BollywoodHD/playlist.m3u8
 Bollywood Classic,exception,0,http://103.213.31.109:90/BollywoodClassic/playlist.m3u8
 EuroNews,hls_media,200,https://dash4.antik.sk/live/test_euronews/playlist.m3u8
@@ -140,8 +140,8 @@ Wild Earth,hls_master,200,https://wildearth-lg.amagi.tv/hls/amagi_hls_data_wilde
 Xumo Nature & Wildlife TV,hls_master,200,https://live-content.xumo.com/3883/content/XM0RW1PIY5R776/25283138/master.m3u8
 Animal Planet,hls_master,200,http://23.237.104.106:8080/USA_ANIMAL_PLANET/index.m3u8
 Discovery Channel,hls_master,200,http://23.237.104.106:8080/USA_DISCOVERY/index.m3u8
-Discovery Life,invalid,200,http://iptvtree.net:8080/live/7e4b0dbd/1dd755dc3f/201208.ts
-Discovery Science,invalid,200,http://iptvtree.net:8080/live/7e4b0dbd/1dd755dc3f/2301.ts
+Discovery Life,html,404,http://iptvtree.net:8080/live/7e4b0dbd/1dd755dc3f/201208.ts
+Discovery Science,html,404,http://iptvtree.net:8080/live/7e4b0dbd/1dd755dc3f/2301.ts
 Disney Channel,exception,0,http://89.105.221.127/Disney/index.m3u8?token=test
 Disney XD,hls_master,200,http://23.237.104.106:8080/USA_DISNEY_XD/index.m3u8
 Bob Ross Channel,exception,0,https://bobross-xumous.cinedigm.com/midroll/amagi_hls_data_xumo-host-bobross-xumo/CDN/master.m3u8
@@ -151,6 +151,6 @@ Al-Jazeera (English),hls_master,200,https://live-hls-apps-aje-v3-fa.getaj.net/AJ
 Love Pets,hls_master,200,https://rakutenaa-blueskyent-lovepetsemea-rakuten-ikc4q.amagi.tv/playlist/rakutenAA-blueskyent-lovepetsemea-rakuten/playlist.m3u8
 Documentary+,hls_master,200,https://live-content.xumo.com/2715/content/XM04405O6X0WP0/28846020/master.m3u8
 mn静静nm,hls_media,200,https://goodiptv.club/douyu/5668371
-万事通熊猫,invalid,200,https://goodiptv.club/douyu/7812810
+万事通熊猫,hls_media,200,https://goodiptv.club/douyu/7812810
 K-Content,hls_master,200,https://jmp2.uk/stvp-GB17000066A
 K-Drama+,hls_master,200,https://jmp2.uk/stvp-GBBD4100011RE
