@@ -52,13 +52,14 @@ jobs:
               $pushSuccess = $false
               do {
                   $retry++
-                  $output = git push 2>&1
+                  Write-Host "Push attempt $retry..."
+                  git push
                   if ($LASTEXITCODE -eq 0) {
                       Write-Host "Push succeeded on attempt $retry."
                       $pushSuccess = $true
                       break
                   } else {
-                      Write-Host "Push attempt $retry failed (exit code $LASTEXITCODE). Output: $output"
+                      Write-Host "Push attempt $retry failed with exit code $LASTEXITCODE."
                       if ($retry -lt $maxRetries) {
                           Write-Host "Retrying in 30 seconds..."
                           Start-Sleep -Seconds 30
