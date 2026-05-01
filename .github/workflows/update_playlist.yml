@@ -47,36 +47,28 @@ jobs:
           if ($changes) {
               git commit -m "Automated daily update"
               git remote set-url origin https://x-access-token:$env:GITHUB_TOKEN@github.com/mohdzufar/IPTV.git
-              # Retry push up to 3 times with detailed error logging
               $retry = 0
               $maxRetries = 3
-              $errorLog = @()
+              $pushSuccess = $false
               do {
-                  try {
-                      $retry++
-                      $errorMsg = git push 2>&1
-                      if ($LASTEXITCODE -eq 0) {
-                          Write-Host "Push succeeded on attempt $retry."
-                          break
-                      } else {
-                          $err = "Push attempt $retry failed with exit code $LASTEXITCODE. Error: $errorMsg"
-                          Write-Host $err
-                          $errorLog += $err
-                      }
-                  } catch {
-                      $err = "Push attempt $retry failed with exception: $_"
-                      Write-Host $err
-                      $errorLog += $err
-                  }
-                  if ($retry -lt $maxRetries) {
-                      Write-Host "Waiting 30 seconds before retry..."
-                      Start-Sleep -Seconds 30
+                  $retry++
+                  $output = git push 2>&1
+                  if ($LASTEXITCODE -eq 0) {
+                      Write-Host "Push succeeded on attempt $retry."
+                      $pushSuccess = $true
+                      break
                   } else {
-                      Write-Host "All $maxRetries push attempts failed. Log:"
-                      $errorLog | ForEach-Object { Write-Host $_ }
-                      exit 1
+                      Write-Host "Push attempt $retry failed (exit code $LASTEXITCODE). Output: $output"
+                      if ($retry -lt $maxRetries) {
+                          Write-Host "Retrying in 30 seconds..."
+                          Start-Sleep -Seconds 30
+                      }
                   }
-              } while ($retry -lt $maxRetries)
+              } while ($retry -lt $maxRetries -and -not $pushSuccess)
+              if (-not $pushSuccess) {
+                  Write-Host "ERROR: Push failed after $maxRetries attempts."
+                  exit 1
+              }
           } else {
               Write-Host "No changes to commit"
           }
