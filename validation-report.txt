@@ -96,7 +96,7 @@ CS2,exception,0,https://live.iill.top/bilibili/21622811
 CS2,exception,0,https://live.iill.top/huya/483917
 DotA2,exception,0,https://live.iill.top/huya/660118
 DotA2,exception,0,https://live.iill.top/douyu/3811559
-KPOP Mix,hls_master,200,https://cloud.tvomix.com/KPOPMIX/index.m3u8
+KPOP Mix,invalid,404,https://cloud.tvomix.com/KPOPMIX/index.m3u8
 New KPOP,hls_master,200,https://newidco-newkid-1-eu.xiaomi.wurl.tv/playlist.m3u8
 K-POP,hls_master,200,https://jmp2.uk/stvp-CA3900002PM
 Music Japan,hls_master,200,http://cdns.jp-primehome.com:8000/zhongying/live/playlist.m3u8?cid=cs06
@@ -153,6 +153,6 @@ Al-Jazeera (English),hls_master,200,https://live-hls-apps-aje-v3-fa.getaj.net/AJ
 Love Pets,hls_master,200,https://rakutenaa-blueskyent-lovepetsemea-rakuten-ikc4q.amagi.tv/playlist/rakutenAA-blueskyent-lovepetsemea-rakuten/playlist.m3u8
 Documentary+,hls_master,200,https://live-content.xumo.com/2715/content/XM04405O6X0WP0/28846020/master.m3u8
 mn静静nm,hls_media,200,https://goodiptv.club/douyu/5668371
-万事通熊猫,hls_media,200,https://goodiptv.club/douyu/7812810
+万事通熊猫,invalid,200,https://goodiptv.club/douyu/7812810
 K-Content,hls_master,200,https://jmp2.uk/stvp-GB17000066A
 K-Drama+,hls_master,200,https://jmp2.uk/stvp-GBBD4100011RE
