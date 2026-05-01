@@ -37,7 +37,7 @@ Lawak Sentral,dash,200,https://b27a6dd8a86c3e4ba93fbae22aaaac64.pmqrop.channel-a
 Drama Hotpot,dash,200,https://b27a6dd8a86c3e4ba93fbae22aaaac64.pmqrop.channel-assembly.mediatailor.ap-southeast-1.amazonaws.com/v1/channel/FAST_4/dash.mpd
 Travel & Taste,dash,200,https://b27a6dd8a86c3e4ba93fbae22aaaac64.pmqrop.channel-assembly.mediatailor.ap-southeast-1.amazonaws.com/v1/channel/FAST_5/dash.mpd
 Drama Hebat,dash,200,https://b27a6dd8a86c3e4ba93fbae22aaaac64.pmqrop.channel-assembly.mediatailor.ap-southeast-1.amazonaws.com/v1/channel/FAST_1/dash.mpd
-Jom Ngaji,dash,200,https://827f31c3f2824c0c95c7a5190e96e284.mediatailor.ap-southeast-1.amazonaws.com/v1/dash/951fbca46ac9b52422f8e3d6d4d6dab33623c3cc/FASTOO_CH6_JOMNGAJI/dash.mpd
+Jom Ngaji,invalid,200,https://827f31c3f2824c0c95c7a5190e96e284.mediatailor.ap-southeast-1.amazonaws.com/v1/dash/951fbca46ac9b52422f8e3d6d4d6dab33623c3cc/FASTOO_CH6_JOMNGAJI/dash.mpd
 Oh My Ceria!,dash,200,https://f9169865dbd747b4a24602e856a9c7a2.mediatailor.ap-southeast-1.amazonaws.com/v1/dash/951fbca46ac9b52422f8e3d6d4d6dab33623c3cc/FASTOO_CH7_CERIA/dash.mpd
 Quran (Mecca),hls_master,200,https://live.kwikmotion.com/sbrksaquranradiolive/srpksaquranradio/playlist.m3u8
 MediaCorp (English),empty_ok,404,https://d35j504z0x2vu2.cloudfront.net/v1/master/0bc8e8376bd8417a1b6761138aa41c26c7309312/mediacorp-entertainment-english/manifest.m3u8?ads.vf=R8kyVh4ofC8
@@ -152,7 +152,7 @@ KoreaTV,hls_master,200,https://hlive.ktv.go.kr/live/klive_h.stream/playlist.m3u8
 Al-Jazeera (English),hls_master,200,https://live-hls-apps-aje-v3-fa.getaj.net/AJE/index.m3u8
 Love Pets,hls_master,200,https://rakutenaa-blueskyent-lovepetsemea-rakuten-ikc4q.amagi.tv/playlist/rakutenAA-blueskyent-lovepetsemea-rakuten/playlist.m3u8
 Documentary+,hls_master,200,https://live-content.xumo.com/2715/content/XM04405O6X0WP0/28846020/master.m3u8
-mn静静nm,hls_media,200,https://goodiptv.club/douyu/5668371
-万事通熊猫,invalid,200,https://goodiptv.club/douyu/7812810
+mn静静nm,html,502,https://goodiptv.club/douyu/5668371
+万事通熊猫,html,502,https://goodiptv.club/douyu/7812810
 K-Content,hls_master,200,https://jmp2.uk/stvp-GB17000066A
 K-Drama+,hls_master,200,https://jmp2.uk/stvp-GBBD4100011RE
