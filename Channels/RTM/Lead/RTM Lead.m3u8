@@ -10,8 +10,7 @@ https://d1sq2slp9afh7o.cloudfront.net/smil:lead/chunklist_b796000_slENG.m3u8
 #EXT-X-STREAM-INF:BANDWIDTH=4370178,CODECS="mp4a.40.2,avc1.4d4020",RESOLUTION=1280x720,FRAME-RATE=60,VIDEO-RANGE=SDR,CLOSED-CAPTIONS=NONE
 https://d1sq2slp9afh7o.cloudfront.net/smil:lead/chunklist_b1096000_slENG.m3u8
 #EXT-X-STREAM-INF:BANDWIDTH=7171631,CODECS="mp4a.40.2,avc1.64002a",RESOLUTION=1920x1080,FRAME-RATE=60,VIDEO-RANGE=SDR,CLOSED-CAPTIONS=NONE
-https://d1sq2slp9afh7o.cloudfront.net/smil:snap/chunklist_b2596000_slENG.m3u8
+https://d1sq2slp9afh7o.cloudfront.net/smil:lead/chunklist_b2596000_slENG.m3u8
 
 ###EXTINF:-1 tvg-name="RTM Lead",RTM Lead
 ##https://d1sq2slp9afh7o.cloudfront.net/smil:lead/playlist.m3u8
-##https://d1sq2slp9afh7o.cloudfront.net/smil:lead/chunklist_b2596000_slENG.m3u8
