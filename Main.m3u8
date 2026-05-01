@@ -32,21 +32,21 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/ASTRO/
 ## #EXTINF:-1 tvg-chno="" tvg-name="Astro Arena Bola 2" tvg-id="4215" tvg-country="MY" tvg-logo="" group-title="Sports",Astro Arena Bola 2
 ## https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/ASTRO/Arena/Arena%20Bola%202.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Al-Hijrah" tvg-id="369680" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/esdfqp.png" group-title="Malaysia",Al-Hijrah
-https://live.mana2.my/TvAlhijrah/index.m3u8?auth_key=1777643279-9254172f771f4eeca9c594d52a38f883-0-43c01a3fdce75c7ee2fe66d35420c7f5&token=1777643279-9254172f771f4eeca9c594d52a38f883-0-43c01a3fdce75c7ee2fe66d35420c7f5
+https://live.mana2.my/TvAlhijrah/index.m3u8?auth_key=1777645093-18f2a11bd4eb4e1097b361928e38b2cd-0-3141c1a052af2af7114e5b29e747c782&token=1777645093-18f2a11bd4eb4e1097b361928e38b2cd-0-3141c1a052af2af7114e5b29e747c782
 #EXTINF:-1 tvg-chno="" tvg-name="EnjoyTV" tvg-id="" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/channel/logos/hglfwv.png" group-title="Malaysia",EnjoyTV
-https://live.mana2.my/Tv5/index.m3u8?auth_key=1777643303-656dd965f92f4a129f7a930e8f9b95cd-0-499a1fb9d73e9c109b4a84427ab34306&token=1777643303-656dd965f92f4a129f7a930e8f9b95cd-0-499a1fb9d73e9c109b4a84427ab34306
+https://live.mana2.my/Tv5/index.m3u8?auth_key=1777645119-4da6f1eb57c348fab1ba08e081d38ed5-0-cb92851ec75bb5b3139c17d05818c54d&token=1777645119-4da6f1eb57c348fab1ba08e081d38ed5-0-cb92851ec75bb5b3139c17d05818c54d
 #EXTINF:-1 tvg-chno="" tvg-name="BorneoTV" tvg-id="" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/npdqkp.png" group-title="Malaysia",BorneoTV
-https://live.mana2.my/BorneoTv/index.m3u8?auth_key=1777643295-ed0902efaf244f65a797df212b94f505-0-1509d0adbeb93b437cb0938f775464df&token=1777643295-ed0902efaf244f65a797df212b94f505-0-1509d0adbeb93b437cb0938f775464df
+https://live.mana2.my/BorneoTv/index.m3u8?auth_key=1777645110-445b4ebbf5bb4a908596ae939fe61efe-0-9e98525e8f9081089f59c6c6a2336549&token=1777645110-445b4ebbf5bb4a908596ae939fe61efe-0-9e98525e8f9081089f59c6c6a2336549
 #EXTINF:-1 tvg-chno="" tvg-name="SelangorTV" tvg-id="" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/emwijp.png" group-title="Malaysia",SelangorTV
-https://live.mana2.my/SelangorTv/index.m3u8?auth_key=1777643311-414fde2d54bd4d249987035b269fdfe5-0-b35bd85de7281b5f18b22c40fc9c61f9&token=1777643311-414fde2d54bd4d249987035b269fdfe5-0-b35bd85de7281b5f18b22c40fc9c61f9
+https://live.mana2.my/SelangorTv/index.m3u8?auth_key=1777645127-0a9706d6f92240c5bdfa8a15fdecde1d-0-edfaa964d0e99ea7185df6c997fcd609&token=1777645127-0a9706d6f92240c5bdfa8a15fdecde1d-0-edfaa964d0e99ea7185df6c997fcd609
 #EXTINF:-1 tvg-chno="" tvg-name="SukeTV" tvg-id="" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/utgwdm.png" group-title="Malaysia",SukeTV
-https://live.mana2.my/SukeTv/index.m3u8?auth_key=1777643327-3eb105975f27433d9b08cc5114368bfb-0-974f3d83ce0b2459fb1e10d3fd8b403a&token=1777643327-3eb105975f27433d9b08cc5114368bfb-0-974f3d83ce0b2459fb1e10d3fd8b403a
+https://live.mana2.my/SukeTv/index.m3u8?auth_key=1777645143-8fa33746215f434aa0675510689084fc-0-056c2d4bb14af486cd01c77d57474bdc&token=1777645143-8fa33746215f434aa0675510689084fc-0-056c2d4bb14af486cd01c77d57474bdc
 #EXTINF:-1 tvg-chno="" tvg-name="TVS" tvg-id="3942" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/filzbh.jpeg" group-title="Malaysia",TVS
-https://live.mana2.my/TvS/index.m3u8?auth_key=1777643336-175032cf195943d09d784bdd74a022f3-0-656fc42f86fdb70565e7a98b6b1c7b44&token=1777643336-175032cf195943d09d784bdd74a022f3-0-656fc42f86fdb70565e7a98b6b1c7b44
+https://live.mana2.my/TvS/index.m3u8?auth_key=1777645151-2a49325182544761ab48492f3d94324b-0-ff0a5a39367d112a4d4eab5b2579dc7d&token=1777645151-2a49325182544761ab48492f3d94324b-0-ff0a5a39367d112a4d4eab5b2579dc7d
 #EXTINF:-1 tvg-chno="" tvg-name="SukanPlus" tvg-id="" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/soxsng.jpeg" group-title="Malaysia",Sukan+
-https://live.mana2.my/SukanRtm/index.m3u8?auth_key=1777643319-45d52e924a6943ed992d034dd78e1168-0-66d009ce470713441b23a8e72e6130e7&token=1777643319-45d52e924a6943ed992d034dd78e1168-0-66d009ce470713441b23a8e72e6130e7
+https://live.mana2.my/SukanRtm/index.m3u8?auth_key=1777645135-286f3f115333427a87e4e1503ab06d13-0-d882fd6140b524133fd01ba3915dc527&token=1777645135-286f3f115333427a87e4e1503ab06d13-0-d882fd6140b524133fd01ba3915dc527
 #EXTINF:-1 tvg-chno="" tvg-name="Bernama" tvg-id="1835" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/ivnvsj.png" group-title="Malaysia",Bernama
-https://live.mana2.my/Bernama/index.m3u8?auth_key=1777643287-22deb76621b243a3b3db5dcd69079ffc-0-d1c8fd1d281bdda2013bec1a1154a59e&token=1777643287-22deb76621b243a3b3db5dcd69079ffc-0-d1c8fd1d281bdda2013bec1a1154a59e
+https://live.mana2.my/Bernama/index.m3u8?auth_key=1777645102-33e1272e1af44b25ba4378f1e31dc9b7-0-d4da5c44c317afa61d35219876e1d120&token=1777645102-33e1272e1af44b25ba4378f1e31dc9b7-0-d4da5c44c317afa61d35219876e1d120
 #EXTINF:-1 tvg-chno="" tvg-name="Dewan Rakyat" tvg-id="DewanRakyat.my" tvg-country="MY" tvg-logo="https://rtm-images.glueapi.io/320x0/live_channel/7.png" group-title="Malaysia",Dewan Rakyat
 https://raw.githubusercontent.com/mohdzufar/Main-IPTV/refs/heads/main/Channels/RTM/Dewan%20Rakyat/Dewan%20Rakyat.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Dewan Negara" tvg-id="DewanNegara.my" tvg-country="MY" tvg-logo="https://rtm-images.glueapi.io/320x0//live_channel/PDN_Trans.png" group-title="Malaysia",Dewan Negara
@@ -99,8 +99,8 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Cartoo
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Golf%20Kingdom/Golf%20Kingdom.m3u8
 ## #EXTINF:-1 tvg-chno="" tvg-name="Golf Channel" tvg-id="Golf.Channel.HD.us2" tvg-country="US" tvg-logo="http://schedulesdirect-api20141201-logos.s3.dualstack.us-east-1.amazonaws.com/stationLogos/s14899_dark_360w_270h.png" group-title="Golf",Golf Channel
 ## https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Golf%20Channel/Golf%20Channel.m3u8
-## #EXTINF:-1 tvg-chno="" tvg-name="Golf Channel (Latin America)" tvg-id="" tvg-country="" tvg-logo="" group-title="Golf",Golf Channel (Latin America)
-## https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Golf%20Channel/Golf%20Channel%20(Latin%20America).m3u8
+#EXTINF:-1 tvg-chno="" tvg-name="Golf Channel (Latin America)" tvg-id="" tvg-country="" tvg-logo="" group-title="Golf",Golf Channel (Latin America)
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Golf%20Channel/Golf%20Channel%20(Latin%20America).m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="GolfNetwork Japan" tvg-id="" tvg-country="JP" tvg-logo="" group-title="Golf",GolfNetwork Japan
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Golf%20Network/Golf%20Network%20Japan.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="GolfPass" tvg-id="" tvg-country="US" tvg-logo="" group-title="Golf",GolfPass
@@ -135,8 +135,8 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Tennis
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Tennis%20Channel/Tennis%20Channel%202.m3u8
 ## #EXTINF:-1 tvg-chno="" tvg-name="MLB" tvg-id="464873" tvg-country="" tvg-logo="" group-title="Sports",MLB
 ## https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/MLB/MLB.m3u8
-## #EXTINF:-1 tvg-chno="" tvg-name="MMA-TV International" tvg-id="" tvg-country="" tvg-logo="" group-title="Sports",MMA-TV International
-## https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/MMA/MMA-TV%20International.m3u8
+#EXTINF:-1 tvg-chno="" tvg-name="MMA-TV International" tvg-id="" tvg-country="" tvg-logo="" group-title="Sports",MMA-TV International
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/MMA/MMA-TV%20International.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="FOX NFL" tvg-id="465532" tvg-country="" tvg-logo="" group-title="Sports",FOX NFL
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/FOX/FOX%20NFL/FOX%20NFL.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="NHL" tvg-id="" tvg-country="" tvg-logo="" group-title="Sports",NHL
@@ -227,8 +227,8 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Mirama
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Universal%20Movie/Universal%20Movie.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Cinemax" tvg-id="Cinemax.HD.us2" tvg-country="US" tvg-logo="https://schedulesdirect-api20141201-logos.s3.dualstack.us-east-1.amazonaws.com/stationLogos/s34933_dark_360w_270h.png" group-title="Movies",Cinemax
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Cinemax/Cinemax.m3u8
-## #EXTINF:-1 tvg-chno="" tvg-name="Hallmark Channel" tvg-id="Hallmark.Channel.HD.us2" tvg-country="US" tvg-logo="http://schedulesdirect-api20141201-logos.s3.dualstack.us-east-1.amazonaws.com/stationLogos/s11221_dark_360w_270h.png" group-title="Movies",Hallmark Channel
-## https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Hallmark/Hallmark.m3u8
+#EXTINF:-1 tvg-chno="" tvg-name="Hallmark Channel" tvg-id="Hallmark.Channel.HD.us2" tvg-country="US" tvg-logo="http://schedulesdirect-api20141201-logos.s3.dualstack.us-east-1.amazonaws.com/stationLogos/s11221_dark_360w_270h.png" group-title="Movies",Hallmark Channel
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Hallmark/Hallmark.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="HBO" tvg-id="HBO.East.us2" tvg-country="US" tvg-logo="http://schedulesdirect-api20141201-logos.s3.dualstack.us-east-1.amazonaws.com/stationLogos/s10240_dark_360w_270h.png" group-title="Movies",HBO
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/HBO/HBO.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="HBO 2" tvg-id="HBO2.HD.us2" tvg-country="US" tvg-logo="http://schedulesdirect-api20141201-logos.s3.dualstack.us-east-1.amazonaws.com/stationLogos/s68140_dark_360w_270h.png" group-title="Movies",HBO 2
