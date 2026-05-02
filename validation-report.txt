@@ -14,7 +14,7 @@ Berita RTM,hls_media,200,https://d25tgymtnqzu8s.cloudfront.net/smil:berita/chunk
 RTM World,hls_media,200,https://d25tgymtnqzu8s.cloudfront.net/event/smil:event1/chunklist_b346000_slENG.m3u8
 Astro Awani,hls_media,200,https://d2idp3hzkhjpih.cloudfront.net/out/v1/4b85d9c2bf97413eb0c9fd875599b837/index_1.m3u8
 Astro Arena Bola,hls_media,200,https://load.perfecttv.net/rwt.m3u8?username=vip_3klp0es8&password=wg3piwEs&channel=bola1
-Astro Arena Bola 2,html,404,https://load.perfecttv.net/rwt.m3u8?username=vip_3klp0es8&password=wg3piwEs&channel=bola2
+Astro Arena Bola 2,hls_media,200,https://load.perfecttv.net/rwt.m3u8?username=vip_3klp0es8&password=wg3piwEs&channel=bola2
 Al-Hijrah,Skipped,,
 EnjoyTV,Skipped,,
 BorneoTV,Skipped,,
@@ -96,7 +96,7 @@ CS2,exception,0,https://live.iill.top/bilibili/21622811
 CS2,exception,0,https://live.iill.top/huya/483917
 DotA2,exception,0,https://live.iill.top/huya/660118
 DotA2,exception,0,https://live.iill.top/douyu/3811559
-KPOP Mix,invalid,404,https://cloud.tvomix.com/KPOPMIX/index.m3u8
+KPOP Mix,hls_master,200,https://cloud.tvomix.com/KPOPMIX/index.m3u8
 New KPOP,hls_master,200,https://newidco-newkid-1-eu.xiaomi.wurl.tv/playlist.m3u8
 K-POP,hls_master,200,https://jmp2.uk/stvp-CA3900002PM
 Music Japan,hls_master,200,http://cdns.jp-primehome.com:8000/zhongying/live/playlist.m3u8?cid=cs06
@@ -152,7 +152,7 @@ KoreaTV,hls_master,200,https://hlive.ktv.go.kr/live/klive_h.stream/playlist.m3u8
 Al-Jazeera (English),hls_master,200,https://live-hls-apps-aje-v3-fa.getaj.net/AJE/index.m3u8
 Love Pets,hls_master,200,https://rakutenaa-blueskyent-lovepetsemea-rakuten-ikc4q.amagi.tv/playlist/rakutenAA-blueskyent-lovepetsemea-rakuten/playlist.m3u8
 Documentary+,hls_master,200,https://live-content.xumo.com/2715/content/XM04405O6X0WP0/28846020/master.m3u8
-mn静静nm,html,502,https://goodiptv.club/douyu/5668371
-万事通熊猫,html,502,https://goodiptv.club/douyu/7812810
+mn静静nm,hls_media,200,https://goodiptv.club/douyu/5668371
+万事通熊猫,invalid,200,https://goodiptv.club/douyu/7812810
 K-Content,hls_master,200,https://jmp2.uk/stvp-GB17000066A
 K-Drama+,hls_master,200,https://jmp2.uk/stvp-GBBD4100011RE
