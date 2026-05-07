@@ -193,7 +193,7 @@ def main():
                 report.write(f"{name},{stream_kind},{status},{inner_url}\n")
             except Exception as e:
                 results[i] = {'valid': False, 'direct': None}
-                report.write(f"{name},Exception,{str(e)},\n")
+                report.write(f"{name},exception,{str(e)},\n")
                 print(f"Exception: {str(e)}")
                 print("Action  : ❌ Commented out (exception)")
 
