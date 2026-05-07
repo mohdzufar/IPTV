@@ -14,10 +14,10 @@ jobs:
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v5        # <-- updated (Node 24)
+        uses: actions/checkout@v5
 
       - name: Set up Python
-        uses: actions/setup-python@v6    # <-- updated (Node 24)
+        uses: actions/setup-python@v6
         with:
           python-version: '3.11'
 
@@ -32,7 +32,7 @@ jobs:
           $content = Get-Content -Path Channels\Flatten.m3u8 | Where-Object { $_ -notmatch '^##' -and $_ -notmatch '^\s*$' }
           [System.IO.File]::WriteAllLines("$PWD\Main.m3u8", $content)
 
-      - name: Step 2 & 3 - Validate non‑Mana channels
+      - name: Step 2 & 3 - Validate non-Mana channels
         run: python scripts/validate_and_update.py
 
       - name: Step 3 & 4 - Refresh Mana2 tokens
