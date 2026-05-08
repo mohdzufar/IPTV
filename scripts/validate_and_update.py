@@ -13,10 +13,10 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 # Patterns of channels to skip validation (Mana-mana and tonton)
 SKIP_PATTERNS = ['Mana-mana', 'tonton']
 
-# Shared headers for all HTTP requests — fixes CDN 403s (Issue 6)
+# Shared headers for all HTTP requests — fixes CDN 403s
 DEFAULT_HEADERS = {'User-Agent': 'VLC/3.0.20'}
 
-# Retry settings (Issue 5)
+# Retry settings
 MAX_RETRIES = 2
 RETRY_DELAY = 5  # seconds between retries
 
@@ -25,7 +25,7 @@ MYT = timezone(timedelta(hours=8))
 
 
 # =============================================================================
-# URL EXTRACTION  (Issue 2)
+# URL EXTRACTION
 # =============================================================================
 
 def extract_all_urls_from_wrapper(wrapper_content, base_url):
@@ -81,19 +81,12 @@ def classify_content(text, status, content_type):
 
 
 # =============================================================================
-# STREAM VALIDATION  (Issues 3, 4, 5, 6, 7)
+# STREAM VALIDATION
 # =============================================================================
 
 def validate_stream(url):
     """Fetch a stream URL and classify it. Retries up to MAX_RETRIES times.
     Returns (kind, http_status, good, attempt_number).
-
-    Fixes applied:
-    - Issue 3: 'binary' added to invalid types
-    - Issue 4: 'wrapper' added to invalid types
-    - Issue 5: retry logic with RETRY_DELAY between attempts
-    - Issue 6: DEFAULT_HEADERS passed on every request
-    - Issue 7: chunk size increased to 8192 bytes
     """
     kind = 'exception'
     http_status = 0
@@ -107,14 +100,14 @@ def validate_stream(url):
                 stream=True
             )
             http_status = resp.status_code
-            chunk = resp.raw.read(8192, decode_content=True)  # Issue 7: 8192
+            chunk = resp.raw.read(8192, decode_content=True)
             content_type = resp.headers.get('Content-Type', '')
             kind = classify_content(
                 chunk.decode('utf-8', errors='ignore'),
                 http_status,
                 content_type
             )
-            # Issue 3 + 4: binary and wrapper are not playable
+            # binary and wrapper are not directly playable
             good = kind not in ('invalid', 'html', 'empty_ok', 'binary', 'wrapper')
 
             if good:
@@ -198,7 +191,14 @@ def parse_flatten(flatten_path):
 # =============================================================================
 
 def update_main_m3u8(main_path, header, blocks, results):
-    """Write Main.m3u8 using the original EPG header line."""
+    """Write Main.m3u8 using the original EPG header line.
+
+    Behaviour per channel:
+    - Skipped (Mana-mana/tonton) : written as-is from Flatten
+    - Active, DASH/MP4           : extinf line + direct stream URL
+    - Active, HLS                : written as-is (wrapper URL kept)
+    - Dead                       : all lines prefixed with ##
+    """
     with open(main_path, 'w', encoding='utf-8') as f:
         if header:
             f.write(header + '\n')
@@ -211,9 +211,12 @@ def update_main_m3u8(main_path, header, blocks, results):
             result = results[idx]
             if result['valid']:
                 if result['direct']:
+                    # DASH or MP4 — write direct stream URL into Main.m3u8
+                    # so TV apps can play it without needing to parse the wrapper
                     f.write(extinf)
                     f.write(result['direct'] + '\n')
                 else:
+                    # HLS — keep wrapper URL, TV app follows the chain
                     f.write(full)
             else:
                 for line in full.splitlines(keepends=True):
@@ -225,7 +228,7 @@ def update_main_m3u8(main_path, header, blocks, results):
 # =============================================================================
 
 def main():
-    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    base_dir     = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     flatten_path = os.path.join(base_dir, 'Channels', 'Flatten.m3u8')
     main_path    = os.path.join(base_dir, 'Main.m3u8')
     report_path  = os.path.join(base_dir, 'validation-report.txt')
@@ -249,7 +252,7 @@ def main():
     with open(report_path, 'w', encoding='utf-8') as report:
 
         # ------------------------------------------------------------------
-        # Report header block  (Issue 9)
+        # Report header block
         # ------------------------------------------------------------------
         report.write(f"# ============================================================\n")
         report.write(f"# IPTV Playlist Validation Report\n")
@@ -266,16 +269,18 @@ def main():
         report.write(f"#   StreamType - hls_master / hls_media / dash / mp4 / etc\n")
         report.write(f"#   URLsTested - position/total  e.g. 2/3 = 2nd URL of 3 worked\n")
         report.write(f"#   Attempts   - how many HTTP attempts before pass/fail\n")
-        report.write(f"#   WinningURL - URL that passed validation (blank if dead)\n")
+        report.write(f"#   DirectURL  - for DASH/MP4: direct URL written to Main.m3u8\n")
+        report.write(f"#               for HLS: winning URL that passed validation\n")
+        report.write(f"#               blank if dead\n")
         report.write(f"#\n")
-        report.write(f"Channel,Group,Status,StreamType,URLsTested,Attempts,WinningURL\n")
+        report.write(f"Channel,Group,Status,StreamType,URLsTested,Attempts,DirectURL\n")
 
         for i, (full, extinf, url, name, group) in enumerate(blocks):
             print("=" * 60)
             print(f"[{i+1}/{total}] {name}  (group: {group})")
 
             # --------------------------------------------------------------
-            # SKIPPED channels
+            # SKIPPED channels (Mana-mana, tonton)
             # --------------------------------------------------------------
             if is_skipped(name, url):
                 results[i] = {'valid': True, 'direct': None}
@@ -318,7 +323,7 @@ def main():
                 continue
 
             # --------------------------------------------------------------
-            # Step 2: Extract ALL URLs from wrapper  (Issue 2)
+            # Step 2: Extract ALL URLs from wrapper
             # --------------------------------------------------------------
             inner_urls = extract_all_urls_from_wrapper(wrapper_content, url.strip())
             total_urls = len(inner_urls)
@@ -334,7 +339,7 @@ def main():
             print(f"Inner URLs : {total_urls} found")
 
             # --------------------------------------------------------------
-            # Step 3: Try each URL until one works  (Issue 2)
+            # Step 3: Try each URL until one works
             # --------------------------------------------------------------
             channel_valid    = False
             winning_url      = ''
@@ -356,13 +361,22 @@ def main():
                     print(f"  ✅ Working URL found at position {url_idx}/{total_urls}")
                     break
                 else:
-                    print(f"  ❌ URL {url_idx}/{total_urls} failed ({stream_kind}, HTTP {http_status})")
+                    print(f"  ❌ URL {url_idx}/{total_urls} failed "
+                          f"({stream_kind}, HTTP {http_status})")
 
             # --------------------------------------------------------------
-            # Step 4: Record result  (Issues 9, 10)
+            # Step 4: Record result
             # --------------------------------------------------------------
             if channel_valid:
-                results[i] = {'valid': True, 'direct': None}
+                # DASH and MP4 — write direct URL into Main.m3u8
+                # HLS (master/media) — keep wrapper URL
+                if winning_kind in ('dash', 'mp4'):
+                    results[i] = {'valid': True, 'direct': winning_url}
+                    action_note = f"direct URL written to Main.m3u8 ({winning_kind})"
+                else:
+                    results[i] = {'valid': True, 'direct': None}
+                    action_note = f"wrapper kept ({winning_kind})"
+
                 report.write(
                     f"{name},{group},active,{winning_kind},"
                     f"{winning_position}/{total_urls},{winning_attempt},"
@@ -370,9 +384,9 @@ def main():
                 )
                 count_active += 1
                 print(
-                    f"Action  : ✅ Kept  "
-                    f"(URL {winning_position}/{total_urls} "
-                    f"passed on attempt {winning_attempt})"
+                    f"Action  : ✅ {action_note}  "
+                    f"(URL {winning_position}/{total_urls}, "
+                    f"attempt {winning_attempt})"
                 )
             else:
                 results[i] = {'valid': False, 'direct': None}
@@ -384,7 +398,7 @@ def main():
                 print(f"Action  : ❌ Commented out (all {total_urls} URL(s) failed)")
 
         # ------------------------------------------------------------------
-        # Report summary footer  (Issue 9)
+        # Report summary footer
         # ------------------------------------------------------------------
         report.write(f"#\n")
         report.write(f"# ============================================================\n")
@@ -394,14 +408,17 @@ def main():
         report.write(f"# Active   : {count_active}\n")
         report.write(f"# Dead     : {count_dead}\n")
         report.write(f"# Skipped  : {count_skipped}\n")
-        report.write(f"# Success  : {round(count_active / max(total - count_skipped, 1) * 100, 1)}%"
+        report.write(f"# Success  : "
+                     f"{round(count_active / max(total - count_skipped, 1) * 100, 1)}%"
                      f"  (active / non-skipped)\n")
         report.write(f"# Run time : {run_time_str}\n")
         report.write(f"# ============================================================\n")
 
     print("\n" + "=" * 60)
-    print(f"Results  : {count_active} active | {count_dead} dead | {count_skipped} skipped")
-    print(f"Success  : {round(count_active / max(total - count_skipped, 1) * 100, 1)}%")
+    print(f"Results  : {count_active} active | {count_dead} dead | "
+          f"{count_skipped} skipped")
+    print(f"Success  : "
+          f"{round(count_active / max(total - count_skipped, 1) * 100, 1)}%")
     print("Writing Main.m3u8...")
     update_main_m3u8(main_path, header, blocks, results)
     print("Done.")
