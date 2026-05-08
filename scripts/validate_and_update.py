@@ -20,6 +20,13 @@ DEFAULT_HEADERS = {'User-Agent': 'VLC/3.0.20'}
 MAX_RETRIES = 2
 RETRY_DELAY = 5  # seconds between retries
 
+# Stream types that cannot be served via wrapper on TV apps.
+# These get their direct URL written into Main.m3u8 instead.
+#   hls_master : master playlist pointing to other playlists (TV rejects double-hop)
+#   dash       : MPEG-DASH .mpd format (TV can't follow HLS wrapper to DASH)
+#   mp4        : direct MP4 stream (same issue)
+DIRECT_URL_TYPES = ('hls_master', 'dash', 'mp4')
+
 # Malaysia timezone (UTC+8)
 MYT = timezone(timedelta(hours=8))
 
@@ -88,7 +95,7 @@ def validate_stream(url):
     """Fetch a stream URL and classify it. Retries up to MAX_RETRIES times.
     Returns (kind, http_status, good, attempt_number).
     """
-    kind = 'exception'
+    kind        = 'exception'
     http_status = 0
 
     for attempt in range(1, MAX_RETRIES + 2):  # attempts: 1, 2, 3
@@ -99,10 +106,10 @@ def validate_stream(url):
                 timeout=15,
                 stream=True
             )
-            http_status = resp.status_code
-            chunk = resp.raw.read(8192, decode_content=True)
+            http_status  = resp.status_code
+            chunk        = resp.raw.read(8192, decode_content=True)
             content_type = resp.headers.get('Content-Type', '')
-            kind = classify_content(
+            kind         = classify_content(
                 chunk.decode('utf-8', errors='ignore'),
                 http_status,
                 content_type
@@ -176,7 +183,7 @@ def parse_flatten(flatten_path):
     blocks = []
     pattern = re.compile(r'(#EXTINF:[^\n]*\n)((?:[^#\n][^\n]*\n?)+)')
     for m in pattern.finditer(content):
-        extinf = m.group(1)
+        extinf   = m.group(1)
         url_lines = m.group(2).strip()
         name_match = re.search(r'tvg-name="([^"]*)"', extinf)
         channel_name = name_match.group(1) if name_match else 'Unknown'
@@ -194,10 +201,10 @@ def update_main_m3u8(main_path, header, blocks, results):
     """Write Main.m3u8 using the original EPG header line.
 
     Behaviour per channel:
-    - Skipped (Mana-mana/tonton) : written as-is from Flatten
-    - Active, DASH/MP4           : extinf line + direct stream URL
-    - Active, HLS                : written as-is (wrapper URL kept)
-    - Dead                       : all lines prefixed with ##
+    - Skipped (Mana-mana/tonton)      : written as-is from Flatten
+    - Active, hls_master/dash/mp4     : extinf line + direct stream URL
+    - Active, hls_media               : written as-is (wrapper URL kept)
+    - Dead                            : all lines prefixed with ##
     """
     with open(main_path, 'w', encoding='utf-8') as f:
         if header:
@@ -211,12 +218,12 @@ def update_main_m3u8(main_path, header, blocks, results):
             result = results[idx]
             if result['valid']:
                 if result['direct']:
-                    # DASH or MP4 — write direct stream URL into Main.m3u8
-                    # so TV apps can play it without needing to parse the wrapper
+                    # hls_master, dash, mp4 — direct URL written to Main.m3u8
+                    # TV apps cannot follow wrapper chain for these types
                     f.write(extinf)
                     f.write(result['direct'] + '\n')
                 else:
-                    # HLS — keep wrapper URL, TV app follows the chain
+                    # hls_media — wrapper URL kept, TV app follows chain normally
                     f.write(full)
             else:
                 for line in full.splitlines(keepends=True):
@@ -245,9 +252,11 @@ def main():
     results = [{} for _ in blocks]
 
     # Counters for summary
-    count_active  = 0
-    count_dead    = 0
-    count_skipped = 0
+    count_active       = 0
+    count_dead         = 0
+    count_skipped      = 0
+    count_direct       = 0  # channels where direct URL was written to Main.m3u8
+    count_wrapper_kept = 0  # channels where wrapper URL was kept
 
     with open(report_path, 'w', encoding='utf-8') as report:
 
@@ -262,18 +271,22 @@ def main():
         report.write(f"# Total      : {total} channels\n")
         report.write(f"# Retry cfg  : MAX_RETRIES={MAX_RETRIES}, RETRY_DELAY={RETRY_DELAY}s\n")
         report.write(f"#\n")
+        report.write(f"# Direct URL types (written to Main.m3u8 directly):\n")
+        report.write(f"#   {', '.join(DIRECT_URL_TYPES)}\n")
+        report.write(f"# Wrapper kept types (TV app follows wrapper chain):\n")
+        report.write(f"#   hls_media\n")
+        report.write(f"#\n")
         report.write(f"# Columns:\n")
         report.write(f"#   Channel    - tvg-name from Flatten.m3u8\n")
         report.write(f"#   Group      - group-title from Flatten.m3u8\n")
         report.write(f"#   Status     - active / dead / skipped\n")
         report.write(f"#   StreamType - hls_master / hls_media / dash / mp4 / etc\n")
-        report.write(f"#   URLsTested - position/total  e.g. 2/3 = 2nd URL of 3 worked\n")
-        report.write(f"#   Attempts   - how many HTTP attempts before pass/fail\n")
-        report.write(f"#   DirectURL  - for DASH/MP4: direct URL written to Main.m3u8\n")
-        report.write(f"#               for HLS: winning URL that passed validation\n")
-        report.write(f"#               blank if dead\n")
+        report.write(f"#   MainEntry  - wrapper_kept / direct_url / skipped / dead\n")
+        report.write(f"#   URLsTested - position/total  e.g. 2/3 = 2nd of 3 worked\n")
+        report.write(f"#   Attempts   - HTTP attempts before pass/fail\n")
+        report.write(f"#   WinningURL - URL that passed (blank if dead)\n")
         report.write(f"#\n")
-        report.write(f"Channel,Group,Status,StreamType,URLsTested,Attempts,DirectURL\n")
+        report.write(f"Channel,Group,Status,StreamType,MainEntry,URLsTested,Attempts,WinningURL\n")
 
         for i, (full, extinf, url, name, group) in enumerate(blocks):
             print("=" * 60)
@@ -284,7 +297,7 @@ def main():
             # --------------------------------------------------------------
             if is_skipped(name, url):
                 results[i] = {'valid': True, 'direct': None}
-                report.write(f"{name},{group},skipped,-,-,-,\n")
+                report.write(f"{name},{group},skipped,-,skipped,-,-,\n")
                 count_skipped += 1
                 print("Action  : ⏭️  Skipped (Mana-mana / tonton)")
                 continue
@@ -306,7 +319,7 @@ def main():
                     results[i] = {'valid': False, 'direct': None}
                     report.write(
                         f"{name},{group},dead,"
-                        f"wrapper_http_{wr.status_code},0/0,1,\n"
+                        f"wrapper_http_{wr.status_code},dead,0/0,1,\n"
                     )
                     count_dead += 1
                     print("Action  : ❌ Commented out (wrapper HTTP error)")
@@ -316,7 +329,9 @@ def main():
 
             except Exception as e:
                 results[i] = {'valid': False, 'direct': None}
-                report.write(f"{name},{group},dead,wrapper_exception,0/0,1,\n")
+                report.write(
+                    f"{name},{group},dead,wrapper_exception,dead,0/0,1,\n"
+                )
                 count_dead += 1
                 print(f"Wrapper exception: {e}")
                 print("Action  : ❌ Commented out (wrapper fetch failed)")
@@ -330,7 +345,9 @@ def main():
 
             if total_urls == 0:
                 results[i] = {'valid': False, 'direct': None}
-                report.write(f"{name},{group},dead,no_urls_in_wrapper,0/0,0,\n")
+                report.write(
+                    f"{name},{group},dead,no_urls_in_wrapper,dead,0/0,0,\n"
+                )
                 count_dead += 1
                 print("Inner URLs : NONE FOUND")
                 print("Action     : ❌ Commented out (no URLs in wrapper)")
@@ -368,17 +385,22 @@ def main():
             # Step 4: Record result
             # --------------------------------------------------------------
             if channel_valid:
-                # DASH and MP4 — write direct URL into Main.m3u8
-                # HLS (master/media) — keep wrapper URL
-                if winning_kind in ('dash', 'mp4'):
+                if winning_kind in DIRECT_URL_TYPES:
+                    # hls_master, dash, mp4 — direct URL into Main.m3u8
                     results[i] = {'valid': True, 'direct': winning_url}
-                    action_note = f"direct URL written to Main.m3u8 ({winning_kind})"
+                    main_entry = 'direct_url'
+                    count_direct += 1
+                    action_note = (f"direct URL written to Main.m3u8 "
+                                   f"({winning_kind})")
                 else:
+                    # hls_media — keep wrapper URL in Main.m3u8
                     results[i] = {'valid': True, 'direct': None}
+                    main_entry = 'wrapper_kept'
+                    count_wrapper_kept += 1
                     action_note = f"wrapper kept ({winning_kind})"
 
                 report.write(
-                    f"{name},{group},active,{winning_kind},"
+                    f"{name},{group},active,{winning_kind},{main_entry},"
                     f"{winning_position}/{total_urls},{winning_attempt},"
                     f"{winning_url}\n"
                 )
@@ -391,7 +413,7 @@ def main():
             else:
                 results[i] = {'valid': False, 'direct': None}
                 report.write(
-                    f"{name},{group},dead,all_urls_failed,"
+                    f"{name},{group},dead,all_urls_failed,dead,"
                     f"0/{total_urls},{MAX_RETRIES + 1},\n"
                 )
                 count_dead += 1
@@ -400,25 +422,28 @@ def main():
         # ------------------------------------------------------------------
         # Report summary footer
         # ------------------------------------------------------------------
+        non_skipped = total - count_skipped
+        success_pct = round(count_active / max(non_skipped, 1) * 100, 1)
+
         report.write(f"#\n")
         report.write(f"# ============================================================\n")
         report.write(f"# SUMMARY\n")
         report.write(f"# ============================================================\n")
-        report.write(f"# Total    : {total}\n")
-        report.write(f"# Active   : {count_active}\n")
-        report.write(f"# Dead     : {count_dead}\n")
-        report.write(f"# Skipped  : {count_skipped}\n")
-        report.write(f"# Success  : "
-                     f"{round(count_active / max(total - count_skipped, 1) * 100, 1)}%"
-                     f"  (active / non-skipped)\n")
-        report.write(f"# Run time : {run_time_str}\n")
+        report.write(f"# Total        : {total}\n")
+        report.write(f"# Active       : {count_active}\n")
+        report.write(f"#   Wrapper kept : {count_wrapper_kept}  (hls_media — URL hidden)\n")
+        report.write(f"#   Direct URL   : {count_direct}  (hls_master/dash/mp4 — URL exposed)\n")
+        report.write(f"# Dead          : {count_dead}\n")
+        report.write(f"# Skipped       : {count_skipped}\n")
+        report.write(f"# Success       : {success_pct}%  (active / non-skipped)\n")
+        report.write(f"# Run time      : {run_time_str}\n")
         report.write(f"# ============================================================\n")
 
     print("\n" + "=" * 60)
     print(f"Results  : {count_active} active | {count_dead} dead | "
           f"{count_skipped} skipped")
-    print(f"Success  : "
-          f"{round(count_active / max(total - count_skipped, 1) * 100, 1)}%")
+    print(f"  Wrapper kept : {count_wrapper_kept}  |  Direct URL : {count_direct}")
+    print(f"Success  : {success_pct}%")
     print("Writing Main.m3u8...")
     update_main_m3u8(main_path, header, blocks, results)
     print("Done.")
