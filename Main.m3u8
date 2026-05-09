@@ -32,21 +32,21 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/ASTRO/
 #EXTINF:-1 tvg-chno="" tvg-name="Astro Arena Bola 2" tvg-id="4215" tvg-country="MY" tvg-logo="" group-title="Sports",Astro Arena Bola 2
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/ASTRO/Arena/Arena%20Bola%202.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Al-Hijrah" tvg-id="369680" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/esdfqp.png" group-title="Malaysia",Al-Hijrah
-https://live.mana2.my/TvAlhijrah/index.m3u8?auth_key=1778332356-e9fc633b804b4a6db71e7886b0ea569e-0-5837402afc8589844f2c94fbf1edfeb4&token=1778332356-e9fc633b804b4a6db71e7886b0ea569e-0-5837402afc8589844f2c94fbf1edfeb4
+https://live.mana2.my/TvAlhijrah/index.m3u8?auth_key=1778342081-a32a6eeb34854407b9d9c15e73f7ac1c-0-b458539c9f1810752954bc196503ab10&token=1778342081-a32a6eeb34854407b9d9c15e73f7ac1c-0-b458539c9f1810752954bc196503ab10
 #EXTINF:-1 tvg-chno="" tvg-name="EnjoyTV" tvg-id="" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/channel/logos/hglfwv.png" group-title="Malaysia",EnjoyTV
-https://live.mana2.my/Tv5/index.m3u8?auth_key=1778332380-2190a0302cc44ac6bca13331c1722c95-0-31615e302adff349662148d2f2526171&token=1778332380-2190a0302cc44ac6bca13331c1722c95-0-31615e302adff349662148d2f2526171
+https://live.mana2.my/Tv5/index.m3u8?auth_key=1778342105-177660dc6d75415eb25f2e26560a0572-0-cc59baa3e82da1f4c969171cc81cba09&token=1778342105-177660dc6d75415eb25f2e26560a0572-0-cc59baa3e82da1f4c969171cc81cba09
 #EXTINF:-1 tvg-chno="" tvg-name="BorneoTV" tvg-id="" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/npdqkp.png" group-title="Malaysia",BorneoTV
-https://live.mana2.my/BorneoTv/index.m3u8?auth_key=1778332372-9af4c432921547c98903c459ada05c3b-0-ab83a585c6efc4cc9c493de5f619fa1a&token=1778332372-9af4c432921547c98903c459ada05c3b-0-ab83a585c6efc4cc9c493de5f619fa1a
+https://live.mana2.my/BorneoTv/index.m3u8?auth_key=1778342097-7ec579ce38c14d9a8cf8445b97e403d8-0-7088fba8e30ea66c1ccb9d064b4ebf07&token=1778342097-7ec579ce38c14d9a8cf8445b97e403d8-0-7088fba8e30ea66c1ccb9d064b4ebf07
 #EXTINF:-1 tvg-chno="" tvg-name="SelangorTV" tvg-id="" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/emwijp.png" group-title="Malaysia",SelangorTV
-https://live.mana2.my/SelangorTv/index.m3u8?auth_key=1778332388-4c1e428beedb44d8b9d994f9e3aba1a4-0-5ef61da510937fe209f2f5e84e246e15&token=1778332388-4c1e428beedb44d8b9d994f9e3aba1a4-0-5ef61da510937fe209f2f5e84e246e15
+https://live.mana2.my/SelangorTv/index.m3u8?auth_key=1778342113-6a04d5ed7afc4b4bbbcc9a9c058850a9-0-ac8146e6fc2783cb17a1e5b2cdca6180&token=1778342113-6a04d5ed7afc4b4bbbcc9a9c058850a9-0-ac8146e6fc2783cb17a1e5b2cdca6180
 #EXTINF:-1 tvg-chno="" tvg-name="SukeTV" tvg-id="" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/utgwdm.png" group-title="Malaysia",SukeTV
-https://live.mana2.my/SukeTv/index.m3u8?auth_key=1778332404-4d15bfd5d8224224816d240f6159518f-0-70ccfef257148b1c0a1710296fb65489&token=1778332404-4d15bfd5d8224224816d240f6159518f-0-70ccfef257148b1c0a1710296fb65489
+https://live.mana2.my/SukeTv/index.m3u8?auth_key=1778342129-8fc029bfabba4553b12de880b07de82e-0-09b770866d0498104c8a58275516277e&token=1778342129-8fc029bfabba4553b12de880b07de82e-0-09b770866d0498104c8a58275516277e
 #EXTINF:-1 tvg-chno="" tvg-name="TVS" tvg-id="3942" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/filzbh.jpeg" group-title="Malaysia",TVS
-https://live.mana2.my/TvS/index.m3u8?auth_key=1778332412-c5db604b75db45768ce34f5b0137d39d-0-4050388289f11f4943a87453fe69557b&token=1778332412-c5db604b75db45768ce34f5b0137d39d-0-4050388289f11f4943a87453fe69557b
+https://live.mana2.my/TvS/index.m3u8?auth_key=1778342137-c08e701ab1da437c934a7865cb2032ca-0-157ea92e2aea3a731e0ddd024bc3dc71&token=1778342137-c08e701ab1da437c934a7865cb2032ca-0-157ea92e2aea3a731e0ddd024bc3dc71
 #EXTINF:-1 tvg-chno="" tvg-name="SukanPlus" tvg-id="" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/soxsng.jpeg" group-title="Malaysia",Sukan+
-https://live.mana2.my/SukanRtm/index.m3u8?auth_key=1778332396-2b799fb8593f4bb684e6e477c1237c60-0-977e12ba667b6b7c8bae4ac340cc7cc9&token=1778332396-2b799fb8593f4bb684e6e477c1237c60-0-977e12ba667b6b7c8bae4ac340cc7cc9
+https://live.mana2.my/SukanRtm/index.m3u8?auth_key=1778342121-f6e4affe7db142b297f61acb78bd142b-0-ca728b9b223f71518e670cd55e8aeb94&token=1778342121-f6e4affe7db142b297f61acb78bd142b-0-ca728b9b223f71518e670cd55e8aeb94
 #EXTINF:-1 tvg-chno="" tvg-name="Bernama" tvg-id="1835" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/ivnvsj.png" group-title="Malaysia",Bernama
-https://live.mana2.my/Bernama/index.m3u8?auth_key=1778332364-7d1f337be34b490aab4621d60e570ba4-0-44b60b857cfb14309d92b1707a8a9ffe&token=1778332364-7d1f337be34b490aab4621d60e570ba4-0-44b60b857cfb14309d92b1707a8a9ffe
+https://live.mana2.my/Bernama/index.m3u8?auth_key=1778342089-26974f941bd146d58fdbb7bf12cfc2c0-0-a335772e89e9d72ad2611b374c7b2f4f&token=1778342089-26974f941bd146d58fdbb7bf12cfc2c0-0-a335772e89e9d72ad2611b374c7b2f4f
 #EXTINF:-1 tvg-chno="" tvg-name="Dewan Rakyat" tvg-id="DewanRakyat.my" tvg-country="MY" tvg-logo="https://rtm-images.glueapi.io/320x0/live_channel/7.png" group-title="Malaysia",Dewan Rakyat
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/RTM/Dewan%20Rakyat/Dewan%20Rakyat.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Dewan Negara" tvg-id="DewanNegara.my" tvg-country="MY" tvg-logo="https://rtm-images.glueapi.io/320x0//live_channel/PDN_Trans.png" group-title="Malaysia",Dewan Negara
@@ -75,34 +75,66 @@ https://b27a6dd8a86c3e4ba93fbae22aaaac64.pmqrop.channel-assembly.mediatailor.ap-
 https://b27a6dd8a86c3e4ba93fbae22aaaac64.pmqrop.channel-assembly.mediatailor.ap-southeast-1.amazonaws.com/v1/channel/FAST_5/dash.mpd
 #EXTINF:-1 tvg-chno="" tvg-name="Drama Hebat" tvg-id="DramaHebat" tvg-country="MY" tvg-logo="https://datastore.vr.ctrp.sooka.my/content/images/34dfc1DramaHebat_IVP_LAND_917x516.jpg" group-title="Malaysia",Drama Hebat
 https://b27a6dd8a86c3e4ba93fbae22aaaac64.pmqrop.channel-assembly.mediatailor.ap-southeast-1.amazonaws.com/v1/channel/FAST_1/dash.mpd
-## #EXTINF:-1 tvg-chno="" tvg-name="Jom Ngaji" tvg-id="JomNgaji" tvg-country="MY" tvg-logo="https://datastore.vr.ctrp.sooka.my/content/images/c65ddaJomNgaji_IVP_LAND_917x516.jpg" group-title="Malaysia",Jom Ngaji
-## https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Njoi/Jom%20Ngaji.m3u8
+#EXTINF:-1 tvg-chno="" tvg-name="Jom Ngaji" tvg-id="JomNgaji" tvg-country="MY" tvg-logo="https://datastore.vr.ctrp.sooka.my/content/images/c65ddaJomNgaji_IVP_LAND_917x516.jpg" group-title="Malaysia",Jom Ngaji
+https://827f31c3f2824c0c95c7a5190e96e284.mediatailor.ap-southeast-1.amazonaws.com/v1/dash/951fbca46ac9b52422f8e3d6d4d6dab33623c3cc/FASTOO_CH6_JOMNGAJI/dash.mpd
 ## #EXTINF:-1 tvg-chno="" tvg-name="Oh My Ceria!" tvg-id="OhMyCeria" tvg-country="MY" tvg-logo="https://datastore.vr.ctrp.sooka.my/content/images/c0eaafOhMyCeria_IVP_LAND_917x516.jpg" group-title="Malaysia",Oh My Ceria!
 ## https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Njoi/Oh!%20My%20Ceria.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Quran (Mecca)" tvg-id="AlQuranKareem.id" tvg-country="SA" tvg-logo="https://mncvision.id/userfiles/image/channel/channel_93.png" group-title="Muslim",Quran (Mecca)
 https://live.kwikmotion.com/sbrksaquranradiolive/srpksaquranradio/playlist.m3u8
+## #EXTINF:-1 tvg-chno="" tvg-name="Channel 5" tvg-id="Channel5.sg" tvg-country="SG" tvg-logo="https://i.imgur.com/9NKp5aV.png" group-title="Singapore",Channel 5
+## https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Singapore/Channel%205.m3u8
+## #EXTINF:-1 tvg-chno="" tvg-name="Channel 8" tvg-id="Channel8.sg" tvg-country="SG" tvg-logo="https://i.imgur.com/6YPZc24.png" group-title="Singapore",Channel 8
+## https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Singapore/Channel%208.m3u8
+## #EXTINF:-1 tvg-chno="" tvg-name="Channel U" tvg-id="ChannelU.sg" tvg-country="SG" tvg-logo="https://i.imgur.com/9MzEjoY.png" group-title="Singapore",Channel U
+## https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Singapore/Channel%20U.m3u8
+## #EXTINF:-1 tvg-chno="" tvg-name="Suria" tvg-id="" tvg-country="SG" tvg-logo="https://i.imgur.com/ppxUDxB.png" group-title="Singapore",Suria
+## https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Singapore/Suria.m3u8
+#EXTINF:-1 tvg-chno="" tvg-name="HITS NOW" tvg-id="HITS.sg" tvg-country="SG" tvg-logo="https://i.imgur.com/IM8Gy1l.png" group-title="Singapore",HITS NOW
+https://cdn10jtedge.indihometv.com/atm/DASH/hits/manifest.mpd
+#EXTINF:-1 tvg-chno="" tvg-name="HITS Movies" tvg-id="HITSMovies.sg" tvg-country="SG" tvg-logo="https://i.imgur.com/kyE3vXf.png" group-title="Singapore;Movies",HITS Movies
+https://cdn10jtedge.indihometv.com/atm/DASH/hitsmovie/hitsmovie-avc1_2500000=7-3277707030000000.mpd
+#EXTINF:-1 tvg-chno="" tvg-name="meWATCH LIVE 1" tvg-id="meWATCHLIVE1.sg" tvg-country="SG" tvg-logo="https://i.imgur.com/9xWAwzy.png" group-title="Singapore",meWATCH LIVE 1
+https://tglmp04.akamaized.net/out/v1/898b1cbac7c747e3b1f3deb460e9b67e/manifest.mpd
+#EXTINF:-1 tvg-chno="" tvg-name="ROCK Action" tvg-id="ROCKAction.sg" tvg-country="SG" tvg-logo="https://i.imgur.com/l6lmlqG.png" group-title="Singapore;Movies",ROCK Action
+https://cdn10jtedge.indihometv.com/atm/DASH/ROCK_ACTION/manifest.mpd
+#EXTINF:-1 tvg-chno="" tvg-name="ROCK Entertainment" tvg-id="ROCKEntertainment.sg" tvg-country="SG" tvg-logo="" group-title="Singapore;Movies",ROCK Entertainment
+http://cdn10jtedge.indihometv.com/atm/DASH/rock_entertainment/manifest.mpd
+## #EXTINF:-1 tvg-chno="" tvg-name="TechStorm" tvg-id="TechStorm.sg" tvg-country="SG" tvg-logo="https://i.imgur.com/fAprFBJ.png" group-title="Singapore",TechStorm
+## https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Singapore/TechStorm.m3u8
+#EXTINF:-1 tvg-chno="" tvg-name="ZooMoo" tvg-id="ZooMoo.sg" tvg-country="SG" tvg-logo="https://i.imgur.com/ciTJrnl.png" group-title="Singapore",ZooMoo
+https://zoomoo-samsungau.amagi.tv/playlist.m3u8
+#EXTINF:-1 tvg-chno="" tvg-name="CNA" tvg-id="CNA.sg" tvg-country="SG" tvg-logo="https://i.imgur.com/awIDugE.png" group-title="Singapore;News",CNA
+https://d2e1asnsl7br7b.cloudfront.net/7782e205e72f43aeb4a48ec97f66ebbe/index.m3u8
 ## #EXTINF:-1 tvg-chno="" tvg-name="MediaCorp (English)" tvg-id="" tvg-country="SG" tvg-logo="" group-title="Singapore",MediaCorp (English)
 ## https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Singapore/MediaCorp%20(English).m3u8
 ## #EXTINF:-1 tvg-chno="" tvg-name="MediaCorp (Tamil)" tvg-id="" tvg-country="SG" tvg-logo="" group-title="Singapore",MediaCorp (Tamil)
 ## https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Singapore/MediaCorp%20(Tamil).m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="CNA" tvg-id="492874" tvg-country="SG" tvg-logo="https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/295_144.png" group-title="Singapore",CNA
-https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Singapore/CNA.m3u8
+## #EXTINF:-1 tvg-chno="" tvg-name="KCM" tvg-id="KCM.sg" tvg-country="India" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/KCM.png" group-title="India",KCM
+## https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/India/KCM.m3u8
+#EXTINF:-1 tvg-chno="" tvg-name="AXN Asia" tvg-id="AXNAsia.sg" tvg-country="Indonesia" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/AXN_logo_%282015%29.svg/960px-AXN_logo_%282015%29.svg.png" group-title="Indonesia",AXN Asia
+https://cdn10jtedge.indihometv.com/atm/DASH/axn/manifest.mpd
 #EXTINF:-1 tvg-chno="" tvg-name="RTB Aneka" tvg-id="" tvg-country="BN" tvg-logo="" group-title="Brunei",RTB Aneka
 https://d1211whpimeups.cloudfront.net/smil:rtb2/playlist.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="RTB Sukmaindera" tvg-id="" tvg-country="BN" tvg-logo="" group-title="Brunei",RTB Sukmaindera
 https://d1211whpimeups.cloudfront.net/smil:rtb1/playlist.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Crunchyroll" tvg-id="65652f7fc0fc88000883537a" tvg-country="US" tvg-logo="" group-title="Anime",Crunchyroll
 https://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/65652f7fc0fc88000883537a/master.m3u8?appName=web&appVersion=9.19.0&deviceDNT=0&deviceId=affbdbfa-5fa3-48af-8369-57c005daef42&deviceMake=firefox&deviceModel=web&deviceType=web&deviceVersion=147.0.0&serverSideAds=false&sid=b7df248c-540d-4184-97dc-488d0b5beada
+## #EXTINF:-1 tvg-chno="" tvg-name="Aniplus Asia" tvg-id="AniplusAsia.sg" tvg-country="India" tvg-logo="https://i.imgur.com/Im3MePy.png" group-title="India;Anime",Aniplus Asia
+## https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/India/Animax%20Asia.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Cartoon Network" tvg-id="Cartoon.Network.HD.us2" tvg-country="US" tvg-logo="http://schedulesdirect-api20141201-logos.s3.dualstack.us-east-1.amazonaws.com/stationLogos/s12131_dark_360w_270h.png" group-title="Kids",Cartoon Network
 http://23.237.104.106:8080/USA_CARTOON_NETWORK/index.m3u8
+#EXTINF:-1 tvg-chno="" tvg-name="Nickelodeon Asia" tvg-id="NickelodeonAsia.sg" tvg-country="Indonesia" tvg-logo="https://i.imgur.com/E84jnP8.png" group-title="Indonesia;Kids",Nickelodeon Asia
+https://cdn10jtedge.indihometv.com/atm/DASH/nickelodeon/manifest.mpd
 #EXTINF:-1 tvg-chno="" tvg-name="Golf Kingdom" tvg-id="" tvg-country="US" tvg-logo="" group-title="Golf",Golf Kingdom
 https://30a-tv.com/feeds/vidaa/golf.m3u8
-## #EXTINF:-1 tvg-chno="" tvg-name="Golf Channel" tvg-id="Golf.Channel.HD.us2" tvg-country="US" tvg-logo="http://schedulesdirect-api20141201-logos.s3.dualstack.us-east-1.amazonaws.com/stationLogos/s14899_dark_360w_270h.png" group-title="Golf",Golf Channel
+## #EXTINF:-1 tvg-chno="" tvg-name="Golf Channel" tvg-id="Golf.Channel.HD.us2" tvg-country="US" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/f/fb/Golf_Channel_logo_2025.svg" group-title="Golf",Golf Channel
 ## https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Golf%20Channel/Golf%20Channel.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="Golf Channel (Latin America)" tvg-id="" tvg-country="" tvg-logo="" group-title="Golf",Golf Channel (Latin America)
-http://181.114.57.246:4000/play/BHGDIhvdyuw/index.m3u8
+## #EXTINF:-1 tvg-chno="" tvg-name="Golf Channel (Latin America)" tvg-id="" tvg-country="US" tvg-logo="https://i.imgur.com/Lgux6Ik.png" group-title="Golf",Golf Channel (Latin America)
+## https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Golf%20Channel/Golf%20Channel%20(Latin%20America).m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="GolfNetwork Japan" tvg-id="" tvg-country="JP" tvg-logo="" group-title="Golf",GolfNetwork Japan
 http://cdns.jp-primehome.com:8000/zhongying/live/playlist.m3u8?cid=cs03
+## #EXTINF:-1 tvg-chno="" tvg-name="" tvg-id="" tvg-country="Pakistan" tvg-logo="https://i.imgur.com/7JhaEW5.png" group-title="Golf",One Golf
+## https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/One%20Golf/One%20Golf.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="GolfPass" tvg-id="" tvg-country="US" tvg-logo="" group-title="Golf",GolfPass
 https://jmp2.uk/rok-e08aa3af93f95c9db062ce237e90f6d1.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="PGA Tour" tvg-id="" tvg-country="US" tvg-logo="https://images.pluto.tv/channels/65b14aae0cb1a100087a216e/colorLogoPNG.png" group-title="Golf",PGA Tour
@@ -129,12 +161,12 @@ https://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/6
 https://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/681109b688b9d85d0938c6ba/master.m3u8?appName=web&appVersion=9.19.0&deviceDNT=0&deviceId=affbdbfa-5fa3-48af-8369-57c005daef42&deviceMake=firefox&deviceModel=web&deviceType=web&deviceVersion=147.0.0&serverSideAds=false&sid=7d2214c9-9aea-438e-8722-a430fbb943b4
 #EXTINF:-1 tvg-chno="" tvg-name="Tennis+" tvg-id="" tvg-country="" tvg-logo="" group-title="Sports",Tennis+
 https://amg01935-amg01935c1-amgplt0165.playout.now3.amagi.tv/playlist.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="Tennis Channel" tvg-id="Tennis.Channel.HD.us2" tvg-country="US" tvg-logo="https://images.pluto.tv/channels/6627621d56fc840008e47c90/colorLogoPNG_1756973184696.png" group-title="Sports",Tennis Channel
+#EXTINF:-1 tvg-chno="" tvg-name="Tennis Channel" tvg-id="Tennis.Channel.HD.us2" tvg-country="US" tvg-logo="https://i.imgur.com/tsljAnY.png" group-title="Sports",Tennis Channel
 https://cdn-ue1-prod.tsv2.amagi.tv/linear/amg01444-tennischannelth-tennischannelnl-samsungnl/playlist.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="Tennis Channel 2" tvg-id="" tvg-country="" tvg-logo="" group-title="Sports",Tennis Channel 2
+#EXTINF:-1 tvg-chno="" tvg-name="Tennis Channel 2" tvg-id="" tvg-country="US" tvg-logo="https://i.imgur.com/tsljAnY.png" group-title="Sports",Tennis Channel 2
 https://jmp2.uk/plu-681109b688b9d85d0938c6ba.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="MLB" tvg-id="464873" tvg-country="" tvg-logo="" group-title="Sports",MLB
-https://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/5e66968a70f34c0007d050be/master.m3u8?appName=web&appVersion=9.19.0&deviceDNT=0&deviceId=affbdbfa-5fa3-48af-8369-57c005daef42&deviceMake=firefox&deviceModel=web&deviceType=web&deviceVersion=147.0.0&serverSideAds=false&sid=b24a9dca-0f04-498b-a54e-e848441bd909
+#EXTINF:-1 tvg-chno="" tvg-name="MLB" tvg-id="464873" tvg-country="" tvg-logo="https://i.imgur.com/ym3su2J.png" group-title="Sports",MLB
+https://jmp2.uk/plu-5e66968a70f34c0007d050be.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="MMA-TV International" tvg-id="" tvg-country="" tvg-logo="" group-title="Sports",MMA-TV International
 https://streams2.sofast.tv/vglive-sk-462904/playlist.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="FOX NFL" tvg-id="465532" tvg-country="" tvg-logo="" group-title="Sports",FOX NFL
@@ -151,8 +183,8 @@ https://xumo-xumoent-vc-122-sjv70.fast.nbcuni.com/live/master.m3u8
 https://d3f4oii5n0oeqi.cloudfront.net/11701/88814624/hls/master.m3u8?includeAssetTags=true&ads.xumo_channelId=88814624&ads.xumo_streamId=88814624&declaredCC1Language=en&ads.caid=NBCUSports&ads.csid=tcl2_us_nbcusports_ssai&ads.xumo_ifaType=%5BIFA_TYPE%5D&ads.xumo_ifa=%5BIFA%5D&ads.appName=%5BAPP_NAME%5D&ads.appVersion=%5BAPP_VERSION%5D&ads._fw_app_bundle=%5BTCL_APP_BUNDLE%5D&ads.genre=Sport&ads._fw_content_category=IAB17&ads._fw_content_genre=sports&ads._fw_content_language=en&ads._fw_content_rating=tv-pg&ads._fw_deviceMake=%5BDEVICE_MAKE%5D&ads._fw_device_model=%5BDEVICE_MODEL%5D&ads._fw_devicetype=3-Connected_TV&ads._fw_coppa=0&ads._fw_is_lat=%5BLMT%5D&ads._fw_us_privacy=%5BUS_PRIVACY%5D&ads._fw_h_x_country=US&ads._fw_player_width=%5BPLAYER_WIDTH%5D&ads._fw_player_height=%5BPLAYER_HEIGHT%5D&ads.xumo_contentId=3929&ads.xumo_contentName=NBCUSports&ads.xumo_providerId=3929&ads.xumo_providerName=NBCUSports&ads.xumo_channelName=NBCUSports&ads._fw_app_store_url=%5BTCL_APP_STORE_URL%5D
 #EXTINF:-1 tvg-chno="" tvg-name="Goal TV" tvg-id="" tvg-country="" tvg-logo="" group-title="Sports",Goal TV
 https://streams2.sofast.tv/sofastplayout/WiseM3U8_1/master.m3u8
-## #EXTINF:-1 tvg-chno="" tvg-name="Real Madrid TV" tvg-id="" tvg-country="" tvg-logo="" group-title="Sports",Real Madrid TV
-## https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Real%20Madrid%20TV/Real%20Madrid%20TV.m3u8
+#EXTINF:-1 tvg-chno="" tvg-name="Real Madrid TV" tvg-id="" tvg-country="" tvg-logo="" group-title="Sports",Real Madrid TV
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Real%20Madrid%20TV/Real%20Madrid%20TV.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="RedBull TV" tvg-id="" tvg-country="" tvg-logo="" group-title="Sports",RedBull TV
 https://3ea22335.wurl.com/master/f36d25e7e52f1ba8d7e56eb859c636563214f541/UmFrdXRlblRWLWdiX1JlZEJ1bGxUVl9ITFM/playlist.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Sport Fishing TV" tvg-id="" tvg-country="" tvg-logo="" group-title="Sports",Sport Fishing TV
@@ -169,7 +201,7 @@ https://linear-253.frequency.stream/dist/localnow/253/hls/master/playlist.m3u8
 https://92652ca9374d45ff8669fa318712ccda.mediatailor.us-east-1.amazonaws.com/v1/master/f4e8c53a8367a5b58e20ce054ea3ce25a3e904d3/SportsTV_WorldBilliardsTV/playlist.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Billiard TV" tvg-id="" tvg-country="" tvg-logo="" group-title="Sports",Billiard TV
 https://d3f4oii5n0oeqi.cloudfront.net/11701/88814555/hls/billi.m3u8?includeAssetTags=true&ads.xumo_channelId=88814555a&ads.xumo_streamId=88814555&declaredCC1Language=en&ads.caid=BilliardTV&ads.csid=tcl2_us_triplebmediabilliard_ssai&ads.xumo_ifaType=%5BIFA_TYPE%5D&ads.xumo_ifa=%5BIFA%5D&ads.appName=%5BAPP_NAME%5D&ads.appVersion=%5BAPP_VERSION%5D&ads._fw_app_bundle=%5BTCL_APP_BUNDLE%5D&ads._fw_content_category=IAB17&ads._fw_content_genre=sports&ads._fw_content_language=en&ads._fw_content_rating=tv-pg&ads._fw_deviceMake=%5BDEVICE_MAKE%5D&ads._fw_device_model=%5BDEVICE_MODEL%5D&ads._fw_devicetype=3-Connected_TV&ads._fw_coppa=0&ads._fw_is_lat=%5BLMT%5D&ads._fw_us_privacy=%5BUS_PRIVACY%5D&ads._fw_h_x_country=US&ads._fw_player_width=%5BPLAYER_WIDTH%5D&ads._fw_player_height=%5BPLAYER_HEIGHT%5D&ads.xumo_contentId=2728&ads.xumo_contentName=BilliardTV&ads.xumo_providerId=2728&ads.xumo_providerName=TripleBMediaBilliard&ads.xumo_channelName=BilliardTV&ads._fw_app_store_url=%5BTCL_APP_STORE_URL%5D
-#EXTINF:-1 tvg-chno="" tvg-name="BBC Top Gear" tvg-id="" tvg-country="UK" tvg-logo="" group-title="Sports",BBC Top Gear
+#EXTINF:-1 tvg-chno="" tvg-name="BBC Top Gear" tvg-id="" tvg-country="UK" tvg-logo="https://i.imgur.com/S6Su6QH.png" group-title="Sports",BBC Top Gear
 https://amg00793-amg00793c5-xumo-us-2664.playouts.now.amagi.tv/bbcstudios-bbctopgear8min-all/playlist.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Fuel TV" tvg-id="" tvg-country="" tvg-logo="" group-title="Sports",Fuel TV
 https://amg01074-fueltv-fueltvusen-sportstv-fj9t1.amagi.tv/playlist_eng.m3u8
@@ -267,8 +299,8 @@ https://d1ewctnvcwvvvu.cloudfront.net/playlist.m3u8
 https://amg01076-lightning-amg01076c5-lg-gb-10275.playouts.now.amagi.tv/ts-eu-w1-n2/playlist/amg01076-lightning-newsworld-lggb/playlist.m3u8?ads.deviceid=[DEVICE_ID]&ads.ifa=[IFA]&ads.ifatype=[IFA_TYPE]&ads.lat=[LMT]&ads.donotsell=[DNS]&ads.ua=[UA]&ads.ip=[IP]&ads.gdpr=[GDPR]&ads.gdprconsent=[GDPR_CONSENT]&ads.country=[COUNTRY]&ads.usprivacy=[US_PRIVACY]&ads.appstoreurl=[APP_STOREURL]&ads.bundleid=[APP_BUNDLE]&ads.appname=[APP_NAME]&ads.appversion=[APP_VERSION]&ads.devicetype=[DEVICE_TYPE]&ads.devicemake=[DEVICE_MAKE]&ads.devicemodel=[DEVICE_MODEL]&ads.targetad=[TARGETAD_ALLOWED]&ads.fck=[FCK]&ads.viewsize=[VIEWSIZE]&ads.givn=[NONCE]
 #EXTINF:-1 tvg-chno="" tvg-name="Adventure Earth" tvg-id="" tvg-country="UK" tvg-logo="" group-title="Nature",Adventure Earth
 https://1d7d59fa677247f28aecb46346c0caeb.mediatailor.us-east-1.amazonaws.com/v1/master/0fb304b2320b25f067414d481a779b77db81760d/LG-gb_AdventureEarth/playlist.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="BBC Earth" tvg-id="4030" tvg-country="UK" tvg-logo="" group-title="Nature",BBC Earth
-https://amg00793-amg00793c24-vidaa-gb-9957.playouts.now.amagi.tv/ts-eu-w1-n2/playlist/amg00793-bbcstudios-bbcearthspain-vidaagb/playlist.m3u8?ads.dnt=REPLACEME&ads.app_bundle=REPLACEME&ads.brand_name=REPLACEME&ads.ifa=REPLACEME&ads.ifa_type=REPLACEME&ads.vauth=REPLACEME&ads.device_type=REPLACEME&ads.device_country=REPLACEME&ads.device_language=REPLACEME&ads.device_osv=REPLACEME&ads.app_name=REPLACEME&ads.app_store_url=REPLACEME&ads.us_privacy=REPLACEME&ads.gdpr=REPLACEME&ads.gdpr_consent=REPLACEME&ads.w=REPLACEME&ads.h=REPLACEME&ads.vidaa_ads_param=1190602996&ads.vidaa_ads_contentType=600007&ads.vidaa_ads_contentId=10128
+#EXTINF:-1 tvg-chno="" tvg-name="BBC Earth" tvg-id="4030" tvg-country="US" tvg-logo="" group-title="Nature",BBC Earth
+https://jmp2.uk/plu-656535fc2c46f30008870fae.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Love The Planet" tvg-id="" tvg-country="UK" tvg-logo="" group-title="Nature",Love The Planet
 https://ssai.aniview.com/api/v1/hls/stream.m3u8?cb=[CACHEBUSTER]&AV_WIDTH=[ADS.W]&AV_HEIGHT=[ADS.H]&AV_APPNAME=[ADS.APP_NAME]&AV_APPSTOREURL=[ADS.APP_STORE_URL]&AV_APPPKGNAME=[ADS.APP_BUNDLE]&AV_IDFA=[ADS.IFA]&AV_IFA_TYPE=[ADS.IFA_TYPE]&AV_CCPA=[ADS.US_PRIVACY]&AV_GDPR=[ADS.GDPR]&AV_CONSENT=[ADS.GDPR_CONSENT]&AV_CONTENT_URL=&AV_CONTENT_TITLE=&AV_CONTENT_EPISODE=&AV_CONTENT_SERIES=&AV_CONTENT_SEASON=&AV_CONTENT_KEYWORDS=&AV_CONTENT_NETWORK=&AV_CONTENT_ID=[ADS.VIDAA_ADS_CONTENTID]&AV_CONTENT_CHANNEL=&AV_CONTENT_CONTEXT=&AV_CONTENT_LENGTH=&AV_CONTENT_RATING=R&AV_VAUTH=[ADS.VAUTH]&AV_DNT=[ADS.DNT]&Content_Id=[ADS.ADS_CONTENTID]&AV_LANGUAGE=[ADS.DEVICE_LANGUAGE]&AV_RTB_DEVICE_TYPE=[ADS.DEVICE_TYPE]&AV_OSVERS=[ADS.DEVICE_OSV]&AVS_SSAIID=67cedc668d17ebe2b70a9566&AV_CONTENT_LANGUAGE=en&AV_CONTENT_GENERE=Entertainment&AV_CONTENT_CAT=IAB1&AV_CONTENT_RATING=TV-G&AV_CLIENT_SECTION=lovetheplanet_lovetv&content_channel_name=Love%20the%20Planet&content_livestream=1&ads.vidaa_ads_param=1190602996&ads.vidaa_ads_contentType=600007&ads.vidaa_ads_contentId=7977
 #EXTINF:-1 tvg-chno="" tvg-name="Terra Mater Wild" tvg-id="" tvg-country="UK" tvg-logo="" group-title="Nature",Terra Mater Wild

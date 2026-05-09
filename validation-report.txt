@@ -1,9 +1,9 @@
 # ============================================================
 # IPTV Playlist Validation Report
 # ============================================================
-# Generated  : 2026-05-09 16:02:01 MYT
+# Generated  : 2026-05-09 18:43:10 MYT
 # Source     : Channels/Flatten.m3u8
-# Total      : 157 channels
+# Total      : 173 channels
 # Retry cfg  : MAX_RETRIES=2, RETRY_DELAY=5s
 #
 # Direct URL types (written to Main.m3u8 directly):
@@ -56,24 +56,40 @@ RTM Junior,Malaysia,active,hls_media,wrapper_kept,1/5,1,https://d1sq2slp9afh7o.c
 RTM Roll,Malaysia,active,hls_media,wrapper_kept,1/5,1,https://d1sq2slp9afh7o.cloudfront.net/smil:roll/chunklist_b346000_slENG.m3u8
 RTM Aura,Malaysia,active,hls_media,wrapper_kept,1/5,1,https://d1sq2slp9afh7o.cloudfront.net/smil:aura/chunklist_b346000_slENG.m3u8
 Filem Mantap,Malaysia,active,dash,direct_url,1/1,1,https://b27a6dd8a86c3e4ba93fbae22aaaac64.pmqrop.channel-assembly.mediatailor.ap-southeast-1.amazonaws.com/v1/channel/FAST_2/dash.mpd
-Lawak Sentral,Malaysia,active,dash,direct_url,1/1,1,https://b27a6dd8a86c3e4ba93fbae22aaaac64.pmqrop.channel-assembly.mediatailor.ap-southeast-1.amazonaws.com/v1/channel/FAST_3/dash.mpd
+Lawak Sentral,Malaysia,active,dash,direct_url,1/1,2,https://b27a6dd8a86c3e4ba93fbae22aaaac64.pmqrop.channel-assembly.mediatailor.ap-southeast-1.amazonaws.com/v1/channel/FAST_3/dash.mpd
 Drama Hotpot,Malaysia,active,dash,direct_url,1/1,1,https://b27a6dd8a86c3e4ba93fbae22aaaac64.pmqrop.channel-assembly.mediatailor.ap-southeast-1.amazonaws.com/v1/channel/FAST_4/dash.mpd
 Travel & Taste,Malaysia,active,dash,direct_url,1/1,1,https://b27a6dd8a86c3e4ba93fbae22aaaac64.pmqrop.channel-assembly.mediatailor.ap-southeast-1.amazonaws.com/v1/channel/FAST_5/dash.mpd
 Drama Hebat,Malaysia,active,dash,direct_url,1/1,1,https://b27a6dd8a86c3e4ba93fbae22aaaac64.pmqrop.channel-assembly.mediatailor.ap-southeast-1.amazonaws.com/v1/channel/FAST_1/dash.mpd
-Jom Ngaji,Malaysia,dead,all_urls_failed,dead,0/1,3,
+Jom Ngaji,Malaysia,active,dash,direct_url,1/1,1,https://827f31c3f2824c0c95c7a5190e96e284.mediatailor.ap-southeast-1.amazonaws.com/v1/dash/951fbca46ac9b52422f8e3d6d4d6dab33623c3cc/FASTOO_CH6_JOMNGAJI/dash.mpd
 Oh My Ceria!,Malaysia,dead,all_urls_failed,dead,0/1,3,
 Quran (Mecca),Muslim,active,hls_master,direct_url,1/1,1,https://live.kwikmotion.com/sbrksaquranradiolive/srpksaquranradio/playlist.m3u8
+Channel 5,Singapore,dead,all_urls_failed,dead,0/3,3,
+Channel 8,Singapore,dead,all_urls_failed,dead,0/1,3,
+Channel U,Singapore,dead,all_urls_failed,dead,0/1,3,
+Suria,Singapore,dead,all_urls_failed,dead,0/2,3,
+HITS NOW,Singapore,active,dash,direct_url,1/1,1,https://cdn10jtedge.indihometv.com/atm/DASH/hits/manifest.mpd
+HITS Movies,Singapore;Movies,active,dash,direct_url,1/2,1,https://cdn10jtedge.indihometv.com/atm/DASH/hitsmovie/hitsmovie-avc1_2500000=7-3277707030000000.mpd
+meWATCH LIVE 1,Singapore,active,dash,direct_url,1/1,1,https://tglmp04.akamaized.net/out/v1/898b1cbac7c747e3b1f3deb460e9b67e/manifest.mpd
+ROCK Action,Singapore;Movies,active,dash,direct_url,1/1,1,https://cdn10jtedge.indihometv.com/atm/DASH/ROCK_ACTION/manifest.mpd
+ROCK Entertainment,Singapore;Movies,active,dash,direct_url,1/1,1,http://cdn10jtedge.indihometv.com/atm/DASH/rock_entertainment/manifest.mpd
+TechStorm,Singapore,dead,all_urls_failed,dead,0/1,3,
+ZooMoo,Singapore,active,hls_master,direct_url,1/5,1,https://zoomoo-samsungau.amagi.tv/playlist.m3u8
+CNA,Singapore;News,active,hls_master,direct_url,1/4,1,https://d2e1asnsl7br7b.cloudfront.net/7782e205e72f43aeb4a48ec97f66ebbe/index.m3u8
 MediaCorp (English),Singapore,dead,all_urls_failed,dead,0/1,3,
 MediaCorp (Tamil),Singapore,dead,all_urls_failed,dead,0/1,3,
-CNA,Singapore,active,hls_media,wrapper_kept,1/3,1,https://d2e1asnsl7br7b.cloudfront.net/7782e205e72f43aeb4a48ec97f66ebbe/index_5.m3u8
+KCM,India,dead,all_urls_failed,dead,0/1,3,
+AXN Asia,Indonesia,active,dash,direct_url,2/2,1,https://cdn10jtedge.indihometv.com/atm/DASH/axn/manifest.mpd
 RTB Aneka,Brunei,active,hls_master,direct_url,1/1,1,https://d1211whpimeups.cloudfront.net/smil:rtb2/playlist.m3u8
 RTB Sukmaindera,Brunei,active,hls_master,direct_url,1/1,1,https://d1211whpimeups.cloudfront.net/smil:rtb1/playlist.m3u8
 Crunchyroll,Anime,active,hls_master,direct_url,1/1,1,https://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/65652f7fc0fc88000883537a/master.m3u8?appName=web&appVersion=9.19.0&deviceDNT=0&deviceId=affbdbfa-5fa3-48af-8369-57c005daef42&deviceMake=firefox&deviceModel=web&deviceType=web&deviceVersion=147.0.0&serverSideAds=false&sid=b7df248c-540d-4184-97dc-488d0b5beada
+Aniplus Asia,India;Anime,dead,all_urls_failed,dead,0/1,3,
 Cartoon Network,Kids,active,hls_master,direct_url,1/1,1,http://23.237.104.106:8080/USA_CARTOON_NETWORK/index.m3u8
+Nickelodeon Asia,Indonesia;Kids,active,dash,direct_url,1/1,1,https://cdn10jtedge.indihometv.com/atm/DASH/nickelodeon/manifest.mpd
 Golf Kingdom,Golf,active,hls_master,direct_url,1/3,1,https://30a-tv.com/feeds/vidaa/golf.m3u8
 Golf Channel,Golf,dead,all_urls_failed,dead,0/3,3,
-Golf Channel (Latin America),Golf,active,hls_master,direct_url,1/1,1,http://181.114.57.246:4000/play/BHGDIhvdyuw/index.m3u8
-GolfNetwork Japan,Golf,active,hls_master,direct_url,1/2,1,http://cdns.jp-primehome.com:8000/zhongying/live/playlist.m3u8?cid=cs03
+Golf Channel (Latin America),Golf,dead,all_urls_failed,dead,0/1,3,
+GolfNetwork Japan,Golf,active,hls_master,direct_url,1/3,1,http://cdns.jp-primehome.com:8000/zhongying/live/playlist.m3u8?cid=cs03
+,Golf,dead,all_urls_failed,dead,0/1,3,
 GolfPass,Golf,active,hls_master,direct_url,2/3,1,https://jmp2.uk/rok-e08aa3af93f95c9db062ce237e90f6d1.m3u8
 PGA Tour,Golf,active,hls_media,wrapper_kept,1/5,1,https://aegis-cloudfront-1.tubi.video/9c59800e-fa9a-4539-b8e5-5769918e7c5a/playlist_1280x720.m3u8
 DP World Tour,Golf,dead,all_urls_failed,dead,0/1,3,
@@ -87,10 +103,10 @@ Bein Xtra,Sports,active,hls_master,direct_url,1/1,1,https://amg01334-beinsportsl
 Tennis TV,Sports,active,hls_master,direct_url,1/4,1,https://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/6870c9fd3ffa5e0c914e99aa/master.m3u8?appName=web&appVersion=9.19.0&deviceDNT=0&deviceId=7089727d-21c4-4175-9100-a14521359b66&deviceMake=firefox&deviceModel=web&deviceType=web&deviceVersion=147.0.0&serverSideAds=false&sid=42c6d67b-44f6-47c3-afc5-cf75d7daef44
 Tennis TV 2,Sports,active,hls_master,direct_url,1/1,1,https://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/681109b688b9d85d0938c6ba/master.m3u8?appName=web&appVersion=9.19.0&deviceDNT=0&deviceId=affbdbfa-5fa3-48af-8369-57c005daef42&deviceMake=firefox&deviceModel=web&deviceType=web&deviceVersion=147.0.0&serverSideAds=false&sid=7d2214c9-9aea-438e-8722-a430fbb943b4
 Tennis+,Sports,active,hls_master,direct_url,1/1,1,https://amg01935-amg01935c1-amgplt0165.playout.now3.amagi.tv/playlist.m3u8
-Tennis Channel,Sports,active,hls_master,direct_url,2/3,1,https://cdn-ue1-prod.tsv2.amagi.tv/linear/amg01444-tennischannelth-tennischannelnl-samsungnl/playlist.m3u8
+Tennis Channel,Sports,active,hls_master,direct_url,2/7,1,https://cdn-ue1-prod.tsv2.amagi.tv/linear/amg01444-tennischannelth-tennischannelnl-samsungnl/playlist.m3u8
 Tennis Channel 2,Sports,active,hls_master,direct_url,1/1,1,https://jmp2.uk/plu-681109b688b9d85d0938c6ba.m3u8
-MLB,Sports,active,hls_master,direct_url,2/2,1,https://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/5e66968a70f34c0007d050be/master.m3u8?appName=web&appVersion=9.19.0&deviceDNT=0&deviceId=affbdbfa-5fa3-48af-8369-57c005daef42&deviceMake=firefox&deviceModel=web&deviceType=web&deviceVersion=147.0.0&serverSideAds=false&sid=b24a9dca-0f04-498b-a54e-e848441bd909
-MMA-TV International,Sports,active,hls_master,direct_url,1/1,2,https://streams2.sofast.tv/vglive-sk-462904/playlist.m3u8
+MLB,Sports,active,hls_master,direct_url,1/5,1,https://jmp2.uk/plu-5e66968a70f34c0007d050be.m3u8
+MMA-TV International,Sports,active,hls_master,direct_url,1/1,1,https://streams2.sofast.tv/vglive-sk-462904/playlist.m3u8
 FOX NFL,Sports,active,hls_master,direct_url,1/2,1,https://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/5ced7d5df64be98e07ed47b6/master.m3u8?appName=web&appVersion=9.19.0&deviceDNT=0&deviceId=affbdbfa-5fa3-48af-8369-57c005daef42&deviceMake=firefox&deviceModel=web&deviceType=web&deviceVersion=147.0.0&serverSideAds=false&sid=1d7bef8c-83bb-4a13-babc-c2895be01526
 NHL,Sports,active,hls_master,direct_url,1/1,1,https://aegis-cloudfront-1.tubi.video/1f4cbb33-cb23-40ab-b54b-2965cc551b32/playlist.m3u8
 UEFA Champion League,Sports,active,hls_master,direct_url,1/2,1,https://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/65ea8b928145cb0008509426/master.m3u8?appName=web&appVersion=9.19.0&deviceDNT=0&deviceId=affbdbfa-5fa3-48af-8369-57c005daef42&deviceMake=firefox&deviceModel=web&deviceType=web&deviceVersion=147.0.0&serverSideAds=false&sid=c83aaae4-b7a8-4127-ae41-0b5fd27ac4f2
@@ -98,7 +114,7 @@ UFC 1,Sports,active,hls_master,direct_url,1/5,1,https://cfd-v4-service-channel-s
 Xumo NBC Sport,Sports,active,hls_master,direct_url,1/1,1,https://xumo-xumoent-vc-122-sjv70.fast.nbcuni.com/live/master.m3u8
 NBC Sport Now,Sports,active,hls_master,direct_url,1/1,1,https://d3f4oii5n0oeqi.cloudfront.net/11701/88814624/hls/master.m3u8?includeAssetTags=true&ads.xumo_channelId=88814624&ads.xumo_streamId=88814624&declaredCC1Language=en&ads.caid=NBCUSports&ads.csid=tcl2_us_nbcusports_ssai&ads.xumo_ifaType=%5BIFA_TYPE%5D&ads.xumo_ifa=%5BIFA%5D&ads.appName=%5BAPP_NAME%5D&ads.appVersion=%5BAPP_VERSION%5D&ads._fw_app_bundle=%5BTCL_APP_BUNDLE%5D&ads.genre=Sport&ads._fw_content_category=IAB17&ads._fw_content_genre=sports&ads._fw_content_language=en&ads._fw_content_rating=tv-pg&ads._fw_deviceMake=%5BDEVICE_MAKE%5D&ads._fw_device_model=%5BDEVICE_MODEL%5D&ads._fw_devicetype=3-Connected_TV&ads._fw_coppa=0&ads._fw_is_lat=%5BLMT%5D&ads._fw_us_privacy=%5BUS_PRIVACY%5D&ads._fw_h_x_country=US&ads._fw_player_width=%5BPLAYER_WIDTH%5D&ads._fw_player_height=%5BPLAYER_HEIGHT%5D&ads.xumo_contentId=3929&ads.xumo_contentName=NBCUSports&ads.xumo_providerId=3929&ads.xumo_providerName=NBCUSports&ads.xumo_channelName=NBCUSports&ads._fw_app_store_url=%5BTCL_APP_STORE_URL%5D
 Goal TV,Sports,active,hls_master,direct_url,1/1,1,https://streams2.sofast.tv/sofastplayout/WiseM3U8_1/master.m3u8
-Real Madrid TV,Sports,dead,all_urls_failed,dead,0/2,3,
+Real Madrid TV,Sports,active,hls_media,wrapper_kept,1/2,1,https://rmtv.akamaized.net/hls/live/2043153/rmtv-es-web/bitrate_3.m3u8
 RedBull TV,Sports,active,hls_master,direct_url,1/2,1,https://3ea22335.wurl.com/master/f36d25e7e52f1ba8d7e56eb859c636563214f541/UmFrdXRlblRWLWdiX1JlZEJ1bGxUVl9ITFM/playlist.m3u8
 Sport Fishing TV,Sports,active,hls_master,direct_url,1/1,1,https://streams2.sofast.tv/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/eea68b79-bfe2-451e-a227-d637a5b9548a/manifest.m3u8
 Wired2Fish,Sports,active,hls_master,direct_url,1/1,1,https://linear-80.frequency.stream/dist/localnow/80/hls/master/playlist.m3u8
@@ -107,7 +123,7 @@ MBC America,Sports,active,hls_media,wrapper_kept,1/1,1,https://cdn-us-east-prod-
 Swerve Sport,Sports,active,hls_master,direct_url,1/1,1,https://linear-253.frequency.stream/dist/localnow/253/hls/master/playlist.m3u8
 World Billiards TV,Sports,active,hls_master,direct_url,1/1,1,https://92652ca9374d45ff8669fa318712ccda.mediatailor.us-east-1.amazonaws.com/v1/master/f4e8c53a8367a5b58e20ce054ea3ce25a3e904d3/SportsTV_WorldBilliardsTV/playlist.m3u8
 Billiard TV,Sports,active,hls_master,direct_url,1/1,1,https://d3f4oii5n0oeqi.cloudfront.net/11701/88814555/hls/billi.m3u8?includeAssetTags=true&ads.xumo_channelId=88814555a&ads.xumo_streamId=88814555&declaredCC1Language=en&ads.caid=BilliardTV&ads.csid=tcl2_us_triplebmediabilliard_ssai&ads.xumo_ifaType=%5BIFA_TYPE%5D&ads.xumo_ifa=%5BIFA%5D&ads.appName=%5BAPP_NAME%5D&ads.appVersion=%5BAPP_VERSION%5D&ads._fw_app_bundle=%5BTCL_APP_BUNDLE%5D&ads._fw_content_category=IAB17&ads._fw_content_genre=sports&ads._fw_content_language=en&ads._fw_content_rating=tv-pg&ads._fw_deviceMake=%5BDEVICE_MAKE%5D&ads._fw_device_model=%5BDEVICE_MODEL%5D&ads._fw_devicetype=3-Connected_TV&ads._fw_coppa=0&ads._fw_is_lat=%5BLMT%5D&ads._fw_us_privacy=%5BUS_PRIVACY%5D&ads._fw_h_x_country=US&ads._fw_player_width=%5BPLAYER_WIDTH%5D&ads._fw_player_height=%5BPLAYER_HEIGHT%5D&ads.xumo_contentId=2728&ads.xumo_contentName=BilliardTV&ads.xumo_providerId=2728&ads.xumo_providerName=TripleBMediaBilliard&ads.xumo_channelName=BilliardTV&ads._fw_app_store_url=%5BTCL_APP_STORE_URL%5D
-BBC Top Gear,Sports,active,hls_master,direct_url,1/3,1,https://amg00793-amg00793c5-xumo-us-2664.playouts.now.amagi.tv/bbcstudios-bbctopgear8min-all/playlist.m3u8
+BBC Top Gear,Sports,active,hls_master,direct_url,1/5,1,https://amg00793-amg00793c5-xumo-us-2664.playouts.now.amagi.tv/bbcstudios-bbctopgear8min-all/playlist.m3u8
 Fuel TV,Sports,active,hls_master,direct_url,1/1,1,https://amg01074-fueltv-fueltvusen-sportstv-fj9t1.amagi.tv/playlist_eng.m3u8
 Pro Fight League,Sports,active,hls_master,direct_url,1/1,1,https://4d362f8e.wurl.com/U3BvcnRzVFZfUEZMTU1BX0hMUw/playlist.m3u8
 Speed Vision,Sports,active,hls_master,direct_url,1/1,1,https://2535b897.wurl.com/master/f36d25e7e52f1ba8d7e56eb859c636563214f541/U3BvcnRzVFZfU3BlZWR2aXNpb25fSExT/playlist.m3u8
@@ -156,7 +172,7 @@ Reuters,News,active,hls_master,direct_url,1/1,1,https://amg00453-reuters-amg0045
 Yahoo! Finance,News,active,hls_master,direct_url,1/2,1,https://d1ewctnvcwvvvu.cloudfront.net/playlist.m3u8
 News World,News,active,hls_master,direct_url,1/1,1,https://amg01076-lightning-amg01076c5-lg-gb-10275.playouts.now.amagi.tv/ts-eu-w1-n2/playlist/amg01076-lightning-newsworld-lggb/playlist.m3u8?ads.deviceid=[DEVICE_ID]&ads.ifa=[IFA]&ads.ifatype=[IFA_TYPE]&ads.lat=[LMT]&ads.donotsell=[DNS]&ads.ua=[UA]&ads.ip=[IP]&ads.gdpr=[GDPR]&ads.gdprconsent=[GDPR_CONSENT]&ads.country=[COUNTRY]&ads.usprivacy=[US_PRIVACY]&ads.appstoreurl=[APP_STOREURL]&ads.bundleid=[APP_BUNDLE]&ads.appname=[APP_NAME]&ads.appversion=[APP_VERSION]&ads.devicetype=[DEVICE_TYPE]&ads.devicemake=[DEVICE_MAKE]&ads.devicemodel=[DEVICE_MODEL]&ads.targetad=[TARGETAD_ALLOWED]&ads.fck=[FCK]&ads.viewsize=[VIEWSIZE]&ads.givn=[NONCE]
 Adventure Earth,Nature,active,hls_master,direct_url,1/2,1,https://1d7d59fa677247f28aecb46346c0caeb.mediatailor.us-east-1.amazonaws.com/v1/master/0fb304b2320b25f067414d481a779b77db81760d/LG-gb_AdventureEarth/playlist.m3u8
-BBC Earth,Nature,active,hls_master,direct_url,1/1,1,https://amg00793-amg00793c24-vidaa-gb-9957.playouts.now.amagi.tv/ts-eu-w1-n2/playlist/amg00793-bbcstudios-bbcearthspain-vidaagb/playlist.m3u8?ads.dnt=REPLACEME&ads.app_bundle=REPLACEME&ads.brand_name=REPLACEME&ads.ifa=REPLACEME&ads.ifa_type=REPLACEME&ads.vauth=REPLACEME&ads.device_type=REPLACEME&ads.device_country=REPLACEME&ads.device_language=REPLACEME&ads.device_osv=REPLACEME&ads.app_name=REPLACEME&ads.app_store_url=REPLACEME&ads.us_privacy=REPLACEME&ads.gdpr=REPLACEME&ads.gdpr_consent=REPLACEME&ads.w=REPLACEME&ads.h=REPLACEME&ads.vidaa_ads_param=1190602996&ads.vidaa_ads_contentType=600007&ads.vidaa_ads_contentId=10128
+BBC Earth,Nature,active,hls_master,direct_url,2/5,1,https://jmp2.uk/plu-656535fc2c46f30008870fae.m3u8
 Love The Planet,Nature,active,hls_master,direct_url,1/1,1,https://ssai.aniview.com/api/v1/hls/stream.m3u8?cb=[CACHEBUSTER]&AV_WIDTH=[ADS.W]&AV_HEIGHT=[ADS.H]&AV_APPNAME=[ADS.APP_NAME]&AV_APPSTOREURL=[ADS.APP_STORE_URL]&AV_APPPKGNAME=[ADS.APP_BUNDLE]&AV_IDFA=[ADS.IFA]&AV_IFA_TYPE=[ADS.IFA_TYPE]&AV_CCPA=[ADS.US_PRIVACY]&AV_GDPR=[ADS.GDPR]&AV_CONSENT=[ADS.GDPR_CONSENT]&AV_CONTENT_URL=&AV_CONTENT_TITLE=&AV_CONTENT_EPISODE=&AV_CONTENT_SERIES=&AV_CONTENT_SEASON=&AV_CONTENT_KEYWORDS=&AV_CONTENT_NETWORK=&AV_CONTENT_ID=[ADS.VIDAA_ADS_CONTENTID]&AV_CONTENT_CHANNEL=&AV_CONTENT_CONTEXT=&AV_CONTENT_LENGTH=&AV_CONTENT_RATING=R&AV_VAUTH=[ADS.VAUTH]&AV_DNT=[ADS.DNT]&Content_Id=[ADS.ADS_CONTENTID]&AV_LANGUAGE=[ADS.DEVICE_LANGUAGE]&AV_RTB_DEVICE_TYPE=[ADS.DEVICE_TYPE]&AV_OSVERS=[ADS.DEVICE_OSV]&AVS_SSAIID=67cedc668d17ebe2b70a9566&AV_CONTENT_LANGUAGE=en&AV_CONTENT_GENERE=Entertainment&AV_CONTENT_CAT=IAB1&AV_CONTENT_RATING=TV-G&AV_CLIENT_SECTION=lovetheplanet_lovetv&content_channel_name=Love%20the%20Planet&content_livestream=1&ads.vidaa_ads_param=1190602996&ads.vidaa_ads_contentType=600007&ads.vidaa_ads_contentId=7977
 Terra Mater Wild,Nature,active,hls_master,direct_url,1/1,1,https://amg01775-amg01775c1-amgplt0086.playout.now3.amagi.tv/playlist/amg01775-amg01775c1-amgplt0086/playlist.m3u8?app_name=REPLACEME&app_store_url=REPLACEME&app_version=REPLACEME&coppa=REPLACEME&gdpr_consent=REPLACEME&ic=REPLACEME&w=REPLACEME&client_id=REPLACEME&client_section=REPLACEME&device_country=REPLACEME&device_make=REPLACEME&device_osv=REPLACEME&device_type=REPLACEME&gdpr=REPLACEME&h=REPLACEME&app_bundle=REPLACEME&did=REPLACEME&ifa=REPLACEME&ifa_type=REPLACEME&schain=REPLACEME&us_privacy=REPLACEME&vauth=REPLACEME&brand_name=REPLACEME&device_language=REPLACEME&dnt=REPLACEME&pod_ad_slots=REPLACEME&url=REPLACEME&ads.vidaa_ads_param=1190602996&ads.vidaa_ads_contentType=600007&ads.vidaa_ads_contentId=8993
 Real Wild,Nature,active,hls_master,direct_url,1/1,1,https://cdn-uw2-prod.tsv2.amagi.tv/linear/amg00426-littledotstudio-realwild-lggb/playlist.m3u8?ads.deviceid=[DEVICE_ID]&ads.ifa=[IFA]&ads.ifatype=[IFA_TYPE]&ads.lat=[LMT]&ads.donotsell=[DNS]&ads.ua=[UA]&ads.ip=[IP]&ads.gdpr=[GDPR]&ads.gdprconsent=[GDPR_CONSENT]&ads.country=[COUNTRY]&ads.usprivacy=[US_PRIVACY]&ads.appstoreurl=[APP_STOREURL]&ads.bundleid=[APP_BUNDLE]&ads.appname=[APP_NAME]&ads.appversion=[APP_VERSION]&ads.devicetype=[DEVICE_TYPE]&ads.devicemake=[DEVICE_MAKE]&ads.devicemodel=[DEVICE_MODEL]&ads.targetad=[TARGETAD_ALLOWED
@@ -183,12 +199,12 @@ K-Drama+,Korea,active,hls_master,direct_url,1/1,1,https://jmp2.uk/stvp-GBBD41000
 # ============================================================
 # SUMMARY
 # ============================================================
-# Total        : 157
-# Active       : 119
+# Total        : 173
+# Active       : 128
 #   Wrapper kept : 28  (hls_media — URL hidden)
-#   Direct URL   : 91  (hls_master/dash/mp4 — URL exposed)
-# Dead          : 26
+#   Direct URL   : 100  (hls_master/dash/mp4 — URL exposed)
+# Dead          : 33
 # Skipped       : 12
-# Success       : 82.1%  (active / non-skipped)
-# Run time      : 2026-05-09 16:02:01 MYT
+# Success       : 79.5%  (active / non-skipped)
+# Run time      : 2026-05-09 18:43:10 MYT
 # ============================================================
