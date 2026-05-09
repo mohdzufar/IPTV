@@ -1,194 +1,473 @@
-# ============================================================
-# IPTV Playlist Validation Report
-# ============================================================
-# Generated  : 2026-05-09 05:58:45 MYT
-# Source     : Channels/Flatten.m3u8
-# Total      : 157 channels
-# Retry cfg  : MAX_RETRIES=2, RETRY_DELAY=5s
-#
-# Direct URL types (written to Main.m3u8 directly):
-#   hls_master, dash, mp4
-# Wrapper kept types (TV app follows wrapper chain):
-#   hls_media
-#
-# Columns:
-#   Channel    - tvg-name from Flatten.m3u8
-#   Group      - group-title from Flatten.m3u8
-#   Status     - active / dead / skipped
-#   StreamType - hls_master / hls_media / dash / mp4 / etc
-#   MainEntry  - wrapper_kept / direct_url / skipped / dead
-#   URLsTested - position/total  e.g. 2/3 = 2nd of 3 worked
-#   Attempts   - HTTP attempts before pass/fail
-#   WinningURL - URL that passed (blank if dead)
-#
-Channel,Group,Status,StreamType,MainEntry,URLsTested,Attempts,WinningURL
-RTM TV1,Malaysia,active,hls_media,wrapper_kept,1/5,1,https://d25tgymtnqzu8s.cloudfront.net/main/A0jyR3/dl_240p.m3u8
-RTM TV2,Malaysia,active,hls_media,wrapper_kept,1/5,1,https://d25tgymtnqzu8s.cloudfront.net/smil:tv2/chunklist_b346000_slENG.m3u8?id=2
-TV3,Malaysia,skipped,-,skipped,-,-,
-Didik TV,Malaysia,skipped,-,skipped,-,-,
-TV9,Malaysia,skipped,-,skipped,-,-,
-Drama Sangat,Malaysia,skipped,-,skipped,-,-,
-TV6,Malaysia,active,hls_media,wrapper_kept,1/5,1,https://d25tgymtnqzu8s.cloudfront.net/smil:tv6/chunklist_b346000_slENG.m3u8?id=6
-8TV,Malaysia,active,hls_media,wrapper_kept,1/1,1,http://cdn6.163189.xyz/163189/8tv
-Okey TV,Malaysia,active,hls_media,wrapper_kept,1/5,1,https://d25tgymtnqzu8s.cloudfront.net/smil:okey/chunklist_b346000_slENG.m3u8?id=3
-RTM Sukan,Sports,active,hls_media,wrapper_kept,1/5,1,https://d25tgymtnqzu8s.cloudfront.net/smil:sukan/chunklist_b346000_slENG.m3u8?id=4
-TV IKIM,Malaysia,active,hls_media,wrapper_kept,1/3,1,https://edge-sg1.vediostream.com/live/tvikim/chunks.m3u8?wmsAuthSign=c2VydmVyX3RpbWU9NS8yOS8yMDI1IDEwOjIyOjUzIFBNJmhhc2hfdmFsdWU9dFFzS0lwMXdycEZ0K1dPdHdYSm91dz09JnZhbGlkbWludXRlcz0yMCZzdHJtX2xlbj0xMA==
-Berita RTM,News,active,hls_media,wrapper_kept,1/5,1,https://d25tgymtnqzu8s.cloudfront.net/smil:berita/chunklist_b346000_slENG.m3u8?id=5
-RTM World,Malaysia,active,hls_media,wrapper_kept,1/5,1,https://d25tgymtnqzu8s.cloudfront.net/event/smil:event1/chunklist_b346000_slENG.m3u8
-Astro Awani,News,active,hls_media,wrapper_kept,1/3,1,https://d2idp3hzkhjpih.cloudfront.net/out/v1/4b85d9c2bf97413eb0c9fd875599b837/index_1.m3u8
-Astro Arena Bola,Sports,active,hls_media,wrapper_kept,1/1,1,https://load.perfecttv.net/rwt.m3u8?username=vip_3klp0es8&password=wg3piwEs&channel=bola1
-Astro Arena Bola 2,Sports,active,hls_media,wrapper_kept,1/1,1,https://load.perfecttv.net/rwt.m3u8?username=vip_3klp0es8&password=wg3piwEs&channel=bola2
-Al-Hijrah,Malaysia,skipped,-,skipped,-,-,
-EnjoyTV,Malaysia,skipped,-,skipped,-,-,
-BorneoTV,Malaysia,skipped,-,skipped,-,-,
-SelangorTV,Malaysia,skipped,-,skipped,-,-,
-SukeTV,Malaysia,skipped,-,skipped,-,-,
-TVS,Malaysia,skipped,-,skipped,-,-,
-SukanPlus,Malaysia,skipped,-,skipped,-,-,
-Bernama,Malaysia,skipped,-,skipped,-,-,
-Dewan Rakyat,Malaysia,active,hls_media,wrapper_kept,1/5,1,https://d25tgymtnqzu8s.cloudfront.net/smil:rakyat/chunklist_b346000_slENG.m3u8?id=7
-Dewan Negara,Malaysia,active,hls_media,wrapper_kept,1/5,1,https://d25tgymtnqzu8s.cloudfront.net/smil:negara/chunklist_b346000_slENG.m3u8?id=8
-RTM Snap,Malaysia,active,hls_media,wrapper_kept,1/5,1,https://d1sq2slp9afh7o.cloudfront.net/smil:snap/chunklist_b346000_slENG.m3u8
-RTM Lead,Malaysia,active,hls_media,wrapper_kept,1/5,1,https://d1sq2slp9afh7o.cloudfront.net/smil:lead/chunklist_b346000_slENG.m3u8
-RTM Apetito,Malaysia,active,hls_media,wrapper_kept,1/5,1,https://d1sq2slp9afh7o.cloudfront.net/smil:apetito/chunklist_b346000_slENG.m3u8
-RTM Fitrah,Malaysia,active,hls_media,wrapper_kept,1/5,1,https://d1sq2slp9afh7o.cloudfront.net/smil:fitrah/chunklist_b346000_slENG.m3u8
-RTM Junior,Malaysia,active,hls_media,wrapper_kept,1/5,1,https://d1sq2slp9afh7o.cloudfront.net/smil:jr/chunklist_b346000_slENG.m3u8
-RTM Roll,Malaysia,active,hls_media,wrapper_kept,1/5,1,https://d1sq2slp9afh7o.cloudfront.net/smil:roll/chunklist_b346000_slENG.m3u8
-RTM Aura,Malaysia,active,hls_media,wrapper_kept,1/5,1,https://d1sq2slp9afh7o.cloudfront.net/smil:aura/chunklist_b346000_slENG.m3u8
-Filem Mantap,Malaysia,active,dash,direct_url,1/1,1,https://b27a6dd8a86c3e4ba93fbae22aaaac64.pmqrop.channel-assembly.mediatailor.ap-southeast-1.amazonaws.com/v1/channel/FAST_2/dash.mpd
-Lawak Sentral,Malaysia,active,dash,direct_url,1/1,1,https://b27a6dd8a86c3e4ba93fbae22aaaac64.pmqrop.channel-assembly.mediatailor.ap-southeast-1.amazonaws.com/v1/channel/FAST_3/dash.mpd
-Drama Hotpot,Malaysia,active,dash,direct_url,1/1,1,https://b27a6dd8a86c3e4ba93fbae22aaaac64.pmqrop.channel-assembly.mediatailor.ap-southeast-1.amazonaws.com/v1/channel/FAST_4/dash.mpd
-Travel & Taste,Malaysia,active,dash,direct_url,1/1,1,https://b27a6dd8a86c3e4ba93fbae22aaaac64.pmqrop.channel-assembly.mediatailor.ap-southeast-1.amazonaws.com/v1/channel/FAST_5/dash.mpd
-Drama Hebat,Malaysia,active,dash,direct_url,1/1,1,https://b27a6dd8a86c3e4ba93fbae22aaaac64.pmqrop.channel-assembly.mediatailor.ap-southeast-1.amazonaws.com/v1/channel/FAST_1/dash.mpd
-Jom Ngaji,Malaysia,active,dash,direct_url,1/1,1,https://827f31c3f2824c0c95c7a5190e96e284.mediatailor.ap-southeast-1.amazonaws.com/v1/dash/951fbca46ac9b52422f8e3d6d4d6dab33623c3cc/FASTOO_CH6_JOMNGAJI/dash.mpd
-Oh My Ceria!,Malaysia,active,dash,direct_url,1/1,1,https://f9169865dbd747b4a24602e856a9c7a2.mediatailor.ap-southeast-1.amazonaws.com/v1/dash/951fbca46ac9b52422f8e3d6d4d6dab33623c3cc/FASTOO_CH7_CERIA/dash.mpd
-Quran (Mecca),Muslim,active,hls_master,direct_url,1/1,1,https://live.kwikmotion.com/sbrksaquranradiolive/srpksaquranradio/playlist.m3u8
-MediaCorp (English),Singapore,dead,all_urls_failed,dead,0/1,3,
-MediaCorp (Tamil),Singapore,dead,all_urls_failed,dead,0/1,3,
-CNA,Singapore,active,hls_media,wrapper_kept,1/3,1,https://d2e1asnsl7br7b.cloudfront.net/7782e205e72f43aeb4a48ec97f66ebbe/index_5.m3u8
-RTB Aneka,Brunei,active,hls_master,direct_url,1/1,1,https://d1211whpimeups.cloudfront.net/smil:rtb2/playlist.m3u8
-RTB Sukmaindera,Brunei,active,hls_master,direct_url,1/1,1,https://d1211whpimeups.cloudfront.net/smil:rtb1/playlist.m3u8
-Crunchyroll,Anime,active,hls_master,direct_url,1/1,1,https://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/65652f7fc0fc88000883537a/master.m3u8?appName=web&appVersion=9.19.0&deviceDNT=0&deviceId=affbdbfa-5fa3-48af-8369-57c005daef42&deviceMake=firefox&deviceModel=web&deviceType=web&deviceVersion=147.0.0&serverSideAds=false&sid=b7df248c-540d-4184-97dc-488d0b5beada
-Cartoon Network,Kids,active,hls_master,direct_url,1/1,1,http://23.237.104.106:8080/USA_CARTOON_NETWORK/index.m3u8
-Golf Kingdom,Golf,active,hls_master,direct_url,1/3,1,https://30a-tv.com/feeds/vidaa/golf.m3u8
-Golf Channel,Golf,dead,all_urls_failed,dead,0/3,3,
-Golf Channel (Latin America),Golf,active,hls_master,direct_url,1/1,1,http://181.114.57.246:4000/play/BHGDIhvdyuw/index.m3u8
-GolfNetwork Japan,Golf,active,hls_master,direct_url,1/2,1,http://cdns.jp-primehome.com:8000/zhongying/live/playlist.m3u8?cid=cs03
-GolfPass,Golf,dead,all_urls_failed,dead,0/3,3,
-PGA Tour,Golf,dead,wrapper_exception,dead,0/0,1,
-DP World Tour,Golf,dead,wrapper_exception,dead,0/0,1,
-Sky Sport Golf,Golf,dead,wrapper_exception,dead,0/0,1,
-Bein Sports 1,Sports,dead,wrapper_exception,dead,0/0,1,
-Bein Sports 2,Sports,dead,wrapper_exception,dead,0/0,1,
-Bein Sports 3,Sports,dead,wrapper_exception,dead,0/0,1,
-Bein Sports 4,Sports,dead,wrapper_exception,dead,0/0,1,
-Bein Sports 5,Sports,dead,wrapper_exception,dead,0/0,1,
-Bein Xtra,Sports,dead,wrapper_exception,dead,0/0,1,
-Tennis TV,Sports,dead,wrapper_exception,dead,0/0,1,
-Tennis TV 2,Sports,dead,wrapper_exception,dead,0/0,1,
-Tennis+,Sports,dead,wrapper_exception,dead,0/0,1,
-Tennis Channel,Sports,dead,wrapper_exception,dead,0/0,1,
-Tennis Channel 2,Sports,dead,wrapper_exception,dead,0/0,1,
-MLB,Sports,dead,wrapper_exception,dead,0/0,1,
-MMA-TV International,Sports,dead,wrapper_exception,dead,0/0,1,
-FOX NFL,Sports,dead,wrapper_exception,dead,0/0,1,
-NHL,Sports,dead,wrapper_exception,dead,0/0,1,
-UEFA Champion League,Sports,dead,wrapper_exception,dead,0/0,1,
-UFC 1,Sports,dead,wrapper_exception,dead,0/0,1,
-Xumo NBC Sport,Sports,dead,wrapper_exception,dead,0/0,1,
-NBC Sport Now,Sports,dead,wrapper_exception,dead,0/0,1,
-Goal TV,Sports,dead,wrapper_exception,dead,0/0,1,
-Real Madrid TV,Sports,dead,wrapper_exception,dead,0/0,1,
-RedBull TV,Sports,dead,wrapper_exception,dead,0/0,1,
-Sport Fishing TV,Sports,dead,wrapper_exception,dead,0/0,1,
-Wired2Fish,Sports,dead,wrapper_exception,dead,0/0,1,
-Sports Connect,Sports,dead,wrapper_exception,dead,0/0,1,
-MBC America,Sports,dead,wrapper_exception,dead,0/0,1,
-Swerve Sport,Sports,dead,wrapper_exception,dead,0/0,1,
-World Billiards TV,Sports,dead,wrapper_exception,dead,0/0,1,
-Billiard TV,Sports,dead,wrapper_exception,dead,0/0,1,
-BBC Top Gear,Sports,dead,wrapper_exception,dead,0/0,1,
-Fuel TV,Sports,dead,wrapper_exception,dead,0/0,1,
-Pro Fight League,Sports,dead,wrapper_exception,dead,0/0,1,
-Speed Vision,Sports,dead,wrapper_exception,dead,0/0,1,
-Fifa+,Sports,dead,wrapper_exception,dead,0/0,1,
-TNA Wresling,Sports,dead,wrapper_exception,dead,0/0,1,
-Astro Badminton,Sports,dead,wrapper_exception,dead,0/0,1,
-Astro Football,Sports,dead,wrapper_exception,dead,0/0,1,
-CS2,E-Sports,dead,wrapper_exception,dead,0/0,1,
-CS2,E-Sports,dead,wrapper_exception,dead,0/0,1,
-DotA2,E-Sports,dead,wrapper_exception,dead,0/0,1,
-DotA2,E-Sports,dead,wrapper_exception,dead,0/0,1,
-KPOP Mix,Music,dead,wrapper_exception,dead,0/0,1,
-New KPOP,Music,dead,wrapper_exception,dead,0/0,1,
-K-POP,Music,dead,wrapper_exception,dead,0/0,1,
-Music Japan,Music,dead,wrapper_exception,dead,0/0,1,
-Music India,Music,dead,wrapper_exception,dead,0/0,1,
-Song TV,Music,dead,wrapper_exception,dead,0/0,1,
-Paramount Movie Channel,Movies,dead,wrapper_exception,dead,0/0,1,
-MyTime Movie Network,Movies,dead,wrapper_exception,dead,0/0,1,
-Movie Sphere,Movies,dead,wrapper_exception,dead,0/0,1,
-Movie Sphere 2,Movies,dead,wrapper_exception,dead,0/0,1,
-Movie Sphere 3,Movies,dead,wrapper_exception,dead,0/0,1,
-Movie Sphere by Lionsgate,Movies,dead,wrapper_exception,dead,0/0,1,
-Movie Sphere by Lionsgate 2,Movies,dead,wrapper_exception,dead,0/0,1,
-Wedotv Movies,Movies,dead,wrapper_exception,dead,0/0,1,
-Miramax,Movies,dead,wrapper_exception,dead,0/0,1,
-Universal Movie,Movies,dead,wrapper_exception,dead,0/0,1,
-Cinemax,Movies,dead,wrapper_exception,dead,0/0,1,
-Hallmark Channel,Movies,dead,wrapper_exception,dead,0/0,1,
-HBO,Movies,dead,wrapper_exception,dead,0/0,1,
-HBO 2,Movies,dead,wrapper_exception,dead,0/0,1,
-HBO Comedy,Movies,dead,wrapper_exception,dead,0/0,1,
-HBO Family,Movies,dead,wrapper_exception,dead,0/0,1,
-HBO Signature,Movies,dead,wrapper_exception,dead,0/0,1,
-HBO Zone,Movies,dead,wrapper_exception,dead,0/0,1,
-Rakuten Top Movies UK,Movies,dead,wrapper_exception,dead,0/0,1,
-Sony Movie Channel,Movies,dead,wrapper_exception,dead,0/0,1,
-Bollywood,Movies,dead,wrapper_exception,dead,0/0,1,
-Bollywood Classic,Movies,dead,wrapper_exception,dead,0/0,1,
-EuroNews,News,dead,wrapper_exception,dead,0/0,1,
-NBC News Now,News,dead,wrapper_exception,dead,0/0,1,
-CBS News 24/7,News,dead,wrapper_exception,dead,0/0,1,
-BBC News,News,dead,wrapper_exception,dead,0/0,1,
-Sky News,News,dead,wrapper_exception,dead,0/0,1,
-Reuters,News,dead,wrapper_exception,dead,0/0,1,
-Yahoo! Finance,News,dead,wrapper_exception,dead,0/0,1,
-News World,News,dead,wrapper_exception,dead,0/0,1,
-Adventure Earth,Nature,dead,wrapper_exception,dead,0/0,1,
-BBC Earth,Nature,dead,wrapper_exception,dead,0/0,1,
-Love The Planet,Nature,dead,wrapper_exception,dead,0/0,1,
-Terra Mater Wild,Nature,dead,wrapper_exception,dead,0/0,1,
-Real Wild,Nature,dead,wrapper_exception,dead,0/0,1,
-Go Wild,Nature,dead,wrapper_exception,dead,0/0,1,
-Wild Earth,Nature,dead,wrapper_exception,dead,0/0,1,
-Xumo Nature & Wildlife TV,Nature,dead,wrapper_exception,dead,0/0,1,
-Animal Planet,Nature,dead,wrapper_exception,dead,0/0,1,
-Discovery Channel,,dead,wrapper_exception,dead,0/0,1,
-Discovery Life,,dead,wrapper_exception,dead,0/0,1,
-Discovery Science,,dead,wrapper_exception,dead,0/0,1,
-Disney Channel,Kids,dead,wrapper_exception,dead,0/0,1,
-Disney XD,,dead,wrapper_exception,dead,0/0,1,
-Bob Ross Channel,,dead,wrapper_exception,dead,0/0,1,
-TVBS Asia,Singapore,dead,wrapper_exception,dead,0/0,1,
-KoreaTV,Korea,dead,wrapper_exception,dead,0/0,1,
-Al-Jazeera (English),Muslim,dead,wrapper_exception,dead,0/0,1,
-Love Pets,Pets,dead,wrapper_exception,dead,0/0,1,
-Documentary+,,dead,wrapper_exception,dead,0/0,1,
-mn静静nm,China,dead,wrapper_exception,dead,0/0,1,
-万事通熊猫,China,dead,wrapper_exception,dead,0/0,1,
-K-Content,Korea,dead,wrapper_exception,dead,0/0,1,
-K-Drama+,Korea,dead,wrapper_exception,dead,0/0,1,
-#
-# ============================================================
-# SUMMARY
-# ============================================================
-# Total        : 157
-# Active       : 37
-#   Wrapper kept : 22  (hls_media — URL hidden)
-#   Direct URL   : 15  (hls_master/dash/mp4 — URL exposed)
-# Dead          : 108
-# Skipped       : 12
-# Success       : 25.5%  (active / non-skipped)
-# Run time      : 2026-05-09 05:58:45 MYT
-# ============================================================
+import sys
+import io
+import os
+import re
+import time
+import requests
+from datetime import datetime, timezone, timedelta
+from urllib.parse import urljoin
+
+# Fix Unicode output on Windows (avoid cp1252 errors)
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+
+# Patterns of channels to skip validation (Mana-mana and tonton)
+SKIP_PATTERNS = ['Mana-mana', 'tonton']
+
+# Shared headers for all HTTP requests — fixes CDN 403s
+DEFAULT_HEADERS = {'User-Agent': 'VLC/3.0.20'}
+
+# Retry settings
+MAX_RETRIES = 2
+RETRY_DELAY = 5  # seconds between retries
+
+# Stream types that cannot be served via wrapper on TV apps.
+# These get their direct URL written into Main.m3u8 instead.
+#   hls_master : master playlist pointing to other playlists (TV rejects double-hop)
+#   dash       : MPEG-DASH .mpd format (TV can't follow HLS wrapper to DASH)
+#   mp4        : direct MP4 stream (same issue)
+DIRECT_URL_TYPES = ('hls_master', 'dash', 'mp4')
+
+# Malaysia timezone (UTC+8)
+MYT = timezone(timedelta(hours=8))
+
+
+# =============================================================================
+# URL EXTRACTION
+# =============================================================================
+
+def extract_all_urls_from_wrapper(wrapper_content, base_url):
+    """Extract ALL stream URLs from a wrapper .m3u8 file, in order.
+    Returns a list of URLs. Skips comment lines (##) and directive lines (#).
+    """
+    urls = []
+    for line in wrapper_content.splitlines():
+        line = line.strip()
+        if not line:
+            continue
+        if line.startswith('#'):
+            continue  # skip all comment and directive lines
+        if line.startswith('http'):
+            urls.append(line)
+        elif line.startswith('/'):
+            urls.append(urljoin(base_url, line))
+    return urls
+
+
+# =============================================================================
+# STREAM CLASSIFICATION
+# =============================================================================
+
+def classify_content(text, status, content_type):
+    """Classify stream based on content snippet and HTTP metadata."""
+    if text is None:
+        return 'invalid'
+    text = text.strip()
+    if not text:
+        return 'empty_ok'
+    if text.startswith('#EXTM3U'):
+        if '#EXT-X-STREAM-INF' in text:
+            return 'hls_master'
+        if '#EXTINF' in text:
+            return 'hls_media'
+        return 'wrapper'
+    if text.startswith('\x00\x00\x00'):
+        if 'ftyp' in text:
+            return 'mp4'
+        return 'binary'
+    if '<html' in text.lower() or '<!doctype' in text.lower():
+        return 'html'
+    if '404' in text or 'not found' in text.lower():
+        return 'invalid'
+    if text.startswith('<?xml') or text.startswith('<MPD'):
+        return 'dash'
+    if content_type and 'video/mp4' in content_type:
+        return 'mp4'
+    if content_type and 'application/dash+xml' in content_type:
+        return 'dash'
+    return 'invalid'
+
+
+# =============================================================================
+# STREAM VALIDATION
+# =============================================================================
+
+def validate_stream(stream_session, url):
+    """Fetch a stream URL and classify it. Retries up to MAX_RETRIES times.
+    Uses a shared session for connection reuse.
+    Returns (kind, http_status, good, attempt_number).
+    """
+    kind        = 'exception'
+    http_status = 0
+
+    for attempt in range(1, MAX_RETRIES + 2):  # attempts: 1, 2, 3
+        try:
+            resp = stream_session.get(
+                url,
+                headers=DEFAULT_HEADERS,
+                timeout=15,
+                stream=True
+            )
+            http_status  = resp.status_code
+            chunk        = resp.raw.read(8192, decode_content=True)
+            content_type = resp.headers.get('Content-Type', '')
+            kind         = classify_content(
+                chunk.decode('utf-8', errors='ignore'),
+                http_status,
+                content_type
+            )
+            # binary and wrapper are not directly playable
+            good = kind not in ('invalid', 'html', 'empty_ok', 'binary', 'wrapper')
+
+            if good:
+                return kind, http_status, True, attempt
+
+            # Hard HTTP failures — no point retrying
+            if http_status in (401, 403, 404, 410):
+                return kind, http_status, False, attempt
+
+            # Soft failure — retry if attempts remain
+            if attempt <= MAX_RETRIES:
+                print(f"    ⚠️  Attempt {attempt} returned '{kind}' "
+                      f"(HTTP {http_status}), retrying in {RETRY_DELAY}s...")
+                time.sleep(RETRY_DELAY)
+                continue
+
+            return kind, http_status, False, attempt
+
+        except Exception as e:
+            kind = 'exception'
+            if attempt <= MAX_RETRIES:
+                print(f"    ⚠️  Attempt {attempt} exception: {e}, "
+                      f"retrying in {RETRY_DELAY}s...")
+                time.sleep(RETRY_DELAY)
+                continue
+            return kind, 0, False, attempt
+
+    return kind, http_status, False, MAX_RETRIES + 1
+
+
+# =============================================================================
+# SKIP CHECK
+# =============================================================================
+
+def is_skipped(channel_name, wrapper_url=''):
+    """Return True if this channel should skip validation.
+    Checks both the channel name and the wrapper URL path.
+    """
+    for pat in SKIP_PATTERNS:
+        if pat.lower() in channel_name.lower():
+            return True
+        if pat.lower() in wrapper_url.lower():
+            return True
+    return False
+
+
+# =============================================================================
+# FLATTEN.M3U8 PARSER
+# =============================================================================
+
+def parse_flatten(flatten_path):
+    """Parse Flatten.m3u8 and return (header_line, list_of_blocks).
+    header_line is the first #EXTM3U EPG line.
+    Each block: (full_text, extinf_line, url_line, channel_name, group)
+    """
+    with open(flatten_path, 'r', encoding='utf-8') as f:
+        lines = f.readlines()
+
+    header = ''
+    if lines and lines[0].startswith('#EXTM3U'):
+        header = lines[0].strip()
+        content = ''.join(lines[1:])
+    else:
+        content = ''.join(lines)
+
+    blocks = []
+    pattern = re.compile(r'(#EXTINF:[^\n]*\n)((?:[^#\n][^\n]*\n?)+)')
+    for m in pattern.finditer(content):
+        extinf    = m.group(1)
+        url_lines = m.group(2).strip()
+        name_match = re.search(r'tvg-name="([^"]*)"', extinf)
+        channel_name = name_match.group(1) if name_match else 'Unknown'
+        group_match = re.search(r'group-title="([^"]*)"', extinf)
+        group = group_match.group(1) if group_match else ''
+        blocks.append((m.group(0), extinf, url_lines, channel_name, group))
+    return header, blocks
+
+
+# =============================================================================
+# MAIN.M3U8 WRITER
+# =============================================================================
+
+def update_main_m3u8(main_path, header, blocks, results):
+    """Write Main.m3u8 using the original EPG header line.
+
+    Behaviour per channel:
+    - Skipped (Mana-mana/tonton)      : written as-is from Flatten
+    - Active, hls_master/dash/mp4     : extinf line + direct stream URL
+    - Active, hls_media               : written as-is (wrapper URL kept)
+    - Dead                            : all lines prefixed with ##
+    """
+    with open(main_path, 'w', encoding='utf-8') as f:
+        if header:
+            f.write(header + '\n')
+        else:
+            f.write('#EXTM3U\n')
+        for idx, (full, extinf, url, name, group) in enumerate(blocks):
+            if is_skipped(name, url):
+                f.write(full)
+                continue
+            result = results[idx]
+            if result['valid']:
+                if result['direct']:
+                    # hls_master, dash, mp4 — direct URL written to Main.m3u8
+                    # TV apps cannot follow wrapper chain for these types
+                    f.write(extinf)
+                    f.write(result['direct'] + '\n')
+                else:
+                    # hls_media — wrapper URL kept, TV app follows chain normally
+                    f.write(full)
+            else:
+                for line in full.splitlines(keepends=True):
+                    f.write('## ' + line)
+
+
+# =============================================================================
+# MAIN
+# =============================================================================
+
+def main():
+    base_dir     = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    flatten_path = os.path.join(base_dir, 'Channels', 'Flatten.m3u8')
+    main_path    = os.path.join(base_dir, 'Main.m3u8')
+    report_path  = os.path.join(base_dir, 'validation-report.txt')
+
+    run_time     = datetime.now(MYT)
+    run_time_str = run_time.strftime('%Y-%m-%d %H:%M:%S MYT')
+
+    print(f"Parsing  : {flatten_path}")
+    header, blocks = parse_flatten(flatten_path)
+    total = len(blocks)
+    print(f"Channels : {total}")
+    print(f"Run time : {run_time_str}\n")
+
+    results = [{} for _ in blocks]
+
+    # Counters for summary
+    count_active       = 0
+    count_dead         = 0
+    count_skipped      = 0
+    count_direct       = 0
+    count_wrapper_kept = 0
+
+    # -----------------------------------------------------------------
+    # Create two persistent sessions:
+    #   wrapper_session : for fetching wrapper files from raw.githubusercontent.com
+    #                     One TCP connection, one DNS lookup for the entire run.
+    #   stream_session  : for validating actual stream URLs (various hosts)
+    # -----------------------------------------------------------------
+    wrapper_session = requests.Session()
+    wrapper_session.headers.update(DEFAULT_HEADERS)
+
+    stream_session = requests.Session()
+    stream_session.headers.update(DEFAULT_HEADERS)
+
+    with open(report_path, 'w', encoding='utf-8') as report:
+
+        # ------------------------------------------------------------------
+        # Report header block
+        # ------------------------------------------------------------------
+        report.write(f"# ============================================================\n")
+        report.write(f"# IPTV Playlist Validation Report\n")
+        report.write(f"# ============================================================\n")
+        report.write(f"# Generated  : {run_time_str}\n")
+        report.write(f"# Source     : Channels/Flatten.m3u8\n")
+        report.write(f"# Total      : {total} channels\n")
+        report.write(f"# Retry cfg  : MAX_RETRIES={MAX_RETRIES}, RETRY_DELAY={RETRY_DELAY}s\n")
+        report.write(f"#\n")
+        report.write(f"# Direct URL types (written to Main.m3u8 directly):\n")
+        report.write(f"#   {', '.join(DIRECT_URL_TYPES)}\n")
+        report.write(f"# Wrapper kept types (TV app follows wrapper chain):\n")
+        report.write(f"#   hls_media\n")
+        report.write(f"#\n")
+        report.write(f"# Columns:\n")
+        report.write(f"#   Channel    - tvg-name from Flatten.m3u8\n")
+        report.write(f"#   Group      - group-title from Flatten.m3u8\n")
+        report.write(f"#   Status     - active / dead / skipped\n")
+        report.write(f"#   StreamType - hls_master / hls_media / dash / mp4 / etc\n")
+        report.write(f"#   MainEntry  - wrapper_kept / direct_url / skipped / dead\n")
+        report.write(f"#   URLsTested - position/total  e.g. 2/3 = 2nd of 3 worked\n")
+        report.write(f"#   Attempts   - HTTP attempts before pass/fail\n")
+        report.write(f"#   DirectURL  - URL that passed (blank if dead)\n")
+        report.write(f"#\n")
+        report.write(f"Channel,Group,Status,StreamType,MainEntry,URLsTested,Attempts,DirectURL\n")
+
+        for i, (full, extinf, url, name, group) in enumerate(blocks):
+            print("=" * 60)
+            print(f"[{i+1}/{total}] {name}  (group: {group})")
+
+            # --------------------------------------------------------------
+            # SKIPPED channels (Mana-mana, tonton)
+            # --------------------------------------------------------------
+            if is_skipped(name, url):
+                results[i] = {'valid': True, 'direct': None}
+                report.write(f"{name},{group},skipped,-,skipped,-,-,\n")
+                count_skipped += 1
+                print("Action  : ⏭️  Skipped (Mana-mana / tonton)")
+                continue
+
+            print(f"Wrapper : {url.strip()}")
+
+            # --------------------------------------------------------------
+            # Step 1: Fetch the wrapper file
+            #         Uses wrapper_session — persistent connection to GitHub,
+            #         single DNS lookup for the entire run.
+            # --------------------------------------------------------------
+            try:
+                wr = wrapper_session.get(
+                    url.strip(),
+                    timeout=10
+                )
+                print(f"Wrapper HTTP: {wr.status_code}")
+
+                if wr.status_code != 200:
+                    results[i] = {'valid': False, 'direct': None}
+                    report.write(
+                        f"{name},{group},dead,"
+                        f"wrapper_http_{wr.status_code},dead,0/0,1,\n"
+                    )
+                    count_dead += 1
+                    print("Action  : ❌ Commented out (wrapper HTTP error)")
+                    continue
+
+                wrapper_content = wr.text
+
+            except Exception as e:
+                results[i] = {'valid': False, 'direct': None}
+                report.write(
+                    f"{name},{group},dead,wrapper_exception,dead,0/0,1,\n"
+                )
+                count_dead += 1
+                print(f"Wrapper exception: {e}")
+                print("Action  : ❌ Commented out (wrapper fetch failed)")
+                continue
+
+            # --------------------------------------------------------------
+            # Step 2: Extract ALL URLs from wrapper
+            # --------------------------------------------------------------
+            inner_urls = extract_all_urls_from_wrapper(wrapper_content, url.strip())
+            total_urls = len(inner_urls)
+
+            if total_urls == 0:
+                results[i] = {'valid': False, 'direct': None}
+                report.write(
+                    f"{name},{group},dead,no_urls_in_wrapper,dead,0/0,0,\n"
+                )
+                count_dead += 1
+                print("Inner URLs : NONE FOUND")
+                print("Action     : ❌ Commented out (no URLs in wrapper)")
+                continue
+
+            print(f"Inner URLs : {total_urls} found")
+
+            # --------------------------------------------------------------
+            # Step 3: Try each URL until one works
+            #         Uses stream_session — persistent connection pool
+            #         across all stream host validations.
+            # --------------------------------------------------------------
+            channel_valid    = False
+            winning_url      = ''
+            winning_kind     = ''
+            winning_attempt  = 0
+            winning_position = 0
+
+            for url_idx, inner_url in enumerate(inner_urls, start=1):
+                print(f"  [{url_idx}/{total_urls}] {inner_url}")
+                stream_kind, http_status, good, attempt = validate_stream(
+                    stream_session, inner_url
+                )
+                print(f"  Result : {stream_kind} (HTTP {http_status}, attempt {attempt})")
+
+                if good:
+                    channel_valid    = True
+                    winning_url      = inner_url
+                    winning_kind     = stream_kind
+                    winning_attempt  = attempt
+                    winning_position = url_idx
+                    print(f"  ✅ Working URL found at position {url_idx}/{total_urls}")
+                    break
+                else:
+                    print(f"  ❌ URL {url_idx}/{total_urls} failed "
+                          f"({stream_kind}, HTTP {http_status})")
+
+            # --------------------------------------------------------------
+            # Step 4: Record result
+            # --------------------------------------------------------------
+            if channel_valid:
+                if winning_kind in DIRECT_URL_TYPES:
+                    results[i] = {'valid': True, 'direct': winning_url}
+                    main_entry = 'direct_url'
+                    count_direct += 1
+                    action_note = (f"direct URL written to Main.m3u8 "
+                                   f"({winning_kind})")
+                else:
+                    results[i] = {'valid': True, 'direct': None}
+                    main_entry = 'wrapper_kept'
+                    count_wrapper_kept += 1
+                    action_note = f"wrapper kept ({winning_kind})"
+
+                report.write(
+                    f"{name},{group},active,{winning_kind},{main_entry},"
+                    f"{winning_position}/{total_urls},{winning_attempt},"
+                    f"{winning_url}\n"
+                )
+                count_active += 1
+                print(
+                    f"Action  : ✅ {action_note}  "
+                    f"(URL {winning_position}/{total_urls}, "
+                    f"attempt {winning_attempt})"
+                )
+            else:
+                results[i] = {'valid': False, 'direct': None}
+                report.write(
+                    f"{name},{group},dead,all_urls_failed,dead,"
+                    f"0/{total_urls},{MAX_RETRIES + 1},\n"
+                )
+                count_dead += 1
+                print(f"Action  : ❌ Commented out (all {total_urls} URL(s) failed)")
+
+        # ------------------------------------------------------------------
+        # Report summary footer
+        # ------------------------------------------------------------------
+        non_skipped = total - count_skipped
+        success_pct = round(count_active / max(non_skipped, 1) * 100, 1)
+
+        report.write(f"#\n")
+        report.write(f"# ============================================================\n")
+        report.write(f"# SUMMARY\n")
+        report.write(f"# ============================================================\n")
+        report.write(f"# Total        : {total}\n")
+        report.write(f"# Active       : {count_active}\n")
+        report.write(f"#   Wrapper kept : {count_wrapper_kept}  (hls_media — URL hidden)\n")
+        report.write(f"#   Direct URL   : {count_direct}  (hls_master/dash/mp4 — URL exposed)\n")
+        report.write(f"# Dead          : {count_dead}\n")
+        report.write(f"# Skipped       : {count_skipped}\n")
+        report.write(f"# Success       : {success_pct}%  (active / non-skipped)\n")
+        report.write(f"# Run time      : {run_time_str}\n")
+        report.write(f"# ============================================================\n")
+
+    # Close sessions cleanly
+    wrapper_session.close()
+    stream_session.close()
+
+    print("\n" + "=" * 60)
+    print(f"Results  : {count_active} active | {count_dead} dead | "
+          f"{count_skipped} skipped")
+    print(f"  Wrapper kept : {count_wrapper_kept}  |  Direct URL : {count_direct}")
+    print(f"Success  : {success_pct}%")
+    print("Writing Main.m3u8...")
+    update_main_m3u8(main_path, header, blocks, results)
+    print("Done.")
+
+
+if __name__ == '__main__':
+    main()
