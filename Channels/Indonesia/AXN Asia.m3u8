@@ -1,0 +1,4 @@
+#EXTM3U
+#EXTINF:1,AXN Asia
+http://103.58.160.157:8278/720-AXN/playlist.m3u8
+https://cdn10jtedge.indihometv.com/atm/DASH/axn/manifest.mpd
