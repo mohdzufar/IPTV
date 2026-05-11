@@ -1,7 +1,7 @@
 # ============================================================
 # IPTV Playlist Validation Report
 # ============================================================
-# Generated  : 2026-05-11 05:46:42 MYT
+# Generated  : 2026-05-12 06:07:18 MYT
 # Source     : Channels/Flatten.m3u8
 # Total      : 173 channels
 # Retry cfg  : MAX_RETRIES=2, RETRY_DELAY=5s
@@ -67,30 +67,30 @@ Channel 5,Singapore,dead,all_urls_failed,dead,0/3,3,
 Channel 8,Singapore,dead,all_urls_failed,dead,0/1,3,
 Channel U,Singapore,dead,all_urls_failed,dead,0/1,3,
 Suria,Singapore,dead,all_urls_failed,dead,0/2,3,
-HITS NOW,Singapore,active,dash,direct_url,1/1,1,https://cdn10jtedge.indihometv.com/atm/DASH/hits/manifest.mpd
-HITS Movies,Singapore;Movies,active,dash,direct_url,1/2,1,https://cdn10jtedge.indihometv.com/atm/DASH/hitsmovie/hitsmovie-avc1_2500000=7-3277707030000000.mpd
+HITS NOW,Singapore,dead,all_urls_failed,dead,0/1,3,
+HITS Movies,Singapore;Movies,dead,all_urls_failed,dead,0/2,3,
 meWATCH LIVE 1,Singapore,active,dash,direct_url,1/1,1,https://tglmp04.akamaized.net/out/v1/898b1cbac7c747e3b1f3deb460e9b67e/manifest.mpd
-ROCK Action,Singapore;Movies,active,dash,direct_url,1/1,1,https://cdn10jtedge.indihometv.com/atm/DASH/ROCK_ACTION/manifest.mpd
-ROCK Entertainment,Singapore;Movies,active,dash,direct_url,1/1,1,http://cdn10jtedge.indihometv.com/atm/DASH/rock_entertainment/manifest.mpd
+ROCK Action,Singapore;Movies,dead,all_urls_failed,dead,0/1,3,
+ROCK Entertainment,Singapore;Movies,dead,all_urls_failed,dead,0/1,3,
 TechStorm,Singapore,dead,all_urls_failed,dead,0/1,3,
 ZooMoo,Singapore,active,hls_master,direct_url,1/5,1,https://zoomoo-samsungau.amagi.tv/playlist.m3u8
 CNA,Singapore;News,active,hls_master,direct_url,1/4,1,https://d2e1asnsl7br7b.cloudfront.net/7782e205e72f43aeb4a48ec97f66ebbe/index.m3u8
 MediaCorp (English),Singapore,dead,all_urls_failed,dead,0/1,3,
 MediaCorp (Tamil),Singapore,dead,all_urls_failed,dead,0/1,3,
 KCM,India,dead,all_urls_failed,dead,0/1,3,
-AXN Asia,Indonesia,active,dash,direct_url,2/2,1,https://cdn10jtedge.indihometv.com/atm/DASH/axn/manifest.mpd
+AXN Asia,Indonesia,dead,all_urls_failed,dead,0/2,3,
 RTB Aneka,Brunei,active,hls_master,direct_url,1/1,1,https://d1211whpimeups.cloudfront.net/smil:rtb2/playlist.m3u8
 RTB Sukmaindera,Brunei,active,hls_master,direct_url,1/1,1,https://d1211whpimeups.cloudfront.net/smil:rtb1/playlist.m3u8
 Crunchyroll,Anime,active,hls_master,direct_url,1/1,1,https://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/65652f7fc0fc88000883537a/master.m3u8?appName=web&appVersion=9.19.0&deviceDNT=0&deviceId=affbdbfa-5fa3-48af-8369-57c005daef42&deviceMake=firefox&deviceModel=web&deviceType=web&deviceVersion=147.0.0&serverSideAds=false&sid=b7df248c-540d-4184-97dc-488d0b5beada
 Aniplus Asia,India;Anime,dead,all_urls_failed,dead,0/1,3,
 Cartoon Network,Kids,active,hls_master,direct_url,1/1,1,http://23.237.104.106:8080/USA_CARTOON_NETWORK/index.m3u8
-Nickelodeon Asia,Indonesia;Kids,active,dash,direct_url,1/1,1,https://cdn10jtedge.indihometv.com/atm/DASH/nickelodeon/manifest.mpd
+Nickelodeon Asia,Indonesia;Kids,dead,all_urls_failed,dead,0/1,3,
 Golf Kingdom,Golf,active,hls_master,direct_url,1/3,1,https://30a-tv.com/feeds/vidaa/golf.m3u8
 Golf Channel,Golf,dead,all_urls_failed,dead,0/3,3,
 Golf Channel (Latin America),Golf,active,hls_master,direct_url,1/1,1,http://181.114.57.246:4000/play/BHGDIhvdyuw/index.m3u8
 GolfNetwork Japan,Golf,active,hls_master,direct_url,1/3,1,http://cdns.jp-primehome.com:8000/zhongying/live/playlist.m3u8?cid=cs03
 ,Golf,dead,all_urls_failed,dead,0/1,3,
-GolfPass,Golf,active,hls_master,direct_url,2/3,1,https://jmp2.uk/rok-e08aa3af93f95c9db062ce237e90f6d1.m3u8
+GolfPass,Golf,active,hls_master,direct_url,3/3,1,https://d3f4oii5n0oeqi.cloudfront.net/11701/88814574a/hls/master.m3u8?includeAssetTags=true&ads.xumo_channelId=88814574a&ads.xumo_streamId=88814574a&declaredCC1Language=en&ads.caid=VersantGOLFPASS&ads.csid=tcl2_us_versantgolfpass_ssai&ads.xumo_ifaType=%5BIFA_TYPE%5D&ads.xumo_ifa=%5BIFA%5D&ads.appName=%5BAPP_NAME%5D&ads.appVersion=%5BAPP_VERSION%5D&ads._fw_app_bundle=%5BTCL_APP_BUNDLE%5D&ads.genre=Action%252CAdventure%252CComedy%252CCrime%252CDrama%252CFamily%252CFantasy%252CHorror%252CMystery%252CRomance%252CSci-Fi%252CThriller%252CWar%252CWestern%252CSuperhero&ads._fw_content_category=IAB1-5&ads._fw_content_genre=television&ads._fw_content_language=en&ads._fw_content_rating=tv-pg&ads._fw_deviceMake=%5BDEVICE_MAKE%5D&ads._fw_device_model=%5BDEVICE_MODEL%5D&ads._fw_devicetype=3-Connected_TV&ads._fw_coppa=0&ads._fw_is_lat=%5BLMT%5D&ads._fw_us_privacy=%5BUS_PRIVACY%5D&ads._fw_h_x_country=US&ads._fw_player_width=%5BPLAYER_WIDTH%5D&ads._fw_player_height=%5BPLAYER_HEIGHT%5D&ads.xumo_contentId=4292&ads.xumo_contentName=VersantGOLFPASS&ads.xumo_providerId=4292&ads.xumo_providerName=VersantGOLFPASS&ads.xumo_channelName=VersantGOLFPASS&ads._fw_app_store_url=%5BTCL_APP_STORE_URL%5D
 PGA Tour,Golf,active,hls_media,wrapper_kept,1/5,1,https://aegis-cloudfront-1.tubi.video/9c59800e-fa9a-4539-b8e5-5769918e7c5a/playlist_1280x720.m3u8
 DP World Tour,Golf,dead,all_urls_failed,dead,0/1,3,
 Sky Sport Golf,Golf,dead,all_urls_failed,dead,0/3,3,
@@ -156,8 +156,8 @@ Hallmark Channel,Movies,active,hls_master,direct_url,1/1,1,http://23.237.104.106
 HBO,Movies,active,hls_master,direct_url,1/1,1,http://23.237.104.106:8080/USA_HBO/index.m3u8
 HBO 2,Movies,active,hls_master,direct_url,1/1,1,http://23.237.104.106:8080/USA_HBO2/index.m3u8
 HBO Comedy,Movies,active,hls_master,direct_url,1/1,1,http://23.237.104.106:8080/USA_HBO_COMEDY/index.m3u8
-HBO Family,Movies,active,dash,direct_url,1/1,1,https://cdn10jtedge.indihometv.com/atm/DASH/hbofamily/manifest.mpd
-HBO Signature,Movies,active,dash,direct_url,1/1,1,https://cdn10jtedge.indihometv.com/atm/DASH/hbosignature/manifest.mpd
+HBO Family,Movies,dead,all_urls_failed,dead,0/1,3,
+HBO Signature,Movies,dead,all_urls_failed,dead,0/1,3,
 HBO Zone,Movies,active,hls_master,direct_url,1/1,1,http://23.237.104.106:8080/USA_HBO_ZONE/index.m3u8
 Rakuten Top Movies UK,Movies,active,hls_master,direct_url,1/1,1,https://0145451975a64b35866170fd2e8fa486.mediatailor.eu-west-1.amazonaws.com/v1/master/0547f18649bd788bec7b67b746e47670f558b6b2/production-LiveChannel-5987/master.m3u8
 Sony Movie Channel,Movies,dead,all_urls_failed,dead,0/1,3,
@@ -200,11 +200,11 @@ K-Drama+,Korea,active,hls_master,direct_url,1/1,1,https://jmp2.uk/stvp-GBBD41000
 # SUMMARY
 # ============================================================
 # Total        : 173
-# Active       : 129
+# Active       : 121
 #   Wrapper kept : 27  (hls_media — URL hidden)
-#   Direct URL   : 102  (hls_master/dash/mp4 — URL exposed)
-# Dead          : 32
+#   Direct URL   : 94  (hls_master/dash/mp4 — URL exposed)
+# Dead          : 40
 # Skipped       : 12
-# Success       : 80.1%  (active / non-skipped)
-# Run time      : 2026-05-11 05:46:42 MYT
+# Success       : 75.2%  (active / non-skipped)
+# Run time      : 2026-05-12 06:07:18 MYT
 # ============================================================
