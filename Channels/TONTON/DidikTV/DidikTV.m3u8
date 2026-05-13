@@ -1,3 +1,5 @@
 #EXTM3U
 #EXTINF:1,DidikTV
+#EXTVLCOPT:http-referrer=https://watch.tonton.com.my
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
 https://live-ssar-02.tonton.com.my/1778723909/dc7249a227dfa1e9d3506885b7f3cfe9e09bd56117123afb4178d05fcb7e7090/ntv7/04.m3u8?bpkio_serviceid=6c0958d82a830a0283e4c742ef6db379&bpkio_sessionid=10c3d198b33-9deb18cc-cb21-4da9-9c24-1c258ec5f6ac&category=all&did=ee86676b-c643-02ac-01ed-79d4b9cd5dd4&dnt=0&ifatype=sessionid&lot_auds&mm_sp&plt=web&ttd_uid2=A4AAADRYuI8pX4uQitdX7PAuDD7MFh4TwOrnodaBBTxIIxCeSx7MelLBnoD0U4MZAUiTg-O-S_5JHxVi8jpxi-c1f0l0yWLYWaYCHeaI-y5wrG5udODiqS7acjNSw1HXqP5O-yr-sYGb7SoGTjAbjDXx-vafkB3qbwWCW5hYD9UCGPyIsown69UKFR9-DEiOkeQ5k-d2SNvcicBTcL-Ho4Zjlg
