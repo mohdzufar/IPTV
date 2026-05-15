@@ -1,269 +1,232 @@
 #!/usr/bin/env python3
-import io
+"""
+refresh_tonton.py – robust token refresh for Tonton channels using Playwright + stealth.
+
+Usage:
+    python refresh_tonton.py <channel_name> <channel_id>  # used by GitHub workflow
+    python refresh_tonton.py --setup                       # re-run manual login
+    python refresh_tonton.py --debug <channel_name> <channel_id>  # visible browser
+"""
+
+import asyncio
 import sys
-import time
+import os
+import json
+import logging
 from pathlib import Path
 
-from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeoutError
-from playwright_stealth import Stealth
+from playwright.async_api import async_playwright
+from playwright_stealth import stealth_async
 
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
+# ---------- CONFIG ----------
+# Adjust these paths to match your setup (or use environment variables)
+USER_PROFILE = os.environ.get("TONTON_USER_PROFILE", r"C:\Users\zufar\Documents\GitHub\IPTV\.auth")
+STATE_FILE = os.path.join(USER_PROFILE, "tonton-state.json")
+CHANNELS_DIR = os.environ.get("CHANNELS_DIR", r"C:\Users\zufar\Documents\GitHub\IPTV\Channels")
+MAIN_PLAYLIST = os.environ.get("MAIN_PLAYLIST", r"C:\Users\zufar\Documents\GitHub\IPTV\Main.m3u8")
 
-STATE_FILE = Path(
-    r"C:\Users\zufar\Downloads\IPTV_Project\GitHub_Runner_IPTV\actions-runner\auth\tonton-state.json"
+# If you have Tonton credentials saved (optional), set these env vars
+TONTON_EMAIL = os.environ.get("TONTON_EMAIL")
+TONTON_PASSWORD = os.environ.get("TONTON_PASSWORD")
+
+LOGIN_URL = "https://tonton.com.my/login"
+BASE_URL = "https://tonton.com.my"
+
+# ---------- LOGGING ----------
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(message)s"
 )
-REPO_ROOT = Path(__file__).resolve().parents[1]
-TONTON_ROOT = REPO_ROOT / "Channels" / "TONTON"
+logger = logging.getLogger("refresh_tonton")
 
-REFERER = "https://watch.tonton.com.my/"
-USER_AGENT = (
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-    "AppleWebKit/537.36 (KHTML, like Gecko) "
-    "Chrome/120.0.0.0 Safari/537.36"
-)
+# ---------- HELPER: SAVE/LOAD STATE ----------
+def state_exists():
+    return os.path.isfile(STATE_FILE)
 
-TOKEN_WAIT_SECONDS = 25
+# ---------- MANUAL LOGIN (if called with --setup) ----------
+async def manual_login():
+    """Launch browser, login manually, save state."""
+    async with async_playwright() as p:
+        browser = await p.chromium.launch(headless=False)
+        context = await browser.new_context(
+            viewport={"width": 1920, "height": 1080},
+            locale="en-MY",
+            timezone_id="Asia/Kuala_Lumpur"
+        )
+        page = await context.new_page()
+        await stealth_async(page)
 
-CHANNELS = [
-    {
-        "display_name": "TV3",
-        "folder_name": "TV3",
-        "file_name": "TV3.m3u8",
-        "page_url": "https://watch.tonton.com.my/live/tv3",
-    },
-    {
-        "display_name": "Didik TV",
-        "folder_name": "DidikTV",
-        "file_name": "DidikTV.m3u8",
-        "page_url": "https://watch.tonton.com.my/live/ntv7",
-    },
-    {
-        "display_name": "TV9",
-        "folder_name": "TV9",
-        "file_name": "TV9.m3u8",
-        "page_url": "https://watch.tonton.com.my/live/tv9",
-    },
-    {
-        "display_name": "Drama Sangat",
-        "folder_name": "Drama Sangat",
-        "file_name": "Drama Sangat.m3u8",
-        "page_url": "https://watch.tonton.com.my/live/ds",
-    },
-]
-
-PLAY_SELECTORS = [
-    'div[aria-label="Play"]',
-    'button[aria-label="Play"]',
-    ".jw-icon-display",
-    ".jwplayer",
-    "video",
-]
-
-LOGIN_HINT_SELECTORS = [
-    'input[type="email"]',
-    'input[type="password"]',
-    'button[type="submit"]',
-    'a[href*="login"]',
-    'a[href*="signin"]',
-]
-
-OVERLAY_SELECTORS = [
-    'button[aria-label="Close"]',
-    ".mfp-close",
-    '[data-dismiss="modal"]',
-    ".cookie-consent button",
-    ".modal button.close",
-]
-
-
-def log(message):
-    print(message, flush=True)
-
-
-def is_login_required(page):
-    current_url = page.url.lower()
-    if any(x in current_url for x in ("login", "signin", "sign-in", "auth")):
-        return True
-
-    for selector in LOGIN_HINT_SELECTORS:
+        logger.info("Opening Tonton login page. Please log in manually.")
+        await page.goto(LOGIN_URL)
+        logger.info("Waiting for you to complete login...")
+        # Wait until the user is redirected to the home page or a known logged-in element
         try:
-            loc = page.locator(selector)
-            if loc.count() > 0:
-                return True
-        except Exception:
+            await page.wait_for_url("**/tonton.com.my/", timeout=0)  # wait indefinitely
+        except:
             pass
 
-    return False
-
-
-def dismiss_overlays(page):
-    for selector in OVERLAY_SELECTORS:
+        # Ensure the user is really logged in (e.g., check for account menu)
         try:
-            loc = page.locator(selector)
-            if loc.count() > 0:
-                loc.first.click(timeout=1500)
-                page.wait_for_timeout(500)
-        except Exception:
-            pass
-
-
-def click_play(page):
-    for selector in PLAY_SELECTORS:
-        try:
-            loc = page.locator(selector)
-            if loc.count() > 0:
-                loc.first.click(timeout=3000, force=True)
-                page.wait_for_timeout(1200)
-                return True
-        except Exception:
-            pass
-    return False
-
-
-def write_wrapper(channel, stream_url):
-    folder = TONTON_ROOT / channel["folder_name"]
-    folder.mkdir(parents=True, exist_ok=True)
-
-    file_path = folder / channel["file_name"]
-    content = (
-        "#EXTM3U\n"
-        f"#EXTVLCOPT:http-referrer={REFERER}\n"
-        f"#EXTVLCOPT:http-user-agent={USER_AGENT}\n"
-        f"#EXTINF:1,{channel['display_name']}\n"
-        f"{stream_url}\n"
-    )
-
-    file_path.write_text(content, encoding="utf-8", newline="\n")
-    log(f"    Updated wrapper: {file_path}")
-
-
-def capture_stream_url(browser, channel):
-    token_url = None
-
-    context = browser.new_context(
-        storage_state=str(STATE_FILE),
-        user_agent=USER_AGENT,
-        extra_http_headers={"Referer": REFERER},
-        locale="en-US",
-        timezone_id="Asia/Kuala_Lumpur",
-        viewport={"width": 1440, "height": 900},
-    )
-
-    page = context.new_page()
-
-    def handle_request(request):
-        nonlocal token_url
-        if token_url:
+            await page.wait_for_selector("button[aria-label='Profile']", timeout=10000)
+            logger.info("Login detected.")
+        except:
+            logger.error("Could not confirm login. Try again.")
+            await browser.close()
             return
 
-        url = request.url
-        lower = url.lower()
+        # Save state
+        os.makedirs(USER_PROFILE, exist_ok=True)
+        await context.storage_state(path=STATE_FILE)
+        logger.info(f"Login state saved to {STATE_FILE}")
+        await browser.close()
 
-        if ".m3u8" not in lower:
-            return
+# ---------- MAIN REFRESH LOGIC ----------
+async def fetch_stream_url(channel_id, debug=False):
+    """
+    Load Tonton channel page using saved state, click play, capture .m3u8 URL.
+    Returns the URL string or None.
+    """
+    if not state_exists():
+        logger.error("No saved login state found. Run setup_tonton_login.py first.")
+        return None
 
-        if any(bad in lower for bad in ("jwpltx.com", "ping.gif", "google", "doubleclick")):
-            return
+    async with async_playwright() as p:
+        launch_args = {"headless": not debug}
+        browser = await p.chromium.launch(**launch_args)
 
-        token_url = url
+        # Create context with stored state
+        context = await browser.new_context(
+            storage_state=STATE_FILE,
+            viewport={"width": 1920, "height": 1080},
+            locale="en-MY",
+            timezone_id="Asia/Kuala_Lumpur",
+            # Bypass automation flags (optional extra)
+            bypass_csp=True,
+        )
+        page = await context.new_page()
+        await stealth_async(page)
 
-    page.on("request", handle_request)
+        # Container for the captured M3U8 URL
+        captured_m3u8 = None
 
-    try:
-        try:
-            page.goto(channel["page_url"], wait_until="domcontentloaded", timeout=45000)
-        except PlaywrightTimeoutError:
-            log("    Page navigation timed out, continuing to inspect page...")
+        async def intercept_response(response):
+            nonlocal captured_m3u8
+            # Look for any .m3u8 URL (master or variant)
+            if not captured_m3u8 and ".m3u8" in response.url:
+                logger.info(f"Captured .m3u8: {response.url}")
+                captured_m3u8 = response.url
 
-        page.wait_for_timeout(3000)
+        page.on("response", intercept_response)
 
-        if is_login_required(page):
-            return None, "login_required"
+        channel_url = f"{BASE_URL}/{channel_id}"
+        logger.info(f"Navigating to {channel_url}")
+        await page.goto(channel_url, wait_until="domcontentloaded")
 
-        dismiss_overlays(page)
+        # Check for login wall – if we're redirected to login page, session is dead
+        if "login" in page.url:
+            logger.error("Session expired! Please re-run setup_tonton_login.py to re-authenticate.")
+            await browser.close()
+            return None
 
-        clicked = click_play(page)
+        # Wait for the player to be ready – common selectors to try
+        play_button_selectors = [
+            "button[aria-label='Play']",
+            ".play-button",
+            "[data-testid='play-button']",
+            "button:has-text('Play')"
+        ]
+        clicked = False
+        for sel in play_button_selectors:
+            try:
+                await page.wait_for_selector(sel, timeout=5000)
+                await page.click(sel)
+                logger.info(f"Clicked play button (selector: {sel})")
+                clicked = True
+                break
+            except:
+                continue
+
         if not clicked:
-            log("    Play button not found immediately, waiting for autoplay/request...")
+            logger.warning("No play button found, maybe autoplay is active. Waiting for video...")
 
-        start = time.time()
-        while time.time() - start < TOKEN_WAIT_SECONDS:
-            if token_url:
-                return token_url, "ok"
+        # Now wait until a .m3u8 URL appears, or timeout after 25s
+        try:
+            # wait_for_function checks a JavaScript expression periodically
+            await page.wait_for_function(
+                "() => window.__captured_m3u8 !== undefined || document.querySelector('video')?.src?.includes('.m3u8')",
+                timeout=25000
+            )
+        except Exception as e:
+            logger.warning(f"Wait for video timed out: {e}")
 
-            dismiss_overlays(page)
+        # If the intercept didn't catch it, try extracting from video element
+        if not captured_m3u8:
+            video_src = await page.evaluate("""() => {
+                const video = document.querySelector('video');
+                return video ? video.src : null;
+            }""")
+            if video_src and ".m3u8" in video_src:
+                captured_m3u8 = video_src
+                logger.info(f"Got M3U8 from video src: {captured_m3u8}")
 
-            if int(time.time() - start) in (5, 10, 15):
-                click_play(page)
+        if not captured_m3u8:
+            logger.error("Failed to capture any .m3u8 URL.")
+            # Take screenshot for debugging
+            try:
+                await page.screenshot(path="tonton_error.png")
+                logger.info("Screenshot saved as tonton_error.png")
+            except:
+                pass
 
-            page.wait_for_timeout(1000)
-
-        return None, "no_stream_captured"
-
-    finally:
-        context.close()
+        await browser.close()
+        return captured_m3u8
 
 
-def main():
-    if not STATE_FILE.exists():
-        log("=" * 60)
-        log("Tonton login state file not found.")
-        log(f"Expected: {STATE_FILE}")
-        log("Run setup_tonton_login.py once on the runner machine first.")
-        log("=" * 60)
+def update_channel_file(channel_name, m3u8_url):
+    """Write the stream URL to a channel wrapper (.m3u8 file) in Channels/"""
+    if not m3u8_url:
+        return
+    channel_file = os.path.join(CHANNELS_DIR, f"{channel_name}.m3u8")
+    content = f"#EXTM3U\n#EXTINF:-1,{channel_name}\n{m3u8_url}\n"
+    with open(channel_file, "w", encoding="utf-8") as f:
+        f.write(content)
+    logger.info(f"Updated channel file: {channel_file}")
+
+def update_main_playlist(channel_name, m3u8_url):
+    """
+    If you prefer to keep Main.m3u8 directly updated, this function replaces
+    the line containing the channel wrapper reference with the fresh URL.
+    This is optional – the workflow already flattens channels into Main.m3u8.
+    """
+    # Not strictly necessary because the workflow's flatten step uses channel wrappers.
+    pass
+
+
+async def main():
+    if len(sys.argv) > 1 and sys.argv[1] == "--setup":
+        await manual_login()
         return
 
-    stealth = Stealth(
-        navigator_user_agent_override=USER_AGENT,
-        navigator_platform_override="Win32",
-        navigator_languages_override=("en-US", "en"),
-    )
+    debug = False
+    args = sys.argv[1:]
+    if "--debug" in args:
+        debug = True
+        args.remove("--debug")
 
-    success_count = 0
-    failed_count = 0
-    login_invalid = False
+    if len(args) != 2:
+        print("Usage: refresh_tonton.py [--debug] <channel_name> <channel_id>")
+        sys.exit(1)
 
-    log("=" * 60)
-    log("Refreshing TONTON channel tokens...")
-    log(f"Using login state: {STATE_FILE}")
-    log("=" * 60)
+    channel_name, channel_id = args[0], args[1]
+    logger.info(f"Refreshing token for {channel_name} (ID: {channel_id})")
+    m3u8_url = await fetch_stream_url(channel_id, debug=debug)
 
-    with stealth.use_sync(sync_playwright()) as p:
-        browser = p.chromium.launch(
-            headless=True,
-            args=["--disable-blink-features=AutomationControlled"],
-        )
-
-        try:
-            for index, channel in enumerate(CHANNELS, start=1):
-                log(f"\n[{index}/{len(CHANNELS)}] {channel['display_name']}")
-                log(f"    Page: {channel['page_url']}")
-
-                token_url, status = capture_stream_url(browser, channel)
-
-                if status == "login_required":
-                    log("    Login session looks expired. Run setup_tonton_login.py again.")
-                    login_invalid = True
-                    failed_count += 1
-                    break
-
-                if token_url:
-                    log(f"    Captured stream: {token_url[:150]}...")
-                    write_wrapper(channel, token_url)
-                    success_count += 1
-                else:
-                    log(f"    Failed to capture stream ({status}). Existing wrapper left unchanged.")
-                    failed_count += 1
-
-        finally:
-            browser.close()
-
-    log("\n" + "=" * 60)
-    log(f"TONTON refresh finished. Success: {success_count} | Failed: {failed_count}")
-    if login_invalid:
-        log("Action needed: refresh Tonton login state.")
-    log("=" * 60)
-
+    if m3u8_url:
+        update_channel_file(channel_name, m3u8_url)
+        logger.info(f"Successfully updated {channel_name} with new URL.")
+    else:
+        logger.error(f"Could not fetch stream URL for {channel_name}.")
+        sys.exit(1)
 
 if __name__ == "__main__":
-    main()
+    asyncio.run(main())
