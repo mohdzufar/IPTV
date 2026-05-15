@@ -11,13 +11,23 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="repla
 STATE_FILE = Path(
     r"C:\Users\zufar\Downloads\IPTV_Project\GitHub_Runner_IPTV\actions-runner\auth\tonton-state.json"
 )
-START_URL = "https://watch.tonton.com.my/live/tv3"
+START_URL = "https://watch.tonton.com.my/live/tv9"
+CHECK_URLS = [
+    "https://watch.tonton.com.my/live/tv9",
+    "https://watch.tonton.com.my/live/ntv7",
+    "https://watch.tonton.com.my/live/ds",
+]
 REFERER = "https://watch.tonton.com.my/"
 USER_AGENT = (
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
     "AppleWebKit/537.36 (KHTML, like Gecko) "
     "Chrome/120.0.0.0 Safari/537.36"
 )
+
+
+def is_login_url(url: str) -> bool:
+    lower = url.lower()
+    return any(x in lower for x in ("login", "signin", "sign-in", "auth"))
 
 
 def main():
@@ -49,14 +59,29 @@ def main():
 
         print("=" * 60)
         print("TONTON login window opened.")
-        print("1. Log in to your Tonton account in the browser window.")
-        print("2. Make sure you can open at least one live channel page.")
-        print("3. Return here and press Enter to save the login session.")
+        print("1. Log in to your Tonton account.")
+        print("2. After login, make sure TV9 opens without redirecting to /login.")
+        print("3. Then press Enter here to verify and save the session.")
         print("=" * 60)
         input("Press Enter after login is complete... ")
 
-        context.storage_state(path=str(STATE_FILE))
-        print(f"Saved Tonton login state to: {STATE_FILE}")
+        failed = []
+        for url in CHECK_URLS:
+            page.goto(url, wait_until="domcontentloaded", timeout=45000)
+            page.wait_for_timeout(3000)
+            print(f"Checked: {url}")
+            print(f"Final URL: {page.url}")
+            if is_login_url(page.url):
+                failed.append(url)
+
+        if failed:
+            print("\nSession was not fully authenticated for these protected channels:")
+            for url in failed:
+                print(f"- {url}")
+            print("\nDo not use this state file yet. Log in again and confirm access first.")
+        else:
+            context.storage_state(path=str(STATE_FILE))
+            print(f"\nSaved Tonton login state to: {STATE_FILE}")
 
         context.close()
         browser.close()
