@@ -5,6 +5,10 @@ on:
     - cron: '0 21 * * *'  # 5 AM Malaysia (UTC+8)
   workflow_dispatch:
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 permissions:
   contents: write
 
@@ -15,6 +19,8 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v6
@@ -28,6 +34,7 @@ jobs:
           playwright install chromium
 
       - name: Step 1 - Copy Flatten and clean comments
+        shell: powershell
         run: |
           $content = Get-Content -Path Channels\Flatten.m3u8 | Where-Object { $_ -notmatch '^##' -and $_ -notmatch '^\s*$' }
           [System.IO.File]::WriteAllLines("$PWD\Main.m3u8", $content)
@@ -42,37 +49,66 @@ jobs:
         run: python scripts/refresh_tonton.py
 
       - name: Commit and push changes
+        shell: powershell
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config core.autocrlf false
+
           git add Main.m3u8 Channels/ validation-report.txt
           $changes = git diff --cached --name-only
-          if ($changes) {
-              git commit -m "Automated daily update"
-              git remote set-url origin https://x-access-token:$env:GITHUB_TOKEN@github.com/mohdzufar/IPTV.git
-              $retry = 0
-              $maxRetries = 3
-              $pushSuccess = $false
-              do {
-                  $retry++
-                  Write-Host "Push attempt $retry..."
-                  git push
-                  if ($LASTEXITCODE -eq 0) {
-                      Write-Host "Push succeeded on attempt $retry."
-                      $pushSuccess = $true
-                      break
-                  } else {
-                      Write-Host "Push attempt $retry failed with exit code $LASTEXITCODE."
-                      if ($retry -lt $maxRetries) {
-                          Write-Host "Retrying in 30 seconds..."
-                          Start-Sleep -Seconds 30
-                      }
-                  }
-              } while ($retry -lt $maxRetries -and -not $pushSuccess)
-              if (-not $pushSuccess) {
-                  Write-Host "ERROR: Push failed after $maxRetries attempts."
-                  exit 1
-              }
-          } else {
+
+          if (-not $changes) {
               Write-Host "No changes to commit"
+              exit 0
+          }
+
+          git commit -m "Automated daily update"
+          if ($LASTEXITCODE -ne 0) {
+              Write-Host "Commit failed."
+              exit 1
+          }
+
+          git remote set-url origin https://x-access-token:$env:GITHUB_TOKEN@github.com/mohdzufar/IPTV.git
+
+          $retry = 0
+          $maxRetries = 3
+          $pushSuccess = $false
+
+          do {
+              $retry++
+              Write-Host "Sync + push attempt $retry..."
+
+              git pull --rebase --autostash origin main
+              if ($LASTEXITCODE -ne 0) {
+                  Write-Host "Rebase failed on attempt $retry."
+                  git rebase --abort 2>$null
+
+                  if ($retry -lt $maxRetries) {
+                      Write-Host "Retrying in 30 seconds..."
+                      Start-Sleep -Seconds 30
+                      continue
+                  } else {
+                      Write-Host "ERROR: Rebase failed after $maxRetries attempts."
+                      exit 1
+                  }
+              }
+
+              git push origin HEAD:main
+              if ($LASTEXITCODE -eq 0) {
+                  Write-Host "Push succeeded on attempt $retry."
+                  $pushSuccess = $true
+                  break
+              } else {
+                  Write-Host "Push attempt $retry failed with exit code $LASTEXITCODE."
+                  if ($retry -lt $maxRetries) {
+                      Write-Host "Retrying in 30 seconds..."
+                      Start-Sleep -Seconds 30
+                  }
+              }
+          } while ($retry -lt $maxRetries -and -not $pushSuccess)
+
+          if (-not $pushSuccess) {
+              Write-Host "ERROR: Push failed after $maxRetries attempts."
+              exit 1
           }
