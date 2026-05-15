@@ -1,7 +1,7 @@
 # ============================================================
 # IPTV Playlist Validation Report
 # ============================================================
-# Generated  : 2026-05-15 06:10:30 MYT
+# Generated  : 2026-05-15 10:57:44 MYT
 # Source     : Channels/Flatten.m3u8
 # Total      : 173 channels
 # Retry cfg  : MAX_RETRIES=2, RETRY_DELAY=5s
@@ -106,7 +106,7 @@ Tennis+,Sports,active,hls_master,direct_url,1/1,1,https://amg01935-amg01935c1-am
 Tennis Channel,Sports,active,hls_master,direct_url,2/7,1,https://cdn-ue1-prod.tsv2.amagi.tv/linear/amg01444-tennischannelth-tennischannelnl-samsungnl/playlist.m3u8
 Tennis Channel 2,Sports,active,hls_master,direct_url,1/1,1,https://jmp2.uk/plu-681109b688b9d85d0938c6ba.m3u8
 MLB,Sports,active,hls_master,direct_url,1/5,1,https://jmp2.uk/plu-5e66968a70f34c0007d050be.m3u8
-MMA-TV International,Sports,active,hls_master,direct_url,1/1,2,https://streams2.sofast.tv/vglive-sk-462904/playlist.m3u8
+MMA-TV International,Sports,active,hls_master,direct_url,1/1,1,https://streams2.sofast.tv/vglive-sk-462904/playlist.m3u8
 FOX NFL,Sports,active,hls_master,direct_url,1/2,1,https://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/5ced7d5df64be98e07ed47b6/master.m3u8?appName=web&appVersion=9.19.0&deviceDNT=0&deviceId=affbdbfa-5fa3-48af-8369-57c005daef42&deviceMake=firefox&deviceModel=web&deviceType=web&deviceVersion=147.0.0&serverSideAds=false&sid=1d7bef8c-83bb-4a13-babc-c2895be01526
 NHL,Sports,active,hls_master,direct_url,1/1,1,https://aegis-cloudfront-1.tubi.video/1f4cbb33-cb23-40ab-b54b-2965cc551b32/playlist.m3u8
 UEFA Champion League,Sports,active,hls_master,direct_url,1/2,1,https://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/65ea8b928145cb0008509426/master.m3u8?appName=web&appVersion=9.19.0&deviceDNT=0&deviceId=affbdbfa-5fa3-48af-8369-57c005daef42&deviceMake=firefox&deviceModel=web&deviceType=web&deviceVersion=147.0.0&serverSideAds=false&sid=c83aaae4-b7a8-4127-ae41-0b5fd27ac4f2
@@ -192,7 +192,7 @@ Al-Jazeera (English),Muslim,active,hls_master,direct_url,1/3,1,https://live-hls-
 Love Pets,Pets,active,hls_master,direct_url,1/2,1,https://rakutenaa-blueskyent-lovepetsemea-rakuten-ikc4q.amagi.tv/playlist/rakutenAA-blueskyent-lovepetsemea-rakuten/playlist.m3u8
 Documentary+,,active,hls_master,direct_url,1/2,1,https://live-content.xumo.com/2715/content/XM04405O6X0WP0/28846020/master.m3u8
 mn静静nm,China,active,hls_media,wrapper_kept,1/1,1,https://goodiptv.club/douyu/5668371
-万事通熊猫,China,dead,all_urls_failed,dead,0/1,3,
+万事通熊猫,China,active,hls_media,wrapper_kept,1/1,1,https://goodiptv.club/douyu/7812810
 K-Content,Korea,active,hls_master,direct_url,1/1,1,https://jmp2.uk/stvp-GB17000066A
 K-Drama+,Korea,active,hls_master,direct_url,1/1,1,https://jmp2.uk/stvp-GBBD4100011RE
 #
@@ -200,11 +200,11 @@ K-Drama+,Korea,active,hls_master,direct_url,1/1,1,https://jmp2.uk/stvp-GBBD41000
 # SUMMARY
 # ============================================================
 # Total        : 173
-# Active       : 112
-#   Wrapper kept : 18  (hls_media — URL hidden)
+# Active       : 113
+#   Wrapper kept : 19  (hls_media — URL hidden)
 #   Direct URL   : 94  (hls_master/dash/mp4 — URL exposed)
-# Dead          : 49
+# Dead          : 48
 # Skipped       : 12
-# Success       : 69.6%  (active / non-skipped)
-# Run time      : 2026-05-15 06:10:30 MYT
+# Success       : 70.2%  (active / non-skipped)
+# Run time      : 2026-05-15 10:57:44 MYT
 # ============================================================
