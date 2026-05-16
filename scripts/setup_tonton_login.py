@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import io
+import shutil
 import sys
 from pathlib import Path
 
@@ -8,11 +9,12 @@ from playwright_stealth import Stealth
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
 
-STATE_FILE = Path(
-    r"C:\Users\zufar\Downloads\IPTV_Project\GitHub_Runner_IPTV\actions-runner\auth\tonton-state.json"
+PROFILE_DIR = Path(
+    r"C:\Users\zufar\Downloads\IPTV_Project\GitHub_Runner_IPTV\actions-runner\auth\tonton-profile"
 )
 START_URL = "https://watch.tonton.com.my/live/tv9"
 CHECK_URLS = [
+    "https://watch.tonton.com.my/live/tv3",
     "https://watch.tonton.com.my/live/tv9",
     "https://watch.tonton.com.my/live/ntv7",
     "https://watch.tonton.com.my/live/ds",
@@ -31,7 +33,17 @@ def is_login_url(url: str) -> bool:
 
 
 def main():
-    STATE_FILE.parent.mkdir(parents=True, exist_ok=True)
+    print("=" * 60)
+    print("TONTON persistent profile setup")
+    print(f"Profile folder: {PROFILE_DIR}")
+    print("=" * 60)
+
+    if PROFILE_DIR.exists():
+        answer = input("Existing Tonton profile found. Replace it? (y/N): ").strip().lower()
+        if answer == "y":
+            shutil.rmtree(PROFILE_DIR, ignore_errors=True)
+
+    PROFILE_DIR.mkdir(parents=True, exist_ok=True)
 
     stealth = Stealth(
         navigator_user_agent_override=USER_AGENT,
@@ -40,13 +52,11 @@ def main():
     )
 
     with stealth.use_sync(sync_playwright()) as p:
-        browser = p.chromium.launch(
+        context = p.chromium.launch_persistent_context(
+            user_data_dir=str(PROFILE_DIR),
             headless=False,
             slow_mo=150,
             args=["--disable-blink-features=AutomationControlled"],
-        )
-
-        context = browser.new_context(
             user_agent=USER_AGENT,
             extra_http_headers={"Referer": REFERER},
             locale="en-US",
@@ -54,16 +64,18 @@ def main():
             viewport={"width": 1440, "height": 900},
         )
 
-        page = context.new_page()
+        page = context.pages[0] if context.pages else context.new_page()
         page.goto(START_URL, wait_until="domcontentloaded", timeout=45000)
 
         print("=" * 60)
-        print("TONTON login window opened.")
+        print("A Chromium window is now open with the Tonton profile.")
         print("1. Log in to your Tonton account.")
-        print("2. After login, make sure TV9 opens without redirecting to /login.")
-        print("3. Then press Enter here to verify and save the session.")
+        print("2. Open and confirm these pages do not redirect to /login:")
+        for url in CHECK_URLS:
+            print(f"   - {url}")
+        print("3. Return here and press Enter.")
         print("=" * 60)
-        input("Press Enter after login is complete... ")
+        input("Press Enter after login and channel checks are complete... ")
 
         failed = []
         for url in CHECK_URLS:
@@ -75,16 +87,14 @@ def main():
                 failed.append(url)
 
         if failed:
-            print("\nSession was not fully authenticated for these protected channels:")
+            print("\nProfile is not fully authenticated for these channels:")
             for url in failed:
                 print(f"- {url}")
-            print("\nDo not use this state file yet. Log in again and confirm access first.")
+            print("\nDo not use this profile yet. Re-run setup and confirm access first.")
         else:
-            context.storage_state(path=str(STATE_FILE))
-            print(f"\nSaved Tonton login state to: {STATE_FILE}")
+            print(f"\nTONTON persistent profile is ready at: {PROFILE_DIR}")
 
         context.close()
-        browser.close()
 
 
 if __name__ == "__main__":
