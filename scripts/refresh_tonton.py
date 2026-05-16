@@ -16,6 +16,7 @@ PROFILE_DIR = Path(
 REPO_ROOT = Path(__file__).resolve().parents[1]
 MAIN_FILE = REPO_ROOT / "Main.m3u8"
 TONTON_ROOT = REPO_ROOT / "Channels" / "TONTON"
+DEBUG_DIR = REPO_ROOT / "debug_tonton"
 
 REFERER = "https://watch.tonton.com.my/"
 USER_AGENT = (
@@ -24,8 +25,9 @@ USER_AGENT = (
     "Chrome/120.0.0.0 Safari/537.36"
 )
 
-INITIAL_SETTLE_SECONDS = 10
-TOKEN_WAIT_SECONDS = 45
+INITIAL_SETTLE_SECONDS = 8
+TOKEN_WAIT_SECONDS = 60
+INTERACTION_INTERVAL = 3
 
 CHANNELS = [
     {
@@ -57,8 +59,16 @@ CHANNELS = [
 PLAY_SELECTORS = [
     'div[aria-label="Play"]',
     'button[aria-label="Play"]',
+    '[role="button"][aria-label="Play"]',
+    'button[aria-label*="Play"]',
+    '[role="button"][aria-label*="Play"]',
     ".jw-icon-display",
+    ".jw-display-icon-container",
     ".jwplayer",
+    ".vjs-big-play-button",
+    '[data-testid="play-button"]',
+    'button:has-text("Play")',
+    'button:has-text("Watch")',
     "video",
 ]
 
@@ -121,19 +131,6 @@ def dismiss_overlays(page):
             pass
 
 
-def click_play(page):
-    for selector in PLAY_SELECTORS:
-        try:
-            loc = page.locator(selector)
-            if loc.count() > 0:
-                loc.first.click(timeout=3000, force=True)
-                page.wait_for_timeout(1200)
-                return True
-        except Exception:
-            pass
-    return False
-
-
 def is_ignored_stream(url):
     lower = url.lower()
     if ".m3u8" not in lower:
@@ -193,7 +190,110 @@ def create_or_replace_subfolder(channel, new_url):
     log(f"    Updated wrapper: {file_path}")
 
 
-def capture_stream_url(context, channel):
+def save_debug_artifacts(page, channel_name, tag):
+    DEBUG_DIR.mkdir(parents=True, exist_ok=True)
+
+    safe_name = channel_name.replace(" ", "_").replace("!", "")
+    screenshot_path = DEBUG_DIR / f"{safe_name}_{tag}.png"
+    info_path = DEBUG_DIR / f"{safe_name}_{tag}.txt"
+    html_path = DEBUG_DIR / f"{safe_name}_{tag}.html"
+
+    try:
+        page.screenshot(path=str(screenshot_path), full_page=True)
+    except Exception:
+        pass
+
+    try:
+        title = page.title()
+    except Exception:
+        title = "<title unavailable>"
+
+    try:
+        frame_urls = [frame.url for frame in page.frames]
+    except Exception:
+        frame_urls = []
+
+    try:
+        info_path.write_text(
+            "\n".join(
+                [
+                    f"URL: {page.url}",
+                    f"Title: {title}",
+                    f"Frames: {len(frame_urls)}",
+                    *frame_urls,
+                ]
+            ),
+            encoding="utf-8",
+        )
+    except Exception:
+        pass
+
+    try:
+        html_path.write_text(page.content(), encoding="utf-8")
+    except Exception:
+        pass
+
+
+def get_targets(page):
+    targets = [("page", page)]
+    for idx, frame in enumerate(page.frames):
+        if frame == page.main_frame:
+            continue
+        targets.append((f"frame[{idx}]", frame))
+    return targets
+
+
+def try_play_interactions(page, debug=False):
+    targets = get_targets(page)
+
+    for label, target in targets:
+        for selector in PLAY_SELECTORS:
+            try:
+                loc = target.locator(selector)
+                count = loc.count()
+                if debug:
+                    log(f"    Debug: {label} selector {selector} count={count}")
+                if count > 0:
+                    try:
+                        loc.first.click(timeout=2000, force=True)
+                        log(f"    Clicked play target via {label}: {selector}")
+                        page.wait_for_timeout(1200)
+                        return True
+                    except Exception as e:
+                        if debug:
+                            log(f"    Debug: click failed for {label} {selector}: {e}")
+            except Exception as e:
+                if debug:
+                    log(f"    Debug: selector failed for {label} {selector}: {e}")
+
+    try:
+        page.keyboard.press("Space")
+        page.wait_for_timeout(800)
+        if debug:
+            log("    Debug: pressed Space")
+    except Exception:
+        pass
+
+    try:
+        page.keyboard.press("k")
+        page.wait_for_timeout(800)
+        if debug:
+            log("    Debug: pressed k")
+    except Exception:
+        pass
+
+    try:
+        page.mouse.click(720, 405)
+        page.wait_for_timeout(800)
+        if debug:
+            log("    Debug: clicked center of viewport")
+    except Exception:
+        pass
+
+    return False
+
+
+def capture_stream_url(context, channel, debug=False):
     token_url = None
     page = context.new_page()
 
@@ -228,10 +328,22 @@ def capture_stream_url(context, channel):
 
         if is_login_required(page):
             log("    Login/session check: FAILED (redirected to login or login form detected)")
+            if debug:
+                save_debug_artifacts(page, channel["display_name"], "login_failed")
             return None, "login_required"
 
         log("    Login/session check: OK")
+
+        try:
+            log(f"    Page title: {page.title()}")
+        except Exception:
+            pass
+
+        log(f"    Frame count: {len(page.frames)}")
         log(f"    Waiting {INITIAL_SETTLE_SECONDS}s for ads/player bootstrap before interaction...")
+
+        if debug:
+            save_debug_artifacts(page, channel["display_name"], "loaded")
 
         settle_start = time.time()
         while time.time() - settle_start < INITIAL_SETTLE_SECONDS:
@@ -249,13 +361,18 @@ def capture_stream_url(context, channel):
 
         dismiss_overlays(page)
 
-        clicked = click_play(page)
+        if debug:
+            save_debug_artifacts(page, channel["display_name"], "after_settle")
+
+        clicked = try_play_interactions(page, debug=debug)
         if clicked:
-            log("    Play button found and clicked after settle delay.")
+            log("    Play interaction succeeded after settle delay.")
         else:
-            log("    Play button still not found after settle delay, waiting for autoplay/request...")
+            log("    No play control found after settle delay, continuing retry loop...")
 
         capture_start = time.time()
+        last_interaction = -999
+
         while time.time() - capture_start < TOKEN_WAIT_SECONDS:
             if token_url:
                 return token_url, "ok"
@@ -263,8 +380,9 @@ def capture_stream_url(context, channel):
             dismiss_overlays(page)
 
             elapsed = int(time.time() - capture_start)
-            if elapsed in (5, 10, 15, 20, 30):
-                click_play(page)
+            if elapsed - last_interaction >= INTERACTION_INTERVAL:
+                try_play_interactions(page, debug=debug)
+                last_interaction = elapsed
 
             try:
                 video_src = page.evaluate("document.querySelector('video')?.src")
@@ -275,6 +393,9 @@ def capture_stream_url(context, channel):
 
             page.wait_for_timeout(1000)
 
+        if debug:
+            save_debug_artifacts(page, channel["display_name"], "capture_failed")
+
         return None, "no_stream_captured"
 
     finally:
@@ -282,6 +403,8 @@ def capture_stream_url(context, channel):
 
 
 def main():
+    debug = "--debug" in sys.argv
+
     if not PROFILE_DIR.exists():
         log("=" * 60)
         log("Tonton persistent profile folder not found.")
@@ -303,13 +426,17 @@ def main():
     log("=" * 60)
     log("Refreshing TONTON channel tokens...")
     log(f"Using profile folder: {PROFILE_DIR}")
+    log(f"Debug mode: {'ON' if debug else 'OFF'}")
     log("=" * 60)
 
     with stealth.use_sync(sync_playwright()) as p:
         context = p.chromium.launch_persistent_context(
             user_data_dir=str(PROFILE_DIR),
-            headless=True,
-            args=["--disable-blink-features=AutomationControlled"],
+            headless=not debug,
+            args=[
+                "--disable-blink-features=AutomationControlled",
+                "--autoplay-policy=no-user-gesture-required",
+            ],
             user_agent=USER_AGENT,
             extra_http_headers={"Referer": REFERER},
             locale="en-US",
@@ -318,11 +445,17 @@ def main():
         )
 
         try:
+            for existing_page in context.pages[:-1]:
+                try:
+                    existing_page.close()
+                except Exception:
+                    pass
+
             for index, channel in enumerate(CHANNELS, start=1):
                 log(f"\n[{index}/{len(CHANNELS)}] {channel['display_name']}")
                 log(f"    Page: {channel['page_url']}")
 
-                token_url, status = capture_stream_url(context, channel)
+                token_url, status = capture_stream_url(context, channel, debug=debug)
 
                 if status == "login_required":
                     log("    Login session looks expired. Run setup_tonton_login.py again.")
@@ -346,6 +479,8 @@ def main():
     log(f"TONTON refresh finished. Success: {success_count} | Failed: {failed_count}")
     if login_invalid:
         log("Action needed: refresh Tonton login setup/profile.")
+    if debug:
+        log(f"Debug artifacts folder: {DEBUG_DIR}")
     log("=" * 60)
 
     sys.exit(0)
