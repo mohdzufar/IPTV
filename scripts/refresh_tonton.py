@@ -10,8 +10,8 @@ from playwright_stealth import Stealth
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
 
-STATE_FILE = Path(
-    r"C:\Users\zufar\Downloads\IPTV_Project\GitHub_Runner_IPTV\actions-runner\auth\tonton-state.json"
+PROFILE_DIR = Path(
+    r"C:\Users\zufar\Downloads\IPTV_Project\GitHub_Runner_IPTV\actions-runner\auth\tonton-profile"
 )
 REPO_ROOT = Path(__file__).resolve().parents[1]
 MAIN_FILE = REPO_ROOT / "Main.m3u8"
@@ -24,7 +24,8 @@ USER_AGENT = (
     "Chrome/120.0.0.0 Safari/537.36"
 )
 
-TOKEN_WAIT_SECONDS = 30
+INITIAL_SETTLE_SECONDS = 10
+TOKEN_WAIT_SECONDS = 45
 
 CHANNELS = [
     {
@@ -186,44 +187,32 @@ def create_or_replace_subfolder(channel, new_url):
         f"{new_url}\n"
     )
 
-    file_path.write_text(content, encoding="utf-8", newline="\n")
+    with open(file_path, "w", encoding="utf-8", newline="\n") as f:
+        f.write(content)
+
     log(f"    Updated wrapper: {file_path}")
 
 
-def capture_stream_url(browser, channel):
+def capture_stream_url(context, channel):
     token_url = None
-
-    context = browser.new_context(
-        storage_state=str(STATE_FILE),
-        user_agent=USER_AGENT,
-        extra_http_headers={"Referer": REFERER},
-        locale="en-US",
-        timezone_id="Asia/Kuala_Lumpur",
-        viewport={"width": 1440, "height": 900},
-    )
-
     page = context.new_page()
 
     def handle_request(request):
         nonlocal token_url
         if token_url:
             return
-
         url = request.url
         if is_ignored_stream(url):
             return
-
         token_url = url
 
     def handle_response(response):
         nonlocal token_url
         if token_url:
             return
-
         url = response.url
         if is_ignored_stream(url):
             return
-
         token_url = url
 
     page.on("request", handle_request)
@@ -235,26 +224,46 @@ def capture_stream_url(browser, channel):
         except PlaywrightTimeoutError:
             log("    Page navigation timed out, continuing to inspect page...")
 
-        page.wait_for_timeout(4000)
+        page.wait_for_timeout(3000)
 
         if is_login_required(page):
+            log("    Login/session check: FAILED (redirected to login or login form detected)")
             return None, "login_required"
+
+        log("    Login/session check: OK")
+        log(f"    Waiting {INITIAL_SETTLE_SECONDS}s for ads/player bootstrap before interaction...")
+
+        settle_start = time.time()
+        while time.time() - settle_start < INITIAL_SETTLE_SECONDS:
+            if token_url:
+                return token_url, "ok"
+
+            try:
+                video_src = page.evaluate("document.querySelector('video')?.src")
+                if video_src and not is_ignored_stream(video_src):
+                    return video_src, "ok"
+            except Exception:
+                pass
+
+            page.wait_for_timeout(1000)
 
         dismiss_overlays(page)
 
         clicked = click_play(page)
-        if not clicked:
-            log("    Play button not found immediately, waiting for autoplay/request...")
+        if clicked:
+            log("    Play button found and clicked after settle delay.")
+        else:
+            log("    Play button still not found after settle delay, waiting for autoplay/request...")
 
-        start = time.time()
-        while time.time() - start < TOKEN_WAIT_SECONDS:
+        capture_start = time.time()
+        while time.time() - capture_start < TOKEN_WAIT_SECONDS:
             if token_url:
                 return token_url, "ok"
 
             dismiss_overlays(page)
 
-            elapsed = int(time.time() - start)
-            if elapsed in (5, 10, 15, 20):
+            elapsed = int(time.time() - capture_start)
+            if elapsed in (5, 10, 15, 20, 30):
                 click_play(page)
 
             try:
@@ -269,14 +278,14 @@ def capture_stream_url(browser, channel):
         return None, "no_stream_captured"
 
     finally:
-        context.close()
+        page.close()
 
 
 def main():
-    if not STATE_FILE.exists():
+    if not PROFILE_DIR.exists():
         log("=" * 60)
-        log("Tonton login state file not found.")
-        log(f"Expected: {STATE_FILE}")
+        log("Tonton persistent profile folder not found.")
+        log(f"Expected: {PROFILE_DIR}")
         log("Run setup_tonton_login.py once on the runner machine first.")
         log("=" * 60)
         sys.exit(1)
@@ -293,13 +302,19 @@ def main():
 
     log("=" * 60)
     log("Refreshing TONTON channel tokens...")
-    log(f"Using login state: {STATE_FILE}")
+    log(f"Using profile folder: {PROFILE_DIR}")
     log("=" * 60)
 
     with stealth.use_sync(sync_playwright()) as p:
-        browser = p.chromium.launch(
+        context = p.chromium.launch_persistent_context(
+            user_data_dir=str(PROFILE_DIR),
             headless=True,
             args=["--disable-blink-features=AutomationControlled"],
+            user_agent=USER_AGENT,
+            extra_http_headers={"Referer": REFERER},
+            locale="en-US",
+            timezone_id="Asia/Kuala_Lumpur",
+            viewport={"width": 1440, "height": 900},
         )
 
         try:
@@ -307,7 +322,7 @@ def main():
                 log(f"\n[{index}/{len(CHANNELS)}] {channel['display_name']}")
                 log(f"    Page: {channel['page_url']}")
 
-                token_url, status = capture_stream_url(browser, channel)
+                token_url, status = capture_stream_url(context, channel)
 
                 if status == "login_required":
                     log("    Login session looks expired. Run setup_tonton_login.py again.")
@@ -325,16 +340,14 @@ def main():
                     failed_count += 1
 
         finally:
-            browser.close()
+            context.close()
 
     log("\n" + "=" * 60)
     log(f"TONTON refresh finished. Success: {success_count} | Failed: {failed_count}")
     if login_invalid:
-        log("Action needed: refresh Tonton login state.")
+        log("Action needed: refresh Tonton login setup/profile.")
     log("=" * 60)
 
-    # Do not fail the whole workflow just because one or more TONTON channels failed.
-    # Keep partial success, like Mana-mana.
     sys.exit(0)
 
 
