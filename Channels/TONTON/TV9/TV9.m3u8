@@ -1,5 +1,5 @@
 #EXTM3U
-#EXTINF:1,TV9
 #EXTVLCOPT:http-referrer=https://watch.tonton.com.my/
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
-https://live-ssar-02.tonton.com.my/tv9/master.m3u8?bpkio_serviceid=6c0958d82a830a026ba9f8eeb79ede62&did=21c3de3d-b57d-f9b1-23dd-819353095339&dnt=0&ifatype=sessionid&plt=web&lot_auds=&ttd_uid2=A4AAADYB0cbALvMANDCyvxoLaJmAzYIl_02yMOmryAGo0nmQ0RZubmjm92Xb4-WstLE55JrLbCIPvw-EsWrf3IfEnPd80s5VdYWWru4LSW01N8TLOA6ofNcIs2IK9Lm7U13yLFWzWzjefz7Ybslrx5-r7iuVXld-EKIc2cH7Izv7cYFSvo9HdZ_A2llPmE7Ari0D5QKBtug8NHG9EImL2p84yQ&exp=1778977286&hmac=0xd1c9a23a5b6ebd9f4c98df62327a3c5816a8a350e9c8b3150e776ff58f9ab00b
+#EXTINF:1,TV9
+https://live-ssar-02.tonton.com.my/tv9/master.m3u8?bpkio_serviceid=6c0958d82a830a026ba9f8eeb79ede62&did=a9b09088-c048-e63d-1b1d-5111ed4225a3&dnt=0&ifatype=sessionid&plt=web&lot_auds=&ttd_uid2=A4AAADYB0cbALvMANDCyvxoLaJmAzYIl_02yMOmryAGo0nmQ0RZubmjm92Xb4-WstLE55JrLbCIPvw-EsWrf3IfEnPd80s5VdYWWru4LSW01N8TLOA6ofNcIs2IK9Lm7U13yLFWzWzjefz7Ybslrx5-r7iuVXld-EKIc2cH7Izv7cYFSvo9HdZ_A2llPmE7Ari0D5QKBtug8NHG9EImL2p84yQ&exp=1779062104&hmac=0x9c56165d24b4c971c9ce6c5643ca821c6a2d8ce96e12319f37d548be66da2f5b

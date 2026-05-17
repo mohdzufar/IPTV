@@ -1,5 +1,5 @@
 #EXTM3U
-#EXTINF:1,Drama Sangat
 #EXTVLCOPT:http-referrer=https://watch.tonton.com.my/
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
-https://live-03.tonton.com.my/ds/master.m3u8?exp=1778977290&hmac=0x854d00a393e6b9ee9bef9de4df582d0c3cac651ace798ec08502f85a811aade3
+#EXTINF:1,Drama Sangat
+https://live-03.tonton.com.my/ds/master.m3u8?exp=1779062108&hmac=0x12380337353af4c7691bd8548ff18cb4347cb940c217222a8761f1c7b0498533
