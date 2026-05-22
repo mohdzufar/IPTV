@@ -139,6 +139,13 @@ def is_ignored_stream(url):
 
 
 def replace_in_main_m3u8(main_path, channel_name, new_url):
+    """Find the channel by tvg-name in Main.m3u8 and replace its stream URL.
+
+    Fix: the while loop now skips both blank lines AND #EXTVLCOPT directive
+    lines when searching for the URL line after #EXTINF. Previously it only
+    skipped blank lines, causing it to stop at the #EXTVLCOPT lines and
+    silently fail to update Main.m3u8.
+    """
     with open(main_path, "r", encoding="utf-8") as f:
         lines = f.readlines()
 
@@ -153,7 +160,12 @@ def replace_in_main_m3u8(main_path, channel_name, new_url):
             continue
 
         j = i + 1
-        while j < len(lines) and not lines[j].strip():
+
+        # Skip blank lines AND #EXTVLCOPT directive lines to reach the URL
+        while j < len(lines) and (
+            not lines[j].strip()
+            or lines[j].strip().startswith("#EXTVLCOPT")
+        ):
             j += 1
 
         if j < len(lines):
