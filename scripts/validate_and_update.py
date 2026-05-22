@@ -13,7 +13,7 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 # Patterns of channels to skip validation (Mana-mana and tonton)
 SKIP_PATTERNS = ['Mana-mana', 'tonton']
 
-# Shared headers for all HTTP requests — fixes CDN 403s
+# Shared default headers for HTTP requests
 DEFAULT_HEADERS = {'User-Agent': 'VLC/3.0.20'}
 
 # Retry settings
@@ -29,13 +29,11 @@ MYT = timezone(timedelta(hours=8))
 
 
 # =============================================================================
-# URL EXTRACTION
+# URL / HEADER EXTRACTION
 # =============================================================================
 
 def extract_all_urls_from_wrapper(wrapper_content, base_url):
-    """Extract ALL stream URLs from a wrapper .m3u8 file, in order.
-    Returns a list of URLs. Skips comment and directive lines.
-    """
+    """Extract ALL stream URLs from a wrapper .m3u8 file, in order."""
     urls = []
     for line in wrapper_content.splitlines():
         line = line.strip()
@@ -50,6 +48,50 @@ def extract_all_urls_from_wrapper(wrapper_content, base_url):
     return urls
 
 
+def extract_extvlcopt_headers(wrapper_content):
+    """Extract #EXTVLCOPT lines from wrapper content and map them to HTTP headers."""
+    option_lines = []
+    headers = {}
+
+    for raw_line in wrapper_content.splitlines():
+        line = raw_line.strip()
+        if not line.startswith('#EXTVLCOPT:'):
+            continue
+
+        option_lines.append(line + '\n')
+
+        payload = line[len('#EXTVLCOPT:'):].strip()
+        if '=' not in payload:
+            continue
+
+        key, value = payload.split('=', 1)
+        key = key.strip().lower()
+        value = value.strip()
+
+        if key == 'http-referrer':
+            headers['Referer'] = value
+        elif key == 'http-user-agent':
+            headers['User-Agent'] = value
+
+    return option_lines, headers
+
+
+def merge_option_lines(block_option_lines, wrapper_option_lines):
+    """Merge and dedupe #EXTVLCOPT or other inline option lines."""
+    merged = []
+    seen = set()
+
+    for source in (block_option_lines, wrapper_option_lines):
+        for line in source:
+            normalized = line.strip()
+            if not normalized or normalized in seen:
+                continue
+            seen.add(normalized)
+            merged.append(normalized + '\n')
+
+    return merged
+
+
 # =============================================================================
 # STREAM CLASSIFICATION
 # =============================================================================
@@ -58,29 +100,38 @@ def classify_content(text, status, content_type):
     """Classify stream based on content snippet and HTTP metadata."""
     if text is None:
         return 'invalid'
+
     text = text.strip()
     if not text:
         return 'empty_ok'
+
     if text.startswith('#EXTM3U'):
         if '#EXT-X-STREAM-INF' in text:
             return 'hls_master'
         if '#EXTINF' in text:
             return 'hls_media'
         return 'wrapper'
+
     if text.startswith('\x00\x00\x00'):
         if 'ftyp' in text:
             return 'mp4'
         return 'binary'
+
     if '<html' in text.lower() or '<!doctype' in text.lower():
         return 'html'
+
     if '404' in text or 'not found' in text.lower():
         return 'invalid'
+
     if text.startswith('<?xml') or text.startswith('<MPD'):
         return 'dash'
+
     if content_type and 'video/mp4' in content_type:
         return 'mp4'
+
     if content_type and 'application/dash+xml' in content_type:
         return 'dash'
+
     return 'invalid'
 
 
@@ -88,19 +139,23 @@ def classify_content(text, status, content_type):
 # STREAM VALIDATION
 # =============================================================================
 
-def validate_stream(stream_session, url):
+def validate_stream(stream_session, url, extra_headers=None):
     """Fetch a stream URL and classify it. Retries up to MAX_RETRIES times.
-    Uses a shared session for connection reuse.
+    Uses wrapper-derived headers when provided.
     Returns (kind, http_status, good, attempt_number).
     """
     kind = 'exception'
     http_status = 0
 
+    request_headers = DEFAULT_HEADERS.copy()
+    if extra_headers:
+        request_headers.update(extra_headers)
+
     for attempt in range(1, MAX_RETRIES + 2):
         try:
             resp = stream_session.get(
                 url,
-                headers=DEFAULT_HEADERS,
+                headers=request_headers,
                 timeout=15,
                 stream=True
             )
@@ -112,6 +167,7 @@ def validate_stream(stream_session, url):
                 http_status,
                 content_type
             )
+
             good = kind not in ('invalid', 'html', 'empty_ok', 'binary', 'wrapper')
 
             if good:
@@ -149,9 +205,7 @@ def validate_stream(stream_session, url):
 # =============================================================================
 
 def is_skipped(channel_name, wrapper_url=''):
-    """Return True if this channel should skip validation.
-    Checks both the channel name and the wrapper URL path.
-    """
+    """Return True if this channel should skip validation."""
     for pat in SKIP_PATTERNS:
         if pat.lower() in channel_name.lower():
             return True
@@ -278,13 +332,14 @@ def update_main_m3u8(main_path, header, blocks, results):
 
             result = results[idx]
             if result['valid']:
+                f.write(block['extinf'])
+                for option_line in result.get('output_option_lines', block['option_lines']):
+                    f.write(option_line)
+
                 if result['direct']:
-                    f.write(block['extinf'])
-                    for option_line in block['option_lines']:
-                        f.write(option_line)
                     f.write(result['direct'] + '\n')
                 else:
-                    f.write(block['full'])
+                    f.write(block['wrapper_url'] + '\n')
             else:
                 for line in block['full'].splitlines(keepends=True):
                     f.write('## ' + line)
@@ -350,7 +405,6 @@ def main():
         report.write("Channel,Group,Status,StreamType,MainEntry,URLsTested,Attempts,DirectURL\n")
 
         for i, block in enumerate(blocks):
-            full = block['full']
             name = block['channel_name']
             group = block['group']
             wrapper_url = block['wrapper_url']
@@ -391,6 +445,9 @@ def main():
                 print("Action  : ❌ Commented out (wrapper fetch failed)")
                 continue
 
+            wrapper_option_lines, wrapper_request_headers = extract_extvlcopt_headers(wrapper_content)
+            merged_option_lines = merge_option_lines(block['option_lines'], wrapper_option_lines)
+
             inner_urls = extract_all_urls_from_wrapper(wrapper_content, wrapper_url)
             total_urls = len(inner_urls)
 
@@ -412,7 +469,11 @@ def main():
 
             for url_idx, inner_url in enumerate(inner_urls, start=1):
                 print(f"  [{url_idx}/{total_urls}] {inner_url}")
-                stream_kind, http_status, good, attempt = validate_stream(stream_session, inner_url)
+                stream_kind, http_status, good, attempt = validate_stream(
+                    stream_session,
+                    inner_url,
+                    extra_headers=wrapper_request_headers
+                )
                 print(f"  Result : {stream_kind} (HTTP {http_status}, attempt {attempt})")
 
                 if good:
@@ -428,12 +489,20 @@ def main():
 
             if channel_valid:
                 if winning_kind in DIRECT_URL_TYPES:
-                    results[i] = {'valid': True, 'direct': winning_url}
+                    results[i] = {
+                        'valid': True,
+                        'direct': winning_url,
+                        'output_option_lines': merged_option_lines,
+                    }
                     main_entry = 'direct_url'
                     count_direct += 1
                     action_note = f"direct URL written to Main.m3u8 ({winning_kind})"
                 else:
-                    results[i] = {'valid': True, 'direct': None}
+                    results[i] = {
+                        'valid': True,
+                        'direct': None,
+                        'output_option_lines': merged_option_lines,
+                    }
                     main_entry = 'wrapper_kept'
                     count_wrapper_kept += 1
                     action_note = f"wrapper kept ({winning_kind})"
