@@ -1,9 +1,9 @@
 # ============================================================
 # IPTV Playlist Validation Report
 # ============================================================
-# Generated  : 2026-05-22 14:12:02 MYT
+# Generated  : 2026-05-22 19:16:11 MYT
 # Source     : Channels/Flatten.m3u8
-# Total      : 169 channels
+# Total      : 173 channels
 # Retry cfg  : MAX_RETRIES=2, RETRY_DELAY=5s
 #
 # Direct URL types (written to Main.m3u8 directly):
@@ -24,6 +24,10 @@
 Channel,Group,Status,StreamType,MainEntry,URLsTested,Attempts,DirectURL
 RTM TV1,Malaysia,dead,all_urls_failed,dead,0/5,3,
 RTM TV2,Malaysia,dead,all_urls_failed,dead,0/5,3,
+TV3,Malaysia,skipped,-,skipped,-,-,
+Didik TV,Malaysia,skipped,-,skipped,-,-,
+TV9,Malaysia,skipped,-,skipped,-,-,
+Drama Sangat,Malaysia,skipped,-,skipped,-,-,
 TV6,Malaysia,dead,all_urls_failed,dead,0/5,3,
 8TV,Malaysia,active,hls_media,wrapper_kept,1/1,1,http://cdn6.163189.xyz/163189/8tv
 Okey TV,Malaysia,dead,all_urls_failed,dead,0/5,3,
@@ -195,12 +199,12 @@ K-Drama+,Korea,active,hls_master,direct_url,1/1,1,https://jmp2.uk/stvp-GBBD41000
 # ============================================================
 # SUMMARY
 # ============================================================
-# Total        : 169
+# Total        : 173
 # Active       : 111
 #   Wrapper kept : 18  (hls_media — URL hidden)
 #   Direct URL   : 93  (hls_master/dash/mp4 — URL exposed)
 # Dead          : 50
-# Skipped       : 8
+# Skipped       : 12
 # Success       : 68.9%  (active / non-skipped)
-# Run time      : 2026-05-22 14:12:02 MYT
+# Run time      : 2026-05-22 19:16:11 MYT
 # ============================================================
