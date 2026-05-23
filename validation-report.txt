@@ -1,7 +1,7 @@
 # ============================================================
 # IPTV Playlist Validation Report
 # ============================================================
-# Generated  : 2026-05-23 06:07:44 MYT
+# Generated  : 2026-05-24 05:53:45 MYT
 # Source     : Channels/Flatten.m3u8
 # Total      : 173 channels
 # Retry cfg  : MAX_RETRIES=2, RETRY_DELAY=5s
@@ -103,7 +103,7 @@ Bein Xtra,Sports,active,hls_master,direct_url,1/1,1,https://amg01334-beinsportsl
 Tennis TV,Sports,active,hls_master,direct_url,1/4,1,https://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/6870c9fd3ffa5e0c914e99aa/master.m3u8?appName=web&appVersion=9.19.0&deviceDNT=0&deviceId=7089727d-21c4-4175-9100-a14521359b66&deviceMake=firefox&deviceModel=web&deviceType=web&deviceVersion=147.0.0&serverSideAds=false&sid=42c6d67b-44f6-47c3-afc5-cf75d7daef44
 Tennis TV 2,Sports,active,hls_master,direct_url,1/1,1,https://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/681109b688b9d85d0938c6ba/master.m3u8?appName=web&appVersion=9.19.0&deviceDNT=0&deviceId=affbdbfa-5fa3-48af-8369-57c005daef42&deviceMake=firefox&deviceModel=web&deviceType=web&deviceVersion=147.0.0&serverSideAds=false&sid=7d2214c9-9aea-438e-8722-a430fbb943b4
 Tennis+,Sports,active,hls_master,direct_url,1/1,1,https://amg01935-amg01935c1-amgplt0165.playout.now3.amagi.tv/playlist.m3u8
-Tennis Channel,Sports,active,hls_master,direct_url,2/7,1,https://cdn-ue1-prod.tsv2.amagi.tv/linear/amg01444-tennischannelth-tennischannelnl-samsungnl/playlist.m3u8
+Tennis Channel,Sports,active,hls_master,direct_url,6/7,1,https://jmp2.uk/plu-6870c9333ffa5e0c914e9205.m3u8
 Tennis Channel 2,Sports,active,hls_master,direct_url,1/1,1,https://jmp2.uk/plu-681109b688b9d85d0938c6ba.m3u8
 MLB,Sports,active,hls_master,direct_url,1/5,1,https://jmp2.uk/plu-5e66968a70f34c0007d050be.m3u8
 MMA-TV International,Sports,active,hls_master,direct_url,1/1,1,https://streams2.sofast.tv/vglive-sk-462904/playlist.m3u8
@@ -206,5 +206,5 @@ K-Drama+,Korea,active,hls_master,direct_url,1/1,1,https://jmp2.uk/stvp-GBBD41000
 # Dead          : 42
 # Skipped       : 12
 # Success       : 73.9%  (active / non-skipped)
-# Run time      : 2026-05-23 06:07:44 MYT
+# Run time      : 2026-05-24 05:53:45 MYT
 # ============================================================
