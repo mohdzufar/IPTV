@@ -171,8 +171,22 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Golf%2
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/PGA%20Tour/PGA%20Tour.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="DP World Tour" tvg-id="6882521ac258734a42a60ed0" tvg-country="UK" tvg-logo="https://images.pluto.tv/channels/6882521ac258734a42a60ed0/colorLogoPNG_1753371278188.png" group-title="Golf",DP World Tour
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/DP%20World%20Tour/DP%20World%20Tour.m3u8
+#EXTINF:-1 tvg-chno="" tvg-name="Golf Television" tvg-id="" tvg-country="" tvg-logo="" group-title="Golf",Golf Television
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Golf%20Television/Golf%20Television.m3u8
+#EXTINF:-1 tvg-chno="" tvg-name="SBS_Golf" tvg-id="" tvg-country="South Korea" tvg-logo="" group-title="Golf",SBS_Golf
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/SBS/SBS_Golf.m3u8
+#EXTINF:-1 tvg-chno="" tvg-name="SBS_Golf_2" tvg-id="" tvg-country="South Korea" tvg-logo="" group-title="Golf",SBS_Golf_2
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/SBS/SBS%20Golf%202.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Sky Sport Golf" tvg-id="" tvg-country="" tvg-logo="" group-title="Golf",Sky Sport Golf
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/SkySport/Golf/Golf.m3u8
+##======SkySport========
+#EXTINF:-1 tvg-chno="" tvg-name="Sky Sport Football" tvg-id="" tvg-country="" tvg-logo="" group-title="Sports",Football
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/SkySport/Football/Football.m3u8
+#EXTINF:-1 tvg-chno="" tvg-name="Sky Sport F1" tvg-id="" tvg-country="" tvg-logo="" group-title="Sports",F1
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/SkySport/F1/F1.m3u8
+#EXTINF:-1 tvg-chno="" tvg-name="Sky Sport Premier League" tvg-id="" tvg-country="" tvg-logo="" group-title="Sports",Premier League
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/SkySport/Premier_League/Premier_League.m3u8
+
 ##======BeiN============
 #EXTINF:-1 tvg-chno="" tvg-name="Bein Sports 1" tvg-id="399482" tvg-country="" tvg-logo="" group-title="Sports",Bein Sports 1
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/BeiN/Sports%201.m3u8
