@@ -1,7 +1,7 @@
 # ============================================================
 # IPTV Playlist Validation Report
 # ============================================================
-# Generated  : 2026-05-25 16:44:38 MYT
+# Generated  : 2026-05-25 23:33:21 MYT
 # Source     : Channels/Flatten.m3u8
 # Total      : 179 channels
 # Retry cfg  : MAX_RETRIES=2, RETRY_DELAY=5s
@@ -56,12 +56,12 @@ RTM Junior,Malaysia,active,hls_media,wrapper_kept,1/5,1,https://d1sq2slp9afh7o.c
 RTM Roll,Malaysia,active,hls_media,wrapper_kept,1/5,1,https://d1sq2slp9afh7o.cloudfront.net/smil:roll/chunklist_b346000_slENG.m3u8
 RTM Aura,Malaysia,active,hls_media,wrapper_kept,1/5,1,https://d1sq2slp9afh7o.cloudfront.net/smil:aura/chunklist_b346000_slENG.m3u8
 Filem Mantap,Malaysia,active,dash,direct_url,1/1,1,https://b27a6dd8a86c3e4ba93fbae22aaaac64.pmqrop.channel-assembly.mediatailor.ap-southeast-1.amazonaws.com/v1/channel/FAST_2/dash.mpd
-Lawak Sentral,Malaysia,active,dash,direct_url,1/1,1,https://b27a6dd8a86c3e4ba93fbae22aaaac64.pmqrop.channel-assembly.mediatailor.ap-southeast-1.amazonaws.com/v1/channel/FAST_3/dash.mpd
+Lawak Sentral,Malaysia,active,dash,direct_url,1/1,2,https://b27a6dd8a86c3e4ba93fbae22aaaac64.pmqrop.channel-assembly.mediatailor.ap-southeast-1.amazonaws.com/v1/channel/FAST_3/dash.mpd
 Drama Hotpot,Malaysia,active,dash,direct_url,1/1,1,https://b27a6dd8a86c3e4ba93fbae22aaaac64.pmqrop.channel-assembly.mediatailor.ap-southeast-1.amazonaws.com/v1/channel/FAST_4/dash.mpd
 Travel & Taste,Malaysia,active,dash,direct_url,1/1,1,https://b27a6dd8a86c3e4ba93fbae22aaaac64.pmqrop.channel-assembly.mediatailor.ap-southeast-1.amazonaws.com/v1/channel/FAST_5/dash.mpd
 Drama Hebat,Malaysia,active,dash,direct_url,1/1,1,https://b27a6dd8a86c3e4ba93fbae22aaaac64.pmqrop.channel-assembly.mediatailor.ap-southeast-1.amazonaws.com/v1/channel/FAST_1/dash.mpd
-Jom Ngaji,Malaysia,active,dash,direct_url,1/1,2,https://827f31c3f2824c0c95c7a5190e96e284.mediatailor.ap-southeast-1.amazonaws.com/v1/dash/951fbca46ac9b52422f8e3d6d4d6dab33623c3cc/FASTOO_CH6_JOMNGAJI/dash.mpd
-Oh My Ceria!,Malaysia,active,dash,direct_url,1/1,1,https://f9169865dbd747b4a24602e856a9c7a2.mediatailor.ap-southeast-1.amazonaws.com/v1/dash/951fbca46ac9b52422f8e3d6d4d6dab33623c3cc/FASTOO_CH7_CERIA/dash.mpd
+Jom Ngaji,Malaysia,active,dash,direct_url,1/1,1,https://827f31c3f2824c0c95c7a5190e96e284.mediatailor.ap-southeast-1.amazonaws.com/v1/dash/951fbca46ac9b52422f8e3d6d4d6dab33623c3cc/FASTOO_CH6_JOMNGAJI/dash.mpd
+Oh My Ceria!,Malaysia,dead,all_urls_failed,dead,0/1,3,
 Quran (Mecca),Muslim,active,hls_master,direct_url,1/1,1,https://live.kwikmotion.com/sbrksaquranradiolive/srpksaquranradio/playlist.m3u8
 Channel 5,Singapore,dead,all_urls_failed,dead,0/3,3,
 Channel 8,Singapore,dead,all_urls_failed,dead,0/1,3,
@@ -112,7 +112,7 @@ Tennis+,Sports,active,hls_master,direct_url,1/1,1,https://amg01935-amg01935c1-am
 Tennis Channel,Sports,active,hls_master,direct_url,2/7,1,https://cdn-ue1-prod.tsv2.amagi.tv/linear/amg01444-tennischannelth-tennischannelnl-samsungnl/playlist.m3u8
 Tennis Channel 2,Sports,active,hls_master,direct_url,1/1,1,https://jmp2.uk/plu-681109b688b9d85d0938c6ba.m3u8
 MLB,Sports,active,hls_master,direct_url,1/5,1,https://jmp2.uk/plu-5e66968a70f34c0007d050be.m3u8
-MMA-TV International,Sports,active,hls_master,direct_url,1/1,1,https://streams2.sofast.tv/vglive-sk-462904/playlist.m3u8
+MMA-TV International,Sports,active,hls_master,direct_url,1/1,2,https://streams2.sofast.tv/vglive-sk-462904/playlist.m3u8
 FOX NFL,Sports,active,hls_master,direct_url,1/2,1,https://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/5ced7d5df64be98e07ed47b6/master.m3u8?appName=web&appVersion=9.19.0&deviceDNT=0&deviceId=affbdbfa-5fa3-48af-8369-57c005daef42&deviceMake=firefox&deviceModel=web&deviceType=web&deviceVersion=147.0.0&serverSideAds=false&sid=1d7bef8c-83bb-4a13-babc-c2895be01526
 NHL,Sports,active,hls_master,direct_url,1/1,1,https://aegis-cloudfront-1.tubi.video/1f4cbb33-cb23-40ab-b54b-2965cc551b32/playlist.m3u8
 UEFA Champion League,Sports,active,hls_master,direct_url,1/2,1,https://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/65ea8b928145cb0008509426/master.m3u8?appName=web&appVersion=9.19.0&deviceDNT=0&deviceId=affbdbfa-5fa3-48af-8369-57c005daef42&deviceMake=firefox&deviceModel=web&deviceType=web&deviceVersion=147.0.0&serverSideAds=false&sid=c83aaae4-b7a8-4127-ae41-0b5fd27ac4f2
@@ -206,11 +206,11 @@ K-Drama+,Korea,active,hls_master,direct_url,1/1,1,https://jmp2.uk/stvp-GBBD41000
 # SUMMARY
 # ============================================================
 # Total        : 179
-# Active       : 123
+# Active       : 122
 #   Wrapper kept : 27  (hls_media — URL hidden)
-#   Direct URL   : 96  (hls_master/dash/mp4 — URL exposed)
-# Dead          : 44
+#   Direct URL   : 95  (hls_master/dash/mp4 — URL exposed)
+# Dead          : 45
 # Skipped       : 12
-# Success       : 73.7%  (active / non-skipped)
-# Run time      : 2026-05-25 16:44:38 MYT
+# Success       : 73.1%  (active / non-skipped)
+# Run time      : 2026-05-25 23:33:21 MYT
 # ============================================================
