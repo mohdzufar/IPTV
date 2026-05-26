@@ -1,7 +1,7 @@
 # ============================================================
 # IPTV Playlist Validation Report
 # ============================================================
-# Generated  : 2026-05-26 16:05:32 MYT
+# Generated  : 2026-05-27 00:15:05 MYT
 # Source     : Channels/Flatten.m3u8
 # Total      : 182 channels
 # Retry cfg  : MAX_RETRIES=2, RETRY_DELAY=5s
@@ -57,7 +57,7 @@ RTM Roll,Malaysia,active,hls_media,wrapper_kept,1/5,1,https://d1sq2slp9afh7o.clo
 RTM Aura,Malaysia,active,hls_media,wrapper_kept,1/5,1,https://d1sq2slp9afh7o.cloudfront.net/smil:aura/chunklist_b346000_slENG.m3u8
 Filem Mantap,Malaysia,active,dash,direct_url,1/1,1,https://b27a6dd8a86c3e4ba93fbae22aaaac64.pmqrop.channel-assembly.mediatailor.ap-southeast-1.amazonaws.com/v1/channel/FAST_2/dash.mpd
 Lawak Sentral,Malaysia,active,dash,direct_url,1/1,1,https://b27a6dd8a86c3e4ba93fbae22aaaac64.pmqrop.channel-assembly.mediatailor.ap-southeast-1.amazonaws.com/v1/channel/FAST_3/dash.mpd
-Drama Hotpot,Malaysia,active,dash,direct_url,1/1,1,https://b27a6dd8a86c3e4ba93fbae22aaaac64.pmqrop.channel-assembly.mediatailor.ap-southeast-1.amazonaws.com/v1/channel/FAST_4/dash.mpd
+Drama Hotpot,Malaysia,dead,all_urls_failed,dead,0/1,3,
 Travel & Taste,Malaysia,active,dash,direct_url,1/1,1,https://b27a6dd8a86c3e4ba93fbae22aaaac64.pmqrop.channel-assembly.mediatailor.ap-southeast-1.amazonaws.com/v1/channel/FAST_5/dash.mpd
 Drama Hebat,Malaysia,active,dash,direct_url,1/1,1,https://b27a6dd8a86c3e4ba93fbae22aaaac64.pmqrop.channel-assembly.mediatailor.ap-southeast-1.amazonaws.com/v1/channel/FAST_1/dash.mpd
 Jom Ngaji,Malaysia,active,dash,direct_url,1/1,1,https://827f31c3f2824c0c95c7a5190e96e284.mediatailor.ap-southeast-1.amazonaws.com/v1/dash/951fbca46ac9b52422f8e3d6d4d6dab33623c3cc/FASTOO_CH6_JOMNGAJI/dash.mpd
@@ -127,7 +127,7 @@ Wired2Fish,Sports,active,hls_master,direct_url,1/1,1,https://linear-80.frequency
 Sports Connect,Sports,dead,all_urls_failed,dead,0/1,3,
 MBC America,Sports,active,hls_media,wrapper_kept,1/1,1,https://cdn-us-east-prod-ingest-infra-dacast-com.akamaized.net/624ff8f9-db18-da92-4d42-896fa2ff3eb3/source/index.m3u8
 Swerve Sport,Sports,active,hls_master,direct_url,1/1,1,https://linear-253.frequency.stream/dist/localnow/253/hls/master/playlist.m3u8
-World Billiards TV,Sports,active,hls_master,direct_url,1/1,1,https://92652ca9374d45ff8669fa318712ccda.mediatailor.us-east-1.amazonaws.com/v1/master/f4e8c53a8367a5b58e20ce054ea3ce25a3e904d3/SportsTV_WorldBilliardsTV/playlist.m3u8
+World Billiards TV,Sports,dead,all_urls_failed,dead,0/1,3,
 Billiard TV,Sports,active,hls_master,direct_url,1/1,1,https://d3f4oii5n0oeqi.cloudfront.net/11701/88814555/hls/billi.m3u8?includeAssetTags=true&ads.xumo_channelId=88814555a&ads.xumo_streamId=88814555&declaredCC1Language=en&ads.caid=BilliardTV&ads.csid=tcl2_us_triplebmediabilliard_ssai&ads.xumo_ifaType=%5BIFA_TYPE%5D&ads.xumo_ifa=%5BIFA%5D&ads.appName=%5BAPP_NAME%5D&ads.appVersion=%5BAPP_VERSION%5D&ads._fw_app_bundle=%5BTCL_APP_BUNDLE%5D&ads._fw_content_category=IAB17&ads._fw_content_genre=sports&ads._fw_content_language=en&ads._fw_content_rating=tv-pg&ads._fw_deviceMake=%5BDEVICE_MAKE%5D&ads._fw_device_model=%5BDEVICE_MODEL%5D&ads._fw_devicetype=3-Connected_TV&ads._fw_coppa=0&ads._fw_is_lat=%5BLMT%5D&ads._fw_us_privacy=%5BUS_PRIVACY%5D&ads._fw_h_x_country=US&ads._fw_player_width=%5BPLAYER_WIDTH%5D&ads._fw_player_height=%5BPLAYER_HEIGHT%5D&ads.xumo_contentId=2728&ads.xumo_contentName=BilliardTV&ads.xumo_providerId=2728&ads.xumo_providerName=TripleBMediaBilliard&ads.xumo_channelName=BilliardTV&ads._fw_app_store_url=%5BTCL_APP_STORE_URL%5D
 BBC Top Gear,Sports,active,hls_master,direct_url,1/5,1,https://amg00793-amg00793c5-xumo-us-2664.playouts.now.amagi.tv/bbcstudios-bbctopgear8min-all/playlist.m3u8
 Fuel TV,Sports,active,hls_master,direct_url,1/1,1,https://amg01074-fueltv-fueltvusen-sportstv-fj9t1.amagi.tv/playlist_eng.m3u8
@@ -193,7 +193,7 @@ Discovery Channel,,active,hls_master,direct_url,1/1,1,http://23.237.104.106:8080
 Discovery Life,,dead,all_urls_failed,dead,0/1,3,
 Discovery Science,,dead,all_urls_failed,dead,0/1,3,
 Disney Channel,Kids,dead,all_urls_failed,dead,0/1,3,
-Disney XD,,active,hls_master,direct_url,1/1,1,http://23.237.104.106:8080/USA_DISNEY_XD/index.m3u8
+Disney XD,,active,hls_master,direct_url,1/1,2,http://23.237.104.106:8080/USA_DISNEY_XD/index.m3u8
 Bob Ross Channel,,active,hls_master,direct_url,2/4,1,https://jmp2.uk/rok-1d3f60995d80521882a379fc06e47679.m3u8
 TVBS Asia,Singapore,active,hls_master,direct_url,1/1,1,http://38.64.72.148/hls/modn/list/4005/playlist.m3u8
 KoreaTV,Korea,active,hls_master,direct_url,1/1,1,https://hlive.ktv.go.kr/live/klive_h.stream/playlist.m3u8
@@ -209,11 +209,11 @@ K-Drama+,Korea,active,hls_master,direct_url,1/1,1,https://jmp2.uk/stvp-GBBD41000
 # SUMMARY
 # ============================================================
 # Total        : 182
-# Active       : 126
+# Active       : 124
 #   Wrapper kept : 27  (hls_media — URL hidden)
-#   Direct URL   : 99  (hls_master/dash/mp4 — URL exposed)
-# Dead          : 44
+#   Direct URL   : 97  (hls_master/dash/mp4 — URL exposed)
+# Dead          : 46
 # Skipped       : 12
-# Success       : 74.1%  (active / non-skipped)
-# Run time      : 2026-05-26 16:05:32 MYT
+# Success       : 72.9%  (active / non-skipped)
+# Run time      : 2026-05-27 00:15:05 MYT
 # ============================================================
