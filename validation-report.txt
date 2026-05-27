@@ -1,7 +1,7 @@
 # ============================================================
 # IPTV Playlist Validation Report
 # ============================================================
-# Generated  : 2026-05-27 16:15:34 MYT
+# Generated  : 2026-05-28 00:16:20 MYT
 # Source     : Channels/Flatten.m3u8
 # Total      : 182 channels
 # Retry cfg  : MAX_RETRIES=2, RETRY_DELAY=5s
@@ -36,8 +36,8 @@ TV IKIM,Malaysia,active,hls_media,wrapper_kept,1/3,1,https://edge-sg1.vediostrea
 Berita RTM,News,active,hls_media,wrapper_kept,1/5,1,https://d25tgymtnqzu8s.cloudfront.net/smil:berita/chunklist_b346000_slENG.m3u8?id=5
 RTM World,Malaysia,active,hls_media,wrapper_kept,1/5,1,https://d25tgymtnqzu8s.cloudfront.net/event/smil:event1/chunklist_b346000_slENG.m3u8
 Astro Awani,News,active,hls_media,wrapper_kept,1/3,1,https://d2idp3hzkhjpih.cloudfront.net/out/v1/4b85d9c2bf97413eb0c9fd875599b837/index_1.m3u8
-Astro Arena Bola,Sports,active,hls_media,wrapper_kept,1/1,1,https://load.perfecttv.net/rwt.m3u8?username=vip_3klp0es8&password=wg3piwEs&channel=bola1
-Astro Arena Bola 2,Sports,active,hls_media,wrapper_kept,1/1,1,https://load.perfecttv.net/rwt.m3u8?username=vip_3klp0es8&password=wg3piwEs&channel=bola2
+Astro Arena Bola,Sports,dead,all_urls_failed,dead,0/1,3,
+Astro Arena Bola 2,Sports,dead,all_urls_failed,dead,0/1,3,
 Al-Hijrah,Malaysia,skipped,-,skipped,-,-,
 EnjoyTV,Malaysia,skipped,-,skipped,-,-,
 BorneoTV,Malaysia,skipped,-,skipped,-,-,
@@ -209,11 +209,11 @@ K-Drama+,Korea,active,hls_master,direct_url,1/1,1,https://jmp2.uk/stvp-GBBD41000
 # SUMMARY
 # ============================================================
 # Total        : 182
-# Active       : 127
-#   Wrapper kept : 29  (hls_media — URL hidden)
+# Active       : 125
+#   Wrapper kept : 27  (hls_media — URL hidden)
 #   Direct URL   : 98  (hls_master/dash/mp4 — URL exposed)
-# Dead          : 43
+# Dead          : 45
 # Skipped       : 12
-# Success       : 74.7%  (active / non-skipped)
-# Run time      : 2026-05-27 16:15:34 MYT
+# Success       : 73.5%  (active / non-skipped)
+# Run time      : 2026-05-28 00:16:20 MYT
 # ============================================================
