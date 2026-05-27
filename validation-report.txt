@@ -1,7 +1,7 @@
 # ============================================================
 # IPTV Playlist Validation Report
 # ============================================================
-# Generated  : 2026-05-28 00:16:20 MYT
+# Generated  : 2026-05-28 06:17:34 MYT
 # Source     : Channels/Flatten.m3u8
 # Total      : 182 channels
 # Retry cfg  : MAX_RETRIES=2, RETRY_DELAY=5s
@@ -215,5 +215,5 @@ K-Drama+,Korea,active,hls_master,direct_url,1/1,1,https://jmp2.uk/stvp-GBBD41000
 # Dead          : 45
 # Skipped       : 12
 # Success       : 73.5%  (active / non-skipped)
-# Run time      : 2026-05-28 00:16:20 MYT
+# Run time      : 2026-05-28 06:17:34 MYT
 # ============================================================
