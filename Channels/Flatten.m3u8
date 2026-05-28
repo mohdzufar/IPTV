@@ -416,3 +416,5 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/China/
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Korea/K-Content.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="K-Drama+" tvg-id="CA17000023Q" tvg-country="KR" tvg-logo="https://tvpnlogopus.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/CA17000023Q_20250826T234700SQUARE.png" group-title="Korea",K-Drama+
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Korea/K-Drama_plus.m3u8
+#EXTINF:-1 tvg-chno="" tvg-name="KBS World" tvg-id="KBSWorld.kr" tvg-country="KR" tvg-logo="https://i.imgur.com/7DqgELX.png" group-title="Korea",KBS World
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Korea/KBS%20World.m3u8
