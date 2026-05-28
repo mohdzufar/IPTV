@@ -10,19 +10,19 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/RTM/TV
 #EXTINF:-1 tvg-chno="3" tvg-name="TV3" tvg-id="1072" tvg-country="MY" tvg-logo="https://headend-api.tonton.com.my/v400/imageHelper.php?id=6420323:378:CHANNEL:IMAGE" group-title="Malaysia",TV3
 #EXTVLCOPT:http-referrer=https://watch.tonton.com.my/
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
-https://live-ssar-02.tonton.com.my/tv3/master.m3u8?bpkio_serviceid=6c0958d82a830a0201685a5b17521fbd&did=c11b1742-aa39-c9fd-3bd3-fd2c6f2a49ff&dnt=0&ifatype=sessionid&plt=web&lot_auds=&ttd_uid2=A4AAADZLKdLXgrGySvmerqCc6hkZMo6jkLrP4H_BDrGAY7W_BmbdAOIdA0oIpjc4vVqBCXAIYlK-p5sSKA4W8wF0WXxdH5BlE-QpXhx1QBeu1EyvqsUv1JLUyB-92FWlWbldwL6I8rt6m431sEOKO5bHBA5nRacOFtTBJ6gqVoyTGjIOTOvJgR_0Kn52MRlxWd02DvANT5XGDcv_jTjlOoWG7Q&exp=1779978682&hmac=0xd2ee7e1e536d4d900ed903a739b168511b560e8c2dfecb0d4a5360e588596020
+https://live-ssar-02.tonton.com.my/tv3/master.m3u8?bpkio_serviceid=6c0958d82a830a0201685a5b17521fbd&did=de98b38e-2dbd-ce4d-5262-30c50e49ca9e&dnt=0&ifatype=sessionid&plt=web&lot_auds=&ttd_uid2=A4AAADZLKdLXgrGySvmerqCc6hkZMo6jkLrP4H_BDrGAY7W_BmbdAOIdA0oIpjc4vVqBCXAIYlK-p5sSKA4W8wF0WXxdH5BlE-QpXhx1QBeu1EyvqsUv1JLUyB-92FWlWbldwL6I8rt6m431sEOKO5bHBA5nRacOFtTBJ6gqVoyTGjIOTOvJgR_0Kn52MRlxWd02DvANT5XGDcv_jTjlOoWG7Q&exp=1780008687&hmac=0x59eeb09c2de94da9e890d726caf28763bf0522ef9909d8d71e44ac8d5b21b505
 #EXTINF:-1 tvg-chno="" tvg-name="Didik TV" tvg-id="DidikTVKPM.my" tvg-country="MY" tvg-logo="https://headend-api.tonton.com.my/v400/imageHelper.php?id=6420324:378:CHANNEL:IMAGE" group-title="Malaysia",Didik TV
 #EXTVLCOPT:http-referrer=https://watch.tonton.com.my/
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
-https://live-ssar-02.tonton.com.my/ntv7/master.m3u8?bpkio_serviceid=6c0958d82a830a0283e4c742ef6db379&did=c11b1742-aa39-c9fd-3bd3-fd2c6f2a49ff&dnt=0&ifatype=sessionid&plt=web&lot_auds=&ttd_uid2=A4AAADZLKdLXgrGySvmerqCc6hkZMo6jkLrP4H_BDrGAY7W_BmbdAOIdA0oIpjc4vVqBCXAIYlK-p5sSKA4W8wF0WXxdH5BlE-QpXhx1QBeu1EyvqsUv1JLUyB-92FWlWbldwL6I8rt6m431sEOKO5bHBA5nRacOFtTBJ6gqVoyTGjIOTOvJgR_0Kn52MRlxWd02DvANT5XGDcv_jTjlOoWG7Q&exp=1779978687&hmac=0x230d4f78520c835ae4c965e1b5d6a81844882ccc48e0d35a1e283a4726aaeef4
+https://live-ssar-02.tonton.com.my/ntv7/master.m3u8?bpkio_serviceid=6c0958d82a830a0283e4c742ef6db379&did=de98b38e-2dbd-ce4d-5262-30c50e49ca9e&dnt=0&ifatype=sessionid&plt=web&lot_auds=&ttd_uid2=A4AAADZLKdLXgrGySvmerqCc6hkZMo6jkLrP4H_BDrGAY7W_BmbdAOIdA0oIpjc4vVqBCXAIYlK-p5sSKA4W8wF0WXxdH5BlE-QpXhx1QBeu1EyvqsUv1JLUyB-92FWlWbldwL6I8rt6m431sEOKO5bHBA5nRacOFtTBJ6gqVoyTGjIOTOvJgR_0Kn52MRlxWd02DvANT5XGDcv_jTjlOoWG7Q&exp=1780008692&hmac=0x9b91488e8e8818ea2959673c826beae18fa90e813a7827a72500391db2088074
 #EXTINF:-1 tvg-chno="" tvg-name="TV9" tvg-id="902" tvg-country="MY" tvg-logo="https://headend-api.tonton.com.my/v400/imageHelper.php?id=6420326:378:CHANNEL:IMAGE" group-title="Malaysia",TV9
 #EXTVLCOPT:http-referrer=https://watch.tonton.com.my/
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
-https://live-ssar-02.tonton.com.my/tv9/master.m3u8?bpkio_serviceid=6c0958d82a830a026ba9f8eeb79ede62&did=c11b1742-aa39-c9fd-3bd3-fd2c6f2a49ff&dnt=0&ifatype=sessionid&plt=web&lot_auds=&ttd_uid2=A4AAADZLKdLXgrGySvmerqCc6hkZMo6jkLrP4H_BDrGAY7W_BmbdAOIdA0oIpjc4vVqBCXAIYlK-p5sSKA4W8wF0WXxdH5BlE-QpXhx1QBeu1EyvqsUv1JLUyB-92FWlWbldwL6I8rt6m431sEOKO5bHBA5nRacOFtTBJ6gqVoyTGjIOTOvJgR_0Kn52MRlxWd02DvANT5XGDcv_jTjlOoWG7Q&exp=1779978692&hmac=0x2b804fa34f39587b3fd940f7c3c74f371a717011ac36aba2e2a8b4f12a58d629
+https://live-ssar-02.tonton.com.my/tv9/master.m3u8?bpkio_serviceid=6c0958d82a830a026ba9f8eeb79ede62&did=de98b38e-2dbd-ce4d-5262-30c50e49ca9e&dnt=0&ifatype=sessionid&plt=web&lot_auds=&ttd_uid2=A4AAADZLKdLXgrGySvmerqCc6hkZMo6jkLrP4H_BDrGAY7W_BmbdAOIdA0oIpjc4vVqBCXAIYlK-p5sSKA4W8wF0WXxdH5BlE-QpXhx1QBeu1EyvqsUv1JLUyB-92FWlWbldwL6I8rt6m431sEOKO5bHBA5nRacOFtTBJ6gqVoyTGjIOTOvJgR_0Kn52MRlxWd02DvANT5XGDcv_jTjlOoWG7Q&exp=1780008696&hmac=0x2c129e4ca219ead2b73f160782ec448912065b3886fbf226c191a78756d4005c
 #EXTINF:-1 tvg-chno="9" tvg-name="Drama Sangat" tvg-id="DramaSangat.my" tvg-country="MY" tvg-logo="https://headend-api.tonton.com.my/v400/imageHelper.php?id=6420342:378:CHANNEL:IMAGE" group-title="Malaysia",Drama Sangat
 #EXTVLCOPT:http-referrer=https://watch.tonton.com.my/
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
-https://live-03.tonton.com.my/ds/master.m3u8?exp=1779978698&hmac=0xb5e347991fb751f00e80d849020c882b15e358ff23b72bdddcedfb41746437c3
+https://live-03.tonton.com.my/ds/master.m3u8?exp=1780008701&hmac=0x20cc240204dd6d91cbb7459504ad219ce06d8ae30660b8ba2c3e9c9fed0cc32b
 #EXTINF:-1 tvg-chno="6" tvg-name="TV6" tvg-id="370131" tvg-country="MY" tvg-logo="https://rtm-images.glueapi.io/320x0//live_channel/tv6_Trans.png" group-title="Malaysia",TV6
 #EXTVLCOPT:http-referrer=https://rtmklik.rtm.gov.my/
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36
@@ -54,21 +54,21 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/ASTRO/
 #EXTINF:-1 tvg-chno="" tvg-name="Astro Arena Bola 2" tvg-id="4215" tvg-country="MY" tvg-logo="" group-title="Sports",Astro Arena Bola 2
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/ASTRO/Arena/Arena%20Bola%202.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Al-Hijrah" tvg-id="369680" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/esdfqp.png" group-title="Malaysia",Al-Hijrah
-https://live.mana2.my/TvAlhijrah/index.m3u8?auth_key=1779975009-45ab0e922a5441b2936d974d99f9ed76-0-3a46a4c3bf96206c0c9f75631d945d25&token=1779975009-45ab0e922a5441b2936d974d99f9ed76-0-3a46a4c3bf96206c0c9f75631d945d25
+https://live.mana2.my/TvAlhijrah/index.m3u8?auth_key=1780005018-821a7e264a7b442b81454b72ec1f46c9-0-119992e3cd21219430dc0683815027a3&token=1780005018-821a7e264a7b442b81454b72ec1f46c9-0-119992e3cd21219430dc0683815027a3
 #EXTINF:-1 tvg-chno="" tvg-name="EnjoyTV" tvg-id="" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/channel/logos/hglfwv.png" group-title="Malaysia",EnjoyTV
-https://live.mana2.my/Tv5/index.m3u8?auth_key=1779975034-11631d75f1014e17ac7fabbff0d83ae9-0-3ffced731b3dd47b0ad88bd4a9a29f9d&token=1779975034-11631d75f1014e17ac7fabbff0d83ae9-0-3ffced731b3dd47b0ad88bd4a9a29f9d
+https://live.mana2.my/Tv5/index.m3u8?auth_key=1780005042-e7fdcdaeb549446ca8303044ebfb6ecf-0-b66bc06efc762c68c95677bf41928eea&token=1780005042-e7fdcdaeb549446ca8303044ebfb6ecf-0-b66bc06efc762c68c95677bf41928eea
 #EXTINF:-1 tvg-chno="" tvg-name="BorneoTV" tvg-id="" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/npdqkp.png" group-title="Malaysia",BorneoTV
-https://live.mana2.my/BorneoTv/index.m3u8?auth_key=1779975026-1212d79756274681879612fba5013395-0-b8dae06b4f39b753bc77bea5e910aba3&token=1779975026-1212d79756274681879612fba5013395-0-b8dae06b4f39b753bc77bea5e910aba3
+https://live.mana2.my/BorneoTv/index.m3u8?auth_key=1780005034-897bbc6b62974be6b912dde9f594aa55-0-eff35a33dc60769b7472f4e0d91b9bfd&token=1780005034-897bbc6b62974be6b912dde9f594aa55-0-eff35a33dc60769b7472f4e0d91b9bfd
 #EXTINF:-1 tvg-chno="" tvg-name="SelangorTV" tvg-id="" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/emwijp.png" group-title="Malaysia",SelangorTV
-https://live.mana2.my/SelangorTv/index.m3u8?auth_key=1779975042-c764fed661da46f58a46089aa9c932d8-0-db1b7a14c0deedc9690cae8c464ff7f1&token=1779975042-c764fed661da46f58a46089aa9c932d8-0-db1b7a14c0deedc9690cae8c464ff7f1
+https://live.mana2.my/SelangorTv/index.m3u8?auth_key=1780005050-46dcb5c42f6748b7bdb1dad8b648d859-0-000db0c0cda44efe086be56d8e5055fb&token=1780005050-46dcb5c42f6748b7bdb1dad8b648d859-0-000db0c0cda44efe086be56d8e5055fb
 #EXTINF:-1 tvg-chno="" tvg-name="SukeTV" tvg-id="" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/utgwdm.png" group-title="Malaysia",SukeTV
-https://live.mana2.my/SukeTv/index.m3u8?auth_key=1779975059-44d8e0af2b9a4f1cae900521946bde4a-0-3d72f73edc2737927ac95bc4eb28e4fc&token=1779975059-44d8e0af2b9a4f1cae900521946bde4a-0-3d72f73edc2737927ac95bc4eb28e4fc
+https://live.mana2.my/SukeTv/index.m3u8?auth_key=1780005066-4afad53e3a084718a3d0fea837fcd6c5-0-b72a094bd31d9b2a076857f0044886d4&token=1780005066-4afad53e3a084718a3d0fea837fcd6c5-0-b72a094bd31d9b2a076857f0044886d4
 #EXTINF:-1 tvg-chno="" tvg-name="TVS" tvg-id="3942" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/filzbh.jpeg" group-title="Malaysia",TVS
-https://live.mana2.my/TvS/index.m3u8?auth_key=1779975068-11c049bc5b96465cb516393c9a2e6b2c-0-509daaabd0766e7b5a39a9f385b2b8dc&token=1779975068-11c049bc5b96465cb516393c9a2e6b2c-0-509daaabd0766e7b5a39a9f385b2b8dc
+https://live.mana2.my/TvS/index.m3u8?auth_key=1780005075-b7f366811b7f4e76bb9ec26258a84e2f-0-1dfa6679554545473fdcd504f2ad2fe5&token=1780005075-b7f366811b7f4e76bb9ec26258a84e2f-0-1dfa6679554545473fdcd504f2ad2fe5
 #EXTINF:-1 tvg-chno="" tvg-name="SukanPlus" tvg-id="" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/soxsng.jpeg" group-title="Malaysia",Sukan+
-https://live.mana2.my/SukanRtm/index.m3u8?auth_key=1779975051-bb8c37ddabd0418a90ca16062d31b8b6-0-bf338653b524c0d795c8dea0188dd1ab&token=1779975051-bb8c37ddabd0418a90ca16062d31b8b6-0-bf338653b524c0d795c8dea0188dd1ab
+https://live.mana2.my/SukanRtm/index.m3u8?auth_key=1780005058-fb865ae503cd47ed9ac67e5649b858c0-0-b747a379cc7948422781c89888760bf0&token=1780005058-fb865ae503cd47ed9ac67e5649b858c0-0-b747a379cc7948422781c89888760bf0
 #EXTINF:-1 tvg-chno="" tvg-name="Bernama" tvg-id="1835" tvg-country="MY" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/mytv/content/common/logos/channel/logos/ivnvsj.png" group-title="Malaysia",Bernama
-https://live.mana2.my/Bernama/index.m3u8?auth_key=1779975017-0f9a78cda6b44015b34981c5a9b04920-0-32cb6afbb84eb9b3ae1a532ee7a58ffd&token=1779975017-0f9a78cda6b44015b34981c5a9b04920-0-32cb6afbb84eb9b3ae1a532ee7a58ffd
+https://live.mana2.my/Bernama/index.m3u8?auth_key=1780005026-889a6c1d044c46838bdb6fdc1ed4b872-0-f84a196b982de213cd380d03458cc8dc&token=1780005026-889a6c1d044c46838bdb6fdc1ed4b872-0-f84a196b982de213cd380d03458cc8dc
 #EXTINF:-1 tvg-chno="" tvg-name="Dewan Rakyat" tvg-id="DewanRakyat.my" tvg-country="MY" tvg-logo="https://rtm-images.glueapi.io/320x0/live_channel/7.png" group-title="Malaysia",Dewan Rakyat
 #EXTVLCOPT:http-referrer=https://rtmklik.rtm.gov.my/
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36
@@ -117,8 +117,8 @@ https://b27a6dd8a86c3e4ba93fbae22aaaac64.pmqrop.channel-assembly.mediatailor.ap-
 https://b27a6dd8a86c3e4ba93fbae22aaaac64.pmqrop.channel-assembly.mediatailor.ap-southeast-1.amazonaws.com/v1/channel/FAST_1/dash.mpd
 #EXTINF:-1 tvg-chno="" tvg-name="Jom Ngaji" tvg-id="JomNgaji" tvg-country="MY" tvg-logo="https://datastore.vr.ctrp.sooka.my/content/images/c65ddaJomNgaji_IVP_LAND_917x516.jpg" group-title="Malaysia",Jom Ngaji
 https://827f31c3f2824c0c95c7a5190e96e284.mediatailor.ap-southeast-1.amazonaws.com/v1/dash/951fbca46ac9b52422f8e3d6d4d6dab33623c3cc/FASTOO_CH6_JOMNGAJI/dash.mpd
-## #EXTINF:-1 tvg-chno="" tvg-name="Oh My Ceria!" tvg-id="OhMyCeria" tvg-country="MY" tvg-logo="https://datastore.vr.ctrp.sooka.my/content/images/c0eaafOhMyCeria_IVP_LAND_917x516.jpg" group-title="Malaysia",Oh My Ceria!
-## https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Njoi/Oh!%20My%20Ceria.m3u8
+#EXTINF:-1 tvg-chno="" tvg-name="Oh My Ceria!" tvg-id="OhMyCeria" tvg-country="MY" tvg-logo="https://datastore.vr.ctrp.sooka.my/content/images/c0eaafOhMyCeria_IVP_LAND_917x516.jpg" group-title="Malaysia",Oh My Ceria!
+https://f9169865dbd747b4a24602e856a9c7a2.mediatailor.ap-southeast-1.amazonaws.com/v1/dash/951fbca46ac9b52422f8e3d6d4d6dab33623c3cc/FASTOO_CH7_CERIA/dash.mpd
 #EXTINF:-1 tvg-chno="" tvg-name="Quran (Mecca)" tvg-id="AlQuranKareem.id" tvg-country="SA" tvg-logo="https://mncvision.id/userfiles/image/channel/channel_93.png" group-title="Muslim",Quran (Mecca)
 https://live.kwikmotion.com/sbrksaquranradiolive/srpksaquranradio/playlist.m3u8
 ## #EXTINF:-1 tvg-chno="" tvg-name="Channel 5" tvg-id="Channel5.sg" tvg-country="SG" tvg-logo="https://i.imgur.com/9NKp5aV.png" group-title="Singapore",Channel 5
@@ -411,8 +411,8 @@ https://rakutenaa-blueskyent-lovepetsemea-rakuten-ikc4q.amagi.tv/playlist/rakute
 https://live-content.xumo.com/2715/content/XM04405O6X0WP0/28846020/master.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="mn静静nm" tvg-id="" tvg-country="CN" tvg-logo="" group-title="China",mn静静nm
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/China/mn静静nm.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="万事通熊猫" tvg-id="" tvg-country="CN" tvg-logo="" group-title="China",万事通熊猫
-https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/China/万事通熊猫.m3u8
+## #EXTINF:-1 tvg-chno="" tvg-name="万事通熊猫" tvg-id="" tvg-country="CN" tvg-logo="" group-title="China",万事通熊猫
+## https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/China/万事通熊猫.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="K-Content" tvg-id="GB17000066A" tvg-country="KR" tvg-logo="https://tvpnlogopeu.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/GB17000066A_20250826T004916SQUARE.png" group-title="Korea",K-Content
 https://jmp2.uk/stvp-GB17000066A
 #EXTINF:-1 tvg-chno="" tvg-name="K-Drama+" tvg-id="CA17000023Q" tvg-country="KR" tvg-logo="https://tvpnlogopus.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/CA17000023Q_20250826T234700SQUARE.png" group-title="Korea",K-Drama+
