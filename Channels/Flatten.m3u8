@@ -280,7 +280,7 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/E-Spor
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Music/KPOP%20Mix.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="New KPOP" tvg-id="NEWKPOP.us" tvg-country="US" tvg-logo="https://i.imgur.com/B7ILXMc.png" group-title="Music",New KPOP
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Music/New%20KPOP.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="K-POP" tvg-id="CA3900002PM" tvg-country="KR" tvg-logo="https://tvpnlogopus.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/CA3900002PM_20251202T010043SQUARE.png" group-title="Music",K-POP
+#EXTINF:-1 tvg-chno="" tvg-name="K POP by CJ ENM" tvg-id="CA3900002PM" tvg-country="KR" tvg-logo="https://tvpnlogopus.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/CA3900002PM_20251202T010043SQUARE.png" group-title="Music",K POP by CJ ENM
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Music/K-POP.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Music Japan" tvg-id="MusicJapanTV.jp" tvg-country="JP" tvg-logo="https://i.imgur.com/DkF8YZq.jpeg" group-title="Music",Music Japan
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Music/Music%20Japan.m3u8
@@ -296,13 +296,13 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Vevo/V
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Paramount/Movie%20Channel.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="MyTime Movie Network" tvg-id="" tvg-country="US" tvg-logo="" group-title="Movies",MyTime Movie Network
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/MyTime/Movie%20Network.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="Movie Sphere" tvg-id="" tvg-country="US" tvg-logo="" group-title="Movies",Movie Sphere
+#EXTINF:-1 tvg-chno="" tvg-name="Movie Sphere" tvg-id="510891" tvg-country="NZ" tvg-logo="" group-title="Movies",Movie Sphere
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Movie%20Sphere/Movie%20Sphere.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Movie Sphere 2" tvg-id="" tvg-country="US" tvg-logo="" group-title="Movies",Movie Sphere 2
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Movie%20Sphere/Movie%20Sphere%202.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Movie Sphere 3" tvg-id="" tvg-country="US" tvg-logo="" group-title="Movies",Movie Sphere 3
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Movie%20Sphere/Movie%20Sphere%203.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="Movie Sphere by Lionsgate" tvg-id="" tvg-country="US" tvg-logo="" group-title="Movies",Movie Sphere by Lionsgate
+#EXTINF:-1 tvg-chno="" tvg-name="Movie Sphere by Lionsgate" tvg-id="MovieSphere.us" tvg-country="US" tvg-logo="https://i.imgur.com/mFxUpGU.png" group-title="Movies",Movie Sphere by Lionsgate
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Movie%20Sphere/Movie%20Sphere%20by%20Lionsgate.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Movie Sphere by Lionsgate 2" tvg-id="" tvg-country="US" tvg-logo="" group-title="Movies",Movie Sphere by Lionsgate 2
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Movie%20Sphere/Movie%20Sphere%20by%20Lionsgate%202.m3u8
@@ -408,6 +408,8 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Docume
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/China/mn静静nm.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="万事通熊猫" tvg-id="" tvg-country="CN" tvg-logo="" group-title="China",万事通熊猫
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/China/万事通熊猫.m3u8
+#EXTINF:-1 tvg-chno="" tvg-name="douyu 19" tvg-id="" tvg-country="CN" tvg-logo="" group-title="China",douyu 19
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/China/douyu%2019.m3u8
 
 ##====Korea======
 #EXTINF:-1 tvg-chno="" tvg-name="K-Content" tvg-id="GB17000066A" tvg-country="KR" tvg-logo="https://tvpnlogopeu.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/GB17000066A_20250826T004916SQUARE.png" group-title="Korea",K-Content
