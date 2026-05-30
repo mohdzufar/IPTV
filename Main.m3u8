@@ -155,7 +155,7 @@ https://d2e1asnsl7br7b.cloudfront.net/7782e205e72f43aeb4a48ec97f66ebbe/index.m3u
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Indonesia/AXN%20Asia.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="tvN Movies" tvg-id="524137" tvg-country="Indonesia" tvg-logo="" group-title="Indonesia",tvN Movies
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36
-https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Indonesia/tvN%20Movies.m3u8
+http://202.150.161.212:5000/live/channel30/playlist.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="RTB Aneka" tvg-id="" tvg-country="BN" tvg-logo="" group-title="Brunei",RTB Aneka
 https://d1211whpimeups.cloudfront.net/smil:rtb2/playlist.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="RTB Sukmaindera" tvg-id="" tvg-country="BN" tvg-logo="" group-title="Brunei",RTB Sukmaindera
