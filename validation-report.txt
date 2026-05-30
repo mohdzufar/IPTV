@@ -1,7 +1,7 @@
 # ============================================================
 # IPTV Playlist Validation Report
 # ============================================================
-# Generated  : 2026-05-30 23:12:49 MYT
+# Generated  : 2026-05-30 23:51:02 MYT
 # Source     : Channels/Flatten.m3u8
 # Total      : 186 channels
 # Retry cfg  : MAX_RETRIES=2, RETRY_DELAY=5s
@@ -87,12 +87,12 @@ Aniplus Asia,India;Anime,dead,all_urls_failed,dead,0/1,3,
 Cartoon Network,Kids,active,hls_master,direct_url,1/1,1,http://23.237.104.106:8080/USA_CARTOON_NETWORK/index.m3u8
 Nickelodeon Asia,Indonesia;Kids,dead,all_urls_failed,dead,0/1,3,
 Golf Kingdom,Golf,active,hls_master,direct_url,1/3,1,https://30a-tv.com/feeds/vidaa/golf.m3u8
-Golf Channel,Golf,active,hls_master,direct_url,1/5,1,http://livex.pop-app.live/s4n/poplive/ch335/playlist.m3u8
+Golf Channel,Golf,dead,all_urls_failed,dead,0/5,3,
 Golf Channel (Latin America),Golf,active,hls_master,direct_url,1/1,1,http://8.243.126.131:8000/play/a0ea/index.m3u8?hls
 GolfNetwork Japan,Golf,active,hls_master,direct_url,1/4,1,http://cdns.jp-primehome.com:8000/zhongying/live/playlist.m3u8?cid=cs03
 ,Golf,dead,all_urls_failed,dead,0/1,3,
 GolfPass,Golf,active,hls_master,direct_url,2/4,1,https://jmp2.uk/rok-e08aa3af93f95c9db062ce237e90f6d1.m3u8
-PGA Tour,Golf,active,hls_master,direct_url,1/6,1,https://d11k1mnrgfposz.cloudfront.net/playlist.m3u8
+PGA Tour,Golf,active,hls_master,direct_url,1/7,1,https://d11k1mnrgfposz.cloudfront.net/playlist.m3u8
 DP World Tour,Golf,dead,all_urls_failed,dead,0/1,3,
 Golf Television,Golf,active,hls_master,direct_url,1/1,1,https://amg14891-amg14891c1-amgplt0165.playout.now3.amagi.tv/ts-eu-w1-n2/playlist/amg14891-amg14891c1-amgplt0165/playlist.m3u8
 SBS_Golf,Golf,active,hls_master,direct_url,1/1,1,http://mnet.x10.mx/koreaiptv/gorealra.php?channelPath=sbsgolfpc&streamName=sbsgolf2
@@ -190,7 +190,7 @@ Wild Nature,Nature,active,hls_master,direct_url,1/1,1,https://dhiy0zcig7ty1.clou
 Wild Earth,Nature,active,hls_master,direct_url,1/1,1,https://wildearth-lg.amagi.tv/hls/amagi_hls_data_wildearth-wildearth-lgAA/CDN/master.m3u8?ads.deviceid=[DEVICE_ID]&ads.ifa=[IFA]&ads.ifatype=[IFA_TYPE]&ads.lat=[LMT]&ads.donotsell=[DNS]&ads.ua=[UA]&ads.ip=[IP]&ads.gdpr=[GDPR]&ads.gdprconsent=[GDPR_CONSENT]&ads.country=[COUNTRY]&ads.usprivacy=[US_PRIVACY]&ads.appstoreurl=[APP_STOREURL]&ads.bundleid=[APP_BUNDLE]&ads.appname=[APP_NAME]&ads.appversion=[APP_VERSION]&ads.devicetype=[DEVICE_TYPE]&ads.devicemake=[DEVICE_MAKE]&ads.devicemodel=[DEVICE_MODEL]&ads.coppa=0&ads.targetad=[TARGETAD_ALLOWED]&ads.fck=[FCK]&ads.viewsize=[VIEWSIZE]&ads.givn=[NONCE]&ads.dmake=[DEVICE_MAKE]
 Wild Planet,Nature,active,hls_master,direct_url,1/1,1,https://d1h8whhtg5u7om.cloudfront.net/WildPlanet_GB.m3u8
 Xumo Nature & Wildlife TV,Nature,active,hls_master,direct_url,1/1,1,https://live-content.xumo.com/3883/content/XM0RW1PIY5R776/25283138/master.m3u8
-Animal Planet,Nature,active,hls_master,direct_url,1/1,1,http://23.237.104.106:8080/USA_ANIMAL_PLANET/index.m3u8
+Animal Planet,Nature,dead,all_urls_failed,dead,0/1,3,
 Discovery Channel,,active,hls_master,direct_url,1/1,1,http://23.237.104.106:8080/USA_DISCOVERY/index.m3u8
 Discovery Life,,dead,all_urls_failed,dead,0/1,3,
 Discovery Science,,dead,all_urls_failed,dead,0/1,3,
@@ -213,11 +213,11 @@ KBS World,Korea,active,hls_media,wrapper_kept,1/1,1,https://liveh12.vtvprime.vn/
 # SUMMARY
 # ============================================================
 # Total        : 186
-# Active       : 132
+# Active       : 130
 #   Wrapper kept : 29  (hls_media — URL hidden)
-#   Direct URL   : 103  (hls_master/dash/mp4 — URL exposed)
-# Dead          : 42
+#   Direct URL   : 101  (hls_master/dash/mp4 — URL exposed)
+# Dead          : 44
 # Skipped       : 12
-# Success       : 75.9%  (active / non-skipped)
-# Run time      : 2026-05-30 23:12:49 MYT
+# Success       : 74.7%  (active / non-skipped)
+# Run time      : 2026-05-30 23:51:02 MYT
 # ============================================================
