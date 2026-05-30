@@ -1,4 +1,4 @@
-#EXTM3U url-tvg="https://epg.pw/xmltv/epg.xml?timezone=Asia%2FKuala_Lumpur, https://raw.githubusercontent.com/doms9/iptv/refs/heads/default/M3U8/TV.xml"
+#EXTM3U url-tvg="https://epg.pw/xmltv/epg.xml.gz, https://raw.githubusercontent.com/doms9/iptv/refs/heads/default/M3U8/TV.xml"
 
 
 #EXTINF:-1 tvg-chno="1" tvg-name="RTM TV1" tvg-id="370136" tvg-country="MY" tvg-logo="https://rtm-images.glueapi.io/320x0//live_channel/tv1_Trans.png" group-title="Malaysia",RTM TV1
@@ -134,6 +134,8 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Singap
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/India/KCM.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="AXN Asia" tvg-id="AXNAsia.sg" tvg-country="Indonesia" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/AXN_logo_%282015%29.svg/960px-AXN_logo_%282015%29.svg.png" group-title="Indonesia",AXN Asia
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Indonesia/AXN%20Asia.m3u8
+#EXTINF:-1 tvg-chno="" tvg-name="tvN Movies" tvg-id="524137" tvg-country="Indonesia" tvg-logo="" group-title="Indonesia",tvN Movies
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Indonesia/tvN%20Movies.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="RTB Aneka" tvg-id="" tvg-country="BN" tvg-logo="" group-title="Brunei",RTB Aneka
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Brunei/RTB%20Aneka.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="RTB Sukmaindera" tvg-id="" tvg-country="BN" tvg-logo="" group-title="Brunei",RTB Sukmaindera
@@ -199,6 +201,8 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/BeiN/S
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/BeiN/Sports%205.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Bein Xtra" tvg-id="beINSPORTSXTRA.us" tvg-country="US" tvg-logo="https://i.ibb.co/HT49GPmB/XTRA-2.png" group-title="Sports",Bein Xtra
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/BeiN/Extra.m3u8
+#EXTINF:-1 tvg-chno="" tvg-name="Bein Xtra 2" tvg-id="beINSportsXtra2.qa" tvg-country="BD" tvg-logo="https://i.imgur.com/08Y2CW1.png" group-title="Sports",Bein Xtra 2
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/BeiN/Extra%202.m3u8
 ##=====Tennis================
 #EXTINF:-1 tvg-chno="" tvg-name="Tennis TV" tvg-id="6627621d56fc840008e47c90" tvg-country="" tvg-logo="https://images.pluto.tv/channels/6627621d56fc840008e47c90/colorLogoPNG_1756973184696.png" group-title="Sports",Tennis TV
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Tennis%20TV/Tennis%20TV.m3u8
