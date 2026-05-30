@@ -1,4 +1,4 @@
 #EXTM3U
-#EXTINF:-1, tvN Movies
+#EXTINF:1, tvN Movies
 http://202.150.161.212:5000/live/channel30/playlist.m3u8
 https://t.freetv.fun/live/tvn-movies-tt.m3u8
