@@ -1,7 +1,7 @@
 # ============================================================
 # IPTV Playlist Validation Report
 # ============================================================
-# Generated  : 2026-05-30 06:12:33 MYT
+# Generated  : 2026-05-30 09:14:36 MYT
 # Source     : Channels/Flatten.m3u8
 # Total      : 184 channels
 # Retry cfg  : MAX_RETRIES=2, RETRY_DELAY=5s
@@ -86,7 +86,7 @@ Aniplus Asia,India;Anime,dead,all_urls_failed,dead,0/1,3,
 Cartoon Network,Kids,active,hls_master,direct_url,1/1,1,http://23.237.104.106:8080/USA_CARTOON_NETWORK/index.m3u8
 Nickelodeon Asia,Indonesia;Kids,dead,all_urls_failed,dead,0/1,3,
 Golf Kingdom,Golf,active,hls_master,direct_url,1/3,1,https://30a-tv.com/feeds/vidaa/golf.m3u8
-Golf Channel,Golf,active,hls_master,direct_url,1/5,1,http://livex.pop-app.live/s4n/poplive/ch335/playlist.m3u8
+Golf Channel,Golf,dead,all_urls_failed,dead,0/5,3,
 Golf Channel (Latin America),Golf,active,hls_master,direct_url,1/1,1,http://8.243.126.131:8000/play/a0ea/index.m3u8?hls
 GolfNetwork Japan,Golf,active,hls_master,direct_url,1/4,1,http://cdns.jp-primehome.com:8000/zhongying/live/playlist.m3u8?cid=cs03
 ,Golf,dead,all_urls_failed,dead,0/1,3,
@@ -141,7 +141,7 @@ CS2,E-Sports,dead,all_urls_failed,dead,0/1,3,
 CS2,E-Sports,dead,all_urls_failed,dead,0/1,3,
 DotA2,E-Sports,dead,all_urls_failed,dead,0/1,3,
 DotA2,E-Sports,dead,all_urls_failed,dead,0/1,3,
-KPOP Mix,Music,active,hls_master,direct_url,1/1,1,https://cloud.tvomix.com/KPOPMIX/index.m3u8
+KPOP Mix,Music,dead,all_urls_failed,dead,0/1,3,
 New KPOP,Music,active,hls_master,direct_url,1/1,1,https://newidco-newkid-1-eu.xiaomi.wurl.tv/playlist.m3u8
 K POP by CJ ENM,Music,active,hls_master,direct_url,1/1,1,https://jmp2.uk/stvp-CA3900002PM
 Music Japan,Music,active,hls_master,direct_url,1/1,1,http://cdns.jp-primehome.com:8000/zhongying/live/playlist.m3u8?cid=cs06
@@ -159,7 +159,7 @@ Wedotv Movies,Movies,active,hls_master,direct_url,1/1,1,https://amg00735-amg0073
 Miramax,Movies,active,hls_media,wrapper_kept,1/1,1,https://linear-798.frequency.stream/mt/plex/798/hls/master/playlist_1920x1080.m3u8
 Universal Movie,Movies,active,hls_master,direct_url,1/1,1,https://d4whmvwm0rdvi.cloudfront.net/10007/99991621/hls/master.m3u8?ads.xumo_channelId=99991621&ads.asnw=169843&ads.afid=158702674&ads.sfid=16926435&ads.csid=xumo_web_rottentomatoesrttv_ssai_cro&ads._fw_is_lat=0&ads._fw_us_privacy=&ads._fw_coppa=0&ads._fw_did=c9825a71-4385-4205-834c-7bf77bcc68a4&ads._fw_vcid2=512116:c9825a71-4385-4205-834c-7bf77bcc68a4&ads._fw_app_bundle=web.xumo.com&ads._fw_app_store_url=&ads._fw_content_category=&ads._fw_content_genre=&ads._fw_content_language=en&ads._fw_content_rating=&ads._fw_deviceMake=GitHubAction&ads._fw_device_model=PythonScript&ads._fw_deviceType=3-Connected_TV&ads.appVersion=1.0.0&ads.appName=XumoPlay&ads.xumo_contentId=2659&ads.xumo_contentName=RottenTomatoesRTTV&ads.xumo_providerId=2659&ads.xumo_providerName=RottenTomatoesRTTV&ads.channelId=99991621&ads._fw_ifa_type=
 Cinemax,Movies,active,hls_master,direct_url,1/1,1,http://23.237.104.106:8080/USA_CINEMAX/index.m3u8
-Hallmark Channel,Movies,dead,all_urls_failed,dead,0/1,3,
+Hallmark Channel,Movies,active,hls_master,direct_url,1/1,1,http://23.237.104.106:8080/USA_HALLMARK/index.m3u8
 HBO,Movies,active,hls_master,direct_url,1/1,1,http://23.237.104.106:8080/USA_HBO/index.m3u8
 HBO 2,Movies,active,hls_master,direct_url,1/1,1,http://23.237.104.106:8080/USA_HBO2/index.m3u8
 HBO Comedy,Movies,active,hls_master,direct_url,1/1,1,http://23.237.104.106:8080/USA_HBO_COMEDY/index.m3u8
@@ -211,11 +211,11 @@ KBS World,Korea,active,hls_media,wrapper_kept,1/1,1,https://liveh12.vtvprime.vn/
 # SUMMARY
 # ============================================================
 # Total        : 184
-# Active       : 129
+# Active       : 128
 #   Wrapper kept : 28  (hls_media — URL hidden)
-#   Direct URL   : 101  (hls_master/dash/mp4 — URL exposed)
-# Dead          : 43
+#   Direct URL   : 100  (hls_master/dash/mp4 — URL exposed)
+# Dead          : 44
 # Skipped       : 12
-# Success       : 75.0%  (active / non-skipped)
-# Run time      : 2026-05-30 06:12:33 MYT
+# Success       : 74.4%  (active / non-skipped)
+# Run time      : 2026-05-30 09:14:36 MYT
 # ============================================================
