@@ -36,7 +36,7 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git config core.autocrlf false
 
-          git add EPG/epg.xml Main.m3u8 Channels/Flatten.m3u8
+          git add EPG/epg.xml.gz Main.m3u8 Channels/Flatten.m3u8 scripts/refresh_epg.py .github/workflows/update_epg.yml
 
           if git diff --cached --quiet; then
             echo "No EPG changes to commit"
