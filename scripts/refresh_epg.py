@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 import gzip
 import io
-import os
 import re
 import sys
 import urllib.request
@@ -12,10 +11,10 @@ from pathlib import Path
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-OUTPUT_FILE = REPO_ROOT / "EPG" / "epg.xml"
+OUTPUT_FILE = REPO_ROOT / "EPG" / "epg.xml.gz"
 
 SOURCE_EPG_URL = "https://epg.pw/xmltv/epg.xml.gz"
-LOCAL_EPG_URL = "https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/EPG/epg.xml"
+LOCAL_EPG_URL = "https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/EPG/epg.xml.gz"
 
 PLAYLIST_FILES = [
     REPO_ROOT / "Channels" / "Flatten.m3u8",
@@ -79,8 +78,6 @@ def convert_xmltv_time(value):
         timestamp += "00"
 
     source_time = datetime.strptime(timestamp, "%Y%m%d%H%M%S")
-
-    # If source has no timezone, treat it as UTC before converting to Malaysia time.
     source_tz = parse_offset(offset_text)
     converted = source_time.replace(tzinfo=source_tz).astimezone(TARGET_TZ)
 
@@ -141,15 +138,14 @@ def main():
 
     OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
 
-    ET.ElementTree(root).write(
-        OUTPUT_FILE,
-        encoding="utf-8",
-        xml_declaration=True,
-        short_empty_elements=True,
-    )
-
-    with OUTPUT_FILE.open("ab") as handle:
+    xml_bytes = ET.tostring(root, encoding="utf-8", xml_declaration=True)
+    with gzip.open(OUTPUT_FILE, "wb", compresslevel=9) as handle:
+        handle.write(xml_bytes)
         handle.write(b"\n")
+
+    old_uncompressed = REPO_ROOT / "EPG" / "epg.xml"
+    if old_uncompressed.exists():
+        old_uncompressed.unlink()
 
     header_updates = 0
     for playlist in PLAYLIST_FILES:
