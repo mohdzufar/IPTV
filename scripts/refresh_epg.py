@@ -14,12 +14,6 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 OUTPUT_FILE = REPO_ROOT / "EPG" / "epg.xml.gz"
 
 SOURCE_EPG_URL = "https://epg.pw/xmltv/epg.xml.gz"
-LOCAL_EPG_URL = "https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/EPG/epg.xml.gz"
-
-PLAYLIST_FILES = [
-    REPO_ROOT / "Channels" / "Flatten.m3u8",
-    REPO_ROOT / "Main.m3u8",
-]
 
 TARGET_TZ = timezone(timedelta(hours=8))
 TARGET_OFFSET = "+0800"
@@ -100,30 +94,6 @@ def convert_epg_times(root):
     return converted_count
 
 
-def update_playlist_header(path):
-    if not path.exists():
-        return False
-
-    with path.open("r", encoding="utf-8-sig", newline="") as handle:
-        text = handle.read()
-
-    lines = text.splitlines(keepends=True)
-    newline = "\r\n" if lines and lines[0].endswith("\r\n") else "\n"
-    new_header = f'#EXTM3U url-tvg="{LOCAL_EPG_URL}"{newline}'
-
-    if lines and lines[0].startswith("#EXTM3U"):
-        if lines[0] == new_header:
-            return False
-        lines[0] = new_header
-    else:
-        lines.insert(0, new_header)
-
-    with path.open("w", encoding="utf-8", newline="") as handle:
-        handle.write("".join(lines))
-
-    return True
-
-
 def main():
     log("=" * 60)
     log("Refreshing EPG and converting XMLTV times to +0800")
@@ -147,16 +117,10 @@ def main():
     if old_uncompressed.exists():
         old_uncompressed.unlink()
 
-    header_updates = 0
-    for playlist in PLAYLIST_FILES:
-        if update_playlist_header(playlist):
-            header_updates += 1
-
     log(f"Source         : {SOURCE_EPG_URL}")
     log(f"Channels       : {channel_count}")
     log(f"Programmes     : {programme_count}")
     log(f"Times converted: {converted_count}")
-    log(f"Header updates : {header_updates}")
     log(f"Output         : {OUTPUT_FILE}")
     log("=" * 60)
 
