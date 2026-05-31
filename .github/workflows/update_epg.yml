@@ -1,0 +1,48 @@
+name: Update EPG
+
+on:
+  schedule:
+    - cron: '0 16 * * *'  # 12:00 AM Malaysia (UTC+8)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+
+      - name: Refresh EPG timezone
+        run: python scripts/refresh_epg.py
+
+      - name: Commit and push EPG
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config core.autocrlf false
+
+          git add EPG/epg.xml Main.m3u8 Channels/Flatten.m3u8
+
+          if git diff --cached --quiet; then
+            echo "No EPG changes to commit"
+            exit 0
+          fi
+
+          git commit -m "Automated EPG update"
+          git pull --rebase --autostash origin main
+          git push origin HEAD:main
