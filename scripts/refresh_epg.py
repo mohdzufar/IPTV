@@ -21,7 +21,11 @@ USER_AGENT = (
     "Chrome/120.0.0.0 Safari/537.36"
 )
 
-# Regex to capture YYYYMMDDHHMMSS and optional timezone offset
+# Malaysia timezone
+MYT = timezone(timedelta(hours=8))
+MYT_OFFSET = "+0800"
+
+# Regex for XMLTV timestamps (optional offset)
 XMLTV_TIME_RE = re.compile(r"^(\d{12}|\d{14})(?:\s*([+-]\d{4}|Z))?$")
 
 
@@ -49,24 +53,45 @@ def fetch_source_epg():
     return data.decode("utf-8-sig", errors="replace")
 
 
-def convert_xmltv_time(value):
-    """Strip any timezone offset and return just the timestamp (YYYYMMDDHHMMSS).
-    Players will treat the time as local (UTC+8) automatically."""
+def parse_offset(offset_text):
+    """Return a timezone object from an offset string like '+0000' or 'Z'."""
+    if not offset_text or offset_text == "Z":
+        return timezone.utc
+    sign = 1 if offset_text[0] == "+" else -1
+    hours = int(offset_text[1:3])
+    minutes = int(offset_text[3:5])
+    return timezone(sign * timedelta(hours=hours, minutes=minutes))
+
+
+def shift_to_myt(value):
+    """
+    Take an XMLTV time string (with or without offset),
+    interpret it as-is, then convert to MYT (+0800).
+    Returns the new time string with "+0800" suffix.
+    """
     value = value.strip()
     match = XMLTV_TIME_RE.match(value)
     if not match:
-        return value, False
+        return value  # unchanged if unrecognised
 
     timestamp, offset_text = match.groups()
     if len(timestamp) == 12:
         timestamp += "00"
 
-    # Return the timestamp without any offset suffix
-    return timestamp, True
+    # Determine the original timezone
+    src_tz = parse_offset(offset_text) if offset_text else timezone.utc
+
+    # Parse the naive timestamp and attach source timezone
+    src_time = datetime.strptime(timestamp, "%Y%m%d%H%M%S").replace(tzinfo=src_tz)
+
+    # Convert to MYT
+    myt_time = src_time.astimezone(MYT)
+
+    return myt_time.strftime("%Y%m%d%H%M%S") + " " + MYT_OFFSET
 
 
 def convert_epg_times(root):
-    """Remove timezone offsets from all programme start/stop times."""
+    """Shift all programme times to MYT (+0800)."""
     converted_count = 0
 
     for programme in root.findall("programme"):
@@ -74,9 +99,10 @@ def convert_epg_times(root):
             if attr not in programme.attrib:
                 continue
 
-            converted, changed = convert_xmltv_time(programme.attrib[attr])
-            if changed:
-                programme.attrib[attr] = converted
+            old_value = programme.attrib[attr]
+            new_value = shift_to_myt(old_value)
+            if new_value != old_value:
+                programme.attrib[attr] = new_value
                 converted_count += 1
 
     return converted_count
@@ -84,16 +110,15 @@ def convert_epg_times(root):
 
 def main():
     log("=" * 60)
-    log("Refreshing EPG – stripping timezone offsets for OTT Navigator")
+    log("Refreshing EPG – converting all times to MYT (+0800)")
     log("=" * 60)
 
     xml_text = fetch_source_epg()
     root = ET.fromstring(xml_text.encode("utf-8"))
 
-    # --- FIX: set the global <tv> date to current Malaysian time (+0800) ---
-    now_myt = datetime.now(timezone(timedelta(hours=8)))
-    root.set("date", now_myt.strftime("%Y%m%d%H%M%S") + " +0800")
-    # -----------------------------------------------------------------------
+    # Set global <tv> date to current MYT
+    now_myt = datetime.now(MYT)
+    root.set("date", now_myt.strftime("%Y%m%d%H%M%S") + " " + MYT_OFFSET)
 
     channel_count = len(root.findall("channel"))
     programme_count = len(root.findall("programme"))
@@ -113,7 +138,7 @@ def main():
     log(f"Source         : {SOURCE_EPG_URL}")
     log(f"Channels       : {channel_count}")
     log(f"Programmes     : {programme_count}")
-    log(f"Timestamps fixed: {converted_count}")
+    log(f"Times converted: {converted_count}")
     log(f"Output         : {OUTPUT_FILE}")
     log("=" * 60)
 
