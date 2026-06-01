@@ -90,6 +90,11 @@ def main():
     xml_text = fetch_source_epg()
     root = ET.fromstring(xml_text.encode("utf-8"))
 
+    # --- FIX: set the global <tv> date to current Malaysian time (+0800) ---
+    now_myt = datetime.now(timezone(timedelta(hours=8)))
+    root.set("date", now_myt.strftime("%Y%m%d%H%M%S") + " +0800")
+    # -----------------------------------------------------------------------
+
     channel_count = len(root.findall("channel"))
     programme_count = len(root.findall("programme"))
     converted_count = convert_epg_times(root)
