@@ -400,9 +400,8 @@ def main():
         report.write("#   MainEntry  - wrapper_kept / direct_url / skipped / dead\n")
         report.write("#   URLsTested - position/total  e.g. 2/3 = 2nd of 3 worked\n")
         report.write("#   Attempts   - HTTP attempts before pass/fail\n")
-        report.write("#   DirectURL  - URL that passed (blank if dead)\n")
         report.write("#\n")
-        report.write("Channel,Group,Status,StreamType,MainEntry,URLsTested,Attempts,DirectURL\n")
+        report.write("Channel,Group,Status,StreamType,MainEntry,URLsTested,Attempts\n")
 
         for i, block in enumerate(blocks):
             name = block['channel_name']
