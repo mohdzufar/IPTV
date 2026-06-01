@@ -15,15 +15,13 @@ OUTPUT_FILE = REPO_ROOT / "EPG" / "epg.xml.gz"
 
 SOURCE_EPG_URL = "https://epg.pw/xmltv/epg.xml.gz"
 
-TARGET_TZ = timezone(timedelta(hours=8))
-TARGET_OFFSET = "+0800"
-
 USER_AGENT = (
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
     "AppleWebKit/537.36 (KHTML, like Gecko) "
     "Chrome/120.0.0.0 Safari/537.36"
 )
 
+# Regex to capture YYYYMMDDHHMMSS and optional timezone offset
 XMLTV_TIME_RE = re.compile(r"^(\d{12}|\d{14})(?:\s*([+-]\d{4}|Z))?$")
 
 
@@ -51,17 +49,9 @@ def fetch_source_epg():
     return data.decode("utf-8-sig", errors="replace")
 
 
-def parse_offset(offset_text):
-    if not offset_text or offset_text == "Z":
-        return timezone.utc
-
-    sign = 1 if offset_text[0] == "+" else -1
-    hours = int(offset_text[1:3])
-    minutes = int(offset_text[3:5])
-    return timezone(sign * timedelta(hours=hours, minutes=minutes))
-
-
 def convert_xmltv_time(value):
+    """Strip any timezone offset and return just the timestamp (YYYYMMDDHHMMSS).
+    Players will treat the time as local (UTC+8) automatically."""
     value = value.strip()
     match = XMLTV_TIME_RE.match(value)
     if not match:
@@ -71,14 +61,12 @@ def convert_xmltv_time(value):
     if len(timestamp) == 12:
         timestamp += "00"
 
-    source_time = datetime.strptime(timestamp, "%Y%m%d%H%M%S")
-    source_tz = parse_offset(offset_text)
-    converted = source_time.replace(tzinfo=source_tz).astimezone(TARGET_TZ)
-
-    return f"{converted.strftime('%Y%m%d%H%M%S')} {TARGET_OFFSET}", True
+    # Return the timestamp without any offset suffix
+    return timestamp, True
 
 
 def convert_epg_times(root):
+    """Remove timezone offsets from all programme start/stop times."""
     converted_count = 0
 
     for programme in root.findall("programme"):
@@ -96,7 +84,7 @@ def convert_epg_times(root):
 
 def main():
     log("=" * 60)
-    log("Refreshing EPG and converting XMLTV times to +0800")
+    log("Refreshing EPG – stripping timezone offsets for OTT Navigator")
     log("=" * 60)
 
     xml_text = fetch_source_epg()
@@ -120,7 +108,7 @@ def main():
     log(f"Source         : {SOURCE_EPG_URL}")
     log(f"Channels       : {channel_count}")
     log(f"Programmes     : {programme_count}")
-    log(f"Times converted: {converted_count}")
+    log(f"Timestamps fixed: {converted_count}")
     log(f"Output         : {OUTPUT_FILE}")
     log("=" * 60)
 
