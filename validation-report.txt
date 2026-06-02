@@ -1,7 +1,7 @@
 # ============================================================
 # IPTV Playlist Validation Report
 # ============================================================
-# Generated  : 2026-06-02 06:41:49 MYT
+# Generated  : 2026-06-02 07:52:10 MYT
 # Source     : Channels/Flatten.m3u8
 # Total      : 186 channels
 # Retry cfg  : MAX_RETRIES=2, RETRY_DELAY=5s
@@ -218,5 +218,5 @@ KBS World,Korea,active,hls_media,wrapper_kept,1/1,1,https://liveh12.vtvprime.vn/
 # Dead          : 44
 # Skipped       : 12
 # Success       : 74.7%  (active / non-skipped)
-# Run time      : 2026-06-02 06:41:49 MYT
+# Run time      : 2026-06-02 07:52:10 MYT
 # ============================================================
