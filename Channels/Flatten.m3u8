@@ -122,7 +122,7 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Singap
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Singapore/ROCK%20Entertainment.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="TechStorm" tvg-id="TechStorm.sg" tvg-country="SG" tvg-logo="https://i.imgur.com/fAprFBJ.png" group-title="Singapore",TechStorm
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Singapore/TechStorm.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="ZooMoo" tvg-id="ZooMoo.sg" tvg-country="SG" tvg-logo="https://i.imgur.com/ciTJrnl.png" group-title="Singapore",ZooMoo
+#EXTINF:-1 tvg-chno="" tvg-name="ZooMoo" tvg-id="ZooMoo.sg" tvg-country="SG" tvg-logo="https://i.imgur.com/ciTJrnl.png" group-title="Singapore;Kids",ZooMoo
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Singapore/ZooMoo.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="CNA" tvg-id="CNA.sg" tvg-country="SG" tvg-logo="https://i.imgur.com/awIDugE.png" group-title="Singapore;News",CNA
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Singapore/CNA.m3u8
@@ -134,7 +134,7 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Singap
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/India/KCM.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="AXN Asia" tvg-id="AXNAsia.sg" tvg-country="Indonesia" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/AXN_logo_%282015%29.svg/960px-AXN_logo_%282015%29.svg.png" group-title="Indonesia",AXN Asia
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Indonesia/AXN%20Asia.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="tvN Movies" tvg-id="524137" tvg-country="Indonesia" tvg-logo="https://i.imgur.com/c4XvwO2.png" group-title="Indonesia",tvN Movies
+#EXTINF:-1 tvg-chno="" tvg-name="tvN Movies" tvg-id="524137" tvg-country="Indonesia" tvg-logo="https://i.imgur.com/c4XvwO2.png" group-title="Indonesia;Movies",tvN Movies
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Indonesia/tvN%20Movies.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="RTB Aneka" tvg-id="" tvg-country="BN" tvg-logo="https://i.imgur.com/MY40GrC.png" group-title="Brunei",RTB Aneka
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Brunei/RTB%20Aneka.m3u8
@@ -142,7 +142,7 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Brunei
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Brunei/RTB%20Sukmaindera.m3u8
 
 ##====Anime====
-#EXTINF:-1 tvg-chno="" tvg-name="Crunchyroll" tvg-id="65652f7fc0fc88000883537a" tvg-country="US" tvg-logo="" group-title="Anime",Crunchyroll
+#EXTINF:-1 tvg-chno="" tvg-name="Crunchyroll" tvg-id="Crunchyroll.us" tvg-country="US" tvg-logo="https://i.imgur.com/2FlIQUO.png" group-title="United State;Anime",Crunchyroll
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Crunchyroll/Crunchyroll.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Aniplus Asia" tvg-id="AniplusAsia.sg" tvg-country="India" tvg-logo="https://i.imgur.com/Im3MePy.png" group-title="India;Anime",Aniplus Asia
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/India/Animax%20Asia.m3u8
@@ -156,12 +156,12 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Indone
 ##=====Golf======
 #EXTINF:-1 tvg-chno="" tvg-name="Golf Kingdom" tvg-id="30AGolfKingdom.us" tvg-country="US" tvg-logo="" group-title="Golf",Golf Kingdom
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Golf%20Kingdom/Golf%20Kingdom.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="Golf Channel" tvg-id="Golf.Channel.HD.us2" tvg-country="US" tvg-logo="https://www.sms.cz/kategorie/televize/bmp/loga/velka/golfchannel.png" group-title="Golf",Golf Channel
+#EXTINF:-1 tvg-chno="" tvg-name="Golf Channel" tvg-id="GolfChannel.us" tvg-country="US" tvg-logo="https://www.sms.cz/kategorie/televize/bmp/loga/velka/golfchannel.png" group-title="Golf",Golf Channel
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Golf%20Channel/Golf%20Channel.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Golf Channel (Latin America)" tvg-id="GolfChannelLatinAmerica.us" tvg-country="US" tvg-logo="https://i.imgur.com/Lgux6Ik.png" group-title="Golf",Golf Channel (Latin America)
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Golf%20Channel/Golf%20Channel%20(Latin%20America).m3u8
-##EXTINF:-1 tvg-chno="" tvg-name="GolfNetwork" tvg-id="" tvg-country="US" tvg-logo="" group-title="Golf",GolfNetwork
-##https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Golf%20Network/Golf%20Network.m3u8
+#EXTINF:-1 tvg-chno="" tvg-name="GolfNetwork" tvg-id="" tvg-country="US" tvg-logo="" group-title="Golf",GolfNetwork
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Golf%20Network/Golf%20Network.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="GolfNetwork Japan" tvg-id="GolfNetwork.jp" tvg-country="JP" tvg-logo="https://i.imgur.com/s6lmfXF.png" group-title="Golf",GolfNetwork Japan
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Golf%20Network/Golf%20Network%20Japan.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="" tvg-id="OneGolf.pk" tvg-country="Pakistan" tvg-logo="https://i.imgur.com/7JhaEW5.png" group-title="Golf",One Golf
@@ -210,7 +210,7 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Tennis
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Tennis%20TV/Tennis%20TV2.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Tennis+" tvg-id="" tvg-country="" tvg-logo="" group-title="Sports",Tennis+
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Tennis%20TV/Tennis%20Plus.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="Tennis Channel" tvg-id="Tennis.Channel.HD.us2" tvg-country="US" tvg-logo="https://i.imgur.com/tsljAnY.png" group-title="Sports",Tennis Channel
+#EXTINF:-1 tvg-chno="" tvg-name="Tennis Channel" tvg-id="TennisChannel.us" tvg-country="US" tvg-logo="https://i.imgur.com/tsljAnY.png" group-title="Sports",Tennis Channel
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Tennis%20Channel/Tennis%20Channel.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Tennis Channel 2" tvg-id="" tvg-country="US" tvg-logo="https://i.imgur.com/tsljAnY.png" group-title="Sports",Tennis Channel 2
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Tennis%20Channel/Tennis%20Channel%202.m3u8
@@ -299,15 +299,15 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Vevo/V
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Paramount/Movie%20Channel.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="MyTime Movie Network" tvg-id="" tvg-country="US" tvg-logo="" group-title="Movies",MyTime Movie Network
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/MyTime/Movie%20Network.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="Movie Sphere" tvg-id="510891" tvg-country="NZ" tvg-logo="" group-title="Movies",Movie Sphere
+#EXTINF:-1 tvg-chno="" tvg-name="Movie Sphere" tvg-id="510891" tvg-country="NZ" tvg-logo="https://epg.pw/media/images/epg/2026/04/22/20260422040431223611_18.png" group-title="Movies",Movie Sphere
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Movie%20Sphere/Movie%20Sphere.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="Movie Sphere 2" tvg-id="" tvg-country="US" tvg-logo="" group-title="Movies",Movie Sphere 2
+#EXTINF:-1 tvg-chno="" tvg-name="Movie Sphere 2" tvg-id="" tvg-country="US" tvg-logo="https://epg.pw/media/images/epg/2026/04/22/20260422040431223611_18.png" group-title="Movies",Movie Sphere 2
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Movie%20Sphere/Movie%20Sphere%202.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="Movie Sphere 3" tvg-id="" tvg-country="US" tvg-logo="" group-title="Movies",Movie Sphere 3
+#EXTINF:-1 tvg-chno="" tvg-name="Movie Sphere 3" tvg-id="" tvg-country="US" tvg-logo="https://epg.pw/media/images/epg/2026/04/22/20260422040431223611_18.png" group-title="Movies",Movie Sphere 3
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Movie%20Sphere/Movie%20Sphere%203.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Movie Sphere by Lionsgate" tvg-id="MovieSphere.us" tvg-country="US" tvg-logo="https://i.imgur.com/mFxUpGU.png" group-title="Movies",Movie Sphere by Lionsgate
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Movie%20Sphere/Movie%20Sphere%20by%20Lionsgate.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="Movie Sphere by Lionsgate 2" tvg-id="" tvg-country="US" tvg-logo="" group-title="Movies",Movie Sphere by Lionsgate 2
+#EXTINF:-1 tvg-chno="" tvg-name="Movie Sphere by Lionsgate 2" tvg-id="" tvg-country="US" tvg-logo="https://i.imgur.com/mFxUpGU.png" group-title="Movies",Movie Sphere by Lionsgate 2
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Movie%20Sphere/Movie%20Sphere%20by%20Lionsgate%202.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Wedotv Movies" tvg-id="" tvg-country="UK" tvg-logo="" group-title="Movies",Wedotv Movies
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Wedotv%20Movies/Wedotv%20Movies.m3u8
@@ -415,7 +415,7 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/China/
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/China/douyu%2019.m3u8
 
 ##====Korea======
-#EXTINF:-1 tvg-chno="" tvg-name="K-Content" tvg-id="GB17000066A" tvg-country="KR" tvg-logo="https://tvpnlogopeu.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/GB17000066A_20250826T004916SQUARE.png" group-title="Korea",K-Content
+#EXTINF:-1 tvg-chno="" tvg-name="K-Content" tvg-id="KContentbyCJENM.us" tvg-country="KR" tvg-logo="https://tvpnlogopeu.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/GB17000066A_20250826T004916SQUARE.png" group-title="Korea",K-Content
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Korea/K-Content.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="K-Drama+" tvg-id="CA17000023Q" tvg-country="KR" tvg-logo="https://tvpnlogopus.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/CA17000023Q_20250826T234700SQUARE.png" group-title="Korea",K-Drama+
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Korea/K-Drama_plus.m3u8
