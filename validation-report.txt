@@ -1,7 +1,7 @@
 # ============================================================
 # IPTV Playlist Validation Report
 # ============================================================
-# Generated  : 2026-06-04 16:38:34 MYT
+# Generated  : 2026-06-04 23:53:53 MYT
 # Source     : Channels/Flatten.m3u8
 # Total      : 187 channels
 # Retry cfg  : MAX_RETRIES=2, RETRY_DELAY=5s
@@ -214,5 +214,5 @@ KoreaTV,Korea,active,hls_master,direct_url,1/1,1
 # Dead           : 56
 # Skipped        : 8
 # Success        : 68.7%  (active / non-skipped)
-# Run time       : 2026-06-04 16:38:34 MYT
+# Run time       : 2026-06-04 23:53:53 MYT
 # ============================================================
