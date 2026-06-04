@@ -134,7 +134,7 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Singap
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Singapore/MediaCorp%20(Tamil).m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="KCM" tvg-id="KCM.sg" tvg-country="India" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/KCM.png" group-title="India",KCM
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/India/KCM.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="AXN Asia" tvg-id="AXNAsia.sg" tvg-country="Indonesia" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/AXN_logo_%282015%29.svg/960px-AXN_logo_%282015%29.svg.png" group-title="Indonesia",AXN Asia
+#EXTINF:-1 tvg-chno="" tvg-name="AXN Asia" tvg-id="369716" tvg-country="Indonesia" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/AXN_logo_%282015%29.svg/960px-AXN_logo_%282015%29.svg.png" group-title="Indonesia",AXN Asia
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Indonesia/AXN%20Asia.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="tvN Movies" tvg-id="524137" tvg-country="Indonesia" tvg-logo="https://i.imgur.com/c4XvwO2.png" group-title="Indonesia;Movies",tvN Movies
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Indonesia/tvN%20Movies.m3u8
