@@ -1,7 +1,7 @@
 # ============================================================
 # IPTV Playlist Validation Report
 # ============================================================
-# Generated  : 2026-06-05 18:57:00 MYT
+# Generated  : 2026-06-05 23:32:49 MYT
 # Source     : Channels/Flatten.m3u8
 # Total      : 191 channels
 # Retry cfg  : MAX_RETRIES=2, RETRY_DELAY=5s
@@ -55,7 +55,7 @@ Drama Hotpot,Malaysia,active,dash,direct_url,1/1,1
 Travel & Taste,Malaysia,active,dash,direct_url,1/1,1
 Drama Hebat,Malaysia,active,dash,direct_url,1/1,1
 Jom Ngaji,Malaysia,active,dash,direct_url,1/1,1
-Oh My Ceria!,Malaysia,active,dash,direct_url,1/1,1
+Oh My Ceria!,Malaysia,dead,all_urls_failed,dead,0/1,3
 Quran (Mecca),Muslim,active,hls_master,direct_url,1/1,1
 Channel 5,Singapore,dead,all_urls_failed,dead,0/3,3
 Channel 8,Singapore,dead,all_urls_failed,dead,0/1,3
@@ -63,7 +63,7 @@ Channel U,Singapore,dead,all_urls_failed,dead,0/1,3
 Suria,Singapore,dead,all_urls_failed,dead,0/2,3
 HITS NOW,Singapore,dead,all_urls_failed,dead,0/1,3
 HITS Movies,Singapore;Movies,dead,all_urls_failed,dead,0/2,3
-meWATCH LIVE 1,Singapore,dead,all_urls_failed,dead,0/1,3
+meWATCH LIVE 1,Singapore,active,dash,direct_url,1/1,1
 ROCK Action,Singapore;Movies,dead,all_urls_failed,dead,0/1,3
 ROCK Entertainment,Singapore;Movies,dead,all_urls_failed,dead,0/1,3
 TechStorm,Singapore,dead,all_urls_failed,dead,0/1,3
@@ -218,5 +218,5 @@ KoreaTV,Korea,active,hls_master,direct_url,1/1,1
 # Dead           : 57
 # Skipped        : 12
 # Success        : 68.2%  (active / non-skipped)
-# Run time       : 2026-06-05 18:57:00 MYT
+# Run time       : 2026-06-05 23:32:49 MYT
 # ============================================================
