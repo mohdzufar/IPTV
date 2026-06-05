@@ -17,7 +17,7 @@ from urllib.parse import quote, urlparse
 # ----------------------------------------------------------------------
 # Configuration – set via environment or hardcoded defaults (safe to commit)
 # ----------------------------------------------------------------------
-INPUT_PLAYLIST = os.environ.get("INPUT_PLAYLIST", "Flatten.m3u8")
+INPUT_PLAYLIST = os.environ.get("INPUT_PLAYLIST", "Channels/Flatten.m3u8")
 OUTPUT_PLAYLIST = os.environ.get("OUTPUT_PLAYLIST", "Main.m3u8")
 REPORT_FILE = os.environ.get("REPORT_FILE", "validation-report.txt")
 
