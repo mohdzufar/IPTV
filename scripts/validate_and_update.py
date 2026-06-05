@@ -1,462 +1,254 @@
-import sys
-import io
+#!/usr/bin/env python3
+"""
+validate_and_update.py
+Reads Flatten.m3u8 (list of per‑channel wrapper M3U8 files),
+fetches each wrapper, extracts #EXTVLCOPT directives and stream URLs,
+validates streams using those directives, and produces:
+  - Main.m3u8 (final playlist with proxy URLs)
+  - validation-report.txt (per‑channel validation status)
+"""
+
 import os
 import re
-import time
 import requests
-from datetime import datetime, timezone, timedelta
-from urllib.parse import urljoin
+import sys
+from urllib.parse import quote, urlparse
 
-# Fix Unicode output on Windows (avoid cp1252 errors)
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+# ----------------------------------------------------------------------
+# Configuration – set via environment or hardcoded defaults (safe to commit)
+# ----------------------------------------------------------------------
+INPUT_PLAYLIST = os.environ.get("INPUT_PLAYLIST", "Flatten.m3u8")
+OUTPUT_PLAYLIST = os.environ.get("OUTPUT_PLAYLIST", "Main.m3u8")
+REPORT_FILE = os.environ.get("REPORT_FILE", "validation-report.txt")
 
-# Patterns of channels to skip validation
-SKIP_PATTERNS = ['Mana-mana', 'tonton']
+WRAPPER_BASE = os.environ.get("WRAPPER_BASE_URL", "http://your-iptv-server.com:8080")
+WRAPPER_USER = os.environ.get("WRAPPER_USER", "your-user")
+WRAPPER_PASS = os.environ.get("WRAPPER_PASS", "your-pass")
 
-# Shared headers for all HTTP requests
-DEFAULT_HEADERS = {'User-Agent': 'VLC/3.0.20'}
+# Timeout for fetching wrapper playlists and testing streams
+REQUEST_TIMEOUT = int(os.environ.get("REQUEST_TIMEOUT", "15"))
 
-# Retry settings
-MAX_RETRIES = 2
-RETRY_DELAY = 5  # seconds between retries
+# Fallback User‑Agent if none is provided by EXTVLCOPT
+FALLBACK_UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"
 
-# Stream types written as direct URL into Main.m3u8
-# (TV apps cannot follow wrapper chain for these)
-DIRECT_URL_TYPES = ('hls_master', 'dash', 'mp4')
+# ----------------------------------------------------------------------
+# Helper: parse a line into (tag, value) for #EXTVLCOPT and #EXTINF
+# ----------------------------------------------------------------------
+def parse_extvlcopt(line: str):
+    """Parse a line like '#EXTVLCOPT:http-user-agent=...' into (key, value)."""
+    line = line.strip()
+    if not line.startswith("#EXTVLCOPT:"):
+        return None, None
+    # Remove prefix
+    opt = line[len("#EXTVLCOPT:"):].strip()
+    # Split on first '=', but value may contain '=' (for http-header)
+    if '=' in opt:
+        key, value = opt.split('=', 1)
+        return key.strip().lower(), value.strip()
+    else:
+        # Some options might have no value (rare)
+        return opt.strip().lower(), None
 
-# Malaysia timezone (UTC+8)
-MYT = timezone(timedelta(hours=8))
-
-
-# =============================================================================
-# URL EXTRACTION
-# =============================================================================
-
-def extract_all_urls_from_wrapper(wrapper_content, base_url):
-    """Extract ALL stream URLs from a wrapper .m3u8 file, in order.
-    Skips comment lines and directive lines starting with #.
+def parse_http_header_option(value: str):
     """
-    urls = []
-    for line in wrapper_content.splitlines():
-        line = line.strip()
-        if not line or line.startswith('#'):
-            continue
-        if line.startswith('http'):
-            urls.append(line)
-        elif line.startswith('/'):
-            urls.append(urljoin(base_url, line))
-    return urls
-
-
-# =============================================================================
-# STREAM CLASSIFICATION
-# =============================================================================
-
-def classify_content(text, status, content_type):
-    """Classify stream based on content snippet and HTTP metadata."""
-    if text is None:
-        return 'invalid'
-    text = text.strip()
-    if not text:
-        return 'empty_ok'
-    if text.startswith('#EXTM3U'):
-        if '#EXT-X-STREAM-INF' in text:
-            return 'hls_master'
-        if '#EXTINF' in text:
-            return 'hls_media'
-        return 'wrapper'
-    if text.startswith('\x00\x00\x00'):
-        if 'ftyp' in text:
-            return 'mp4'
-        return 'binary'
-    if '<html' in text.lower() or '<!doctype' in text.lower():
-        return 'html'
-    if '404' in text or 'not found' in text.lower():
-        return 'invalid'
-    if text.startswith('<?xml') or text.startswith('<MPD'):
-        return 'dash'
-    if content_type and 'video/mp4' in content_type:
-        return 'mp4'
-    if content_type and 'application/dash+xml' in content_type:
-        return 'dash'
-    return 'invalid'
-
-
-# =============================================================================
-# STREAM VALIDATION
-# =============================================================================
-
-def validate_stream(stream_session, url):
-    """Fetch a stream URL and classify it. Retries up to MAX_RETRIES times.
-    Uses a shared session for connection reuse (avoids DNS exhaustion).
-    Returns (kind, http_status, good, attempt_number).
+    Parse http-header value like 'Header-Name: Header-Value'
+    Returns (header_name, header_value) or None.
     """
-    kind        = 'exception'
-    http_status = 0
+    if ':' in value:
+        name, val = value.split(':', 1)
+        return name.strip(), val.strip()
+    return None, None
 
-    for attempt in range(1, MAX_RETRIES + 2):
-        try:
-            resp = stream_session.get(
-                url, headers=DEFAULT_HEADERS, timeout=15, stream=True
-            )
-            http_status  = resp.status_code
-            chunk        = resp.raw.read(8192, decode_content=True)
-            content_type = resp.headers.get('Content-Type', '')
-            kind         = classify_content(
-                chunk.decode('utf-8', errors='ignore'),
-                http_status, content_type
-            )
-            # binary and wrapper are not directly playable
-            good = kind not in ('invalid', 'html', 'empty_ok', 'binary', 'wrapper')
-
-            if good:
-                return kind, http_status, True, attempt
-
-            # Hard HTTP failures — no point retrying
-            if http_status in (401, 403, 404, 410):
-                return kind, http_status, False, attempt
-
-            # Soft failure — retry if attempts remain
-            if attempt <= MAX_RETRIES:
-                print(f"    ⚠️  Attempt {attempt} '{kind}' "
-                      f"(HTTP {http_status}), retrying in {RETRY_DELAY}s...")
-                time.sleep(RETRY_DELAY)
-                continue
-
-            return kind, http_status, False, attempt
-
-        except Exception as e:
-            if attempt <= MAX_RETRIES:
-                print(f"    ⚠️  Attempt {attempt} exception: {e}, "
-                      f"retrying in {RETRY_DELAY}s...")
-                time.sleep(RETRY_DELAY)
-                continue
-            return 'exception', 0, False, attempt
-
-    return kind, http_status, False, MAX_RETRIES + 1
-
-
-# =============================================================================
-# SKIP CHECK
-# =============================================================================
-
-def is_skipped(channel_name, wrapper_url=''):
-    """Return True if this channel should skip validation."""
-    for pat in SKIP_PATTERNS:
-        if pat.lower() in channel_name.lower():
-            return True
-        if pat.lower() in wrapper_url.lower():
-            return True
-    return False
-
-
-# =============================================================================
-# FLATTEN.M3U8 PARSER
-# =============================================================================
-
-def parse_flatten(flatten_path):
-    """Parse Flatten.m3u8 and return (header_line, list_of_blocks).
-
-    Channel entries may include playable option lines such as #EXTVLCOPT or
-    #KODIPROP between #EXTINF and the URL. Keep those lines in the block so
-    TONTON-style entries are preserved in Main.m3u8.
+# ----------------------------------------------------------------------
+# Core: validate a single stream URL using a pre‑built headers dict
+# ----------------------------------------------------------------------
+def test_stream(url: str, headers: dict, timeout: int = REQUEST_TIMEOUT):
     """
-    with open(flatten_path, 'r', encoding='utf-8') as f:
-        lines = f.readlines()
+    Returns (status_code, content_type, error_message)
+    status_code 0 means a network/other error.
+    """
+    try:
+        # We don't stream, just check the first response
+        r = requests.get(url, headers=headers, timeout=timeout, stream=True)
+        # Read a tiny bit to confirm it's actually playable media/manifest
+        # Some servers return 200 with an error page, so we check Content-Type
+        content_type = r.headers.get('Content-Type', '').lower()
+        # For HLS, valid content-type includes 'application/vnd.apple.mpegurl' or 'application/x-mpegurl'
+        # For DASH, 'application/dash+xml' etc. We'll be lenient: accept any 200 with a known streaming content-type
+        # or at least not text/html (which often indicates a error page).
+        if r.status_code == 200:
+            if 'html' in content_type:
+                return 200, content_type, "Server returned HTML instead of stream"
+            return 200, content_type, None
+        else:
+            return r.status_code, content_type, f"HTTP {r.status_code}"
+    except Exception as e:
+        return 0, None, str(e)
 
-    header = ''
-    if lines and lines[0].startswith('#EXTM3U'):
-        header = lines[0].strip()
-        lines = lines[1:]
-
-    blocks = []
-    current_lines = []
-    extinf = ''
-
-    for line in lines:
-        stripped = line.strip()
-
-        if stripped.startswith('#EXTINF:'):
-            current_lines = [line]
-            extinf = line
+# ----------------------------------------------------------------------
+# Parse a wrapper M3U8 file content and extract stream URLs + headers context
+# ----------------------------------------------------------------------
+def parse_wrapper_m3u8(m3u8_text: str):
+    """
+    Returns a list of tuples: (stream_url, headers_dict)
+    headers_dict will contain 'User-Agent', 'Referer', and any custom headers
+    accumulated from #EXTVLCOPT directives.
+    """
+    streams = []
+    # Current headers state – start with a fallback user-agent
+    current_headers = {"User-Agent": FALLBACK_UA}
+    
+    for raw_line in m3u8_text.splitlines():
+        line = raw_line.strip()
+        if not line or line.startswith("#EXTM3U"):
             continue
-
-        if not current_lines:
-            continue
-
-        if not stripped:
-            continue
-
-        # Section headers and disabled entries are not active channel content.
-        if stripped.startswith('##'):
-            continue
-
-        if stripped.startswith('#'):
-            current_lines.append(line)
-            continue
-
-        current_lines.append(line)
-        stream_url = stripped
-
-        name_match   = re.search(r'tvg-name="([^"]*)"', extinf)
-        channel_name = name_match.group(1) if name_match else 'Unknown'
-        group_match  = re.search(r'group-title="([^"]*)"', extinf)
-        group        = group_match.group(1) if group_match else ''
-        blocks.append((''.join(current_lines), extinf, stream_url, channel_name, group))
-
-        current_lines = []
-        extinf = ''
-
-    return header, blocks
-
-
-# =============================================================================
-# MAIN.M3U8 WRITER
-# =============================================================================
-
-def update_main_m3u8(main_path, header, blocks, results):
-    """Write Main.m3u8 using the original EPG header line."""
-    with open(main_path, 'w', encoding='utf-8') as f:
-        f.write((header or '#EXTM3U') + '\n')
-        for idx, (full, extinf, url, name, group) in enumerate(blocks):
-            if is_skipped(name, url):
-                f.write(full)
+        
+        # Handle EXTVLCOPT lines
+        if line.startswith("#EXTVLCOPT:"):
+            key, value = parse_extvlcopt(line)
+            if key is None:
                 continue
-            result = results[idx]
-            if result['valid']:
-                if result['direct']:
-                    # DASH / MP4 / HLS master — write direct URL
-                    f.write(extinf)
-                    f.write(result['direct'] + '\n')
-                else:
-                    # HLS media — keep wrapper URL
-                    f.write(full)
-            else:
-                for line in full.splitlines(keepends=True):
-                    f.write('## ' + line)
+            if key == "http-user-agent":
+                current_headers["User-Agent"] = value
+            elif key == "http-referrer":
+                current_headers["Referer"] = value
+            elif key == "http-header":
+                # Format: "Header-Name: Header-Value"
+                name, val = parse_http_header_option(value)
+                if name and val:
+                    current_headers[name] = val
+            # Other options (e.g., network-caching) are irrelevant for validation
+            continue
+        
+        # If it's a comment or tag line that isn't EXTVLCOPT, skip
+        if line.startswith("#"):
+            continue
+        
+        # It's a URL (non-comment, non-empty)
+        # Create a copy of headers for this stream to avoid mutation later
+        streams.append((line, dict(current_headers)))
+    
+    return streams
 
-
-# =============================================================================
-# MAIN
-# =============================================================================
-
+# ----------------------------------------------------------------------
+# Main validation routine
+# ----------------------------------------------------------------------
 def main():
-    base_dir     = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    flatten_path = os.path.join(base_dir, 'Channels', 'Flatten.m3u8')
-    main_path    = os.path.join(base_dir, 'Main.m3u8')
-    report_path  = os.path.join(base_dir, 'validation-report.txt')
-
-    run_time     = datetime.now(MYT)
-    run_time_str = run_time.strftime('%Y-%m-%d %H:%M:%S MYT')
-
-    print(f"Parsing  : {flatten_path}")
-    header, blocks = parse_flatten(flatten_path)
-    total = len(blocks)
-    print(f"Channels : {total}")
-    print(f"Run time : {run_time_str}\n")
-
-    results = [{} for _ in blocks]
-
-    count_active       = 0
-    count_dead         = 0
-    count_skipped      = 0
-    count_direct       = 0
-    count_wrapper_kept = 0
-
-    # -------------------------------------------------------------------------
-    # Two persistent sessions — one DNS lookup each for the entire run.
-    # Prevents Windows DNS exhaustion when validating 150+ channels.
-    # -------------------------------------------------------------------------
-    wrapper_session = requests.Session()
-    wrapper_session.headers.update(DEFAULT_HEADERS)
-
-    stream_session = requests.Session()
-    stream_session.headers.update(DEFAULT_HEADERS)
-
-    with open(report_path, 'w', encoding='utf-8') as report:
-
-        # Report header
-        report.write(f"# ============================================================\n")
-        report.write(f"# IPTV Playlist Validation Report\n")
-        report.write(f"# ============================================================\n")
-        report.write(f"# Generated  : {run_time_str}\n")
-        report.write(f"# Source     : Channels/Flatten.m3u8\n")
-        report.write(f"# Total      : {total} channels\n")
-        report.write(f"# Retry cfg  : MAX_RETRIES={MAX_RETRIES}, "
-                     f"RETRY_DELAY={RETRY_DELAY}s\n")
-        report.write(f"#\n")
-        report.write(f"# Columns:\n")
-        report.write(f"#   Channel    - tvg-name from Flatten.m3u8\n")
-        report.write(f"#   Group      - group-title from Flatten.m3u8\n")
-        report.write(f"#   Status     - active / dead / skipped\n")
-        report.write(f"#   StreamType - hls_master / hls_media / dash / mp4 / etc\n")
-        report.write(f"#   MainEntry  - wrapper_kept / direct_url / skipped / dead\n")
-        report.write(f"#   URLsTested - position/total  e.g. 2/3 = 2nd of 3 worked\n")
-        report.write(f"#   Attempts   - HTTP attempts before pass/fail\n")
-        report.write(f"#\n")
-        report.write(f"Channel,Group,Status,StreamType,MainEntry,URLsTested,Attempts\n")
-
-        for i, (full, extinf, url, name, group) in enumerate(blocks):
-            print("=" * 60)
-            print(f"[{i+1}/{total}] {name}  (group: {group})")
-
-            # ------------------------------------------------------------------
-            # Skipped channels (Mana-mana, tonton)
-            # ------------------------------------------------------------------
-            if is_skipped(name, url):
-                results[i] = {'valid': True, 'direct': None}
-                report.write(f"{name},{group},skipped,-,skipped,-,-\n")
-                count_skipped += 1
-                print("Action  : ⏭️  Skipped (Mana-mana / tonton)")
+    # Check that input file exists
+    if not os.path.exists(INPUT_PLAYLIST):
+        print(f"ERROR: Input playlist '{INPUT_PLAYLIST}' not found.")
+        sys.exit(1)
+    
+    with open(INPUT_PLAYLIST, 'r', encoding='utf-8') as f:
+        main_playlist = f.read()
+    
+    # Parse the main playlist to extract per‑channel information
+    # Each entry: #EXTINF:... followed by a wrapper URL (raw GitHub link)
+    entry_pattern = re.compile(r'^#EXTINF:(.*)$\n^(https?://\S+)', re.MULTILINE)
+    entries = entry_pattern.findall(main_playlist)
+    
+    if not entries:
+        print("No valid entries found in main playlist.")
+        sys.exit(1)
+    
+    # Output files
+    valid_lines = ["#EXTM3U"]
+    report_lines = ["Validation Report", "=" * 50, ""]
+    
+    for idx, (extinf_line, wrapper_url) in enumerate(entries, start=1):
+        # Extract attributes like tvg-id, tvg-name, tvg-logo, group-title
+        attrs = {}
+        for part in extinf_line.strip().split():
+            if '=' in part:
+                k, v = part.split('=', 1)
+                # Remove quotes
+                v = v.strip('"')
+                attrs[k] = v
+        
+        channel_id = attrs.get("tvg-id", f"channel-{idx}")
+        channel_name = attrs.get("tvg-name", "Unknown")
+        logo = attrs.get("tvg-logo", "")
+        group = attrs.get("group-title", "Undefined")
+        
+        print(f"[{idx}/{len(entries)}] {channel_name}  (group: {group})")
+        print(f"Wrapper : {wrapper_url}")
+        
+        # Fetch the wrapper M3U8 file
+        try:
+            # GitHub raw may need a user-agent, but we already have a fallback
+            wrapper_resp = requests.get(wrapper_url, headers={"User-Agent": FALLBACK_UA}, timeout=REQUEST_TIMEOUT)
+            if wrapper_resp.status_code != 200:
+                print(f"  ❌ Failed to fetch wrapper M3U8 (HTTP {wrapper_resp.status_code})")
+                report_lines.append(f"[INVALID] {wrapper_url} - {channel_name} (wrapper not reachable)")
                 continue
-
-            print(f"Wrapper : {url.strip()}")
-
-            # ------------------------------------------------------------------
-            # Step 1: Fetch wrapper file
-            # ------------------------------------------------------------------
-            try:
-                wr = wrapper_session.get(url.strip(), timeout=10)
-                print(f"Wrapper HTTP: {wr.status_code}")
-
-                if wr.status_code != 200:
-                    results[i] = {'valid': False, 'direct': None}
-                    report.write(
-                        f"{name},{group},dead,"
-                        f"wrapper_http_{wr.status_code},dead,0/0,1\n"
-                    )
-                    count_dead += 1
-                    print("Action  : ❌ Commented out (wrapper HTTP error)")
-                    continue
-
-                wrapper_content = wr.text
-
-            except Exception as e:
-                results[i] = {'valid': False, 'direct': None}
-                report.write(
-                    f"{name},{group},dead,wrapper_exception,dead,0/0,1\n"
-                )
-                count_dead += 1
-                print(f"Wrapper exception: {e}")
-                print("Action  : ❌ Commented out (wrapper fetch failed)")
-                continue
-
-            # ------------------------------------------------------------------
-            # Step 2: Extract all URLs from wrapper
-            # ------------------------------------------------------------------
-            inner_urls = extract_all_urls_from_wrapper(
-                wrapper_content, url.strip()
-            )
-            total_urls = len(inner_urls)
-
-            if total_urls == 0:
-                results[i] = {'valid': False, 'direct': None}
-                report.write(
-                    f"{name},{group},dead,no_urls_in_wrapper,dead,0/0,0\n"
-                )
-                count_dead += 1
-                print("Inner URLs : NONE FOUND")
-                print("Action     : ❌ Commented out (no URLs in wrapper)")
-                continue
-
-            print(f"Inner URLs : {total_urls} found")
-
-            # ------------------------------------------------------------------
-            # Step 3: Try each URL until one works
-            # ------------------------------------------------------------------
-            channel_valid    = False
-            winning_url      = ''
-            winning_kind     = ''
-            winning_attempt  = 0
-            winning_position = 0
-
-            for url_idx, inner_url in enumerate(inner_urls, start=1):
-                print(f"  [{url_idx}/{total_urls}] {inner_url}")
-                stream_kind, http_status, good, attempt = validate_stream(
-                    stream_session, inner_url
-                )
-                print(f"  Result : {stream_kind} "
-                      f"(HTTP {http_status}, attempt {attempt})")
-
-                if good:
-                    channel_valid    = True
-                    winning_url      = inner_url
-                    winning_kind     = stream_kind
-                    winning_attempt  = attempt
-                    winning_position = url_idx
-                    print(f"  ✅ Working URL found at position {url_idx}/{total_urls}")
-                    break
-                else:
-                    print(f"  ❌ URL {url_idx}/{total_urls} failed "
-                          f"({stream_kind}, HTTP {http_status})")
-
-            # ------------------------------------------------------------------
-            # Step 4: Record result
-            # ------------------------------------------------------------------
-            if channel_valid:
-                if winning_kind in DIRECT_URL_TYPES:
-                    results[i] = {'valid': True, 'direct': winning_url}
-                    main_entry  = 'direct_url'
-                    count_direct += 1
-                    action_note = f"direct URL written ({winning_kind})"
-                else:
-                    results[i] = {'valid': True, 'direct': None}
-                    main_entry  = 'wrapper_kept'
-                    count_wrapper_kept += 1
-                    action_note = f"wrapper kept ({winning_kind})"
-
-                report.write(
-                    f"{name},{group},active,{winning_kind},{main_entry},"
-                    f"{winning_position}/{total_urls},{winning_attempt}\n"
-                )
-                count_active += 1
-                print(
-                    f"Action  : ✅ {action_note}  "
-                    f"(URL {winning_position}/{total_urls}, "
-                    f"attempt {winning_attempt})"
-                )
+            wrapper_text = wrapper_resp.text
+        except Exception as e:
+            print(f"  ❌ Error fetching wrapper M3U8: {e}")
+            report_lines.append(f"[INVALID] {wrapper_url} - {channel_name} (wrapper fetch error: {e})")
+            continue
+        
+        # Parse inner streams with their headers
+        streams = parse_wrapper_m3u8(wrapper_text)
+        if not streams:
+            print("  ❌ No stream URLs found in wrapper")
+            report_lines.append(f"[INVALID] {wrapper_url} - {channel_name} (no streams)")
+            continue
+        
+        print(f"  Inner URLs : {len(streams)} found")
+        
+        channel_valid = False
+        best_stream = None
+        
+        for si, (stream_url, headers) in enumerate(streams, start=1):
+            print(f"  [{si}/{len(streams)}] {stream_url}")
+            status, ct, err = test_stream(stream_url, headers)
+            if status == 200 and err is None:
+                print(f"  ✅ Valid (Content-Type: {ct})")
+                channel_valid = True
+                # Use the first working stream as the one we'll proxy
+                if best_stream is None:
+                    best_stream = stream_url
+                # We could break, but let's log all to see which ones work
             else:
-                results[i] = {'valid': False, 'direct': None}
-                report.write(
-                    f"{name},{group},dead,all_urls_failed,dead,"
-                    f"0/{total_urls},{MAX_RETRIES + 1}\n"
-                )
-                count_dead += 1
-                print(f"Action  : ❌ Commented out "
-                      f"(all {total_urls} URL(s) failed)")
+                if status == 200:
+                    # 200 but HTML content
+                    print(f"  ❌ Invalid (200 but HTML error page)")
+                elif status == 0:
+                    print(f"  ❌ Failed: {err}")
+                else:
+                    print(f"  ❌ HTTP {status} ({err})")
+        
+        if channel_valid and best_stream:
+            # Build proxy URL
+            # We need a stable identifier; use tvg-id or construct from name
+            # The wrapper server must map this to the actual stream URL.
+            # Usually you'd store the mapping on the server side.
+            # Here we'll pass the original stream URL as a query param for simplicity,
+            # but the log shows you use a path like /live/user/pass/channel_id.
+            # I'll keep the same format as your existing Main.m3u8:
+            proxy_url = f"{WRAPPER_BASE}/live/{WRAPPER_USER}/{WRAPPER_PASS}/{quote(channel_id)}"
+            # Some implementations might need the original URL as well; we can encode it
+            # but the current playlist doesn't. We'll stick to your format.
+            
+            # Add to final playlist
+            extinf = f'#EXTINF:-1 tvg-id="{channel_id}" tvg-name="{channel_name}" tvg-logo="{logo}" group-title="{group}",{channel_name}'
+            valid_lines.append(extinf)
+            valid_lines.append(proxy_url)
+            
+            report_lines.append(f"[VALID] {proxy_url} - {channel_name} (used {best_stream})")
+            print(f"  ➤ Added as VALID with proxy URL")
+        else:
+            report_lines.append(f"[INVALID] {wrapper_url} - {channel_name} (all inner streams failed)")
+            print(f"  ➤ Marked INVALID")
+    
+    # Write output
+    with open(OUTPUT_PLAYLIST, 'w', encoding='utf-8') as f:
+        f.write("\n".join(valid_lines) + "\n")
+    
+    with open(REPORT_FILE, 'w', encoding='utf-8') as f:
+        f.write("\n".join(report_lines) + "\n")
+    
+    print(f"\nDone. Valid entries written to {OUTPUT_PLAYLIST}, report to {REPORT_FILE}")
 
-        # Summary footer
-        non_skipped = total - count_skipped
-        success_pct = round(count_active / max(non_skipped, 1) * 100, 1)
-
-        report.write(f"#\n")
-        report.write(f"# ============================================================\n")
-        report.write(f"# SUMMARY\n")
-        report.write(f"# ============================================================\n")
-        report.write(f"# Total          : {total}\n")
-        report.write(f"# Active         : {count_active}\n")
-        report.write(f"#   Wrapper kept : {count_wrapper_kept}  (URL hidden)\n")
-        report.write(f"#   Direct URL   : {count_direct}  (hls_master/dash/mp4)\n")
-        report.write(f"# Dead           : {count_dead}\n")
-        report.write(f"# Skipped        : {count_skipped}\n")
-        report.write(f"# Success        : {success_pct}%  (active / non-skipped)\n")
-        report.write(f"# Run time       : {run_time_str}\n")
-        report.write(f"# ============================================================\n")
-
-    # Close sessions cleanly
-    wrapper_session.close()
-    stream_session.close()
-
-    print("\n" + "=" * 60)
-    print(f"Results  : {count_active} active | {count_dead} dead | "
-          f"{count_skipped} skipped")
-    print(f"  Wrapper kept : {count_wrapper_kept}  |  "
-          f"Direct URL : {count_direct}")
-    print(f"Success  : {success_pct}%")
-    print("Writing Main.m3u8...")
-    update_main_m3u8(main_path, header, blocks, results)
-    print("Done.")
-
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
