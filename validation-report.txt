@@ -1,7 +1,7 @@
 # ============================================================
 # IPTV Playlist Validation Report
 # ============================================================
-# Generated  : 2026-06-05 06:03:33 MYT
+# Generated  : 2026-06-05 16:29:54 MYT
 # Source     : Channels/Flatten.m3u8
 # Total      : 187 channels
 # Retry cfg  : MAX_RETRIES=2, RETRY_DELAY=5s
@@ -47,7 +47,7 @@ RTM Roll,Malaysia,active,hls_media,wrapper_kept,1/5,1
 RTM Aura,Malaysia,active,hls_media,wrapper_kept,1/5,1
 Filem Mantap,Malaysia,active,dash,direct_url,1/1,1
 Lawak Sentral,Malaysia,active,dash,direct_url,1/1,1
-Drama Hotpot,Malaysia,active,dash,direct_url,1/1,2
+Drama Hotpot,Malaysia,active,dash,direct_url,1/1,1
 Travel & Taste,Malaysia,active,dash,direct_url,1/1,1
 Drama Hebat,Malaysia,active,dash,direct_url,1/1,1
 Jom Ngaji,Malaysia,active,dash,direct_url,1/1,1
@@ -194,7 +194,7 @@ Documentary+,,active,hls_master,direct_url,1/2,1
 Discovery Channel,,active,hls_master,direct_url,1/1,1
 Discovery Life,,dead,all_urls_failed,dead,0/1,3
 Discovery Science,,dead,all_urls_failed,dead,0/1,3
-mn静静nm,China,active,hls_media,wrapper_kept,1/1,2
+mn静静nm,China,active,hls_media,wrapper_kept,1/1,1
 万事通熊猫,China,dead,all_urls_failed,dead,0/1,3
 douyu 19,China,active,hls_master,direct_url,1/1,1
 K-Content,Korea,active,hls_master,direct_url,1/2,1
@@ -214,5 +214,5 @@ KoreaTV,Korea,active,hls_master,direct_url,1/1,1
 # Dead           : 56
 # Skipped        : 8
 # Success        : 68.7%  (active / non-skipped)
-# Run time       : 2026-06-05 06:03:33 MYT
+# Run time       : 2026-06-05 16:29:54 MYT
 # ============================================================
