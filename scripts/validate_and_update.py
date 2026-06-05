@@ -6,7 +6,7 @@ import re
 from urllib.parse import urlparse
 
 # Configuration
-INPUT_PLAYLIST = os.environ.get("INPUT_PLAYLIST", "Channels/Flatten.m3u8")
+INPUT_PLAYLIST = os.environ.get("INPUT_PLAYLIST", "Flatten.m3u8")
 OUTPUT_PLAYLIST = os.environ.get("OUTPUT_PLAYLIST", "Main.m3u8")
 REPORT_FILE = os.environ.get("REPORT_FILE", "validation-report.txt")
 
