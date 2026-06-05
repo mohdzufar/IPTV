@@ -1,207 +1,139 @@
 #!/usr/bin/env python3
-"""
-validate_and_update.py
-Reads Flatten.m3u8 (list of per‑channel wrapper M3U8 files),
-fetches each wrapper, extracts #EXTVLCOPT directives and stream URLs,
-validates streams using those directives, and produces:
-  - Main.m3u8 (final playlist with proxy URLs)
-  - validation-report.txt (per‑channel validation status)
-"""
-
 import os
-import re
 import requests
 import sys
-from urllib.parse import quote
+import re
+from urllib.parse import urlparse
 
-# ----------------------------------------------------------------------
-# Configuration – set via environment or hardcoded defaults (safe to commit)
-# ----------------------------------------------------------------------
-INPUT_PLAYLIST = os.environ.get("INPUT_PLAYLIST", "Channels/Flatten.m3u8")
+# Configuration
+INPUT_PLAYLIST = os.environ.get("INPUT_PLAYLIST", "Flatten.m3u8")
 OUTPUT_PLAYLIST = os.environ.get("OUTPUT_PLAYLIST", "Main.m3u8")
 REPORT_FILE = os.environ.get("REPORT_FILE", "validation-report.txt")
 
-WRAPPER_BASE = os.environ.get("WRAPPER_BASE_URL", "http://your-iptv-server.com:8080")
+WRAPPER_BASE_URL = os.environ.get("WRAPPER_BASE_URL", "http://your-iptv-server.com:8080")
 WRAPPER_USER = os.environ.get("WRAPPER_USER", "your-user")
 WRAPPER_PASS = os.environ.get("WRAPPER_PASS", "your-pass")
 
-# Timeout for fetching wrapper playlists and testing streams
-REQUEST_TIMEOUT = int(os.environ.get("REQUEST_TIMEOUT", "15"))
+REQUEST_TIMEOUT = 10
+MAX_RETRIES = 1  # retry once if first check fails
 
-# Fallback User‑Agent if none is provided by EXTVLCOPT
-FALLBACK_UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"
-
-# ----------------------------------------------------------------------
-# Helper: parse a line into (tag, value) for #EXTVLCOPT and #EXTINF
-# ----------------------------------------------------------------------
-def parse_extvlcopt(line: str):
-    """Parse a line like '#EXTVLCOPT:http-user-agent=...' into (key, value)."""
-    line = line.strip()
-    if not line.startswith("#EXTVLCOPT:"):
-        return None, None
-    opt = line[len("#EXTVLCOPT:"):].strip()
-    if '=' in opt:
-        key, value = opt.split('=', 1)
-        return key.strip().lower(), value.strip()
-    else:
-        return opt.strip().lower(), None
-
-def parse_http_header_option(value: str):
-    """Parse http-header value like 'Header-Name: Header-Value'."""
-    if ':' in value:
-        name, val = value.split(':', 1)
-        return name.strip(), val.strip()
-    return None, None
-
-# ----------------------------------------------------------------------
-# Core: validate a single stream URL using a pre‑built headers dict
-# ----------------------------------------------------------------------
-def test_stream(url: str, headers: dict, timeout: int = REQUEST_TIMEOUT):
-    """
-    Returns (status_code, content_type, error_message)
-    status_code 0 means a network/other error.
-    """
+def get_stream_urls_from_wrapper(wrapper_url):
+    """Fetch the wrapper M3U8 and extract stream URLs."""
     try:
-        r = requests.get(url, headers=headers, timeout=timeout, stream=True)
-        content_type = r.headers.get('Content-Type', '').lower()
-        if r.status_code == 200:
-            if 'html' in content_type:
-                return 200, content_type, "Server returned HTML instead of stream"
-            return 200, content_type, None
-        else:
-            return r.status_code, content_type, f"HTTP {r.status_code}"
-    except Exception as e:
-        return 0, None, str(e)
+        resp = requests.get(wrapper_url, timeout=REQUEST_TIMEOUT)
+        if resp.status_code != 200:
+            return []
+        lines = resp.text.splitlines()
+        urls = []
+        for line in lines:
+            line = line.strip()
+            if line and not line.startswith('#'):
+                urls.append(line)
+        return urls
+    except:
+        return []
 
-# ----------------------------------------------------------------------
-# Parse a wrapper M3U8 file content and extract stream URLs + headers context
-# ----------------------------------------------------------------------
-def parse_wrapper_m3u8(m3u8_text: str):
-    """Returns a list of tuples: (stream_url, headers_dict)."""
-    streams = []
-    current_headers = {"User-Agent": FALLBACK_UA}
+def check_stream(url):
+    """Check if a stream URL is reachable (returns True/False)."""
+    for attempt in range(MAX_RETRIES + 1):
+        try:
+            r = requests.get(url, timeout=REQUEST_TIMEOUT, stream=True)
+            if r.status_code == 200:
+                content_type = r.headers.get('Content-Type', '').lower()
+                # Accept video/mp2t, application/x-mpegURL, etc.
+                if 'html' not in content_type:
+                    return True
+            # if 404, 403, etc., return False
+        except:
+            pass
+    return False
 
-    for raw_line in m3u8_text.splitlines():
-        line = raw_line.strip()
-        if not line or line.startswith("#EXTM3U"):
-            continue
-
-        if line.startswith("#EXTVLCOPT:"):
-            key, value = parse_extvlcopt(line)
-            if key is None:
-                continue
-            if key == "http-user-agent":
-                current_headers["User-Agent"] = value
-            elif key == "http-referrer":
-                current_headers["Referer"] = value
-            elif key == "http-header":
-                name, val = parse_http_header_option(value)
-                if name and val:
-                    current_headers[name] = val
-            continue
-
-        if line.startswith("#"):
-            continue
-
-        # It's a URL
-        streams.append((line, dict(current_headers)))
-
-    return streams
-
-# ----------------------------------------------------------------------
-# Main validation routine
-# ----------------------------------------------------------------------
 def main():
     if not os.path.exists(INPUT_PLAYLIST):
         print(f"ERROR: Input playlist '{INPUT_PLAYLIST}' not found.")
         sys.exit(1)
 
     with open(INPUT_PLAYLIST, 'r', encoding='utf-8') as f:
-        main_playlist = f.read()
+        lines = f.readlines()
 
-    entry_pattern = re.compile(r'^#EXTINF:(.*)$\n^(https?://\S+)', re.MULTILINE)
-    entries = entry_pattern.findall(main_playlist)
+    # Parse entries: #EXTINF line followed by URL
+    entries = []
+    i = 0
+    while i < len(lines):
+        line = lines[i].strip()
+        if line.startswith('#EXTINF:'):
+            extinf = line
+            # Next line should be the URL
+            if i+1 < len(lines):
+                url = lines[i+1].strip()
+                entries.append((extinf, url))
+                i += 2
+            else:
+                i += 1
+        else:
+            i += 1
 
     if not entries:
-        print("No valid entries found in main playlist.")
+        print("No entries found in playlist.")
         sys.exit(1)
 
-    valid_lines = ["#EXTM3U"]
-    report_lines = ["Validation Report", "=" * 50, ""]
+    valid_entries = []
+    report = ["Validation Report", "=" * 50, ""]
 
-    for idx, (extinf_line, wrapper_url) in enumerate(entries, start=1):
-        attrs = {}
-        for part in extinf_line.strip().split():
-            if '=' in part:
-                k, v = part.split('=', 1)
-                v = v.strip('"')
-                attrs[k] = v
-
-        channel_id = attrs.get("tvg-id", f"channel-{idx}")
-        channel_name = attrs.get("tvg-name", "Unknown")
-        logo = attrs.get("tvg-logo", "")
-        group = attrs.get("group-title", "Undefined")
+    for idx, (extinf, wrapper_url) in enumerate(entries, 1):
+        # Extract attributes from EXTINF
+        # Example: #EXTINF:-1 tvg-id="TV1" tvg-name="TV1" tvg-logo="..." group-title="Malaysia",TV1
+        attrs = dict(re.findall(r'(\S+)="(.*?)"', extinf))
+        channel_name = attrs.get('tvg-name', f'channel-{idx}')
+        group = attrs.get('group-title', 'Unknown')
 
         print(f"[{idx}/{len(entries)}] {channel_name}  (group: {group})")
         print(f"Wrapper : {wrapper_url}")
 
-        try:
-            wrapper_resp = requests.get(wrapper_url, headers={"User-Agent": FALLBACK_UA}, timeout=REQUEST_TIMEOUT)
-            if wrapper_resp.status_code != 200:
-                print(f"  [FAIL] Failed to fetch wrapper M3U8 (HTTP {wrapper_resp.status_code})")
-                report_lines.append(f"[INVALID] {wrapper_url} - {channel_name} (wrapper not reachable)")
-                continue
-            wrapper_text = wrapper_resp.text
-        except Exception as e:
-            print(f"  [FAIL] Error fetching wrapper M3U8: {e}")
-            report_lines.append(f"[INVALID] {wrapper_url} - {channel_name} (wrapper fetch error: {e})")
+        inner_urls = get_stream_urls_from_wrapper(wrapper_url)
+        if not inner_urls:
+            print("  ❌ No inner URLs found")
+            report.append(f"[INVALID] {wrapper_url} - {channel_name} (no streams)")
             continue
 
-        streams = parse_wrapper_m3u8(wrapper_text)
-        if not streams:
-            print("  [FAIL] No stream URLs found in wrapper")
-            report_lines.append(f"[INVALID] {wrapper_url} - {channel_name} (no streams)")
-            continue
+        print(f"  Inner URLs : {len(inner_urls)} found")
+        valid_stream = None
 
-        print(f"  Inner URLs : {len(streams)} found")
-
-        channel_valid = False
-        best_stream = None
-
-        for si, (stream_url, headers) in enumerate(streams, start=1):
-            print(f"  [{si}/{len(streams)}] {stream_url}")
-            status, ct, err = test_stream(stream_url, headers)
-            if status == 200 and err is None:
-                print(f"  [OK] Valid (Content-Type: {ct})")
-                channel_valid = True
-                if best_stream is None:
-                    best_stream = stream_url
+        for si, stream_url in enumerate(inner_urls, 1):
+            print(f"  [{si}/{len(inner_urls)}] {stream_url}")
+            if check_stream(stream_url):
+                print(f"  ✅ Valid")
+                valid_stream = stream_url
+                break
             else:
-                if status == 200:
-                    print(f"  [FAIL] 200 but HTML error page")
-                elif status == 0:
-                    print(f"  [FAIL] Error: {err}")
-                else:
-                    print(f"  [FAIL] HTTP {status} ({err})")
+                print(f"  ❌ Failed")
 
-        if channel_valid and best_stream:
-            proxy_url = f"{WRAPPER_BASE}/live/{WRAPPER_USER}/{WRAPPER_PASS}/{quote(channel_id)}"
-            extinf = f'#EXTINF:-1 tvg-id="{channel_id}" tvg-name="{channel_name}" tvg-logo="{logo}" group-title="{group}",{channel_name}'
-            valid_lines.append(extinf)
-            valid_lines.append(proxy_url)
-            report_lines.append(f"[VALID] {proxy_url} - {channel_name} (used {best_stream})")
-            print(f"  --> Added as VALID with proxy URL")
+        if valid_stream:
+            # Construct proxy URL
+            # Original logic: http://wrapper/live/user/pass/<encoded channel id>
+            # Here we use the tvg-id as the identifier (you can change to something else)
+            channel_id = attrs.get('tvg-id', str(idx))
+            proxy_url = f"{WRAPPER_BASE_URL}/live/{WRAPPER_USER}/{WRAPPER_PASS}/{channel_id}"
+
+            # Build final entry
+            final_extinf = f'#EXTINF:-1 tvg-id="{attrs.get("tvg-id", "")}" tvg-name="{attrs.get("tvg-name", "")}" tvg-logo="{attrs.get("tvg-logo", "")}" group-title="{group}",{channel_name}'
+            valid_entries.append(final_extinf)
+            valid_entries.append(proxy_url)
+
+            report.append(f"[VALID] {proxy_url} - {channel_name}")
         else:
-            report_lines.append(f"[INVALID] {wrapper_url} - {channel_name} (all inner streams failed)")
-            print(f"  --> Marked INVALID")
+            report.append(f"[INVALID] {wrapper_url} - {channel_name} (all inner URLs failed)")
 
+    # Write final playlist
     with open(OUTPUT_PLAYLIST, 'w', encoding='utf-8') as f:
-        f.write("\n".join(valid_lines) + "\n")
+        f.write("#EXTM3U\n")
+        f.write("\n".join(valid_entries) + "\n")
 
+    # Write report
     with open(REPORT_FILE, 'w', encoding='utf-8') as f:
-        f.write("\n".join(report_lines) + "\n")
+        f.write("\n".join(report) + "\n")
 
-    print(f"\nDone. Valid entries written to {OUTPUT_PLAYLIST}, report to {REPORT_FILE}")
+    print(f"\nDone. {len(valid_entries)//2} valid channels written to {OUTPUT_PLAYLIST}")
 
 if __name__ == "__main__":
     main()
