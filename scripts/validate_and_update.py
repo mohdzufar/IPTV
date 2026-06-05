@@ -155,27 +155,58 @@ def is_skipped(channel_name, wrapper_url=''):
 # =============================================================================
 
 def parse_flatten(flatten_path):
-    """Parse Flatten.m3u8 and return (header_line, list_of_blocks)."""
+    """Parse Flatten.m3u8 and return (header_line, list_of_blocks).
+
+    Channel entries may include playable option lines such as #EXTVLCOPT or
+    #KODIPROP between #EXTINF and the URL. Keep those lines in the block so
+    TONTON-style entries are preserved in Main.m3u8.
+    """
     with open(flatten_path, 'r', encoding='utf-8') as f:
         lines = f.readlines()
 
     header = ''
     if lines and lines[0].startswith('#EXTM3U'):
-        header  = lines[0].strip()
-        content = ''.join(lines[1:])
-    else:
-        content = ''.join(lines)
+        header = lines[0].strip()
+        lines = lines[1:]
 
-    blocks  = []
-    pattern = re.compile(r'(#EXTINF:[^\n]*\n)((?:[^#\n][^\n]*\n?)+)')
-    for m in pattern.finditer(content):
-        extinf    = m.group(1)
-        url_lines = m.group(2).strip()
+    blocks = []
+    current_lines = []
+    extinf = ''
+
+    for line in lines:
+        stripped = line.strip()
+
+        if stripped.startswith('#EXTINF:'):
+            current_lines = [line]
+            extinf = line
+            continue
+
+        if not current_lines:
+            continue
+
+        if not stripped:
+            continue
+
+        # Section headers and disabled entries are not active channel content.
+        if stripped.startswith('##'):
+            continue
+
+        if stripped.startswith('#'):
+            current_lines.append(line)
+            continue
+
+        current_lines.append(line)
+        stream_url = stripped
+
         name_match   = re.search(r'tvg-name="([^"]*)"', extinf)
         channel_name = name_match.group(1) if name_match else 'Unknown'
         group_match  = re.search(r'group-title="([^"]*)"', extinf)
         group        = group_match.group(1) if group_match else ''
-        blocks.append((m.group(0), extinf, url_lines, channel_name, group))
+        blocks.append((''.join(current_lines), extinf, stream_url, channel_name, group))
+
+        current_lines = []
+        extinf = ''
+
     return header, blocks
 
 
