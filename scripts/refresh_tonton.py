@@ -99,6 +99,16 @@ IGNORE_URL_KEYWORDS = (
     "vast",
 )
 
+# Declaration lines that may appear between #EXTINF and the URL
+# in Main.m3u8 (written there by validate_and_update.py from wrappers).
+# replace_in_main_m3u8 must skip past these to find the URL line.
+HINT_PREFIXES = (
+    "#EXTVLCOPT",
+    "#KODIPROP",
+    "#EXTHTTP",
+    "#EXTATTRB",
+)
+
 
 def log(message):
     print(message, flush=True)
@@ -139,13 +149,6 @@ def is_ignored_stream(url):
 
 
 def replace_in_main_m3u8(main_path, channel_name, new_url):
-    """Find the channel by tvg-name in Main.m3u8 and replace its stream URL.
-
-    Fix: the while loop now skips both blank lines AND #EXTVLCOPT directive
-    lines when searching for the URL line after #EXTINF. Previously it only
-    skipped blank lines, causing it to stop at the #EXTVLCOPT lines and
-    silently fail to update Main.m3u8.
-    """
     with open(main_path, "r", encoding="utf-8") as f:
         lines = f.readlines()
 
@@ -159,14 +162,18 @@ def replace_in_main_m3u8(main_path, channel_name, new_url):
         if not match or match.group(1) != channel_name:
             continue
 
+        # Advance past any blank lines or player-hint declarations
+        # (#EXTVLCOPT, #KODIPROP, etc.) to reach the actual URL line.
         j = i + 1
-
-        # Skip blank lines AND #EXTVLCOPT directive lines to reach the URL
-        while j < len(lines) and (
-            not lines[j].strip()
-            or lines[j].strip().startswith("#EXTVLCOPT")
-        ):
-            j += 1
+        while j < len(lines):
+            stripped = lines[j].strip()
+            if not stripped:
+                j += 1  # skip blank lines
+                continue
+            if any(stripped.startswith(p) for p in HINT_PREFIXES):
+                j += 1  # skip hint declarations
+                continue
+            break  # first non-blank, non-hint line
 
         if j < len(lines):
             stripped = lines[j].strip()
