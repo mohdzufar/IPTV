@@ -2,14 +2,14 @@
   ════════════════════════════════════════════════════════════════════════════════════════════════════
   IPTV Playlist Validation Report
   ════════════════════════════════════════════════════════════════════════════════════════════════════
-  Generated  :  2026-06-06 08:12:16 MYT
+  Generated  :  2026-06-06 15:30:19 MYT
   Source     :  Channels/Flatten.m3u8
   Total      :  180 channels
-  Result     :  123 active  |  49 dead  |  8 skipped  |  71.5% success
+  Result     :  121 active  |  51 dead  |  8 skipped  |  70.3% success
   ────────────────────────────────────────────────────────────────────────────────────────────────────
   Active breakdown:
     Wrapper kept  :  18  (stream URL hidden behind wrapper)
-    Direct URL    :  105  (hls_master / dash / mp4 — URL in Main.m3u8)
+    Direct URL    :  103  (hls_master / dash / mp4 — URL in Main.m3u8)
   ────────────────────────────────────────────────────────────────────────────────────────────────────
   KEY
     Status  :  active   = stream is working
@@ -22,7 +22,7 @@
   ════════════════════════════════════════════════════════════════════════════════════════════════════
 
   ════════════════════════════════════════════════════════════════════════════════════════════════════
-  ACTIVE CHANNELS (123)
+  ACTIVE CHANNELS (121)
   ════════════════════════════════════════════════════════════════════════════════════════════════════
 
    No.  Channel                         Group           Status    Type            Entry           URLs    Tries
@@ -47,7 +47,6 @@
     28  Jom Ngaji                       Malaysia        active    dash            direct_url      1/1         1
     29  Oh My Ceria!                    Malaysia        active    dash            direct_url      1/1         1
     30  Quran (Mecca)                   Muslim          active    hls_master      direct_url      1/1         1
-    37  meWATCH LIVE 1                  Singapore       active    dash            direct_url      1/1         1
     41  ZooMoo                          Singapore;Kids  active    hls_master      direct_url      1/5         1
     42  CNA                             Singapore;News  active    hls_master      direct_url      1/4         1
     43  TVBS Asia                       Singapore       active    hls_master      direct_url      1/1         1
@@ -55,7 +54,6 @@
     48  tvN Movies                      Indonesia;Mov…  active    hls_master      direct_url      1/2         1
     51  NHK World-Japan                 Japan           active    hls_master      direct_url      1/2         1
     52  Crunchyroll                     United State;…  active    hls_master      direct_url      1/1         1
-    54  Cartoon Network                 Kids            active    hls_master      direct_url      1/1         1
     57  Disney XD                       Kids            active    hls_master      direct_url      1/1         1
     58  Golf Kingdom                    Golf            active    hls_master      direct_url      1/3         1
     60  Golf Channel (Latin America)    Golf            active    hls_master      direct_url      1/2         1
@@ -152,7 +150,7 @@
    180  KoreaTV                         Korea           active    hls_master      direct_url      1/1         1
 
   ════════════════════════════════════════════════════════════════════════════════════════════════════
-  DEAD CHANNELS (49)
+  DEAD CHANNELS (51)
   ════════════════════════════════════════════════════════════════════════════════════════════════════
 
    No.  Channel                         Group           Status    Type            Entry           URLs    Tries
@@ -165,6 +163,7 @@
     34  Suria                           Singapore       dead      all_urls_fail…  dead            0/2         3
     35  HITS NOW                        Singapore       dead      all_urls_fail…  dead            0/1         3
     36  HITS Movies                     Singapore;Mov…  dead      all_urls_fail…  dead            0/2         3
+    37  meWATCH LIVE 1                  Singapore       dead      all_urls_fail…  dead            0/1         3
     38  ROCK Action                     Singapore;Mov…  dead      all_urls_fail…  dead            0/1         3
     39  ROCK Entertainment              Singapore;Mov…  dead      all_urls_fail…  dead            0/1         3
     40  TechStorm                       Singapore       dead      all_urls_fail…  dead            0/1         3
@@ -174,6 +173,7 @@
     49  RTB Aneka                       Brunei          dead      all_urls_fail…  dead            0/1         3
     50  RTB Sukmaindera                 Brunei          dead      all_urls_fail…  dead            0/1         3
     53  Aniplus Asia                    India;Anime     dead      all_urls_fail…  dead            0/1         3
+    54  Cartoon Network                 Kids            dead      all_urls_fail…  dead            0/1         3
     55  Nickelodeon Asia                Indonesia;Kids  dead      all_urls_fail…  dead            0/1         3
     56  Disney Channel                  Kids            dead      all_urls_fail…  dead            0/1         3
     59  Golf Channel                    Golf            dead      all_urls_fail…  dead            0/5         3
@@ -226,11 +226,11 @@
   SUMMARY
   ════════════════════════════════════════════════════════════════════════════════════════════════════
   Total           180
-  Active          123
+  Active          121
     Wrapper kept  18
-    Direct URL    105
-  Dead            49
+    Direct URL    103
+  Dead            51
   Skipped         8
-  Success         71.5%
-  Run time        2026-06-06 08:12:16 MYT
+  Success         70.3%
+  Run time        2026-06-06 15:30:19 MYT
   ════════════════════════════════════════════════════════════════════════════════════════════════════
