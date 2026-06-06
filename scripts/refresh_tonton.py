@@ -29,6 +29,16 @@ INITIAL_SETTLE_SECONDS = 8
 TOKEN_WAIT_SECONDS = 60
 INTERACTION_INTERVAL = 3
 
+# Player-hint declaration prefixes written by validate_and_update.py
+# between #EXTINF and the URL line in Main.m3u8.
+# replace_in_main_m3u8 must skip past these to reach the URL line.
+HINT_PREFIXES = (
+    "#EXTVLCOPT",
+    "#KODIPROP",
+    "#EXTHTTP",
+    "#EXTATTRB",
+)
+
 CHANNELS = [
     {
         "display_name": "TV3",
@@ -99,16 +109,6 @@ IGNORE_URL_KEYWORDS = (
     "vast",
 )
 
-# Declaration lines that may appear between #EXTINF and the URL
-# in Main.m3u8 (written there by validate_and_update.py from wrappers).
-# replace_in_main_m3u8 must skip past these to find the URL line.
-HINT_PREFIXES = (
-    "#EXTVLCOPT",
-    "#KODIPROP",
-    "#EXTHTTP",
-    "#EXTATTRB",
-)
-
 
 def log(message):
     print(message, flush=True)
@@ -162,7 +162,7 @@ def replace_in_main_m3u8(main_path, channel_name, new_url):
         if not match or match.group(1) != channel_name:
             continue
 
-        # Advance past any blank lines or player-hint declarations
+        # Advance past blank lines AND player-hint declarations
         # (#EXTVLCOPT, #KODIPROP, etc.) to reach the actual URL line.
         j = i + 1
         while j < len(lines):
@@ -173,7 +173,7 @@ def replace_in_main_m3u8(main_path, channel_name, new_url):
             if any(stripped.startswith(p) for p in HINT_PREFIXES):
                 j += 1  # skip hint declarations
                 continue
-            break  # first non-blank, non-hint line
+            break  # first non-blank, non-hint line — this is the URL
 
         if j < len(lines):
             stripped = lines[j].strip()
