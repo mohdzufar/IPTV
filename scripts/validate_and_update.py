@@ -11,13 +11,12 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 # Patterns of channels to skip validation (Mana-mana and tonton)
 SKIP_PATTERNS = ['Mana-mana', 'tonton']
 
-# HLS/DASH protocol tags that are part of the stream manifest itself —
-# these live inside wrapper files but must NOT be copied into Main.m3u8
-# because Main.m3u8 is a playlist file, not a manifest.
+# HLS/DASH protocol tags that are part of a stream manifest —
+# present inside wrapper files but must NOT be copied into Main.m3u8.
 HLS_PROTOCOL_TAGS = (
     '#EXTM3U',
     '#EXT-X-',
-    '#EXTINF',      # inner #EXTINF inside the wrapper (not the Flatten one)
+    '#EXTINF',
 )
 
 # Player-hint declaration prefixes that SHOULD be copied from the wrapper
@@ -33,40 +32,26 @@ PLAYER_HINT_PREFIXES = (
 def extract_wrapper_info(wrapper_content, base_url):
     """
     Parse a wrapper .m3u8 file and return:
-      - player_hints : list of player-hint declaration lines (e.g. #EXTVLCOPT:...)
-      - urls         : list of candidate stream URLs (http/https lines, ## excluded)
-
-    Lines that are HLS/DASH protocol tags (#EXT-X-*, #EXTINF inside wrapper,
-    #EXTM3U) and ## commented-out fallbacks are intentionally ignored.
+      - player_hints : list of player-hint declaration lines
+      - urls         : list of candidate stream URLs (## excluded)
     """
     player_hints = []
     urls = []
 
     for raw_line in wrapper_content.splitlines():
         line = raw_line.strip()
-
         if not line:
             continue
-
-        # Skip ## commented-out fallback URLs
         if line.startswith('##'):
             continue
-
-        # Collect player-hint declarations
         if any(line.startswith(prefix) for prefix in PLAYER_HINT_PREFIXES):
             player_hints.append(line)
             continue
-
-        # Skip HLS/DASH protocol tags that belong to the manifest
         if any(line.startswith(tag) for tag in HLS_PROTOCOL_TAGS):
             continue
-
-        # Collect real HTTP(S) URL lines
         if line.startswith('http'):
             urls.append(line)
             continue
-
-        # Relative URL — resolve against wrapper base
         if line.startswith('/'):
             urls.append(urljoin(base_url, line))
             continue
@@ -117,8 +102,7 @@ def validate_stream(url, headers=None):
 
 
 def is_skipped(channel_name, wrapper_url=''):
-    """Return True if this channel should be skipped.
-    Checks both the channel name and the wrapper URL path for skip patterns."""
+    """Return True if this channel should be skipped."""
     for pat in SKIP_PATTERNS:
         if pat.lower() in channel_name.lower():
             return True
@@ -128,58 +112,89 @@ def is_skipped(channel_name, wrapper_url=''):
 
 
 def parse_flatten(flatten_path):
-    """Parse Flatten.m3u8 and return (header_line, list_of_blocks).
-    header_line is the first line of the file (the #EXTM3U EPG line).
+    """
+    Parse Flatten.m3u8 and return (header_line, list_of_blocks).
 
     Each block is a tuple:
-      (full_raw_text, extinf_line, wrapper_url, channel_name, group)
+      (extinf_line, hint_lines, wrapper_url, channel_name, group)
+
+    hint_lines : list of #EXTVLCOPT / #KODIPROP lines between #EXTINF and URL
+                 (these should be empty for Flatten.m3u8, but we handle them
+                  gracefully so that stray entries never silently disappear)
     """
     with open(flatten_path, 'r', encoding='utf-8') as f:
-        lines = f.readlines()
+        raw = f.read()
+
+    # Normalise Windows line endings
+    raw = raw.replace('\r\n', '\n').replace('\r', '\n')
+    lines = raw.splitlines()
 
     header = ''
+    start = 0
     if lines and lines[0].startswith('#EXTM3U'):
         header = lines[0].strip()
-        content = ''.join(lines[1:])
-    else:
-        content = ''.join(lines)
+        start = 1
 
     blocks = []
-    pattern = re.compile(r'(#EXTINF:[^\n]*\n)((?:[^#\n][^\n]*\n?)+)')
-    for m in pattern.finditer(content):
-        extinf = m.group(1)
-        url_lines = m.group(2).strip()
+    i = start
+    while i < len(lines):
+        line = lines[i].strip()
+
+        # Skip blank lines, ## comment lines, and non-EXTINF # lines
+        if not line or line.startswith('##') or not line.startswith('#EXTINF'):
+            i += 1
+            continue
+
+        extinf = line
+        i += 1
+
+        # Collect any player-hint lines between #EXTINF and the URL
+        hint_lines = []
+        while i < len(lines):
+            next_line = lines[i].strip()
+            if not next_line:
+                i += 1
+                continue
+            if any(next_line.startswith(p) for p in PLAYER_HINT_PREFIXES):
+                hint_lines.append(next_line)
+                i += 1
+                continue
+            break  # next non-blank, non-hint line
+
+        # The next non-blank, non-hint line should be the wrapper URL
+        wrapper_url = ''
+        if i < len(lines):
+            next_line = lines[i].strip()
+            if next_line.startswith('http') or next_line.startswith('/'):
+                wrapper_url = next_line
+                i += 1
+
+        if not wrapper_url:
+            # No URL found — skip this malformed block
+            continue
+
         name_match = re.search(r'tvg-name="([^"]*)"', extinf)
         channel_name = name_match.group(1) if name_match else 'Unknown'
         group_match = re.search(r'group-title="([^"]*)"', extinf)
         group = group_match.group(1) if group_match else ''
-        blocks.append((m.group(0), extinf, url_lines, channel_name, group))
+
+        blocks.append((extinf, hint_lines, wrapper_url, channel_name, group))
+
     return header, blocks
 
 
 def build_main_entry(extinf, player_hints, url, direct_url=None):
-    """
-    Build the block of lines to write into Main.m3u8 for one channel.
-
-    For wrapper-kept channels  : #EXTINF + hints + wrapper_url
-    For direct-URL channels    : #EXTINF + hints + direct_url
-    player_hints is a list of '#EXTVLCOPT:...' style lines from the wrapper.
-    """
-    lines = [extinf.rstrip('\n')]
-    for hint in player_hints:
-        lines.append(hint)
+    """Build the block to write into Main.m3u8 for one active channel."""
+    lines = [extinf]
+    lines.extend(player_hints)
     lines.append(direct_url if direct_url else url)
     return '\n'.join(lines) + '\n'
 
 
 def build_dead_entry(extinf, player_hints, url):
-    """
-    Build a fully commented-out block for a dead channel.
-    Prefixes every line with '## '.
-    """
-    lines = [extinf.rstrip('\n')]
-    for hint in player_hints:
-        lines.append(hint)
+    """Build a fully commented-out block for a dead channel."""
+    lines = [extinf]
+    lines.extend(player_hints)
     lines.append(url)
     return ''.join('## ' + line + '\n' for line in lines)
 
@@ -192,13 +207,12 @@ def update_main_m3u8(main_path, header, blocks, results):
         else:
             f.write('#EXTM3U\n')
 
-        for idx, (full, extinf, url, name, group) in enumerate(blocks):
-            # Skipped channels (Mana-mana / TONTON): write Flatten block as-is.
-            # Their wrapper content is managed by refresh_mana2 / refresh_tonton.
-            # Main.m3u8 was pre-populated from Flatten in Step 1, so we just
-            # re-emit the Flatten block here to keep ordering consistent.
+        for idx, (extinf, hint_lines, url, name, group) in enumerate(blocks):
             if is_skipped(name, url):
-                f.write(full)
+                # Write Flatten block as-is (without hints — Flatten should
+                # not have #EXTVLCOPT; wrapper files carry those instead).
+                f.write(extinf + '\n')
+                f.write(url + '\n')
                 continue
 
             result = results[idx]
@@ -228,7 +242,7 @@ def main():
     with open(report_path, 'w', encoding='utf-8') as report:
         report.write("Channel,Status,Type,DirectURL\n")
 
-        for i, (full, extinf, url, name, group) in enumerate(blocks):
+        for i, (extinf, hint_lines, url, name, group) in enumerate(blocks):
             print("=" * 60)
             print(f"[{i+1}/{total}] {name} (group: {group})")
 
@@ -251,7 +265,6 @@ def main():
                     print("Action  : ❌ Commented out (wrapper HTTP error)")
                     continue
 
-                # --- Parse wrapper: extract player hints + candidate URLs ---
                 player_hints, candidate_urls = extract_wrapper_info(
                     wr.text, url.strip()
                 )
@@ -266,14 +279,13 @@ def main():
                     print("Action  : ❌ Commented out (no inner URL)")
                     continue
 
-                # Try each candidate URL in order; use first that is valid
                 validated = False
                 for inner_url in candidate_urls:
                     print(f"Inner URL: {inner_url}")
                     stream_kind, status, good = validate_stream(inner_url)
                     print(f"Stream   : {stream_kind} (HTTP {status})")
 
-                    if good and stream_kind not in ('empty_ok',):
+                    if good:
                         validated = True
                         if stream_kind in ('mp4', 'dash', 'hls_master'):
                             results[i] = {
@@ -283,7 +295,6 @@ def main():
                             }
                             print("Action  : 🔄 Replaced with direct URL")
                         else:
-                            # hls_media — keep wrapper chain
                             results[i] = {
                                 'valid': True,
                                 'direct': None,
