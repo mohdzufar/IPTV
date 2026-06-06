@@ -174,7 +174,7 @@ NatureTime,hls_master,200,https://amg00090-blueantllc-lovenature-au-samsungau-wg
 Bob Ross Channel,hls_master,200,https://jmp2.uk/rok-1d3f60995d80521882a379fc06e47679.m3u8
 Love Pets,hls_master,200,https://rakutenaa-blueskyent-lovepetsemea-rakuten-ikc4q.amagi.tv/playlist/rakutenAA-blueskyent-lovepetsemea-rakuten/playlist.m3u8
 Documentary+,hls_master,200,https://live-content.xumo.com/2715/content/XM04405O6X0WP0/28846020/master.m3u8
-Discovery Channel,all_urls_failed,,
+Discovery Channel,hls_master,200,http://23.237.104.106:8080/USA_DISCOVERY/index.m3u8
 Discovery Life,all_urls_failed,,
 Discovery Science,all_urls_failed,,
 mn静静nm,hls_media,200,https://goodiptv.club/douyu/5668371
