@@ -8,7 +8,7 @@ from playwright.sync_api import sync_playwright
 # Fix Unicode output on Windows
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
-# ---------- CONFIGURATION (exact tvg‑name → Mana2 live page) ----------
+# ---------- CONFIGURATION (exact tvg-name → Mana2 live page) ----------
 CHANNELS = {
     "Al-Hijrah": "https://www.mana2.my/channel/live/tv-alhijrah",
     "Bernama":   "https://www.mana2.my/channel/live/bernama",
@@ -23,6 +23,16 @@ HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
     "Referer":    "https://www.mana2.my/",
 }
+
+# Declaration lines that may appear between #EXTINF and the URL
+# in Main.m3u8 (written there by validate_and_update.py from wrappers).
+# replace_in_main_m3u8 must skip past these to find the URL line.
+HINT_PREFIXES = (
+    "#EXTVLCOPT",
+    "#KODIPROP",
+    "#EXTHTTP",
+    "#EXTATTRB",
+)
 # --------------------------------------------------------------------
 
 
@@ -75,12 +85,10 @@ def fetch_token(channel_name, page_url):
                     pass
 
             # ---------- Click the JW Player play overlay ----------
-            # The log showed exactly this element intercepting clicks:
-            # <div role="button" aria-label="Play" class="jw-icon jw-icon-display ...">
             play_selectors = [
-                'div[aria-label="Play"]',    # exact match from logs
-                '.jw-icon-display',          # JW Player's big play button
-                'button[aria-label="Play"]', # fallback
+                'div[aria-label="Play"]',
+                '.jw-icon-display',
+                'button[aria-label="Play"]',
             ]
             clicked = False
             for sel in play_selectors:
@@ -96,7 +104,6 @@ def fetch_token(channel_name, page_url):
 
             if not clicked:
                 print("    No play button found – playback may not start.")
-            # ----------------------------------------------------------------
 
             # ---------- Wait for stream request ----------
             print("    Waiting for .m3u8 stream request ...")
@@ -119,22 +126,37 @@ def fetch_token(channel_name, page_url):
 
 def replace_in_main_m3u8(main_path, channel_name, new_url):
     """
-    Line‑by‑line replacement in Main.m3u8:
-    Find the #EXTINF line whose tvg-name attribute exactly equals `channel_name`,
-    then replace the next HTTP URL line with `new_url`.
+    Find the #EXTINF line whose tvg-name attribute exactly equals
+    `channel_name`, skip past any player-hint declarations
+    (#EXTVLCOPT, #KODIPROP, etc.), then replace the URL line with `new_url`.
     """
     with open(main_path, 'r', encoding='utf-8') as f:
         lines = f.readlines()
 
     found = False
     for i, line in enumerate(lines):
-        if line.startswith('#EXTINF'):
-            m = re.search(r'tvg-name="([^"]*)"', line)
-            if m and m.group(1) == channel_name:
-                if i + 1 < len(lines) and lines[i + 1].strip().startswith('http'):
-                    lines[i + 1] = new_url + '\n'
-                    found = True
-                    break
+        if not line.startswith('#EXTINF'):
+            continue
+        m = re.search(r'tvg-name="([^"]*)"', line)
+        if not m or m.group(1) != channel_name:
+            continue
+
+        # Advance past blank lines and hint declarations to reach the URL line
+        j = i + 1
+        while j < len(lines):
+            stripped = lines[j].strip()
+            if not stripped:
+                j += 1  # skip blank lines
+                continue
+            if any(stripped.startswith(p) for p in HINT_PREFIXES):
+                j += 1  # skip hint declarations
+                continue
+            break  # first non-blank, non-hint line
+
+        if j < len(lines) and lines[j].strip().startswith('http'):
+            lines[j] = new_url + '\n'
+            found = True
+            break
 
     if found:
         with open(main_path, 'w', encoding='utf-8') as f:
