@@ -1,222 +1,236 @@
-# ============================================================
-# IPTV Playlist Validation Report
-# ============================================================
-# Generated  : 2026-06-05 23:32:49 MYT
-# Source     : Channels/Flatten.m3u8
-# Total      : 191 channels
-# Retry cfg  : MAX_RETRIES=2, RETRY_DELAY=5s
-#
-# Columns:
-#   Channel    - tvg-name from Flatten.m3u8
-#   Group      - group-title from Flatten.m3u8
-#   Status     - active / dead / skipped
-#   StreamType - hls_master / hls_media / dash / mp4 / etc
-#   MainEntry  - wrapper_kept / direct_url / skipped / dead
-#   URLsTested - position/total  e.g. 2/3 = 2nd of 3 worked
-#   Attempts   - HTTP attempts before pass/fail
-#
-Channel,Group,Status,StreamType,MainEntry,URLsTested,Attempts
-RTM TV1,Malaysia,dead,all_urls_failed,dead,0/5,3
-RTM TV2,Malaysia,dead,all_urls_failed,dead,0/5,3
-TV3,Malaysia,skipped,-,skipped,-,-
-Didik TV,Malaysia,skipped,-,skipped,-,-
-TV9,Malaysia,skipped,-,skipped,-,-
-Drama Sangat,Malaysia,skipped,-,skipped,-,-
-TV6,Malaysia,dead,all_urls_failed,dead,0/5,3
-8TV,Malaysia,active,hls_media,wrapper_kept,1/1,1
-Okey TV,Malaysia,dead,all_urls_failed,dead,0/5,3
-RTM Sukan,Sports,dead,all_urls_failed,dead,0/5,3
-TV IKIM,Malaysia,active,hls_media,wrapper_kept,1/3,1
-Berita RTM,News,dead,all_urls_failed,dead,0/5,3
-RTM World,Malaysia,dead,all_urls_failed,dead,0/5,3
-Astro Awani,News,active,hls_media,wrapper_kept,1/3,1
-Astro Arena Bola,Sports,active,hls_media,wrapper_kept,1/1,1
-Astro Arena Bola 2,Sports,active,hls_media,wrapper_kept,1/1,1
-Al-Hijrah,Malaysia,skipped,-,skipped,-,-
-EnjoyTV,Malaysia,skipped,-,skipped,-,-
-BorneoTV,Malaysia,skipped,-,skipped,-,-
-SelangorTV,Malaysia,skipped,-,skipped,-,-
-SukeTV,Malaysia,skipped,-,skipped,-,-
-TVS,Malaysia,skipped,-,skipped,-,-
-SukanPlus,Malaysia,skipped,-,skipped,-,-
-Bernama,Malaysia,skipped,-,skipped,-,-
-Dewan Rakyat,Malaysia,dead,all_urls_failed,dead,0/5,3
-Dewan Negara,Malaysia,dead,all_urls_failed,dead,0/5,3
-RTM Snap,Malaysia,active,hls_media,wrapper_kept,1/5,1
-RTM Lead,Malaysia,active,hls_media,wrapper_kept,1/5,1
-RTM Apetito,Malaysia,active,hls_media,wrapper_kept,1/5,1
-RTM Fitrah,Malaysia,active,hls_media,wrapper_kept,1/5,1
-RTM Junior,Malaysia,active,hls_media,wrapper_kept,1/5,1
-RTM Roll,Malaysia,active,hls_media,wrapper_kept,1/5,1
-RTM Aura,Malaysia,active,hls_media,wrapper_kept,1/5,1
-Filem Mantap,Malaysia,active,dash,direct_url,1/1,1
-Lawak Sentral,Malaysia,active,dash,direct_url,1/1,1
-Drama Hotpot,Malaysia,active,dash,direct_url,1/1,1
-Travel & Taste,Malaysia,active,dash,direct_url,1/1,1
-Drama Hebat,Malaysia,active,dash,direct_url,1/1,1
-Jom Ngaji,Malaysia,active,dash,direct_url,1/1,1
-Oh My Ceria!,Malaysia,dead,all_urls_failed,dead,0/1,3
-Quran (Mecca),Muslim,active,hls_master,direct_url,1/1,1
-Channel 5,Singapore,dead,all_urls_failed,dead,0/3,3
-Channel 8,Singapore,dead,all_urls_failed,dead,0/1,3
-Channel U,Singapore,dead,all_urls_failed,dead,0/1,3
-Suria,Singapore,dead,all_urls_failed,dead,0/2,3
-HITS NOW,Singapore,dead,all_urls_failed,dead,0/1,3
-HITS Movies,Singapore;Movies,dead,all_urls_failed,dead,0/2,3
-meWATCH LIVE 1,Singapore,active,dash,direct_url,1/1,1
-ROCK Action,Singapore;Movies,dead,all_urls_failed,dead,0/1,3
-ROCK Entertainment,Singapore;Movies,dead,all_urls_failed,dead,0/1,3
-TechStorm,Singapore,dead,all_urls_failed,dead,0/1,3
-ZooMoo,Singapore;Kids,active,hls_master,direct_url,1/5,1
-CNA,Singapore;News,active,hls_master,direct_url,1/4,1
-TVBS Asia,Singapore,active,hls_master,direct_url,1/1,1
-MediaCorp (English),Singapore,dead,all_urls_failed,dead,0/1,3
-MediaCorp (Tamil),Singapore,dead,all_urls_failed,dead,0/1,3
-KCM,India,dead,all_urls_failed,dead,0/1,3
-AXN Asia,Indonesia,active,hls_media,wrapper_kept,1/2,1
-tvN Movies,Indonesia;Movies,active,hls_master,direct_url,1/2,1
-RTB Aneka,Brunei,dead,all_urls_failed,dead,0/1,3
-RTB Sukmaindera,Brunei,dead,all_urls_failed,dead,0/1,3
-NHK World-Japan,Japan,active,hls_master,direct_url,1/2,1
-Crunchyroll,United State;Anime,active,hls_master,direct_url,1/1,1
-Aniplus Asia,India;Anime,dead,all_urls_failed,dead,0/1,3
-Cartoon Network,Kids,active,hls_master,direct_url,1/1,1
-Nickelodeon Asia,Indonesia;Kids,dead,all_urls_failed,dead,0/1,3
-Disney Channel,Kids,dead,all_urls_failed,dead,0/1,3
-Disney XD,Kids,active,hls_master,direct_url,1/1,1
-Golf Kingdom,Golf,active,hls_master,direct_url,1/3,1
-Golf Channel,Golf,dead,all_urls_failed,dead,0/5,3
-Golf Channel (Latin America),Golf,active,hls_master,direct_url,1/2,1
-GolfNetwork,Golf,dead,all_urls_failed,dead,0/1,3
-GolfNetwork Japan,Golf,active,hls_master,direct_url,1/4,1
-,Golf,dead,all_urls_failed,dead,0/1,3
-GolfPass,Golf,active,hls_master,direct_url,2/4,1
-PGA Tour,Golf,active,hls_master,direct_url,1/3,1
-DP World Tour,Golf,dead,all_urls_failed,dead,0/1,3
-Golf Television,Golf,active,hls_master,direct_url,1/1,1
-SBS_Golf,Golf,active,hls_master,direct_url,1/1,1
-SBS_Golf_2,Golf,active,hls_master,direct_url,1/1,1
-Sky Sport Golf,Golf,dead,all_urls_failed,dead,0/4,3
-Sky Sport Football,Sports,dead,all_urls_failed,dead,0/1,3
-Sky Sport F1,Sports,dead,all_urls_failed,dead,0/1,3
-Sky Sport Premier League,Sports,dead,all_urls_failed,dead,0/1,3
-Bein Sports 1,Sports,dead,all_urls_failed,dead,0/1,3
-Bein Sports 2,Sports,dead,all_urls_failed,dead,0/1,3
-Bein Sports 3,Sports,dead,all_urls_failed,dead,0/1,3
-Bein Sports 4,Sports,dead,all_urls_failed,dead,0/1,3
-Bein Sports 5,Sports,dead,all_urls_failed,dead,0/1,3
-Bein Xtra,Sports,active,hls_master,direct_url,1/1,1
-Bein Xtra 2,Sports,active,hls_master,direct_url,1/2,1
-Tennis TV,Sports,active,hls_master,direct_url,1/4,1
-Tennis TV 2,Sports,active,hls_master,direct_url,1/1,1
-Tennis+,Sports,active,hls_master,direct_url,1/1,1
-Tennis Channel,Sports,active,hls_master,direct_url,2/7,1
-Tennis Channel 2,Sports,active,hls_master,direct_url,1/1,1
-MLB,Sports,active,hls_master,direct_url,1/5,1
-MMA-TV International,Sports,active,hls_master,direct_url,1/1,1
-FOX NFL,Sports,active,hls_master,direct_url,1/2,1
-NHL,Sports,active,hls_master,direct_url,1/1,1
-UEFA Champion League,Sports,active,hls_master,direct_url,1/2,1
-UFC 1,Sports,active,hls_master,direct_url,1/5,1
-Xumo NBC Sport,Sports,active,hls_master,direct_url,1/1,1
-NBC Sport Now,Sports,active,hls_master,direct_url,1/1,1
-Goal TV,Sports,active,hls_master,direct_url,1/1,1
-Real Madrid TV,Sports,active,hls_media,wrapper_kept,1/2,1
-RedBull TV,Sports,active,hls_master,direct_url,1/2,1
-Sport Fishing TV,Sports,active,hls_master,direct_url,1/1,1
-Wired2Fish,Sports,active,hls_master,direct_url,1/1,1
-Sports Connect,Sports,dead,all_urls_failed,dead,0/1,3
-MBC America,Sports,active,hls_media,wrapper_kept,1/1,1
-Swerve Sport,Sports,active,hls_master,direct_url,1/1,1
-World Billiards TV,Sports,dead,all_urls_failed,dead,0/1,3
-Billiard TV,Sports,active,hls_master,direct_url,1/1,1
-BBC Top Gear,Sports,active,hls_master,direct_url,1/5,1
-Fuel TV,Sports,active,hls_master,direct_url,1/1,1
-Pro Fight League,Sports,active,hls_master,direct_url,1/1,1
-Speed Vision,Sports,active,hls_master,direct_url,1/1,1
-Fifa+,Sports,active,hls_master,direct_url,1/1,1
-TNA Wresling,Sports,active,hls_master,direct_url,1/1,1
-Astro Badminton,Sports,dead,wrapper_http_404,dead,0/0,1
-Astro Football,Sports,dead,wrapper_http_404,dead,0/0,1
-CS2,E-Sports,dead,all_urls_failed,dead,0/1,3
-CS2,E-Sports,dead,all_urls_failed,dead,0/1,3
-DotA2,E-Sports,dead,all_urls_failed,dead,0/1,3
-DotA2,E-Sports,dead,all_urls_failed,dead,0/1,3
-KPOP Mix,Music,active,hls_master,direct_url,1/1,1
-New KPOP,Music,active,hls_master,direct_url,1/1,1
-K POP by CJ ENM,Music,active,hls_master,direct_url,1/1,1
-Music Japan,Music,active,hls_master,direct_url,1/1,1
-Music India,Music,active,hls_master,direct_url,1/1,1
-Song TV,Music,active,dash,direct_url,1/1,1
-Vevo 2k,Music,active,hls_master,direct_url,1/1,1
-Paramount Movie Channel,Movies,active,hls_master,direct_url,1/2,1
-MyTime Movie Network,Movies,active,hls_master,direct_url,1/1,1
-Movie Sphere UK,Movies,active,hls_master,direct_url,1/1,1
-Movie Sphere 2,Movies,active,hls_master,direct_url,1/1,1
-Movie Sphere Aus,Movies,active,hls_master,direct_url,1/1,1
-Movie Sphere by Lionsgate,Movies,active,hls_master,direct_url,1/1,1
-Movie Sphere by Lionsgate 2,Movies,active,hls_master,direct_url,1/1,1
-Wedotv Movies,Movies,active,hls_master,direct_url,1/1,1
-Miramax,Movies,active,hls_media,wrapper_kept,1/1,1
-Universal Movie,Movies,active,hls_master,direct_url,1/1,1
-Cinemax,Movies,active,hls_master,direct_url,1/1,1
-Hallmark Channel,Movies,active,hls_master,direct_url,1/1,1
-HBO,Movies,active,hls_master,direct_url,1/1,1
-HBO 2,Movies,active,hls_master,direct_url,1/1,1
-HBO Comedy,Movies,active,hls_master,direct_url,1/1,1
-HBO Family,Movies,dead,all_urls_failed,dead,0/1,3
-HBO Signature,Movies,dead,all_urls_failed,dead,0/1,3
-HBO Zone,Movies,active,hls_master,direct_url,1/1,1
-Rakuten Top Movies UK,Movies,active,hls_master,direct_url,1/1,1
-Sony Movie Channel,Movies,dead,all_urls_failed,dead,0/1,3
-Bollywood,Movies,dead,all_urls_failed,dead,0/1,3
-Bollywood Classic,Movies,dead,all_urls_failed,dead,0/1,3
-EuroNews,News,active,hls_media,wrapper_kept,1/2,1
-NBC News Now,News,active,hls_master,direct_url,1/1,1
-CBS News 24/7,News,active,hls_master,direct_url,1/1,1
-BBC News,News,active,hls_master,direct_url,1/1,1
-Sky News,News,active,hls_master,direct_url,1/1,1
-Reuters,News,active,hls_master,direct_url,1/1,1
-Yahoo! Finance,News,active,hls_master,direct_url,1/2,1
-News World,News,active,hls_master,direct_url,1/1,1
-Al-Jazeera (English),News,active,hls_master,direct_url,1/3,1
-Adventure Earth,Nature,active,hls_master,direct_url,1/2,1
-BBC Earth,Nature,active,hls_master,direct_url,2/5,1
-Love The Planet,Nature,active,hls_master,direct_url,1/1,1
-Terra Mater Wild,Nature,active,hls_master,direct_url,1/1,1
-Real Wild,Nature,active,hls_master,direct_url,1/1,1
-Go Wild,Nature,active,hls_master,direct_url,1/1,1
-Wild Nature,Nature,active,hls_master,direct_url,1/1,1
-Wild Earth,Nature,active,hls_master,direct_url,1/1,1
-Wild Planet,Nature,active,hls_master,direct_url,1/1,1
-Xumo Nature & Wildlife TV,Nature,active,hls_master,direct_url,1/1,1
-Animal Planet,Nature,active,hls_master,direct_url,1/1,1
-NatureTime,Nature,active,hls_master,direct_url,1/1,1
-Bob Ross Channel,,active,hls_master,direct_url,2/4,1
-Love Pets,Pets,active,hls_master,direct_url,1/2,1
-Documentary+,,active,hls_master,direct_url,1/2,1
-Discovery Channel,,active,hls_master,direct_url,1/1,1
-Discovery Life,,dead,all_urls_failed,dead,0/1,3
-Discovery Science,,dead,all_urls_failed,dead,0/1,3
-mn静静nm,China,active,hls_media,wrapper_kept,1/1,1
-万事通熊猫,China,dead,all_urls_failed,dead,0/1,3
-douyu 19,China,active,hls_master,direct_url,1/1,1
-K-Content,Korea,active,hls_master,direct_url,1/2,1
-K-Drama+,Korea;Drama,active,hls_master,direct_url,1/1,1
-K-Stories,Korea,active,hls_master,direct_url,1/1,1
-KBS World,Korea,dead,all_urls_failed,dead,0/1,3
-AsianCrush,Korea;Drama,active,hls_master,direct_url,1/1,1
-KoreaTV,Korea,active,hls_master,direct_url,1/1,1
-#
-# ============================================================
-# SUMMARY
-# ============================================================
-# Total          : 191
-# Active         : 122
-#   Wrapper kept : 18  (URL hidden)
-#   Direct URL   : 104  (hls_master/dash/mp4)
-# Dead           : 57
-# Skipped        : 12
-# Success        : 68.2%  (active / non-skipped)
-# Run time       : 2026-06-05 23:32:49 MYT
-# ============================================================
+
+  ════════════════════════════════════════════════════════════════════════════════════════════════════
+  IPTV Playlist Validation Report
+  ════════════════════════════════════════════════════════════════════════════════════════════════════
+  Generated  :  2026-06-06 08:12:16 MYT
+  Source     :  Channels/Flatten.m3u8
+  Total      :  180 channels
+  Result     :  123 active  |  49 dead  |  8 skipped  |  71.5% success
+  ────────────────────────────────────────────────────────────────────────────────────────────────────
+  Active breakdown:
+    Wrapper kept  :  18  (stream URL hidden behind wrapper)
+    Direct URL    :  105  (hls_master / dash / mp4 — URL in Main.m3u8)
+  ────────────────────────────────────────────────────────────────────────────────────────────────────
+  KEY
+    Status  :  active   = stream is working
+               dead     = no working stream found
+               skipped  = token-based (Mana-mana / tonton)
+    Entry   :  wrapper_kept = URL hidden, TV follows wrapper chain
+               direct_url   = URL written directly to Main.m3u8
+    URLs    :  e.g. 2/3 = 2nd of 3 backup links worked
+    Tries   :  HTTP attempts before pass or fail
+  ════════════════════════════════════════════════════════════════════════════════════════════════════
+
+  ════════════════════════════════════════════════════════════════════════════════════════════════════
+  ACTIVE CHANNELS (123)
+  ════════════════════════════════════════════════════════════════════════════════════════════════════
+
+   No.  Channel                         Group           Status    Type            Entry           URLs    Tries
+  ────  ──────────────────────────────  ──────────────  ────────  ──────────────  ──────────────  ──────  ─────
+     1  8TV                             Malaysia        active    hls_media       wrapper_kept    1/1         1
+     2  TV IKIM                         Malaysia        active    hls_media       wrapper_kept    1/3         1
+     3  Astro Awani                     News            active    hls_media       wrapper_kept    1/3         1
+     4  Astro Arena Bola                Sports          active    hls_media       wrapper_kept    1/1         1
+     5  Astro Arena Bola 2              Sports          active    hls_media       wrapper_kept    1/1         1
+    16  RTM Snap                        Malaysia        active    hls_media       wrapper_kept    1/5         1
+    17  RTM Lead                        Malaysia        active    hls_media       wrapper_kept    1/5         1
+    18  RTM Apetito                     Malaysia        active    hls_media       wrapper_kept    1/5         1
+    19  RTM Fitrah                      Malaysia        active    hls_media       wrapper_kept    1/5         1
+    20  RTM Junior                      Malaysia        active    hls_media       wrapper_kept    1/5         1
+    21  RTM Roll                        Malaysia        active    hls_media       wrapper_kept    1/5         1
+    22  RTM Aura                        Malaysia        active    hls_media       wrapper_kept    1/5         1
+    23  Filem Mantap                    Malaysia        active    dash            direct_url      1/1         1
+    24  Lawak Sentral                   Malaysia        active    dash            direct_url      1/1         1
+    25  Drama Hotpot                    Malaysia        active    dash            direct_url      1/1         1
+    26  Travel & Taste                  Malaysia        active    dash            direct_url      1/1         1
+    27  Drama Hebat                     Malaysia        active    dash            direct_url      1/1         1
+    28  Jom Ngaji                       Malaysia        active    dash            direct_url      1/1         1
+    29  Oh My Ceria!                    Malaysia        active    dash            direct_url      1/1         1
+    30  Quran (Mecca)                   Muslim          active    hls_master      direct_url      1/1         1
+    37  meWATCH LIVE 1                  Singapore       active    dash            direct_url      1/1         1
+    41  ZooMoo                          Singapore;Kids  active    hls_master      direct_url      1/5         1
+    42  CNA                             Singapore;News  active    hls_master      direct_url      1/4         1
+    43  TVBS Asia                       Singapore       active    hls_master      direct_url      1/1         1
+    47  AXN Asia                        Indonesia       active    hls_media       wrapper_kept    1/2         1
+    48  tvN Movies                      Indonesia;Mov…  active    hls_master      direct_url      1/2         1
+    51  NHK World-Japan                 Japan           active    hls_master      direct_url      1/2         1
+    52  Crunchyroll                     United State;…  active    hls_master      direct_url      1/1         1
+    54  Cartoon Network                 Kids            active    hls_master      direct_url      1/1         1
+    57  Disney XD                       Kids            active    hls_master      direct_url      1/1         1
+    58  Golf Kingdom                    Golf            active    hls_master      direct_url      1/3         1
+    60  Golf Channel (Latin America)    Golf            active    hls_master      direct_url      1/2         1
+    62  GolfNetwork Japan               Golf            active    hls_master      direct_url      1/4         1
+    64  GolfPass                        Golf            active    hls_master      direct_url      2/4         1
+    65  PGA Tour                        Golf            active    hls_master      direct_url      1/3         1
+    67  Golf Television                 Golf            active    hls_master      direct_url      1/1         1
+    68  SBS_Golf                        Golf            active    hls_master      direct_url      1/1         1
+    69  SBS_Golf_2                      Golf            active    hls_master      direct_url      1/1         1
+    79  Bein Xtra                       Sports          active    hls_master      direct_url      1/1         1
+    80  Bein Xtra 2                     Sports          active    hls_master      direct_url      1/2         1
+    81  Tennis TV                       Sports          active    hls_master      direct_url      1/4         1
+    82  Tennis TV 2                     Sports          active    hls_master      direct_url      1/1         1
+    83  Tennis+                         Sports          active    hls_master      direct_url      1/1         1
+    84  Tennis Channel                  Sports          active    hls_master      direct_url      2/7         1
+    85  Tennis Channel 2                Sports          active    hls_master      direct_url      1/1         1
+    86  MLB                             Sports          active    hls_master      direct_url      1/5         1
+    87  MMA-TV International            Sports          active    hls_master      direct_url      1/1         1
+    88  FOX NFL                         Sports          active    hls_master      direct_url      1/2         1
+    89  NHL                             Sports          active    hls_master      direct_url      1/1         1
+    90  UEFA Champion League            Sports          active    hls_master      direct_url      1/2         1
+    91  UFC 1                           Sports          active    hls_master      direct_url      1/5         1
+    92  Xumo NBC Sport                  Sports          active    hls_master      direct_url      1/1         1
+    93  NBC Sport Now                   Sports          active    hls_master      direct_url      1/1         1
+    94  Goal TV                         Sports          active    hls_master      direct_url      1/1         1
+    95  Real Madrid TV                  Sports          active    hls_media       wrapper_kept    1/2         1
+    96  RedBull TV                      Sports          active    hls_master      direct_url      1/2         1
+    97  Sport Fishing TV                Sports          active    hls_master      direct_url      1/1         1
+    98  Wired2Fish                      Sports          active    hls_master      direct_url      1/1         1
+   100  MBC America                     Sports          active    hls_media       wrapper_kept    1/1         1
+   101  Swerve Sport                    Sports          active    hls_master      direct_url      1/1         1
+   103  Billiard TV                     Sports          active    hls_master      direct_url      1/1         1
+   104  BBC Top Gear                    Sports          active    hls_master      direct_url      1/5         1
+   105  Fuel TV                         Sports          active    hls_master      direct_url      1/1         1
+   106  Pro Fight League                Sports          active    hls_master      direct_url      1/1         1
+   107  Speed Vision                    Sports          active    hls_master      direct_url      1/1         1
+   108  Fifa+                           Sports          active    hls_master      direct_url      1/1         1
+   109  TNA Wresling                    Sports          active    hls_master      direct_url      1/1         1
+   116  KPOP Mix                        Music           active    hls_master      direct_url      1/1         1
+   117  New KPOP                        Music           active    hls_master      direct_url      1/1         1
+   118  K POP by CJ ENM                 Music           active    hls_master      direct_url      1/1         1
+   119  Music Japan                     Music           active    hls_master      direct_url      1/1         1
+   120  Music India                     Music           active    hls_master      direct_url      1/1         1
+   121  Song TV                         Music           active    dash            direct_url      1/1         1
+   122  Vevo 2k                         Music           active    hls_master      direct_url      1/1         1
+   123  Paramount Movie Channel         Movies          active    hls_master      direct_url      1/2         1
+   124  MyTime Movie Network            Movies          active    hls_master      direct_url      1/1         1
+   125  Movie Sphere UK                 Movies          active    hls_master      direct_url      1/1         1
+   126  Movie Sphere 2                  Movies          active    hls_master      direct_url      1/1         1
+   127  Movie Sphere Aus                Movies          active    hls_master      direct_url      1/1         1
+   128  Movie Sphere by Lionsgate       Movies          active    hls_master      direct_url      1/1         1
+   129  Movie Sphere by Lionsgate 2     Movies          active    hls_master      direct_url      1/1         1
+   130  Wedotv Movies                   Movies          active    hls_master      direct_url      1/1         1
+   131  Miramax                         Movies          active    hls_media       wrapper_kept    1/1         1
+   132  Universal Movie                 Movies          active    hls_master      direct_url      1/1         1
+   133  Cinemax                         Movies          active    hls_master      direct_url      1/1         1
+   134  Hallmark Channel                Movies          active    hls_master      direct_url      1/1         1
+   135  HBO                             Movies          active    hls_master      direct_url      1/1         1
+   136  HBO 2                           Movies          active    hls_master      direct_url      1/1         1
+   137  HBO Comedy                      Movies          active    hls_master      direct_url      1/1         1
+   140  HBO Zone                        Movies          active    hls_master      direct_url      1/1         1
+   141  Rakuten Top Movies UK           Movies          active    hls_master      direct_url      1/1         1
+   145  EuroNews                        News            active    hls_media       wrapper_kept    1/2         1
+   146  NBC News Now                    News            active    hls_master      direct_url      1/1         1
+   147  CBS News 24/7                   News            active    hls_master      direct_url      1/1         1
+   148  BBC News                        News            active    hls_master      direct_url      1/1         1
+   149  Sky News                        News            active    hls_master      direct_url      1/1         1
+   150  Reuters                         News            active    hls_master      direct_url      1/1         1
+   151  Yahoo! Finance                  News            active    hls_master      direct_url      1/2         1
+   152  News World                      News            active    hls_master      direct_url      1/1         1
+   153  Al-Jazeera (English)            News            active    hls_master      direct_url      1/3         1
+   154  Adventure Earth                 Nature          active    hls_master      direct_url      1/2         1
+   155  BBC Earth                       Nature          active    hls_master      direct_url      2/5         1
+   156  Love The Planet                 Nature          active    hls_master      direct_url      1/1         1
+   157  Terra Mater Wild                Nature          active    hls_master      direct_url      1/1         1
+   158  Real Wild                       Nature          active    hls_master      direct_url      1/1         1
+   159  Go Wild                         Nature          active    hls_master      direct_url      1/1         1
+   160  Wild Nature                     Nature          active    hls_master      direct_url      1/1         1
+   161  Wild Earth                      Nature          active    hls_master      direct_url      1/1         1
+   162  Wild Planet                     Nature          active    hls_master      direct_url      1/1         1
+   163  Xumo Nature & Wildlife TV       Nature          active    hls_master      direct_url      1/1         1
+   164  Animal Planet                   Nature          active    hls_master      direct_url      1/1         1
+   165  NatureTime                      Nature          active    hls_master      direct_url      1/1         1
+   166  Bob Ross Channel                                active    hls_master      direct_url      2/4         1
+   167  Love Pets                       Pets            active    hls_master      direct_url      1/2         1
+   168  Documentary+                                    active    hls_master      direct_url      1/2         1
+   169  Discovery Channel                               active    hls_master      direct_url      1/1         1
+   172  mn静静nm                          China           active    hls_media       wrapper_kept    1/1         1
+   174  douyu 19                        China           active    hls_master      direct_url      1/1         1
+   175  K-Content                       Korea           active    hls_master      direct_url      1/2         1
+   176  K-Drama+                        Korea;Drama     active    hls_master      direct_url      1/1         1
+   177  K-Stories                       Korea           active    hls_master      direct_url      1/1         1
+   179  AsianCrush                      Korea;Drama     active    hls_master      direct_url      1/1         1
+   180  KoreaTV                         Korea           active    hls_master      direct_url      1/1         1
+
+  ════════════════════════════════════════════════════════════════════════════════════════════════════
+  DEAD CHANNELS (49)
+  ════════════════════════════════════════════════════════════════════════════════════════════════════
+
+   No.  Channel                         Group           Status    Type            Entry           URLs    Tries
+  ────  ──────────────────────────────  ──────────────  ────────  ──────────────  ──────────────  ──────  ─────
+    14  Dewan Rakyat                    Malaysia        dead      all_urls_fail…  dead            0/5         3
+    15  Dewan Negara                    Malaysia        dead      all_urls_fail…  dead            0/5         3
+    31  Channel 5                       Singapore       dead      all_urls_fail…  dead            0/3         3
+    32  Channel 8                       Singapore       dead      all_urls_fail…  dead            0/1         3
+    33  Channel U                       Singapore       dead      all_urls_fail…  dead            0/1         3
+    34  Suria                           Singapore       dead      all_urls_fail…  dead            0/2         3
+    35  HITS NOW                        Singapore       dead      all_urls_fail…  dead            0/1         3
+    36  HITS Movies                     Singapore;Mov…  dead      all_urls_fail…  dead            0/2         3
+    38  ROCK Action                     Singapore;Mov…  dead      all_urls_fail…  dead            0/1         3
+    39  ROCK Entertainment              Singapore;Mov…  dead      all_urls_fail…  dead            0/1         3
+    40  TechStorm                       Singapore       dead      all_urls_fail…  dead            0/1         3
+    44  MediaCorp (English)             Singapore       dead      all_urls_fail…  dead            0/1         3
+    45  MediaCorp (Tamil)               Singapore       dead      all_urls_fail…  dead            0/1         3
+    46  KCM                             India           dead      all_urls_fail…  dead            0/1         3
+    49  RTB Aneka                       Brunei          dead      all_urls_fail…  dead            0/1         3
+    50  RTB Sukmaindera                 Brunei          dead      all_urls_fail…  dead            0/1         3
+    53  Aniplus Asia                    India;Anime     dead      all_urls_fail…  dead            0/1         3
+    55  Nickelodeon Asia                Indonesia;Kids  dead      all_urls_fail…  dead            0/1         3
+    56  Disney Channel                  Kids            dead      all_urls_fail…  dead            0/1         3
+    59  Golf Channel                    Golf            dead      all_urls_fail…  dead            0/5         3
+    61  GolfNetwork                     Golf            dead      all_urls_fail…  dead            0/1         3
+    63                                  Golf            dead      all_urls_fail…  dead            0/1         3
+    66  DP World Tour                   Golf            dead      all_urls_fail…  dead            0/1         3
+    70  Sky Sport Golf                  Golf            dead      all_urls_fail…  dead            0/4         3
+    71  Sky Sport Football              Sports          dead      all_urls_fail…  dead            0/1         3
+    72  Sky Sport F1                    Sports          dead      all_urls_fail…  dead            0/1         3
+    73  Sky Sport Premier League        Sports          dead      all_urls_fail…  dead            0/1         3
+    74  Bein Sports 1                   Sports          dead      all_urls_fail…  dead            0/1         3
+    75  Bein Sports 2                   Sports          dead      all_urls_fail…  dead            0/1         3
+    76  Bein Sports 3                   Sports          dead      all_urls_fail…  dead            0/1         3
+    77  Bein Sports 4                   Sports          dead      all_urls_fail…  dead            0/1         3
+    78  Bein Sports 5                   Sports          dead      all_urls_fail…  dead            0/1         3
+    99  Sports Connect                  Sports          dead      all_urls_fail…  dead            0/1         3
+   102  World Billiards TV              Sports          dead      all_urls_fail…  dead            0/1         3
+   110  Astro Badminton                 Sports          dead      wrapper_http_…  dead            0/0         1
+   111  Astro Football                  Sports          dead      wrapper_http_…  dead            0/0         1
+   112  CS2                             E-Sports        dead      all_urls_fail…  dead            0/1         3
+   113  CS2                             E-Sports        dead      all_urls_fail…  dead            0/1         3
+   114  DotA2                           E-Sports        dead      all_urls_fail…  dead            0/1         3
+   115  DotA2                           E-Sports        dead      all_urls_fail…  dead            0/1         3
+   138  HBO Family                      Movies          dead      all_urls_fail…  dead            0/1         3
+   139  HBO Signature                   Movies          dead      all_urls_fail…  dead            0/1         3
+   142  Sony Movie Channel              Movies          dead      all_urls_fail…  dead            0/1         3
+   143  Bollywood                       Movies          dead      all_urls_fail…  dead            0/1         3
+   144  Bollywood Classic               Movies          dead      all_urls_fail…  dead            0/1         3
+   170  Discovery Life                                  dead      all_urls_fail…  dead            0/1         3
+   171  Discovery Science                               dead      all_urls_fail…  dead            0/1         3
+   173  万事通熊猫                           China           dead      all_urls_fail…  dead            0/1         3
+   178  KBS World                       Korea           dead      all_urls_fail…  dead            0/1         3
+
+  ════════════════════════════════════════════════════════════════════════════════════════════════════
+  SKIPPED CHANNELS (8)
+  ════════════════════════════════════════════════════════════════════════════════════════════════════
+
+   No.  Channel                         Group           Status    Type            Entry           URLs    Tries
+  ────  ──────────────────────────────  ──────────────  ────────  ──────────────  ──────────────  ──────  ─────
+     6  Al-Hijrah                       Malaysia        skipped   -               -               -           -
+     7  EnjoyTV                         Malaysia        skipped   -               -               -           -
+     8  BorneoTV                        Malaysia        skipped   -               -               -           -
+     9  SelangorTV                      Malaysia        skipped   -               -               -           -
+    10  SukeTV                          Malaysia        skipped   -               -               -           -
+    11  TVS                             Malaysia        skipped   -               -               -           -
+    12  SukanPlus                       Malaysia        skipped   -               -               -           -
+    13  Bernama                         Malaysia        skipped   -               -               -           -
+
+  ════════════════════════════════════════════════════════════════════════════════════════════════════
+  SUMMARY
+  ════════════════════════════════════════════════════════════════════════════════════════════════════
+  Total           180
+  Active          123
+    Wrapper kept  18
+    Direct URL    105
+  Dead            49
+  Skipped         8
+  Success         71.5%
+  Run time        2026-06-06 08:12:16 MYT
+  ════════════════════════════════════════════════════════════════════════════════════════════════════
