@@ -5,48 +5,22 @@ import re
 import requests
 from urllib.parse import urljoin
 
-# Fix Unicode output on Windows (avoid cp1252 errors)
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
-# Patterns of channels to skip validation (Mana-mana and tonton)
 SKIP_PATTERNS = ['Mana-mana', 'tonton']
 
-# HLS/DASH protocol tags that belong to a stream manifest —
-# present inside wrapper files but must NOT be copied into Main.m3u8.
-HLS_PROTOCOL_TAGS = (
-    '#EXTM3U',
-    '#EXT-X-',
-    '#EXTINF',
-)
+HLS_PROTOCOL_TAGS = ('#EXTM3U', '#EXT-X-', '#EXTINF')
 
-# Player-hint declaration prefixes that SHOULD be copied from the
-# wrapper file into Main.m3u8, placed between #EXTINF and the URL.
-PLAYER_HINT_PREFIXES = (
-    '#EXTVLCOPT',
-    '#KODIPROP',
-    '#EXTHTTP',
-    '#EXTATTRB',
-)
+PLAYER_HINT_PREFIXES = ('#EXTVLCOPT', '#KODIPROP', '#EXTHTTP', '#EXTATTRB')
 
-
-# ---------------------------------------------------------------------------
-# Wrapper parsing
-# ---------------------------------------------------------------------------
 
 def extract_wrapper_info(wrapper_content, base_url):
-    """
-    Parse a wrapper .m3u8 file and return:
-      player_hints : list of player-hint lines  (#EXTVLCOPT, #KODIPROP …)
-      urls         : list of candidate stream URLs (## lines excluded)
-    """
+    """Parse wrapper .m3u8 — return (player_hints, urls)."""
     player_hints = []
     urls = []
-
     for raw_line in wrapper_content.splitlines():
         line = raw_line.strip()
-        if not line:
-            continue
-        if line.startswith('##'):
+        if not line or line.startswith('##'):
             continue
         if any(line.startswith(p) for p in PLAYER_HINT_PREFIXES):
             player_hints.append(line)
@@ -55,16 +29,46 @@ def extract_wrapper_info(wrapper_content, base_url):
             continue
         if line.startswith('http'):
             urls.append(line)
-            continue
-        if line.startswith('/'):
+        elif line.startswith('/'):
             urls.append(urljoin(base_url, line))
-
     return player_hints, urls
 
 
-# ---------------------------------------------------------------------------
-# Stream classification
-# ---------------------------------------------------------------------------
+def hints_to_headers(player_hints):
+    """
+    Convert #EXTVLCOPT player-hint lines into an HTTP headers dict.
+    Ensures CDNs that require Referer/User-Agent (e.g. RTM CloudFront)
+    receive the correct headers during stream validation.
+
+      #EXTVLCOPT:http-referrer=https://...   ->  Referer: https://...
+      #EXTVLCOPT:http-user-agent=Mozilla/5.0 ->  User-Agent: Mozilla/5.0
+    """
+    headers = {}
+    for hint in player_hints:
+        for prefix in PLAYER_HINT_PREFIXES:
+            if hint.startswith(prefix + ':'):
+                kv = hint[len(prefix) + 1:]
+                break
+        else:
+            continue
+        if '=' not in kv:
+            continue
+        key, _, value = kv.partition('=')
+        key = key.strip().lower()
+        value = value.strip()
+        if key == 'http-referrer':
+            headers['Referer'] = value
+        elif key == 'http-user-agent':
+            headers['User-Agent'] = value
+        elif key == 'http-origin':
+            headers['Origin'] = value
+        elif key.startswith('http-'):
+            header_name = '-'.join(
+                part.capitalize() for part in key[5:].split('-')
+            )
+            headers[header_name] = value
+    return headers
+
 
 def classify_content(text, status, content_type):
     if text is None:
@@ -97,18 +101,13 @@ def validate_stream(url, headers=None):
         resp = requests.get(url, headers=headers, timeout=15, stream=True)
         chunk = resp.raw.read(2048, decode_content=True)
         content_type = resp.headers.get('Content-Type', '')
-        kind = classify_content(
-            chunk.decode('utf-8', errors='ignore'), resp.status_code, content_type
-        )
+        kind = classify_content(chunk.decode('utf-8', errors='ignore'),
+                                resp.status_code, content_type)
         good = kind not in ('invalid', 'html', 'empty_ok', 'binary', 'wrapper')
         return kind, resp.status_code, good
     except Exception:
         return 'exception', 0, False
 
-
-# ---------------------------------------------------------------------------
-# Skip logic
-# ---------------------------------------------------------------------------
 
 def is_skipped(channel_name, wrapper_url=''):
     for pat in SKIP_PATTERNS:
@@ -119,25 +118,14 @@ def is_skipped(channel_name, wrapper_url=''):
     return False
 
 
-# ---------------------------------------------------------------------------
-# Flatten.m3u8 parser
-# ---------------------------------------------------------------------------
-
 def parse_flatten(flatten_path):
     """
-    Parse Flatten.m3u8 line-by-line and return (header_line, blocks).
-
-    Each block is a tuple:
+    Parse Flatten.m3u8 line-by-line.
+    Returns (header_line, blocks) where each block is:
         (extinf_line, hint_lines, wrapper_url, channel_name, group)
-
-    hint_lines — any #EXTVLCOPT / #KODIPROP lines sitting between
-                 #EXTINF and the URL in Flatten (should be empty by
-                 design, but handled gracefully so nothing is silently lost).
     """
     with open(flatten_path, 'r', encoding='utf-8') as f:
         raw = f.read()
-
-    # Normalise Windows CRLF
     raw = raw.replace('\r\n', '\n').replace('\r', '\n')
     lines = raw.splitlines()
 
@@ -151,8 +139,6 @@ def parse_flatten(flatten_path):
     i = start
     while i < len(lines):
         line = lines[i].strip()
-
-        # Skip blank lines, ## comment/section lines, non-EXTINF # lines
         if not line or line.startswith('##') or not line.startswith('#EXTINF'):
             i += 1
             continue
@@ -160,7 +146,6 @@ def parse_flatten(flatten_path):
         extinf = line
         i += 1
 
-        # Collect any player-hint lines between #EXTINF and the URL
         hint_lines = []
         while i < len(lines):
             nxt = lines[i].strip()
@@ -173,7 +158,6 @@ def parse_flatten(flatten_path):
                 continue
             break
 
-        # Next non-blank, non-hint line must be the wrapper URL
         wrapper_url = ''
         if i < len(lines):
             nxt = lines[i].strip()
@@ -182,7 +166,7 @@ def parse_flatten(flatten_path):
                 i += 1
 
         if not wrapper_url:
-            continue  # malformed block — skip silently
+            continue
 
         name_match = re.search(r'tvg-name="([^"]*)"', extinf)
         channel_name = name_match.group(1) if name_match else 'Unknown'
@@ -194,10 +178,6 @@ def parse_flatten(flatten_path):
     return header, blocks
 
 
-# ---------------------------------------------------------------------------
-# Main.m3u8 writers
-# ---------------------------------------------------------------------------
-
 def build_main_entry(extinf, player_hints, url):
     """Active channel — #EXTINF + hints + URL."""
     lines = [extinf] + player_hints + [url]
@@ -205,18 +185,13 @@ def build_main_entry(extinf, player_hints, url):
 
 
 def build_dead_entry(extinf, player_hints, url):
-    """Dead channel — everything prefixed with '## '."""
+    """Dead channel — everything prefixed with ## ."""
     lines = [extinf] + player_hints + [url]
     return ''.join('## ' + l + '\n' for l in lines)
 
 
 def fetch_wrapper_hints(wrapper_url):
-    """
-    Fetch a wrapper file and return its player_hints list.
-    Used for skipped channels (TONTON / Mana-mana) so their declarations
-    are copied into Main.m3u8 even though the stream is not validated.
-    Returns [] on any fetch error.
-    """
+    """Fetch wrapper file and return player_hints for skipped channels."""
     try:
         resp = requests.get(wrapper_url.strip(), timeout=10,
                             headers={'User-Agent': 'VLC/3.0.20'})
@@ -236,9 +211,6 @@ def update_main_m3u8(main_path, header, blocks, results):
         for idx, (extinf, hint_lines, url, name, group) in enumerate(blocks):
 
             if is_skipped(name, url):
-                # Fetch declarations from the wrapper file so they appear
-                # in Main.m3u8 — refresh_tonton / refresh_mana2 will later
-                # replace the URL line but leave the hint lines in place.
                 hints = fetch_wrapper_hints(url)
                 f.write(build_main_entry(extinf, hints, url))
                 continue
@@ -253,10 +225,6 @@ def update_main_m3u8(main_path, header, blocks, results):
             else:
                 f.write(build_dead_entry(extinf, player_hints, url))
 
-
-# ---------------------------------------------------------------------------
-# Main
-# ---------------------------------------------------------------------------
 
 def main():
     base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -279,14 +247,12 @@ def main():
             print("=" * 60)
             print(f"[{i+1}/{total}] {name} (group: {group})")
 
-            # --- Skipped channels ---
             if is_skipped(name, url):
                 results[i] = {'valid': True, 'direct': None, 'player_hints': []}
                 report.write(f"{name},Skipped,,\n")
                 print("Action  : ⏭️  Skipped (Mana-mana / tonton)")
                 continue
 
-            # --- Validated channels ---
             print(f"Wrapper : {url}")
             try:
                 wr = requests.get(url.strip(), timeout=10,
@@ -305,6 +271,11 @@ def main():
                 if player_hints:
                     print(f"Hints   : {player_hints}")
 
+                # Convert hints to HTTP headers for stream validation
+                stream_headers = hints_to_headers(player_hints)
+                if stream_headers:
+                    print(f"Headers : {stream_headers}")
+
                 if not candidate_urls:
                     results[i] = {'valid': False, 'direct': None,
                                   'player_hints': player_hints}
@@ -315,7 +286,10 @@ def main():
                 validated = False
                 for inner_url in candidate_urls:
                     print(f"Inner   : {inner_url}")
-                    stream_kind, status, good = validate_stream(inner_url)
+                    # Pass stream_headers so CDNs enforcing Referer/UA return 200
+                    stream_kind, status, good = validate_stream(
+                        inner_url, headers=stream_headers
+                    )
                     print(f"Stream  : {stream_kind} (HTTP {status})")
 
                     if good:
