@@ -1,17 +1,17 @@
 Channel,Status,Type,DirectURL
-RTM TV1,all_urls_failed,,
-RTM TV2,all_urls_failed,,
+RTM TV1,hls_media,200,https://d25tgymtnqzu8s.cloudfront.net/main/A0jyR3/dl_240p.m3u8
+RTM TV2,hls_media,200,https://d25tgymtnqzu8s.cloudfront.net/smil:tv2/chunklist_b346000_slENG.m3u8?id=2
 TV3,Skipped,,
 Didik TV,Skipped,,
 TV9,Skipped,,
 Drama Sangat,Skipped,,
-TV6,all_urls_failed,,
+TV6,hls_media,200,https://d25tgymtnqzu8s.cloudfront.net/smil:tv6/chunklist_b346000_slENG.m3u8?id=6
 8TV,hls_media,200,http://cdn6.163189.xyz/163189/8tv
-Okey TV,all_urls_failed,,
-RTM Sukan,all_urls_failed,,
+Okey TV,hls_media,200,https://d25tgymtnqzu8s.cloudfront.net/smil:okey/chunklist_b346000_slENG.m3u8?id=3
+RTM Sukan,hls_media,200,https://d25tgymtnqzu8s.cloudfront.net/smil:sukan/chunklist_b346000_slENG.m3u8?id=4
 TV IKIM,hls_media,200,https://edge-sg1.vediostream.com/live/tvikim/chunks.m3u8?wmsAuthSign=c2VydmVyX3RpbWU9NS8yOS8yMDI1IDEwOjIyOjUzIFBNJmhhc2hfdmFsdWU9dFFzS0lwMXdycEZ0K1dPdHdYSm91dz09JnZhbGlkbWludXRlcz0yMCZzdHJtX2xlbj0xMA==
-Berita RTM,all_urls_failed,,
-RTM World,all_urls_failed,,
+Berita RTM,hls_media,200,https://d25tgymtnqzu8s.cloudfront.net/smil:berita/chunklist_b346000_slENG.m3u8?id=5
+RTM World,hls_media,200,https://d25tgymtnqzu8s.cloudfront.net/event/smil:event1/chunklist_b346000_slENG.m3u8
 Astro Awani,hls_media,200,https://d2idp3hzkhjpih.cloudfront.net/out/v1/4b85d9c2bf97413eb0c9fd875599b837/index_1.m3u8
 Astro Arena Bola,hls_media,200,https://load.perfecttv.net/rwt.m3u8?username=vip_3klp0es8&password=wg3piwEs&channel=bola1
 Astro Arena Bola 2,hls_media,200,https://load.perfecttv.net/rwt.m3u8?username=vip_3klp0es8&password=wg3piwEs&channel=bola2
@@ -23,8 +23,8 @@ SukeTV,Skipped,,
 TVS,Skipped,,
 SukanPlus,Skipped,,
 Bernama,Skipped,,
-Dewan Rakyat,all_urls_failed,,
-Dewan Negara,all_urls_failed,,
+Dewan Rakyat,hls_media,200,https://d25tgymtnqzu8s.cloudfront.net/smil:rakyat/chunklist_b346000_slENG.m3u8?id=7
+Dewan Negara,hls_media,200,https://d25tgymtnqzu8s.cloudfront.net/smil:negara/chunklist_b346000_slENG.m3u8?id=8
 RTM Snap,hls_media,200,https://d1sq2slp9afh7o.cloudfront.net/smil:snap/chunklist_b346000_slENG.m3u8
 RTM Lead,hls_media,200,https://d1sq2slp9afh7o.cloudfront.net/smil:lead/chunklist_b346000_slENG.m3u8
 RTM Apetito,hls_media,200,https://d1sq2slp9afh7o.cloudfront.net/smil:apetito/chunklist_b346000_slENG.m3u8
@@ -32,6 +32,7 @@ RTM Fitrah,hls_media,200,https://d1sq2slp9afh7o.cloudfront.net/smil:fitrah/chunk
 RTM Junior,hls_media,200,https://d1sq2slp9afh7o.cloudfront.net/smil:jr/chunklist_b346000_slENG.m3u8
 RTM Roll,hls_media,200,https://d1sq2slp9afh7o.cloudfront.net/smil:roll/chunklist_b346000_slENG.m3u8
 RTM Aura,hls_media,200,https://d1sq2slp9afh7o.cloudfront.net/smil:aura/chunklist_b346000_slENG.m3u8
+Salam Baitullah 2026,hls_media,200,https://d25tgymtnqzu8s.cloudfront.net/event/smil:event2/chunklist_b346000_slENG.m3u8
 Filem Mantap,dash,200,https://b27a6dd8a86c3e4ba93fbae22aaaac64.pmqrop.channel-assembly.mediatailor.ap-southeast-1.amazonaws.com/v1/channel/FAST_2/dash.mpd
 Lawak Sentral,dash,200,https://b27a6dd8a86c3e4ba93fbae22aaaac64.pmqrop.channel-assembly.mediatailor.ap-southeast-1.amazonaws.com/v1/channel/FAST_3/dash.mpd
 Drama Hotpot,dash,200,https://b27a6dd8a86c3e4ba93fbae22aaaac64.pmqrop.channel-assembly.mediatailor.ap-southeast-1.amazonaws.com/v1/channel/FAST_4/dash.mpd
@@ -57,7 +58,7 @@ MediaCorp (English),all_urls_failed,,
 MediaCorp (Tamil),all_urls_failed,,
 KCM,all_urls_failed,,
 AXN Asia,hls_media,200,http://103.58.160.157:8278/720-AXN/playlist.m3u8
-tvN Movies,hls_media,200,http://202.150.161.212:5000/live/channel30/playlist.m3u8
+tvN Movies,hls_master,200,https://t.freetv.fun/live/tvn-movies-tt.m3u8
 RTB Aneka,all_urls_failed,,
 RTB Sukmaindera,all_urls_failed,,
 NHK World-Japan,hls_master,200,https://nhk.lls.pbs.org/index.m3u8
