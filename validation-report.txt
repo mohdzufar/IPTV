@@ -14,7 +14,7 @@ Berita RTM,all_urls_failed,,
 RTM World,all_urls_failed,,
 Astro Awani,hls_media,200,https://d2idp3hzkhjpih.cloudfront.net/out/v1/4b85d9c2bf97413eb0c9fd875599b837/index_1.m3u8
 Astro Arena Bola,hls_media,200,https://load.perfecttv.net/rwt.m3u8?username=vip_3klp0es8&password=wg3piwEs&channel=bola1
-Astro Arena Bola 2,all_urls_failed,,
+Astro Arena Bola 2,hls_media,200,https://load.perfecttv.net/rwt.m3u8?username=vip_3klp0es8&password=wg3piwEs&channel=bola2
 Al-Hijrah,Skipped,,
 EnjoyTV,Skipped,,
 BorneoTV,Skipped,,
