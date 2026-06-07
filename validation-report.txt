@@ -32,12 +32,12 @@ RTM Fitrah,hls_media,200,https://d1sq2slp9afh7o.cloudfront.net/smil:fitrah/chunk
 RTM Junior,hls_media,200,https://d1sq2slp9afh7o.cloudfront.net/smil:jr/chunklist_b346000_slENG.m3u8
 RTM Roll,hls_media,200,https://d1sq2slp9afh7o.cloudfront.net/smil:roll/chunklist_b346000_slENG.m3u8
 RTM Aura,hls_media,200,https://d1sq2slp9afh7o.cloudfront.net/smil:aura/chunklist_b346000_slENG.m3u8
-Filem Mantap,all_urls_failed,,
+Filem Mantap,dash,200,https://b27a6dd8a86c3e4ba93fbae22aaaac64.pmqrop.channel-assembly.mediatailor.ap-southeast-1.amazonaws.com/v1/channel/FAST_2/dash.mpd
 Lawak Sentral,dash,200,https://b27a6dd8a86c3e4ba93fbae22aaaac64.pmqrop.channel-assembly.mediatailor.ap-southeast-1.amazonaws.com/v1/channel/FAST_3/dash.mpd
 Drama Hotpot,dash,200,https://b27a6dd8a86c3e4ba93fbae22aaaac64.pmqrop.channel-assembly.mediatailor.ap-southeast-1.amazonaws.com/v1/channel/FAST_4/dash.mpd
 Travel & Taste,dash,200,https://b27a6dd8a86c3e4ba93fbae22aaaac64.pmqrop.channel-assembly.mediatailor.ap-southeast-1.amazonaws.com/v1/channel/FAST_5/dash.mpd
 Drama Hebat,dash,200,https://b27a6dd8a86c3e4ba93fbae22aaaac64.pmqrop.channel-assembly.mediatailor.ap-southeast-1.amazonaws.com/v1/channel/FAST_1/dash.mpd
-Jom Ngaji,all_urls_failed,,
+Jom Ngaji,dash,200,https://827f31c3f2824c0c95c7a5190e96e284.mediatailor.ap-southeast-1.amazonaws.com/v1/dash/951fbca46ac9b52422f8e3d6d4d6dab33623c3cc/FASTOO_CH6_JOMNGAJI/dash.mpd
 Oh My Ceria!,dash,200,https://f9169865dbd747b4a24602e856a9c7a2.mediatailor.ap-southeast-1.amazonaws.com/v1/dash/951fbca46ac9b52422f8e3d6d4d6dab33623c3cc/FASTOO_CH7_CERIA/dash.mpd
 Quran (Mecca),hls_master,200,https://live.kwikmotion.com/sbrksaquranradiolive/srpksaquranradio/playlist.m3u8
 Channel 5,all_urls_failed,,
@@ -173,7 +173,7 @@ Wild Nature,hls_master,200,https://dhiy0zcig7ty1.cloudfront.net/scheduler/schedu
 Wild Earth,hls_master,200,https://wildearth-lg.amagi.tv/hls/amagi_hls_data_wildearth-wildearth-lgAA/CDN/master.m3u8?ads.deviceid=[DEVICE_ID]&ads.ifa=[IFA]&ads.ifatype=[IFA_TYPE]&ads.lat=[LMT]&ads.donotsell=[DNS]&ads.ua=[UA]&ads.ip=[IP]&ads.gdpr=[GDPR]&ads.gdprconsent=[GDPR_CONSENT]&ads.country=[COUNTRY]&ads.usprivacy=[US_PRIVACY]&ads.appstoreurl=[APP_STOREURL]&ads.bundleid=[APP_BUNDLE]&ads.appname=[APP_NAME]&ads.appversion=[APP_VERSION]&ads.devicetype=[DEVICE_TYPE]&ads.devicemake=[DEVICE_MAKE]&ads.devicemodel=[DEVICE_MODEL]&ads.coppa=0&ads.targetad=[TARGETAD_ALLOWED]&ads.fck=[FCK]&ads.viewsize=[VIEWSIZE]&ads.givn=[NONCE]&ads.dmake=[DEVICE_MAKE]
 Wild Planet,hls_master,200,https://d1h8whhtg5u7om.cloudfront.net/WildPlanet_GB.m3u8
 Xumo Nature & Wildlife TV,hls_master,200,https://live-content.xumo.com/3883/content/XM0RW1PIY5R776/25283138/master.m3u8
-Animal Planet,hls_master,200,http://23.237.104.106:8080/USA_ANIMAL_PLANET/index.m3u8
+Animal Planet,all_urls_failed,,
 NatureTime,hls_master,200,https://amg00090-blueantllc-lovenature-au-samsungau-wggcn.amagi.tv/playlist/amg00090-blueantllc-lovenature-au-samsungau/playlist.m3u8
 Bob Ross Channel,hls_master,200,https://jmp2.uk/rok-1d3f60995d80521882a379fc06e47679.m3u8
 Love Pets,hls_master,200,https://rakutenaa-blueskyent-lovepetsemea-rakuten-ikc4q.amagi.tv/playlist/rakutenAA-blueskyent-lovepetsemea-rakuten/playlist.m3u8
