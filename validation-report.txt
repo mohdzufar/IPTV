@@ -57,7 +57,7 @@ TVBS Asia,hls_master,200,http://38.64.72.148/hls/modn/list/4005/playlist.m3u8
 MediaCorp (English),all_urls_failed,,
 MediaCorp (Tamil),all_urls_failed,,
 KCM,all_urls_failed,,
-AXN Asia,hls_media,200,http://103.58.160.157:8278/720-AXN/playlist.m3u8
+AXN Asia,all_urls_failed,,
 tvN Movies,hls_master,200,https://t.freetv.fun/live/tvn-movies-tt.m3u8
 RTB Aneka,all_urls_failed,,
 RTB Sukmaindera,all_urls_failed,,
