@@ -97,7 +97,7 @@ Tennis+,hls_master,200,https://amg01935-amg01935c1-amgplt0165.playout.now3.amagi
 Tennis Channel,hls_master,200,https://cdn-ue1-prod.tsv2.amagi.tv/linear/amg01444-tennischannelth-tennischannelnl-samsungnl/playlist.m3u8
 Tennis Channel 2,hls_master,200,https://jmp2.uk/plu-681109b688b9d85d0938c6ba.m3u8
 MLB,hls_master,200,https://jmp2.uk/plu-5e66968a70f34c0007d050be.m3u8
-MMA-TV International,hls_master,200,https://streams2.sofast.tv/vglive-sk-462904/playlist.m3u8
+MMA-TV International,all_urls_failed,,
 FOX NFL,hls_master,200,https://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/5ced7d5df64be98e07ed47b6/master.m3u8?appName=web&appVersion=9.19.0&deviceDNT=0&deviceId=affbdbfa-5fa3-48af-8369-57c005daef42&deviceMake=firefox&deviceModel=web&deviceType=web&deviceVersion=147.0.0&serverSideAds=false&sid=1d7bef8c-83bb-4a13-babc-c2895be01526
 NHL,hls_master,200,https://aegis-cloudfront-1.tubi.video/1f4cbb33-cb23-40ab-b54b-2965cc551b32/playlist.m3u8
 UEFA Champion League,hls_master,200,https://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/65ea8b928145cb0008509426/master.m3u8?appName=web&appVersion=9.19.0&deviceDNT=0&deviceId=affbdbfa-5fa3-48af-8369-57c005daef42&deviceMake=firefox&deviceModel=web&deviceType=web&deviceVersion=147.0.0&serverSideAds=false&sid=c83aaae4-b7a8-4127-ae41-0b5fd27ac4f2
