@@ -1,15 +1,15 @@
 ===================================================================================================
  IPTV Playlist Validation Report
 ===================================================================================================
- Generated : 2026-06-12 00:41:28 MYT
+ Generated : 2026-06-12 06:30:29 MYT
  Source    : Channels/Flatten.m3u8
- Run time  : 6m 48s
+ Run time  : 6m 58s
 
  Total     : 193
- Active    : 132  (wrapper_kept=29  direct_url=103)
- Dead      : 49
+ Active    : 130  (wrapper_kept=27  direct_url=103)
+ Dead      : 51
  Skipped   : 12  (TONTON / Mana-mana — token refresh only)
- Success   : 72.9%  (active / non-skipped)
+ Success   : 71.8%  (active / non-skipped)
 
  Status  : OK = active   DEAD = failed   SKIP = token-refresh channel
  Main    : wrapper_kept = TV app follows wrapper chain
@@ -18,7 +18,7 @@
            skipped     = not validated; URL set by refresh script
 
 ===================================================================================================
- GROUP: Malaysia  (24 active  0 dead  12 skipped)
+ GROUP: Malaysia  (23 active  1 dead  12 skipped)
 ===================================================================================================
 No   Channel                       Group               Status  StreamType        MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ----------------  ------------  ----
@@ -30,7 +30,7 @@ No   Channel                       Group               Status  StreamType       
 6    Drama Sangat                  Malaysia            SKIP    -                 skipped       -   
 7    TV6                           Malaysia            OK      hls_media         wrapper_kept  200 
 8    8TV                           Malaysia            OK      hls_media         wrapper_kept  200 
-9    Okey TV                       Malaysia            OK      hls_media         wrapper_kept  200 
+9    Okey TV                       Malaysia            DEAD    all_urls_failed   dead          -   
 12   TV IKIM                       Malaysia            OK      hls_media         wrapper_kept  200 
 14   RTM World                     Malaysia            OK      hls_media         wrapper_kept  200 
 18   Al-Hijrah                     Malaysia            SKIP    -                 skipped       -   
@@ -60,11 +60,11 @@ No   Channel                       Group               Status  StreamType       
 42   Oh My Ceria!                  Malaysia            OK      dash              direct_url    200 
 
 ===================================================================================================
- GROUP: Sports  (33 active  12 dead  0 skipped)
+ GROUP: Sports  (32 active  13 dead  0 skipped)
 ===================================================================================================
 No   Channel                       Group               Status  StreamType        MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ----------------  ------------  ----
-10   RTM Sukan                     Sports              OK      hls_media         wrapper_kept  200 
+10   RTM Sukan                     Sports              DEAD    all_urls_failed   dead          -   
 11   RTM World Cup                 Sports              OK      hls_media         wrapper_kept  200 
 16   Astro Arena Bola              Sports              OK      hls_media         wrapper_kept  200 
 17   Astro Arena Bola 2            Sports              OK      hls_media         wrapper_kept  200 
