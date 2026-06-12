@@ -1,4 +1,5 @@
 #EXTM3U
 #EXTINF:1,Sports 4
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
 http://s.rocketdns.info:8080/alpha413/S3n09wdSRd/5313
 https://hls.iill.top/api/beIN-Sports-4/index.m3u8
