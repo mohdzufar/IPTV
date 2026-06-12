@@ -1,15 +1,15 @@
 ===================================================================================================
  IPTV Playlist Validation Report
 ===================================================================================================
- Generated : 2026-06-12 22:05:19 MYT
+ Generated : 2026-06-12 23:52:53 MYT
  Source    : Channels/Flatten.m3u8
- Run time  : 6m 55s
+ Run time  : 6m 49s
 
  Total     : 195
- Active    : 132  (wrapper_kept=29  direct_url=103)
- Dead      : 51
+ Active    : 130  (wrapper_kept=29  direct_url=101)
+ Dead      : 53
  Skipped   : 12  (TONTON / Mana-mana — token refresh only)
- Success   : 72.1%  (active / non-skipped)
+ Success   : 71.0%  (active / non-skipped)
 
  Status  : OK = active   DEAD = failed   SKIP = token-refresh channel
  Main    : wrapper_kept = TV app follows wrapper chain
@@ -242,7 +242,7 @@ No   Channel                       Group               Status  StreamType       
 70   Nickelodeon Asia              Indonesia;Kids      DEAD    all_urls_failed   dead          -   
 
 ===================================================================================================
- GROUP: Golf  (8 active  5 dead  0 skipped)
+ GROUP: Golf  (6 active  7 dead  0 skipped)
 ===================================================================================================
 No   Channel                       Group               Status  StreamType        MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ----------------  ------------  ----
@@ -256,8 +256,8 @@ No   Channel                       Group               Status  StreamType       
 80   PGA Tour                      Golf                OK      hls_master        direct_url    200 
 81   DP World Tour                 Golf                DEAD    all_urls_failed   dead          -   
 82   Golf Television               Golf                OK      hls_master        direct_url    200 
-83   SBS_Golf                      Golf                OK      hls_master        direct_url    200 
-84   SBS_Golf_2                    Golf                OK      hls_master        direct_url    200 
+83   SBS_Golf                      Golf                DEAD    all_urls_failed   dead          -   
+84   SBS_Golf_2                    Golf                DEAD    all_urls_failed   dead          -   
 85   Sky Sport Golf                Golf                DEAD    all_urls_failed   dead          -   
 
 ===================================================================================================
