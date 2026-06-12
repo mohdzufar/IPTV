@@ -213,8 +213,12 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/BeiN/S
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/BeiN/Sports%204.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Bein Sports 5" tvg-id="beINSports5.qa" tvg-country="QA" tvg-logo="https://i.imgur.com/2Rha5aY.png" group-title="Sports",Bein Sports 5
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/BeiN/Sports%205.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="Bein Sports 5" tvg-id="beINSports5.qa" tvg-country="QA" tvg-logo="https://i.imgur.com/2Rha5aY.png" group-title="Sports",Bein Sports 6
+#EXTINF:-1 tvg-chno="" tvg-name="Bein Sports 6" tvg-id="beINSports6.qa" tvg-country="QA" tvg-logo="https://i.imgur.com/0wBdLYb.png" group-title="Sports",Bein Sports 6
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/BeiN/Sports%206.m3u8
+#EXTINF:-1 tvg-chno="" tvg-name="Bein Sports 7" tvg-id="beINSports7.qa" tvg-country="QA" tvg-logo="https://i.imgur.com/iODFwZi.png" group-title="Sports",Bein Sports 7
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/BeiN/Sports%207.m3u8
+#EXTINF:-1 tvg-chno="" tvg-name="Bein Sports 8" tvg-id="beINSports8.qa" tvg-country="QA" tvg-logo="https://i.imgur.com/CaFEyVn.png" group-title="Sports",Bein Sports 8
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/BeiN/Sports%208.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Bein Xtra" tvg-id="beINSPORTSXTRA.us" tvg-country="US" tvg-logo="https://i.ibb.co/HT49GPmB/XTRA-2.png" group-title="Sports",Bein Xtra
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/BeiN/Extra.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Bein Xtra 2" tvg-id="beINSportsXtra2.qa" tvg-country="BD" tvg-logo="https://i.imgur.com/08Y2CW1.png" group-title="Sports",Bein Xtra 2
