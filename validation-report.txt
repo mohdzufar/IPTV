@@ -1,15 +1,15 @@
 ===================================================================================================
  IPTV Playlist Validation Report
 ===================================================================================================
- Generated : 2026-06-12 23:52:53 MYT
+ Generated : 2026-06-13 06:17:41 MYT
  Source    : Channels/Flatten.m3u8
- Run time  : 6m 49s
+ Run time  : 9m 14s
 
- Total     : 195
- Active    : 130  (wrapper_kept=29  direct_url=101)
- Dead      : 53
+ Total     : 201
+ Active    : 128  (wrapper_kept=25  direct_url=103)
+ Dead      : 61
  Skipped   : 12  (TONTON / Mana-mana — token refresh only)
- Success   : 71.0%  (active / non-skipped)
+ Success   : 67.7%  (active / non-skipped)
 
  Status  : OK = active   DEAD = failed   SKIP = token-refresh channel
  Main    : wrapper_kept = TV app follows wrapper chain
@@ -18,17 +18,17 @@
            skipped     = not validated; URL set by refresh script
 
 ===================================================================================================
- GROUP: Malaysia  (23 active  1 dead  12 skipped)
+ GROUP: Malaysia  (19 active  5 dead  12 skipped)
 ===================================================================================================
 No   Channel                       Group               Status  StreamType        MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ----------------  ------------  ----
 1    RTM TV1                       Malaysia            OK      hls_media         wrapper_kept  200 
-2    RTM TV2                       Malaysia            OK      hls_media         wrapper_kept  200 
+2    RTM TV2                       Malaysia            DEAD    all_urls_failed   dead          -   
 3    TV3                           Malaysia            SKIP    -                 skipped       -   
 4    Didik TV                      Malaysia            SKIP    -                 skipped       -   
 5    TV9                           Malaysia            SKIP    -                 skipped       -   
 6    Drama Sangat                  Malaysia            SKIP    -                 skipped       -   
-7    TV6                           Malaysia            OK      hls_media         wrapper_kept  200 
+7    TV6                           Malaysia            DEAD    all_urls_failed   dead          -   
 8    8TV                           Malaysia            OK      hls_media         wrapper_kept  200 
 9    Okey TV                       Malaysia            DEAD    all_urls_failed   dead          -   
 14   TV IKIM                       Malaysia            OK      hls_media         wrapper_kept  200 
@@ -41,8 +41,8 @@ No   Channel                       Group               Status  StreamType       
 25   TVS                           Malaysia            SKIP    -                 skipped       -   
 26   SukanPlus                     Malaysia            SKIP    -                 skipped       -   
 27   Bernama                       Malaysia            SKIP    -                 skipped       -   
-28   Dewan Rakyat                  Malaysia            OK      hls_media         wrapper_kept  200 
-29   Dewan Negara                  Malaysia            OK      hls_media         wrapper_kept  200 
+28   Dewan Rakyat                  Malaysia            DEAD    all_urls_failed   dead          -   
+29   Dewan Negara                  Malaysia            DEAD    all_urls_failed   dead          -   
 30   RTM Snap                      Malaysia            OK      hls_media         wrapper_kept  200 
 31   RTM Lead                      Malaysia            OK      hls_media         wrapper_kept  200 
 32   RTM Apetito                   Malaysia            OK      hls_media         wrapper_kept  200 
@@ -60,7 +60,7 @@ No   Channel                       Group               Status  StreamType       
 44   Oh My Ceria!                  Malaysia            OK      dash              direct_url    200 
 
 ===================================================================================================
- GROUP: Sports  (34 active  13 dead  0 skipped)
+ GROUP: Sports  (34 active  19 dead  0 skipped)
 ===================================================================================================
 No   Channel                       Group               Status  StreamType        MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ----------------  ------------  ----
@@ -78,56 +78,62 @@ No   Channel                       Group               Status  StreamType       
 91   Bein Sports 3                 Sports              DEAD    all_urls_failed   dead          -   
 92   Bein Sports 4                 Sports              DEAD    all_urls_failed   dead          -   
 93   Bein Sports 5                 Sports              DEAD    all_urls_failed   dead          -   
-94   Bein Xtra                     Sports              OK      hls_master        direct_url    200 
-95   Bein Xtra 2                   Sports              OK      hls_media         wrapper_kept  200 
-96   Tennis TV                     Sports              OK      hls_master        direct_url    200 
-97   Tennis TV 2                   Sports              OK      hls_master        direct_url    200 
-98   Tennis+                       Sports              OK      hls_master        direct_url    200 
-99   Tennis Channel                Sports              OK      hls_master        direct_url    200 
-100  Tennis Channel 2              Sports              OK      hls_master        direct_url    200 
-101  MLB                           Sports              OK      hls_master        direct_url    200 
-102  MMA-TV International          Sports              OK      hls_master        direct_url    200 
-103  FOX NFL                       Sports              OK      hls_master        direct_url    200 
-104  NHL                           Sports              OK      hls_master        direct_url    200 
-105  UEFA Champion League          Sports              OK      hls_master        direct_url    200 
-106  UFC 1                         Sports              OK      hls_master        direct_url    200 
-107  Xumo NBC Sport                Sports              OK      hls_master        direct_url    200 
-108  NBC Sport Now                 Sports              OK      hls_master        direct_url    200 
-109  Goal TV                       Sports              OK      hls_master        direct_url    200 
-110  Real Madrid TV                Sports              OK      hls_media         wrapper_kept  200 
-111  RedBull TV                    Sports              OK      hls_master        direct_url    200 
-112  Sport Fishing TV              Sports              OK      hls_master        direct_url    200 
-113  Wired2Fish                    Sports              OK      hls_master        direct_url    200 
-114  Sports Connect                Sports              DEAD    all_urls_failed   dead          -   
-115  MBC America                   Sports              OK      hls_media         wrapper_kept  200 
-116  Swerve Sport                  Sports              OK      hls_master        direct_url    200 
-117  World Billiards TV            Sports              DEAD    all_urls_failed   dead          -   
-118  Billiard TV                   Sports              OK      hls_master        direct_url    200 
-119  BBC Top Gear                  Sports              OK      hls_master        direct_url    200 
-120  Fuel TV                       Sports              OK      hls_master        direct_url    200 
-121  Pro Fight League              Sports              OK      hls_master        direct_url    200 
-122  Speed Vision                  Sports              OK      hls_master        direct_url    200 
-123  Fifa+                         Sports              OK      hls_master        direct_url    200 
-124  TNA Wresling                  Sports              OK      hls_master        direct_url    200 
-125  Astro Badminton               Sports              DEAD    wrapper_http_404  dead          404 
-126  Astro Football                Sports              DEAD    wrapper_http_404  dead          404 
+94   Bein Sports 5                 Sports              DEAD    all_urls_failed   dead          -   
+95   Bein Xtra                     Sports              OK      hls_master        direct_url    200 
+96   Bein Xtra 2                   Sports              OK      hls_media         wrapper_kept  200 
+97   TSN 1                         Sports              DEAD    all_urls_failed   dead          -   
+98   TSN 2                         Sports              DEAD    all_urls_failed   dead          -   
+99   TSN 3                         Sports              DEAD    all_urls_failed   dead          -   
+100  TSN 4                         Sports              DEAD    all_urls_failed   dead          -   
+101  TSN 5                         Sports              DEAD    all_urls_failed   dead          -   
+102  Tennis TV                     Sports              OK      hls_master        direct_url    200 
+103  Tennis TV 2                   Sports              OK      hls_master        direct_url    200 
+104  Tennis+                       Sports              OK      hls_master        direct_url    200 
+105  Tennis Channel                Sports              OK      hls_master        direct_url    200 
+106  Tennis Channel 2              Sports              OK      hls_master        direct_url    200 
+107  MLB                           Sports              OK      hls_master        direct_url    200 
+108  MMA-TV International          Sports              OK      hls_master        direct_url    200 
+109  FOX NFL                       Sports              OK      hls_master        direct_url    200 
+110  NHL                           Sports              OK      hls_master        direct_url    200 
+111  UEFA Champion League          Sports              OK      hls_master        direct_url    200 
+112  UFC 1                         Sports              OK      hls_master        direct_url    200 
+113  Xumo NBC Sport                Sports              OK      hls_master        direct_url    200 
+114  NBC Sport Now                 Sports              OK      hls_master        direct_url    200 
+115  Goal TV                       Sports              OK      hls_master        direct_url    200 
+116  Real Madrid TV                Sports              OK      hls_media         wrapper_kept  200 
+117  RedBull TV                    Sports              OK      hls_master        direct_url    200 
+118  Sport Fishing TV              Sports              OK      hls_master        direct_url    200 
+119  Wired2Fish                    Sports              OK      hls_master        direct_url    200 
+120  Sports Connect                Sports              DEAD    all_urls_failed   dead          -   
+121  MBC America                   Sports              OK      hls_media         wrapper_kept  200 
+122  Swerve Sport                  Sports              OK      hls_master        direct_url    200 
+123  World Billiards TV            Sports              DEAD    all_urls_failed   dead          -   
+124  Billiard TV                   Sports              OK      hls_master        direct_url    200 
+125  BBC Top Gear                  Sports              OK      hls_master        direct_url    200 
+126  Fuel TV                       Sports              OK      hls_master        direct_url    200 
+127  Pro Fight League              Sports              OK      hls_master        direct_url    200 
+128  Speed Vision                  Sports              OK      hls_master        direct_url    200 
+129  Fifa+                         Sports              OK      hls_master        direct_url    200 
+130  TNA Wresling                  Sports              OK      hls_master        direct_url    200 
+131  Astro Badminton               Sports              DEAD    wrapper_http_404  dead          404 
+132  Astro Football                Sports              DEAD    wrapper_http_404  dead          404 
 
 ===================================================================================================
- GROUP: News  (11 active  0 dead  0 skipped)
+ GROUP: News  (10 active  1 dead  0 skipped)
 ===================================================================================================
 No   Channel                       Group               Status  StreamType        MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ----------------  ------------  ----
-15   Berita RTM                    News                OK      hls_media         wrapper_kept  200 
+15   Berita RTM                    News                DEAD    all_urls_failed   dead          -   
 17   Astro Awani                   News                OK      hls_media         wrapper_kept  200 
-160  EuroNews                      News                OK      hls_media         wrapper_kept  200 
-161  NBC News Now                  News                OK      hls_master        direct_url    200 
-162  CBS News 24/7                 News                OK      hls_master        direct_url    200 
-163  BBC News                      News                OK      hls_master        direct_url    200 
-164  Sky News                      News                OK      hls_master        direct_url    200 
-165  Reuters                       News                OK      hls_master        direct_url    200 
-166  Yahoo! Finance                News                OK      hls_master        direct_url    200 
-167  News World                    News                OK      hls_master        direct_url    200 
-168  Al-Jazeera (English)          News                OK      hls_master        direct_url    200 
+166  EuroNews                      News                OK      hls_media         wrapper_kept  200 
+167  NBC News Now                  News                OK      hls_master        direct_url    200 
+168  CBS News 24/7                 News                OK      hls_master        direct_url    200 
+169  BBC News                      News                OK      hls_master        direct_url    200 
+170  Sky News                      News                OK      hls_master        direct_url    200 
+171  Reuters                       News                OK      hls_master        direct_url    200 
+172  Yahoo! Finance                News                OK      hls_master        direct_url    200 
+173  News World                    News                OK      hls_master        direct_url    200 
+174  Al-Jazeera (English)          News                OK      hls_master        direct_url    200 
 
 ===================================================================================================
  GROUP: Muslim  (1 active  0 dead  0 skipped)
@@ -183,11 +189,11 @@ No   Channel                       Group               Status  StreamType       
 61   KCM                           India               DEAD    all_urls_failed   dead          -   
 
 ===================================================================================================
- GROUP: Indonesia  (0 active  1 dead  0 skipped)
+ GROUP: Indonesia  (1 active  0 dead  0 skipped)
 ===================================================================================================
 No   Channel                       Group               Status  StreamType        MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ----------------  ------------  ----
-62   AXN Asia                      Indonesia           DEAD    all_urls_failed   dead          -   
+62   AXN Asia                      Indonesia           OK      hls_media         wrapper_kept  200 
 
 ===================================================================================================
  GROUP: Indonesia;Movies  (1 active  0 dead  0 skipped)
@@ -242,7 +248,7 @@ No   Channel                       Group               Status  StreamType       
 70   Nickelodeon Asia              Indonesia;Kids      DEAD    all_urls_failed   dead          -   
 
 ===================================================================================================
- GROUP: Golf  (6 active  7 dead  0 skipped)
+ GROUP: Golf  (8 active  5 dead  0 skipped)
 ===================================================================================================
 No   Channel                       Group               Status  StreamType        MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ----------------  ------------  ----
@@ -256,8 +262,8 @@ No   Channel                       Group               Status  StreamType       
 80   PGA Tour                      Golf                OK      hls_master        direct_url    200 
 81   DP World Tour                 Golf                DEAD    all_urls_failed   dead          -   
 82   Golf Television               Golf                OK      hls_master        direct_url    200 
-83   SBS_Golf                      Golf                DEAD    all_urls_failed   dead          -   
-84   SBS_Golf_2                    Golf                DEAD    all_urls_failed   dead          -   
+83   SBS_Golf                      Golf                OK      hls_master        direct_url    200 
+84   SBS_Golf_2                    Golf                OK      hls_master        direct_url    200 
 85   Sky Sport Golf                Golf                DEAD    all_urls_failed   dead          -   
 
 ===================================================================================================
@@ -265,114 +271,114 @@ No   Channel                       Group               Status  StreamType       
 ===================================================================================================
 No   Channel                       Group               Status  StreamType        MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ----------------  ------------  ----
-127  CS2                           E-Sports            DEAD    all_urls_failed   dead          -   
-128  CS2                           E-Sports            DEAD    all_urls_failed   dead          -   
-129  DotA2                         E-Sports            DEAD    all_urls_failed   dead          -   
-130  DotA2                         E-Sports            DEAD    all_urls_failed   dead          -   
+133  CS2                           E-Sports            DEAD    all_urls_failed   dead          -   
+134  CS2                           E-Sports            DEAD    all_urls_failed   dead          -   
+135  DotA2                         E-Sports            DEAD    all_urls_failed   dead          -   
+136  DotA2                         E-Sports            DEAD    all_urls_failed   dead          -   
 
 ===================================================================================================
  GROUP: Music  (7 active  0 dead  0 skipped)
 ===================================================================================================
 No   Channel                       Group               Status  StreamType        MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ----------------  ------------  ----
-131  KPOP Mix                      Music               OK      hls_master        direct_url    200 
-132  New KPOP                      Music               OK      hls_master        direct_url    200 
-133  K POP by CJ ENM               Music               OK      hls_master        direct_url    200 
-134  Music Japan                   Music               OK      hls_master        direct_url    200 
-135  Music India                   Music               OK      hls_master        direct_url    200 
-136  Song TV                       Music               OK      dash              direct_url    200 
-137  Vevo 2k                       Music               OK      hls_master        direct_url    200 
+137  KPOP Mix                      Music               OK      hls_master        direct_url    200 
+138  New KPOP                      Music               OK      hls_master        direct_url    200 
+139  K POP by CJ ENM               Music               OK      hls_master        direct_url    200 
+140  Music Japan                   Music               OK      hls_master        direct_url    200 
+141  Music India                   Music               OK      hls_master        direct_url    200 
+142  Song TV                       Music               OK      dash              direct_url    200 
+143  Vevo 2k                       Music               OK      hls_master        direct_url    200 
 
 ===================================================================================================
  GROUP: Movies  (17 active  5 dead  0 skipped)
 ===================================================================================================
 No   Channel                       Group               Status  StreamType        MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ----------------  ------------  ----
-138  Paramount Movie Channel       Movies              OK      hls_master        direct_url    200 
-139  MyTime Movie Network          Movies              OK      hls_master        direct_url    200 
-140  Movie Sphere UK               Movies              OK      hls_master        direct_url    200 
-141  Movie Sphere 2                Movies              OK      hls_master        direct_url    200 
-142  Movie Sphere Aus              Movies              OK      hls_master        direct_url    200 
-143  Movie Sphere by Lionsgate     Movies              OK      hls_master        direct_url    200 
-144  Movie Sphere by Lionsgate 2   Movies              OK      hls_master        direct_url    200 
-145  Wedotv Movies                 Movies              OK      hls_master        direct_url    200 
-146  Miramax                       Movies              OK      hls_media         wrapper_kept  200 
-147  Universal Movie               Movies              OK      hls_master        direct_url    200 
-148  Cinemax                       Movies              OK      hls_master        direct_url    200 
-149  Hallmark Channel              Movies              OK      hls_master        direct_url    200 
-150  HBO                           Movies              OK      hls_master        direct_url    200 
-151  HBO 2                         Movies              OK      hls_master        direct_url    200 
-152  HBO Comedy                    Movies              OK      hls_master        direct_url    200 
-153  HBO Family                    Movies              DEAD    all_urls_failed   dead          -   
-154  HBO Signature                 Movies              DEAD    all_urls_failed   dead          -   
-155  HBO Zone                      Movies              OK      hls_master        direct_url    200 
-156  Rakuten Top Movies UK         Movies              OK      hls_master        direct_url    200 
-157  Sony Movie Channel            Movies              DEAD    all_urls_failed   dead          -   
-158  Bollywood                     Movies              DEAD    all_urls_failed   dead          -   
-159  Bollywood Classic             Movies              DEAD    all_urls_failed   dead          -   
+144  Paramount Movie Channel       Movies              OK      hls_master        direct_url    200 
+145  MyTime Movie Network          Movies              OK      hls_master        direct_url    200 
+146  Movie Sphere UK               Movies              OK      hls_master        direct_url    200 
+147  Movie Sphere 2                Movies              OK      hls_master        direct_url    200 
+148  Movie Sphere Aus              Movies              OK      hls_master        direct_url    200 
+149  Movie Sphere by Lionsgate     Movies              OK      hls_master        direct_url    200 
+150  Movie Sphere by Lionsgate 2   Movies              OK      hls_master        direct_url    200 
+151  Wedotv Movies                 Movies              OK      hls_master        direct_url    200 
+152  Miramax                       Movies              OK      hls_media         wrapper_kept  200 
+153  Universal Movie               Movies              OK      hls_master        direct_url    200 
+154  Cinemax                       Movies              OK      hls_master        direct_url    200 
+155  Hallmark Channel              Movies              OK      hls_master        direct_url    200 
+156  HBO                           Movies              OK      hls_master        direct_url    200 
+157  HBO 2                         Movies              OK      hls_master        direct_url    200 
+158  HBO Comedy                    Movies              OK      hls_master        direct_url    200 
+159  HBO Family                    Movies              DEAD    all_urls_failed   dead          -   
+160  HBO Signature                 Movies              DEAD    all_urls_failed   dead          -   
+161  HBO Zone                      Movies              OK      hls_master        direct_url    200 
+162  Rakuten Top Movies UK         Movies              OK      hls_master        direct_url    200 
+163  Sony Movie Channel            Movies              DEAD    all_urls_failed   dead          -   
+164  Bollywood                     Movies              DEAD    all_urls_failed   dead          -   
+165  Bollywood Classic             Movies              DEAD    all_urls_failed   dead          -   
 
 ===================================================================================================
  GROUP: Nature  (12 active  0 dead  0 skipped)
 ===================================================================================================
 No   Channel                       Group               Status  StreamType        MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ----------------  ------------  ----
-169  Adventure Earth               Nature              OK      hls_master        direct_url    200 
-170  BBC Earth                     Nature              OK      hls_master        direct_url    200 
-171  Love The Planet               Nature              OK      hls_master        direct_url    200 
-172  Terra Mater Wild              Nature              OK      hls_master        direct_url    200 
-173  Real Wild                     Nature              OK      hls_master        direct_url    200 
-174  Go Wild                       Nature              OK      hls_master        direct_url    200 
-175  Wild Nature                   Nature              OK      hls_master        direct_url    200 
-176  Wild Earth                    Nature              OK      hls_master        direct_url    200 
-177  Wild Planet                   Nature              OK      hls_master        direct_url    200 
-178  Xumo Nature & Wildlife TV     Nature              OK      hls_master        direct_url    200 
-179  Animal Planet                 Nature              OK      hls_master        direct_url    200 
-180  NatureTime                    Nature              OK      hls_master        direct_url    200 
+175  Adventure Earth               Nature              OK      hls_master        direct_url    200 
+176  BBC Earth                     Nature              OK      hls_master        direct_url    200 
+177  Love The Planet               Nature              OK      hls_master        direct_url    200 
+178  Terra Mater Wild              Nature              OK      hls_master        direct_url    200 
+179  Real Wild                     Nature              OK      hls_master        direct_url    200 
+180  Go Wild                       Nature              OK      hls_master        direct_url    200 
+181  Wild Nature                   Nature              OK      hls_master        direct_url    200 
+182  Wild Earth                    Nature              OK      hls_master        direct_url    200 
+183  Wild Planet                   Nature              OK      hls_master        direct_url    200 
+184  Xumo Nature & Wildlife TV     Nature              OK      hls_master        direct_url    200 
+185  Animal Planet                 Nature              OK      hls_master        direct_url    200 
+186  NatureTime                    Nature              OK      hls_master        direct_url    200 
 
 ===================================================================================================
  GROUP: Ungrouped  (3 active  2 dead  0 skipped)
 ===================================================================================================
 No   Channel                       Group               Status  StreamType        MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ----------------  ------------  ----
-181  Bob Ross Channel              -                   OK      hls_master        direct_url    200 
-183  Documentary+                  -                   OK      hls_master        direct_url    200 
-184  Discovery Channel             -                   OK      hls_master        direct_url    200 
-185  Discovery Life                -                   DEAD    all_urls_failed   dead          -   
-186  Discovery Science             -                   DEAD    all_urls_failed   dead          -   
+187  Bob Ross Channel              -                   OK      hls_master        direct_url    200 
+189  Documentary+                  -                   OK      hls_master        direct_url    200 
+190  Discovery Channel             -                   OK      hls_master        direct_url    200 
+191  Discovery Life                -                   DEAD    all_urls_failed   dead          -   
+192  Discovery Science             -                   DEAD    all_urls_failed   dead          -   
 
 ===================================================================================================
  GROUP: Pets  (1 active  0 dead  0 skipped)
 ===================================================================================================
 No   Channel                       Group               Status  StreamType        MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ----------------  ------------  ----
-182  Love Pets                     Pets                OK      hls_master        direct_url    200 
+188  Love Pets                     Pets                OK      hls_master        direct_url    200 
 
 ===================================================================================================
  GROUP: China  (2 active  1 dead  0 skipped)
 ===================================================================================================
 No   Channel                       Group               Status  StreamType        MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ----------------  ------------  ----
-187  mn静静nm                        China               OK      hls_media         wrapper_kept  200 
-188  万事通熊猫                         China               DEAD    all_urls_failed   dead          -   
-189  douyu 19                      China               OK      hls_master        direct_url    200 
+193  mn静静nm                        China               OK      hls_media         wrapper_kept  200 
+194  万事通熊猫                         China               DEAD    all_urls_failed   dead          -   
+195  douyu 19                      China               OK      hls_master        direct_url    200 
 
 ===================================================================================================
  GROUP: Korea  (3 active  1 dead  0 skipped)
 ===================================================================================================
 No   Channel                       Group               Status  StreamType        MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ----------------  ------------  ----
-190  K-Content                     Korea               OK      hls_master        direct_url    200 
-192  K-Stories                     Korea               OK      hls_master        direct_url    200 
-193  KBS World                     Korea               DEAD    all_urls_failed   dead          -   
-195  KoreaTV                       Korea               OK      hls_master        direct_url    200 
+196  K-Content                     Korea               OK      hls_master        direct_url    200 
+198  K-Stories                     Korea               OK      hls_master        direct_url    200 
+199  KBS World                     Korea               DEAD    all_urls_failed   dead          -   
+201  KoreaTV                       Korea               OK      hls_master        direct_url    200 
 
 ===================================================================================================
  GROUP: Korea;Drama  (1 active  1 dead  0 skipped)
 ===================================================================================================
 No   Channel                       Group               Status  StreamType        MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ----------------  ------------  ----
-191  K-Drama+                      Korea;Drama         DEAD    all_urls_failed   dead          -   
-194  AsianCrush                    Korea;Drama         OK      hls_master        direct_url    200 
+197  K-Drama+                      Korea;Drama         DEAD    all_urls_failed   dead          -   
+200  AsianCrush                    Korea;Drama         OK      hls_master        direct_url    200 
 
 ===================================================================================================
  END OF REPORT
