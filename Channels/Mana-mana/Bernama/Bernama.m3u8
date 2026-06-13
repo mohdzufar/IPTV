@@ -1,5 +1,5 @@
 #EXTM3U
+#EXTINF:1,Bernama
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTVLCOPT:http-referrer=https://www.mana2.my/
-#EXTINF:1,Bernama
 https://live.mana2.my/Bernama/index.m3u8?auth_key=1781356193-14b252d1e2fa4a0ca3c5ee90d7d8b7a4-0-455fedabd0ad4a927c7afaa15261816f&token=1781356193-14b252d1e2fa4a0ca3c5ee90d7d8b7a4-0-455fedabd0ad4a927c7afaa15261816f
