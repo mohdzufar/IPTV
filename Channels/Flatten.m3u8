@@ -194,6 +194,8 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/SBS/SB
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/SBS/SBS%20Golf%202.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Sky Sport Golf" tvg-id="SkySportsGolf.uk" tvg-country="UK" tvg-logo="https://d2n0069hmnqmmx.cloudfront.net/epgdata/1.0/newchanlogos/512/512/skychb1322.png" group-title="Golf",Sky Sport Golf
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/SkySport/Golf/Golf.m3u8
+#EXTINF:-1 tvg-chno="" tvg-name="CCTV-Golf & Tennis" tvg-id="CCTVGolfTennis.cn" tvg-country="CN" tvg-logo="https://i.imgur.com/iqJJTmH.png" group-title="Sports;Golf",CCTV-Golf & Tennis
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/CCTV/CCTV-Golf%20%26%20Tennis.m3u8
 ##======SkySport========
 #EXTINF:-1 tvg-chno="" tvg-name="Sky Sport Football" tvg-id="SkySportsFootball.uk" tvg-country="UK" tvg-logo="https://d2n0069hmnqmmx.cloudfront.net/epgdata/1.0/newchanlogos/512/512/skychb3838.png" group-title="Sports",Football
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/SkySport/Football/Football.m3u8
