@@ -1,5 +1,5 @@
 #EXTM3U
-#EXTINF:1,SelangorTV
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTVLCOPT:http-referrer=https://www.mana2.my/
-https://live.mana2.my/SelangorTv/index.m3u8?auth_key=1781356216-2e7595cc72a047e8a247b1d4aa59b72c-0-56ccfacdea5c4f2dd8b029470b045239&token=1781356216-2e7595cc72a047e8a247b1d4aa59b72c-0-56ccfacdea5c4f2dd8b029470b045239
+#EXTINF:1,SelangorTV
+https://live.mana2.my/SelangorTv/index.m3u8?auth_key=1781379824-e163f8a50c05462c9f384f4837155bb1-0-8b5a52f1f8864bddc6d8685b6a97bc79&token=1781379824-e163f8a50c05462c9f384f4837155bb1-0-8b5a52f1f8864bddc6d8685b6a97bc79

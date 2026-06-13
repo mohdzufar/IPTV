@@ -1,5 +1,5 @@
 #EXTM3U
-#EXTINF:1,TVS
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTVLCOPT:http-referrer=https://www.mana2.my/
-https://live.mana2.my/TvS/index.m3u8?auth_key=1781356240-5aada7713e4d4eefb7cd11451e031639-0-a11de717567fa6bb0d3b0e39840433a9&token=1781356240-5aada7713e4d4eefb7cd11451e031639-0-a11de717567fa6bb0d3b0e39840433a9
+#EXTINF:1,TVS
+https://live.mana2.my/TvS/index.m3u8?auth_key=1781379848-5307c58fce274f1f957a9dec3c240cc1-0-622a459259b79c958aa406c2b4e29b2b&token=1781379848-5307c58fce274f1f957a9dec3c240cc1-0-622a459259b79c958aa406c2b4e29b2b

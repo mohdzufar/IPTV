@@ -1,5 +1,5 @@
 #EXTM3U
-#EXTINF:1,SukeTV
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTVLCOPT:http-referrer=https://www.mana2.my/
-https://live.mana2.my/SukeTv/index.m3u8?auth_key=1781356232-e51b3630d155458a9d77389ca30313bb-0-7258eb4a16a8fd1c39f6825656297ec0&token=1781356232-e51b3630d155458a9d77389ca30313bb-0-7258eb4a16a8fd1c39f6825656297ec0
+#EXTINF:1,SukeTV
+https://live.mana2.my/SukeTv/index.m3u8?auth_key=1781379840-303fe4b0ecbf4de099a9771652765062-0-01b8b939739da96eb02c0dc9c6fa8043&token=1781379840-303fe4b0ecbf4de099a9771652765062-0-01b8b939739da96eb02c0dc9c6fa8043

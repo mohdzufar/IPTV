@@ -1,15 +1,15 @@
 ===================================================================================================
  IPTV Playlist Validation Report
 ===================================================================================================
- Generated : 2026-06-13 16:09:39 MYT
+ Generated : 2026-06-13 22:43:06 MYT
  Source    : Channels/Flatten.m3u8
- Run time  : 7m 45s
+ Run time  : 7m 34s
 
  Total     : 203
- Active    : 133  (wrapper_kept=32  direct_url=101)
- Dead      : 58
+ Active    : 137  (wrapper_kept=32  direct_url=105)
+ Dead      : 54
  Skipped   : 12  (TONTON / Mana-mana — token refresh only)
- Success   : 69.6%  (active / non-skipped)
+ Success   : 71.7%  (active / non-skipped)
 
  Status  : OK = active   DEAD = failed   SKIP = token-refresh channel
  Main    : wrapper_kept = TV app follows wrapper chain
@@ -60,7 +60,7 @@ No   Channel                       Group               Status  StreamType       
 44   Oh My Ceria!                  Malaysia            OK      dash              direct_url    200 
 
 ===================================================================================================
- GROUP: Sports  (35 active  20 dead  0 skipped)
+ GROUP: Sports  (38 active  17 dead  0 skipped)
 ===================================================================================================
 No   Channel                       Group               Status  StreamType        MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ----------------  ------------  ----
@@ -74,11 +74,11 @@ No   Channel                       Group               Status  StreamType       
 87   Sky Sport F1                  Sports              DEAD    all_urls_failed   dead          -   
 88   Sky Sport Premier League      Sports              DEAD    all_urls_failed   dead          -   
 89   Bein Sports 1                 Sports              DEAD    all_urls_failed   dead          -   
-90   Bein Sports 2                 Sports              DEAD    all_urls_failed   dead          -   
+90   Bein Sports 2                 Sports              OK      mp4               direct_url    200 
 91   Bein Sports 3                 Sports              DEAD    all_urls_failed   dead          -   
 92   Bein Sports 4                 Sports              DEAD    all_urls_failed   dead          -   
-93   Bein Sports 5                 Sports              DEAD    all_urls_failed   dead          -   
-94   Bein Sports 6                 Sports              DEAD    all_urls_failed   dead          -   
+93   Bein Sports 5                 Sports              OK      mp4               direct_url    200 
+94   Bein Sports 6                 Sports              OK      mp4               direct_url    200 
 95   Bein Sports 7                 Sports              DEAD    all_urls_failed   dead          -   
 96   Bein Sports 8                 Sports              DEAD    all_urls_failed   dead          -   
 97   Bein Xtra                     Sports              OK      hls_master        direct_url    200 
@@ -279,7 +279,7 @@ No   Channel                       Group               Status  StreamType       
 138  DotA2                         E-Sports            DEAD    all_urls_failed   dead          -   
 
 ===================================================================================================
- GROUP: Music  (6 active  1 dead  0 skipped)
+ GROUP: Music  (7 active  0 dead  0 skipped)
 ===================================================================================================
 No   Channel                       Group               Status  StreamType        MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ----------------  ------------  ----
@@ -288,7 +288,7 @@ No   Channel                       Group               Status  StreamType       
 141  K POP by CJ ENM               Music               OK      hls_master        direct_url    200 
 142  Music Japan                   Music               OK      hls_master        direct_url    200 
 143  Music India                   Music               OK      hls_master        direct_url    200 
-144  Song TV                       Music               DEAD    all_urls_failed   dead          -   
+144  Song TV                       Music               OK      dash              direct_url    200 
 145  Vevo 2k                       Music               OK      hls_master        direct_url    200 
 
 ===================================================================================================
