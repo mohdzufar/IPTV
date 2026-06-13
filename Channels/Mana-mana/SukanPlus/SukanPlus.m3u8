@@ -1,5 +1,5 @@
 #EXTM3U
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-#EXTVLCOPT:http-referrer=https://www.mana2.my/
 #EXTINF:1,SukanPlus
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36
+#EXTVLCOPT:http-referrer=https://www.mana2.my/
 https://live.mana2.my/SukanRtm/index.m3u8?auth_key=1781356224-08c562dee3854f50a572b32cddc9805b-0-6710067bab85e3facb78459f1c998ab7&token=1781356224-08c562dee3854f50a572b32cddc9805b-0-6710067bab85e3facb78459f1c998ab7
