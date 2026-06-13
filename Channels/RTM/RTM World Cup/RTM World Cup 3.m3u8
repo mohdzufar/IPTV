@@ -1,6 +1,6 @@
 #EXTM3U
-#EXTVLCOPT:http-referrer=https://rtmklik.rtm.gov.my/
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36
+#EXTVLCOPT:http-referrer=https://rtmklik.rtm.gov.my/
 #EXT-X-INDEPENDENT-SEGMENTS
 #EXT-X-STREAM-INF:BANDWIDTH=346000,RESOLUTION=426x240
 https://d30aylox5wvifh.cloudfront.net/live/media0/wc3/HLS/wc3-avc1_200000=196187283.m3u8
