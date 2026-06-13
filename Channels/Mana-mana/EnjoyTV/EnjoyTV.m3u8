@@ -1,5 +1,5 @@
 #EXTM3U
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-#EXTVLCOPT:http-referrer=https://www.mana2.my/
 #EXTINF:1,EnjoyTV
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36
+#EXTVLCOPT:http-referrer=https://www.mana2.my/
 https://live.mana2.my/Tv5/index.m3u8?auth_key=1781356209-d2fb4c84397c4739aad76399c0200e32-0-fa84bde35d10269ab66f05e49f8af54c&token=1781356209-d2fb4c84397c4739aad76399c0200e32-0-fa84bde35d10269ab66f05e49f8af54c
