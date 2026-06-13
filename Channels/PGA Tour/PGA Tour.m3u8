@@ -1,7 +1,7 @@
 #EXTM3U
 #EXTINF:1,PGA Tour
-#EXTVLCOPT:http-referrer=https://tubitv.com/
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36
+#EXTVLCOPT:http-referrer=https://tubitv.com/
 https://d11k1mnrgfposz.cloudfront.net/playlist.m3u8
 https://aegis-cloudfront-1.tubi.video/9c59800e-fa9a-4539-b8e5-5769918e7c5a/playlist.m3u8
 https://aegis-cloudfront-1.tubi.video/9c59800e-fa9a-4539-b8e5-5769918e7c5a/playlist_1280x720.m3u8
