@@ -1,3 +1,4 @@
 #EXTM3U
 #EXTINF:1,Nickelodeon Asia
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
 https://cdn10jtedge.indihometv.com/atm/DASH/nickelodeon/manifest.mpd
