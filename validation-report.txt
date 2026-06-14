@@ -1,15 +1,15 @@
 ===================================================================================================
  IPTV Playlist Validation Report
 ===================================================================================================
- Generated : 2026-06-14 16:39:09 MYT
+ Generated : 2026-06-14 22:45:54 MYT
  Source    : Channels/Flatten.m3u8
- Run time  : 6m 50s
+ Run time  : 7m 34s
 
  Total     : 205
- Active    : 137  (wrapper_kept=34  direct_url=103)
- Dead      : 56
+ Active    : 138  (wrapper_kept=34  direct_url=104)
+ Dead      : 55
  Skipped   : 12  (TONTON / Mana-mana — token refresh only)
- Success   : 71.0%  (active / non-skipped)
+ Success   : 71.5%  (active / non-skipped)
 
  Status  : OK = active   DEAD = failed   SKIP = token-refresh channel
  Main    : wrapper_kept = TV app follows wrapper chain
@@ -18,7 +18,7 @@
            skipped     = not validated; URL set by refresh script
 
 ===================================================================================================
- GROUP: Malaysia  (24 active  0 dead  12 skipped)
+ GROUP: Malaysia  (25 active  0 dead  12 skipped)
 ===================================================================================================
 No   Channel                       Group               Status  StreamType        MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ----------------  ------------  ----
@@ -58,9 +58,10 @@ No   Channel                       Group               Status  StreamType       
 42   Drama Hebat                   Malaysia            OK      dash              direct_url    200 
 43   Jom Ngaji                     Malaysia            OK      dash              direct_url    200 
 44   Oh My Ceria!                  Malaysia            OK      dash              direct_url    200 
+66   NHK World-Japan               Malaysia            OK      hls_master        direct_url    200 
 
 ===================================================================================================
- GROUP: Sports  (35 active  21 dead  0 skipped)
+ GROUP: Sports  (36 active  20 dead  0 skipped)
 ===================================================================================================
 No   Channel                       Group               Status  StreamType        MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ----------------  ------------  ----
@@ -95,7 +96,7 @@ No   Channel                       Group               Status  StreamType       
 109  Tennis Channel                Sports              OK      hls_master        direct_url    200 
 110  Tennis Channel 2              Sports              OK      hls_master        direct_url    200 
 111  MLB                           Sports              OK      hls_master        direct_url    200 
-112  MMA-TV International          Sports              DEAD    all_urls_failed   dead          -   
+112  MMA-TV International          Sports              OK      hls_master        direct_url    200 
 113  FOX NFL                       Sports              OK      hls_master        direct_url    200 
 114  NHL                           Sports              OK      hls_master        direct_url    200 
 115  UEFA Champion League          Sports              OK      hls_master        direct_url    200 
@@ -212,13 +213,6 @@ No   Channel                       Group               Status  StreamType       
 ---  ----------------------------  ------------------  ------  ----------------  ------------  ----
 64   RTB Aneka                     Brunei              DEAD    all_urls_failed   dead          -   
 65   RTB Sukmaindera               Brunei              DEAD    all_urls_failed   dead          -   
-
-===================================================================================================
- GROUP: Japan  (1 active  0 dead  0 skipped)
-===================================================================================================
-No   Channel                       Group               Status  StreamType        MainEntry     HTTP
----  ----------------------------  ------------------  ------  ----------------  ------------  ----
-66   NHK World-Japan               Japan               OK      hls_master        direct_url    200 
 
 ===================================================================================================
  GROUP: United State;Anime  (1 active  0 dead  0 skipped)
