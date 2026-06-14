@@ -194,18 +194,32 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/SBS/SB
 #EXTINF:-1 tvg-chno="" tvg-name="SBS_Golf_2" tvg-id="" tvg-country="South Korea" tvg-logo="" group-title="Golf",SBS_Golf_2
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/SBS/SBS%20Golf%202.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Sky Sport Golf" tvg-id="SkySportsGolf.uk" tvg-country="UK" tvg-logo="https://d2n0069hmnqmmx.cloudfront.net/epgdata/1.0/newchanlogos/512/512/skychb1322.png" group-title="Golf",Sky Sport Golf
-https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/SkySport/Golf/Golf.m3u8
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/SkySport/Sky%20Sports%20Golf.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="CCTV-Golf & Tennis" tvg-id="CCTVGolfTennis.cn" tvg-country="CN" tvg-logo="https://i.imgur.com/iqJJTmH.png" group-title="Sports;Golf",CCTV-Golf & Tennis
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/CCTV/CCTV-Golf%20%26%20Tennis.m3u8
 ##======SkySport========
-#EXTINF:-1 tvg-chno="" tvg-name="Sky Sport Football" tvg-id="SkySportsFootball.uk" tvg-country="UK" tvg-logo="https://d2n0069hmnqmmx.cloudfront.net/epgdata/1.0/newchanlogos/512/512/skychb3838.png" group-title="Sports",Football
-https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/SkySport/Football/Football.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="Sky Sport F1" tvg-id="SkySportsF1.uk" tvg-country="UK" tvg-logo="https://d2n0069hmnqmmx.cloudfront.net/epgdata/1.0/newchanlogos/512/512/skychb1306.png" group-title="Sports",F1
-https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/SkySport/F1/F1.m3u8
+#EXTINF:-1 tvg-chno="" tvg-name="Sky Sports (UK)" tvg-id="" tvg-country="UK" tvg-logo="https://icon2.cleanpng.com/20180423/eyq/kisspng-television-antenna-computer-icons-aerials-tv-antenna-5add88e2c26080.2767419415244679387962.jpg" group-title="Sports",Sky Sports (UK)
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/SkySport/Sky%20Sports%20UK.m3u8
+#EXTINF:-1 tvg-chno="" tvg-name="Sky Sports News" tvg-id="SkySportsNews.uk" tvg-country="UK" tvg-logo="https://icon2.cleanpng.com/20180423/eyq/kisspng-television-antenna-computer-icons-aerials-tv-antenna-5add88e2c26080.2767419415244679387962.jpg" group-title="Sports",Sky Sports News
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/SkySport/Sky%20Sports%20News.m3u8
+#EXTINF:-1 tvg-chno="" tvg-name="Sky Sports Live+" tvg-id="SkySportsPlus.uk" tvg-country="UK" tvg-logo="https://icon2.cleanpng.com/20180423/eyq/kisspng-television-antenna-computer-icons-aerials-tv-antenna-5add88e2c26080.2767419415244679387962.jpg" group-title="Sports",Sky Sports Live+
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/SkySport/Sky%20Sports%20Live%2B.m3u8
+#EXTINF:-1 tvg-chno="" tvg-name="SSky Sports Main Events" tvg-id="SkySportsMainEvent.uk" tvg-country="UK" tvg-logo="https://icon2.cleanpng.com/20180423/eyq/kisspng-television-antenna-computer-icons-aerials-tv-antenna-5add88e2c26080.2767419415244679387962.jpg" group-title="Sports",Sky Sports Main Events
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/SkySport/Sky%20Sports%20Main%20Events.m3u8
+#EXTINF:-1 tvg-chno="" tvg-name="Sky Sports Action" tvg-id="SkySportsAction.uk" tvg-country="UK" tvg-logo="" group-title="Sports",Sky Sports Action
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/SkySport/Sky%20Sports%20Action.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Sky Sport Premier League" tvg-id="SkySportsPremierLeague.uk" tvg-country="UK" tvg-logo="https://d2n0069hmnqmmx.cloudfront.net/epgdata/1.0/newchanlogos/512/512/skychb1303.png" group-title="Sports",Premier League
-https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/SkySport/Premier_League/Premier_League.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="Sky Sport Mix" tvg-id="SkySportsMix.uk" tvg-country="UK" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/united-kingdom/sky-sports-mix-uk.png" group-title="Sports",Sky Sport Mix
-https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/SkySport/Mix/Mix.m3u8
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/SkySport/Sky%20Sports%20Premier%20League.m3u8
+#EXTINF:-1 tvg-chno="" tvg-name="Sky Sport Football" tvg-id="SkySportsFootball.uk" tvg-country="UK" tvg-logo="https://d2n0069hmnqmmx.cloudfront.net/epgdata/1.0/newchanlogos/512/512/skychb3838.png" group-title="Sports",Football
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/SkySport/Sky%20Sports%20Football.m3u8
+#EXTINF:-1 tvg-chno="" tvg-name="Sky Sport F1" tvg-id="SkySportsF1.uk" tvg-country="UK" tvg-logo="ttps://icon2.cleanpng.com/20180423/eyq/kisspng-television-antenna-computer-icons-aerials-tv-antenna-5add88e2c26080.2767419415244679387962.jpg" group-title="Sports",F1
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/SkySport/Sky%20Sports%20F1.m3u8
+#EXTINF:-1 tvg-chno="" tvg-name="Sky Sports Arena" tvg-id="" tvg-country="UK" tvg-logo="https://icon2.cleanpng.com/20180423/eyq/kisspng-television-antenna-computer-icons-aerials-tv-antenna-5add88e2c26080.2767419415244679387962.jpg" group-title="Sports",Sky Sports Arena
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/SkySport/Sky%20Sports%20Arena.m3u8
+#EXTINF:-1 tvg-chno="" tvg-name="Sky Sports Racing" tvg-id="SkySportsRacing.uk" tvg-country="UK" tvg-logo="https://icon2.cleanpng.com/20180423/eyq/kisspng-television-antenna-computer-icons-aerials-tv-antenna-5add88e2c26080.2767419415244679387962.jpg" group-title="Sports",Sky Sports Racing
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/SkySport/Sky%20Sports%20Racing.m3u8
+#EXTINF:-1 tvg-chno="" tvg-name="Sky Sports MIX" tvg-id="SkySportsMix.uk" tvg-country="UK" tvg-logo="https://icon2.cleanpng.com/20180423/eyq/kisspng-television-antenna-computer-icons-aerials-tv-antenna-5add88e2c26080.2767419415244679387962.jpg" group-title="Sports",Sky Sports MIX
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/SkySport/Sky%20Sports%20MIX.m3u8
 ##======BeiN============
 #EXTINF:-1 tvg-chno="" tvg-name="Bein Sports 1" tvg-id="beINSPORTS1.au" tvg-country="AU" tvg-logo="https://i.imgur.com/Vtk2cGI.png" group-title="Sports",Bein Sports 1
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/BeiN/Sports%201.m3u8
@@ -397,7 +411,7 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/News%2
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Al-Jazeera/Al-Jazeera%20(English).m3u8
 
 #====Earth & Nature====
-#EXTINF:-1 tvg-chno="" tvg-name="Adventure Earth" tvg-id="AdventureEarth.de" tvg-country="DE" tvg-logo="https://d3b6luslimvglo.cloudfront.net/images/79/rlaxximages/channels-rescaled/icon-white/adventureearth_white.png" group-title="Nature",Adventure Earth
+#EXTINF:-1 tvg-chno="" tvg-name="Adventure Earth" tvg-id="GBBC900015D3" tvg-country="GB" tvg-logo="https://d3b6luslimvglo.cloudfront.net/images/79/rlaxximages/channels-rescaled/icon-white/adventureearth_white.png" group-title="Nature",Adventure Earth
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Earth%20%26%20Nature/Adventure%20Earth.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="BBC Earth" tvg-id="4030" tvg-country="US" tvg-logo="" group-title="Nature",BBC Earth
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/BBC/BBC%20Earth.m3u8
