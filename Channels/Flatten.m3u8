@@ -14,7 +14,7 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/TONTON
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
 #EXTVLCOPT:http-referrer=https://watch.tonton.com.my/
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/TONTON/DidikTV/DidikTV.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="TV9" tvg-id="902" tvg-country="MY" tvg-logo="https://headend-api.tonton.com.my/v400/imageHelper.php?id=6420326:378:CHANNEL:IMAGE" group-title="Malaysia",TV9
+#EXTINF:-1 tvg-chno="" tvg-name="TV9" tvg-id="DidikTVKPM" tvg-country="MY" tvg-logo="https://headend-api.tonton.com.my/v400/imageHelper.php?id=6420326:378:CHANNEL:IMAGE" group-title="Malaysia",TV9
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
 #EXTVLCOPT:http-referrer=https://watch.tonton.com.my/
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/TONTON/TV9/TV9.m3u8
@@ -154,7 +154,7 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Japan/
 ##====Anime====
 #EXTINF:-1 tvg-chno="" tvg-name="Crunchyroll" tvg-id="Crunchyroll.us" tvg-country="US" tvg-logo="https://i.imgur.com/2FlIQUO.png" group-title="United State;Anime",Crunchyroll
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Crunchyroll/Crunchyroll.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="Aniplus Asia" tvg-id="AniplusAsia.sg" tvg-country="India" tvg-logo="https://i.imgur.com/Im3MePy.png" group-title="India;Anime",Aniplus Asia
+#EXTINF:-1 tvg-chno="" tvg-name="Aniplus Asia" tvg-id="ANIPLUS.sg" tvg-country="SG" tvg-logo="https://i.imgur.com/Im3MePy.png" group-title="Singapore;Anime",Aniplus Asia
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/India/Animax%20Asia.m3u8
 ##=====Kids=====
 #EXTINF:-1 tvg-chno="" tvg-name="Cartoon Network" tvg-id="Cartoon.Network.HD.us2" tvg-country="US" tvg-logo="http://schedulesdirect-api20141201-logos.s3.dualstack.us-east-1.amazonaws.com/stationLogos/s12131_dark_360w_270h.png" group-title="Kids",Cartoon Network
@@ -184,7 +184,7 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/One%20
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Golf%20Pass/Golf%20Pass.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="PGA Tour" tvg-id="PGATOUR.pluto" tvg-country="US" tvg-logo="https://i.imgur.com/J0TY9dG.png" group-title="Golf",PGA Tour
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/PGA%20Tour/PGA%20Tour.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="DP World Tour" tvg-id="6882521ac258734a42a60ed0" tvg-country="UK" tvg-logo="https://images.pluto.tv/channels/6882521ac258734a42a60ed0/colorLogoPNG_1753371278188.png" group-title="Golf",DP World Tour
+#EXTINF:-1 tvg-chno="" tvg-name="DP World Tour" tvg-id="GB5200001TM" tvg-country="UK" tvg-logo="https://images.pluto.tv/channels/6882521ac258734a42a60ed0/colorLogoPNG_1753371278188.png" group-title="Golf",DP World Tour
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/DP%20World%20Tour/DP%20World%20Tour.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Golf Television" tvg-id="" tvg-country="Italy" tvg-logo="https://tvpnlogopeu.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/IT4200001D8_20250513T010712SQUARE.png" group-title="Golf",Golf Television
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Golf%20Television/Golf%20Television.m3u8
@@ -203,26 +203,26 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/SkySpo
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/SkySport/F1/F1.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Sky Sport Premier League" tvg-id="SkySportsPremierLeague.uk" tvg-country="UK" tvg-logo="https://d2n0069hmnqmmx.cloudfront.net/epgdata/1.0/newchanlogos/512/512/skychb1303.png" group-title="Sports",Premier League
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/SkySport/Premier_League/Premier_League.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="Sky Sport Mix" tvg-id="Sky Sports Mix" tvg-country="UK" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/united-kingdom/sky-sports-mix-uk.png" group-title="Sports",Sky Sport Mix
+#EXTINF:-1 tvg-chno="" tvg-name="Sky Sport Mix" tvg-id="SkySportsMix.uk" tvg-country="UK" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/united-kingdom/sky-sports-mix-uk.png" group-title="Sports",Sky Sport Mix
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/SkySport/Mix/Mix.m3u8
 ##======BeiN============
-#EXTINF:-1 tvg-chno="" tvg-name="Bein Sports 1" tvg-id="399482" tvg-country="CA" tvg-logo="https://i.imgur.com/Vtk2cGI.png" group-title="Sports",Bein Sports 1
+#EXTINF:-1 tvg-chno="" tvg-name="Bein Sports 1" tvg-id="beINSPORTS1.au" tvg-country="AU" tvg-logo="https://i.imgur.com/Vtk2cGI.png" group-title="Sports",Bein Sports 1
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/BeiN/Sports%201.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="Bein Sports 2" tvg-id="4146" tvg-country="CA" tvg-logo="https://i.imgur.com/vUJZSvs.png" group-title="Sports",Bein Sports 2
+#EXTINF:-1 tvg-chno="" tvg-name="Bein Sports 2" tvg-id="beINSPORTS2.au" tvg-country="AU" tvg-logo="https://i.imgur.com/vUJZSvs.png" group-title="Sports",Bein Sports 2
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/BeiN/Sports%202.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="Bein Sports 3" tvg-id="3118" tvg-country="" tvg-logo="https://i.imgur.com/UYSMao3.png" group-title="Sports",Bein Sports 3
+#EXTINF:-1 tvg-chno="" tvg-name="Bein Sports 3" tvg-id="beINSPORTS3.us" tvg-country="US" tvg-logo="https://i.imgur.com/UYSMao3.png" group-title="Sports",Bein Sports 3
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/BeiN/Sports%203.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="Bein Sports 4" tvg-id="beINSports4.qa" tvg-country="QA" tvg-logo="https://i.imgur.com/vwAgJNi.png" group-title="Sports",Bein Sports 4
+#EXTINF:-1 tvg-chno="" tvg-name="Bein Sports 4" tvg-id="beINSPORTS4.us" tvg-country="US" tvg-logo="https://i.imgur.com/vwAgJNi.png" group-title="Sports",Bein Sports 4
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/BeiN/Sports%204.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="Bein Sports 5" tvg-id="beINSports5.qa" tvg-country="QA" tvg-logo="https://i.imgur.com/2Rha5aY.png" group-title="Sports",Bein Sports 5
+#EXTINF:-1 tvg-chno="" tvg-name="Bein Sports 5" tvg-id="bbeINSPORTS5.us" tvg-country="US" tvg-logo="https://i.imgur.com/2Rha5aY.png" group-title="Sports",Bein Sports 5
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/BeiN/Sports%205.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="Bein Sports 6" tvg-id="beINSports6.qa" tvg-country="QA" tvg-logo="https://i.imgur.com/0wBdLYb.png" group-title="Sports",Bein Sports 6
+#EXTINF:-1 tvg-chno="" tvg-name="Bein Sports 6" tvg-id="beINSPORTS6.us" tvg-country="US" tvg-logo="https://i.imgur.com/0wBdLYb.png" group-title="Sports",Bein Sports 6
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/BeiN/Sports%206.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="Bein Sports 7" tvg-id="beINSports7.qa" tvg-country="QA" tvg-logo="https://i.imgur.com/iODFwZi.png" group-title="Sports",Bein Sports 7
+#EXTINF:-1 tvg-chno="" tvg-name="Bein Sports 7" tvg-id="beINSPORTS7.us" tvg-country="US" tvg-logo="https://i.imgur.com/iODFwZi.png" group-title="Sports",Bein Sports 7
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/BeiN/Sports%207.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="Bein Sports 8" tvg-id="beINSports8.qa" tvg-country="QA" tvg-logo="https://i.imgur.com/CaFEyVn.png" group-title="Sports",Bein Sports 8
+#EXTINF:-1 tvg-chno="" tvg-name="Bein Sports 8" tvg-id="beINSPORTS8.us" tvg-country="US" tvg-logo="https://i.imgur.com/CaFEyVn.png" group-title="Sports",Bein Sports 8
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/BeiN/Sports%208.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="Bein Xtra" tvg-id="beINSPORTSXTRA.us" tvg-country="US" tvg-logo="https://i.ibb.co/HT49GPmB/XTRA-2.png" group-title="Sports",Bein Xtra
+#EXTINF:-1 tvg-chno="" tvg-name="Bein Xtra" tvg-id="beINSportsXtra.us" tvg-country="US" tvg-logo="https://i.ibb.co/HT49GPmB/XTRA-2.png" group-title="Sports",Bein Xtra
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/BeiN/Extra.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Bein Xtra 2" tvg-id="beINSportsXtra2.qa" tvg-country="BD" tvg-logo="https://i.imgur.com/08Y2CW1.png" group-title="Sports",Bein Xtra 2
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/BeiN/Extra%202.m3u8
@@ -286,9 +286,9 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Swerve
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Billiards/World%20Billiards%20TV.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Billiard TV" tvg-id="BilliardTV.us" tvg-country="US" tvg-logo="https://i.imgur.com/BZijfKh.png" group-title="Sports",Billiard TV
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Billiards/Billiard%20TV.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="BBC Top Gear" tvg-id="TopGear.uk" tvg-country="UK" tvg-logo="https://i.imgur.com/S6Su6QH.png" group-title="Sports",BBC Top Gear
+#EXTINF:-1 tvg-chno="" tvg-name="BBC Top Gear" tvg-id="TopGear.peacocktv" tvg-country="UK" tvg-logo="https://i.imgur.com/S6Su6QH.png" group-title="Sports",BBC Top Gear
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/BBC/Top%20Gear.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="Fuel TV" tvg-id="FUELTV.pt" tvg-country="PT" tvg-logo="https://i.imgur.com/I8mviBy.png" group-title="Sports",Fuel TV
+#EXTINF:-1 tvg-chno="" tvg-name="Fuel TV" tvg-id="FuelTV.pt" tvg-country="PT" tvg-logo="https://i.imgur.com/I8mviBy.png" group-title="Sports",Fuel TV
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Fuel%20TV/Fuel%20TV.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Pro Fight League" tvg-id="" tvg-country="" tvg-logo="" group-title="Sports",Pro Fight League
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Pro%20Fight%20League/Pro%20Fight%20League.m3u8
@@ -370,7 +370,7 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/HBO/HB
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Rakuten/Rakuten%20Top%20Movies%20UK.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Sony Movie Channel" tvg-id="Sony.Movie.Channel.HD.us2" tvg-country="US" tvg-logo="http://schedulesdirect-api20141201-logos.s3.dualstack.us-east-1.amazonaws.com/stationLogos/s69130_dark_360w_270h.png" group-title="Movies",Sony Movie Channel
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Sony/Sony%20Movie%20Channel.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="Bollywood" tvg-id="" tvg-country="India" tvg-logo="" group-title="Movies",Bollywood
+#EXTINF:-1 tvg-chno="" tvg-name="Bollywood" tvg-id="BollywoodClasic.ro" tvg-country="RO" tvg-logo="" group-title="Movies",Bollywood
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Bollywood/Bollywood.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Bollywood Classic" tvg-id="BollywoodClassic.ro" tvg-country="RO" tvg-logo="https://i.imgur.com/ugPo6ca.png" group-title="Movies",Bollywood Classic
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Bollywood/Bollywood%20Classic.m3u8
@@ -427,7 +427,7 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Bob%20
 
 #EXTINF:-1 tvg-chno="" tvg-name="Love Pets" tvg-id="LovePets.ca" tvg-country="CA" tvg-logo="https://lovepetstv.com/wp-content/uploads/2022/12/LovePets_Logo_SecondaryColor.png" group-title="Pets",Love Pets
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Love%20Pets/Love%20Pets.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="Documentary+" tvg-id="DocumentaryPlus.us" tvg-country="US" tvg-logo="https://i.imgur.com/x57klfS.png" group-title="",Documentary+
+#EXTINF:-1 tvg-chno="" tvg-name="Documentary+" tvg-id="Documentary+.us" tvg-country="US" tvg-logo="https://i.imgur.com/x57klfS.png" group-title="",Documentary+
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Documentary_Plus/Documentary_Plus.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Discovery Channel" tvg-id="Discovery.Channel.HD.us2" tvg-country="US" tvg-logo="http://schedulesdirect-api20141201-logos.s3.dualstack.us-east-1.amazonaws.com/stationLogos/s11150_dark_360w_270h.png" group-title="",Discovery Channel
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Discovery/Discovery%20Channel.m3u8
