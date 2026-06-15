@@ -427,7 +427,7 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Earth%
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Earth%20%26%20Nature/Wild%20Nature.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Wild Earth" tvg-id="405628" tvg-country="UK" tvg-logo="https://i.imgur.com/Vhv5gjN.png" group-title="Nature",Wild Earth
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Earth%20%26%20Nature/Wild%20Earth.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="Wild Planet" tvg-id="405628" tvg-country="UK" tvg-logo="" group-title="Nature",Wild Planet
+#EXTINF:-1 tvg-chno="" tvg-name="Wild Planet" tvg-id="GBBB5000002PL" tvg-country="UK" tvg-logo="https://tvpnlogopeu.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/GBBB5000002PL_20250107T025838SQUARE.png" group-title="Nature",Wild Planet
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Earth%20%26%20Nature/Wild%20Planet.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Xumo Nature & Wildlife TV" tvg-id="" tvg-country="" tvg-logo="" group-title="Nature",Xumo Nature & Wildlife TV
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Earth%20%26%20Nature/Xumo%20Nature%20%26%20Wildlife%20TV.m3u8
