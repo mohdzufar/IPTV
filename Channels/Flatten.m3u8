@@ -175,7 +175,7 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Golf%2
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Golf%20Channel/Golf%20Channel.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Golf Channel (Latin America)" tvg-id="GolfChannelLatinAmerica.us" tvg-country="US" tvg-logo="https://i.imgur.com/Lgux6Ik.png" group-title="Golf",Golf Channel (Latin America)
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Golf%20Channel/Golf%20Channel%20(Latin%20America).m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="GolfNetwork" tvg-id="" tvg-country="US" tvg-logo="" group-title="Golf",GolfNetwork
+#EXTINF:-1 tvg-chno="" tvg-name="GolfNetwork" tvg-id="IN400057EZ" tvg-country="US" tvg-logo="" group-title="Golf",GolfNetwork
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Golf%20Network/Golf%20Network.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="GolfNetwork Japan" tvg-id="GolfNetwork.jp" tvg-country="JP" tvg-logo="https://i.imgur.com/s6lmfXF.png" group-title="Golf",GolfNetwork Japan
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Golf%20Network/Golf%20Network%20Japan.m3u8
@@ -187,7 +187,7 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Golf%2
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/PGA%20Tour/PGA%20Tour.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="DP World Tour" tvg-id="GB5200001TM" tvg-country="UK" tvg-logo="https://images.pluto.tv/channels/6882521ac258734a42a60ed0/colorLogoPNG_1753371278188.png" group-title="Golf",DP World Tour
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/DP%20World%20Tour/DP%20World%20Tour.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="Golf Television" tvg-id="" tvg-country="Italy" tvg-logo="https://tvpnlogopeu.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/IT4200001D8_20250513T010712SQUARE.png" group-title="Golf",Golf Television
+#EXTINF:-1 tvg-chno="" tvg-name="Golf Television" tvg-id="IT4200001D8" tvg-country="IT" tvg-logo="https://tvpnlogopeu.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/IT4200001D8_20250513T010712SQUARE.png" group-title="Golf",Golf Television
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Golf%20Television/Golf%20Television.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="SBS_Golf" tvg-id="SBSGolf.kr" tvg-country="South Korea" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/SBS_Golf_logo_2018.svg/960px-SBS_Golf_logo_2018.svg.png" group-title="Golf",SBS_Golf
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/SBS/SBS_Golf.m3u8
@@ -351,7 +351,7 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Paramo
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/MyTime/Movie%20Network.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Movie Sphere UK" tvg-id="GBBA33000557H" tvg-country="GB" tvg-logo="https://epg.pw/media/images/epg/2026/04/22/20260422040431223611_18.png" group-title="Movies",Movie Sphere UK
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Movie%20Sphere/Movie%20Sphere%20UK.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="Movie Sphere 2" tvg-id="" tvg-country="US" tvg-logo="https://epg.pw/media/images/epg/2026/04/22/20260422040431223611_18.png" group-title="Movies",Movie Sphere 2
+#EXTINF:-1 tvg-chno="" tvg-name="Movie Sphere 2" tvg-id="ES4200001MR" tvg-country="ES" tvg-logo="https://epg.pw/media/images/epg/2026/04/22/20260422040431223611_18.png" group-title="Movies",Movie Sphere 2
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Movie%20Sphere/Movie%20Sphere%202.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Movie Sphere Aus" tvg-id="538953" tvg-country="AU" tvg-logo="https://epg.pw/media/images/epg/2026/04/22/20260422040431223611_18.png" group-title="Movies",Movie Sphere Aus
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Movie%20Sphere/Movie%20Sphere%20Aus.m3u8
@@ -361,7 +361,7 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Movie%
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Movie%20Sphere/Movie%20Sphere%20by%20Lionsgate%202.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Wedotv Movies" tvg-id="64305451fc3be5947773c339-642d67a42476824150b0a6e9" tvg-country="=GB" tvg-logo="https://tvpnlogopeu.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/DEBA3300034HH_20260310T031428SQUARE.png" group-title="Movies",Wedotv Movies
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Wedotv%20Movies/Wedotv%20Movies.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="Miramax" tvg-id="" tvg-country="US" tvg-logo="" group-title="Movies",Miramax
+#EXTINF:-1 tvg-chno="" tvg-name="Miramax" tvg-id="plex.tv.Miramax.Movie.Channel.plex" tvg-country="US" tvg-logo="" group-title="Movies",Miramax
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Miramax/Miramax.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Universal Movie" tvg-id="" tvg-country="US" tvg-logo="" group-title="Movies",Universal Movie
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Universal%20Movie/Universal%20Movie.m3u8
@@ -421,7 +421,7 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Earth%
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Earth%20%26%20Nature/Terra%20Mater%20Wild.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Real Wild" tvg-id="GBBB1000005IO" tvg-country="GB" tvg-logo="https://i.imgur.com/T9HHmAO.png" group-title="Nature",Real Wild
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Earth%20%26%20Nature/Real%20Wild.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="Go Wild" tvg-id="" tvg-country="UK" tvg-logo="" group-title="Nature",Go Wild
+#EXTINF:-1 tvg-chno="" tvg-name="Go Wild" tvg-id="plex.tv.Go.Wild.plex" tvg-country="UK" tvg-logo="" group-title="Nature",Go Wild
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Earth%20%26%20Nature/Go%20Wild.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Wild Nature" tvg-id="" tvg-country="" tvg-logo="" group-title="Nature",Wild Nature
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Earth%20%26%20Nature/Wild%20Nature.m3u8
@@ -464,7 +464,7 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/China/
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Korea/K-Content.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="K-Drama+" tvg-id="CA17000023Q" tvg-country="KR" tvg-logo="https://tvpnlogopus.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/CA17000023Q_20250826T234700SQUARE.png" group-title="Korea;Drama",K-Drama+
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Korea/K-Drama_plus.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="K-Stories" tvg-id="" tvg-country="KR" tvg-logo="" group-title="Korea",K-Stories
+#EXTINF:-1 tvg-chno="" tvg-name="K-Stories" tvg-id="USBB2900001P9" tvg-country="KR" tvg-logo="" group-title="Korea",K-Stories
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Korea/K-Stories.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="KBS World" tvg-id="KBSWorld.my" tvg-country="KR" tvg-logo="https://i.imgur.com/7DqgELX.png" group-title="Korea",KBS World
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Korea/KBS%20World.m3u8
