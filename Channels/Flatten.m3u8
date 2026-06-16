@@ -214,7 +214,7 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/SkySpo
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/SkySport/Sky%20Sports%20Football.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Sky Sport F1" tvg-id="SkySportsF1.uk" tvg-country="UK" tvg-logo="https://images.open-epg.com/x479.png" group-title="Sports",F1
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/SkySport/Sky%20Sports%20F1.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="Sky Sports Arena" tvg-id="" tvg-country="UK" tvg-logo="hhttps://schedulesdirect-api20141201-logos.s3.dualstack.us-east-1.amazonaws.com/stationLogos/s107319_gray_360w_270h.png" group-title="Sports",Sky Sports Arena
+#EXTINF:-1 tvg-chno="" tvg-name="Sky Sports Arena" tvg-id="Sky Sport Arena.it" tvg-country="IT" tvg-logo="hhttps://schedulesdirect-api20141201-logos.s3.dualstack.us-east-1.amazonaws.com/stationLogos/s107319_gray_360w_270h.png" group-title="Sports",Sky Sports Arena
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/SkySport/Sky%20Sports%20Arena.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Sky Sports Racing" tvg-id="SkySportsRacing.uk" tvg-country="UK" tvg-logo="https://images.open-epg.com/x481.png" group-title="Sports",Sky Sports Racing
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/SkySport/Sky%20Sports%20Racing.m3u8
@@ -470,5 +470,5 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Korea/
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Korea/KBS%20World.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="AsianCrush" tvg-id="AsianCrush.us" tvg-country="KR" tvg-logo="https://i.imgur.com/hW6z1RG.png" group-title="Korea;Drama",AsianCrush
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Korea/AsianCrush.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="KoreaTV" tvg-id="" tvg-country="KR" tvg-logo="" group-title="Korea",KoreaTV
+#EXTINF:-1 tvg-chno="" tvg-name="KoreaTV" tvg-id="IN3600005NF" tvg-country="KR" tvg-logo="" group-title="Korea",KoreaTV
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/KoreaTV/KoreaTV.m3u8
