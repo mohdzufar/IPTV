@@ -254,9 +254,9 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/TSN/TS
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/TSN/TSN%205.m3u8
 
 ##=====Tennis================
-#EXTINF:-1 tvg-chno="" tvg-name="Tennis TV" tvg-id="6627621d56fc840008e47c90" tvg-country="" tvg-logo="https://images.pluto.tv/channels/6627621d56fc840008e47c90/colorLogoPNG_1756973184696.png" group-title="Sports",Tennis TV
+#EXTINF:-1 tvg-chno="" tvg-name="Tennis TV" tvg-id="6627621d56fc840008e47c90" tvg-country="US" tvg-logo="https://images.pluto.tv/channels/6627621d56fc840008e47c90/colorLogoPNG_1756973184696.png" group-title="Sports",Tennis TV
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Tennis%20TV/Tennis%20TV.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="Tennis TV 2" tvg-id="TennisTV247.us" tvg-country="" tvg-logo="" group-title="Sports",Tennis TV 2
+#EXTINF:-1 tvg-chno="" tvg-name="Tennis TV 2" tvg-id="TennisTV247.us" tvg-country="US" tvg-logo="" group-title="Sports",Tennis TV 2
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Tennis%20TV/Tennis%20TV2.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Tennis+" tvg-id="plex.tv.Tennis+.plex" tvg-country="" tvg-logo="" group-title="Sports",Tennis+
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Tennis%20TV/Tennis%20Plus.m3u8
@@ -342,7 +342,7 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Music/
 #EXTINF:-1 tvg-chno="" tvg-name="Song TV" tvg-id="SongTV.id" tvg-country="ID" tvg-logo="" group-title="Music",Song TV
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Music/Song%20TV.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Vevo 2k" tvg-id="497977" tvg-country="US" tvg-logo="https://images.pluto.tv/channels/5fd7bca3e0a4ee0007a38e8c/featuredImage.jpg" group-title="Music",Vevo 2k
-https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Vevo/Vevo%202k.m3u8
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Music/Vevo%202k.m3u8
 
 #====Movies====
 #EXTINF:-1 tvg-chno="" tvg-name="Paramount Movie Channel" tvg-id="ParamountMovieChannel.pluto" tvg-country="US" tvg-logo="https://i.imgur.com/sj5h9bl.png" group-title="Movies",Paramount Movie Channel
@@ -472,3 +472,5 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Korea/
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Korea/AsianCrush.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="KoreaTV" tvg-id="IN3600005NF" tvg-country="KR" tvg-logo="" group-title="Korea",KoreaTV
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/KoreaTV/KoreaTV.m3u8
+#EXTINF:-1 tvg-chno="" tvg-name="NEW KMovies" tvg-id="USAJ30000122O" tvg-country="US" tvg-logo="" group-title="Korea;Movies",NEW KMovies
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Korea/NEW%20KMovies.m3u8
