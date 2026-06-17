@@ -1,4 +1,6 @@
 #EXTM3U
 #EXTINF:1,Tennis Channel 2
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36
+https://amg01444-amg01444c2-freelivesports-emea-11541.playouts.now.amagi.tv/ts-eu-w1-n2/playlist/amg01444-tennischannelfast-tennischannelus-freelivesportsemea/playlist.m3u8?channel_name=Tennis%20Channel%20T2&content_genre=Sport%2CTennis&ic=IAB17%2CIAB17-40&rating=G&language=US&provider=FreeLiveSports&us_privacy=[US_PRIVACY]&gdpr=[GDPR]&gdpr_consent=[CONSENT_STRING]&coppa=0&content_livestream=1&p=sportstribal&url=[REF]&lmt=[LAT]&did=[DEVICE_ID]
 https://jmp2.uk/plu-681109b688b9d85d0938c6ba.m3u8
 
