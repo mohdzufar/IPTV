@@ -1,12 +1,12 @@
 ===================================================================================================
  IPTV Playlist Validation Report
 ===================================================================================================
- Generated : 2026-06-18 00:17:27 MYT
+ Generated : 2026-06-18 06:29:05 MYT
  Source    : Channels/Flatten.m3u8
- Run time  : 6m 21s
+ Run time  : 6m 55s
 
  Total     : 212
- Active    : 150  (wrapper_kept=52  direct_url=98)
+ Active    : 150  (wrapper_kept=51  direct_url=99)
  Dead      : 50
  Skipped   : 12  (TONTON / Mana-mana — token refresh only)
  Success   : 75.0%  (active / non-skipped)
@@ -98,7 +98,7 @@ No   Channel                       Group               Status  StreamType       
 106  Bein Xtra                     Sports              OK      hls_master        direct_url    200 
 107  Bein Xtra 2                   Sports              OK      hls_media         wrapper_kept  200 
 108  TSN 1                         Sports              OK      mpeg_ts           wrapper_kept  200 
-109  TSN 2                         Sports              OK      mpeg_ts           wrapper_kept  200 
+109  TSN 2                         Sports              DEAD    all_urls_failed   dead          -   
 110  TSN 3                         Sports              OK      mpeg_ts           wrapper_kept  200 
 111  TSN 4                         Sports              OK      mpeg_ts           wrapper_kept  200 
 112  TSN 5                         Sports              OK      mpeg_ts           wrapper_kept  200 
@@ -106,7 +106,7 @@ No   Channel                       Group               Status  StreamType       
 114  Tennis TV 2                   Sports              OK      hls_master        direct_url    200 
 115  Tennis+                       Sports              OK      hls_master        direct_url    200 
 116  Tennis Channel                Sports              OK      hls_master        direct_url    200 
-117  Tennis Channel 2              Sports              DEAD    all_urls_failed   dead          -   
+117  Tennis Channel 2              Sports              OK      hls_master        direct_url    200 
 118  MLB                           Sports              OK      hls_master        direct_url    200 
 119  MMA-TV International          Sports              OK      hls_master        direct_url    200 
 120  FOX NFL                       Sports              OK      hls_master        direct_url    200 
@@ -159,7 +159,7 @@ No   Channel                       Group               Status  StreamType       
 45   Quran (Mecca)                 Muslim              OK      hls_master        direct_url    200 
 
 ===================================================================================================
- GROUP: Singapore  (2 active  8 dead  0 skipped)
+ GROUP: Singapore  (3 active  7 dead  0 skipped)
 ===================================================================================================
 No   Channel                       Group               Status  StreamType        MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ----------------  ------------  ----
@@ -171,7 +171,7 @@ No   Channel                       Group               Status  StreamType       
 52   meWATCH LIVE 1                Singapore           OK      dash              direct_url    200 
 55   TechStorm                     Singapore           DEAD    all_urls_failed   dead          -   
 58   TVBS Asia                     Singapore           OK      hls_master        direct_url    200 
-59   MediaCorp (English)           Singapore           DEAD    all_urls_failed   dead          -   
+59   MediaCorp (English)           Singapore           OK      hls_master        direct_url    200 
 60   MediaCorp (Tamil)             Singapore           DEAD    all_urls_failed   dead          -   
 
 ===================================================================================================
@@ -257,11 +257,11 @@ No   Channel                       Group               Status  StreamType       
 70   Nickelodeon Asia              Indonesia;Kids      DEAD    all_urls_failed   dead          -   
 
 ===================================================================================================
- GROUP: Golf  (11 active  2 dead  0 skipped)
+ GROUP: Golf  (10 active  3 dead  0 skipped)
 ===================================================================================================
 No   Channel                       Group               Status  StreamType        MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ----------------  ------------  ----
-73   Golf Kingdom                  Golf                OK      hls_master        direct_url    200 
+73   Golf Kingdom                  Golf                DEAD    exception         dead          -   
 74   Golf Channel                  Golf                OK      hls_media         wrapper_kept  200 
 75   Golf Channel (Latin America)  Golf                OK      hls_master        direct_url    200 
 76   GolfNetwork                   Golf                OK      hls_master        direct_url    200 
@@ -303,7 +303,7 @@ No   Channel                       Group               Status  StreamType       
 151  Music Japan                   Music               OK      hls_master        direct_url    200 
 152  Music India                   Music               OK      hls_master        direct_url    200 
 153  Song TV                       Music               OK      dash              direct_url    200 
-154  Vevo 2k                       Music               DEAD    all_urls_failed   dead          -   
+154  Vevo 2k                       Music               DEAD    wrapper_http_404  dead          404 
 
 ===================================================================================================
  GROUP: Movies  (13 active  9 dead  0 skipped)
