@@ -31,7 +31,7 @@ Even though the repo is private, I still run GitHub Actions to keep the playlist
 
 | Workflow | What it does |
 |----------|---------------|
-| `update.yml` | Runs weekly, checks each channel URL, removes dead links |
+| `update.yml` | Runs daily 3x, checks each channel URL, removes dead links |
 | `format.yml` | Ensures M3U syntax is correct after any manual edit |
 | `validate.yml` | Quick syntax check on every push |
 
