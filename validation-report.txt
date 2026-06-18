@@ -1,15 +1,15 @@
 ===================================================================================================
  IPTV Playlist Validation Report
 ===================================================================================================
- Generated : 2026-06-19 00:07:23 MYT
+ Generated : 2026-06-19 06:38:50 MYT
  Source    : Channels/Flatten.m3u8
- Run time  : 7m 37s
+ Run time  : 6m 51s
 
  Total     : 213
- Active    : 151  (wrapper_kept=49  direct_url=102)
- Dead      : 50
+ Active    : 152  (wrapper_kept=50  direct_url=102)
+ Dead      : 49
  Skipped   : 12  (TONTON / Mana-mana — token refresh only)
- Success   : 75.1%  (active / non-skipped)
+ Success   : 75.6%  (active / non-skipped)
 
  Status  : OK = active   DEAD = failed   SKIP = token-refresh channel
  Type    : hls_media = HLS segment playlist
@@ -135,12 +135,12 @@ No   Channel                       Group               Status  StreamType       
 143  Astro Football                Sports              DEAD    wrapper_http_404  dead          404 
 
 ===================================================================================================
- GROUP: News  (10 active  1 dead  0 skipped)
+ GROUP: News  (11 active  0 dead  0 skipped)
 ===================================================================================================
 No   Channel                       Group               Status  StreamType        MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ----------------  ------------  ----
 15   Berita RTM                    News                OK      hls_media         wrapper_kept  200 
-17   Astro Awani                   News                DEAD    exception         dead          -   
+17   Astro Awani                   News                OK      hls_media         wrapper_kept  200 
 177  EuroNews                      News                OK      hls_media         wrapper_kept  200 
 178  NBC News Now                  News                OK      hls_master        direct_url    200 
 179  CBS News 24/7                 News                OK      hls_master        direct_url    200 
