@@ -1,15 +1,15 @@
 ===================================================================================================
  IPTV Playlist Validation Report
 ===================================================================================================
- Generated : 2026-06-19 06:38:50 MYT
+ Generated : 2026-06-19 17:27:27 MYT
  Source    : Channels/Flatten.m3u8
- Run time  : 6m 51s
+ Run time  : 7m 4s
 
  Total     : 213
- Active    : 152  (wrapper_kept=50  direct_url=102)
- Dead      : 49
+ Active    : 153  (wrapper_kept=51  direct_url=102)
+ Dead      : 48
  Skipped   : 12  (TONTON / Mana-mana — token refresh only)
- Success   : 75.6%  (active / non-skipped)
+ Success   : 76.1%  (active / non-skipped)
 
  Status  : OK = active   DEAD = failed   SKIP = token-refresh channel
  Type    : hls_media = HLS segment playlist
@@ -66,7 +66,7 @@ No   Channel                       Group               Status  StreamType       
 66   NHK World-Japan               Malaysia            OK      hls_master        direct_url    200 
 
 ===================================================================================================
- GROUP: Sports  (51 active  12 dead  0 skipped)
+ GROUP: Sports  (52 active  11 dead  0 skipped)
 ===================================================================================================
 No   Channel                       Group               Status  StreamType        MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ----------------  ------------  ----
@@ -98,7 +98,7 @@ No   Channel                       Group               Status  StreamType       
 106  Bein Xtra                     Sports              OK      hls_master        direct_url    200 
 107  Bein Xtra 2                   Sports              OK      hls_media         wrapper_kept  200 
 108  TSN 1                         Sports              OK      mpeg_ts           wrapper_kept  200 
-109  TSN 2                         Sports              DEAD    all_urls_failed   dead          -   
+109  TSN 2                         Sports              OK      mpeg_ts           wrapper_kept  200 
 110  TSN 3                         Sports              OK      mpeg_ts           wrapper_kept  200 
 111  TSN 4                         Sports              OK      mpeg_ts           wrapper_kept  200 
 112  TSN 5                         Sports              OK      mpeg_ts           wrapper_kept  200 
