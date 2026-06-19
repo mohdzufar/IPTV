@@ -1,13 +1,13 @@
 ===================================================================================================
  IPTV Playlist Validation Report
 ===================================================================================================
- Generated : 2026-06-19 23:55:18 MYT
+ Generated : 2026-06-20 05:39:59 MYT
  Source    : Channels/Flatten.m3u8
- Run time  : 7m 4s
+ Run time  : 7m 1s
 
- Total     : 213
- Active    : 151  (wrapper_kept=49  direct_url=102)
- Dead      : 50
+ Total     : 217
+ Active    : 154  (wrapper_kept=29  direct_url=125)
+ Dead      : 51
  Skipped   : 12  (TONTON / Mana-mana — token refresh only)
  Success   : 75.1%  (active / non-skipped)
 
@@ -17,8 +17,8 @@
            mpeg_ts = MPEG-TS stream (Xtream Codes / direct TS)
            dash = MPEG-DASH
            mp4 = MP4 direct
- Main    : wrapper_kept = TV app follows wrapper chain (hls_media, mpeg_ts)
-           direct_url  = CDN URL written directly (hls_master, dash, mp4)
+ Main    : wrapper_kept = TV app follows wrapper chain (hls_media)
+           direct_url  = CDN URL written directly (hls_master, dash, mp4, mpeg_ts)
            dead        = block commented out in Main.m3u8
            skipped     = not validated; URL set by refresh script
 
@@ -66,7 +66,7 @@ No   Channel                       Group               Status  StreamType       
 66   NHK World-Japan               Malaysia            OK      hls_master        direct_url    200 
 
 ===================================================================================================
- GROUP: Sports  (50 active  13 dead  0 skipped)
+ GROUP: Sports  (49 active  14 dead  0 skipped)
 ===================================================================================================
 No   Channel                       Group               Status  StreamType        MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ----------------  ------------  ----
@@ -77,31 +77,31 @@ No   Channel                       Group               Status  StreamType       
 18   Astro Arena Bola              Sports              DEAD    all_urls_failed   dead          -   
 19   Astro Arena Bola 2            Sports              DEAD    all_urls_failed   dead          -   
 87   Sky Sports (UK)               Sports              DEAD    all_urls_failed   dead          -   
-88   Sky Sports News               Sports              OK      mpeg_ts           wrapper_kept  200 
+88   Sky Sports News               Sports              OK      mpeg_ts           direct_url    200 
 89   Sky Sports Live+              Sports              DEAD    all_urls_failed   dead          -   
-90   Sky Sports Main Events        Sports              OK      mpeg_ts           wrapper_kept  200 
-91   Sky Sports Action             Sports              OK      mpeg_ts           wrapper_kept  200 
-92   Sky Sport Premier League      Sports              OK      mpeg_ts           wrapper_kept  200 
-93   Sky Sport Football            Sports              OK      mpeg_ts           wrapper_kept  200 
-94   Sky Sport F1                  Sports              OK      mpeg_ts           wrapper_kept  200 
-95   Sky Sports Arena              Sports              DEAD    all_urls_failed   dead          -   
-96   Sky Sports Racing             Sports              OK      mpeg_ts           wrapper_kept  200 
+90   Sky Sports Main Events        Sports              DEAD    all_urls_failed   dead          -   
+91   Sky Sports Action             Sports              OK      mpeg_ts           direct_url    200 
+92   Sky Sport Premier League      Sports              OK      mpeg_ts           direct_url    200 
+93   Sky Sport Football            Sports              OK      mpeg_ts           direct_url    200 
+94   Sky Sport F1                  Sports              OK      mpeg_ts           direct_url    200 
+95   Sky Sports Arena              Sports              OK      mpeg_ts           direct_url    200 
+96   Sky Sports Racing             Sports              DEAD    all_urls_failed   dead          -   
 97   Sky Sports MIX                Sports              DEAD    all_urls_failed   dead          -   
-98   Bein Sports 1                 Sports              OK      mpeg_ts           wrapper_kept  200 
-99   Bein Sports 2                 Sports              OK      mpeg_ts           wrapper_kept  200 
+98   Bein Sports 1                 Sports              OK      mpeg_ts           direct_url    200 
+99   Bein Sports 2                 Sports              OK      mpeg_ts           direct_url    200 
 100  Bein Sports 3                 Sports              DEAD    all_urls_failed   dead          -   
-101  Bein Sports 4                 Sports              OK      mpeg_ts           wrapper_kept  200 
-102  Bein Sports 5                 Sports              OK      mpeg_ts           wrapper_kept  200 
-103  Bein Sports 6                 Sports              OK      mpeg_ts           wrapper_kept  200 
-104  Bein Sports 7                 Sports              OK      mpeg_ts           wrapper_kept  200 
-105  Bein Sports 8                 Sports              OK      mpeg_ts           wrapper_kept  200 
+101  Bein Sports 4                 Sports              OK      mpeg_ts           direct_url    200 
+102  Bein Sports 5                 Sports              OK      mpeg_ts           direct_url    200 
+103  Bein Sports 6                 Sports              OK      mpeg_ts           direct_url    200 
+104  Bein Sports 7                 Sports              OK      mpeg_ts           direct_url    200 
+105  Bein Sports 8                 Sports              OK      mpeg_ts           direct_url    200 
 106  Bein Xtra                     Sports              OK      hls_master        direct_url    200 
 107  Bein Xtra 2                   Sports              OK      hls_media         wrapper_kept  200 
-108  TSN 1                         Sports              OK      mpeg_ts           wrapper_kept  200 
-109  TSN 2                         Sports              OK      mpeg_ts           wrapper_kept  200 
-110  TSN 3                         Sports              OK      mpeg_ts           wrapper_kept  200 
-111  TSN 4                         Sports              OK      mpeg_ts           wrapper_kept  200 
-112  TSN 5                         Sports              OK      mpeg_ts           wrapper_kept  200 
+108  TSN 1                         Sports              OK      mpeg_ts           direct_url    200 
+109  TSN 2                         Sports              OK      mpeg_ts           direct_url    200 
+110  TSN 3                         Sports              OK      mpeg_ts           direct_url    200 
+111  TSN 4                         Sports              OK      mpeg_ts           direct_url    200 
+112  TSN 5                         Sports              OK      mpeg_ts           direct_url    200 
 113  Tennis TV                     Sports              OK      hls_master        direct_url    200 
 114  Tennis TV 2                   Sports              OK      hls_master        direct_url    200 
 115  Tennis+                       Sports              OK      hls_master        direct_url    200 
@@ -273,7 +273,7 @@ No   Channel                       Group               Status  StreamType       
 82   Golf Television               Golf                OK      hls_master        direct_url    200 
 83   SBS_Golf                      Golf                OK      hls_master        direct_url    200 
 84   SBS_Golf_2                    Golf                OK      hls_master        direct_url    200 
-85   Sky Sport Golf                Golf                OK      mpeg_ts           wrapper_kept  200 
+85   Sky Sport Golf                Golf                OK      mpeg_ts           direct_url    200 
 
 ===================================================================================================
  GROUP: Sports;Golf  (1 active  0 dead  0 skipped)
@@ -379,14 +379,18 @@ No   Channel                       Group               Status  StreamType       
 206  douyu 19                      China               OK      hls_master        direct_url    200 
 
 ===================================================================================================
- GROUP: Korea  (3 active  1 dead  0 skipped)
+ GROUP: Korea  (7 active  1 dead  0 skipped)
 ===================================================================================================
 No   Channel                       Group               Status  StreamType        MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ----------------  ------------  ----
 207  K-Content                     Korea               OK      hls_master        direct_url    200 
 209  K-Stories                     Korea               OK      hls_master        direct_url    200 
-210  KBS World                     Korea               DEAD    all_urls_failed   dead          -   
-212  KoreaTV                       Korea               OK      hls_master        direct_url    200 
+210  K-Movies                      Korea               OK      hls_master        direct_url    200 
+211  Series K Legacy               Korea               OK      hls_master        direct_url    200 
+212  Series K Drama                Korea               OK      hls_master        direct_url    200 
+214  NEW KFood                     Korea               OK      hls_master        direct_url    200 
+215  KBS World                     Korea               DEAD    all_urls_failed   dead          -   
+217  KoreaTV                       Korea               OK      hls_master        direct_url    200 
 
 ===================================================================================================
  GROUP: Korea;Drama  (1 active  1 dead  0 skipped)
@@ -394,7 +398,7 @@ No   Channel                       Group               Status  StreamType       
 No   Channel                       Group               Status  StreamType        MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ----------------  ------------  ----
 208  K-Drama+                      Korea;Drama         DEAD    all_urls_failed   dead          -   
-211  AsianCrush                    Korea;Drama         OK      hls_master        direct_url    200 
+216  AsianCrush                    Korea;Drama         OK      hls_master        direct_url    200 
 
 ===================================================================================================
  GROUP: Korea;Movies  (1 active  0 dead  0 skipped)
