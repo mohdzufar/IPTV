@@ -14,10 +14,10 @@ HLS_PROTOCOL_TAGS    = ('#EXTM3U', '#EXT-X-', '#EXTINF')
 PLAYER_HINT_PREFIXES = ('#EXTVLCOPT', '#KODIPROP', '#EXTHTTP', '#EXTATTRB')
 
 # Stream types that are written as direct URL in Main.m3u8
-DIRECT_URL_TYPES = ('mp4', 'dash', 'hls_master')
+DIRECT_URL_TYPES = ('mp4', 'dash', 'hls_master', 'mpeg_ts')
 
 # Stream types that keep the wrapper chain in Main.m3u8
-WRAPPER_KEEP_TYPES = ('hls_media', 'mpeg_ts')
+WRAPPER_KEEP_TYPES = ('hls_media',)
 
 MYT = timezone(timedelta(hours=8))
 
@@ -390,8 +390,8 @@ def write_report(report_path, blocks, results, run_start):
         f.write('           mpeg_ts = MPEG-TS stream (Xtream Codes / direct TS)\n')
         f.write('           dash = MPEG-DASH\n')
         f.write('           mp4 = MP4 direct\n')
-        f.write(' Main    : wrapper_kept = TV app follows wrapper chain (hls_media, mpeg_ts)\n')
-        f.write('           direct_url  = CDN URL written directly (hls_master, dash, mp4)\n')
+        f.write(' Main    : wrapper_kept = TV app follows wrapper chain (hls_media)\n')
+        f.write('           direct_url  = CDN URL written directly (hls_master, dash, mp4, mpeg_ts)\n')
         f.write('           dead        = block commented out in Main.m3u8\n')
         f.write('           skipped     = not validated; URL set by refresh script\n')
         f.write('\n')
