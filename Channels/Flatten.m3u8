@@ -466,11 +466,19 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Korea/
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Korea/K-Drama_plus.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="K-Stories" tvg-id="USBB2900001P9" tvg-country="KR" tvg-logo="" group-title="Korea",K-Stories
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Korea/K-Stories.m3u8
+#EXTINF:-1 tvg-chno="" tvg-name="K-Movies" tvg-id="K-Movies.Pinoy.ph" tvg-country="KR" tvg-logo="" group-title="Korea",K-Movies
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Korea/K-Movies.m3u8
+#EXTINF:-1 tvg-chno="" tvg-name="Series K Legacy" tvg-id="GB200093HQ" tvg-country="KR" tvg-logo="" group-title="Korea",Series K Legacy
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Korea/Series%20K%20Legacy.m3u8
+#EXTINF:-1 tvg-chno="" tvg-name="Series K Drama" tvg-id="ES200040YF" tvg-country="KR" tvg-logo="" group-title="Korea",Series K Drama
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Korea/Series%20K%20Drama.m3u8
+#EXTINF:-1 tvg-chno="" tvg-name="NEW KMovies" tvg-id="USAJ30000122O" tvg-country="US" tvg-logo="" group-title="Korea;Movies",NEW KMovies
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Korea/NEW%20KMovies.m3u8
+#EXTINF:-1 tvg-chno="" tvg-name="NEW KFood" tvg-id="plex.tv.NEW.KFOOD.plex" tvg-country="KR" tvg-logo="" group-title="Korea",NEW KFood
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Korea/NEW%20KFood.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="KBS World" tvg-id="KBSWorld.my" tvg-country="KR" tvg-logo="https://i.imgur.com/7DqgELX.png" group-title="Korea",KBS World
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Korea/KBS%20World.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="AsianCrush" tvg-id="AsianCrush.us" tvg-country="KR" tvg-logo="https://i.imgur.com/hW6z1RG.png" group-title="Korea;Drama",AsianCrush
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Korea/AsianCrush.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="KoreaTV" tvg-id="IN3600005NF" tvg-country="KR" tvg-logo="" group-title="Korea",KoreaTV
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/KoreaTV/KoreaTV.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="NEW KMovies" tvg-id="USAJ30000122O" tvg-country="US" tvg-logo="" group-title="Korea;Movies",NEW KMovies
-https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Korea/NEW%20KMovies.m3u8
