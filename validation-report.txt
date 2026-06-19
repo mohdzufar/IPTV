@@ -1,15 +1,15 @@
 ===================================================================================================
  IPTV Playlist Validation Report
 ===================================================================================================
- Generated : 2026-06-20 05:39:59 MYT
+ Generated : 2026-06-20 05:52:46 MYT
  Source    : Channels/Flatten.m3u8
- Run time  : 7m 1s
+ Run time  : 6m 41s
 
  Total     : 217
- Active    : 154  (wrapper_kept=29  direct_url=125)
- Dead      : 51
+ Active    : 155  (wrapper_kept=29  direct_url=126)
+ Dead      : 50
  Skipped   : 12  (TONTON / Mana-mana — token refresh only)
- Success   : 75.1%  (active / non-skipped)
+ Success   : 75.6%  (active / non-skipped)
 
  Status  : OK = active   DEAD = failed   SKIP = token-refresh channel
  Type    : hls_media = HLS segment playlist
@@ -66,7 +66,7 @@ No   Channel                       Group               Status  StreamType       
 66   NHK World-Japan               Malaysia            OK      hls_master        direct_url    200 
 
 ===================================================================================================
- GROUP: Sports  (49 active  14 dead  0 skipped)
+ GROUP: Sports  (50 active  13 dead  0 skipped)
 ===================================================================================================
 No   Channel                       Group               Status  StreamType        MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ----------------  ------------  ----
@@ -79,7 +79,7 @@ No   Channel                       Group               Status  StreamType       
 87   Sky Sports (UK)               Sports              DEAD    all_urls_failed   dead          -   
 88   Sky Sports News               Sports              OK      mpeg_ts           direct_url    200 
 89   Sky Sports Live+              Sports              DEAD    all_urls_failed   dead          -   
-90   Sky Sports Main Events        Sports              DEAD    all_urls_failed   dead          -   
+90   Sky Sports Main Events        Sports              OK      mpeg_ts           direct_url    200 
 91   Sky Sports Action             Sports              OK      mpeg_ts           direct_url    200 
 92   Sky Sport Premier League      Sports              OK      mpeg_ts           direct_url    200 
 93   Sky Sport Football            Sports              OK      mpeg_ts           direct_url    200 
