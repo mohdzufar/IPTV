@@ -2,7 +2,6 @@ import sys
 import time
 import os
 import io
-import re
 from playwright.sync_api import sync_playwright
 
 # Fix Unicode output on Windows
@@ -23,16 +22,6 @@ HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
     "Referer":    "https://www.mana2.my/",
 }
-
-# Declaration lines that may appear between #EXTINF and the URL
-# in Main.m3u8 (written there by validate_and_update.py from wrappers).
-# replace_in_main_m3u8 must skip past these to find the URL line.
-HINT_PREFIXES = (
-    "#EXTVLCOPT",
-    "#KODIPROP",
-    "#EXTHTTP",
-    "#EXTATTRB",
-)
 # --------------------------------------------------------------------
 
 
@@ -124,53 +113,11 @@ def fetch_token(channel_name, page_url):
     return token
 
 
-def replace_in_main_m3u8(main_path, channel_name, new_url):
-    """
-    Find the #EXTINF line whose tvg-name attribute exactly equals
-    `channel_name`, skip past any player-hint declarations
-    (#EXTVLCOPT, #KODIPROP, etc.), then replace the URL line with `new_url`.
-    """
-    with open(main_path, 'r', encoding='utf-8') as f:
-        lines = f.readlines()
-
-    found = False
-    for i, line in enumerate(lines):
-        if not line.startswith('#EXTINF'):
-            continue
-        m = re.search(r'tvg-name="([^"]*)"', line)
-        if not m or m.group(1) != channel_name:
-            continue
-
-        # Advance past blank lines and hint declarations to reach the URL line
-        j = i + 1
-        while j < len(lines):
-            stripped = lines[j].strip()
-            if not stripped:
-                j += 1  # skip blank lines
-                continue
-            if any(stripped.startswith(p) for p in HINT_PREFIXES):
-                j += 1  # skip hint declarations
-                continue
-            break  # first non-blank, non-hint line
-
-        if j < len(lines) and lines[j].strip().startswith('http'):
-            lines[j] = new_url + '\n'
-            found = True
-            break
-
-    if found:
-        with open(main_path, 'w', encoding='utf-8') as f:
-            f.writelines(lines)
-        print(f"    Updated Main.m3u8 for {channel_name}")
-    else:
-        print(f"    Warning: Channel '{channel_name}' not found in Main.m3u8")
-
-
 def create_or_replace_subfolder(base_dir, channel_name, new_url):
     """
-    Create (or overwrite) a wrapper .m3u8 file at
-    Channels/Mana-mana/{channel_name}/{channel_name}.m3u8
-    with a clean template and the fresh token URL.
+    Create (or overwrite) the wrapper .m3u8 file with the fresh token URL.
+    This is the ONLY output of this script. validate_and_update.py reads
+    this wrapper later via the GitHub API to decide live/dead.
     """
     folder = os.path.join(base_dir, 'Channels', 'Mana-mana', channel_name)
     os.makedirs(folder, exist_ok=True)
@@ -190,15 +137,13 @@ def create_or_replace_subfolder(base_dir, channel_name, new_url):
 
 def main():
     base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    main_path = os.path.join(base_dir, 'Main.m3u8')
 
-    print("Starting sequential Mana2 token refresh...")
+    print("Starting sequential Mana2 token refresh (wrapper files only)...")
     for channel, page_url in CHANNELS.items():
         print(f"\n--- Processing {channel} ---")
         token = fetch_token(channel, page_url)
 
         if token:
-            replace_in_main_m3u8(main_path, channel, token)
             create_or_replace_subfolder(base_dir, channel, token)
         else:
             print(f"  Skipping {channel} – no token received.")
