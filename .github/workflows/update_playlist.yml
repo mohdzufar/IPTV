@@ -1,91 +1,131 @@
 name: Update IPTV Playlist
-
 on:
   schedule:
     - cron: '30 20 * * *'  # 4:30 AM Malaysia (UTC+8)
     - cron: '30 4 * * *'   # 12:30 PM Malaysia (UTC+8)
     - cron: '30 12 * * *'  # 8:30 PM Malaysia (UTC+8)
   workflow_dispatch:
-
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
-
 permissions:
   contents: write
-
 jobs:
   update:
     runs-on: self-hosted
-
     steps:
       - name: Checkout repo
         uses: actions/checkout@v5
         with:
           fetch-depth: 0
-
       - name: Set up Python
         uses: actions/setup-python@v6
         with:
           python-version: '3.11'
-
       - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
           python -m pip install -r requirements.txt
           python -m playwright install chromium
-
       - name: Step 1 - Copy Flatten and clean comments
         shell: powershell
         run: |
           $content = Get-Content -Path Channels\Flatten.m3u8 | Where-Object { $_ -notmatch '^##' -and $_ -notmatch '^\s*$' }
           [System.IO.File]::WriteAllLines("$PWD\Main.m3u8", $content)
-
-      - name: Step 2 & 3 - Validate non-Mana/TONTON channels
-        run: python scripts/validate_and_update.py
-
-      - name: Step 4 - Refresh Mana2 tokens
-        run: python scripts/refresh_mana2.py
-
-      - name: Step 5 - Refresh TONTON tokens
+      - name: Step 2 - Refresh TONTON wrapper tokens
         run: python scripts/refresh_tonton.py
-
-      - name: Commit and push changes
+      - name: Step 3 - Refresh Mana2 wrapper tokens
+        run: python scripts/refresh_mana2.py
+      - name: Step 4 - Commit and push refreshed wrappers
         shell: powershell
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git config core.autocrlf false
-
-          git add Main.m3u8 Channels/ validation-report.txt
+          git add Channels/
           $changes = git diff --cached --name-only
-
+          if (-not $changes) {
+              Write-Host "No wrapper changes to commit"
+          } else {
+              git commit -m "Refresh TONTON / Mana2 wrapper tokens"
+              if ($LASTEXITCODE -ne 0) {
+                  Write-Host "Wrapper commit failed."
+                  exit 1
+              }
+              git remote set-url origin https://x-access-token:$env:GITHUB_TOKEN@github.com/mohdzufar/IPTV.git
+              $retry = 0
+              $maxRetries = 3
+              $pushSuccess = $false
+              do {
+                  $retry++
+                  Write-Host "Wrapper sync + push attempt $retry..."
+                  git pull --rebase --autostash origin main
+                  if ($LASTEXITCODE -ne 0) {
+                      Write-Host "Rebase failed on attempt $retry."
+                      git rebase --abort 2>$null
+                      if ($retry -lt $maxRetries) {
+                          Write-Host "Retrying in 30 seconds..."
+                          Start-Sleep -Seconds 30
+                          continue
+                      } else {
+                          Write-Host "ERROR: Rebase failed after $maxRetries attempts."
+                          exit 1
+                      }
+                  }
+                  git push origin HEAD:main
+                  if ($LASTEXITCODE -eq 0) {
+                      Write-Host "Wrapper push succeeded on attempt $retry."
+                      $pushSuccess = $true
+                      break
+                  } else {
+                      Write-Host "Wrapper push attempt $retry failed with exit code $LASTEXITCODE."
+                      if ($retry -lt $maxRetries) {
+                          Write-Host "Retrying in 30 seconds..."
+                          Start-Sleep -Seconds 30
+                      }
+                  }
+              } while ($retry -lt $maxRetries -and -not $pushSuccess)
+              if (-not $pushSuccess) {
+                  Write-Host "ERROR: Wrapper push failed after $maxRetries attempts."
+                  exit 1
+              }
+          }
+      - name: Step 5 - Validate all channels (via GitHub API)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/validate_and_update.py
+      - name: Commit and push final changes
+        shell: powershell
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config core.autocrlf false
+          git add Main.m3u8 validation-report.txt
+          $changes = git diff --cached --name-only
           if (-not $changes) {
               Write-Host "No changes to commit"
               exit 0
           }
-
           git commit -m "Automated daily update"
           if ($LASTEXITCODE -ne 0) {
               Write-Host "Commit failed."
               exit 1
           }
-
           git remote set-url origin https://x-access-token:$env:GITHUB_TOKEN@github.com/mohdzufar/IPTV.git
-
           $retry = 0
           $maxRetries = 3
           $pushSuccess = $false
-
           do {
               $retry++
               Write-Host "Sync + push attempt $retry..."
-
               git pull --rebase --autostash origin main
               if ($LASTEXITCODE -ne 0) {
                   Write-Host "Rebase failed on attempt $retry."
                   git rebase --abort 2>$null
-
                   if ($retry -lt $maxRetries) {
                       Write-Host "Retrying in 30 seconds..."
                       Start-Sleep -Seconds 30
@@ -95,7 +135,6 @@ jobs:
                       exit 1
                   }
               }
-
               git push origin HEAD:main
               if ($LASTEXITCODE -eq 0) {
                   Write-Host "Push succeeded on attempt $retry."
@@ -109,7 +148,6 @@ jobs:
                   }
               }
           } while ($retry -lt $maxRetries -and -not $pushSuccess)
-
           if (-not $pushSuccess) {
               Write-Host "ERROR: Push failed after $maxRetries attempts."
               exit 1
