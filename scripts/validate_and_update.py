@@ -2,14 +2,19 @@ import sys
 import io
 import os
 import re
-import time
+import base64
 import requests
 from datetime import datetime, timezone, timedelta
-from urllib.parse import urljoin
+from urllib.parse import urljoin, urlparse
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
-SKIP_PATTERNS        = ['Mana-mana', 'tonton']
+# ── Repo identity (for GitHub API wrapper fetch) ───────────────────────────
+GITHUB_OWNER  = 'mohdzufar'
+GITHUB_REPO   = 'IPTV'
+GITHUB_BRANCH = 'main'
+GITHUB_TOKEN  = os.environ.get('GITHUB_TOKEN', '')
+
 HLS_PROTOCOL_TAGS    = ('#EXTM3U', '#EXT-X-', '#EXTINF')
 PLAYER_HINT_PREFIXES = ('#EXTVLCOPT', '#KODIPROP', '#EXTHTTP', '#EXTATTRB')
 
@@ -20,6 +25,81 @@ DIRECT_URL_TYPES = ('mp4', 'dash', 'hls_master', 'mpeg_ts')
 WRAPPER_KEEP_TYPES = ('hls_media',)
 
 MYT = timezone(timedelta(hours=8))
+
+
+# ── GitHub API wrapper fetch ────────────────────────────────────────────────
+
+def wrapper_url_to_api_path(wrapper_url):
+    """
+    Convert a raw.githubusercontent.com wrapper URL into the repo-relative
+    path needed for the GitHub Contents API.
+
+    e.g. https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/TONTON/TV3/TV3.m3u8
+         -> Channels/TONTON/TV3/TV3.m3u8
+    """
+    parsed = urlparse(wrapper_url.strip())
+    parts = parsed.path.lstrip('/').split('/')
+
+    # parts: [owner, repo, 'refs', 'heads', branch, ...path] or [owner, repo, branch, ...path]
+    if len(parts) < 3:
+        return None
+
+    if parts[2] == 'refs' and len(parts) >= 5 and parts[3] == 'heads':
+        # /owner/repo/refs/heads/branch/path...
+        repo_path = '/'.join(parts[5:])
+    else:
+        # /owner/repo/branch/path...
+        repo_path = '/'.join(parts[3:])
+
+    return repo_path or None
+
+
+def fetch_wrapper_via_api(wrapper_url):
+    """
+    Fetch wrapper file content via the GitHub Contents API instead of
+    raw.githubusercontent.com. This bypasses GitHub's raw-file CDN cache,
+    which can serve stale content for some time after a push — critical
+    here because TONTON/Mana-mana wrappers are refreshed and pushed
+    earlier in the SAME workflow run, just before validation executes.
+
+    Returns (text, status_code). status_code is a synthetic 200/404/000
+    to stay compatible with the rest of the validation flow.
+    """
+    repo_path = wrapper_url_to_api_path(wrapper_url)
+    if not repo_path:
+        return None, 0
+
+    api_url = (
+        f'https://api.github.com/repos/{GITHUB_OWNER}/{GITHUB_REPO}'
+        f'/contents/{repo_path}?ref={GITHUB_BRANCH}'
+    )
+
+    headers = {
+        'Accept': 'application/vnd.github.v3+json',
+        'User-Agent': 'IPTV-Validator',
+    }
+    if GITHUB_TOKEN:
+        headers['Authorization'] = f'Bearer {GITHUB_TOKEN}'
+
+    try:
+        resp = requests.get(api_url, headers=headers, timeout=10)
+        if resp.status_code != 200:
+            return None, resp.status_code
+
+        data = resp.json()
+        content_b64 = data.get('content', '')
+        encoding = data.get('encoding', 'base64')
+
+        if encoding != 'base64':
+            return None, resp.status_code
+
+        # GitHub API returns base64 content with embedded newlines
+        raw_bytes = base64.b64decode(content_b64)
+        text = raw_bytes.decode('utf-8', errors='ignore')
+        return text, 200
+
+    except Exception:
+        return None, 0
 
 
 # ── Wrapper parsing ────────────────────────────────────────────────────────
@@ -71,19 +151,6 @@ def hints_to_headers(player_hints):
             hname = '-'.join(p.capitalize() for p in key[5:].split('-'))
             headers[hname] = value
     return headers
-
-
-def fetch_wrapper_hints(wrapper_url):
-    """Fetch wrapper file and return player_hints for skipped channels."""
-    try:
-        resp = requests.get(wrapper_url.strip(), timeout=10,
-                            headers={'User-Agent': 'VLC/3.0.20'})
-        if resp.status_code != 200:
-            return []
-        hints, _ = extract_wrapper_info(resp.text, wrapper_url.strip())
-        return hints
-    except Exception:
-        return []
 
 
 # ── Stream classification ──────────────────────────────────────────────────
@@ -176,16 +243,7 @@ def validate_stream(url, headers=None):
         return 'exception', 0, False
 
 
-# ── Skip / Flatten logic ───────────────────────────────────────────────────
-
-def is_skipped(channel_name, wrapper_url=''):
-    for pat in SKIP_PATTERNS:
-        if pat.lower() in channel_name.lower():
-            return True
-        if pat.lower() in wrapper_url.lower():
-            return True
-    return False
-
+# ── Flatten.m3u8 parser ─────────────────────────────────────────────────────
 
 def parse_flatten(flatten_path):
     """
@@ -262,12 +320,6 @@ def update_main_m3u8(main_path, header, blocks, results):
         f.write((header or '#EXTM3U') + '\n')
 
         for idx, (extinf, hint_lines, url, name, group) in enumerate(blocks):
-
-            if is_skipped(name, url):
-                hints = fetch_wrapper_hints(url)
-                f.write(build_main_entry(extinf, hints, url))
-                continue
-
             result       = results[idx]
             player_hints = result.get('player_hints', [])
 
@@ -287,23 +339,10 @@ def write_report(report_path, blocks, results, run_start):
     Column widths are calculated dynamically from actual data.
     """
     rows     = []
-    n_active = n_dead = n_skipped = 0
+    n_active = n_dead = 0
 
     for idx, (extinf, hint_lines, url, name, group) in enumerate(blocks):
         r = results[idx]
-
-        if is_skipped(name, url):
-            n_skipped += 1
-            rows.append({
-                'no'     : str(idx + 1),
-                'channel': name,
-                'group'  : group or '-',
-                'status' : 'SKIP',
-                'type'   : '-',
-                'main'   : 'skipped',
-                'http'   : '-',
-            })
-            continue
 
         valid  = r.get('valid', False)
         stype  = r.get('stream_type', '-')
@@ -357,8 +396,7 @@ def write_report(report_path, blocks, results, run_start):
         return '  '.join('-' * widths[c] for c in fixed_cols)
 
     total       = len(blocks)
-    non_skipped = total - n_skipped
-    success_pct = (n_active / non_skipped * 100) if non_skipped else 0.0
+    success_pct = (n_active / total * 100) if total else 0.0
     run_end     = datetime.now(MYT)
     elapsed     = int((run_end - run_start).total_seconds())
     mins, secs  = divmod(elapsed, 60)
@@ -380,11 +418,10 @@ def write_report(report_path, blocks, results, run_start):
         n_du = sum(1 for r in rows if r['main'] == 'direct_url')
         f.write(f' Active    : {n_active}  (wrapper_kept={n_wk}  direct_url={n_du})\n')
         f.write(f' Dead      : {n_dead}\n')
-        f.write(f' Skipped   : {n_skipped}  (TONTON / Mana-mana — token refresh only)\n')
-        f.write(f' Success   : {success_pct:.1f}%  (active / non-skipped)\n')
+        f.write(f' Success   : {success_pct:.1f}%\n')
         f.write('\n')
 
-        f.write(' Status  : OK = active   DEAD = failed   SKIP = token-refresh channel\n')
+        f.write(' Status  : OK = active   DEAD = failed\n')
         f.write(' Type    : hls_media = HLS segment playlist\n')
         f.write('           hls_master = HLS multi-quality master\n')
         f.write('           mpeg_ts = MPEG-TS stream (Xtream Codes / direct TS)\n')
@@ -393,7 +430,10 @@ def write_report(report_path, blocks, results, run_start):
         f.write(' Main    : wrapper_kept = TV app follows wrapper chain (hls_media)\n')
         f.write('           direct_url  = CDN URL written directly (hls_master, dash, mp4, mpeg_ts)\n')
         f.write('           dead        = block commented out in Main.m3u8\n')
-        f.write('           skipped     = not validated; URL set by refresh script\n')
+        f.write('\n')
+        f.write(' Note    : All channels — including TONTON and Mana-mana — are now\n')
+        f.write('           validated the same way. Their wrappers are fetched via the\n')
+        f.write('           GitHub API to read the token refreshed earlier in this run.\n')
         f.write('\n')
 
         seen_groups = []
@@ -408,8 +448,7 @@ def write_report(report_path, blocks, results, run_start):
             f.write('=' * W + '\n')
             f.write(f' GROUP: {label}  '
                     f'({sum(1 for r in grp_rows if r["status"]=="OK")} active  '
-                    f'{sum(1 for r in grp_rows if r["status"]=="DEAD")} dead  '
-                    f'{sum(1 for r in grp_rows if r["status"]=="SKIP")} skipped)\n')
+                    f'{sum(1 for r in grp_rows if r["status"]=="DEAD")} dead)\n')
             f.write('=' * W + '\n')
             f.write(fmt_header() + '\n')
             f.write(separator() + '\n')
@@ -432,6 +471,10 @@ def main():
     main_path    = os.path.join(base_dir, 'Main.m3u8')
     report_path  = os.path.join(base_dir, 'validation-report.txt')
 
+    if not GITHUB_TOKEN:
+        print("WARNING: GITHUB_TOKEN not set in environment. "
+              "GitHub API calls will be unauthenticated and rate-limited.")
+
     print(f"Parsing {flatten_path}")
     header, blocks = parse_flatten(flatten_path)
     total = len(blocks)
@@ -443,29 +486,23 @@ def main():
     for i, (extinf, hint_lines, url, name, group) in enumerate(blocks):
         print("=" * 60)
         print(f"[{i+1}/{total}] {name}  (group: {group})")
-
-        # ── skipped channels ──────────────────────────────────────────────
-        if is_skipped(name, url):
-            results[i] = {'valid': True, 'direct': None, 'player_hints': [],
-                          'stream_type': '-', 'http_status': '-'}
-            print("Action  : ⏭️  Skipped (Mana-mana / tonton)")
-            continue
-
-        # ── validated channels ────────────────────────────────────────────
         print(f"Wrapper : {url}")
-        try:
-            wr = requests.get(url.strip(), timeout=10,
-                              headers={'User-Agent': 'VLC/3.0.20'})
-            print(f"Wrapper Status: {wr.status_code}")
 
-            if wr.status_code != 200:
+        try:
+            # Fetch wrapper via GitHub API — always current, no CDN cache
+            # delay. Critical for TONTON/Mana-mana wrappers that were
+            # refreshed and pushed earlier in this same workflow run.
+            wrapper_text, api_status = fetch_wrapper_via_api(url)
+            print(f"API Status: {api_status}")
+
+            if wrapper_text is None:
                 results[i] = {'valid': False, 'direct': None, 'player_hints': [],
-                              'stream_type': f'wrapper_http_{wr.status_code}',
-                              'http_status': wr.status_code}
-                print("Action  : ❌ Commented out (wrapper HTTP error)")
+                              'stream_type': f'wrapper_api_{api_status}',
+                              'http_status': api_status}
+                print("Action  : ❌ Commented out (wrapper API fetch failed)")
                 continue
 
-            player_hints, candidate_urls = extract_wrapper_info(wr.text, url.strip())
+            player_hints, candidate_urls = extract_wrapper_info(wrapper_text, url.strip())
             stream_headers = hints_to_headers(player_hints)
 
             if player_hints:
@@ -485,8 +522,6 @@ def main():
             for inner_url in candidate_urls:
                 print(f"Inner   : {inner_url}")
 
-                # Pass stream_headers — covers both HLS CDN Referer checks
-                # and any headers declared for MPEG-TS streams
                 stream_kind, status, good = validate_stream(
                     inner_url, headers=stream_headers
                 )
