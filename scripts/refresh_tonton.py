@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 import io
-import re
 import sys
 import time
 from pathlib import Path
@@ -14,7 +13,6 @@ PROFILE_DIR = Path(
     r"C:\Users\zufar\Downloads\IPTV_Project\GitHub_Runner_IPTV\actions-runner\auth\tonton-profile"
 )
 REPO_ROOT = Path(__file__).resolve().parents[1]
-MAIN_FILE = REPO_ROOT / "Main.m3u8"
 TONTON_ROOT = REPO_ROOT / "Channels" / "TONTON"
 DEBUG_DIR = REPO_ROOT / "debug_tonton"
 
@@ -28,16 +26,6 @@ USER_AGENT = (
 INITIAL_SETTLE_SECONDS = 8
 TOKEN_WAIT_SECONDS = 60
 INTERACTION_INTERVAL = 3
-
-# Player-hint declaration prefixes written by validate_and_update.py
-# between #EXTINF and the URL line in Main.m3u8.
-# replace_in_main_m3u8 must skip past these to reach the URL line.
-HINT_PREFIXES = (
-    "#EXTVLCOPT",
-    "#KODIPROP",
-    "#EXTHTTP",
-    "#EXTATTRB",
-)
 
 CHANNELS = [
     {
@@ -148,49 +136,12 @@ def is_ignored_stream(url):
     return any(bad in lower for bad in IGNORE_URL_KEYWORDS)
 
 
-def replace_in_main_m3u8(main_path, channel_name, new_url):
-    with open(main_path, "r", encoding="utf-8") as f:
-        lines = f.readlines()
-
-    found = False
-
-    for i, line in enumerate(lines):
-        if not line.startswith("#EXTINF"):
-            continue
-
-        match = re.search(r'tvg-name="([^"]*)"', line)
-        if not match or match.group(1) != channel_name:
-            continue
-
-        # Advance past blank lines AND player-hint declarations
-        # (#EXTVLCOPT, #KODIPROP, etc.) to reach the actual URL line.
-        j = i + 1
-        while j < len(lines):
-            stripped = lines[j].strip()
-            if not stripped:
-                j += 1  # skip blank lines
-                continue
-            if any(stripped.startswith(p) for p in HINT_PREFIXES):
-                j += 1  # skip hint declarations
-                continue
-            break  # first non-blank, non-hint line — this is the URL
-
-        if j < len(lines):
-            stripped = lines[j].strip()
-            if stripped.startswith("http") or stripped.startswith("## http"):
-                lines[j] = new_url + "\n"
-                found = True
-                break
-
-    if found:
-        with open(main_path, "w", encoding="utf-8") as f:
-            f.writelines(lines)
-        log(f"    Updated Main.m3u8 for {channel_name}")
-    else:
-        log(f"    Warning: Channel '{channel_name}' not found in Main.m3u8")
-
-
 def create_or_replace_subfolder(channel, new_url):
+    """
+    Create (or overwrite) the wrapper .m3u8 file with the fresh token URL.
+    This is the ONLY output of this script. validate_and_update.py reads
+    this wrapper later via the GitHub API to decide live/dead.
+    """
     folder = TONTON_ROOT / channel["folder_name"]
     folder.mkdir(parents=True, exist_ok=True)
 
@@ -443,7 +394,7 @@ def main():
     login_invalid = False
 
     log("=" * 60)
-    log("Refreshing TONTON channel tokens...")
+    log("Refreshing TONTON channel tokens (wrapper files only)...")
     log(f"Using profile folder: {PROFILE_DIR}")
     log(f"Debug mode: {'ON' if debug else 'OFF'}")
     log("=" * 60)
@@ -484,11 +435,10 @@ def main():
 
                 if token_url:
                     log(f"    Captured stream: {token_url[:150]}...")
-                    replace_in_main_m3u8(MAIN_FILE, channel["display_name"], token_url)
                     create_or_replace_subfolder(channel, token_url)
                     success_count += 1
                 else:
-                    log(f"    Failed to capture stream ({status}). Existing Main.m3u8 and wrapper left unchanged.")
+                    log(f"    Failed to capture stream ({status}). Existing wrapper left unchanged.")
                     failed_count += 1
 
         finally:
