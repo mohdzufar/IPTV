@@ -1,9 +1,9 @@
 ===================================================================================================
  IPTV Playlist Validation Report
 ===================================================================================================
- Generated : 2026-06-20 16:11:18 MYT
+ Generated : 2026-06-20 22:46:48 MYT
  Source    : Channels/Flatten.m3u8
- Run time  : 7m 32s
+ Run time  : 7m 9s
 
  Total     : 217
  Active    : 152  (wrapper_kept=26  direct_url=126)
@@ -85,12 +85,12 @@ No   Channel                       Group               Status  StreamType       
 93   Sky Sport Football            Sports              OK      mpeg_ts           direct_url    200 
 94   Sky Sport F1                  Sports              OK      mpeg_ts           direct_url    200 
 95   Sky Sports Arena              Sports              OK      mpeg_ts           direct_url    200 
-96   Sky Sports Racing             Sports              OK      mpeg_ts           direct_url    200 
+96   Sky Sports Racing             Sports              DEAD    all_urls_failed   dead          -   
 97   Sky Sports MIX                Sports              DEAD    all_urls_failed   dead          -   
 98   Bein Sports 1                 Sports              OK      mpeg_ts           direct_url    200 
 99   Bein Sports 2                 Sports              OK      mpeg_ts           direct_url    200 
 100  Bein Sports 3                 Sports              DEAD    all_urls_failed   dead          -   
-101  Bein Sports 4                 Sports              DEAD    all_urls_failed   dead          -   
+101  Bein Sports 4                 Sports              OK      mpeg_ts           direct_url    200 
 102  Bein Sports 5                 Sports              OK      mpeg_ts           direct_url    200 
 103  Bein Sports 6                 Sports              OK      mpeg_ts           direct_url    200 
 104  Bein Sports 7                 Sports              OK      mpeg_ts           direct_url    200 
