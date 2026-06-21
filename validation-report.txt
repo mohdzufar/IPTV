@@ -1,9 +1,9 @@
 ==================================================================================================
  IPTV Playlist Validation Report
 ==================================================================================================
- Generated : 2026-06-21 16:56:03 MYT
+ Generated : 2026-06-21 22:49:20 MYT
  Source    : Channels/Flatten.m3u8
- Run time  : 7m 41s
+ Run time  : 7m 48s
 
  Total     : 217
  Active    : 165  (wrapper_kept=27  direct_url=138)
@@ -25,11 +25,11 @@
            GitHub API to read the token refreshed earlier in this run.
 
 ==================================================================================================
- GROUP: Malaysia  (36 active  1 dead)
+ GROUP: Malaysia  (35 active  2 dead)
 ==================================================================================================
 No   Channel                       Group               Status  StreamType       MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ---------------  ------------  ----
-1    RTM TV1                       Malaysia            OK      hls_media        wrapper_kept  200 
+1    RTM TV1                       Malaysia            DEAD    all_urls_failed  dead          -   
 2    RTM TV2                       Malaysia            OK      hls_media        wrapper_kept  200 
 3    TV3                           Malaysia            OK      hls_master       direct_url    200 
 4    Didik TV                      Malaysia            OK      hls_master       direct_url    200 
@@ -68,7 +68,7 @@ No   Channel                       Group               Status  StreamType       
 66   NHK World-Japan               Malaysia            OK      hls_master       direct_url    200 
 
 ==================================================================================================
- GROUP: Sports  (50 active  13 dead)
+ GROUP: Sports  (51 active  12 dead)
 ==================================================================================================
 No   Channel                       Group               Status  StreamType       MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ---------------  ------------  ----
@@ -76,8 +76,8 @@ No   Channel                       Group               Status  StreamType       
 11   RTM World Cup 1               Sports              DEAD    all_urls_failed  dead          -   
 12   RTM World Cup 2               Sports              DEAD    all_urls_failed  dead          -   
 13   RTM World Cup 3               Sports              DEAD    all_urls_failed  dead          -   
-18   Astro Arena Bola              Sports              DEAD    all_urls_failed  dead          -   
-19   Astro Arena Bola 2            Sports              DEAD    all_urls_failed  dead          -   
+18   Astro Arena Bola              Sports              OK      hls_media        wrapper_kept  200 
+19   Astro Arena Bola 2            Sports              OK      hls_media        wrapper_kept  200 
 87   Sky Sports (UK)               Sports              DEAD    all_urls_failed  dead          -   
 88   Sky Sports News               Sports              OK      mpeg_ts          direct_url    200 
 89   Sky Sports Live+              Sports              DEAD    all_urls_failed  dead          -   
@@ -86,13 +86,13 @@ No   Channel                       Group               Status  StreamType       
 92   Sky Sport Premier League      Sports              OK      mpeg_ts          direct_url    200 
 93   Sky Sport Football            Sports              OK      mpeg_ts          direct_url    200 
 94   Sky Sport F1                  Sports              OK      mpeg_ts          direct_url    200 
-95   Sky Sports Arena              Sports              OK      mpeg_ts          direct_url    200 
+95   Sky Sports Arena              Sports              DEAD    all_urls_failed  dead          -   
 96   Sky Sports Racing             Sports              OK      mpeg_ts          direct_url    200 
 97   Sky Sports MIX                Sports              DEAD    all_urls_failed  dead          -   
 98   Bein Sports 1                 Sports              OK      mpeg_ts          direct_url    200 
 99   Bein Sports 2                 Sports              OK      mpeg_ts          direct_url    200 
 100  Bein Sports 3                 Sports              DEAD    all_urls_failed  dead          -   
-101  Bein Sports 4                 Sports              DEAD    all_urls_failed  dead          -   
+101  Bein Sports 4                 Sports              OK      mpeg_ts          direct_url    200 
 102  Bein Sports 5                 Sports              OK      mpeg_ts          direct_url    200 
 103  Bein Sports 6                 Sports              OK      mpeg_ts          direct_url    200 
 104  Bein Sports 7                 Sports              OK      mpeg_ts          direct_url    200 
@@ -110,7 +110,7 @@ No   Channel                       Group               Status  StreamType       
 116  Tennis Channel                Sports              OK      hls_master       direct_url    200 
 117  Tennis Channel 2              Sports              OK      hls_master       direct_url    200 
 118  MLB                           Sports              OK      hls_master       direct_url    200 
-119  MMA-TV International          Sports              OK      hls_master       direct_url    200 
+119  MMA-TV International          Sports              DEAD    all_urls_failed  dead          -   
 120  FOX NFL                       Sports              OK      hls_master       direct_url    200 
 121  NHL                           Sports              OK      hls_master       direct_url    200 
 122  UEFA Champion League          Sports              OK      hls_master       direct_url    200 
@@ -264,8 +264,8 @@ No   Channel                       Group               Status  StreamType       
 No   Channel                       Group               Status  StreamType       MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ---------------  ------------  ----
 73   Golf Kingdom                  Golf                OK      hls_master       direct_url    200 
-74   Golf Channel                  Golf                OK      hls_media        wrapper_kept  200 
-75   Golf Channel (Latin America)  Golf                OK      hls_master       direct_url    200 
+74   Golf Channel                  Golf                OK      mpeg_ts          direct_url    200 
+75   Golf Channel (Latin America)  Golf                OK      mpeg_ts          direct_url    200 
 76   GolfNetwork                   Golf                OK      hls_master       direct_url    200 
 77   GolfNetwork Japan             Golf                OK      hls_master       direct_url    200 
 78   One Golf                      Golf                DEAD    all_urls_failed  dead          -   
