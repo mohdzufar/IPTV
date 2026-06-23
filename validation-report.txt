@@ -1,14 +1,14 @@
 ==================================================================================================
  IPTV Playlist Validation Report
 ==================================================================================================
- Generated : 2026-06-23 09:44:09 MYT
+ Generated : 2026-06-23 16:14:19 MYT
  Source    : Channels/Flatten.m3u8
- Run time  : 7m 42s
+ Run time  : 8m 3s
 
  Total     : 225
- Active    : 164  (wrapper_kept=26  direct_url=138)
- Dead      : 61
- Success   : 72.9%
+ Active    : 165  (wrapper_kept=26  direct_url=139)
+ Dead      : 60
+ Success   : 73.3%
 
  Status  : OK = active   DEAD = failed
  Type    : hls_media = HLS segment playlist
@@ -316,7 +316,7 @@ No   Channel                       Group               Status  StreamType       
 162  Totalmusic                    Music               DEAD    wrapper_api_404  dead          404 
 
 ==================================================================================================
- GROUP: Movies  (11 active  11 dead)
+ GROUP: Movies  (12 active  10 dead)
 ==================================================================================================
 No   Channel                       Group               Status  StreamType       MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ---------------  ------------  ----
@@ -333,7 +333,7 @@ No   Channel                       Group               Status  StreamType       
 173  Cinemax                       Movies              OK      hls_master       direct_url    200 
 174  Hallmark Channel              Movies              OK      hls_master       direct_url    200 
 175  HBO                           Movies              OK      mpeg_ts          direct_url    200 
-176  HBO 2                         Movies              DEAD    all_urls_failed  dead          -   
+176  HBO 2                         Movies              OK      mpeg_ts          direct_url    200 
 177  HBO Comedy                    Movies              OK      hls_master       direct_url    200 
 178  HBO Family                    Movies              DEAD    all_urls_failed  dead          -   
 179  HBO Signature                 Movies              DEAD    all_urls_failed  dead          -   
