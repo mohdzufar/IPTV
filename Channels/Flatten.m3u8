@@ -391,6 +391,11 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Hallma
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/HBO/HBO.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="HBO 2" tvg-id="HBO.West.us2" tvg-country="US" tvg-logo="http://dtil.tmsimg.com/assets/GNLZZGG0029BBSR.png?w=360&h=270" group-title="Movies",HBO 2
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/HBO/HBO%202.m3u8
+#EXTINF:-1 tvg-chno="" tvg-name="HBO Movies" tvg-id="480609" tvg-country="US" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/HBO_logo.svg/960px-HBO_logo.svg.png" group-title="Movies",HBO Movies
+https://github.com/mohdzufar/IPTV/raw/refs/heads/main/Channels/HBO/HBO%20Movies.m3u8
+#EXTINF:-1 tvg-chno="" tvg-name="HBO Movies 2" tvg-id="480609" tvg-country="US" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/HBO_logo.svg/960px-HBO_logo.svg.png" group-title="Movies",HBO Movies 2
+https://github.com/mohdzufar/IPTV/raw/refs/heads/main/Channels/HBO/HBO%20Movies%202.m3u8
+
 #EXTINF:-1 tvg-chno="" tvg-name="HBO Comedy" tvg-id="HBO.Comedy.HD.us2" tvg-country="US" tvg-logo="http://dtil.tmsimg.com/assets/s59839_ll_h15_aa.png?w=360&h=270" group-title="Movies",HBO Comedy
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/HBO/HBO%20Comedy.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="HBO Family" tvg-id="HBO.Drama.us2" tvg-country="US" tvg-logo="https://images.now-tv.com/shares/channelPreview/img/en_hk/color/ch112_160_115" group-title="Movies",HBO Family
