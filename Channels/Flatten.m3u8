@@ -252,6 +252,16 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/TSN/TS
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/TSN/TSN%204.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="TSN 5" tvg-id="470513" tvg-country="CA" tvg-logo="https://i.imgur.com/HEzHpzz.png" group-title="Sports",TSN 5
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/TSN/TSN%205.m3u8
+##======TNT============
+#EXTINF:-1 tvg-chno="" tvg-name="TNT Sports 1" tvg-id="400477" tvg-country="UK" tvg-logo="https://github.com/tv-logo/tv-logos/blob/main/countries/united-kingdom/tnt-sports-1-uk.png?raw=true" group-title="Sports",TNT Sports 1
+https://github.com/mohdzufar/IPTV/raw/refs/heads/main/Channels/TNT/TNT%20Sports%201.m3u8
+#EXTINF:-1 tvg-chno="" tvg-name="TNT Sports 2" tvg-id="400480" tvg-country="UK" tvg-logo="https://github.com/tv-logo/tv-logos/blob/main/countries/united-kingdom/tnt-sports-2-uk.png?raw=true" group-title="Sports",TNT Sports 2
+https://github.com/mohdzufar/IPTV/raw/refs/heads/main/Channels/TNT/TNT%20Sports%202.m3u8
+#EXTINF:-1 tvg-chno="" tvg-name="TNT Sports 3" tvg-id="400479" tvg-country="UK" tvg-logo="https://github.com/tv-logo/tv-logos/blob/main/countries/united-kingdom/tnt-sports-3-uk.png?raw=true" group-title="Sports",TNT Sports 3
+https://github.com/mohdzufar/IPTV/raw/refs/heads/main/Channels/TNT/TNT%20Sports%203.m3u8
+#EXTINF:-1 tvg-chno="" tvg-name="TNT Sports 4" tvg-id="400478" tvg-country="UK" tvg-logo="https://github.com/tv-logo/tv-logos/blob/main/countries/united-kingdom/tnt-sports-4-uk.png?raw=true" group-title="Sports",TNT Sports 4
+https://github.com/mohdzufar/IPTV/raw/refs/heads/main/Channels/TNT/TNT%20Sports%204.m3u8
+
 
 ##=====Tennis================
 #EXTINF:-1 tvg-chno="" tvg-name="Tennis TV" tvg-id="6627621d56fc840008e47c90" tvg-country="US" tvg-logo="https://images.pluto.tv/channels/6627621d56fc840008e47c90/colorLogoPNG_1756973184696.png" group-title="Sports",Tennis TV
@@ -345,11 +355,11 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Music/
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Music/Vevo%202k.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Vevo '90s & '00s" tvg-id="" tvg-country="US" tvg-logo="" group-title="Music",Vevo '90s & '00s
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Music/Vevo%20'90s%20%26%20'00s.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="Now 90s00s" tvg-id="" tvg-country="US" tvg-logo="" group-title="Music",Now 90s00s
+#EXTINF:-1 tvg-chno="" tvg-name="Now 90s00s" tvg-id="374503" tvg-country="UK" tvg-logo="https://images.pluto.tv/channels/660c209e19ca71000846cf38/colorLogoPNG.png" group-title="Music",Now 90s00s
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Music/Now%2090s00s.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="Totalmusic 00s" tvg-id="" tvg-country="US" tvg-logo="" group-title="Music",Totalmusic 00s
+#EXTINF:-1 tvg-chno="" tvg-name="Totalmusic 00s" tvg-id="Totalmusic2000s.uk" tvg-country="UK" tvg-logo="https://static.elektamedia.com/ch/tmc_00s.png" group-title="Music",Totalmusic 00s
 https://github.com/mohdzufar/IPTV/raw/refs/heads/main/Channels/Music/Totalmusic%2000s.m3u8
-#EXTINF:-1 tvg-chno="" tvg-name="Totalmusic" tvg-id="" tvg-country="US" tvg-logo="" group-title="Music",Totalmusic
+#EXTINF:-1 tvg-chno="" tvg-name="Totalmusic" tvg-id="Totalmusic.uk" tvg-country="UK" tvg-logo="https://static.elektamedia.com/ch/tmc_main.png" group-title="Music",Totalmusic
 https://github.com/mohdzufar/IPTV/raw/refs/heads/main/Channels/Music/Totalmusic.m3u8
 
 #====Movies====
