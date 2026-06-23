@@ -343,6 +343,14 @@ https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Music/
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Music/Song%20TV.m3u8
 #EXTINF:-1 tvg-chno="" tvg-name="Vevo 2k" tvg-id="497977" tvg-country="US" tvg-logo="https://images.pluto.tv/channels/5fd7bca3e0a4ee0007a38e8c/featuredImage.jpg" group-title="Music",Vevo 2k
 https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Music/Vevo%202k.m3u8
+#EXTINF:-1 tvg-chno="" tvg-name="Vevo '90s & '00s" tvg-id="" tvg-country="US" tvg-logo="" group-title="Music",Vevo '90s & '00s
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Music/Vevo%20'90s%20%26%20'00s.m3u8
+#EXTINF:-1 tvg-chno="" tvg-name="Now 90s00s" tvg-id="" tvg-country="US" tvg-logo="" group-title="Music",Now 90s00s
+https://raw.githubusercontent.com/mohdzufar/IPTV/refs/heads/main/Channels/Music/Now%2090s00s.m3u8
+#EXTINF:-1 tvg-chno="" tvg-name="Totalmusic 00s" tvg-id="" tvg-country="US" tvg-logo="" group-title="Music",Totalmusic 00s
+https://github.com/mohdzufar/IPTV/raw/refs/heads/main/Channels/Music/Totalmusic%2000s.m3u8
+#EXTINF:-1 tvg-chno="" tvg-name="Totalmusic" tvg-id="" tvg-country="US" tvg-logo="" group-title="Music",Totalmusic
+https://github.com/mohdzufar/IPTV/raw/refs/heads/main/Channels/Music/Totalmusic.m3u8
 
 #====Movies====
 #EXTINF:-1 tvg-chno="" tvg-name="Paramount Movie Channel" tvg-id="ParamountMovieChannel.pluto" tvg-country="US" tvg-logo="https://i.imgur.com/sj5h9bl.png" group-title="Movies",Paramount Movie Channel
