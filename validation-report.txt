@@ -1,14 +1,14 @@
 ==================================================================================================
  IPTV Playlist Validation Report
 ==================================================================================================
- Generated : 2026-06-24 16:10:50 MYT
+ Generated : 2026-06-24 23:26:59 MYT
  Source    : Channels/Flatten.m3u8
- Run time  : 9m 5s
+ Run time  : 7m 52s
 
  Total     : 227
- Active    : 162  (wrapper_kept=30  direct_url=132)
- Dead      : 65
- Success   : 71.4%
+ Active    : 167  (wrapper_kept=29  direct_url=138)
+ Dead      : 60
+ Success   : 73.6%
 
  Status  : OK = active   DEAD = failed
  Type    : hls_media = HLS segment playlist
@@ -68,7 +68,7 @@ No   Channel                       Group               Status  StreamType       
 66   NHK World-Japan               Malaysia            OK      hls_master       direct_url    200 
 
 ==================================================================================================
- GROUP: Sports  (45 active  22 dead)
+ GROUP: Sports  (51 active  16 dead)
 ==================================================================================================
 No   Channel                       Group               Status  StreamType       MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ---------------  ------------  ----
@@ -86,7 +86,7 @@ No   Channel                       Group               Status  StreamType       
 92   Sky Sport Premier League      Sports              OK      mpeg_ts          direct_url    200 
 93   Sky Sport Football            Sports              OK      mpeg_ts          direct_url    200 
 94   Sky Sport F1                  Sports              OK      mpeg_ts          direct_url    200 
-95   Sky Sports Arena              Sports              DEAD    all_urls_failed  dead          -   
+95   Sky Sports Arena              Sports              OK      mpeg_ts          direct_url    200 
 96   Sky Sports Racing             Sports              OK      mpeg_ts          direct_url    200 
 97   Sky Sports MIX                Sports              DEAD    all_urls_failed  dead          -   
 98   Bein Sports 1                 Sports              OK      mpeg_ts          direct_url    200 
@@ -100,10 +100,10 @@ No   Channel                       Group               Status  StreamType       
 106  Bein Xtra                     Sports              OK      hls_master       direct_url    200 
 107  Bein Xtra 2                   Sports              OK      hls_media        wrapper_kept  200 
 108  TSN 1                         Sports              OK      mpeg_ts          direct_url    200 
-109  TSN 2                         Sports              DEAD    all_urls_failed  dead          -   
-110  TSN 3                         Sports              DEAD    all_urls_failed  dead          -   
-111  TSN 4                         Sports              DEAD    all_urls_failed  dead          -   
-112  TSN 5                         Sports              DEAD    all_urls_failed  dead          -   
+109  TSN 2                         Sports              OK      mpeg_ts          direct_url    200 
+110  TSN 3                         Sports              OK      mpeg_ts          direct_url    200 
+111  TSN 4                         Sports              OK      mpeg_ts          direct_url    200 
+112  TSN 5                         Sports              OK      mpeg_ts          direct_url    200 
 113  TNT Sports 1                  Sports              DEAD    wrapper_api_404  dead          404 
 114  TNT Sports 2                  Sports              DEAD    wrapper_api_404  dead          404 
 115  TNT Sports 3                  Sports              DEAD    wrapper_api_404  dead          404 
@@ -114,7 +114,7 @@ No   Channel                       Group               Status  StreamType       
 120  Tennis Channel                Sports              OK      hls_master       direct_url    200 
 121  Tennis Channel 2              Sports              OK      hls_master       direct_url    200 
 122  MLB                           Sports              OK      hls_master       direct_url    200 
-123  MMA-TV International          Sports              DEAD    all_urls_failed  dead          -   
+123  MMA-TV International          Sports              OK      hls_master       direct_url    200 
 124  FOX NFL                       Sports              OK      hls_master       direct_url    200 
 125  NHL                           Sports              OK      hls_master       direct_url    200 
 126  UEFA Champion League          Sports              OK      hls_master       direct_url    200 
@@ -382,12 +382,12 @@ No   Channel                       Group               Status  StreamType       
 209  Love Pets                     Pets                DEAD    all_urls_failed  dead          -   
 
 ==================================================================================================
- GROUP: China  (3 active  0 dead)
+ GROUP: China  (2 active  1 dead)
 ==================================================================================================
 No   Channel                       Group               Status  StreamType       MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ---------------  ------------  ----
 214  mn静静nm                        China               OK      hls_media        wrapper_kept  200 
-215  万事通熊猫                         China               OK      hls_media        wrapper_kept  200 
+215  万事通熊猫                         China               DEAD    all_urls_failed  dead          -   
 216  douyu 19                      China               OK      hls_master       direct_url    200 
 
 ==================================================================================================
