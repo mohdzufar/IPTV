@@ -1,9 +1,9 @@
 name: Update IPTV Playlist
 on:
   schedule:
-    - cron: '30 20 * * *'  # 4:30 AM Malaysia (UTC+8)
-    - cron: '30 4 * * *'   # 12:30 PM Malaysia (UTC+8)
-    - cron: '30 12 * * *'  # 8:30 PM Malaysia (UTC+8)
+    - cron: '00 22 * * *'  # 6:00 AM Malaysia (UTC+8)
+    - cron: '00 6 * * *'   # 14:00 PM Malaysia (UTC+8)
+    - cron: '00 14 * * *'  # 10:00 PM Malaysia (UTC+8)
   workflow_dispatch:
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
