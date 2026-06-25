@@ -33,9 +33,53 @@ jobs:
           $content = Get-Content -Path Channels\Flatten.m3u8 | Where-Object { $_ -notmatch '^##' -and $_ -notmatch '^\s*$' }
           [System.IO.File]::WriteAllLines("$PWD\Main.m3u8", $content)
       - name: Step 2 - Refresh TONTON wrapper tokens
-        run: python scripts/refresh_tonton.py
+        shell: powershell
+        run: |
+          $maxRetries = 5
+          $retryDelay = 60
+          $attempt = 0
+          $success = $false
+          do {
+              $attempt++
+              Write-Host "TONTON refresh attempt $attempt of $maxRetries..."
+              python scripts/refresh_tonton.py
+              if ($LASTEXITCODE -eq 0) {
+                  $success = $true
+                  break
+              }
+              if ($attempt -lt $maxRetries) {
+                  Write-Host "Failed (exit code $LASTEXITCODE). Retrying in $retryDelay seconds..."
+                  Start-Sleep -Seconds $retryDelay
+              }
+          } while ($attempt -lt $maxRetries -and -not $success)
+          if (-not $success) {
+              Write-Host "ERROR: TONTON refresh failed after $maxRetries attempts."
+              exit 1
+          }
       - name: Step 3 - Refresh Mana2 wrapper tokens
-        run: python scripts/refresh_mana2.py
+        shell: powershell
+        run: |
+          $maxRetries = 5
+          $retryDelay = 60
+          $attempt = 0
+          $success = $false
+          do {
+              $attempt++
+              Write-Host "Mana2 refresh attempt $attempt of $maxRetries..."
+              python scripts/refresh_mana2.py
+              if ($LASTEXITCODE -eq 0) {
+                  $success = $true
+                  break
+              }
+              if ($attempt -lt $maxRetries) {
+                  Write-Host "Failed (exit code $LASTEXITCODE). Retrying in $retryDelay seconds..."
+                  Start-Sleep -Seconds $retryDelay
+              }
+          } while ($attempt -lt $maxRetries -and -not $success)
+          if (-not $success) {
+              Write-Host "ERROR: Mana2 refresh failed after $maxRetries attempts."
+              exit 1
+          }
       - name: Step 4 - Commit and push refreshed wrappers
         shell: powershell
         env:
