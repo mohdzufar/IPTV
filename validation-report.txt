@@ -1,14 +1,14 @@
 ==================================================================================================
  IPTV Playlist Validation Report
 ==================================================================================================
- Generated : 2026-06-27 00:24:38 MYT
+ Generated : 2026-06-27 07:23:33 MYT
  Source    : Channels/Flatten.m3u8
- Run time  : 7m 53s
+ Run time  : 7m 44s
 
  Total     : 227
- Active    : 166  (wrapper_kept=29  direct_url=137)
- Dead      : 61
- Success   : 73.1%
+ Active    : 165  (wrapper_kept=29  direct_url=136)
+ Dead      : 62
+ Success   : 72.7%
 
  Status  : OK = active   DEAD = failed
  Type    : hls_media = HLS segment playlist
@@ -68,7 +68,7 @@ No   Channel                       Group               Status  StreamType       
 66   NHK World-Japan               Malaysia            OK      hls_master       direct_url    200 
 
 ==================================================================================================
- GROUP: Sports  (50 active  17 dead)
+ GROUP: Sports  (49 active  18 dead)
 ==================================================================================================
 No   Channel                       Group               Status  StreamType       MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ---------------  ------------  ----
@@ -87,7 +87,7 @@ No   Channel                       Group               Status  StreamType       
 93   Sky Sport Football            Sports              OK      mpeg_ts          direct_url    200 
 94   Sky Sport F1                  Sports              OK      mpeg_ts          direct_url    200 
 95   Sky Sports Arena              Sports              DEAD    all_urls_failed  dead          -   
-96   Sky Sports Racing             Sports              OK      mpeg_ts          direct_url    200 
+96   Sky Sports Racing             Sports              DEAD    all_urls_failed  dead          -   
 97   Sky Sports MIX                Sports              DEAD    all_urls_failed  dead          -   
 98   Bein Sports 1                 Sports              OK      mpeg_ts          direct_url    200 
 99   Bein Sports 2                 Sports              OK      mpeg_ts          direct_url    200 
