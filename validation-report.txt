@@ -1,9 +1,9 @@
 ==================================================================================================
  IPTV Playlist Validation Report
 ==================================================================================================
- Generated : 2026-06-27 16:54:25 MYT
+ Generated : 2026-06-27 23:25:53 MYT
  Source    : Channels/Flatten.m3u8
- Run time  : 7m 43s
+ Run time  : 8m 32s
 
  Total     : 227
  Active    : 165  (wrapper_kept=29  direct_url=136)
@@ -68,7 +68,7 @@ No   Channel                       Group               Status  StreamType       
 66   NHK World-Japan               Malaysia            OK      hls_master       direct_url    200 
 
 ==================================================================================================
- GROUP: Sports  (49 active  18 dead)
+ GROUP: Sports  (50 active  17 dead)
 ==================================================================================================
 No   Channel                       Group               Status  StreamType       MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ---------------  ------------  ----
@@ -124,7 +124,7 @@ No   Channel                       Group               Status  StreamType       
 130  Goal TV                       Sports              OK      hls_master       direct_url    200 
 131  Real Madrid TV                Sports              OK      hls_media        wrapper_kept  200 
 132  RedBull TV                    Sports              OK      hls_master       direct_url    200 
-133  Sport Fishing TV              Sports              DEAD    all_urls_failed  dead          -   
+133  Sport Fishing TV              Sports              OK      hls_master       direct_url    200 
 134  Wired2Fish                    Sports              OK      hls_master       direct_url    200 
 135  Sports Connect                Sports              OK      hls_master       direct_url    200 
 136  MBC America                   Sports              OK      hls_media        wrapper_kept  200 
@@ -346,7 +346,7 @@ No   Channel                       Group               Status  StreamType       
 186  Bollywood Classic             Movies              DEAD    all_urls_failed  dead          -   
 
 ==================================================================================================
- GROUP: Nature  (11 active  1 dead)
+ GROUP: Nature  (10 active  2 dead)
 ==================================================================================================
 No   Channel                       Group               Status  StreamType       MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ---------------  ------------  ----
@@ -360,7 +360,7 @@ No   Channel                       Group               Status  StreamType       
 203  Wild Earth                    Nature              OK      hls_master       direct_url    200 
 204  Wild Planet                   Nature              OK      hls_master       direct_url    200 
 205  Xumo Nature & Wildlife TV     Nature              OK      hls_master       direct_url    200 
-206  Animal Planet                 Nature              OK      hls_master       direct_url    200 
+206  Animal Planet                 Nature              DEAD    all_urls_failed  dead          -   
 207  NatureTime                    Nature              DEAD    all_urls_failed  dead          -   
 
 ==================================================================================================
