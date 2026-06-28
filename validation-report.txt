@@ -1,14 +1,14 @@
 ==================================================================================================
  IPTV Playlist Validation Report
 ==================================================================================================
- Generated : 2026-06-28 07:20:23 MYT
+ Generated : 2026-06-28 17:30:00 MYT
  Source    : Channels/Flatten.m3u8
- Run time  : 9m 1s
+ Run time  : 7m 53s
 
  Total     : 227
- Active    : 162  (wrapper_kept=29  direct_url=133)
- Dead      : 65
- Success   : 71.4%
+ Active    : 166  (wrapper_kept=29  direct_url=137)
+ Dead      : 61
+ Success   : 73.1%
 
  Status  : OK = active   DEAD = failed
  Type    : hls_media = HLS segment playlist
@@ -68,7 +68,7 @@ No   Channel                       Group               Status  StreamType       
 66   NHK World-Japan               Malaysia            OK      hls_master       direct_url    200 
 
 ==================================================================================================
- GROUP: Sports  (49 active  18 dead)
+ GROUP: Sports  (50 active  17 dead)
 ==================================================================================================
 No   Channel                       Group               Status  StreamType       MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ---------------  ------------  ----
@@ -86,7 +86,7 @@ No   Channel                       Group               Status  StreamType       
 92   Sky Sport Premier League      Sports              OK      mpeg_ts          direct_url    200 
 93   Sky Sport Football            Sports              OK      mpeg_ts          direct_url    200 
 94   Sky Sport F1                  Sports              OK      mpeg_ts          direct_url    200 
-95   Sky Sports Arena              Sports              DEAD    all_urls_failed  dead          -   
+95   Sky Sports Arena              Sports              OK      mpeg_ts          direct_url    200 
 96   Sky Sports Racing             Sports              OK      mpeg_ts          direct_url    200 
 97   Sky Sports MIX                Sports              DEAD    all_urls_failed  dead          -   
 98   Bein Sports 1                 Sports              OK      mpeg_ts          direct_url    200 
@@ -263,7 +263,7 @@ No   Channel                       Group               Status  StreamType       
 70   Nickelodeon Asia              Indonesia;Kids      DEAD    all_urls_failed  dead          -   
 
 ==================================================================================================
- GROUP: Golf  (10 active  3 dead)
+ GROUP: Golf  (11 active  2 dead)
 ==================================================================================================
 No   Channel                       Group               Status  StreamType       MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ---------------  ------------  ----
@@ -271,7 +271,7 @@ No   Channel                       Group               Status  StreamType       
 74   Golf Channel                  Golf                OK      mpeg_ts          direct_url    200 
 75   Golf Channel (Latin America)  Golf                OK      mpeg_ts          direct_url    200 
 76   GolfNetwork                   Golf                OK      hls_master       direct_url    200 
-77   GolfNetwork Japan             Golf                DEAD    all_urls_failed  dead          -   
+77   GolfNetwork Japan             Golf                OK      hls_master       direct_url    200 
 78   One Golf                      Golf                DEAD    all_urls_failed  dead          -   
 79   GolfPass                      Golf                OK      hls_master       direct_url    200 
 80   PGA Tour                      Golf                OK      hls_master       direct_url    200 
@@ -299,14 +299,14 @@ No   Channel                       Group               Status  StreamType       
 151  DotA2                         E-Sports            DEAD    all_urls_failed  dead          -   
 
 ==================================================================================================
- GROUP: Music  (8 active  3 dead)
+ GROUP: Music  (9 active  2 dead)
 ==================================================================================================
 No   Channel                       Group               Status  StreamType       MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ---------------  ------------  ----
 152  KPOP Mix                      Music               OK      hls_master       direct_url    200 
 153  New KPOP                      Music               OK      hls_master       direct_url    200 
 154  K POP by CJ ENM               Music               OK      hls_master       direct_url    200 
-155  Music Japan                   Music               DEAD    all_urls_failed  dead          -   
+155  Music Japan                   Music               OK      hls_master       direct_url    200 
 156  Music India                   Music               OK      hls_master       direct_url    200 
 157  Song TV                       Music               OK      dash             direct_url    200 
 158  Vevo 2k                       Music               OK      hls_master       direct_url    200 
@@ -391,14 +391,14 @@ No   Channel                       Group               Status  StreamType       
 216  douyu 19                      China               OK      hls_master       direct_url    200 
 
 ==================================================================================================
- GROUP: Korea  (6 active  2 dead)
+ GROUP: Korea  (7 active  1 dead)
 ==================================================================================================
 No   Channel                       Group               Status  StreamType       MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ---------------  ------------  ----
 217  K-Content                     Korea               OK      hls_master       direct_url    200 
 219  K-Stories                     Korea               OK      hls_master       direct_url    200 
 220  K-Movies                      Korea               OK      hls_master       direct_url    200 
-221  Series K Legacy               Korea               DEAD    all_urls_failed  dead          -   
+221  Series K Legacy               Korea               OK      hls_master       direct_url    200 
 222  Series K Drama                Korea               OK      hls_master       direct_url    200 
 224  NEW KFood                     Korea               OK      hls_master       direct_url    200 
 225  KBS World                     Korea               DEAD    all_urls_failed  dead          -   
