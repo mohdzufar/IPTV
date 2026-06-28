@@ -1,14 +1,14 @@
 ==================================================================================================
  IPTV Playlist Validation Report
 ==================================================================================================
- Generated : 2026-06-28 23:27:34 MYT
+ Generated : 2026-06-29 07:23:21 MYT
  Source    : Channels/Flatten.m3u8
- Run time  : 7m 47s
+ Run time  : 8m 47s
 
  Total     : 227
- Active    : 165  (wrapper_kept=29  direct_url=136)
- Dead      : 62
- Success   : 72.7%
+ Active    : 158  (wrapper_kept=29  direct_url=129)
+ Dead      : 69
+ Success   : 69.6%
 
  Status  : OK = active   DEAD = failed
  Type    : hls_media = HLS segment playlist
@@ -25,7 +25,7 @@
            GitHub API to read the token refreshed earlier in this run.
 
 ==================================================================================================
- GROUP: Malaysia  (37 active  0 dead)
+ GROUP: Malaysia  (29 active  8 dead)
 ==================================================================================================
 No   Channel                       Group               Status  StreamType       MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ---------------  ------------  ----
@@ -40,14 +40,14 @@ No   Channel                       Group               Status  StreamType       
 9    Okey TV                       Malaysia            OK      hls_media        wrapper_kept  200 
 14   TV IKIM                       Malaysia            OK      hls_media        wrapper_kept  200 
 16   RTM World                     Malaysia            OK      hls_media        wrapper_kept  200 
-20   Al-Hijrah                     Malaysia            OK      hls_master       direct_url    200 
-21   EnjoyTV                       Malaysia            OK      hls_master       direct_url    200 
-22   BorneoTV                      Malaysia            OK      hls_master       direct_url    200 
-23   SelangorTV                    Malaysia            OK      hls_master       direct_url    200 
-24   SukeTV                        Malaysia            OK      hls_master       direct_url    200 
-25   TVS                           Malaysia            OK      hls_master       direct_url    200 
-26   SukanPlus                     Malaysia            OK      hls_master       direct_url    200 
-27   Bernama                       Malaysia            OK      hls_master       direct_url    200 
+20   Al-Hijrah                     Malaysia            DEAD    all_urls_failed  dead          -   
+21   EnjoyTV                       Malaysia            DEAD    all_urls_failed  dead          -   
+22   BorneoTV                      Malaysia            DEAD    all_urls_failed  dead          -   
+23   SelangorTV                    Malaysia            DEAD    all_urls_failed  dead          -   
+24   SukeTV                        Malaysia            DEAD    all_urls_failed  dead          -   
+25   TVS                           Malaysia            DEAD    all_urls_failed  dead          -   
+26   SukanPlus                     Malaysia            DEAD    all_urls_failed  dead          -   
+27   Bernama                       Malaysia            DEAD    all_urls_failed  dead          -   
 28   Dewan Rakyat                  Malaysia            OK      hls_media        wrapper_kept  200 
 29   Dewan Negara                  Malaysia            OK      hls_media        wrapper_kept  200 
 30   RTM Snap                      Malaysia            OK      hls_media        wrapper_kept  200 
@@ -68,7 +68,7 @@ No   Channel                       Group               Status  StreamType       
 66   NHK World-Japan               Malaysia            OK      hls_master       direct_url    200 
 
 ==================================================================================================
- GROUP: Sports  (51 active  16 dead)
+ GROUP: Sports  (50 active  17 dead)
 ==================================================================================================
 No   Channel                       Group               Status  StreamType       MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ---------------  ------------  ----
@@ -86,7 +86,7 @@ No   Channel                       Group               Status  StreamType       
 92   Sky Sport Premier League      Sports              OK      mpeg_ts          direct_url    200 
 93   Sky Sport Football            Sports              OK      mpeg_ts          direct_url    200 
 94   Sky Sport F1                  Sports              OK      mpeg_ts          direct_url    200 
-95   Sky Sports Arena              Sports              OK      mpeg_ts          direct_url    200 
+95   Sky Sports Arena              Sports              DEAD    all_urls_failed  dead          -   
 96   Sky Sports Racing             Sports              OK      mpeg_ts          direct_url    200 
 97   Sky Sports MIX                Sports              DEAD    all_urls_failed  dead          -   
 98   Bein Sports 1                 Sports              OK      mpeg_ts          direct_url    200 
@@ -263,7 +263,7 @@ No   Channel                       Group               Status  StreamType       
 70   Nickelodeon Asia              Indonesia;Kids      DEAD    all_urls_failed  dead          -   
 
 ==================================================================================================
- GROUP: Golf  (9 active  4 dead)
+ GROUP: Golf  (11 active  2 dead)
 ==================================================================================================
 No   Channel                       Group               Status  StreamType       MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ---------------  ------------  ----
@@ -277,8 +277,8 @@ No   Channel                       Group               Status  StreamType       
 80   PGA Tour                      Golf                OK      hls_master       direct_url    200 
 81   DP World Tour                 Golf                DEAD    all_urls_failed  dead          -   
 82   Golf Television               Golf                OK      hls_master       direct_url    200 
-83   SBS_Golf                      Golf                DEAD    all_urls_failed  dead          -   
-84   SBS_Golf_2                    Golf                DEAD    all_urls_failed  dead          -   
+83   SBS_Golf                      Golf                OK      hls_master       direct_url    200 
+84   SBS_Golf_2                    Golf                OK      hls_master       direct_url    200 
 85   Sky Sport Golf                Golf                OK      mpeg_ts          direct_url    200 
 
 ==================================================================================================
