@@ -1,14 +1,14 @@
 ==================================================================================================
  IPTV Playlist Validation Report
 ==================================================================================================
- Generated : 2026-07-05 23:25:39 MYT
+ Generated : 2026-07-06 07:21:14 MYT
  Source    : Channels/Flatten.m3u8
- Run time  : 8m 8s
+ Run time  : 8m 59s
 
  Total     : 227
- Active    : 138  (wrapper_kept=28  direct_url=110)
- Dead      : 89
- Success   : 60.8%
+ Active    : 139  (wrapper_kept=28  direct_url=111)
+ Dead      : 88
+ Success   : 61.2%
 
  Status  : OK = active   DEAD = failed
  Type    : hls_media = HLS segment playlist
@@ -391,11 +391,11 @@ No   Channel                       Group               Status  StreamType       
 216  douyu 19                      China               OK      hls_master       direct_url    200 
 
 ==================================================================================================
- GROUP: Korea  (6 active  2 dead)
+ GROUP: Korea  (7 active  1 dead)
 ==================================================================================================
 No   Channel                       Group               Status  StreamType       MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ---------------  ------------  ----
-217  K-Content                     Korea               DEAD    wrapper_api_502  dead          502 
+217  K-Content                     Korea               OK      hls_master       direct_url    200 
 219  K-Stories                     Korea               OK      hls_master       direct_url    200 
 220  K-Movies                      Korea               OK      hls_master       direct_url    200 
 221  Series K Legacy               Korea               OK      hls_master       direct_url    200 
