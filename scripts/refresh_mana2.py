@@ -23,7 +23,7 @@ CHANNELS = {
 }
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
-    "Referer":    "https://www.mana2.my/",
+    "Referer":    "https://mana2.my/",
 }
 # --------------------------------------------------------------------
 
@@ -44,10 +44,12 @@ def fetch_token(channel_name, page_url):
         def handle_request(request):
             nonlocal token
             url = request.url
-            # Capture only real stream .m3u8 – ignore JW analytics pings
+            # Capture real stream .m3u8 from known Mana2 CDN domains.
+            # tenbytecdn.com is the current CDN (as of July 2026).
+            # live.mana2.my kept as fallback in case they revert.
             if (token is None
                     and '.m3u8' in url
-                    and 'live.mana2.my' in url
+                    and ('tenbytecdn.com' in url or 'live.mana2.my' in url)
                     and 'jwpltx.com' not in url
                     and 'ping.gif' not in url):
                 token = url
@@ -128,7 +130,7 @@ def create_or_replace_subfolder(base_dir, channel_name, new_url):
     content = (
         "#EXTM3U\n"
         "#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)\n"
-        "#EXTVLCOPT:http-referrer=https://www.mana2.my/\n"
+        "#EXTVLCOPT:http-referrer=https://mana2.my/\n"
         f"#EXTINF:1,{channel_name}\n"
         f"{new_url}\n"
     )
