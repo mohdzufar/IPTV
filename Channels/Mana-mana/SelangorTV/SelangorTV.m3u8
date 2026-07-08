@@ -1,5 +1,5 @@
 #EXTM3U
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-#EXTVLCOPT:http-referrer=https://www.mana2.my/
+#EXTVLCOPT:http-referrer=https://mana2.my/
 #EXTINF:1,SelangorTV
-https://live.mana2.my/SelangorTv/index.m3u8?auth_key=1782677953-ec50a58a7f8d4732934d5311c26a5a95-0-af66d977b814c473834b2bd38665c915&token=1782677953-ec50a58a7f8d4732934d5311c26a5a95-0-af66d977b814c473834b2bd38665c915
+https://cuwf8jayq1.tenbytecdn.com/live/selangortv/playlist.m3u8?md5=qC7G-XJWMmkicdsi-99eUQ&expires=1783501219

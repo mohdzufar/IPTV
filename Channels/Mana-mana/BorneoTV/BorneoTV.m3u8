@@ -1,5 +1,5 @@
 #EXTM3U
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-#EXTVLCOPT:http-referrer=https://www.mana2.my/
+#EXTVLCOPT:http-referrer=https://mana2.my/
 #EXTINF:1,BorneoTV
-https://live.mana2.my/BorneoTv/index.m3u8?auth_key=1782677937-0689bac5241641b19ece0d346b2db97f-0-e9ed3f0988ee4dabb4572feba54d0ed4&token=1782677937-0689bac5241641b19ece0d346b2db97f-0-e9ed3f0988ee4dabb4572feba54d0ed4
+https://cuwf8jayq1.tenbytecdn.com/live/borneotv/playlist.m3u8?md5=U34HnBu_c1IUPCU1pAM8lg&expires=1783501175

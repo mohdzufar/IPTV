@@ -1,5 +1,5 @@
 #EXTM3U
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-#EXTVLCOPT:http-referrer=https://www.mana2.my/
+#EXTVLCOPT:http-referrer=https://mana2.my/
 #EXTINF:1,TVS
-https://live.mana2.my/TvS/index.m3u8?auth_key=1782677976-3a51d5f1fc6b47f8885b7f1f32af0bc6-0-e6344394e046653bd6a287aad72d1d28&token=1782677976-3a51d5f1fc6b47f8885b7f1f32af0bc6-0-e6344394e046653bd6a287aad72d1d28
+https://cuwf8jayq1.tenbytecdn.com/live/tvs/playlist.m3u8?md5=WX86kg5ZMnjpdB4CsZ0eYw&expires=1783501286
