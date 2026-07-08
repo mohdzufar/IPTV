@@ -8,15 +8,18 @@ from playwright.sync_api import sync_playwright
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 # ---------- CONFIGURATION (exact tvg-name → Mana2 live page) ----------
+# URL format changed from /channel/live/{slug} to /channel/{slug}
+# Site now auto-plays on load — no play button click needed.
 CHANNELS = {
-    "Al-Hijrah": "https://www.mana2.my/channel/live/tv-alhijrah",
-    "Bernama":   "https://www.mana2.my/channel/live/bernama",
-    "BorneoTV":  "https://www.mana2.my/channel/live/borneo-tv",
-    "EnjoyTV":   "https://www.mana2.my/channel/live/tv5",
-    "SelangorTV":"https://www.mana2.my/channel/live/selangor-tv",
-    "SukanPlus": "https://www.mana2.my/channel/live/sukan-rtm",
-    "SukeTV":    "https://www.mana2.my/channel/live/suke-tv",
-    "TVS":       "https://www.mana2.my/channel/live/tvs",
+    "Al-Hijrah":  "https://www.mana2.my/channel/tv-alhijrah",
+    "Bernama":    "https://www.mana2.my/channel/bernama",
+    "BorneoTV":   "https://www.mana2.my/channel/borneo-tv",
+    "EnjoyTV":    "https://www.mana2.my/channel/tv5",
+    "SelangorTV": "https://www.mana2.my/channel/selangor-tv",
+    "SukanPlus":  "https://www.mana2.my/channel/sukan-rtm",
+    "SukeTV":     "https://www.mana2.my/channel/suke-tv",
+    "TVS":        "https://www.mana2.my/channel/tvs",
+    "Free Movies": "https://www.mana2.my/channel/free-movies",
 }
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
@@ -27,8 +30,9 @@ HEADERS = {
 
 def fetch_token(channel_name, page_url):
     """
-    Navigate to the Mana2 channel, click the JW Player play overlay,
-    and capture the first real .m3u8 stream request from live.mana2.my.
+    Navigate to the Mana2 channel page and capture the .m3u8 stream
+    request from live.mana2.my. The site now auto-plays on load so
+    no play button interaction is needed — just wait for the request.
     Returns the token URL or None.
     """
     token = None
@@ -41,70 +45,68 @@ def fetch_token(channel_name, page_url):
             nonlocal token
             url = request.url
             # Capture only real stream .m3u8 – ignore JW analytics pings
-            if token is None and '.m3u8' in url and 'live.mana2.my' in url and 'jwpltx.com' not in url and 'ping.gif' not in url:
+            if (token is None
+                    and '.m3u8' in url
+                    and 'live.mana2.my' in url
+                    and 'jwpltx.com' not in url
+                    and 'ping.gif' not in url):
                 token = url
                 print(f"    Captured: {token}")
 
         page.on('request', handle_request)
+
+        # Play button selectors — kept as fallback in case mana2 reintroduces
+        # an interactive play button in future. Tried only if auto-play fails.
+        play_selectors = [
+            'div[aria-label="Play"]',
+            '.jw-icon-display',
+            'button[aria-label="Play"]',
+            '[class*="play"]',
+            'button[class*="play"]',
+        ]
 
         try:
             print(f"  Navigating to {page_url} ...")
             page.goto(page_url, wait_until='networkidle', timeout=30000)
             print("    Page loaded.")
 
-            # Let the JW Player initialise
-            time.sleep(3)
-
-            # ---------- Dismiss any obvious overlays ----------
-            overlay_selectors = [
-                'button[aria-label="Close"]',
-                '.cookie-consent button',
-                '.modal button.close',
-                '[data-dismiss="modal"]',
-                '.mfp-close',
-            ]
-            for sel in overlay_selectors:
-                try:
-                    el = page.locator(sel)
-                    if el.count() > 0:
-                        el.first.click(timeout=2000)
-                        print(f"    Dismissed overlay: {sel}")
-                        time.sleep(0.5)
-                except Exception:
-                    pass
-
-            # ---------- Click the JW Player play overlay ----------
-            play_selectors = [
-                'div[aria-label="Play"]',
-                '.jw-icon-display',
-                'button[aria-label="Play"]',
-            ]
-            clicked = False
-            for sel in play_selectors:
-                try:
-                    loc = page.locator(sel)
-                    if loc.count() > 0:
-                        loc.first.click(timeout=5000)
-                        print(f"    Clicked on '{sel}'.")
-                        clicked = True
-                        break
-                except Exception as e:
-                    print(f"    Selector '{sel}' failed: {e}")
-
-            if not clicked:
-                print("    No play button found – playback may not start.")
-
-            # ---------- Wait for stream request ----------
-            print("    Waiting for .m3u8 stream request ...")
+            # Site currently auto-plays on load — wait for stream request first.
+            print("    Waiting for .m3u8 stream request (auto-play)...")
             for _ in range(20):
                 if token:
                     break
                 time.sleep(1)
 
+            # Fallback: if auto-play did not fire the stream request,
+            # attempt to click a play button in case the UI requires interaction.
+            if not token:
+                print("    Auto-play did not capture stream. Trying play button...")
+                clicked = False
+                for sel in play_selectors:
+                    try:
+                        loc = page.locator(sel)
+                        if loc.count() > 0:
+                            loc.first.click(timeout=5000)
+                            print(f"    Clicked on '{sel}'.")
+                            clicked = True
+                            break
+                    except Exception as e:
+                        print(f"    Selector '{sel}' failed: {e}")
+
+                if not clicked:
+                    print("    No play button found.")
+
+                # Wait a further 15s after interaction attempt
+                for _ in range(15):
+                    if token:
+                        break
+                    time.sleep(1)
+
             if token:
                 print(f"    Success: {token}")
             else:
-                print("    No .m3u8 stream request captured within 20s.")
+                print("    No .m3u8 stream request captured within 35s.")
+
         except Exception as e:
             print(f"    ERROR during navigation/playback: {e}")
 
