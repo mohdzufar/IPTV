@@ -1,12 +1,12 @@
 ==================================================================================================
  IPTV Playlist Validation Report
 ==================================================================================================
- Generated : 2026-07-11 23:06:41 MYT
+ Generated : 2026-07-12 07:13:44 MYT
  Source    : Channels/Flatten.m3u8
- Run time  : 10m 26s
+ Run time  : 11m 44s
 
  Total     : 228
- Active    : 143  (wrapper_kept=27  direct_url=116)
+ Active    : 143  (wrapper_kept=28  direct_url=115)
  Dead      : 85
  Success   : 62.7%
 
@@ -25,7 +25,7 @@
            GitHub API to read the token refreshed earlier in this run.
 
 ==================================================================================================
- GROUP: Malaysia  (35 active  3 dead)
+ GROUP: Malaysia  (34 active  4 dead)
 ==================================================================================================
 No   Channel                       Group               Status  StreamType       MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ---------------  ------------  ----
@@ -43,7 +43,7 @@ No   Channel                       Group               Status  StreamType       
 20   Al-Hijrah                     Malaysia            OK      hls_master       direct_url    200 
 21   EnjoyTV                       Malaysia            OK      hls_master       direct_url    200 
 22   BorneoTV                      Malaysia            OK      hls_master       direct_url    200 
-23   SelangorTV                    Malaysia            OK      hls_master       direct_url    200 
+23   SelangorTV                    Malaysia            DEAD    wrapper_api_502  dead          502 
 24   SukeTV                        Malaysia            DEAD    all_urls_failed  dead          -   
 25   TVS                           Malaysia            OK      hls_master       direct_url    200 
 26   SukanPlus                     Malaysia            OK      hls_master       direct_url    200 
@@ -69,14 +69,14 @@ No   Channel                       Group               Status  StreamType       
 67   NHK World-Japan               Malaysia            OK      hls_master       direct_url    200 
 
 ==================================================================================================
- GROUP: Sports  (31 active  36 dead)
+ GROUP: Sports  (32 active  35 dead)
 ==================================================================================================
 No   Channel                       Group               Status  StreamType       MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ---------------  ------------  ----
 10   RTM Sukan                     Sports              OK      hls_media        wrapper_kept  200 
 11   RTM World Cup 1               Sports              DEAD    all_urls_failed  dead          -   
 12   RTM World Cup 2               Sports              DEAD    all_urls_failed  dead          -   
-13   RTM World Cup 3               Sports              DEAD    all_urls_failed  dead          -   
+13   RTM World Cup 3               Sports              DEAD    wrapper_api_502  dead          502 
 18   Astro Arena Bola              Sports              DEAD    all_urls_failed  dead          -   
 19   Astro Arena Bola 2            Sports              DEAD    all_urls_failed  dead          -   
 88   Sky Sports (UK)               Sports              DEAD    all_urls_failed  dead          -   
@@ -123,7 +123,7 @@ No   Channel                       Group               Status  StreamType       
 129  Xumo NBC Sport                Sports              OK      hls_master       direct_url    200 
 130  NBC Sport Now                 Sports              OK      hls_master       direct_url    200 
 131  Goal TV                       Sports              OK      hls_master       direct_url    200 
-132  Real Madrid TV                Sports              DEAD    wrapper_api_502  dead          502 
+132  Real Madrid TV                Sports              OK      hls_media        wrapper_kept  200 
 133  RedBull TV                    Sports              OK      hls_master       direct_url    200 
 134  Sport Fishing TV              Sports              OK      hls_master       direct_url    200 
 135  Wired2Fish                    Sports              OK      hls_master       direct_url    200 
@@ -317,7 +317,7 @@ No   Channel                       Group               Status  StreamType       
 163  Totalmusic                    Music               DEAD    wrapper_api_404  dead          404 
 
 ==================================================================================================
- GROUP: Movies  (11 active  13 dead)
+ GROUP: Movies  (10 active  14 dead)
 ==================================================================================================
 No   Channel                       Group               Status  StreamType       MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ---------------  ------------  ----
@@ -333,7 +333,7 @@ No   Channel                       Group               Status  StreamType       
 173  Universal Movie               Movies              OK      hls_master       direct_url    200 
 174  Cinemax                       Movies              OK      hls_master       direct_url    200 
 175  Hallmark Channel              Movies              OK      hls_master       direct_url    200 
-176  HBO                           Movies              OK      mpeg_ts          direct_url    200 
+176  HBO                           Movies              DEAD    all_urls_failed  dead          -   
 177  HBO 2                         Movies              OK      mpeg_ts          direct_url    200 
 178  HBO Movies                    Movies              DEAD    wrapper_api_404  dead          404 
 179  HBO Movies 2                  Movies              DEAD    wrapper_api_404  dead          404 
@@ -383,13 +383,13 @@ No   Channel                       Group               Status  StreamType       
 210  Love Pets                     Pets                DEAD    all_urls_failed  dead          -   
 
 ==================================================================================================
- GROUP: China  (1 active  2 dead)
+ GROUP: China  (2 active  1 dead)
 ==================================================================================================
 No   Channel                       Group               Status  StreamType       MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ---------------  ------------  ----
 215  mn静静nm                        China               OK      hls_media        wrapper_kept  200 
 216  万事通熊猫                         China               DEAD    all_urls_failed  dead          -   
-217  douyu 19                      China               DEAD    all_urls_failed  dead          -   
+217  douyu 19                      China               OK      hls_master       direct_url    200 
 
 ==================================================================================================
  GROUP: Korea  (7 active  1 dead)
