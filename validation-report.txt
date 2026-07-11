@@ -1,14 +1,14 @@
 ==================================================================================================
  IPTV Playlist Validation Report
 ==================================================================================================
- Generated : 2026-07-11 07:18:36 MYT
+ Generated : 2026-07-11 16:19:39 MYT
  Source    : Channels/Flatten.m3u8
- Run time  : 9m 37s
+ Run time  : 9m 32s
 
  Total     : 228
- Active    : 143  (wrapper_kept=28  direct_url=115)
- Dead      : 85
- Success   : 62.7%
+ Active    : 145  (wrapper_kept=28  direct_url=117)
+ Dead      : 83
+ Success   : 63.6%
 
  Status  : OK = active   DEAD = failed
  Type    : hls_media = HLS segment playlist
@@ -264,7 +264,7 @@ No   Channel                       Group               Status  StreamType       
 71   Nickelodeon Asia              Indonesia;Kids      DEAD    all_urls_failed  dead          -   
 
 ==================================================================================================
- GROUP: Golf  (9 active  4 dead)
+ GROUP: Golf  (11 active  2 dead)
 ==================================================================================================
 No   Channel                       Group               Status  StreamType       MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ---------------  ------------  ----
@@ -278,8 +278,8 @@ No   Channel                       Group               Status  StreamType       
 81   PGA Tour                      Golf                OK      hls_master       direct_url    200 
 82   DP World Tour                 Golf                DEAD    all_urls_failed  dead          -   
 83   Golf Television               Golf                OK      hls_master       direct_url    200 
-84   SBS_Golf                      Golf                DEAD    all_urls_failed  dead          -   
-85   SBS_Golf_2                    Golf                DEAD    all_urls_failed  dead          -   
+84   SBS_Golf                      Golf                OK      hls_master       direct_url    200 
+85   SBS_Golf_2                    Golf                OK      hls_master       direct_url    200 
 86   Sky Sport Golf                Golf                OK      mpeg_ts          direct_url    200 
 
 ==================================================================================================
