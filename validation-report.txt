@@ -1,14 +1,14 @@
 ==================================================================================================
  IPTV Playlist Validation Report
 ==================================================================================================
- Generated : 2026-07-12 07:13:44 MYT
+ Generated : 2026-07-12 16:40:18 MYT
  Source    : Channels/Flatten.m3u8
- Run time  : 11m 44s
+ Run time  : 8m 25s
 
  Total     : 228
- Active    : 143  (wrapper_kept=28  direct_url=115)
- Dead      : 85
- Success   : 62.7%
+ Active    : 144  (wrapper_kept=28  direct_url=116)
+ Dead      : 84
+ Success   : 63.2%
 
  Status  : OK = active   DEAD = failed
  Type    : hls_media = HLS segment playlist
@@ -25,7 +25,7 @@
            GitHub API to read the token refreshed earlier in this run.
 
 ==================================================================================================
- GROUP: Malaysia  (34 active  4 dead)
+ GROUP: Malaysia  (35 active  3 dead)
 ==================================================================================================
 No   Channel                       Group               Status  StreamType       MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ---------------  ------------  ----
@@ -43,7 +43,7 @@ No   Channel                       Group               Status  StreamType       
 20   Al-Hijrah                     Malaysia            OK      hls_master       direct_url    200 
 21   EnjoyTV                       Malaysia            OK      hls_master       direct_url    200 
 22   BorneoTV                      Malaysia            OK      hls_master       direct_url    200 
-23   SelangorTV                    Malaysia            DEAD    wrapper_api_502  dead          502 
+23   SelangorTV                    Malaysia            OK      hls_master       direct_url    200 
 24   SukeTV                        Malaysia            DEAD    all_urls_failed  dead          -   
 25   TVS                           Malaysia            OK      hls_master       direct_url    200 
 26   SukanPlus                     Malaysia            OK      hls_master       direct_url    200 
@@ -76,7 +76,7 @@ No   Channel                       Group               Status  StreamType       
 10   RTM Sukan                     Sports              OK      hls_media        wrapper_kept  200 
 11   RTM World Cup 1               Sports              DEAD    all_urls_failed  dead          -   
 12   RTM World Cup 2               Sports              DEAD    all_urls_failed  dead          -   
-13   RTM World Cup 3               Sports              DEAD    wrapper_api_502  dead          502 
+13   RTM World Cup 3               Sports              DEAD    all_urls_failed  dead          -   
 18   Astro Arena Bola              Sports              DEAD    all_urls_failed  dead          -   
 19   Astro Arena Bola 2            Sports              DEAD    all_urls_failed  dead          -   
 88   Sky Sports (UK)               Sports              DEAD    all_urls_failed  dead          -   
@@ -300,7 +300,7 @@ No   Channel                       Group               Status  StreamType       
 152  DotA2                         E-Sports            DEAD    all_urls_failed  dead          -   
 
 ==================================================================================================
- GROUP: Music  (9 active  2 dead)
+ GROUP: Music  (8 active  3 dead)
 ==================================================================================================
 No   Channel                       Group               Status  StreamType       MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ---------------  ------------  ----
@@ -309,7 +309,7 @@ No   Channel                       Group               Status  StreamType       
 155  K POP by CJ ENM               Music               OK      hls_master       direct_url    200 
 156  Music Japan                   Music               OK      hls_master       direct_url    200 
 157  Music India                   Music               OK      hls_master       direct_url    200 
-158  Song TV                       Music               OK      dash             direct_url    200 
+158  Song TV                       Music               DEAD    all_urls_failed  dead          -   
 159  Vevo 2k                       Music               OK      hls_master       direct_url    200 
 160  Vevo '90s & '00s              Music               OK      hls_master       direct_url    200 
 161  Now 90s00s                    Music               OK      hls_media        wrapper_kept  200 
@@ -317,7 +317,7 @@ No   Channel                       Group               Status  StreamType       
 163  Totalmusic                    Music               DEAD    wrapper_api_404  dead          404 
 
 ==================================================================================================
- GROUP: Movies  (10 active  14 dead)
+ GROUP: Movies  (11 active  13 dead)
 ==================================================================================================
 No   Channel                       Group               Status  StreamType       MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ---------------  ------------  ----
@@ -333,7 +333,7 @@ No   Channel                       Group               Status  StreamType       
 173  Universal Movie               Movies              OK      hls_master       direct_url    200 
 174  Cinemax                       Movies              OK      hls_master       direct_url    200 
 175  Hallmark Channel              Movies              OK      hls_master       direct_url    200 
-176  HBO                           Movies              DEAD    all_urls_failed  dead          -   
+176  HBO                           Movies              OK      mpeg_ts          direct_url    200 
 177  HBO 2                         Movies              OK      mpeg_ts          direct_url    200 
 178  HBO Movies                    Movies              DEAD    wrapper_api_404  dead          404 
 179  HBO Movies 2                  Movies              DEAD    wrapper_api_404  dead          404 
