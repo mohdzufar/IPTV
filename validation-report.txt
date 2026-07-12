@@ -1,9 +1,9 @@
 ==================================================================================================
  IPTV Playlist Validation Report
 ==================================================================================================
- Generated : 2026-07-12 16:40:18 MYT
+ Generated : 2026-07-12 23:12:18 MYT
  Source    : Channels/Flatten.m3u8
- Run time  : 8m 25s
+ Run time  : 12m 7s
 
  Total     : 228
  Active    : 144  (wrapper_kept=28  direct_url=116)
@@ -36,7 +36,7 @@ No   Channel                       Group               Status  StreamType       
 5    TV9                           Malaysia            OK      hls_master       direct_url    200 
 6    Drama Sangat                  Malaysia            OK      hls_master       direct_url    200 
 7    TV6                           Malaysia            DEAD    all_urls_failed  dead          -   
-8    8TV                           Malaysia            DEAD    all_urls_failed  dead          -   
+8    8TV                           Malaysia            DEAD    wrapper_api_502  dead          502 
 9    Okey TV                       Malaysia            OK      hls_media        wrapper_kept  200 
 14   TV IKIM                       Malaysia            OK      hls_media        wrapper_kept  200 
 16   RTM World                     Malaysia            OK      hls_media        wrapper_kept  200 
@@ -264,7 +264,7 @@ No   Channel                       Group               Status  StreamType       
 71   Nickelodeon Asia              Indonesia;Kids      DEAD    all_urls_failed  dead          -   
 
 ==================================================================================================
- GROUP: Golf  (11 active  2 dead)
+ GROUP: Golf  (10 active  3 dead)
 ==================================================================================================
 No   Channel                       Group               Status  StreamType       MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ---------------  ------------  ----
@@ -279,7 +279,7 @@ No   Channel                       Group               Status  StreamType       
 82   DP World Tour                 Golf                DEAD    all_urls_failed  dead          -   
 83   Golf Television               Golf                OK      hls_master       direct_url    200 
 84   SBS_Golf                      Golf                OK      hls_master       direct_url    200 
-85   SBS_Golf_2                    Golf                OK      hls_master       direct_url    200 
+85   SBS_Golf_2                    Golf                DEAD    all_urls_failed  dead          -   
 86   Sky Sport Golf                Golf                OK      mpeg_ts          direct_url    200 
 
 ==================================================================================================
@@ -300,7 +300,7 @@ No   Channel                       Group               Status  StreamType       
 152  DotA2                         E-Sports            DEAD    all_urls_failed  dead          -   
 
 ==================================================================================================
- GROUP: Music  (8 active  3 dead)
+ GROUP: Music  (9 active  2 dead)
 ==================================================================================================
 No   Channel                       Group               Status  StreamType       MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ---------------  ------------  ----
@@ -309,7 +309,7 @@ No   Channel                       Group               Status  StreamType       
 155  K POP by CJ ENM               Music               OK      hls_master       direct_url    200 
 156  Music Japan                   Music               OK      hls_master       direct_url    200 
 157  Music India                   Music               OK      hls_master       direct_url    200 
-158  Song TV                       Music               DEAD    all_urls_failed  dead          -   
+158  Song TV                       Music               OK      dash             direct_url    200 
 159  Vevo 2k                       Music               OK      hls_master       direct_url    200 
 160  Vevo '90s & '00s              Music               OK      hls_master       direct_url    200 
 161  Now 90s00s                    Music               OK      hls_media        wrapper_kept  200 
