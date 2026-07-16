@@ -1,14 +1,14 @@
 ==================================================================================================
  IPTV Playlist Validation Report
 ==================================================================================================
- Generated : 2026-07-16 20:18:51 MYT
+ Generated : 2026-07-16 23:48:34 MYT
  Source    : Channels/Flatten.m3u8
- Run time  : 7m 34s
+ Run time  : 10m 47s
 
  Total     : 228
- Active    : 144  (wrapper_kept=27  direct_url=117)
- Dead      : 84
- Success   : 63.2%
+ Active    : 143  (wrapper_kept=27  direct_url=116)
+ Dead      : 85
+ Success   : 62.7%
 
  Status  : OK = active   DEAD = failed
  Type    : hls_media = HLS segment playlist
@@ -69,7 +69,7 @@ No   Channel                       Group               Status  StreamType       
 67   NHK World-Japan               Malaysia            OK      hls_master       direct_url    200 
 
 ==================================================================================================
- GROUP: Sports  (32 active  35 dead)
+ GROUP: Sports  (31 active  36 dead)
 ==================================================================================================
 No   Channel                       Group               Status  StreamType       MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ---------------  ------------  ----
@@ -85,7 +85,7 @@ No   Channel                       Group               Status  StreamType       
 91   Sky Sports Main Events        Sports              DEAD    all_urls_failed  dead          -   
 92   Sky Sports Action             Sports              DEAD    all_urls_failed  dead          -   
 93   Sky Sport Premier League      Sports              OK      hls_master       direct_url    200 
-94   Sky Sport Football            Sports              OK      mpeg_ts          direct_url    200 
+94   Sky Sport Football            Sports              DEAD    all_urls_failed  dead          -   
 95   Sky Sport F1                  Sports              DEAD    all_urls_failed  dead          -   
 96   Sky Sports Arena              Sports              DEAD    all_urls_failed  dead          -   
 97   Sky Sports Racing             Sports              DEAD    all_urls_failed  dead          -   
