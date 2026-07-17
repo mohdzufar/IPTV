@@ -1,14 +1,14 @@
 ==================================================================================================
  IPTV Playlist Validation Report
 ==================================================================================================
- Generated : 2026-07-17 23:26:32 MYT
+ Generated : 2026-07-18 07:09:56 MYT
  Source    : Channels/Flatten.m3u8
- Run time  : 7m 50s
+ Run time  : 8m 39s
 
  Total     : 228
- Active    : 143  (wrapper_kept=27  direct_url=116)
- Dead      : 85
- Success   : 62.7%
+ Active    : 142  (wrapper_kept=27  direct_url=115)
+ Dead      : 86
+ Success   : 62.3%
 
  Status  : OK = active   DEAD = failed
  Type    : hls_media = HLS segment playlist
@@ -69,7 +69,7 @@ No   Channel                       Group               Status  StreamType       
 67   NHK World-Japan               Malaysia            OK      hls_master       direct_url    200 
 
 ==================================================================================================
- GROUP: Sports  (31 active  36 dead)
+ GROUP: Sports  (32 active  35 dead)
 ==================================================================================================
 No   Channel                       Group               Status  StreamType       MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ---------------  ------------  ----
@@ -115,7 +115,7 @@ No   Channel                       Group               Status  StreamType       
 121  Tennis Channel                Sports              OK      hls_master       direct_url    200 
 122  Tennis Channel 2              Sports              OK      hls_master       direct_url    200 
 123  MLB                           Sports              OK      hls_master       direct_url    200 
-124  MMA-TV International          Sports              DEAD    all_urls_failed  dead          -   
+124  MMA-TV International          Sports              OK      hls_master       direct_url    200 
 125  FOX NFL                       Sports              OK      hls_master       direct_url    200 
 126  NHL                           Sports              OK      hls_master       direct_url    200 
 127  UEFA Champion League          Sports              OK      hls_master       direct_url    200 
@@ -248,11 +248,11 @@ No   Channel                       Group               Status  StreamType       
 69   Aniplus Asia                  Singapore;Anime     DEAD    all_urls_failed  dead          -   
 
 ==================================================================================================
- GROUP: Kids  (2 active  1 dead)
+ GROUP: Kids  (1 active  2 dead)
 ==================================================================================================
 No   Channel                       Group               Status  StreamType       MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ---------------  ------------  ----
-70   Cartoon Network               Kids                OK      hls_master       direct_url    200 
+70   Cartoon Network               Kids                DEAD    all_urls_failed  dead          -   
 72   Disney Channel                Kids                DEAD    all_urls_failed  dead          -   
 73   Disney XD                     Kids                OK      hls_master       direct_url    200 
 
@@ -365,13 +365,13 @@ No   Channel                       Group               Status  StreamType       
 208  NatureTime                    Nature              DEAD    all_urls_failed  dead          -   
 
 ==================================================================================================
- GROUP: Ungrouped  (3 active  2 dead)
+ GROUP: Ungrouped  (2 active  3 dead)
 ==================================================================================================
 No   Channel                       Group               Status  StreamType       MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ---------------  ------------  ----
 209  Bob Ross Channel              -                   OK      hls_master       direct_url    200 
 211  Documentary+                  -                   OK      hls_master       direct_url    200 
-212  Discovery Channel             -                   OK      hls_master       direct_url    200 
+212  Discovery Channel             -                   DEAD    all_urls_failed  dead          -   
 213  Discovery Life                -                   DEAD    all_urls_failed  dead          -   
 214  Discovery Science             -                   DEAD    all_urls_failed  dead          -   
 
