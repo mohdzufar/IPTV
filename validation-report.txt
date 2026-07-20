@@ -1,14 +1,14 @@
 ==================================================================================================
  IPTV Playlist Validation Report
 ==================================================================================================
- Generated : 2026-07-20 17:39:51 MYT
+ Generated : 2026-07-21 00:03:19 MYT
  Source    : Channels/Flatten.m3u8
- Run time  : 8m 11s
+ Run time  : 7m 25s
 
  Total     : 228
- Active    : 144  (wrapper_kept=27  direct_url=117)
- Dead      : 84
- Success   : 63.2%
+ Active    : 143  (wrapper_kept=27  direct_url=116)
+ Dead      : 85
+ Success   : 62.7%
 
  Status  : OK = active   DEAD = failed
  Type    : hls_media = HLS segment playlist
@@ -317,7 +317,7 @@ No   Channel                       Group               Status  StreamType       
 163  Totalmusic                    Music               DEAD    wrapper_api_404  dead          404 
 
 ==================================================================================================
- GROUP: Movies  (11 active  13 dead)
+ GROUP: Movies  (10 active  14 dead)
 ==================================================================================================
 No   Channel                       Group               Status  StreamType       MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ---------------  ------------  ----
@@ -333,7 +333,7 @@ No   Channel                       Group               Status  StreamType       
 173  Universal Movie               Movies              OK      hls_master       direct_url    200 
 174  Cinemax                       Movies              OK      hls_master       direct_url    200 
 175  Hallmark Channel              Movies              OK      hls_master       direct_url    200 
-176  HBO                           Movies              OK      mpeg_ts          direct_url    200 
+176  HBO                           Movies              DEAD    all_urls_failed  dead          -   
 177  HBO 2                         Movies              OK      mpeg_ts          direct_url    200 
 178  HBO Movies                    Movies              DEAD    wrapper_api_404  dead          404 
 179  HBO Movies 2                  Movies              DEAD    wrapper_api_404  dead          404 
