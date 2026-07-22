@@ -1,14 +1,14 @@
 ==================================================================================================
  IPTV Playlist Validation Report
 ==================================================================================================
- Generated : 2026-07-22 07:16:39 MYT
+ Generated : 2026-07-22 16:52:20 MYT
  Source    : Channels/Flatten.m3u8
- Run time  : 7m 26s
+ Run time  : 8m 5s
 
  Total     : 228
- Active    : 144  (wrapper_kept=27  direct_url=117)
- Dead      : 84
- Success   : 63.2%
+ Active    : 141  (wrapper_kept=26  direct_url=115)
+ Dead      : 87
+ Success   : 61.8%
 
  Status  : OK = active   DEAD = failed
  Type    : hls_media = HLS segment playlist
@@ -69,11 +69,11 @@ No   Channel                       Group               Status  StreamType       
 67   NHK World-Japan               Malaysia            OK      hls_master       direct_url    200 
 
 ==================================================================================================
- GROUP: Sports  (32 active  35 dead)
+ GROUP: Sports  (31 active  36 dead)
 ==================================================================================================
 No   Channel                       Group               Status  StreamType       MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ---------------  ------------  ----
-10   RTM Sukan                     Sports              OK      hls_media        wrapper_kept  200 
+10   RTM Sukan                     Sports              DEAD    all_urls_failed  dead          -   
 11   RTM World Cup 1               Sports              DEAD    all_urls_failed  dead          -   
 12   RTM World Cup 2               Sports              DEAD    all_urls_failed  dead          -   
 13   RTM World Cup 3               Sports              DEAD    all_urls_failed  dead          -   
@@ -264,7 +264,7 @@ No   Channel                       Group               Status  StreamType       
 71   Nickelodeon Asia              Indonesia;Kids      DEAD    all_urls_failed  dead          -   
 
 ==================================================================================================
- GROUP: Golf  (11 active  2 dead)
+ GROUP: Golf  (9 active  4 dead)
 ==================================================================================================
 No   Channel                       Group               Status  StreamType       MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ---------------  ------------  ----
@@ -278,8 +278,8 @@ No   Channel                       Group               Status  StreamType       
 81   PGA Tour                      Golf                OK      hls_master       direct_url    200 
 82   DP World Tour                 Golf                DEAD    all_urls_failed  dead          -   
 83   Golf Television               Golf                OK      hls_master       direct_url    200 
-84   SBS_Golf                      Golf                OK      hls_master       direct_url    200 
-85   SBS_Golf_2                    Golf                OK      hls_master       direct_url    200 
+84   SBS_Golf                      Golf                DEAD    all_urls_failed  dead          -   
+85   SBS_Golf_2                    Golf                DEAD    all_urls_failed  dead          -   
 86   Sky Sport Golf                Golf                OK      mpeg_ts          direct_url    200 
 
 ==================================================================================================
