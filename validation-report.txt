@@ -1,14 +1,14 @@
 ==================================================================================================
  IPTV Playlist Validation Report
 ==================================================================================================
- Generated : 2026-08-10 23:12:03 MYT
+ Generated : 2026-08-11 06:59:55 MYT
  Source    : Channels/Flatten.m3u8
- Run time  : 8m 44s
+ Run time  : 8m 38s
 
  Total     : 228
- Active    : 139  (wrapper_kept=25  direct_url=114)
- Dead      : 89
- Success   : 61.0%
+ Active    : 137  (wrapper_kept=25  direct_url=112)
+ Dead      : 91
+ Success   : 60.1%
 
  Status  : OK = active   DEAD = failed
  Type    : hls_media = HLS segment playlist
@@ -25,7 +25,7 @@
            GitHub API to read the token refreshed earlier in this run.
 
 ==================================================================================================
- GROUP: Malaysia  (34 active  4 dead)
+ GROUP: Malaysia  (33 active  5 dead)
 ==================================================================================================
 No   Channel                       Group               Status  StreamType       MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ---------------  ------------  ----
@@ -65,11 +65,11 @@ No   Channel                       Group               Status  StreamType       
 42   Travel & Taste                Malaysia            OK      dash             direct_url    200 
 43   Drama Hebat                   Malaysia            OK      dash             direct_url    200 
 44   Jom Ngaji                     Malaysia            OK      dash             direct_url    200 
-45   Oh My Ceria!                  Malaysia            OK      dash             direct_url    200 
+45   Oh My Ceria!                  Malaysia            DEAD    all_urls_failed  dead          -   
 67   NHK World-Japan               Malaysia            OK      hls_master       direct_url    200 
 
 ==================================================================================================
- GROUP: Sports  (30 active  37 dead)
+ GROUP: Sports  (29 active  38 dead)
 ==================================================================================================
 No   Channel                       Group               Status  StreamType       MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ---------------  ------------  ----
@@ -115,7 +115,7 @@ No   Channel                       Group               Status  StreamType       
 121  Tennis Channel                Sports              OK      hls_master       direct_url    200 
 122  Tennis Channel 2              Sports              OK      hls_master       direct_url    200 
 123  MLB                           Sports              OK      hls_master       direct_url    200 
-124  MMA-TV International          Sports              OK      hls_master       direct_url    200 
+124  MMA-TV International          Sports              DEAD    all_urls_failed  dead          -   
 125  FOX NFL                       Sports              OK      hls_master       direct_url    200 
 126  NHL                           Sports              OK      hls_master       direct_url    200 
 127  UEFA Champion League          Sports              OK      hls_master       direct_url    200 
