@@ -35,13 +35,15 @@ INTERACTION_INTERVAL   = 3
 #                   (tuple of strings; any match is accepted)
 CHANNELS = [
     {
-        "display_name": "TV3",
-        "folder_name":  "TV3",
-        "file_name":    "TV3.m3u8",
+        "display_name":    "TV3",
+        "folder_name":     "TV3",
+        "file_name":       "TV3.m3u8",
         # TV3 now sourced from malaysia-tv.net (BunnyCDN stream)
-        "page_url":     "https://malaysia-tv.net/tv3-live/",
-        "referer":      "https://malaysia-tv.net/",
-        "stream_domain": ("b-cdn.net",),
+        # No login required — skip the login check to avoid false positives.
+        "page_url":        "https://malaysia-tv.net/tv3-live/",
+        "referer":         "https://malaysia-tv.net/",
+        "stream_domain":   ("b-cdn.net",),
+        "skip_login_check": True,
     },
     {
         "display_name": "Didik TV",
@@ -320,13 +322,15 @@ def capture_stream_url(context, channel, debug=False):
 
         page.wait_for_timeout(3000)
 
-        if is_login_required(page):
+        if channel.get("skip_login_check", False):
+            log("    Login/session check: SKIPPED (no login required for this source)")
+        elif is_login_required(page):
             log("    Login/session check: FAILED (redirected to login or login form detected)")
             if debug:
                 save_debug_artifacts(page, channel["display_name"], "login_failed")
             return None, "login_required"
-
-        log("    Login/session check: OK")
+        else:
+            log("    Login/session check: OK")
 
         try:
             log(f"    Page title: {page.title()}")
