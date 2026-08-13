@@ -16,7 +16,8 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 TONTON_ROOT = REPO_ROOT / "Channels" / "TONTON"
 DEBUG_DIR = REPO_ROOT / "debug_tonton"
 
-REFERER = "https://watch.tonton.com.my/"
+# Default referer/UA for TONTON channels
+REFERER    = "https://watch.tonton.com.my/"
 USER_AGENT = (
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
     "AppleWebKit/537.36 (KHTML, like Gecko) "
@@ -24,33 +25,47 @@ USER_AGENT = (
 )
 
 INITIAL_SETTLE_SECONDS = 8
-TOKEN_WAIT_SECONDS = 60
-INTERACTION_INTERVAL = 3
+TOKEN_WAIT_SECONDS     = 60
+INTERACTION_INTERVAL   = 3
 
+# Each channel can override:
+#   page_url      - the page Playwright navigates to
+#   referer       - the Referer header sent by the browser (used in wrapper #EXTVLCOPT)
+#   stream_domain - substring(s) the captured .m3u8 URL must contain
+#                   (tuple of strings; any match is accepted)
 CHANNELS = [
     {
         "display_name": "TV3",
-        "folder_name": "TV3",
-        "file_name": "TV3.m3u8",
-        "page_url": "https://watch.tonton.com.my/live/tv3",
+        "folder_name":  "TV3",
+        "file_name":    "TV3.m3u8",
+        # TV3 now sourced from malaysia-tv.net (BunnyCDN stream)
+        "page_url":     "https://malaysia-tv.net/tv3-live/",
+        "referer":      "https://malaysia-tv.net/",
+        "stream_domain": ("b-cdn.net",),
     },
     {
         "display_name": "Didik TV",
-        "folder_name": "DidikTV",
-        "file_name": "DidikTV.m3u8",
-        "page_url": "https://watch.tonton.com.my/live/ntv7",
+        "folder_name":  "DidikTV",
+        "file_name":    "DidikTV.m3u8",
+        "page_url":     "https://watch.tonton.com.my/live/ntv7",
+        "referer":      REFERER,
+        "stream_domain": ("tonton.com.my",),
     },
     {
         "display_name": "TV9",
-        "folder_name": "TV9",
-        "file_name": "TV9.m3u8",
-        "page_url": "https://watch.tonton.com.my/live/tv9",
+        "folder_name":  "TV9",
+        "file_name":    "TV9.m3u8",
+        "page_url":     "https://watch.tonton.com.my/live/tv9",
+        "referer":      REFERER,
+        "stream_domain": ("tonton.com.my",),
     },
     {
         "display_name": "Drama Sangat",
-        "folder_name": "Drama Sangat",
-        "file_name": "Drama Sangat.m3u8",
-        "page_url": "https://watch.tonton.com.my/live/ds",
+        "folder_name":  "Drama Sangat",
+        "file_name":    "Drama Sangat.m3u8",
+        "page_url":     "https://watch.tonton.com.my/live/ds",
+        "referer":      REFERER,
+        "stream_domain": ("tonton.com.my",),
     },
 ]
 
@@ -106,7 +121,6 @@ def is_login_required(page):
     current_url = page.url.lower()
     if any(x in current_url for x in ("login", "signin", "sign-in", "auth")):
         return True
-
     for selector in LOGIN_HINT_SELECTORS:
         try:
             loc = page.locator(selector)
@@ -114,7 +128,6 @@ def is_login_required(page):
                 return True
         except Exception:
             pass
-
     return False
 
 
@@ -129,16 +142,27 @@ def dismiss_overlays(page):
             pass
 
 
-def is_ignored_stream(url):
+def is_ignored_stream(url, stream_domain):
+    """
+    Return True if this URL should be ignored.
+    A URL is kept only if it contains .m3u8 AND matches one of the
+    channel's expected stream_domain values.
+    """
     lower = url.lower()
     if ".m3u8" not in lower:
         return True
-    return any(bad in lower for bad in IGNORE_URL_KEYWORDS)
+    if any(bad in lower for bad in IGNORE_URL_KEYWORDS):
+        return True
+    # Must come from one of the expected stream domains for this channel
+    if not any(domain in lower for domain in stream_domain):
+        return True
+    return False
 
 
 def create_or_replace_subfolder(channel, new_url):
     """
     Create (or overwrite) the wrapper .m3u8 file with the fresh token URL.
+    Uses the channel's own referer so the TV app sends the correct header.
     This is the ONLY output of this script. validate_and_update.py reads
     this wrapper later via the GitHub API to decide live/dead.
     """
@@ -146,9 +170,10 @@ def create_or_replace_subfolder(channel, new_url):
     folder.mkdir(parents=True, exist_ok=True)
 
     file_path = folder / channel["file_name"]
+    ch_referer = channel.get("referer", REFERER)
     content = (
         "#EXTM3U\n"
-        f"#EXTVLCOPT:http-referrer={REFERER}\n"
+        f"#EXTVLCOPT:http-referrer={ch_referer}\n"
         f"#EXTVLCOPT:http-user-agent={USER_AGENT}\n"
         f"#EXTINF:1,{channel['display_name']}\n"
         f"{new_url}\n"
@@ -165,8 +190,8 @@ def save_debug_artifacts(page, channel_name, tag):
 
     safe_name = channel_name.replace(" ", "_").replace("!", "")
     screenshot_path = DEBUG_DIR / f"{safe_name}_{tag}.png"
-    info_path = DEBUG_DIR / f"{safe_name}_{tag}.txt"
-    html_path = DEBUG_DIR / f"{safe_name}_{tag}.html"
+    info_path       = DEBUG_DIR / f"{safe_name}_{tag}.txt"
+    html_path       = DEBUG_DIR / f"{safe_name}_{tag}.html"
 
     try:
         page.screenshot(path=str(screenshot_path), full_page=True)
@@ -185,14 +210,12 @@ def save_debug_artifacts(page, channel_name, tag):
 
     try:
         info_path.write_text(
-            "\n".join(
-                [
-                    f"URL: {page.url}",
-                    f"Title: {title}",
-                    f"Frames: {len(frame_urls)}",
-                    *frame_urls,
-                ]
-            ),
+            "\n".join([
+                f"URL: {page.url}",
+                f"Title: {title}",
+                f"Frames: {len(frame_urls)}",
+                *frame_urls,
+            ]),
             encoding="utf-8",
         )
     except Exception:
@@ -264,15 +287,16 @@ def try_play_interactions(page, debug=False):
 
 
 def capture_stream_url(context, channel, debug=False):
-    token_url = None
-    page = context.new_page()
+    token_url   = None
+    stream_domain = channel["stream_domain"]
+    page        = context.new_page()
 
     def handle_request(request):
         nonlocal token_url
         if token_url:
             return
         url = request.url
-        if is_ignored_stream(url):
+        if is_ignored_stream(url, stream_domain):
             return
         token_url = url
 
@@ -281,11 +305,11 @@ def capture_stream_url(context, channel, debug=False):
         if token_url:
             return
         url = response.url
-        if is_ignored_stream(url):
+        if is_ignored_stream(url, stream_domain):
             return
         token_url = url
 
-    page.on("request", handle_request)
+    page.on("request",  handle_request)
     page.on("response", handle_response)
 
     try:
@@ -319,14 +343,12 @@ def capture_stream_url(context, channel, debug=False):
         while time.time() - settle_start < INITIAL_SETTLE_SECONDS:
             if token_url:
                 return token_url, "ok"
-
             try:
                 video_src = page.evaluate("document.querySelector('video')?.src")
-                if video_src and not is_ignored_stream(video_src):
+                if video_src and not is_ignored_stream(video_src, stream_domain):
                     return video_src, "ok"
             except Exception:
                 pass
-
             page.wait_for_timeout(1000)
 
         dismiss_overlays(page)
@@ -340,7 +362,7 @@ def capture_stream_url(context, channel, debug=False):
         else:
             log("    No play control found after settle delay, continuing retry loop...")
 
-        capture_start = time.time()
+        capture_start    = time.time()
         last_interaction = -999
 
         while time.time() - capture_start < TOKEN_WAIT_SECONDS:
@@ -356,7 +378,7 @@ def capture_stream_url(context, channel, debug=False):
 
             try:
                 video_src = page.evaluate("document.querySelector('video')?.src")
-                if video_src and not is_ignored_stream(video_src):
+                if video_src and not is_ignored_stream(video_src, stream_domain):
                     return video_src, "ok"
             except Exception:
                 pass
@@ -390,7 +412,7 @@ def main():
     )
 
     success_count = 0
-    failed_count = 0
+    failed_count  = 0
     login_invalid = False
 
     log("=" * 60)
@@ -423,7 +445,8 @@ def main():
 
             for index, channel in enumerate(CHANNELS, start=1):
                 log(f"\n[{index}/{len(CHANNELS)}] {channel['display_name']}")
-                log(f"    Page: {channel['page_url']}")
+                log(f"    Page   : {channel['page_url']}")
+                log(f"    Domain : {channel['stream_domain']}")
 
                 token_url, status = capture_stream_url(context, channel, debug=debug)
 
