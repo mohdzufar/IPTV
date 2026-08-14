@@ -1,14 +1,14 @@
 ==================================================================================================
  IPTV Playlist Validation Report
 ==================================================================================================
- Generated : 2026-08-14 07:05:34 MYT
+ Generated : 2026-08-14 15:56:47 MYT
  Source    : Channels/Flatten.m3u8
- Run time  : 8m 13s
+ Run time  : 8m 3s
 
  Total     : 228
- Active    : 139  (wrapper_kept=25  direct_url=114)
- Dead      : 89
- Success   : 61.0%
+ Active    : 135  (wrapper_kept=21  direct_url=114)
+ Dead      : 93
+ Success   : 59.2%
 
  Status  : OK = active   DEAD = failed
  Type    : hls_media = HLS segment playlist
@@ -25,7 +25,7 @@
            GitHub API to read the token refreshed earlier in this run.
 
 ==================================================================================================
- GROUP: Malaysia  (34 active  4 dead)
+ GROUP: Malaysia  (30 active  8 dead)
 ==================================================================================================
 No   Channel                       Group               Status  StreamType       MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ---------------  ------------  ----
@@ -39,7 +39,7 @@ No   Channel                       Group               Status  StreamType       
 8    8TV                           Malaysia            DEAD    all_urls_failed  dead          -   
 9    Okey TV                       Malaysia            OK      hls_media        wrapper_kept  200 
 14   TV IKIM                       Malaysia            DEAD    all_urls_failed  dead          -   
-16   RTM World                     Malaysia            OK      hls_media        wrapper_kept  200 
+16   RTM World                     Malaysia            DEAD    all_urls_failed  dead          -   
 20   Al-Hijrah                     Malaysia            OK      hls_master       direct_url    200 
 21   EnjoyTV                       Malaysia            OK      hls_master       direct_url    200 
 22   BorneoTV                      Malaysia            OK      hls_master       direct_url    200 
@@ -49,8 +49,8 @@ No   Channel                       Group               Status  StreamType       
 26   SukanPlus                     Malaysia            OK      hls_master       direct_url    200 
 27   Bernama                       Malaysia            OK      hls_master       direct_url    200 
 28   Free Movies                   Malaysia            OK      hls_master       direct_url    200 
-29   Dewan Rakyat                  Malaysia            OK      hls_media        wrapper_kept  200 
-30   Dewan Negara                  Malaysia            OK      hls_media        wrapper_kept  200 
+29   Dewan Rakyat                  Malaysia            DEAD    all_urls_failed  dead          -   
+30   Dewan Negara                  Malaysia            DEAD    all_urls_failed  dead          -   
 31   RTM Snap                      Malaysia            OK      hls_media        wrapper_kept  200 
 32   RTM Lead                      Malaysia            OK      hls_media        wrapper_kept  200 
 33   RTM Apetito                   Malaysia            OK      hls_media        wrapper_kept  200 
@@ -58,7 +58,7 @@ No   Channel                       Group               Status  StreamType       
 35   RTM Junior                    Malaysia            OK      hls_media        wrapper_kept  200 
 36   RTM Roll                      Malaysia            OK      hls_media        wrapper_kept  200 
 37   RTM Aura                      Malaysia            OK      hls_media        wrapper_kept  200 
-38   Salam Baitullah 2026          Malaysia            OK      hls_media        wrapper_kept  200 
+38   Salam Baitullah 2026          Malaysia            DEAD    all_urls_failed  dead          -   
 39   Filem Mantap                  Malaysia            OK      dash             direct_url    200 
 40   Lawak Sentral                 Malaysia            OK      dash             direct_url    200 
 41   Drama Hotpot                  Malaysia            OK      dash             direct_url    200 
