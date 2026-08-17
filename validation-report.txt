@@ -1,14 +1,14 @@
 ==================================================================================================
  IPTV Playlist Validation Report
 ==================================================================================================
- Generated : 2026-08-17 16:39:14 MYT
+ Generated : 2026-08-18 07:07:07 MYT
  Source    : Channels/Flatten.m3u8
- Run time  : 7m 57s
+ Run time  : 8m 59s
 
  Total     : 228
- Active    : 136  (wrapper_kept=21  direct_url=115)
- Dead      : 92
- Success   : 59.6%
+ Active    : 135  (wrapper_kept=21  direct_url=114)
+ Dead      : 93
+ Success   : 59.2%
 
  Status  : OK = active   DEAD = failed
  Type    : hls_media = HLS segment playlist
@@ -226,12 +226,12 @@ No   Channel                       Group               Status  StreamType       
 64   tvN Movies                    Indonesia;Movies    OK      hls_master       direct_url    200 
 
 ==================================================================================================
- GROUP: Brunei  (1 active  1 dead)
+ GROUP: Brunei  (0 active  2 dead)
 ==================================================================================================
 No   Channel                       Group               Status  StreamType       MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ---------------  ------------  ----
 65   RTB Aneka                     Brunei              DEAD    all_urls_failed  dead          -   
-66   RTB Sukmaindera               Brunei              OK      hls_master       direct_url    200 
+66   RTB Sukmaindera               Brunei              DEAD    all_urls_failed  dead          -   
 
 ==================================================================================================
  GROUP: United State;Anime  (1 active  0 dead)
