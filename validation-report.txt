@@ -1,9 +1,9 @@
 ==================================================================================================
  IPTV Playlist Validation Report
 ==================================================================================================
- Generated : 2026-08-18 22:40:09 MYT
+ Generated : 2026-08-19 06:39:47 MYT
  Source    : Channels/Flatten.m3u8
- Run time  : 8m 15s
+ Run time  : 8m 10s
 
  Total     : 228
  Active    : 135  (wrapper_kept=21  direct_url=114)
