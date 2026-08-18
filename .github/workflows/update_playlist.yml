@@ -15,9 +15,26 @@ jobs:
     runs-on: self-hosted
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v5
-        with:
-          fetch-depth: 0
+        shell: powershell
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Self-hosted runner already has the repo cloned locally.
+          # Use plain git commands instead of actions/checkout to avoid
+          # hitting GitHub CDN rate limits (429 Too Many Requests).
+          git remote set-url origin https://x-access-token:$env:GITHUB_TOKEN@github.com/mohdzufar/IPTV.git
+          git fetch origin main
+          if ($LASTEXITCODE -ne 0) {
+              Write-Host "ERROR: git fetch failed."
+              exit 1
+          }
+          git reset --hard origin/main
+          if ($LASTEXITCODE -ne 0) {
+              Write-Host "ERROR: git reset failed."
+              exit 1
+          }
+          git clean -fd
+          Write-Host "Checkout complete."
       - name: Set up Python
         uses: actions/setup-python@v6
         with:
