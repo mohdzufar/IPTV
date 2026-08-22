@@ -1,9 +1,9 @@
 ==================================================================================================
  IPTV Playlist Validation Report
 ==================================================================================================
- Generated : 2026-08-22 22:32:36 MYT
+ Generated : 2026-08-23 06:37:53 MYT
  Source    : Channels/Flatten.m3u8
- Run time  : 12m 0s
+ Run time  : 7m 55s
 
  Total     : 228
  Active    : 133  (wrapper_kept=21  direct_url=112)
@@ -76,7 +76,7 @@ No   Channel                       Group               Status  StreamType       
 10   RTM Sukan                     Sports              DEAD    all_urls_failed  dead          -   
 11   RTM World Cup 1               Sports              DEAD    all_urls_failed  dead          -   
 12   RTM World Cup 2               Sports              DEAD    all_urls_failed  dead          -   
-13   RTM World Cup 3               Sports              DEAD    all_urls_failed  dead          -   
+13   RTM World Cup 3               Sports              DEAD    wrapper_api_0    dead          0   
 18   Astro Arena Bola              Sports              DEAD    all_urls_failed  dead          -   
 19   Astro Arena Bola 2            Sports              DEAD    all_urls_failed  dead          -   
 88   Sky Sports (UK)               Sports              DEAD    all_urls_failed  dead          -   
