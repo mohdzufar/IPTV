@@ -1,14 +1,14 @@
 ==================================================================================================
  IPTV Playlist Validation Report
 ==================================================================================================
- Generated : 2026-08-23 22:30:12 MYT
+ Generated : 2026-08-24 15:23:22 MYT
  Source    : Channels/Flatten.m3u8
- Run time  : 7m 45s
+ Run time  : 12m 49s
 
  Total     : 228
- Active    : 132  (wrapper_kept=21  direct_url=111)
- Dead      : 96
- Success   : 57.9%
+ Active    : 133  (wrapper_kept=21  direct_url=112)
+ Dead      : 95
+ Success   : 58.3%
 
  Status  : OK = active   DEAD = failed
  Type    : hls_media = HLS segment playlist
@@ -166,7 +166,7 @@ No   Channel                       Group               Status  StreamType       
 46   Quran (Mecca)                 Muslim              OK      hls_master       direct_url    200 
 
 ==================================================================================================
- GROUP: Singapore  (2 active  8 dead)
+ GROUP: Singapore  (3 active  7 dead)
 ==================================================================================================
 No   Channel                       Group               Status  StreamType       MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ---------------  ------------  ----
@@ -178,7 +178,7 @@ No   Channel                       Group               Status  StreamType       
 53   meWATCH LIVE 1                Singapore           OK      dash             direct_url    200 
 56   TechStorm                     Singapore           DEAD    all_urls_failed  dead          -   
 59   TVBS Asia                     Singapore           OK      hls_master       direct_url    200 
-60   MediaCorp (English)           Singapore           DEAD    all_urls_failed  dead          -   
+60   MediaCorp (English)           Singapore           OK      hls_master       direct_url    200 
 61   MediaCorp (Tamil)             Singapore           DEAD    all_urls_failed  dead          -   
 
 ==================================================================================================
