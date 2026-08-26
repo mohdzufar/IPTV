@@ -1,14 +1,14 @@
 ==================================================================================================
  IPTV Playlist Validation Report
 ==================================================================================================
- Generated : 2026-08-26 15:12:08 MYT
+ Generated : 2026-08-26 22:55:00 MYT
  Source    : Channels/Flatten.m3u8
- Run time  : 12m 14s
+ Run time  : 11m 47s
 
  Total     : 228
- Active    : 133  (wrapper_kept=21  direct_url=112)
- Dead      : 95
- Success   : 58.3%
+ Active    : 132  (wrapper_kept=21  direct_url=111)
+ Dead      : 96
+ Success   : 57.9%
 
  Status  : OK = active   DEAD = failed
  Type    : hls_media = HLS segment playlist
@@ -25,7 +25,7 @@
            GitHub API to read the token refreshed earlier in this run.
 
 ==================================================================================================
- GROUP: Malaysia  (29 active  9 dead)
+ GROUP: Malaysia  (28 active  10 dead)
 ==================================================================================================
 No   Channel                       Group               Status  StreamType       MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ---------------  ------------  ----
@@ -41,7 +41,7 @@ No   Channel                       Group               Status  StreamType       
 14   TV IKIM                       Malaysia            DEAD    all_urls_failed  dead          -   
 16   RTM World                     Malaysia            DEAD    all_urls_failed  dead          -   
 20   Al-Hijrah                     Malaysia            OK      hls_master       direct_url    200 
-21   EnjoyTV                       Malaysia            OK      hls_master       direct_url    200 
+21   EnjoyTV                       Malaysia            DEAD    all_urls_failed  dead          -   
 22   BorneoTV                      Malaysia            OK      hls_master       direct_url    200 
 23   SelangorTV                    Malaysia            OK      hls_master       direct_url    200 
 24   SukeTV                        Malaysia            DEAD    all_urls_failed  dead          -   
