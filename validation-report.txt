@@ -1,14 +1,14 @@
 ==================================================================================================
  IPTV Playlist Validation Report
 ==================================================================================================
- Generated : 2026-09-21 20:41:11 MYT
+ Generated : 2026-09-22 03:15:39 MYT
  Source    : Channels/Flatten.m3u8
- Run time  : 10m 53s
+ Run time  : 10m 19s
 
  Total     : 228
- Active    : 127  (wrapper_kept=22  direct_url=105)
- Dead      : 101
- Success   : 55.7%
+ Active    : 126  (wrapper_kept=22  direct_url=104)
+ Dead      : 102
+ Success   : 55.3%
 
  Status  : OK = active   DEAD = failed
  Type    : hls_media = HLS segment playlist
@@ -205,11 +205,11 @@ No   Channel                       Group               Status  StreamType       
 58   CNA                           Singapore;News      OK      hls_master       direct_url    200 
 
 ==================================================================================================
- GROUP: India  (1 active  0 dead)
+ GROUP: India  (0 active  1 dead)
 ==================================================================================================
 No   Channel                       Group               Status  StreamType       MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ---------------  ------------  ----
-62   KCM                           India               OK      hls_master       direct_url    200 
+62   KCM                           India               DEAD    all_urls_failed  dead          -   
 
 ==================================================================================================
  GROUP: Indonesia  (0 active  1 dead)
