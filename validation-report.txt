@@ -1,14 +1,14 @@
 ==================================================================================================
  IPTV Playlist Validation Report
 ==================================================================================================
- Generated : 2026-10-03 03:10:08 MYT
+ Generated : 2026-10-03 09:13:24 MYT
  Source    : Channels/Flatten.m3u8
- Run time  : 9m 25s
+ Run time  : 9m 8s
 
  Total     : 230
- Active    : 130  (wrapper_kept=21  direct_url=109)
- Dead      : 100
- Success   : 56.5%
+ Active    : 132  (wrapper_kept=21  direct_url=111)
+ Dead      : 98
+ Success   : 57.4%
 
  Status  : OK = active   DEAD = failed
  Type    : hls_media = HLS segment playlist
@@ -25,7 +25,7 @@
            GitHub API to read the token refreshed earlier in this run.
 
 ==================================================================================================
- GROUP: Malaysia  (26 active  12 dead)
+ GROUP: Malaysia  (27 active  11 dead)
 ==================================================================================================
 No   Channel                       Group               Status  StreamType       MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ---------------  ------------  ----
@@ -43,7 +43,7 @@ No   Channel                       Group               Status  StreamType       
 20   Al-Hijrah                     Malaysia            OK      hls_master       direct_url    200 
 21   EnjoyTV                       Malaysia            DEAD    all_urls_failed  dead          -   
 22   BorneoTV                      Malaysia            OK      hls_master       direct_url    200 
-23   SelangorTV                    Malaysia            DEAD    all_urls_failed  dead          -   
+23   SelangorTV                    Malaysia            OK      hls_master       direct_url    200 
 24   SukeTV                        Malaysia            DEAD    all_urls_failed  dead          -   
 25   TVS                           Malaysia            DEAD    all_urls_failed  dead          -   
 26   SukanPlus                     Malaysia            OK      hls_master       direct_url    200 
@@ -69,7 +69,7 @@ No   Channel                       Group               Status  StreamType       
 67   NHK World-Japan               Malaysia            OK      hls_master       direct_url    200 
 
 ==================================================================================================
- GROUP: Sports  (31 active  36 dead)
+ GROUP: Sports  (32 active  35 dead)
 ==================================================================================================
 No   Channel                       Group               Status  StreamType       MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ---------------  ------------  ----
@@ -87,7 +87,7 @@ No   Channel                       Group               Status  StreamType       
 95   Sky Sport Premier League      Sports              OK      hls_master       direct_url    200 
 96   Sky Sport Football            Sports              OK      mpeg_ts          direct_url    200 
 97   Sky Sport F1                  Sports              OK      mpeg_ts          direct_url    200 
-98   Sky Sports Arena              Sports              DEAD    all_urls_failed  dead          -   
+98   Sky Sports Arena              Sports              OK      mpeg_ts          direct_url    200 
 99   Sky Sports Racing             Sports              DEAD    all_urls_failed  dead          -   
 100  Sky Sports MIX                Sports              DEAD    all_urls_failed  dead          -   
 101  Bein Sports 1                 Sports              DEAD    all_urls_failed  dead          -   
