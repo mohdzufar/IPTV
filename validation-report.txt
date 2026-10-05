@@ -1,9 +1,9 @@
 ==================================================================================================
  IPTV Playlist Validation Report
 ==================================================================================================
- Generated : 2026-10-05 03:04:48 MYT
+ Generated : 2026-10-05 08:48:11 MYT
  Source    : Channels/Flatten.m3u8
- Run time  : 9m 14s
+ Run time  : 8m 58s
 
  Total     : 230
  Active    : 130  (wrapper_kept=21  direct_url=109)
@@ -159,11 +159,11 @@ No   Channel                       Group               Status  StreamType       
 198  Al-Jazeera (English)          News                OK      hls_master       direct_url    200 
 
 ==================================================================================================
- GROUP: Muslim  (1 active  0 dead)
+ GROUP: Muslim  (0 active  1 dead)
 ==================================================================================================
 No   Channel                       Group               Status  StreamType       MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ---------------  ------------  ----
-46   Quran (Mecca)                 Muslim              OK      hls_master       direct_url    200 
+46   Quran (Mecca)                 Muslim              DEAD    all_urls_failed  dead          -   
 
 ==================================================================================================
  GROUP: Singapore  (3 active  7 dead)
@@ -264,7 +264,7 @@ No   Channel                       Group               Status  StreamType       
 71   Nickelodeon Asia              Indonesia;Kids      DEAD    all_urls_failed  dead          -   
 
 ==================================================================================================
- GROUP: Golf  (10 active  3 dead)
+ GROUP: Golf  (11 active  2 dead)
 ==================================================================================================
 No   Channel                       Group               Status  StreamType       MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ---------------  ------------  ----
@@ -280,7 +280,7 @@ No   Channel                       Group               Status  StreamType       
 83   Golf Television               Golf                OK      hls_master       direct_url    200 
 84   SBS_Golf                      Golf                OK      hls_master       direct_url    200 
 85   SBS_Golf_2                    Golf                OK      hls_master       direct_url    200 
-86   Sky Sport Golf                Golf                DEAD    all_urls_failed  dead          -   
+86   Sky Sport Golf                Golf                OK      mpeg_ts          direct_url    200 
 
 ==================================================================================================
  GROUP: Sports;Golf  (3 active  0 dead)
