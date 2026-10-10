@@ -1,14 +1,14 @@
 ==================================================================================================
  IPTV Playlist Validation Report
 ==================================================================================================
- Generated : 2026-10-10 09:48:04 MYT
+ Generated : 2026-10-10 20:24:31 MYT
  Source    : Channels/Flatten.m3u8
- Run time  : 7m 51s
+ Run time  : 8m 6s
 
  Total     : 230
- Active    : 128  (wrapper_kept=22  direct_url=106)
- Dead      : 102
- Success   : 55.7%
+ Active    : 130  (wrapper_kept=22  direct_url=108)
+ Dead      : 100
+ Success   : 56.5%
 
  Status  : OK = active   DEAD = failed
  Type    : hls_media = HLS segment playlist
@@ -319,7 +319,7 @@ No   Channel                       Group               Status  StreamType       
 165  Totalmusic                    Music               DEAD    wrapper_api_404  dead          404 
 
 ==================================================================================================
- GROUP: Movies  (6 active  18 dead)
+ GROUP: Movies  (8 active  16 dead)
 ==================================================================================================
 No   Channel                       Group               Status  StreamType       MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ---------------  ------------  ----
@@ -345,8 +345,8 @@ No   Channel                       Group               Status  StreamType       
 185  HBO Zone                      Movies              DEAD    all_urls_failed  dead          -   
 186  Rakuten Top Movies UK         Movies              DEAD    all_urls_failed  dead          -   
 187  Sony Movie Channel            Movies              DEAD    all_urls_failed  dead          -   
-188  Bollywood                     Movies              DEAD    all_urls_failed  dead          -   
-189  Bollywood Classic             Movies              DEAD    all_urls_failed  dead          -   
+188  Bollywood                     Movies              OK      hls_master       direct_url    200 
+189  Bollywood Classic             Movies              OK      hls_master       direct_url    200 
 
 ==================================================================================================
  GROUP: Nature  (10 active  2 dead)
