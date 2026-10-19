@@ -1,9 +1,9 @@
 ==================================================================================================
  IPTV Playlist Validation Report
 ==================================================================================================
- Generated : 2026-10-19 01:15:43 MYT
+ Generated : 2026-10-19 18:40:33 MYT
  Source    : Channels/Flatten.m3u8
- Run time  : 7m 46s
+ Run time  : 8m 56s
 
  Total     : 230
  Active    : 125  (wrapper_kept=23  direct_url=102)
@@ -25,7 +25,7 @@
            GitHub API to read the token refreshed earlier in this run.
 
 ==================================================================================================
- GROUP: Malaysia  (28 active  10 dead)
+ GROUP: Malaysia  (29 active  9 dead)
 ==================================================================================================
 No   Channel                       Group               Status  StreamType       MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ---------------  ------------  ----
@@ -43,7 +43,7 @@ No   Channel                       Group               Status  StreamType       
 20   Al-Hijrah                     Malaysia            OK      hls_master       direct_url    200 
 21   EnjoyTV                       Malaysia            DEAD    all_urls_failed  dead          -   
 22   BorneoTV                      Malaysia            OK      hls_master       direct_url    200 
-23   SelangorTV                    Malaysia            DEAD    all_urls_failed  dead          -   
+23   SelangorTV                    Malaysia            OK      hls_master       direct_url    200 
 24   SukeTV                        Malaysia            DEAD    all_urls_failed  dead          -   
 25   TVS                           Malaysia            OK      hls_master       direct_url    200 
 26   SukanPlus                     Malaysia            OK      hls_master       direct_url    200 
@@ -349,7 +349,7 @@ No   Channel                       Group               Status  StreamType       
 189  Bollywood Classic             Movies              DEAD    all_urls_failed  dead          -   
 
 ==================================================================================================
- GROUP: Nature  (10 active  2 dead)
+ GROUP: Nature  (9 active  3 dead)
 ==================================================================================================
 No   Channel                       Group               Status  StreamType       MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ---------------  ------------  ----
@@ -363,7 +363,7 @@ No   Channel                       Group               Status  StreamType       
 206  Wild Earth                    Nature              OK      hls_master       direct_url    200 
 207  Wild Planet                   Nature              OK      hls_master       direct_url    200 
 208  Xumo Nature & Wildlife TV     Nature              OK      hls_master       direct_url    200 
-209  Animal Planet                 Nature              OK      hls_master       direct_url    200 
+209  Animal Planet                 Nature              DEAD    all_urls_failed  dead          -   
 210  NatureTime                    Nature              DEAD    all_urls_failed  dead          -   
 
 ==================================================================================================
