@@ -1,14 +1,14 @@
 ==================================================================================================
  IPTV Playlist Validation Report
 ==================================================================================================
- Generated : 2026-10-19 18:40:33 MYT
+ Generated : 2026-10-19 20:52:38 MYT
  Source    : Channels/Flatten.m3u8
- Run time  : 8m 56s
+ Run time  : 7m 49s
 
  Total     : 230
- Active    : 125  (wrapper_kept=23  direct_url=102)
- Dead      : 105
- Success   : 54.3%
+ Active    : 123  (wrapper_kept=23  direct_url=100)
+ Dead      : 107
+ Success   : 53.5%
 
  Status  : OK = active   DEAD = failed
  Type    : hls_media = HLS segment playlist
@@ -302,11 +302,11 @@ No   Channel                       Group               Status  StreamType       
 154  DotA2                         E-Sports            DEAD    all_urls_failed  dead          -   
 
 ==================================================================================================
- GROUP: Music  (6 active  5 dead)
+ GROUP: Music  (5 active  6 dead)
 ==================================================================================================
 No   Channel                       Group               Status  StreamType       MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ---------------  ------------  ----
-155  KPOP Mix                      Music               OK      hls_master       direct_url    200 
+155  KPOP Mix                      Music               DEAD    all_urls_failed  dead          -   
 156  New KPOP                      Music               DEAD    all_urls_failed  dead          -   
 157  K POP by CJ ENM               Music               OK      hls_master       direct_url    200 
 158  Music Japan                   Music               OK      hls_master       direct_url    200 
@@ -349,14 +349,14 @@ No   Channel                       Group               Status  StreamType       
 189  Bollywood Classic             Movies              DEAD    all_urls_failed  dead          -   
 
 ==================================================================================================
- GROUP: Nature  (9 active  3 dead)
+ GROUP: Nature  (8 active  4 dead)
 ==================================================================================================
 No   Channel                       Group               Status  StreamType       MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ---------------  ------------  ----
 199  Adventure Earth               Nature              OK      hls_master       direct_url    200 
 200  BBC Earth                     Nature              OK      hls_master       direct_url    200 
 201  Love The Planet               Nature              DEAD    all_urls_failed  dead          -   
-202  Terra Mater Wild              Nature              OK      hls_master       direct_url    200 
+202  Terra Mater Wild              Nature              DEAD    all_urls_failed  dead          -   
 203  Real Wild                     Nature              OK      hls_master       direct_url    200 
 204  Go Wild                       Nature              OK      hls_master       direct_url    200 
 205  Wild Nature                   Nature              OK      hls_master       direct_url    200 
