@@ -1,14 +1,14 @@
 ==================================================================================================
  IPTV Playlist Validation Report
 ==================================================================================================
- Generated : 2026-10-20 03:48:41 MYT
+ Generated : 2026-10-20 09:10:53 MYT
  Source    : Channels/Flatten.m3u8
- Run time  : 6m 54s
+ Run time  : 7m 43s
 
  Total     : 230
- Active    : 125  (wrapper_kept=23  direct_url=102)
- Dead      : 105
- Success   : 54.3%
+ Active    : 126  (wrapper_kept=23  direct_url=103)
+ Dead      : 104
+ Success   : 54.8%
 
  Status  : OK = active   DEAD = failed
  Type    : hls_media = HLS segment playlist
@@ -349,14 +349,14 @@ No   Channel                       Group               Status  StreamType       
 189  Bollywood Classic             Movies              DEAD    all_urls_failed  dead          -   
 
 ==================================================================================================
- GROUP: Nature  (9 active  3 dead)
+ GROUP: Nature  (10 active  2 dead)
 ==================================================================================================
 No   Channel                       Group               Status  StreamType       MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ---------------  ------------  ----
 199  Adventure Earth               Nature              OK      hls_master       direct_url    200 
 200  BBC Earth                     Nature              OK      hls_master       direct_url    200 
 201  Love The Planet               Nature              DEAD    all_urls_failed  dead          -   
-202  Terra Mater Wild              Nature              DEAD    all_urls_failed  dead          -   
+202  Terra Mater Wild              Nature              OK      hls_master       direct_url    200 
 203  Real Wild                     Nature              OK      hls_master       direct_url    200 
 204  Go Wild                       Nature              OK      hls_master       direct_url    200 
 205  Wild Nature                   Nature              OK      hls_master       direct_url    200 
