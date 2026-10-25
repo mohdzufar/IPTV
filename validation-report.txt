@@ -1,14 +1,14 @@
 ==================================================================================================
  IPTV Playlist Validation Report
 ==================================================================================================
- Generated : 2026-10-25 08:18:44 MYT
+ Generated : 2026-10-25 19:13:07 MYT
  Source    : Channels/Flatten.m3u8
- Run time  : 7m 13s
+ Run time  : 6m 49s
 
  Total     : 230
- Active    : 124  (wrapper_kept=22  direct_url=102)
- Dead      : 106
- Success   : 53.9%
+ Active    : 123  (wrapper_kept=22  direct_url=101)
+ Dead      : 107
+ Success   : 53.5%
 
  Status  : OK = active   DEAD = failed
  Type    : hls_media = HLS segment playlist
@@ -25,7 +25,7 @@
            GitHub API to read the token refreshed earlier in this run.
 
 ==================================================================================================
- GROUP: Malaysia  (29 active  9 dead)
+ GROUP: Malaysia  (28 active  10 dead)
 ==================================================================================================
 No   Channel                       Group               Status  StreamType       MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ---------------  ------------  ----
@@ -43,7 +43,7 @@ No   Channel                       Group               Status  StreamType       
 20   Al-Hijrah                     Malaysia            OK      hls_master       direct_url    200 
 21   EnjoyTV                       Malaysia            DEAD    all_urls_failed  dead          -   
 22   BorneoTV                      Malaysia            OK      hls_master       direct_url    200 
-23   SelangorTV                    Malaysia            OK      hls_master       direct_url    200 
+23   SelangorTV                    Malaysia            DEAD    all_urls_failed  dead          -   
 24   SukeTV                        Malaysia            DEAD    all_urls_failed  dead          -   
 25   TVS                           Malaysia            OK      hls_master       direct_url    200 
 26   SukanPlus                     Malaysia            OK      hls_master       direct_url    200 
