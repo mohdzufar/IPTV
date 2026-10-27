@@ -1,14 +1,14 @@
 ==================================================================================================
  IPTV Playlist Validation Report
 ==================================================================================================
- Generated : 2026-10-27 09:30:21 MYT
+ Generated : 2026-10-27 20:04:52 MYT
  Source    : Channels/Flatten.m3u8
- Run time  : 7m 17s
+ Run time  : 8m 2s
 
  Total     : 230
- Active    : 124  (wrapper_kept=22  direct_url=102)
- Dead      : 106
- Success   : 53.9%
+ Active    : 121  (wrapper_kept=22  direct_url=99)
+ Dead      : 109
+ Success   : 52.6%
 
  Status  : OK = active   DEAD = failed
  Type    : hls_media = HLS segment playlist
@@ -69,7 +69,7 @@ No   Channel                       Group               Status  StreamType       
 67   NHK World-Japan               Malaysia            OK      hls_master       direct_url    200 
 
 ==================================================================================================
- GROUP: Sports  (30 active  37 dead)
+ GROUP: Sports  (29 active  38 dead)
 ==================================================================================================
 No   Channel                       Group               Status  StreamType       MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ---------------  ------------  ----
@@ -85,7 +85,7 @@ No   Channel                       Group               Status  StreamType       
 93   Sky Sports Main Events        Sports              DEAD    all_urls_failed  dead          -   
 94   Sky Sports Action             Sports              DEAD    all_urls_failed  dead          -   
 95   Sky Sport Premier League      Sports              OK      hls_master       direct_url    200 
-96   Sky Sport Football            Sports              OK      mpeg_ts          direct_url    200 
+96   Sky Sport Football            Sports              DEAD    all_urls_failed  dead          -   
 97   Sky Sport F1                  Sports              DEAD    all_urls_failed  dead          -   
 98   Sky Sports Arena              Sports              DEAD    all_urls_failed  dead          -   
 99   Sky Sports Racing             Sports              DEAD    all_urls_failed  dead          -   
@@ -394,14 +394,14 @@ No   Channel                       Group               Status  StreamType       
 219  douyu 19                      China               OK      hls_master       direct_url    200 
 
 ==================================================================================================
- GROUP: Korea  (7 active  1 dead)
+ GROUP: Korea  (5 active  3 dead)
 ==================================================================================================
 No   Channel                       Group               Status  StreamType       MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ---------------  ------------  ----
 220  K-Content                     Korea               OK      hls_master       direct_url    200 
 222  K-Stories                     Korea               OK      hls_master       direct_url    200 
-223  K-Movies                      Korea               OK      hls_master       direct_url    200 
-224  Series K Legacy               Korea               OK      hls_master       direct_url    200 
+223  K-Movies                      Korea               DEAD    all_urls_failed  dead          -   
+224  Series K Legacy               Korea               DEAD    all_urls_failed  dead          -   
 225  Series K Drama                Korea               OK      hls_master       direct_url    200 
 227  NEW KFood                     Korea               OK      hls_master       direct_url    200 
 228  KBS World                     Korea               DEAD    all_urls_failed  dead          -   
