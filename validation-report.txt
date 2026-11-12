@@ -1,14 +1,14 @@
 ==================================================================================================
  IPTV Playlist Validation Report
 ==================================================================================================
- Generated : 2026-11-12 23:07:46 MYT
+ Generated : 2026-11-13 05:29:26 MYT
  Source    : Channels/Flatten.m3u8
- Run time  : 8m 42s
+ Run time  : 7m 11s
 
  Total     : 230
- Active    : 120  (wrapper_kept=21  direct_url=99)
- Dead      : 110
- Success   : 52.2%
+ Active    : 119  (wrapper_kept=21  direct_url=98)
+ Dead      : 111
+ Success   : 51.7%
 
  Status  : OK = active   DEAD = failed
  Type    : hls_media = HLS segment playlist
@@ -69,7 +69,7 @@ No   Channel                       Group               Status  StreamType       
 67   NHK World-Japan               Malaysia            OK      hls_master       direct_url    200 
 
 ==================================================================================================
- GROUP: Sports  (29 active  38 dead)
+ GROUP: Sports  (28 active  39 dead)
 ==================================================================================================
 No   Channel                       Group               Status  StreamType       MainEntry     HTTP
 ---  ----------------------------  ------------------  ------  ---------------  ------------  ----
@@ -135,7 +135,7 @@ No   Channel                       Group               Status  StreamType       
 143  BBC Top Gear                  Sports              OK      hls_master       direct_url    200 
 144  Fuel TV                       Sports              OK      hls_master       direct_url    200 
 145  Pro Fight League              Sports              OK      hls_master       direct_url    200 
-146  Speed Vision                  Sports              OK      hls_master       direct_url    200 
+146  Speed Vision                  Sports              DEAD    all_urls_failed  dead          -   
 147  Fifa+                         Sports              OK      hls_master       direct_url    200 
 148  TNA Wresling                  Sports              OK      hls_master       direct_url    200 
 149  Astro Badminton               Sports              DEAD    wrapper_api_404  dead          404 
